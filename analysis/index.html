@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html data-theme="light" lang="ko">
+<head>
+<meta charset="utf-8"/>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-KWT87FBY6S"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-KWT87FBY6S', { anonymize_ip: true });
+</script>
+
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>스포츠 배당 분석기(오버라운드·공정배당·마진) | 88ST</title>
+<meta content="축구·농구·야구·배구·e스포츠·하키 배당으로 공정확률/공정배당, 오버라운드(마진), 라인(OU/핸디) 마진까지 한 번에 계산하는 스포츠 배당 분석기." name="description"/>
+<meta content="스포츠 배당 분석기, 오버라운드 계산, 마진 계산, 공정확률, 공정배당, 비그(vig) 제거, 라인 비교, 배당 최적화, EV, 88ST" name="keywords"/>
+<link href="https://88st.cloud/analysis/" rel="canonical"/>
+<meta content="index,follow" name="robots"/>
+<link href="/assets/css/x.0b2e79a53127.css" rel="stylesheet"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "홈",
+      "item": "https://88st.cloud/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "분석기",
+      "item": "https://88st.cloud/analysis/"
+    }
+  ]
+}
+</script>
+<script defer="" src="/assets/js/j.9179477b9417.js"></script>
+<link href="/assets/c.9995eeb5cf82.css" rel="stylesheet"/>
+<link href="/assets/c.0b3d8a45f8c9.css" rel="stylesheet"/>
+<script defer="" src="/assets/js/j.efba3509e62c.js"></script>
+<link href="/assets/c.a50dd3bc5b33.css" rel="stylesheet"/>
+<script defer="" src="/assets/js/j.8829a3ccde44.js?v=85"></script>
+<meta content="스포츠 배당 분석기(오버라운드·공정배당·마진) | 88ST" property="og:title"/><meta content="축구·농구·야구·배구·e스포츠·하키 배당으로 공정확률/공정배당, 오버라운드(마진), 라인(OU/핸디) 마진까지 한 번에 계산하는 스포츠 배당 분석기." property="og:description"/><meta content="website" property="og:type"/><meta content="https://88st.cloud/analysis/" property="og:url"/><meta content="/img/logo.png" property="og:image"/><style>
+/* --- OddsPortal-style odds compare (local paste) --- */
+#bookCompareBox .paste-ta{min-height:120px}
+#bookCompareOut{margin-top:12px}
+.bookTbl{width:100%;border-collapse:separate;border-spacing:0 8px}
+.bookTbl th{font-size:12px;opacity:.8;text-align:left;padding:0 10px}
+.bookTbl td{padding:10px;border:1px solid var(--line, rgba(255,255,255,.12));border-radius:14px;background:var(--card, rgba(255,255,255,.04))}
+.bookTbl .book{font-weight:800;white-space:nowrap}
+.bookTbl .od{font-variant-numeric:tabular-nums}
+.bookTbl .best{outline:2px solid rgba(80,160,255,.55)}
+.bookTbl .mini{display:block;font-size:12px;opacity:.8;margin-top:2px}
+.bookSummary{display:grid;gap:10px;grid-template-columns:repeat(3, minmax(0,1fr));margin-top:10px}
+@media (max-width:640px){.bookSummary{grid-template-columns:1fr}}
+.bookKpi{padding:12px 14px;border-radius:16px;border:1px solid var(--line, rgba(255,255,255,.12));background:var(--card, rgba(255,255,255,.04))}
+.bookKpi .k{font-size:12px;opacity:.75}
+.bookKpi .v{font-size:18px;font-weight:900;margin-top:4px;font-variant-numeric:tabular-nums}
+.bookKpi .s{font-size:12px;opacity:.75;margin-top:4px}
+
+/* --- Analysis cleanup: remove clutter, prevent overlaps --- */
+/* Keep underlying DOM (avoid JS break), but hide unnecessary UI surfaces */
+.controls-settings .selectWrap.is-hidden{display:none !important;}
+#valueInputs{display:none !important;}
+#lineCompareBox{display:none !important;}
+#bundleShareModal{display:none !important;}
+#perfBox{display:none !important;}
+.paste-actions .paste-adv{display:none !important;}
+.paste-actions .paste-inline{display:none !important;}
+#pasteListWrap{display:none !important;}
+#btnBundleShare{display:none !important;}
+.bundle-promo, .bundle-promo-adv{display:none !important;}
+.field.is-adv{display:none !important;}
+
+/* Typography + spacing refinements */
+.calc-hero-right .autosave{min-width:0}
+.calc-headline{line-height:1.25;overflow-wrap:anywhere}
+.calc-tags{gap:6px}
+.st-tabbar{flex-wrap:wrap}
+
+/* Paste box: keep primary action + utility actions, never overlap */
+.paste-actions{gap:10px;flex-wrap:wrap;align-items:center}
+.paste-actions .btn{white-space:nowrap}
+@media (max-width:560px){
+  .paste-actions{gap:8px}
+  .paste-actions .btn{flex:1 1 calc(50% - 8px)}
+  .paste-actions .btn.primary{flex:1 1 100%}
+}
+
+/* Result: avoid cramped two-column on smaller screens */
+@media (max-width:1024px){
+  .app-layout.is-two{display:block !important;}
+  .app-right{margin-top:14px}
+}
+
+@media (max-width:860px){
+  .split{display:block !important;}
+  .split-col{margin-top:14px;}
+}
+
+.history-toolbar{flex-wrap:wrap;gap:8px;}
+.history-filters{flex-wrap:wrap;gap:8px;}
+
+/* Hide EV/Kelly output surfaces (if rendered) */
+.st-r-panel [data-role="ev"], .st-r-panel [data-role="kelly"], .st-r-panel .ev, .st-r-panel .kelly{display:none !important;}
+</style>
+<style>
+/* v45 /analysis PRO rebuild (minimal, keeps site design language) */
+.pro-grid{display:grid;gap:14px}
+@media (min-width: 980px){.pro-grid.cols2{grid-template-columns: 1.05fr .95fr}}
+.pro-card{background:var(--card, #fff);border:1px solid rgba(0,0,0,.06);border-radius:22px;box-shadow:0 14px 40px rgba(0,0,0,.07);padding:18px}
+.pro-hero{display:flex;flex-direction:column;gap:10px}
+@media (min-width: 980px){.pro-hero{flex-direction:row;align-items:flex-start;justify-content:space-between;gap:18px}}
+.pro-kicker{display:inline-flex;align-items:center;gap:8px;font-weight:800;font-size:12px;letter-spacing:.06em;text-transform:uppercase;opacity:.8}
+.pro-title{font-size:28px;line-height:1.15;margin:0}
+.pro-sub{margin:0;opacity:.85}
+.pro-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.pro-pill{display:inline-flex;align-items:center;gap:8px;padding:8px 10px;border-radius:999px;border:1px solid rgba(0,0,0,.08);background:rgba(255,255,255,.55);backdrop-filter:saturate(1.2) blur(6px);font-weight:650;font-size:12px}
+.pro-form{display:grid;gap:12px}
+.pro-row{display:grid;gap:10px}
+@media (min-width: 700px){.pro-row.cols3{grid-template-columns:repeat(3,1fr)} .pro-row.cols2{grid-template-columns:repeat(2,1fr)}}
+.pro-field label{display:block;font-size:12px;font-weight:750;opacity:.8;margin:0 0 6px 2px}
+.pro-field input, .pro-field select, .pro-field textarea{width:100%;border-radius:14px;border:1px solid rgba(0,0,0,.10);padding:12px 12px;font-size:15px;outline:none;background:rgba(255,255,255,.78)}
+.pro-field textarea{min-height:86px;resize:vertical}
+.pro-actions{display:flex;gap:10px;flex-wrap:wrap}
+.pro-btn{border:none;border-radius:14px;padding:12px 14px;font-weight:800;font-size:14px;cursor:pointer}
+.pro-btn.primary{background:#111;color:#fff}
+.pro-btn.secondary{background:rgba(0,0,0,.06)}
+.pro-btn.ghost{background:transparent;border:1px solid rgba(0,0,0,.12)}
+.pro-kv{display:grid;gap:10px}
+@media (min-width: 700px){.pro-kv{grid-template-columns:repeat(3,1fr)}}
+.pro-kvi{border:1px solid rgba(0,0,0,.06);border-radius:18px;padding:12px;background:rgba(255,255,255,.62)}
+.pro-kvi .k{font-size:12px;font-weight:750;opacity:.75}
+.pro-kvi .v{font-size:22px;font-weight:900;margin-top:6px;font-variant-numeric:tabular-nums}
+.pro-kvi .s{font-size:12px;opacity:.72;margin-top:4px}
+.pro-table{width:100%;border-collapse:separate;border-spacing:0 8px}
+.pro-table th{text-align:left;font-size:12px;opacity:.7;padding:0 10px}
+.pro-table td{background:rgba(255,255,255,.7);border:1px solid rgba(0,0,0,.06);padding:12px 10px;font-weight:650}
+.pro-table tr td:first-child{border-radius:14px 0 0 14px}
+.pro-table tr td:last-child{border-radius:0 14px 14px 0}
+.pro-note{font-size:12px;opacity:.75;line-height:1.45}
+.pro-scanlist{display:grid;gap:10px}
+.pro-scanitem{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px;border-radius:18px;border:1px solid rgba(0,0,0,.06);background:rgba(255,255,255,.65)}
+.pro-scanitem .meta{display:flex;flex-direction:column;gap:2px}
+.pro-scanitem .meta .t{font-weight:900}
+.pro-scanitem .meta .d{font-size:12px;opacity:.75}
+.pro-scanitem .right{display:flex;align-items:center;gap:10px}
+.pro-badge{font-size:12px;font-weight:900;padding:7px 10px;border-radius:999px;background:rgba(0,0,0,.07)}
+.pro-badge.good{background:rgba(0,0,0,.08)}
+.pro-badge.warn{background:rgba(255,180,0,.18);border:1px solid rgba(255,180,0,.22)}
+.pro-badge.bad{background:rgba(255,60,60,.12);border:1px solid rgba(255,60,60,.20)}
+.pro-inline{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.pro-divider{height:1px;background:rgba(0,0,0,.08);margin:8px 0}
+/* mobile prevent weird wraps */
+@media (max-width: 420px){
+  .pro-title{font-size:24px}
+  .pro-btn{flex:1}
+}
+</style>
+<style>
+/* v46 mobile polish: remove theory-formula 느낌 */
+@media (max-width: 520px){
+  .pro-kvi .s{display:none !important;}
+  .pro-kvi .v{font-size:20px;}
+  .pro-kicker{font-size:11px;}
+  .pro-pill{font-size:11px;padding:7px 9px;}
+}
+</style>
+<style>
+/* v47: mobile formula toggle */
+.pro-kvwrap{position:relative}
+.pro-helpbtn{
+  position:absolute; top:10px; right:10px;
+  width:28px; height:28px; border-radius:999px;
+  border:1px solid rgba(0,0,0,.12);
+  background:rgba(255,255,255,.7);
+  font-weight:900; cursor:pointer;
+  display:none; align-items:center; justify-content:center;
+}
+.pro-formula{margin-top:10px;padding:12px 14px;border-radius:18px;border:1px solid rgba(0,0,0,.06);background:rgba(255,255,255,.72)}
+.pro-formula-h{font-weight:900;margin-bottom:8px}
+.pro-formula-list{margin:0;padding-left:16px;opacity:.85;line-height:1.55;font-size:12px}
+.pro-formula-list b{font-weight:900}
+@media (max-width:520px){
+  .pro-helpbtn{display:inline-flex}
+  .pro-kvi .s{display:none} /* hide formula snippets in KPI cards */
+  .pro-formula[hidden]{display:none !important;}
+}
+</style>
+<style>
+/* v48: PRO options (collapsible) */
+.pro-opts{margin-top:14px}
+.pro-opts summary{list-style:none;cursor:pointer;user-select:none;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 14px;border-radius:18px;border:1px solid rgba(0,0,0,.08);background:rgba(255,255,255,.62)}
+.pro-opts summary::-webkit-details-marker{display:none}
+.pro-opts .sum-left{display:flex;align-items:center;gap:10px;font-weight:900}
+.pro-opts .sum-badge{font-size:12px;font-weight:900;padding:6px 10px;border-radius:999px;background:rgba(0,0,0,.06)}
+.pro-opts[open] summary{background:rgba(255,255,255,.72)}
+.pro-opts-body{padding-top:12px}
+.pro-miniout{margin-top:10px}
+#summaryOut{border:1px solid rgba(0,0,0,.06);background:rgba(255,255,255,.65);border-radius:18px;padding:12px}
+#summaryOut .sum-line{font-size:13px;font-weight:800;line-height:1.4}
+#summaryOut .sum-sub{font-size:12px;opacity:.75;line-height:1.45;margin-top:8px}
+#summaryOut .sum-mono{font-variant-numeric:tabular-nums;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace}
+.pro-mini-grid{display:grid;gap:10px}
+@media (min-width:700px){.pro-mini-grid.cols2{grid-template-columns:1fr 1fr}}
+.pro-mini-kv{display:grid;gap:10px}
+@media (min-width:700px){.pro-mini-kv{grid-template-columns:repeat(3,1fr)}}
+.pro-mini-kvi{border:1px solid rgba(0,0,0,.06);border-radius:18px;padding:12px;background:rgba(255,255,255,.62)}
+.pro-mini-kvi .k{font-size:12px;font-weight:750;opacity:.75}
+.pro-mini-kvi .v{font-size:18px;font-weight:900;margin-top:6px;font-variant-numeric:tabular-nums}
+.pro-mini-kvi .s{font-size:12px;opacity:.72;margin-top:4px}
+.pro-mini-table{width:100%;border-collapse:separate;border-spacing:0 8px}
+.pro-mini-table th{text-align:left;font-size:12px;opacity:.7;padding:0 10px}
+.pro-mini-table td{background:rgba(255,255,255,.7);border:1px solid rgba(0,0,0,.06);padding:10px 10px;font-weight:650}
+.pro-mini-table tr td:first-child{border-radius:14px 0 0 14px}
+.pro-mini-table tr td:last-child{border-radius:0 14px 14px 0}
+.pro-mini-table .best{outline:2px solid rgba(80,160,255,.45)}
+.pro-mini-table .mono{font-variant-numeric:tabular-nums}
+</style>
+<link href="/assets/vvip-pro.v71.css?v=71" rel="stylesheet"/>
+<script defer="" src="/assets/js/vvip-pro.v71.js?v=71"></script>
+<script defer="" src="/assets/js/vvip-brief.v71.js?v=71"></script>
+<link href="/assets/css/vvip-luxe.v75.css?v=77" rel="stylesheet"/><script defer="" src="/assets/js/vvip-global.v75.js?v=77"></script>
+<link rel="stylesheet" href="/assets/css/patch.v94.productui.20260219.min.css"/>
+</head>
+<body>
+<div aria-label="사칭 주의 안내" class="scam-popup" id="scamPopup" role="region">
+<div class="scam-box">
+<div class="scam-left">
+<div class="scam-ic">⚠</div>
+<div class="scam-msg"><b>사칭 주의</b> · 공식 관리자 텔레그램은 <b>@UZU59</b> 단 하나입니다. 다른 계정 주의</div>
+</div>
+<div class="btn primary" data-d8593ac4d="VQkTbQtZrbr_">확인</div>
+</div>
+</div>
+<div class="ad-popup" id="adPopup">
+<div class="ad-box">
+<div class="ad-head">
+<div class="ad-title">🎁 지금 많이 찾는 추천 놀이터</div>
+<div class="ad-close" data-d8593ac4d="-QRyJ1StW7hI">오늘 그만 보기</div>
+</div>
+<div class="ad-grid" id="adGrid"></div>
+<div class="ad-actions">
+<a aria-label="인증 놀이터 보기" class="btnx primary" href="/cert/">인증 놀이터 보기</a>
+<a class="btnx" href="https://t.me/UZU59" rel="noopener noreferrer" target="_blank">문의</a>
+</div>
+<div class="ad-note">※ 팝업은 1일 1회만 표시됩니다. (원치 않으면 닫기)</div>
+<div class="ad-close" data-d8593ac4d="GF0gf-ppHzTB" style="margin-top:10px;text-align:center;">닫기</div>
+</div>
+</div>
+<div class="header">
+<a aria-label="홈으로 이동" class="logo-link" href="/">
+<img alt="88 커뮤니티" class="logo-img logoImg" src="/img/logo.png"/>
+</a>
+<div class="sub">스포츠 배당 분석기 PRO (공정확률·공정배당·마진 · 판단 보조용)</div>
+</div>
+<div class="wrap">
+<section class="pro-card" id="proHero">
+<div class="pro-hero">
+<div>
+<div class="pro-kicker">88ST · SPORTS PRO</div>
+<h1 class="pro-title">스포츠 배당 정밀 분석기</h1>
+<p class="pro-sub">배당만으로 <b>오버라운드(마진)</b>·<b>공정확률</b>·<b>공정배당</b>을 즉시 계산합니다. (결과 예측 도구 아님)</p>
+<div aria-label="핵심 기능" class="pro-pills">
+<span class="pro-pill">⚡ 1줄 붙여넣기 자동 적용</span>
+<span class="pro-pill">🧠 언더독 민감 보정(선택)</span>
+<span class="pro-pill">🏁 멀티 붙여넣기 → 마진 최저 TOP3</span>
+</div>
+</div>
+<div class="pro-kvwrap"><button aria-label="계산식/설명 보기" class="pro-helpbtn" id="btnFormula" type="button">?</button><div class="pro-kv" style="min-width:260px">
+<div class="pro-kvi"><div class="k">현재 마켓</div><div class="v" id="kvMarket">—</div><div class="s" id="kvSport">—</div></div>
+<div class="pro-kvi"><div class="k">오버라운드</div><div class="v" id="kvOver">—</div><div class="s">Σ(1/배당)</div></div>
+<div class="pro-kvi"><div class="k">마진</div><div class="v" id="kvMargin">—</div><div class="s">오버라운드 - 1</div></div>
+</div></div><div class="pro-formula" hidden="" id="formulaPanel">
+<div class="pro-formula-h">계산식/설명</div>
+<ul class="pro-formula-list">
+<li><b>오버라운드</b> = Σ(1/배당)</li>
+<li><b>마진</b> = 오버라운드 − 1</li>
+<li><b>공정확률</b> = 비그(마진) 제거 후 확률 정규화</li>
+<li><b>공정배당</b> = 1 / 공정확률</li>
+<li>※ 이 도구는 <b>예측 도구가 아니라</b> “시장 확률/수수료 구조”를 빠르게 해석하기 위한 분석기입니다.</li>
+</ul>
+</div>
+</div>
+</section>
+<div class="pro-grid cols2" style="margin-top:14px">
+<section class="pro-card" id="proInput">
+<div class="pro-form">
+<div class="pro-field">
+<label for="quickPaste">빠른 붙여넣기 (1줄/여러줄)</label>
+<textarea id="quickPaste" placeholder="예: 맨시티 1.72 3.90 4.80 리버풀
+예: 2.5 1.90 1.95
+여러 줄 붙여넣기 → 자동 스캔 TOP3"></textarea>
+<div class="pro-note">※ 숫자(배당)만 인식합니다. 1X2=3개, 2-way=2개, O/U·핸디=라인+2개(또는 자동 추정)</div>
+</div>
+<div class="pro-actions">
+<button class="pro-btn primary" id="btnApply" type="button">분석하기</button>
+<button class="pro-btn secondary" id="btnScan" type="button">멀티 스캔 TOP3</button>
+<button class="pro-btn ghost" id="btnClear" type="button">초기화</button>
+</div>
+<div class="pro-divider"></div>
+<div class="pro-row cols3">
+<div class="pro-field">
+<label for="sportSel">종목</label>
+<select id="sportSel"><option value="soccer">축구</option><option value="basketball">농구</option><option value="baseball">야구</option><option value="volleyball">배구</option><option value="tennis">테니스</option><option value="tabletennis">탁구</option><option value="badminton">배드민턴</option><option value="handball">핸드볼</option><option value="hockey">하키</option><option value="rugby">럭비</option><option value="americanfootball">미식축구</option><option value="cricket">크리켓</option><option value="futsal">풋살</option><option value="mma">격투기(MMA)</option><option value="boxing">복싱</option><option value="esports">e스포츠</option><option value="other">기타(커스텀)</option></select>
+</div>
+<div class="pro-field">
+<label for="marketSel">마켓</label>
+<select id="marketSel">
+<option value="auto">자동 감지</option>
+<option value="1x2">승/무/패 (1X2)</option>
+<option value="2way">2-way (승/패)</option>
+<option value="ou">오버/언더</option>
+<option value="handicap">핸디캡</option>
+</select>
+</div>
+<div class="pro-field">
+<label for="methodSel">공정확률 방식</label>
+<select id="methodSel"><option value="norm">정규화(기본)</option><option selected="" value="power">파워(권장)</option><option value="add">가산(균등)</option><option value="udog">언더독 민감(보정)</option></select>
+</div>
+</div>
+<div class="pro-row cols3" id="inputs1x2" style="display:none">
+<div class="pro-field"><label for="od1">홈</label><input id="od1" inputmode="decimal" placeholder="예: 1.95"/></div>
+<div class="pro-field"><label for="odx">무</label><input id="odx" inputmode="decimal" placeholder="예: 3.40"/></div>
+<div class="pro-field"><label for="od2">원정</label><input id="od2" inputmode="decimal" placeholder="예: 4.10"/></div>
+</div>
+<div class="pro-row cols2" id="inputs2way" style="display:none">
+<div class="pro-field"><label for="odA">A</label><input id="odA" inputmode="decimal" placeholder="예: 1.90"/></div>
+<div class="pro-field"><label for="odB">B</label><input id="odB" inputmode="decimal" placeholder="예: 1.95"/></div>
+</div>
+<div class="pro-row cols3" id="inputsOU" style="display:none">
+<div class="pro-field"><label for="lineOU">라인</label><input id="lineOU" inputmode="decimal" placeholder="예: 2.5"/></div>
+<div class="pro-field"><label for="odO">오버</label><input id="odO" inputmode="decimal" placeholder="예: 1.90"/></div>
+<div class="pro-field"><label for="odU">언더</label><input id="odU" inputmode="decimal" placeholder="예: 1.95"/></div>
+</div>
+<div class="pro-row cols3" id="inputsHcap" style="display:none">
+<div class="pro-field"><label for="lineH">핸디 라인</label><input id="lineH" inputmode="decimal" placeholder="예: -1.5"/></div>
+<div class="pro-field"><label for="odH1">선택 A</label><input id="odH1" inputmode="decimal" placeholder="예: 1.92"/></div>
+<div class="pro-field"><label for="odH2">반대(B)</label><input id="odH2" inputmode="decimal" placeholder="예: 1.92"/></div>
+</div>
+<div class="pro-note">TIP) “정배만 높아 보인다”면 <b>언더독 민감(보정)</b>으로 공정확률을 한 번 더 확인해보세요. (시장 확률 해석 보조)</div>
+<details class="pro-opts vvip-pro" data-prokey="analysis-pro" id="proOptions">
+<summary>
+<div class="sum-left">🛠️ PRO 옵션</div>
+<div class="sum-badge">접기/펼치기</div>
+</summary>
+<div class="pro-opts-body vvip-pro-body">
+<div class="pro-mini-grid cols2">
+<div>
+<div class="pro-kicker" style="margin-bottom:6px">ODDS MOVE</div>
+<div style="font-weight:900;font-size:16px">오즈 무브 (오픈 vs 현재)</div>
+<div class="pro-note">오픈(초기) 배당을 저장/붙여넣고, 현재 배당과의 변화(Δ)·확률 변화(Δp)를 계산합니다.</div>
+<div class="pro-field" style="margin-top:10px">
+<label for="openPaste">오픈 배당 붙여넣기 (1줄)</label>
+<textarea id="openPaste" placeholder="예: (오픈) 맨시티 1.80 3.70 4.40 리버풀\n예: (오픈) 2.5 1.91 1.91"></textarea>
+</div>
+<div class="pro-actions">
+<button class="pro-btn secondary" id="btnOpenFromCurrent" type="button">현재값을 오픈으로 저장</button>
+<button class="pro-btn ghost" id="btnApplyOpen" type="button">오픈 적용</button>
+<button class="pro-btn ghost" id="btnClearOpen" type="button">오픈 초기화</button>
+</div>
+<div class="pro-miniout" id="openOut"></div>
+</div>
+<div>
+<div class="pro-kicker" style="margin-bottom:6px">MARKET AVG</div>
+<div style="font-weight:900;font-size:16px">북메이커 시장평균 비교 (복붙)</div>
+<div class="pro-note">여러 소스(북메이커/커뮤니티) 배당을 <b>줄마다</b> 붙여넣으면, <b>시장 평균(컨센서스)</b> 기준 공정배당과 결과별 최고배당을 계산합니다. <span class="muted">시장 평균=각 줄의 암시확률을 마진 제거 후 평균낸 값</span></div>
+<div class="pro-field" style="margin-top:10px">
+<label for="consPaste">여러 줄 붙여넣기</label>
+<textarea id="consPaste" placeholder="bet365: 1.90 3.40 4.10\npinnacle: 1.92 3.50 4.00\nbook3: 1.88 3.55 4.20\n\n※ 라인/마켓이 다르면 자동 제외"></textarea>
+</div>
+<div class="pro-actions">
+<button class="pro-btn secondary" id="btnConsRun" type="button">비교하기</button>
+<button class="pro-btn ghost" id="btnConsApplyBest" type="button">최고배당 적용</button>
+<button class="pro-btn ghost" id="btnConsClear" type="button">초기화</button>
+</div>
+<div class="pro-miniout" id="consOut"></div>
+</div>
+</div>
+</div>
+</details>
+</div>
+</section>
+<section class="pro-card" id="proResult">
+<div class="pro-kv">
+<div class="pro-kvi"><div class="k">공정배당(요약)</div><div class="v" id="kvFair">—</div><div class="s" id="kvFairNote">—</div></div>
+<div class="pro-kvi"><div class="k">업셋(정배 아닌 결과)</div><div class="v" id="kvUpset">—</div><div class="s" id="kvUpsetNote">—</div></div>
+<div class="pro-kvi"><div class="k">주의</div><div class="v" id="kvWarn" style="font-size:16px">입력 대기</div><div class="s">형식/값 검증</div></div>
+</div>
+<div class="pro-inline" id="sigRow" style="gap:10px;flex-wrap:wrap;margin-top:12px">
+<span class="pro-badge" id="sigMargin">마진 등급 —</span>
+<span class="pro-badge" id="sigAgreement" style="display:none">시장 합의도 —</span>
+<span class="pro-badge" id="sigMove" style="display:none">오즈 무브 —</span>
+<span class="pro-badge" id="sigMarketAvg" style="display:none">시장 평균 비교 —</span>
+</div>
+<!-- Beginner Summary (Unified) -->
+<div aria-label="초보 요약" class="vvip-brief" id="sprtBrief">
+<div class="vvip-brief-head">
+<div class="vvip-brief-title">AI 브리핑 (요약)</div>
+<div class="vvip-brief-score"><span class="n" data-role="score">-</span><span class="lab" data-role="label">대기</span></div>
+</div>
+<div class="vvip-brief-body">
+<div class="vvip-brief-grid">
+<div class="vvip-brief-col">
+<div class="vvip-brief-k">주의</div>
+<ul class="vvip-brief-list" data-role="warn"><li>배당을 입력하면 자동 분석됩니다.</li></ul>
+</div>
+<div class="vvip-brief-col">
+<div class="vvip-brief-k">추천</div>
+<ul class="vvip-brief-list" data-role="reco"><li>마진이 낮은 라인/북부터 선택하세요.</li></ul>
+</div>
+</div>
+<div class="vvip-brief-tags" data-role="tags"></div>
+</div>
+</div>
+<div style="margin-top:12px">
+<table aria-label="공정확률 테이블" class="pro-table">
+<thead>
+<tr><th style="padding-left:12px">선택</th><th>배당</th><th>공정확률</th><th>공정배당</th></tr>
+</thead>
+<tbody id="tblBody">
+<tr><td colspan="4" style="border-radius:14px;text-align:center;opacity:.7">입력 후 자동 계산됩니다.</td></tr>
+</tbody>
+</table>
+</div>
+<div class="pro-divider" style="margin-top:12px"></div>
+<div class="pro-inline" style="justify-content:space-between;align-items:center;margin-top:10px">
+<div>
+<div class="pro-kicker" style="margin-bottom:6px">REFERENCE</div>
+<div style="font-weight:900;font-size:16px">요약 · 참고</div>
+</div>
+<button class="pro-btn ghost" id="btnCopySummary" type="button">요약 복사</button>
+</div>
+<div class="pro-miniout" id="summaryOut" style="margin-top:10px"></div>
+<div class="pro-note" id="noteVol" style="margin-top:10px">
+        ※ 가상/스포츠 공통: 정배가 높아도 역배는 충분히 나옵니다. 확률은 “장기 빈도”이고, 단기에는 변동성이 큽니다.
+      </div>
+</section>
+</div>
+<section class="pro-card" id="proScan" style="margin-top:14px;display:none">
+<div class="pro-inline" style="justify-content:space-between">
+<div>
+<div class="pro-kicker" style="margin-bottom:6px">MARGIN SCANNER</div>
+<div style="font-weight:900;font-size:18px">멀티 스캔 TOP3 (마진 최저)</div>
+<div class="pro-note">여러 줄 붙여넣기 결과 중, <b>마진이 가장 낮은 3개</b>를 뽑아서 바로 적용할 수 있습니다.</div>
+</div>
+<button class="pro-btn ghost" id="btnScanClose" type="button">닫기</button>
+</div>
+<div class="pro-divider"></div>
+<div class="pro-scanlist" id="scanList"></div>
+</section>
+</div>
+<script defer="" src="/assets/js/j.9179477b9417.js"></script>
+<script defer="" src="/assets/js/j.efba3509e62c.js"></script>
+<script defer="" src="/assets/js/j.8829a3ccde44.js?v=85"></script>
+<script src="../assets/js/inline-bundles/b.e942e1c830.js"></script>
+<script defer="" src="/assets/js/j.025d649c8b11.js"></script>
+<script defer="" src="/assets/js/inline-bundles/b.analysis.pro.v52.20260216.js"></script>
+<script defer="" src="/assets/js/ai.brief.v68.js"></script>
+</body>
+</html>
