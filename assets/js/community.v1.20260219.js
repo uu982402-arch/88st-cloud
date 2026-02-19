@@ -280,7 +280,7 @@
         try{ window.turnstile && window.turnstile.reset && window.turnstile.reset(); }catch(_){}
         await load();
       }catch(err){
-        alert(`댓글 등록 실패: ${err.message}`);
+        alert(`댓글 등록 실패: ${err.message}${(err.payload && err.payload.reason) ? " ("+err.payload.reason+")" : ""}`);
       }finally{
         if (btn) btn.disabled = false;
       }
@@ -324,7 +324,7 @@
         const id = data?.id;
         location.href = id ? toPostUrl(id, board) : BOARD_UI[board].listPath;
       }catch(err){
-        alert(`등록 실패: ${err.message}`);
+        alert(`등록 실패: ${err.message}${(err.payload && err.payload.reason) ? " ("+err.payload.reason+")" : ""}`);
       }finally{
         if (btn) btn.disabled = false;
       }

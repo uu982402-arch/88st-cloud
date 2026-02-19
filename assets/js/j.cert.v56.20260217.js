@@ -111,13 +111,13 @@ const certThumbSvgDataUri = (rawId) => {
   };
 
 const cardSourcesById = (id) => {
-    // v100: 인증업체 카드 썸네일 경로를 /img/img1.webp, /img/img2.webp 로 고정
+    // v100: 인증업체 카드 썸네일 경로를 /cert/img1.webp, /cert/img2.webp 로 고정
     // - card1 -> img1.webp
     // - card3 -> img2.webp
     // 이미지가 누락된 경우를 대비해 jpg 단계에 data URI(SVG) 폴백을 둡니다.
     const map = {
-      card1: '/img/img1.webp',
-      card3: '/img/img2.webp',
+      card1: '/cert/img1.webp',
+      card3: '/cert/img2.webp',
     };
     const webp = map[id] || '';
     return { gif: '', gif2: '', webp, jpg: certThumbSvgDataUri(id) };
