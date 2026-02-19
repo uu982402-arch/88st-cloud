@@ -19,9 +19,8 @@
   const escapeText = (s) => String(s ?? '');
   const safeSetText = (el, s) => { if (el) el.textContent = escapeText(s); };
 
-  const VALID_BOARDS = ['free','promo'];
+  const VALID_BOARDS = ['promo'];
   const BOARD_UI = {
-    free: { label:'자유게시판', listPath:'/community/', writePath:'/community/write/' },
     promo:{ label:'홍보게시판', listPath:'/community/promo/', writePath:'/community/promo/write/' }
   };
 
@@ -31,12 +30,12 @@
     const qpBoard = String(url.searchParams.get('board') || '').trim().toLowerCase();
     const path = String(location.pathname || '').toLowerCase();
     const guess = path.includes('/community/promo') ? 'promo' : '';
-    const b = (bodyBoard || qpBoard || guess || 'free');
-    return VALID_BOARDS.includes(b) ? b : 'free';
+    const b = (bodyBoard || qpBoard || guess || 'promo');
+    return VALID_BOARDS.includes(b) ? b : 'promo';
   }
 
   function toPostUrl(id, board){
-    const b = VALID_BOARDS.includes(board) ? board : 'free';
+    const b = VALID_BOARDS.includes(board) ? board : 'promo';
     const qp = new URLSearchParams();
     qp.set('id', String(id));
     qp.set('board', b);
@@ -44,6 +43,9 @@
   }
 
   function syncBoardTabs(board){
+    const tabWrap = $('#comBoardTabs');
+    if (tabWrap && VALID_BOARDS.length <= 1) { tabWrap.style.display = 'none'; }
+
     const tabs = $$('[data-board-tab]');
     if (!tabs.length) return;
     tabs.forEach(a => {
@@ -197,8 +199,8 @@
   async function initPost(){
     const url = new URL(location.href);
     const id = url.searchParams.get('id');
-    let board = String(url.searchParams.get('board') || getBoard() || 'free').trim().toLowerCase();
-    if (!VALID_BOARDS.includes(board)) board = 'free';
+    let board = String(url.searchParams.get('board') || getBoard() || 'promo').trim().toLowerCase();
+    if (!VALID_BOARDS.includes(board)) board = 'promo';
     const titleEl = $('#postTitle');
     const metaEl = $('#postMeta');
     const bodyEl = $('#postBody');
@@ -289,8 +291,8 @@
 
   async function initWrite(){
     const url = new URL(location.href);
-    let board = String(url.searchParams.get('board') || getBoard() || 'free').trim().toLowerCase();
-    if (!VALID_BOARDS.includes(board)) board = 'free';
+    let board = String(url.searchParams.get('board') || getBoard() || 'promo').trim().toLowerCase();
+    if (!VALID_BOARDS.includes(board)) board = 'promo';
 
     syncBoardTabs(board);
 
@@ -303,11 +305,6 @@
 
     // keep links consistent even if someone opens /community/write/?board=promo
     $$('a[href="/community/"]').forEach(a => a.setAttribute('href', BOARD_UI[board].listPath));
-    // cancel links may vary
-    $$('a[href="/community/promo/"]').forEach(a => {
-      if (board === 'free') a.setAttribute('href', BOARD_UI.free.listPath);
-    });
-
     form?.addEventListener('submit', async (e) => {
       e.preventDefault();
       const title = String($('#pTitle')?.value || '').trim();
