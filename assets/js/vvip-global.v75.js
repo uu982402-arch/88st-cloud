@@ -406,62 +406,14 @@
 
   // Community nav patch: split into 자유게시판 / 홍보게시판 and route directly to 글쓰기
   function patchCommunityNav(){
-    try{
-      const scopes = [
-        document.getElementById('_88stShellHeader'),
-        document.getElementById('_88stShellModals')
-      ].filter(Boolean);
-
-      const allAnchors = [];
-      scopes.forEach(scope => {
-        try{ allAnchors.push(...Array.from(scope.querySelectorAll('a'))); }catch(e){}
-      });
-      const targets = allAnchors.filter(a => {
-        const href = (a.getAttribute('href')||'').trim();
-        const txt = (a.textContent||'').trim();
-        return href === '/community/' || txt === '커뮤니티';
-      });
-      if(!targets.length) return;
-
-      const patchOne = (a)=>{
-        if(!a || a.dataset.vvipCommunityPatched==='1') return;
-        a.dataset.vvipCommunityPatched='1';
-        a.textContent = '자유게시판';
-        a.setAttribute('href','/community/write/');
-
-        const parent = a.parentElement;
-        if(!parent) return;
-        const hasPromo = !!parent.querySelector('a[data-vvip-board="promo"]');
-        if(hasPromo) return;
-
-        const b = document.createElement('a');
-        b.className = a.className || 'st-shell-link';
-        b.textContent = '홍보게시판';
-        b.setAttribute('href','/community/promo/write/');
-        b.setAttribute('data-vvip-board','promo');
-        // insert right after
-        a.insertAdjacentElement('afterend', b);
-      };
-
-      targets.forEach(patchOne);
-    }catch(e){}
-  }
-
-  ready(()=>{
-    hardHideStyle();
-    cleanupBottomCtas();
-    watchBottomCtas();
-    trackRecent();
-    renderRecentHub();
-
-    // Patch header/community nav after shell injection
-    setTimeout(()=>{ patchCommunityNav(); }, 350);
-
-    // give shell a moment if it is injected async
-    setTimeout(()=>{ normalizeAccordions(); }, 250);
-
-    // persist/restore
-    setTimeout(()=>{ mountRestoreBar(); }, 350);
-    setTimeout(()=>{ bindPersistListeners(); }, 600);
-  });
+  try{
+    const anchors = document.querySelectorAll('a[href="/community/"], a[href="/community/promo/"], a[href^="/community?"]');
+    anchors.forEach(a=>{
+      const t = (a.textContent||'').trim();
+      if (t === '커뮤니티' || t === '자유게시판' || t === '홍보게시판') {
+        a.textContent = '홍보게시판';
+        a.setAttribute('href','/community/promo/');
+      }
+    });
+  }catch(e){}
 })();

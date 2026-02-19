@@ -82,7 +82,7 @@ function json(body, status = 200, extraHeaders = {}) {
 
 function getDB(env) {
   // primary binding name is expected to be "DB"
- return env.DB || env["88stcloud"] || env.db || env.D1 || null;
+  return env.DB || env["88stcloud"] || env.db || env.D1 || null;
 }
 
 async function ensureSchema(db) {
@@ -95,7 +95,7 @@ PRAGMA foreign_keys = ON;
 
 CREATE TABLE IF NOT EXISTS posts (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  board TEXT NOT NULL DEFAULT 'free',
+  board TEXT NOT NULL DEFAULT 'promo',
   title TEXT NOT NULL,
   body TEXT NOT NULL,
   author_name TEXT NOT NULL,
@@ -133,7 +133,7 @@ CREATE INDEX IF NOT EXISTS idx_comments_post ON comments(post_id, created_at DES
     // (Keeps compatibility across D1 API changes.)
     try {
       await db.prepare("PRAGMA foreign_keys = ON").run();
-      await db.prepare("CREATE TABLE IF NOT EXISTS posts (id INTEGER PRIMARY KEY AUTOINCREMENT, board TEXT NOT NULL DEFAULT 'free', title TEXT NOT NULL, body TEXT NOT NULL, author_name TEXT NOT NULL, ip_hash TEXT, created_at INTEGER NOT NULL, updated_at INTEGER NOT NULL, status TEXT NOT NULL DEFAULT 'active', like_count INTEGER NOT NULL DEFAULT 0, comment_count INTEGER NOT NULL DEFAULT 0)").run();
+      await db.prepare("CREATE TABLE IF NOT EXISTS posts (id INTEGER PRIMARY KEY AUTOINCREMENT, board TEXT NOT NULL DEFAULT 'promo', title TEXT NOT NULL, body TEXT NOT NULL, author_name TEXT NOT NULL, ip_hash TEXT, created_at INTEGER NOT NULL, updated_at INTEGER NOT NULL, status TEXT NOT NULL DEFAULT 'active', like_count INTEGER NOT NULL DEFAULT 0, comment_count INTEGER NOT NULL DEFAULT 0)").run();
       await db.prepare("CREATE TABLE IF NOT EXISTS comments (id INTEGER PRIMARY KEY AUTOINCREMENT, post_id INTEGER NOT NULL, body TEXT NOT NULL, author_name TEXT NOT NULL, ip_hash TEXT, created_at INTEGER NOT NULL, status TEXT NOT NULL DEFAULT 'active')").run();
       await db.prepare("CREATE INDEX IF NOT EXISTS idx_posts_created ON posts(created_at DESC)").run();
       await db.prepare("CREATE INDEX IF NOT EXISTS idx_posts_status ON posts(status, created_at DESC)").run();
@@ -144,7 +144,7 @@ CREATE INDEX IF NOT EXISTS idx_comments_post ON comments(post_id, created_at DES
   }
 
   // If you created schema earlier without board column, ensure it's present.
-  try { await db.prepare("ALTER TABLE posts ADD COLUMN board TEXT NOT NULL DEFAULT 'free'").run(); } catch (_) {}
+  try { await db.prepare("ALTER TABLE posts ADD COLUMN board TEXT NOT NULL DEFAULT 'promo'").run(); } catch (_) {}
 
   __schemaReady = true;
 }
