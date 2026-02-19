@@ -111,9 +111,16 @@ const certThumbSvgDataUri = (rawId) => {
   };
 
 const cardSourcesById = (id) => {
-    // v96: 이미지 파일 누락으로 404가 발생하는 문제를 방지하기 위해
-    // 기본 썸네일을 data URI(SVG)로 생성합니다.
-    return { gif: '', gif2: '', webp: certThumbSvgDataUri(id), jpg: '' };
+    // v100: 인증업체 카드 썸네일 경로를 /img/img1.webp, /img/img2.webp 로 고정
+    // - card1 -> img1.webp
+    // - card3 -> img2.webp
+    // 이미지가 누락된 경우를 대비해 jpg 단계에 data URI(SVG) 폴백을 둡니다.
+    const map = {
+      card1: '/img/img1.webp',
+      card3: '/img/img2.webp',
+    };
+    const webp = map[id] || '';
+    return { gif: '', gif2: '', webp, jpg: certThumbSvgDataUri(id) };
   };
 
   const appendUtmSafe = (url) => {
