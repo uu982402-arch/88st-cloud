@@ -82,7 +82,7 @@ function json(body, status = 200, extraHeaders = {}) {
 
 function getDB(env) {
   // primary binding name is expected to be "DB"
-  return env.DB || env.88stcloud || env.db || env.D1 || null;
+ return env.DB || env["88stcloud"] || env.db || env.D1 || null;
 }
 
 async function ensureSchema(db) {
