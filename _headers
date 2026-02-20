@@ -1,5 +1,15 @@
 # Security + performance headers (Cloudflare Pages)
 
+/build.txt
+  Cache-Control: public, max-age=0, must-revalidate
+
+
+/assets/js/build.ver.js
+  Cache-Control: public, max-age=0, must-revalidate
+
+/assets/js/build.loader.js
+  Cache-Control: public, max-age=0, must-revalidate
+
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
 

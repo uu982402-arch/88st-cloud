@@ -51,6 +51,12 @@ export default {
         return json({ ok: false, error: 'not_found' }, 404, corsHeaders(request));
       }
 
+// TEMP: Community routes disabled (redirect to home)
+if (path === '/community' || path.startsWith('/community/')) {
+  const target = url.origin + '/';
+  return Response.redirect(target, 302);
+}
+
       // Static fallthrough
       return env.ASSETS.fetch(request);
 
