@@ -404,16 +404,34 @@
     }catch(e){}
   }
 
-  // Community nav patch: split into 자유게시판 / 홍보게시판 and route directly to 글쓰기
-  function patchCommunityNav(){
-  try{
-    const anchors = document.querySelectorAll('a[href="/community/"], a[href="/community/promo/"], a[href^="/community?"]');
-    anchors.forEach(a=>{
-      const t = (a.textContent||'').trim();
-      if (t === '커뮤니티' || t === '자유게시판' || t === '홍보게시판') {
-        a.textContent = '홍보게시판';
-        a.setAttribute('href','/community/promo/');
-      }
-    });
-  }catch(e){}
+      // Community nav patch
+    function patchCommunityNav(){
+      try{
+        const anchors = document.querySelectorAll('a,button,summary');
+        anchors.forEach(el=>{
+          const t = (el.textContent||'').trim();
+          if(t === '커뮤니티'){
+            el.textContent = '홍보게시판';
+            if(el.tagName === 'A'){
+              el.setAttribute('href','/community/promo/');
+            }
+          }
+        });
+
+        // Move guide menu to the far right (desktop header)
+        const nav = document.querySelector('.st-shell-nav');
+        if(nav){
+          const guideBtn = Array.from(nav.querySelectorAll('button, a')).find(x => ((x.textContent||'').trim()==='가이드'));
+          if(guideBtn){
+            const wrap = guideBtn.closest('.st-shell-dd') || guideBtn.closest('a') || guideBtn.parentElement;
+            if(wrap && wrap.parentElement === nav){
+              wrap.style.marginLeft = 'auto';
+              nav.appendChild(wrap);
+            }
+          }
+        }
+      }catch(e){}
+    }
+
+    try{ patchCommunityNav(); }catch(e){}
 })();

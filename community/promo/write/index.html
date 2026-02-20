@@ -87,5 +87,40 @@
     </div>
   </div>
 </div>
+
+  <!-- Promo board maintenance notice -->
+  <div id="promoNotice" style="position:fixed;inset:0;display:none;align-items:center;justify-content:center;z-index:99999;background:rgba(0,0,0,.45);backdrop-filter:blur(2px);padding:18px;">
+    <div style="width:min(560px,92vw);background:rgba(255,255,255,.95);border:1px solid rgba(0,0,0,.10);border-radius:18px;padding:18px 18px 16px;box-shadow:0 24px 70px rgba(0,0,0,.25);">
+      <div style="font-size:18px;font-weight:900;margin-bottom:6px;">홍보게시판 준비중</div>
+      <div style="font-size:14px;line-height:1.55;color:#222;margin-bottom:14px;">
+        현재 홍보게시판 기능을 점검 중입니다.<br/>
+        문의사항은 텔레그램 <b>@UZU59</b> 로 연락 부탁드립니다.
+      </div>
+      <div style="display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap;">
+        <a href="https://t.me/UZU59" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;text-decoration:none;border:1px solid rgba(0,0,0,.10);background:rgba(0,0,0,.06);color:#111;font-weight:800;">텔레그램 문의</a>
+        <button type="button" id="promoNoticeClose" style="display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;border:1px solid rgba(0,0,0,.10);background:#2f7ff6;color:#fff;font-weight:900;cursor:pointer;">확인</button>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function(){
+      try{
+        const modal = document.getElementById('promoNotice');
+        if(!modal) return;
+        // Only show on promo board pages
+        const isPromo = location.pathname.startsWith('/community/promo');
+        if(!isPromo) return;
+        modal.style.display = 'flex';
+        const close = document.getElementById('promoNoticeClose');
+        if(close){
+          close.addEventListener('click', function(){
+            modal.style.display = 'none';
+            location.href='/community/promo/';
+          });
+        }
+      }catch(e){}
+    })();
+  </script>
+
 </body>
 </html>
