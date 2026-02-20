@@ -116,10 +116,10 @@ const cardSourcesById = (id) => {
     // - card3 -> img2.webp
     // 이미지가 누락된 경우를 대비해 jpg 단계에 data URI(SVG) 폴백을 둡니다.
     const map = {
-      card1: '/img/img1.webp',
-      card3: '/img/img2.webp',
+      card1: '/img/img1.webp?v=104',
+      card3: '/img/img2.webp?v=104',
     };
-    const webp = map[id] || '/img/img99.webp';
+    const webp = map[id] || '/img/logo.png?v=104';
     return { gif: '', gif2: '', webp, jpg: certThumbSvgDataUri(id) };
   };
 
