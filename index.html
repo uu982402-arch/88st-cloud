@@ -100,59 +100,94 @@
   ]
 }
 </script>
-<script>
-(function(){
-  var t = Date.now();
-  function load(src, cb){
-    var s = document.createElement('script');
-    s.src = src;
-    s.async = false;
-    if(cb) s.onload = cb;
-    document.head.appendChild(s);
-  }
-  load('/assets/js/build.ver.js?t='+t, function(){
-    load('/assets/js/build.loader.js?t='+t);
-  });
-})();
-</script>
+<script defer="" src="/assets/js/build.ver.js?v=v20260221-1215"></script>
+<script defer="" src="/assets/js/build.loader.js?v=v20260221-1215"></script>
 
-
-
-<script>
-// Home fallback: ensure global shell header renders even if build loader was blocked.
-(function(){
-  var __tries = 0;
-  function ensureShell(){
-    try{
-      if(document.getElementById('_88stShellHeader')) return;
-      if(!window.__BUILD_ASSETS && __tries < 20){ __tries++; return setTimeout(ensureShell, 50); }
-      var v = (window.__BUILD_VER || '0') + '';
-      var list = (window.__BUILD_ASSETS && window.__BUILD_ASSETS.js) ? window.__BUILD_ASSETS.js : [];
-      var cand = null;
-      for(var i=0;i<list.length;i++){
-        var s = String(list[i]||'');
-        if(/^\/assets\/js\/j\./.test(s) && s.indexOf('searchtyping')<0){ cand = s; break; }
-      }
-      if(!cand) cand = '/assets/js/j.8829a3ccde44.js';
-      var el = document.createElement('script');
-      el.src = cand + (cand.indexOf('?')>=0?'&':'?') + 'v=' + encodeURIComponent(v);
-      el.async = false;
-      document.head.appendChild(el);
-    }catch(e){}
-  }
-  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', ensureShell);
-  else ensureShell();
-})();
-</script>
-
+<link rel="stylesheet" href="/assets/css/hdr.shell.v1.20260221.css?v=119"/>
 </head>
 <body>
 <h1 style="position:absolute;left:-9999px;">스포츠 배당 분석기와 배당 마진 계산기 | 88</h1>
-<div class="header">
-<a aria-label="홈으로 이동" class="logoLink" href="/">
-<img alt="88 커뮤니티 로고" class="logoImg" src="img/logo.png"/>
-</a>
-<div class="sub">배당을 숫자로 정리하는 가장 빠른 분석기</div>
+<div id="_88stShellHeader" class="header header--shell" role="banner">
+  <div class="hdrShell">
+    <a class="hdrBrand" href="/" aria-label="홈으로 이동">
+      <img class="hdrLogo" src="/img/logo.png" alt="88ST" />
+      <span class="hdrName">88ST.CLOUD</span>
+    </a>
+
+    <nav class="hdrNavDesktop" aria-label="주요 메뉴">
+      <a class="hdrLink" href="/cert/">인증사이트</a>
+      <a class="hdrLink" href="/">홈</a>
+
+      <details class="hdrDD">
+        <summary class="hdrSummary">분석기</summary>
+        <div class="hdrMenu" role="menu">
+          <a href="/analysis/">스포츠 배당 분석기</a>
+          <a href="/tool-slot/">슬롯 RTP 분석기</a>
+          <a href="/tool-minigame/">미니게임 분석기</a>
+        </div>
+      </details>
+
+      <details class="hdrDD">
+        <summary class="hdrSummary">계산기</summary>
+        <div class="hdrMenu" role="menu">
+          <a href="/tool-margin/">마진 계산기</a>
+          <a href="/tool-ev/">EV 계산기</a>
+          <a href="/tool-odds/">배당↔확률 변환</a>
+          <a href="/tool-casino/">바카라 전략 계산기</a>
+          <a href="/logbook/">베팅 로그북</a>
+          <a href="/calc/">계산기 홈</a>
+        </div>
+      </details>
+
+      <details class="hdrDD">
+        <summary class="hdrSummary">가이드</summary>
+        <div class="hdrMenu" role="menu">
+          <a href="/guide/">가이드 홈</a>
+          <a href="/bonus-checklist/">배팅 전 체크리스트</a>
+        </div>
+      </details>
+    </nav>
+
+    <details class="hdrNavMobile">
+      <summary class="hdrBurger" aria-label="메뉴 열기">≡</summary>
+      <div class="hdrMobileMenu" role="menu">
+        <a href="/cert/">인증사이트</a>
+        <a href="/">홈</a>
+
+        <div class="hdrMobileGroup">
+          <details>
+            <summary>분석기</summary>
+            <div class="hdrMenu">
+              <a href="/analysis/">스포츠 배당 분석기</a>
+              <a href="/tool-slot/">슬롯 RTP 분석기</a>
+              <a href="/tool-minigame/">미니게임 분석기</a>
+            </div>
+          </details>
+
+          <details>
+            <summary>계산기</summary>
+            <div class="hdrMenu">
+              <a href="/tool-margin/">마진 계산기</a>
+              <a href="/tool-ev/">EV 계산기</a>
+              <a href="/tool-odds/">배당↔확률 변환</a>
+              <a href="/tool-casino/">바카라 전략 계산기</a>
+              <a href="/logbook/">베팅 로그북</a>
+              <a href="/calc/">계산기 홈</a>
+            </div>
+          </details>
+
+          <details>
+            <summary>가이드</summary>
+            <div class="hdrMenu">
+              <a href="/guide/">가이드 홈</a>
+              <a href="/bonus-checklist/">배팅 전 체크리스트</a>
+            </div>
+          </details>
+        </div>
+      </div>
+    </details>
+  </div>
+</div>
 </div>
 <div class="section-wrap">
 <div aria-label="메인 배너" class="mainHero">
@@ -275,7 +310,6 @@
     </details>
   </div>
 
-
 <div class="section" id="homeQuickStart">
   <div class="title"><span class="badge">START</span>오늘의 루틴 (30초)</div>
   <div class="qs-sub">예측이 아니라 <b>실수 줄이기</b>를 위한 3단계 동선입니다. 필요한 카드만 눌러서 빠르게 이동하세요.</div>
@@ -300,8 +334,6 @@
     </a>
   </div>
 </div>
-
-
 
 <div class="section" id="homeDash">
   <div class="title"><span class="badge">DASH</span>메인 요약</div>
