@@ -412,3 +412,13 @@ a,button,summary{touch-action:manipulation;-webkit-tap-highlight-color:transpare
 summary{cursor:pointer;}
 #scamPopup:empty,#adPopup:empty{display:none!important;pointer-events:none!important;}
 
+
+
+/* v122 CERT safety: ensure filters are clickable + modal never blocks when closed */
+#certList .vendor-tools,
+#certList .v-select,
+#certList .v-input,
+#certList .v-toggle{position:relative;z-index:5;pointer-events:auto !important;}
+#certList .vendor-grid{position:relative;z-index:1;}
+#cardPopup{pointer-events:none;}
+#cardPopup.open{pointer-events:auto;}

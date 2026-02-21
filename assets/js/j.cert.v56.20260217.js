@@ -30,6 +30,10 @@ card3: { title: '777 Bet', code: '6767', link: 'https://82clf.com/?code=6767', t
   let currentCode = '';
   let lastActive = null;
 
+  // Safety: prevent duplicate / re-entrant opens (Safari + slow devices)
+  let opening = false;
+  let lastOpenAt = 0;
+
   const $ = (id) => document.getElementById(id);
 
   const norm = (v) => String(v || '').toLowerCase().replace(/\s+/g, '');
@@ -186,16 +190,9 @@ const cardSourcesById = (id) => {
         const id = pick(ev);
         if (!id) return;
         ev.preventDefault();
+        ev.stopPropagation();
         openCard(id);
       }, true);
-
-      // iOS: ensure tap triggers even if click is delayed
-      grid.addEventListener('touchstart', (ev) => {
-        const id = pick(ev);
-        if (!id) return;
-        // Do not prevent default to keep scroll natural
-        try { openCard(id); } catch { /* ignore */ }
-      }, { passive: true });
 
       grid.addEventListener('keydown', (ev) => {
         const t = ev.target;
@@ -284,6 +281,17 @@ const cardSourcesById = (id) => {
     const c = CARDS[id];
     if (!c) return;
 
+    const now = Date.now();
+    if (opening) return;
+    // Ignore rapid double-fire (some browsers dispatch multiple clicks)
+    if (now - lastOpenAt < 450 && currentCardId === id) return;
+    opening = true;
+    lastOpenAt = now;
+
+    // Defer heavy DOM work to next frame to avoid main-thread stalls
+    requestAnimationFrame(() => {
+      try {
+
     currentCardId = id;
     currentCode = c.code || '';
 
@@ -359,6 +367,11 @@ const cardSourcesById = (id) => {
     if (closeBtn) {
       try { closeBtn.focus({ preventScroll: true }); } catch { try { closeBtn.focus(); } catch { /* ignore */ } }
     }
+      } finally {
+        opening = false;
+      }
+    });
+
   };
 
   const closeCard = () => {
@@ -366,7 +379,7 @@ const cardSourcesById = (id) => {
     if (popup) {
       popup.classList.remove('open');
       popup.setAttribute('aria-hidden', 'true');
-      try { popup.style.display = ''; } catch { /* ignore */ }
+      try { popup.style.display = 'none'; popup.style.pointerEvents = 'none'; } catch { /* ignore */ }
     }
 
     try {
