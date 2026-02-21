@@ -444,6 +444,50 @@
 <div class="pro-note" id="noteVol" style="margin-top:10px">
         ※ 가상/스포츠 공통: 정배가 높아도 역배는 충분히 나옵니다. 확률은 “장기 빈도”이고, 단기에는 변동성이 큽니다.
       </div>
+
+<!-- Logbook Summary (local) -->
+<details class="pro-opts" id="lbSummary" style="margin-top:12px">
+  <summary>
+    <div class="sum-left">📒 로그북 요약</div>
+    <div class="sum-badge">접기/펼치기</div>
+  </summary>
+  <div class="pro-opts-body">
+    <div class="pro-inline" style="justify-content:space-between;align-items:center">
+      <div class="pro-inline" style="gap:8px;align-items:center">
+        <span class="pro-badge" id="lbBadge">이번주 —</span>
+        <span class="pro-note" style="margin:0">/logbook/ 기록 기반 (로컬 저장)</span>
+      </div>
+      <div class="pro-inline">
+        <button class="pro-btn secondary" id="btnLbRefresh" type="button">새로고침</button>
+        <button class="pro-btn primary" id="btnOpenLogbook" type="button">로그북 열기</button>
+      </div>
+    </div>
+
+    <div class="pro-divider"></div>
+
+    <div class="pro-kv">
+      <div class="pro-kvi"><div class="k">주간 ROI</div><div class="v" id="lbWroi">—</div><div class="s" id="lbWnote">—</div></div>
+      <div class="pro-kvi"><div class="k">월간 ROI</div><div class="v" id="lbMroi">—</div><div class="s" id="lbMnote">—</div></div>
+      <div class="pro-kvi"><div class="k">전체 기록</div><div class="v" id="lbCnt">—</div><div class="s">누적 기준</div></div>
+    </div>
+
+    <div class="pro-divider"></div>
+
+    <div class="pro-inline" style="justify-content:space-between;align-items:center">
+      <div>
+        <div class="pro-kicker" style="margin-bottom:6px">RECENT 5</div>
+        <div style="font-weight:900;font-size:16px">최근 기록</div>
+      </div>
+      <div class="pro-inline" style="gap:10px">
+        <div class="pro-kicker" style="margin:0">MDD</div>
+        <div style="font-weight:900;font-variant-numeric:tabular-nums" id="lbMdd">—</div>
+      </div>
+    </div>
+    <div class="pro-scanlist" id="lbRecent" style="margin-top:10px"></div>
+
+    <div class="pro-note" style="margin-top:10px">TIP) 로그북은 서버로 전송하지 않습니다. 기기 변경 전에는 /logbook/에서 JSON 백업을 권장합니다.</div>
+  </div>
+</details>
 </section>
 </div>
 <section class="pro-card" id="proScan" style="margin-top:14px;display:none">
@@ -465,6 +509,7 @@
 <script src="../assets/js/inline-bundles/b.e942e1c830.js"></script>
 <script defer="" src="/assets/js/j.025d649c8b11.js"></script>
 <script defer="" src="/assets/js/inline-bundles/b.analysis.pro.v52.20260216.js"></script>
+<script defer="" src="/assets/js/inline-bundles/b.analysis.logbook.bridge.v1.20260221.js"></script>
 <script defer="" src="/assets/js/ai.brief.v68.js"></script>
 </body>
 </html>
