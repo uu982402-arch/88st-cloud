@@ -38,6 +38,7 @@ html[data-theme="dark"] .header--shell{
   letter-spacing: 0.4px;
   font-size: 15px;
   color: #111;
+  white-space: nowrap;
 }
 html[data-theme="dark"] .hdrName{ color:#f3f3f6; }
 
@@ -56,7 +57,7 @@ html[data-theme="dark"] .hdrName{ color:#f3f3f6; }
   border-radius: 12px;
   text-decoration:none;
   font-weight: 800;
-  font-size: 13px;
+  font-size: 12.5px;
   color:#131316;
   background: rgba(255,255,255,0.55);
   border: 1px solid rgba(0,0,0,0.06);
@@ -83,7 +84,7 @@ html[data-theme="dark"] .hdrLink{
   padding: 10px 12px;
   border-radius: 12px;
   font-weight: 900;
-  font-size: 13px;
+  font-size: 12.5px;
   color:#131316;
   background: rgba(255,255,255,0.55);
   border: 1px solid rgba(0,0,0,0.06);
@@ -119,7 +120,7 @@ html[data-theme="dark"] .hdrMenu{
   text-decoration:none;
   color:#151519;
   font-weight: 700;
-  font-size: 13px;
+  font-size: 12.5px;
 }
 html[data-theme="dark"] .hdrMenu a{ color:#f1f1f5; }
 .hdrMenu a:hover{
@@ -219,4 +220,23 @@ html[data-theme="dark"] .hdrMobileMenu details[open] summary{
   .hdrNavMobile{ display:block; position: relative; }
   .hdrBrand{ min-width:auto; }
   .hdrName{ display:none; }
+}
+
+
+/* v120.2 header premium (mobile-friendly) */
+.header--shell{
+  display:block !important;
+  width:100%;
+  box-shadow: 0 10px 26px rgba(0,0,0,0.08);
+}
+.hdrShell{
+  padding-top: calc(10px + env(safe-area-inset-top));
+}
+@media (max-width: 860px){
+  .hdrName{
+    display:inline !important;
+    font-size: 12.5px;
+    letter-spacing: .15px;
+    opacity: .92;
+  }
 }

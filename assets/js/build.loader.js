@@ -68,7 +68,7 @@
     var cssList = (assets && assets.css && assets.css.length) ? assets.css : [
       "/assets/css/vvip-luxe.v75.css",
       "/assets/css/vvip-hub.v85.css",
-      "/assets/css/patch.v98.homedash.20260221.css",
+      "/assets/css/patch.v100.premiumdash.20260222.css",
       "/assets/css/pro-suite.v2.css"
     ];
     var jsList = (assets && assets.js && assets.js.length) ? assets.js : [
