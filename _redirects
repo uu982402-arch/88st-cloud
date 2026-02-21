@@ -1,3 +1,0 @@
-# Temporary: disable community routes
-/community/* / 302
-/community / 302
