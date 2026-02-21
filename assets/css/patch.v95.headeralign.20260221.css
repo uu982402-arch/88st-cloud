@@ -1,0 +1,17 @@
+/* v95 header align fix (desktop) */
+@media (min-width: 861px){
+  /* push the whole nav group to the right edge (next to actions) */
+  .st-shell-center{ justify-content:flex-end !important; }
+
+  /* make nav take available width, then align items to the right */
+  .st-shell-nav{ width:100% !important; flex:1 1 auto !important; justify-content:flex-end !important; }
+
+  /* remove inline margin-left:auto hack so spacing becomes consistent */
+  .st-shell-nav .st-shell-dd[style*="margin-left:auto"]{ margin-left:0 !important; }
+
+  /* dropdowns should open aligned to the right edge of their trigger */
+  .st-shell-dd > .st-shell-menu:not(.st-shell-mega-grid){ left:auto !important; right:0 !important; }
+
+  /* slightly tighter rhythm */
+  .st-shell-nav{ gap:10px !important; }
+}
