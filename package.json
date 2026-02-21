@@ -1,7 +1,7 @@
 {
   "name": "88st-cloud",
   "private": true,
-  "version": "v120.1-static-header-only",
+  "version": "v121.0-premium-home-cta-staticheader",
   "scripts": {
     "build": "node scripts/gen-build-ver.mjs"
   }

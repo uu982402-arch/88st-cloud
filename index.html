@@ -100,8 +100,8 @@
   ]
 }
 </script>
-<script defer="" src="/assets/js/build.ver.js?v=v20260221-1215"></script>
-<script defer="" src="/assets/js/build.loader.js?v=v20260221-1215"></script>
+<script defer="" src="/assets/js/build.ver.js?v=v20260222-0100"></script>
+<script defer="" src="/assets/js/build.loader.js?v=v20260222-0100"></script>
 
 <link rel="stylesheet" href="/assets/css/hdr.shell.v1.20260221.css?v=119"/>
 </head>
@@ -111,7 +111,7 @@
   <div class="hdrShell">
     <a class="hdrBrand" href="/" aria-label="홈으로 이동">
       <img class="hdrLogo" src="/img/logo.png" alt="88ST" />
-      <span class="hdrName">88ST.CLOUD</span>
+      <span class="hdrName">88ST.Cloud</span>
     </a>
 
     <nav class="hdrNavDesktop" aria-label="주요 메뉴">
@@ -311,7 +311,7 @@
   </div>
 
 <div class="section" id="homeQuickStart">
-  <div class="title"><span class="badge">START</span>오늘의 루틴 (30초)</div>
+  <div class="title"><span class="badge">루틴</span>오늘의 루틴 (30초)</div>
   <div class="qs-sub">예측이 아니라 <b>실수 줄이기</b>를 위한 3단계 동선입니다. 필요한 카드만 눌러서 빠르게 이동하세요.</div>
   <div class="qs-grid" aria-label="빠른 시작">
     <a class="qs-card" href="/analysis/">
@@ -336,18 +336,18 @@
 </div>
 
 <div class="section" id="homeDash">
-  <div class="title"><span class="badge">DASH</span>메인 요약</div>
-  <div class="dash-sub">로그북 기반으로 <b>오늘의 루틴</b>이 더 쉬워집니다. (로컬 저장 · 서버 전송 없음)</div>
+  <div class="title"><span class="badge">요약</span>메인 요약</div>
+  <div class="dash-sub">로그북 기반 요약으로 <b>루틴</b>을 더 빠르게. <span class="muted">(로컬 저장)</span></div>
 
   <div class="dash-grid" aria-label="메인 요약">
     <div class="dash-card" id="dashWeekCard">
-      <div class="dash-k"><span>THIS WEEK</span><span class="tag">내 이번주</span></div>
+      <div class="dash-k"><span class="tag tag--ghost">이번주</span><span class="tag">리포트</span></div>
       <div class="dash-h">주간 리포트</div>
-      <div class="dash-d">최근 기록을 자동 요약합니다. 기록이 없으면 ‘로그북’에서 1줄만 추가해도 반영됩니다.</div>
+      <div class="dash-d">최근 기록을 자동 요약합니다. <b>1줄만 추가해도</b> 바로 반영됩니다.</div>
       <div class="kpi-row">
         <div class="kpi"><div class="l">주간 ROI</div><div class="v" id="kpiWeekRoi">—</div></div>
         <div class="kpi"><div class="l">기록 수</div><div class="v" id="kpiWeekCnt">—</div></div>
-        <div class="kpi"><div class="l">MDD</div><div class="v" id="kpiWeekMdd">—</div></div>
+        <div class="kpi"><div class="l">최대낙폭</div><div class="v" id="kpiWeekMdd">—</div></div>
       </div>
       <div class="dash-actions">
         <a class="dash-btn primary" href="/logbook/">로그북 열기 →</a>
@@ -356,9 +356,9 @@
     </div>
 
     <div class="dash-card" id="dashPatternCard">
-      <div class="dash-k"><span>TODAY</span><span class="tag">주의 패턴</span></div>
+      <div class="dash-k"><span class="tag tag--ghost">오늘</span><span class="tag">주의 패턴</span></div>
       <div class="dash-h">오늘의 주의 패턴</div>
-      <div class="dash-d">예측이 아니라, 흔한 실수/과몰입을 줄이기 위한 룰 기반 안내입니다.</div>
+      <div class="dash-d">예측이 아니라 <b>실수·과몰입</b>을 줄이는 룰 기반 안내입니다.</div>
       <div class="pattern">
         <div class="p" id="todayPatternText">—</div>
         <div class="small" id="todayPatternHint">—</div>
