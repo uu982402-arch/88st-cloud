@@ -1,4 +1,4 @@
-/* 88ST PRO SUITE (v1)
+/* 88ST PRO SUITE (v2)
  * - Sports: Risk briefing, line-move interpreter, CLV tracker, bet sizing, parlay risk check
  * - Casino/Minigame: Ruin simulator, streak illusion (run probability)
  * - Cert: Bonus terms interpreter + popup sticky action (copy+go)
@@ -854,6 +854,755 @@
     });
   }
 
+
+  // --- Shared: Learn pack (1분요약/예시/실수/추천세팅) ---
+  var LEARN_PACKS = {
+    "/analysis/": {
+      title: "스포츠 배당 분석기",
+      oneMin: [
+        "배당을 붙여넣으면 <b>마진(오버라운드)</b>·<b>공정확률</b>·<b>공정배당</b>을 즉시 정리합니다.",
+        "이 도구는 ‘예측’이 아니라 <b>수학 기반 판단 보조</b>입니다."
+      ],
+      examples: [
+        "예시(1X2): 1.80 / 3.70 / 4.40 → 마진·공정확률 확인 → ‘덜 불리한 라인’ 체크",
+        "예시(O/U): 2.5 1.91 1.91 → 라인별 마진 비교 → 값이 큰 쪽은 보수적으로",
+        "예시(라인무브): 오픈 대비 현재 배당 변화 → 리스크 태그 확인(마이너/급무브)"
+      ],
+      mistakes: [
+        "서로 다른 북/시장 라인을 섞어 넣기(같은 마켓 기준으로 비교)",
+        "마진이 높은 시장을 ‘확률’로 착각하기(수수료 포함)",
+        "오즈무브를 ‘확정 정보’로 과해석하기(뉴스/부상은 별도 확인)",
+        "소수점 자리/공백/구분자 혼용(붙여넣기 전 한번 정리)",
+        "연패 구간에서 단위 올리기(기록/세션 제한 우선)"
+      ],
+      presets: [
+        "보수: 켈리 1/8 + 최대 손실 1% + 마이너리그는 패스",
+        "중립: 켈리 1/4 + 최대 손실 2% + 급무브는 라이브 대기",
+        "공격: 켈리 1/2 + 최대 손실 3% (단, 로그북으로 MDD 체크 필수)"
+      ]
+    },
+    "/tool-margin/": {
+      title: "마진 계산기",
+      oneMin: ["여러 결과 배당을 넣으면 <b>오버라운드(합계−1)</b>로 마진을 계산합니다."],
+      examples: ["1X2: 1.90/3.60/4.20 → 합(1/odds)−1 = 마진", "2-way: 1.91/1.91 → 마진 확인 후 ‘덜 불리한 시장’ 선택"],
+      mistakes: ["승/무/패가 아닌 라인을 섞어서 넣기", "오즈를 확률로 착각(마진 포함)", "비교 대상이 다른 리그/북이면 의미 약함"],
+      presets: ["마진 3% 이하: 상대적으로 양호", "마진 5% 이상: 보수적으로(참고용)"]
+    },
+    "/tool-ev/": {
+      title: "EV 계산기",
+      oneMin: ["확률(또는 공정확률)과 배당으로 <b>기대값(EV)</b>을 계산합니다."],
+      examples: ["p=55%, odds=1.95 → EV 확인", "손익분기점(p=1/odds) 대비 내 추정 p가 큰지 체크"],
+      mistakes: ["p를 ‘희망’으로 입력", "표본/근거 없이 p를 과대평가", "연패 때 p를 올려 자기합리화"],
+      presets: ["초보: p는 공정확률 주변에서만 소폭 조정", "기록: 로그북으로 내 p 추정이 맞는지 피드백"]
+    },
+    "/tool-odds/": {
+      title: "배당↔확률 변환",
+      oneMin: ["배당을 암시확률로, 확률을 공정배당으로 변환합니다."],
+      examples: ["2.00 → 50%", "60% → 1.67(공정배당)"],
+      mistakes: ["여러 결과(1X2)에서 단일 변환만으로 판단", "미국식/홍콩식 표기 혼동"],
+      presets: ["표기 혼동 방지: Odds+ 포맷 변환(접기) 사용"]
+    },
+    "/tool/fair-odds/": {
+      title: "공정배당(무비그)",
+      oneMin: ["여러 결과 배당의 마진을 제거해 <b>공정확률/공정배당</b>을 계산합니다."],
+      examples: ["1X2 배당 3개 입력 → 무비그 확률/공정배당 확인", "O/U 두 결과 입력 → 공정 배당으로 비교"],
+      mistakes: ["단일 배당만 넣고 무비그라고 착각", "서로 다른 마켓 배당 혼합"],
+      presets: ["마진 낮은 시장을 우선 선택하고, 공정확률을 기준으로 EV를 재확인"]
+    },
+"/tool/kelly/": {
+      title: "Kelly 비중",
+      oneMin: ["내 확률(p)과 배당(odds)로 <b>추천 비중</b>을 계산합니다(참고용)."],
+      examples: ["p=54%, odds=1.95 → 켈리/분수 켈리 비교"],
+      mistakes: ["p 과신(켈리는 p에 매우 민감)", "올인/과도한 비중", "연패 구간에 비중 상승"],
+      presets: ["권장: 켈리 1/4 또는 1/8 + 최대손실 캡"]
+    },
+    "/tool-casino/": {
+      title: "카지노 전략 분석기",
+      oneMin: ["전략별 다음 베팅을 자동 계산하고 <b>세션 리스크</b>(MDD 등)를 보여줍니다."],
+      examples: ["단위/올림 설정 → WIN/LOSE로 다음 스텝 확인", "세션 목표·손절선을 먼저 고정"],
+      mistakes: ["연패 시 단위 급상승", "손절/시간 제한 없이 계속 플레이", "전략을 ‘필승’으로 오해"],
+      presets: ["보수: 단위 고정 + 손절선/시간 제한", "중립: 분할 목표 + MDD 확인"]
+    },
+    "/tool-minigame/": {
+      title: "미니게임 분석기",
+      oneMin: ["최근 결과를 <b>보기 좋게 정리</b>해 편향/연속을 점검합니다."],
+      examples: ["최근 20 입력 → 빈도/연속 확인 → 과몰입 방지 태그"],
+      mistakes: ["연속=다음 반대 확정(도박사의 오류)", "표본이 너무 짧은데 확신"],
+      presets: ["연속 구간에는 단위↓/휴식↑"]
+    },
+    "/tool-slot/": {
+      title: "슬롯 RTP 분석기",
+      oneMin: ["RTP/변동성 기반으로 <b>기대손실(세션 비용)</b>을 투명하게 보여줍니다."],
+      examples: ["총베팅/예상손실 계산 → 손절선/세션 길이 결정"],
+      mistakes: ["RTP를 ‘수익 보장’으로 오해", "변동성 무시(맥스윈만 보고 과몰입)"],
+      presets: ["세션 비용을 먼저 정하고, 그 안에서만 플레이"]
+    },
+    "/tool-virtual/": {
+      title: "BET365 가상게임 분석기",
+      oneMin: ["전 종목/마켓 배당을 입력하면 <b>마진·공정확률·공정배당</b>을 자동 정리합니다."],
+      examples: ["라인 다중 붙여넣기 → 라인별 마진 비교 → 덜 불리한 선택 표시"],
+      mistakes: ["마진이 큰 라인을 무시", "라인 무브를 과해석"],
+      presets: ["마진 낮은 라인 우선 + 급무브는 대기"]
+    },
+    "/cert/": {
+      title: "인증사이트",
+      oneMin: ["카드 클릭 → 코드/혜택/주의 확인 → <b>체크리스트</b> 완료 후 이동을 권장합니다."],
+      examples: ["즐겨찾기/최근 기록으로 재방문 속도↑"],
+      mistakes: ["조건 확인 없이 바로 이동", "링크 공유 시 코드 누락"],
+      presets: ["팝업 상단 ‘원클릭 복사+이동’ 사용"]
+    },
+    "/calc/": {
+      title: "스포츠 계산기 홈",
+      oneMin: ["필요한 도구를 빠르게 찾는 <b>허브</b>입니다."],
+      examples: ["마진→EV→켈리 순으로 체크하면 실수가 줄어듭니다."],
+      mistakes: ["툴을 ‘예측기’로 착각", "기록 없이 단위만 변경"],
+      presets: ["루틴: 마진 체크 → EV → 사이징 → 로그북 기록"]
+    },
+    "/logbook/": {
+      title: "베팅 로그북",
+      oneMin: ["내 베팅을 기록하고, 주간/월간 리포트로 <b>루틴</b>을 만듭니다."],
+      examples: ["최소 입력(배당/금액/결과)만으로 ROI·적중률 자동 계산"],
+      mistakes: ["기록을 멈추고 감으로만 운영", "연패 구간에 스테이킹을 올림"],
+      presets: ["주간 리포트로 MDD 확인 후 단위 조정"]
+    }
+  };
+
+  function injectLearnPack(){
+    var path = (location.pathname||"/");
+    var key = Object.keys(LEARN_PACKS).find(function(k){ return path.indexOf(k)===0; });
+    if(!key) return;
+
+    // avoid duplicates
+    if(document.querySelector('.ps-learnpack')) return;
+
+    var data = LEARN_PACKS[key];
+    // choose mount
+    var mount = document.querySelector('main') || document.querySelector('.wrap') || document.querySelector('.hub') || document.body;
+    if(!mount) return;
+
+    var box = document.createElement('details');
+    box.className = 'ps-acc ps-learnpack';
+    box.open = false;
+    box.innerHTML = [
+      '<summary><span>📚 빠른 가이드</span><span class="ps-badge">1분요약 · 예시 · 실수 · 추천</span></summary>',
+      '<div class="ps-acc-body">',
+      '  <div class="ps-note"><b>'+escapeHtml(data.title)+'</b> 기준으로 정리했습니다. (접어서 두고 필요할 때만 열기)</div>',
+      '  <div class="ps-learn-grid">',
+      '    <div class="ps-mini"><div class="h">1분 요약</div><ul>'+ (data.oneMin||[]).map(li).join('') +'</ul></div>',
+      '    <div class="ps-mini"><div class="h">예시 3개</div><ul>'+ (data.examples||[]).map(li).join('') +'</ul></div>',
+      '    <div class="ps-mini"><div class="h">자주 하는 실수</div><ul>'+ (data.mistakes||[]).map(li).join('') +'</ul></div>',
+      '    <div class="ps-mini"><div class="h">추천 세팅</div><ul>'+ (data.presets||[]).map(li).join('') +'</ul></div>',
+      '  </div>',
+      '</div>'
+    ].join('');
+
+    // insert near end but before footer if exists
+    var footer = mount.querySelector('footer');
+    if(footer && footer.parentNode) footer.parentNode.insertBefore(box, footer);
+    else mount.appendChild(box);
+
+    function li(t){ return '<li>'+t+'</li>'; }
+  }
+
+  function escapeHtml(s){
+    return (s||'').replace(/[&<>"']/g, function(ch){
+      return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]);
+    });
+  }
+
+  // --- Odds+ (format converter + probability table) ---
+  function enhanceOddsPage(){
+    var path = (location.pathname||"/");
+    if(path.indexOf('/tool-odds/')!==0) return;
+    var wrap = document.querySelector('.wrap') || document.body;
+    if(!wrap || wrap.querySelector('.ps-oddsplus')) return;
+
+    var host = document.createElement('div');
+    host.className = 'ps-oddsplus';
+    host.innerHTML = [
+      '<details class="ps-acc">',
+      '<summary><span>🔁 Odds+ 포맷 변환</span><span class="ps-badge">Decimal · US · Fraction · HK · Indo</span></summary>',
+      '<div class="ps-acc-body">',
+      ' <div class="ps-note">어떤 칸에 입력해도 나머지 포맷을 자동 변환합니다. (단일 결과 기준)</div>',
+      ' <div class="ps-row cols3" style="margin-top:10px;">',
+      '   <div class="ps-field"><label>Decimal</label><input data-k="dec" inputmode="decimal" placeholder="예: 1.95"></div>',
+      '   <div class="ps-field"><label>American(US)</label><input data-k="us" inputmode="decimal" placeholder="예: -105 / +120"></div>',
+      '   <div class="ps-field"><label>Fraction</label><input data-k="frac" placeholder="예: 3/2"></div>',
+      ' </div>',
+      ' <div class="ps-row cols3" style="margin-top:10px;">',
+      '   <div class="ps-field"><label>Hong Kong</label><input data-k="hk" inputmode="decimal" placeholder="예: 0.95"></div>',
+      '   <div class="ps-field"><label>Indonesian</label><input data-k="indo" inputmode="decimal" placeholder="예: -1.05 / +1.20"></div>',
+      '   <div class="ps-field"><label>Implied Prob</label><input data-k="p" inputmode="decimal" placeholder="예: 51.28%" disabled></div>',
+      ' </div>',
+      ' <div class="ps-actions">',
+      '   <button class="ps-btn secondary" type="button" data-act="reset">초기화</button>',
+      '   <button class="ps-btn ghost" type="button" data-act="copy">현재 값 복사</button>',
+      ' </div>',
+      '</div>',
+      '</details>',
+
+      '<details class="ps-acc">',
+      '<summary><span>📋 확률표</span><span class="ps-badge">손익분기점</span></summary>',
+      '<div class="ps-acc-body">',
+      ' <div class="ps-row cols3" style="margin-top:6px;">',
+      '   <div class="ps-field"><label>최소(%)</label><input data-k="pmin" inputmode="decimal" value="5"></div>',
+      '   <div class="ps-field"><label>최대(%)</label><input data-k="pmax" inputmode="decimal" value="95"></div>',
+      '   <div class="ps-field"><label>간격(%)</label><select data-k="step"><option value="5">5</option><option value="2">2</option><option value="1">1</option><option value="10">10</option></select></div>',
+      ' </div>',
+      ' <div class="ps-actions"><button class="ps-btn primary" type="button" data-act="tbl">표 생성</button></div>',
+      ' <div class="ps-odds-table" data-out="tbl" style="display:none;"></div>',
+      '</div>',
+      '</details>'
+    ].join('');
+
+    // place near end (before footer if exists)
+    var footer = wrap.querySelector('footer');
+    if(footer && footer.parentNode) footer.parentNode.insertBefore(host, footer);
+    else wrap.appendChild(host);
+
+    var box = host;
+    var dec = box.querySelector('[data-k="dec"]');
+    var us = box.querySelector('[data-k="us"]');
+    var frac = box.querySelector('[data-k="frac"]');
+    var hk = box.querySelector('[data-k="hk"]');
+    var indo = box.querySelector('[data-k="indo"]');
+    var p = box.querySelector('[data-k="p"]');
+
+    function toDecFromAny(){
+      var v;
+      if(dec.value && isFinite(+dec.value)) return clamp(+dec.value, 1.0001, 1000);
+      if(hk.value && isFinite(+hk.value)) return clamp(1 + (+hk.value), 1.0001, 1000);
+      if(us.value && isFinite(+us.value)) return usToDec(+us.value);
+      if(indo.value && isFinite(+indo.value)) return indoToDec(+indo.value);
+      if(frac.value) {
+        v = fracToDec(frac.value);
+        if(isFinite(v)) return clamp(v, 1.0001, 1000);
+      }
+      return null;
+    }
+
+    function setAll(d){
+      if(!d || !isFinite(d)) return;
+      dec.value = round(d, 4);
+      hk.value = round(d-1, 4);
+      us.value = round(decToUs(d), 0);
+      indo.value = round(decToIndo(d), 3);
+      frac.value = decToFrac(d);
+      p.value = round((1/d)*100, 2) + '%';
+    }
+
+    function round(x, n){
+      if(!isFinite(x)) return '';
+      var m = Math.pow(10, n||0);
+      return (Math.round(x*m)/m).toString();
+    }
+
+    function usToDec(a){
+      if(!isFinite(a) || a===0) return null;
+      if(a>0) return 1 + a/100;
+      return 1 + 100/Math.abs(a);
+    }
+    function decToUs(d){
+      if(d>=2) return (d-1)*100;
+      return -100/(d-1);
+    }
+    function indoToDec(i){
+      if(!isFinite(i) || i===0) return null;
+      if(i>0) return 1 + i;
+      return 1 + 1/Math.abs(i);
+    }
+    function decToIndo(d){
+      if(d>=2) return d-1;
+      return -1/(d-1);
+    }
+    function fracToDec(s){
+      s = (s||'').trim();
+      if(!s) return null;
+      if(/^\d+(\.\d+)?$/.test(s)) return 1 + parseFloat(s); // treat as profit part
+      var m = s.match(/^(\d+)\s*\/\s*(\d+)$/);
+      if(!m) return null;
+      var a = parseInt(m[1],10), b = parseInt(m[2],10);
+      if(!a || !b) return null;
+      return 1 + (a/b);
+    }
+    function decToFrac(d){
+      var x = d-1;
+      if(!isFinite(x) || x<=0) return '';
+      // approximate to rational with limited denominator
+      var bestA=1, bestB=1, bestErr=1e9;
+      var maxB=100;
+      for(var b=1;b<=maxB;b++){
+        var a = Math.round(x*b);
+        var err = Math.abs(x - a/b);
+        if(err < bestErr){ bestErr=err; bestA=a; bestB=b; }
+        if(bestErr < 1e-6) break;
+      }
+      // simplify
+      var g = gcd(bestA, bestB);
+      bestA/=g; bestB/=g;
+      return bestA + '/' + bestB;
+    }
+    function gcd(a,b){ while(b){ var t=a%b; a=b; b=t; } return a||1; }
+
+    function onChange(){
+      var d = toDecFromAny();
+      if(!d) return;
+      setAll(d);
+    }
+    [dec,us,frac,hk,indo].forEach(function(inp){
+      if(!inp) return;
+      inp.addEventListener('input', function(){ onChange(); });
+      inp.addEventListener('blur', function(){ onChange(); });
+    });
+
+    box.querySelector('[data-act="reset"]').addEventListener('click', function(){
+      [dec,us,frac,hk,indo].forEach(function(i){ if(i) i.value=''; });
+      if(p) p.value='';
+      var out = box.querySelector('[data-out="tbl"]');
+      if(out){ out.style.display='none'; out.innerHTML=''; }
+    });
+
+    box.querySelector('[data-act="copy"]').addEventListener('click', function(){
+      var d = toDecFromAny();
+      if(!d){ return; }
+      var payload = [
+        'Decimal: '+round(d,4),
+        'US: '+round(decToUs(d),0),
+        'Fraction: '+decToFrac(d),
+        'HK: '+round(d-1,4),
+        'Indo: '+round(decToIndo(d),3),
+        'Prob: '+round((1/d)*100,2)+'%'
+      ].join('\n');
+      try{
+        navigator.clipboard.writeText(payload);
+      }catch(e){}
+      try{
+        var t = document.querySelector('#copyToast');
+        if(t){ t.textContent='값이 복사되었습니다'; t.classList.add('show'); setTimeout(function(){t.classList.remove('show');}, 1400); }
+      }catch(e){}
+    });
+
+    host.querySelector('[data-act="tbl"]').addEventListener('click', function(){
+      var pmin = clamp(parseFloat(host.querySelector('[data-k="pmin"]').value||'5'), 1, 99);
+      var pmax = clamp(parseFloat(host.querySelector('[data-k="pmax"]').value||'95'), 1, 99);
+      var step = clamp(parseFloat(host.querySelector('[data-k="step"]').value||'5'), 1, 20);
+      if(pmin>pmax){ var t=pmin; pmin=pmax; pmax=t; }
+      var rows = [];
+      for(var pp=pmin; pp<=pmax+1e-9; pp+=step){
+        var d = 100/pp;
+        rows.push({p:pp, d:d});
+      }
+      var out = host.querySelector('[data-out="tbl"]');
+      if(!out) return;
+      out.style.display='block';
+      out.innerHTML = '<table><thead><tr><th>확률(%)</th><th>공정 배당(Decimal)</th><th>HK</th><th>US</th></tr></thead><tbody>'+
+        rows.map(function(r){
+          var d = r.d;
+          return '<tr><td>'+round(r.p,1)+'</td><td><b>'+round(d,3)+'</b></td><td>'+round(d-1,3)+'</td><td>'+round(decToUs(d),0)+'</td></tr>';
+        }).join('') +
+      '</tbody></table>';
+    });
+
+    // initialize with existing odds if present
+    try{
+      var seed = document.querySelector('#odds');
+      if(seed && seed.value) { dec.value = seed.value; onChange(); }
+    }catch(e){}
+  }
+
+  // --- Logbook (local) ---
+  function renderLogbook(container){
+    container.classList.add('ps-logbook');
+    container.innerHTML = [
+      '<div class="ps-log-top">',
+      '  <div class="ps-kpis cols3">',
+      '    <div class="ps-kpi"><div class="k">주간 ROI</div><div class="v" data-kpi="w_roi">—</div><div class="s" data-kpi="w_note">—</div></div>',
+      '    <div class="ps-kpi"><div class="k">월간 ROI</div><div class="v" data-kpi="m_roi">—</div><div class="s" data-kpi="m_note">—</div></div>',
+      '    <div class="ps-kpi"><div class="k">최대낙폭(MDD)</div><div class="v" data-kpi="mdd">—</div><div class="s">누적손익 기준</div></div>',
+      '  </div>',
+      '</div>',
+
+      '<details class="ps-acc" open>',
+      '  <summary><span>➕ 빠른 기록</span><span class="ps-badge">로컬 저장</span></summary>',
+      '  <div class="ps-acc-body">',
+      '    <div class="ps-row cols3">',
+      '      <div class="ps-field"><label>날짜</label><input data-k="date" type="date"/></div>',
+      '      <div class="ps-field"><label>종목</label><input data-k="sport" placeholder="예: 축구 / 농구"/></div>',
+      '      <div class="ps-field"><label>마켓</label><input data-k="market" placeholder="예: 1X2 / O/U"/></div>',
+      '    </div>',
+      '    <div class="ps-row cols3" style="margin-top:10px;">',
+      '      <div class="ps-field"><label>배당(Decimal)</label><input data-k="odds" inputmode="decimal" placeholder="예: 1.95"/></div>',
+      '      <div class="ps-field"><label>금액(원)</label><input data-k="stake" inputmode="numeric" placeholder="예: 50000"/></div>',
+      '      <div class="ps-field"><label>결과</label><select data-k="res"><option value="W">WIN</option><option value="L">LOSE</option><option value="V">VOID</option></select></div>',
+      '    </div>',
+      '    <div class="ps-row cols2" style="margin-top:10px;">',
+      '      <div class="ps-field"><label>메모(선택)</label><input data-k="note" placeholder="예: 라인 무브 확인"/></div>',
+      '      <div class="ps-field"><label>태그(선택)</label><input data-k="tag" placeholder="예: 보수/중립/공격"/></div>',
+      '    </div>',
+      '    <div class="ps-actions">',
+      '      <button class="ps-btn primary" type="button" data-act="add">저장</button>',
+      '      <button class="ps-btn ghost" type="button" data-act="quickW">WIN</button>',
+      '      <button class="ps-btn ghost" type="button" data-act="quickL">LOSE</button>',
+      '      <button class="ps-btn secondary" type="button" data-act="reset">초기화</button>',
+      '    </div>',
+      '  </div>',
+      '</details>',
+
+      '<details class="ps-acc" open>',
+      '  <summary><span>📊 리포트</span><span class="ps-badge">ROI · 적중률 · 평균배당</span></summary>',
+      '  <div class="ps-acc-body">',
+      '    <div class="ps-row cols3">',
+      '      <div class="ps-kpi"><div class="k">총 베팅</div><div class="v" data-kpi="cnt">—</div><div class="s" data-kpi="span">—</div></div>',
+      '      <div class="ps-kpi"><div class="k">적중률</div><div class="v" data-kpi="wr">—</div><div class="s">WIN/(WIN+LOSE)</div></div>',
+      '      <div class="ps-kpi"><div class="k">순손익</div><div class="v" data-kpi="pnl">—</div><div class="s" data-kpi="roi">—</div></div>',
+      '    </div>',
+      '    <div class="ps-row cols3" style="margin-top:10px;">',
+      '      <div class="ps-kpi"><div class="k">총 투입</div><div class="v" data-kpi="st">—</div><div class="s">원</div></div>',
+      '      <div class="ps-kpi"><div class="k">평균 배당</div><div class="v" data-kpi="avgod">—</div><div class="s">Decimal</div></div>',
+      '      <div class="ps-kpi"><div class="k">연속(최대)</div><div class="v" data-kpi="streak">—</div><div class="s">WIN/Lose</div></div>',
+      '    </div>',
+      '    <div class="ps-actions" style="margin-top:10px;">',
+      '      <button class="ps-btn secondary" type="button" data-act="week">이번주</button>',
+      '      <button class="ps-btn secondary" type="button" data-act="month">이번달</button>',
+      '      <button class="ps-btn ghost" type="button" data-act="all">전체</button>',
+      '    </div>',
+      '  </div>',
+      '</details>',
+
+      '<details class="ps-acc">',
+      '  <summary><span>🗂️ 기록 목록</span><span class="ps-badge">최근 50</span></summary>',
+      '  <div class="ps-acc-body">',
+      '    <div class="ps-log-table" data-out="table"></div>',
+      '  </div>',
+      '</details>',
+
+      '<details class="ps-acc">',
+      '  <summary><span>⬇️ 백업/복원</span><span class="ps-badge">JSON</span></summary>',
+      '  <div class="ps-acc-body">',
+      '    <div class="ps-note">기록은 브라우저에 저장됩니다. 기기 변경/초기화 전에 백업하세요.</div>',
+      '    <div class="ps-actions" style="margin-top:10px;">',
+      '      <button class="ps-btn primary" type="button" data-act="export">내보내기(복사)</button>',
+      '      <button class="ps-btn ghost" type="button" data-act="download">파일로 저장</button>',
+      '      <button class="ps-btn secondary" type="button" data-act="clear">전체 삭제</button>',
+      '    </div>',
+      '    <div class="ps-field" style="margin-top:10px;"><label>가져오기(JSON 붙여넣기)</label><textarea data-k="import" placeholder="여기에 붙여넣고 ‘가져오기’"></textarea></div>',
+      '    <div class="ps-actions"><button class="ps-btn ghost" type="button" data-act="import">가져오기</button></div>',
+      '  </div>',
+      '</details>'
+    ].join('');
+
+    var KEY = '88st_betlog_v1';
+    function read(){
+      try{ var s = localStorage.getItem(KEY); return s? JSON.parse(s): []; }catch(e){ return []; }
+    }
+    function write(arr){
+      try{ localStorage.setItem(KEY, JSON.stringify(arr||[])); }catch(e){}
+    }
+    function today(){
+      var d = new Date();
+      var y=d.getFullYear(), m=('0'+(d.getMonth()+1)).slice(-2), dd=('0'+d.getDate()).slice(-2);
+      return y+'-'+m+'-'+dd;
+    }
+    function parseDate(s){
+      var t = Date.parse(s+'T00:00:00');
+      return isFinite(t) ? t : Date.now();
+    }
+    function profit(e){
+      var st = +e.stake||0;
+      var od = +e.odds||0;
+      if(e.res==='W') return st*(od-1);
+      if(e.res==='L') return -st;
+      return 0;
+    }
+    function weekRange(){
+      var d = new Date(); d.setHours(0,0,0,0);
+      var day = d.getDay(); // 0 Sun
+      var diff = (day===0? -6 : 1-day); // Monday start
+      var start = new Date(d); start.setDate(d.getDate()+diff);
+      var end = new Date(start); end.setDate(start.getDate()+7);
+      return [start.getTime(), end.getTime()];
+    }
+    function monthRange(){
+      var d = new Date(); d.setHours(0,0,0,0);
+      var start = new Date(d.getFullYear(), d.getMonth(), 1);
+      var end = new Date(d.getFullYear(), d.getMonth()+1, 1);
+      return [start.getTime(), end.getTime()];
+    }
+
+    var inputs = {
+      date: container.querySelector('[data-k="date"]'),
+      sport: container.querySelector('[data-k="sport"]'),
+      market: container.querySelector('[data-k="market"]'),
+      odds: container.querySelector('[data-k="odds"]'),
+      stake: container.querySelector('[data-k="stake"]'),
+      res: container.querySelector('[data-k="res"]'),
+      note: container.querySelector('[data-k="note"]'),
+      tag: container.querySelector('[data-k="tag"]'),
+      imp: container.querySelector('[data-k="import"]')
+    };
+    if(inputs.date) inputs.date.value = today();
+
+    var mode = 'week';
+
+    function compute(arr, range){
+      var items = arr.slice().sort(function(a,b){ return (a.ts||0)-(b.ts||0); });
+      if(range){
+        items = items.filter(function(e){ return e.ts>=range[0] && e.ts<range[1]; });
+      }
+      var cnt = items.length;
+      var w=0,l=0,v=0;
+      var st=0;
+      var pnl=0;
+      var sumOdds=0, oddsN=0;
+      var cum=0, peak=0, mdd=0;
+
+      var curW=0, curL=0, maxW=0, maxL=0;
+      for(var i=0;i<items.length;i++){
+        var e = items[i];
+        st += (+e.stake||0);
+        pnl += profit(e);
+        if(isFinite(+e.odds) && +e.odds>1){ sumOdds += (+e.odds); oddsN++; }
+        cum += profit(e);
+        if(cum>peak) peak=cum;
+        var dd = peak - cum;
+        if(dd>mdd) mdd=dd;
+        if(e.res==='W'){ w++; curW++; curL=0; if(curW>maxW) maxW=curW; }
+        else if(e.res==='L'){ l++; curL++; curW=0; if(curL>maxL) maxL=curL; }
+        else { v++; }
+      }
+      var wr = (w+l)>0 ? (w/(w+l)) : 0;
+      var roi = st>0 ? (pnl/st) : 0;
+      var avgod = oddsN? (sumOdds/oddsN) : 0;
+      return {cnt:cnt,w:w,l:l,v:v,wr:wr,st:st,pnl:pnl,roi:roi,avgod:avgod,mdd:mdd,maxW:maxW,maxL:maxL,items:items};
+    }
+
+    function fmtWon(x){
+      if(!isFinite(x)) return '—';
+      var s = Math.round(x).toLocaleString();
+      return (x<0? '−' : '') + s.replace('-', '');
+    }
+    function fmtPct(x){
+      if(!isFinite(x)) return '—';
+      return (x*100).toFixed(1)+'%';
+    }
+
+    function setK(id, v){ var el = container.querySelector('[data-kpi="'+id+'"]'); if(el) el.textContent = v; }
+
+    function renderTable(items){
+      var box = container.querySelector('[data-out="table"]');
+      if(!box) return;
+      var rows = items.slice().sort(function(a,b){ return (b.ts||0)-(a.ts||0); }).slice(0,50);
+      if(!rows.length){ box.innerHTML = '<div class="ps-note">기록이 없습니다.</div>'; return; }
+      box.innerHTML = '<table><thead><tr><th>날짜</th><th>종목</th><th>마켓</th><th>배당</th><th>금액</th><th>결과</th><th>P/L</th><th></th></tr></thead><tbody>'+
+        rows.map(function(e){
+          var pl = profit(e);
+          var res = e.res==='W'?'WIN':(e.res==='L'?'LOSE':'VOID');
+          var cls = pl>0?'pos':(pl<0?'neg':'neu');
+          return '<tr>'+
+            '<td>'+escapeHtml(e.date||'')+'</td>'+
+            '<td>'+escapeHtml(e.sport||'')+'</td>'+
+            '<td>'+escapeHtml(e.market||'')+'</td>'+
+            '<td>'+escapeHtml(String(e.odds||''))+'</td>'+
+            '<td>'+fmtWon(+e.stake||0)+'</td>'+
+            '<td><span class="pill '+(e.res||'').toLowerCase()+'">'+res+'</span></td>'+
+            '<td class="'+cls+'">'+fmtWon(pl)+'</td>'+
+            '<td><button class="mini-del" data-del="'+e.id+'">삭제</button></td>'+
+          '</tr>';
+        }).join('') +
+      '</tbody></table>';
+
+      box.querySelectorAll('button[data-del]').forEach(function(btn){
+        btn.addEventListener('click', function(){
+          var id = btn.getAttribute('data-del');
+          var arr = read().filter(function(x){ return x.id!==id; });
+          write(arr);
+          refresh();
+        });
+      });
+    }
+
+    function setMode(m){
+      mode = m;
+      refresh();
+    }
+
+    function refresh(){
+      var arr = read();
+      var range = null;
+      if(mode==='week') range = weekRange();
+      if(mode==='month') range = monthRange();
+      var r = compute(arr, range);
+      setK('cnt', String(r.cnt));
+      setK('wr', fmtPct(r.wr));
+      setK('st', fmtWon(r.st));
+      setK('pnl', fmtWon(r.pnl));
+      setK('roi', 'ROI '+fmtPct(r.roi));
+      setK('avgod', r.avgod? r.avgod.toFixed(2) : '—');
+      setK('streak', 'W'+r.maxW+' / L'+r.maxL);
+      setK('span', mode==='all'?'전체':'기간');
+      // top KPIs
+      var w = compute(arr, weekRange());
+      var mo = compute(arr, monthRange());
+      setK('w_roi', fmtPct(w.roi)); setK('w_note', w.cnt? (w.cnt+'건 · '+fmtWon(w.pnl)+'원'):'—');
+      setK('m_roi', fmtPct(mo.roi)); setK('m_note', mo.cnt? (mo.cnt+'건 · '+fmtWon(mo.pnl)+'원'):'—');
+      setK('mdd', fmtWon((mode==='all'? compute(arr,null).mdd : r.mdd)));
+      renderTable(arr);
+    }
+
+    function addEntry(resOverride){
+      var date = (inputs.date && inputs.date.value) ? inputs.date.value : today();
+      var odds = parseFloat((inputs.odds && inputs.odds.value)||'');
+      var stake = parseFloat((inputs.stake && inputs.stake.value)||'');
+      if(!isFinite(stake) || stake<=0){ toast('금액을 입력하세요'); return; }
+      if(!isFinite(odds) || odds<=1){ toast('배당(Decimal)을 입력하세요'); return; }
+      var e = {
+        id: String(Date.now()) + Math.random().toString(16).slice(2),
+        ts: parseDate(date),
+        date: date,
+        sport: (inputs.sport && inputs.sport.value||'').trim(),
+        market: (inputs.market && inputs.market.value||'').trim(),
+        odds: odds,
+        stake: stake,
+        res: resOverride || (inputs.res && inputs.res.value) || 'W',
+        note: (inputs.note && inputs.note.value||'').trim(),
+        tag: (inputs.tag && inputs.tag.value||'').trim()
+      };
+      var arr = read();
+      arr.push(e);
+      write(arr);
+      toast('저장됨');
+      refresh();
+    }
+
+    function toast(msg){
+      try{
+        var t = document.querySelector('#copyToast');
+        if(t){ t.textContent=msg; t.classList.add('show'); setTimeout(function(){t.classList.remove('show');}, 1500); }
+      }catch(e){}
+    }
+
+    container.querySelector('[data-act="add"]').addEventListener('click', function(){ addEntry(); });
+    container.querySelector('[data-act="quickW"]').addEventListener('click', function(){ addEntry('W'); });
+    container.querySelector('[data-act="quickL"]').addEventListener('click', function(){ addEntry('L'); });
+    container.querySelector('[data-act="reset"]').addEventListener('click', function(){
+      if(inputs.odds) inputs.odds.value='';
+      if(inputs.stake) inputs.stake.value='';
+      if(inputs.note) inputs.note.value='';
+      if(inputs.tag) inputs.tag.value='';
+    });
+
+    container.querySelector('[data-act="week"]').addEventListener('click', function(){ setMode('week'); });
+    container.querySelector('[data-act="month"]').addEventListener('click', function(){ setMode('month'); });
+    container.querySelector('[data-act="all"]').addEventListener('click', function(){ setMode('all'); });
+
+    container.querySelector('[data-act="export"]').addEventListener('click', function(){
+      var payload = JSON.stringify(read());
+      try{ navigator.clipboard.writeText(payload); toast('백업 JSON이 복사되었습니다'); }catch(e){ toast('복사 실패'); }
+    });
+
+    container.querySelector('[data-act="download"]').addEventListener('click', function(){
+      var payload = JSON.stringify(read(), null, 2);
+      try{
+        var blob = new Blob([payload], {type:'application/json'});
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement('a');
+        a.href = url;
+        a.download = '88st_logbook_backup.json';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        setTimeout(function(){ URL.revokeObjectURL(url); }, 1000);
+        toast('파일 저장');
+      }catch(e){ toast('저장 실패'); }
+    });
+
+    container.querySelector('[data-act="import"]').addEventListener('click', function(){
+      var raw = (inputs.imp && inputs.imp.value || '').trim();
+      if(!raw){ toast('JSON을 붙여넣으세요'); return; }
+      try{
+        var arr = JSON.parse(raw);
+        if(!Array.isArray(arr)) throw new Error('not array');
+        // normalize
+        arr = arr.map(function(e){
+          return {
+            id: e.id || (String(Date.now())+Math.random().toString(16).slice(2)),
+            ts: isFinite(+e.ts)? +e.ts : parseDate(e.date||today()),
+            date: e.date || today(),
+            sport: (e.sport||''),
+            market: (e.market||''),
+            odds: +e.odds || 0,
+            stake: +e.stake || 0,
+            res: (e.res||'W'),
+            note: (e.note||''),
+            tag: (e.tag||'')
+          };
+        }).filter(function(e){ return e.stake>0 && e.odds>1; });
+        write(arr);
+        toast('가져오기 완료');
+        if(inputs.imp) inputs.imp.value='';
+        refresh();
+      }catch(e){
+        toast('가져오기 실패(JSON 확인)');
+      }
+    });
+
+    container.querySelector('[data-act="clear"]').addEventListener('click', function(){
+      if(!confirm('기록을 모두 삭제할까요? (되돌릴 수 없음)')) return;
+      write([]);
+      toast('삭제됨');
+      refresh();
+    });
+
+    refresh();
+  }
+
+  // --- Cert popup: 3-line summary (always visible, compact) ---
+  function ensureCertSummary3(){
+    var popup = qs(document,'#cardPopup');
+    var box = popup ? qs(popup,'.popup-box') : null;
+    if(!popup || !box) return;
+    if(qs(box,'.ps-summary3')) return;
+
+    var meta = qs(box,'.popup-sub');
+    if(!meta) return;
+
+    var sum = document.createElement('div');
+    sum.className = 'ps-summary3';
+    sum.innerHTML = [
+      '<div class="row"><span class="k">코드</span><span class="v" data-sum="code">—</span></div>',
+      '<div class="row"><span class="k">혜택</span><span class="v" data-sum="benefit">—</span></div>',
+      '<div class="row"><span class="k">주의</span><span class="v" data-sum="notice">—</span></div>'
+    ].join('');
+    meta.parentNode.insertBefore(sum, meta.nextSibling);
+
+    function pickText(id){
+      var el = qs(box, id);
+      var t = el ? (el.textContent||'').trim() : '';
+      // remove prefix like '혜택 :' '주의 :'
+      t = t.replace(/^혜택\s*:\s*/,'').replace(/^주의\s*:\s*/,'');
+      t = t.replace(/\s+/g,' ').trim();
+      if(t.length>64) t = t.slice(0,64)+'…';
+      return t || '—';
+    }
+
+    function update(){
+      var code = pickText('#pCode');
+      var ben = pickText('#pBenefit');
+      var no = pickText('#pNotice');
+      var c = qs(sum,'[data-sum="code"]'); if(c) c.textContent = code;
+      var b = qs(sum,'[data-sum="benefit"]'); if(b) b.textContent = ben;
+      var n = qs(sum,'[data-sum="notice"]'); if(n) n.textContent = no;
+    }
+
+    update();
+    try{
+      if(window.MutationObserver){
+        var mo = new MutationObserver(function(){ update(); });
+        mo.observe(box, {subtree:true, childList:true, characterData:true});
+      }
+    }catch(e){}
+  }
+
   // --- Boot ---
   function boot(){
     // sports
@@ -865,8 +1614,14 @@
     // minigame
     qsa(document,'[data-prosuite="minigame"]').forEach(function(el){ renderMinigame(el); });
 
+    // logbook
+    qsa(document,'[data-prosuite="logbook"]').forEach(function(el){ renderLogbook(el); });
+
     // cert popup enhancement (even if no cert container)
     ensureCertPopupSticky();
+    ensureCertSummary3();
+    enhanceOddsPage();
+    injectLearnPack();
 
     // In case popup is injected later
     try{

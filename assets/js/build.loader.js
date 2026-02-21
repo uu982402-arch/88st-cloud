@@ -67,12 +67,14 @@
     var cssList = (assets && assets.css && assets.css.length) ? assets.css : [
       "/assets/css/vvip-luxe.v75.css",
       "/assets/css/vvip-hub.v85.css",
-      "/assets/css/patch.v94.productui.20260219.min.css"
+      "/assets/css/patch.v96.homewhy.20260221.css",
+      "/assets/css/pro-suite.v2.css"
     ];
     var jsList = (assets && assets.js && assets.js.length) ? assets.js : [
       "/assets/js/vvip-global.v75.js",
       "/assets/js/j.searchtyping.v83.20260219.js",
-      "/assets/js/j.8829a3ccde44.js"
+      "/assets/js/j.8829a3ccde44.js",
+      "/assets/js/pro-suite.v2.js"
     ];
 
     for (var i = 0; i < cssList.length; i++) addCSS(cssList[i]);
