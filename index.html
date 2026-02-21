@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html data-theme="light" lang="ko">
+<head>
+<meta charset="utf-8"/>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-KWT87FBY6S"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-KWT87FBY6S', { anonymize_ip: true });
+</script>
+
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<title>88ST | 스포츠 배당 분석기 · EV/마진 · 켈리 계산기</title>
+<meta content="스포츠 배당 분석기(오버라운드·마진·EV·공정배당) + 켈리 비중 계산기, 슬롯 RTP 분석, 카지노 전략/미니게임 가이드와 오늘의 운 브리핑(별자리/띠/연애/신년)을 한 곳에서 빠르게 확인하세요." name="description"/>
+<meta content="스포츠 배당 분석기, 배당률 계산기, EV 계산기, 기대값 계산, 공정배당, 오버라운드, 마진(vig) 제거, 켈리 기준, 배팅 자금관리, 배당 비교, 88ST" name="keywords"/>
+<link href="https://88st.cloud/" rel="canonical"/>
+<meta content="index,follow" name="robots"/>
+<meta content="website" property="og:type"/>
+<meta content="88 (팔팔커뮤니티)" property="og:site_name"/>
+<meta content="88ST | 스포츠 배당 분석기 · EV/마진 · 켈리 계산기" property="og:title"/>
+<meta content="스포츠 배당 분석기(오버라운드·마진·EV·공정배당) + 켈리 비중 계산기, 슬롯 RTP 분석, 카지노 전략/미니게임 가이드를 한 곳에서 빠르게 확인하세요." property="og:description"/>
+<meta content="https://88st.cloud/" property="og:url"/>
+<link href="/favicon.ico" rel="icon" type="image/x-icon"/>
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+<link href="/assets/css/x.9d7841e705c5.css" rel="stylesheet"/>
+<link href="/assets/c.banner.v81.20260219.css" rel="stylesheet"/>
+<script defer="" src="/assets/js/inline-bundles/b.fa5e828602.js"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "88st.cloud 주요 도구 및 가이드",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "스포츠 배당 분석기",
+      "url": "https://88st.cloud/analysis/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "보증·인증 업체",
+      "url": "https://88st.cloud/cert/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "FAQ",
+      "url": "https://88st.cloud/#faqSection"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "입플 체크리스트",
+      "url": "https://88st.cloud/bonus-checklist/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "name": "입플·보너스 안내",
+      "url": "https://88st.cloud/landing-a/"
+    }
+  ]
+}
+</script>
+<link href="/assets/c.a693fe39b0c5.css" rel="stylesheet"/>
+<script defer="" src="/assets/js/j.9179477b9417.js"></script>
+<link href="/assets/c.9995eeb5cf82.css" rel="stylesheet"/>
+<link href="/assets/c.0b3d8a45f8c9.css" rel="stylesheet"/>
+<script defer="" src="/assets/js/j.efba3509e62c.js"></script>
+<link href="/assets/c.a50dd3bc5b33.css" rel="stylesheet"/>
+
+<meta content="https://88st.cloud/img/logo.png" property="og:image"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://88st.cloud/#org",
+      "name": "88ST",
+      "alternateName": "88 (팔팔커뮤니티)",
+      "url": "https://88st.cloud/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://88st.cloud/img/logo.png"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://88st.cloud/#website",
+      "url": "https://88st.cloud/",
+      "name": "88ST",
+      "inLanguage": "ko",
+      "publisher": {"@id": "https://88st.cloud/#org"}
+    }
+  ]
+}
+</script>
+<script>
+(function(){
+  var t = Date.now();
+  function load(src, cb){
+    var s = document.createElement('script');
+    s.src = src;
+    s.async = false;
+    if(cb) s.onload = cb;
+    document.head.appendChild(s);
+  }
+  load('/assets/js/build.ver.js?t='+t, function(){
+    load('/assets/js/build.loader.js?t='+t);
+  });
+})();
+</script>
+
+
+
+<script>
+// Home fallback: ensure global shell header renders even if build loader was blocked.
+(function(){
+  var __tries = 0;
+  function ensureShell(){
+    try{
+      if(document.getElementById('_88stShellHeader')) return;
+      if(!window.__BUILD_ASSETS && __tries < 20){ __tries++; return setTimeout(ensureShell, 50); }
+      var v = (window.__BUILD_VER || '0') + '';
+      var list = (window.__BUILD_ASSETS && window.__BUILD_ASSETS.js) ? window.__BUILD_ASSETS.js : [];
+      var cand = null;
+      for(var i=0;i<list.length;i++){
+        var s = String(list[i]||'');
+        if(/^\/assets\/js\/j\./.test(s) && s.indexOf('searchtyping')<0){ cand = s; break; }
+      }
+      if(!cand) cand = '/assets/js/j.8829a3ccde44.js';
+      var el = document.createElement('script');
+      el.src = cand + (cand.indexOf('?')>=0?'&':'?') + 'v=' + encodeURIComponent(v);
+      el.async = false;
+      document.head.appendChild(el);
+    }catch(e){}
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', ensureShell);
+  else ensureShell();
+})();
+</script>
+
+</head>
+<body>
+<h1 style="position:absolute;left:-9999px;">스포츠 배당 분석기와 배당 마진 계산기 | 88</h1>
+<div class="header">
+<a aria-label="홈으로 이동" class="logoLink" href="/">
+<img alt="88 커뮤니티 로고" class="logoImg" src="img/logo.png"/>
+</a>
+<div class="sub">배당을 숫자로 정리하는 가장 빠른 분석기</div>
+</div>
+<div class="section-wrap">
+<div aria-label="메인 배너" class="mainHero">
+<div class="heroGrid">
+<div aria-hidden="true" class="brandMark">
+<img alt="" class="brandImg" src="/img/logo.png"/>
+</div>
+<div class="heroCopy">
+<h1 class="heroLead">구글에서 <span style="font-weight:1000;">88ST.Cloud</span> 검색</h1>
+<p class="heroSub">가장 빠른 길: 검색창에 딱 한 번만 입력하면 끝</p>
+<div aria-label="구글 검색창 템플릿" class="searchGlass" role="img">
+<div aria-hidden="true" class="searchIcon">
+<!-- Google G (simple) -->
+<svg aria-hidden="true" fill="none" height="26" viewbox="0 0 24 24" width="26">
+<path d="M21.6 12.27c0-.71-.06-1.4-.18-2.07H12v3.92h5.38a4.6 4.6 0 0 1-1.99 3.01v2.5h3.22c1.89-1.74 2.99-4.3 2.99-7.36Z" fill="#4285F4"></path>
+<path d="M12 22c2.7 0 4.97-.9 6.63-2.44l-3.22-2.5c-.9.6-2.05.96-3.41.96-2.62 0-4.84-1.77-5.63-4.15H3.03v2.57A10 10 0 0 0 12 22Z" fill="#34A853"></path>
+<path d="M6.37 13.87A6 6 0 0 1 6.06 12c0-.65.11-1.28.31-1.87V7.56H3.03A10 10 0 0 0 2 12c0 1.61.38 3.13 1.03 4.44l3.34-2.57Z" fill="#FBBC05"></path>
+<path d="M12 5.98c1.47 0 2.79.5 3.83 1.49l2.87-2.87C16.96 2.87 14.7 2 12 2A10 10 0 0 0 3.03 7.56l3.34 2.57c.79-2.38 3.01-4.15 5.63-4.15Z" fill="#EA4335"></path>
+</svg>
+</div>
+<div class="searchText"><span aria-label="검색어" id="searchTyping">88ST.Cloud</span><span aria-hidden="true" class="caret"></span></div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="section" id="whySection">
+  <div class="title"><span class="badge">WHY</span>왜 88 분석기를 써야 하나요?</div>
+  <div class="why-intro">
+    <div class="why-lead">예측이 아니라 <b>숫자로 정리</b>해서 실수를 줄이는 구조입니다.</div>
+    <div class="why-sub">필요한 카드만 펼쳐 보고, 나머지는 접어두세요.</div>
+  </div>
+
+  <div class="why-acc-grid" aria-label="WHY 섹션(접기/펼치기)">
+    <details class="why-acc" open>
+      <summary>
+        <div class="kicker">⚽ 스포츠 배당 분석기</div>
+        <div class="head"><b>3초 안에 결론</b>이 나오는 구조</div>
+        <span class="pill">마진·공정확률</span>
+      </summary>
+      <div class="body">
+        <ul>
+          <li><b>마진(오버라운드)</b>로 “비용이 낮은 라인”을 빠르게 분류</li>
+          <li><b>공정배당·정규화 확률</b>로 시장이 말하는 확률을 한 번에 확인</li>
+        </ul>
+        <div class="note">같은 시장/종류라면 <b>마진이 낮을수록</b> 비용(수수료)이 낮은 편입니다. (참고용)</div>
+        <div class="cta"><a class="insight-btn primary" href="/analysis/">스포츠 분석기 열기 <span aria-hidden="true">→</span></a></div>
+      </div>
+    </details>
+
+    <details class="why-acc">
+      <summary>
+        <div class="kicker">🎮 BET365 가상게임</div>
+        <div class="head"><b>전 종목</b> 배당 입력 → 마진/공정확률 즉시 정리</div>
+        <span class="pill">전종목·라인비교</span>
+      </summary>
+      <div class="body">
+        <ul>
+          <li><b>종목·마켓 선택</b>으로 승/무/패 · 오버/언더 · 핸디 · 다중 우승자까지 즉시 분석</li>
+          <li><b>오버라운드(마진)</b> + <b>공정확률/공정배당</b> 자동 정규화</li>
+          <li><b>라인 다중 붙여넣기</b>로 라인별 마진·공정배당을 한 번에 비교</li>
+          <li><b>베스트</b>: 공정대비 ‘덜 불리한 선택’을 자동 표시</li>
+        </ul>
+        <div class="note">이 도구는 ‘예측’이 아니라 <b>수학 기반 판단 보조</b>입니다. 과몰입을 피하세요.</div>
+        <div class="cta"><a class="insight-btn primary" href="/tool-virtual/">BET365 가상게임 분석기 열기 <span aria-hidden="true">→</span></a></div>
+      </div>
+    </details>
+
+    <details class="why-acc">
+      <summary>
+        <div class="kicker">🧩 미니게임 분석기</div>
+        <div class="head"><b>최근 결과를 정리</b>해 흐름/편향을 체크</div>
+        <span class="pill">연속·전환</span>
+      </summary>
+      <div class="body">
+        <ul>
+          <li><b>최근 N회</b> 입력/저장 → 홀·짝/언더·오버 등 <b>빈도·확률</b> 자동 집계</li>
+          <li><b>연속·전환</b> 지표로 단순 감(느낌) 대신 <b>숫자 기반 체크</b></li>
+          <li><b>히스토리</b>로 오늘 데이터만 깔끔하게 관리 (초기화/저장/불러오기)</li>
+        </ul>
+        <div class="note">결과를 “보기 좋게 정리”하는 도구입니다. 과몰입을 피하고, 기록은 짧게 가져가세요.</div>
+        <div class="cta"><a class="insight-btn primary" href="/tool-minigame/">미니게임 분석기 열기 <span aria-hidden="true">→</span></a></div>
+      </div>
+    </details>
+
+    <details class="why-acc">
+      <summary>
+        <div class="kicker">🃏 카지노 전략 분석기</div>
+        <div class="head"><b>턴이 빠른 게임</b>에서도 다음 베팅을 실수 없이</div>
+        <span class="pill">세션관리</span>
+      </summary>
+      <div class="body">
+        <ul>
+          <li><b>전략 선택</b>: 마틴·파롤리·달랑·오스카·피보·라부셰르 비교</li>
+          <li><b>WIN/LOSE 1탭</b>으로 다음 스텝 자동 계산 (UNDO 포함)</li>
+          <li><b>세션 관리</b>: 누적손익 · 최대낙폭(MDD) · 회복까지 필요한 1승 베팅 표시</li>
+          <li><b>프리셋</b>: 바카라 PLAYER 2.00 / BANKER 1.97 + 단위/올림 규칙</li>
+        </ul>
+        <div class="note">단순 ‘계산기’가 아니라, <b>실전 세션 운영</b>에 필요한 숫자를 한 번에 보여줍니다.</div>
+        <div class="cta"><a class="insight-btn primary" href="/tool-casino/">카지노 전략 분석기 열기 <span aria-hidden="true">→</span></a></div>
+      </div>
+    </details>
+
+    <details class="why-acc">
+      <summary>
+        <div class="kicker">🎰 슬롯 RTP 분석기</div>
+        <div class="head"><b>세션 비용/리스크</b>를 숫자로 투명하게</div>
+        <span class="pill">RTP·변동성</span>
+      </summary>
+      <div class="body">
+        <ul>
+          <li><b>총 베팅/기대 손실</b>로 “세션 비용”을 즉시 계산</li>
+          <li><b>RTP는 운영사/버전</b>에 따라 다를 수 있어 <b>게임 내 정보(i)</b> 기준으로 입력</li>
+          <li><b>변동성 기준 권장 뱅크롤</b>과 <b>손절선</b>으로 과몰입 방지</li>
+          <li><b>최근 저장/공유</b>로 게임별 설정을 빠르게 복원</li>
+        </ul>
+        <div class="note">이 도구는 ‘예측’이 아니라 <b>세션/자금관리</b>를 위한 참고용 분석기입니다.</div>
+        <div class="cta"><a class="insight-btn primary" href="/tool-slot/">슬롯 환수율(RTP) 분석기 열기 <span aria-hidden="true">→</span></a></div>
+      </div>
+    </details>
+  </div>
+
+
+<div class="section" id="homeQuickStart">
+  <div class="title"><span class="badge">START</span>오늘의 루틴 (30초)</div>
+  <div class="qs-sub">예측이 아니라 <b>실수 줄이기</b>를 위한 3단계 동선입니다. 필요한 카드만 눌러서 빠르게 이동하세요.</div>
+  <div class="qs-grid" aria-label="빠른 시작">
+    <a class="qs-card" href="/analysis/">
+      <div class="k">1) 분석</div>
+      <div class="h">마진·공정확률 3초 정리</div>
+      <div class="d">오버라운드/공정배당 → 시장이 말하는 확률을 한 번에</div>
+      <div class="go">스포츠 분석기 →</div>
+    </a>
+    <a class="qs-card" href="/logbook/">
+      <div class="k">2) 기록</div>
+      <div class="h">베팅 로그북 · 주간 리포트</div>
+      <div class="d">ROI/적중률/최대낙폭(MDD) 자동 요약 (로컬 저장)</div>
+      <div class="go">로그북 열기 →</div>
+    </a>
+    <a class="qs-card" href="/cert/">
+      <div class="k">3) 체크</div>
+      <div class="h">인증사이트 · 안전 체크</div>
+      <div class="d">가입코드/혜택/주의를 한 화면에서 비교</div>
+      <div class="go">인증사이트 →</div>
+    </a>
+  </div>
+</div>
+
+
+
+<div class="section" id="homeDash">
+  <div class="title"><span class="badge">DASH</span>메인 요약</div>
+  <div class="dash-sub">로그북 기반으로 <b>오늘의 루틴</b>이 더 쉬워집니다. (로컬 저장 · 서버 전송 없음)</div>
+
+  <div class="dash-grid" aria-label="메인 요약">
+    <div class="dash-card" id="dashWeekCard">
+      <div class="dash-k"><span>THIS WEEK</span><span class="tag">내 이번주</span></div>
+      <div class="dash-h">주간 리포트</div>
+      <div class="dash-d">최근 기록을 자동 요약합니다. 기록이 없으면 ‘로그북’에서 1줄만 추가해도 반영됩니다.</div>
+      <div class="kpi-row">
+        <div class="kpi"><div class="l">주간 ROI</div><div class="v" id="kpiWeekRoi">—</div></div>
+        <div class="kpi"><div class="l">기록 수</div><div class="v" id="kpiWeekCnt">—</div></div>
+        <div class="kpi"><div class="l">MDD</div><div class="v" id="kpiWeekMdd">—</div></div>
+      </div>
+      <div class="dash-actions">
+        <a class="dash-btn primary" href="/logbook/">로그북 열기 →</a>
+        <a class="dash-btn" href="/analysis/">분석기 →</a>
+      </div>
+    </div>
+
+    <div class="dash-card" id="dashPatternCard">
+      <div class="dash-k"><span>TODAY</span><span class="tag">주의 패턴</span></div>
+      <div class="dash-h">오늘의 주의 패턴</div>
+      <div class="dash-d">예측이 아니라, 흔한 실수/과몰입을 줄이기 위한 룰 기반 안내입니다.</div>
+      <div class="pattern">
+        <div class="p" id="todayPatternText">—</div>
+        <div class="small" id="todayPatternHint">—</div>
+      </div>
+      <div class="dash-actions">
+        <a class="dash-btn" href="/bonus-checklist/">체크리스트 →</a>
+        <a class="dash-btn" href="#whySection">WHY →</a>
+      </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script defer="" src="/assets/js/j.025d649c8b11.js"></script>
+
+<script>
+(function(){
+  function lsRead(k, def){ try{ var s=localStorage.getItem(k); return s? JSON.parse(s): def; }catch(e){ return def; } }
+  function fmtPct(x){ return (isFinite(x)? (x*100).toFixed(1)+'%':'—'); }
+  function fmtWon(x){ if(!isFinite(x)) return '—'; var n=Math.round(Math.abs(x)); return (x<0?'−':'')+n.toLocaleString(); }
+  function profit(e){ var st=+e.stake||0; var od=+e.odds||0; if(e.res==='W') return st*(od-1); if(e.res==='L') return -st; return 0; }
+  function weekRange(){
+    var d=new Date(); d.setHours(0,0,0,0);
+    var day=d.getDay();
+    var diff=(day===0? -6 : 1-day); // Monday start
+    var start=new Date(d); start.setDate(d.getDate()+diff);
+    var end=new Date(start); end.setDate(start.getDate()+7);
+    return [start.getTime(), end.getTime()];
+  }
+  function computeWeek(arr){
+    var r=weekRange();
+    var items=(Array.isArray(arr)?arr:[]).filter(function(e){ return e && (e.ts||0)>=r[0] && (e.ts||0)<r[1]; })
+      .slice().sort(function(a,b){ return (a.ts||0)-(b.ts||0); });
+    var st=0,pnl=0,cum=0,peak=0,mdd=0;
+    for(var i=0;i<items.length;i++){
+      var e=items[i];
+      st += (+e.stake||0);
+      var p = profit(e);
+      pnl += p;
+      cum += p;
+      if(cum>peak) peak=cum;
+      var dd=peak-cum; if(dd>mdd) mdd=dd;
+    }
+    return {cnt: items.length, roi: (st>0? pnl/st: 0), mdd: mdd};
+  }
+  function pickDailyPattern(){
+    var patterns=[
+      {t:'급무브(배당 급변)+마진 상승 조합은 “패스”가 이득인 경우가 많습니다.', h:'라인이 움직였으면: 부상/선발/시장 과열 여부를 먼저 체크하세요.'},
+      {t:'같은 경기/같은 팀 관련 마켓을 여러 개 묶는 파롤리는 리스크가 겹칩니다.', h:'조합 전에 “상관”이 있는지 먼저 체크하세요.'},
+      {t:'손익분기 확률보다 확신이 낮으면, “금액을 줄이거나 패스”가 가장 강한 선택입니다.', h:'EV/마진을 먼저 확인하면 실수가 줄어듭니다.'},
+      {t:'연패 구간에는 비중을 절반으로 낮추는 것만으로도 파산 확률이 크게 줄어듭니다.', h:'켈리/리스크 제한 모드(보수)를 추천합니다.'},
+      {t:'정보가 늦게 반영되는 리그/마켓은 “라이브 대기”가 더 안전할 때가 많습니다.', h:'확신이 없으면 ‘대기/패스’가 전략입니다.'},
+      {t:'배당이 높을수록 “적중률 착각”이 생기기 쉽습니다. 숫자로 손익분기부터 확인하세요.', h:'배당↔확률 변환으로 감을 고정하세요.'},
+      {t:'보너스/입플은 “조건(롤링/제외/최대지급)”이 핵심입니다. 문구보다 조건을 먼저 보세요.', h:'체크리스트로 10초 점검 후 이동하세요.'}
+    ];
+    var d=new Date();
+    var key = d.getFullYear()*10000 + (d.getMonth()+1)*100 + d.getDate();
+    var idx = Math.abs((key*2654435761) % patterns.length);
+    return patterns[idx];
+  }
+
+  function init(){
+    var logs = lsRead('88st_betlog_v1', []);
+    var wk = computeWeek(Array.isArray(logs)?logs:[]);
+    var elR=document.getElementById('kpiWeekRoi');
+    var elC=document.getElementById('kpiWeekCnt');
+    var elM=document.getElementById('kpiWeekMdd');
+    if(elR) elR.textContent = wk.cnt? fmtPct(wk.roi) : '—';
+    if(elC) elC.textContent = wk.cnt? String(wk.cnt) : '0';
+    if(elM) elM.textContent = wk.cnt? fmtWon(wk.mdd) : '—';
+
+    var pat = pickDailyPattern();
+    var pt=document.getElementById('todayPatternText');
+    var ph=document.getElementById('todayPatternHint');
+    if(pt) pt.textContent = pat.t;
+    if(ph) ph.textContent = pat.h;
+  }
+
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+</script>
+
+</body>
+</html>
