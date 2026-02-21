@@ -170,16 +170,43 @@ const cardSourcesById = (id) => {
   const bindCardClicks = () => {
     const grid = $('vendorGrid');
     if (!grid) return;
-    grid.querySelectorAll('.card[data-card]').forEach((el) => {
-      const open = () => openCard(el.getAttribute('data-card'));
-      el.onclick = open;
-      el.onkeydown = (ev) => {
+
+    // Delegated handler (more robust across re-renders + mobile Safari)
+    if (!grid.__bound) {
+      grid.__bound = true;
+
+      const pick = (ev) => {
+        const t = ev.target;
+        const el = t && t.closest ? t.closest('.card[data-card]') : null;
+        if (!el) return null;
+        return el.getAttribute('data-card');
+      };
+
+      grid.addEventListener('click', (ev) => {
+        const id = pick(ev);
+        if (!id) return;
+        ev.preventDefault();
+        openCard(id);
+      }, true);
+
+      // iOS: ensure tap triggers even if click is delayed
+      grid.addEventListener('touchstart', (ev) => {
+        const id = pick(ev);
+        if (!id) return;
+        // Do not prevent default to keep scroll natural
+        try { openCard(id); } catch { /* ignore */ }
+      }, { passive: true });
+
+      grid.addEventListener('keydown', (ev) => {
+        const t = ev.target;
+        const el = t && t.closest ? t.closest('.card[data-card]') : null;
+        if (!el) return;
         if (ev.key === 'Enter' || ev.key === ' ') {
           ev.preventDefault();
-          open();
+          openCard(el.getAttribute('data-card'));
         }
-      };
-    });
+      });
+    }
   };
 
   const renderGrid = () => {
@@ -319,6 +346,7 @@ const cardSourcesById = (id) => {
       popup.style.position = 'fixed';
       popup.style.inset = '0';
       popup.style.zIndex = '99999';
+      popup.style.pointerEvents = 'auto';
       popup.classList.add('open');
       popup.setAttribute('aria-hidden', 'false');
       try {

@@ -74,7 +74,6 @@
     var jsList = (assets && assets.js && assets.js.length) ? assets.js : [
       "/assets/js/vvip-global.v75.js",
       "/assets/js/j.searchtyping.v83.20260219.js",
-      "/assets/js/j.8829a3ccde44.js",
       "/assets/js/pro-suite.v2.js"
     ];
 
