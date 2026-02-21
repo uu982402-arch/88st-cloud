@@ -56,8 +56,22 @@
     .fortune-kpi .v{margin-top:6px;font-size:14px;font-weight:950;line-height:1.5;color:rgba(255,255,255,.95)}
     .fortune-mini{font-size:12px;color:rgba(255,255,255,.72);line-height:1.55;margin-top:10px}
   </style>
-<script src="/assets/js/build.ver.js"></script>
-<script src="/assets/js/build.loader.js"></script>
+<script>
+(function(){
+  var t = Date.now();
+  function load(src, cb){
+    var s = document.createElement('script');
+    s.src = src;
+    s.async = false;
+    if(cb) s.onload = cb;
+    document.head.appendChild(s);
+  }
+  load('/assets/js/build.ver.js?t='+t, function(){
+    load('/assets/js/build.loader.js?t='+t);
+  });
+})();
+</script>
+
 
 </head>
 <body>

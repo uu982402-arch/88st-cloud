@@ -100,16 +100,32 @@
   ]
 }
 </script>
-<script src="/assets/js/build.ver.js"></script>
-<script src="/assets/js/build.loader.js"></script>
+<script>
+(function(){
+  var t = Date.now();
+  function load(src, cb){
+    var s = document.createElement('script');
+    s.src = src;
+    s.async = false;
+    if(cb) s.onload = cb;
+    document.head.appendChild(s);
+  }
+  load('/assets/js/build.ver.js?t='+t, function(){
+    load('/assets/js/build.loader.js?t='+t);
+  });
+})();
+</script>
+
 
 
 <script>
 // Home fallback: ensure global shell header renders even if build loader was blocked.
 (function(){
+  var __tries = 0;
   function ensureShell(){
     try{
       if(document.getElementById('_88stShellHeader')) return;
+      if(!window.__BUILD_ASSETS && __tries < 20){ __tries++; return setTimeout(ensureShell, 50); }
       var v = (window.__BUILD_VER || '0') + '';
       var list = (window.__BUILD_ASSETS && window.__BUILD_ASSETS.js) ? window.__BUILD_ASSETS.js : [];
       var cand = null;
@@ -289,7 +305,7 @@
 
 <div class="section" id="homeDash">
   <div class="title"><span class="badge">DASH</span>메인 요약</div>
-  <div class="dash-sub">로그북/최근 기록 기반으로 <b>오늘의 루틴</b>이 더 쉬워집니다. (로컬 저장 · 서버 전송 없음)</div>
+  <div class="dash-sub">로그북 기반으로 <b>오늘의 루틴</b>이 더 쉬워집니다. (로컬 저장 · 서버 전송 없음)</div>
 
   <div class="dash-grid" aria-label="메인 요약">
     <div class="dash-card" id="dashWeekCard">
@@ -320,44 +336,8 @@
         <a class="dash-btn" href="#whySection">WHY →</a>
       </div>
     </div>
-
-    <div class="dash-card" id="dashRecentCard">
-      <div class="dash-k"><span>RECENT</span><span class="tag">최근 활동</span></div>
-      <div class="dash-h">최근 사용 / 최근 본 업체</div>
-      <div class="dash-d">최근에 열어본 도구와 인증 업체를 2줄로 요약합니다.</div>
-
-      <div class="mini-list" aria-label="최근 사용한 도구" id="recentToolsList"></div>
-      <div class="mini-list" aria-label="최근 본 업체" id="recentVendorsList" style="margin-top:10px;"></div>
-
-      <div class="dash-actions">
-        <a class="dash-btn" href="/calc/">계산기 홈 →</a>
-        <a class="dash-btn" href="/cert/">인증사이트 →</a>
-      </div>
-    </div>
-  </div>
 </div>
-
-<div class="section" id="homeCertJump">
-  <div class="title"><span class="badge">CERT</span>인증 사이트 이동</div>
-  <div class="cert-grid" aria-label="인증 사이트 이동">
-    <a class="cert-card" href="/cert/">
-      <div class="h">인증사이트 카드 목록</div>
-      <div class="d">코드·혜택·주의사항 한 번에 확인</div>
-      <div class="go">바로가기 →</div>
-    </a>
-    <a class="cert-card" href="/bonus-checklist/">
-      <div class="h">입플 체크리스트</div>
-      <div class="d">롤링/제외게임/최대지급/출금 조건 빠른 점검</div>
-      <div class="go">바로가기 →</div>
-    </a>
-    <div class="cert-split">
-      <a class="cert-mini" href="/speed/"><b>SPEED</b><span>이동 →</span></a>
-      <a class="cert-mini" href="/ok/"><b>OK</b><span>이동 →</span></a>
-      <div class="cert-note">※ 가입 전 공지/문의로 조건 재확인</div>
-    </div>
-  </div>
 </div>
-
 </div>
 </div>
 </div>
@@ -394,7 +374,6 @@
     }
     return {cnt: items.length, roi: (st>0? pnl/st: 0), mdd: mdd};
   }
-
   function pickDailyPattern(){
     var patterns=[
       {t:'급무브(배당 급변)+마진 상승 조합은 “패스”가 이득인 경우가 많습니다.', h:'라인이 움직였으면: 부상/선발/시장 과열 여부를 먼저 체크하세요.'},
@@ -411,67 +390,7 @@
     return patterns[idx];
   }
 
-  function renderRecent(){
-    var toolsBox=document.getElementById('recentToolsList');
-    var vendorsBox=document.getElementById('recentVendorsList');
-    if(!toolsBox||!vendorsBox) return;
-
-    // recent tools (our tracker)
-    var tools = lsRead('88st_recent_tools_v1', []);
-    if(!Array.isArray(tools)) tools=[];
-
-    // fallback: recent saved calcs (existing key) to avoid empty UI
-    if(!tools.length){
-      var calcHist = lsRead('88st_tool_history_v1', null);
-      var items = [];
-      if(Array.isArray(calcHist)) items = calcHist;
-      else if(calcHist && typeof calcHist==='object' && Array.isArray(calcHist.items)) items = calcHist.items;
-      tools = (items||[]).slice(0,4).map(function(e){
-        var t = (e && (e.title||e.tool||e.page||e.type)) ? String(e.title||e.tool||e.page||e.type) : '최근 계산';
-        var href = (e && (e.href||e.url)) ? String(e.href||e.url) : '/tool-margin/';
-        return {title: t, href: href, ts: e && (e.ts||e.time||e.date) ? Number(e.ts||e.time||e.date): 0};
-      });
-    }
-
-    var vendors = lsRead('88st_recent_vendors_v1', []);
-    if(!Array.isArray(vendors)) vendors=[];
-
-    function row(it){
-      var title=String(it.title||it.name||it.id||'');
-      var href=String(it.href||it.url||'/');
-      return '<a class="mini-item" href="'+href+'"><div><div class="t">'+esc(title)+'</div><div class="m">최근</div></div><div class="go">→</div></a>';
-    }
-    function esc(s){ return String(s||'').replace(/[&<>"]/g,function(c){return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])}); }
-
-    var tHtml='';
-    if(tools.length){
-      tHtml += '<div class="mini-item" style="justify-content:flex-start; gap:8px; border-style:dashed;">' +
-        '<div class="t">최근 사용한 도구</div><div class="m" style="margin-left:auto;">최대 4개</div></div>';
-      tHtml += tools.slice(0,4).map(function(it){
-        return '<a class="mini-item" href="'+String(it.href||'/')+'"><div><div class="t">'+esc(it.title||'도구')+'</div><div class="m">'+(it.ts? '방금 사용' : '최근')+'</div></div><div class="go">→</div></a>';
-      }).join('');
-    }else{
-      tHtml += '<div class="mini-item"><div><div class="t">최근 사용한 도구</div><div class="m">아직 없음 · 상단 START에서 하나만 실행해보세요</div></div><div class="go">→</div></div>';
-    }
-
-    var vHtml='';
-    if(vendors.length){
-      vHtml += '<div class="mini-item" style="justify-content:flex-start; gap:8px; border-style:dashed;">' +
-        '<div class="t">최근 본 업체</div><div class="m" style="margin-left:auto;">최대 4개</div></div>';
-      vHtml += vendors.slice(0,4).map(function(it){
-        var href = it.href || ('/cert/?v='+encodeURIComponent(it.id||''));
-        return '<a class="mini-item" href="'+href+'"><div><div class="t">'+esc(it.title||it.id||'업체')+'</div><div class="m">'+(it.ts? '최근' : '')+'</div></div><div class="go">→</div></a>';
-      }).join('');
-    }else{
-      vHtml += '<div class="mini-item"><div><div class="t">최근 본 업체</div><div class="m">아직 없음 · 인증사이트에서 카드 하나만 열어보세요</div></div><div class="go">→</div></div>';
-    }
-
-    toolsBox.innerHTML = tHtml;
-    vendorsBox.innerHTML = vHtml;
-  }
-
   function init(){
-    // Weekly summary
     var logs = lsRead('88st_betlog_v1', []);
     var wk = computeWeek(Array.isArray(logs)?logs:[]);
     var elR=document.getElementById('kpiWeekRoi');
@@ -481,20 +400,11 @@
     if(elC) elC.textContent = wk.cnt? String(wk.cnt) : '0';
     if(elM) elM.textContent = wk.cnt? fmtWon(wk.mdd) : '—';
 
-    // Today pattern
     var pat = pickDailyPattern();
     var pt=document.getElementById('todayPatternText');
     var ph=document.getElementById('todayPatternHint');
     if(pt) pt.textContent = pat.t;
     if(ph) ph.textContent = pat.h;
-
-    renderRecent();
-
-    // Keep fresh when coming back from logbook/cert
-    try{
-      document.addEventListener('visibilitychange', function(){ if(!document.hidden) renderRecent(); });
-      window.addEventListener('focus', function(){ renderRecent(); });
-    }catch(e){}
   }
 
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', init);

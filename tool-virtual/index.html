@@ -278,8 +278,22 @@
 <link href="/assets/vvip-pro.v71.css?v=71" rel="stylesheet"/>
 <script defer="" src="/assets/js/vvip-pro.v71.js?v=71"></script>
 <script defer="" src="/assets/js/vvip-brief.v71.js?v=71"></script>
-<script src="/assets/js/build.ver.js"></script>
-<script src="/assets/js/build.loader.js"></script>
+<script>
+(function(){
+  var t = Date.now();
+  function load(src, cb){
+    var s = document.createElement('script');
+    s.src = src;
+    s.async = false;
+    if(cb) s.onload = cb;
+    document.head.appendChild(s);
+  }
+  load('/assets/js/build.ver.js?t='+t, function(){
+    load('/assets/js/build.loader.js?t='+t);
+  });
+})();
+</script>
+
 
 </head>
 <body>

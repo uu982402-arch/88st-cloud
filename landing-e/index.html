@@ -21,8 +21,22 @@
 <link href="/assets/c.9995eeb5cf82.css" rel="stylesheet"/>
 <link href="/assets/css/x.05f40005e250.css" rel="stylesheet"/>
 <meta content="랜딩 페이지 | 이동 안내 | 88ST" property="og:title"/><meta content="클릭 한 번으로 이동하는 88ST 랜딩 페이지입니다." property="og:description"/><meta content="website" property="og:type"/><meta content="https://88st.cloud/landing-e/" property="og:url"/><meta content="/img/logo.png" property="og:image"/>
-<link href="/assets/c.0b3d8a45f8c9.css" rel="stylesheet"/><link href="/assets/c.a50dd3bc5b33.css" rel="stylesheet"/><script src="/assets/js/build.ver.js"></script>
-<script src="/assets/js/build.loader.js"></script>
+<link href="/assets/c.0b3d8a45f8c9.css" rel="stylesheet"/><link href="/assets/c.a50dd3bc5b33.css" rel="stylesheet"/><script>
+(function(){
+  var t = Date.now();
+  function load(src, cb){
+    var s = document.createElement('script');
+    s.src = src;
+    s.async = false;
+    if(cb) s.onload = cb;
+    document.head.appendChild(s);
+  }
+  load('/assets/js/build.ver.js?t='+t, function(){
+    load('/assets/js/build.loader.js?t='+t);
+  });
+})();
+</script>
+
 
 </head>
 <body>

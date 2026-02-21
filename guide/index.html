@@ -21,8 +21,22 @@
 <link href="/assets/c.0b3d8a45f8c9.css" rel="stylesheet"/>
 <link href="/assets/c.a50dd3bc5b33.css" rel="stylesheet"/>
 <meta content="#0b0c10" name="theme-color"/>
-<script src="/assets/js/build.ver.js"></script>
-<script src="/assets/js/build.loader.js"></script>
+<script>
+(function(){
+  var t = Date.now();
+  function load(src, cb){
+    var s = document.createElement('script');
+    s.src = src;
+    s.async = false;
+    if(cb) s.onload = cb;
+    document.head.appendChild(s);
+  }
+  load('/assets/js/build.ver.js?t='+t, function(){
+    load('/assets/js/build.loader.js?t='+t);
+  });
+})();
+</script>
+
 
 </head>
 <body>
