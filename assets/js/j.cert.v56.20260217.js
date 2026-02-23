@@ -7,13 +7,57 @@
 (() => {
   'use strict';
 
-  const CARDS = {
+  let CARDS = {
         card1: { title: 'VEGAS', code: '6789', link: 'https://las403.com', telegram: 'UZU59', landing: '/cert/vegas/', hero: '/img/landing/vegas-landing.webp',
       benefit: '스포츠·고액전용 입플 최대 30% 페이백 / 카지노 입플',
       notice: '가입코드 미입력 시 혜택 적용 불가' },
     card3: { title: '777 Bet', code: '6767', link: 'https://82clf.com/?code=6767', telegram: 'UZU59', landing: '/cert/777/', hero: '/img/landing/777-landing.webp',
       benefit: '가입코드 6767 전용 혜택 / 스포츠·카지노 이용 가능',
       notice: '가입코드 미입력 시 혜택 적용 불가' },
+  };
+
+  const CERT_CFG_URL = '/assets/config/cert.landing.json';
+  let __certCfg = null;
+  let __certTelegram = 'https://t.me/UZU59';
+
+  const applyCertCfg = (cfg) => {
+    try {
+      if (!cfg || cfg.enabled === false) return;
+      if (cfg.telegram) __certTelegram = String(cfg.telegram);
+      const vendors = cfg.vendors || {};
+      Object.keys(vendors).forEach((k) => {
+        const v = vendors[k] || {};
+        const id = v.id;
+        if (!id) return;
+        if (!CARDS[id]) CARDS[id] = {};
+        CARDS[id] = {
+          ...CARDS[id],
+          title: v.title ?? CARDS[id].title,
+          code: (v.code ?? CARDS[id].code ?? '') + '',
+          link: v.join_url ?? CARDS[id].link,
+          landing: v.landing_path ?? CARDS[id].landing,
+          hero: v.hero_image ?? CARDS[id].hero,
+          thumb: v.thumb_image ?? CARDS[id].thumb,
+          benefit: v.benefit ?? CARDS[id].benefit,
+          notice: v.notice ?? CARDS[id].notice,
+          telegram_url: v.telegram_url ?? __certTelegram,
+        };
+      });
+      try { window.__CERT_TELEGRAM = __certTelegram; } catch {}
+    } catch { /* ignore */ }
+  };
+
+  const loadCertCfg = async () => {
+    try {
+      const ac = (typeof AbortController !== 'undefined') ? new AbortController() : null;
+      const t = ac ? setTimeout(() => { try { ac.abort(); } catch {} }, 2200) : null;
+      const res = await fetch(CERT_CFG_URL, { cache: 'no-store', signal: ac ? ac.signal : undefined });
+      if (t) clearTimeout(t);
+      if (!res || !res.ok) return;
+      const cfg = await res.json();
+      __certCfg = cfg;
+      applyCertCfg(cfg);
+    } catch { /* ignore */ }
   };
 
   const TOP_IDS = ['card1','card3'];
@@ -115,15 +159,16 @@ const certThumbSvgDataUri = (rawId) => {
   };
 
 const cardSourcesById = (id) => {
-    // v100: 인증업체 카드 썸네일 경로를 /cert/img1.webp, /cert/img2.webp 로 고정
-    // - card1 -> img1.webp
-    // - card3 -> img2.webp
-    // 이미지가 누락된 경우를 대비해 jpg 단계에 data URI(SVG) 폴백을 둡니다.
-    const map = {
-      card1: '/img/img1.webp?v=v20260223-2345',
-      card3: '/img/img2.webp?v=v20260223-2345',
+    // 인증업체 카드 썸네일 경로:
+    // - config의 thumb_image가 있으면 그걸 우선 사용
+    // - 없으면 card1/img1.webp, card3/img2.webp 기본값 사용
+    const fallback = {
+      card1: '/img/img1.webp',
+      card3: '/img/img2.webp',
     };
-    const webp = map[id] || '/img/logo.png?v=v20260223-2245';
+    const c = (CARDS && CARDS[id]) ? CARDS[id] : {};
+    const base = (c && c.thumb) ? String(c.thumb) : (fallback[id] || '/img/logo.png');
+    const webp = base;
     return { gif: '', gif2: '', webp, jpg: certThumbSvgDataUri(id) };
   };
 
@@ -378,7 +423,8 @@ const cardSourcesById = (id) => {
 
     const tgEl = $('pTelegram');
     if (tgEl) {
-      tgEl.href = 'https://t.me/UZU59';
+      const tg = (c.telegram_url || __certTelegram || window.__CERT_TELEGRAM || 'https://t.me/UZU59');
+      tgEl.href = tg;
       tgEl.innerText = '문의 (텔레그램)';
     }
 
@@ -501,8 +547,9 @@ const cardSourcesById = (id) => {
     await copyText(url, '링크가 복사되었습니다');
   };
 
-  const init = () => {
+  const init = async () => {
     try { if (typeof window.saveUtmFromUrl === 'function') window.saveUtmFromUrl(); } catch { /* ignore */ }
+    await loadCertCfg();
 
     // Controls
     const filterSel = $('filterSelect');
