@@ -435,3 +435,216 @@
 
     try{ patchCommunityNav(); }catch(e){}
 })();
+
+/* OPS console: optional global DOM patch rules (deploy + local override) */
+;(function(){
+  const LOCAL_KEY = 'vvip_ops_dom_patch_v1';
+  const DEPLOY_URL = '/assets/config/ops.dom.patch.json';
+  const BUILD_VER = (window.__BUILD_VER || '0') + '';
+  const REMOTE_CACHE_KEY = '__ops_deploy_patch_cache_v1';
+  const REMOTE_CACHE_TTL_MS = 60 * 1000; // 60s (fast ops iteration)
+
+  let remoteCfg = null;
+  let remoteTried = false;
+
+  function safeParse(s, fallback){
+    try{ return JSON.parse(s); }catch(_){ return fallback; }
+  }
+
+  function normalize(cfg){
+    if(!cfg || typeof cfg !== 'object') return null;
+    const out = {
+      enabled: cfg.enabled === true,
+      mode: String(cfg.mode || 'merge'),
+      rules: Array.isArray(cfg.rules) ? cfg.rules : []
+    };
+    // sanitize
+    out.rules = out.rules
+      .filter(r=>r && typeof r === 'object')
+      .map(r=>({
+        selector: String(r.selector || '').trim(),
+        type: String(r.type || '').trim(),
+        attr: String(r.attr || '').trim(),
+        value: (r.value == null) ? '' : String(r.value)
+      }))
+      .filter(r=>!!r.selector);
+    // safety caps
+    if(out.rules.length > 200) out.rules = out.rules.slice(0, 200);
+    return out;
+  }
+
+  function readLocal(){
+    try{
+      const raw = localStorage.getItem(LOCAL_KEY);
+      if(!raw) return null;
+      return normalize(safeParse(raw, null));
+    }catch(e){
+      return null;
+    }
+  }
+
+  function readRemoteCache(){
+    try{
+      const raw = sessionStorage.getItem(REMOTE_CACHE_KEY);
+      if(!raw) return null;
+      const wrap = safeParse(raw, null);
+      if(!wrap || typeof wrap !== 'object') return null;
+      const ts = Number(wrap.ts || 0);
+      if(!ts || (Date.now() - ts) > REMOTE_CACHE_TTL_MS) return null;
+      return normalize(wrap.cfg);
+    }catch(e){
+      return null;
+    }
+  }
+
+  function writeRemoteCache(cfg){
+    try{
+      sessionStorage.setItem(REMOTE_CACHE_KEY, JSON.stringify({ts: Date.now(), cfg}));
+    }catch(e){}
+  }
+
+  async function loadRemote(){
+    if(remoteTried) return remoteCfg;
+    remoteTried = true;
+
+    // session cache
+    const cached = readRemoteCache();
+    if(cached){ remoteCfg = cached; return remoteCfg; }
+
+    try{
+      if(!('fetch' in window)) return null;
+      const url = DEPLOY_URL + (DEPLOY_URL.indexOf('?')>=0 ? '&' : '?') + 'v=' + encodeURIComponent(BUILD_VER) + '&t=' + Date.now();
+      const res = await fetch(url, { cache: 'no-store', credentials: 'same-origin' });
+      if(!res || !res.ok) return null;
+      const data = await res.json().catch(()=>null);
+      const norm = normalize(data);
+      remoteCfg = norm;
+      if(norm) writeRemoteCache(norm);
+      return remoteCfg;
+    }catch(e){
+      return null;
+    }
+  }
+
+  function applyOne(rule){
+    try{
+      if(!rule || typeof rule !== 'object') return;
+      const sel = String(rule.selector||'').trim();
+      if(!sel) return;
+      const type = String(rule.type||'').trim();
+      const value = (rule.value==null) ? '' : String(rule.value);
+      const attr = String(rule.attr||'').trim();
+
+      let nodes = [];
+      try{ nodes = Array.from(document.querySelectorAll(sel)); }catch(_){ return; }
+      if(!nodes.length) return;
+
+      // Safety caps
+      if(nodes.length > 500) nodes = nodes.slice(0, 500);
+
+      nodes.forEach(n=>{
+        try{
+          switch(type){
+            case 'text':
+              n.textContent = value;
+              break;
+            case 'html':
+              n.innerHTML = value;
+              break;
+            case 'attr':
+              if(attr) n.setAttribute(attr, value);
+              break;
+            case 'hide':
+              n.dataset.opsHidden = '1';
+              n.style.setProperty('display','none','important');
+              n.style.setProperty('visibility','hidden','important');
+              n.style.setProperty('pointer-events','none','important');
+              break;
+            case 'show':
+              if(n.dataset.opsHidden === '1') delete n.dataset.opsHidden;
+              n.style.removeProperty('display');
+              n.style.removeProperty('visibility');
+              n.style.removeProperty('pointer-events');
+              break;
+            case 'addClass':
+              if(value) n.classList.add(value);
+              break;
+            case 'removeClass':
+              if(value) n.classList.remove(value);
+              break;
+            default:
+              break;
+          }
+        }catch(e){}
+      });
+    }catch(e){}
+  }
+
+  function effectiveConfig(){
+    const local = readLocal();
+    const remote = remoteCfg;
+
+    // Local override mode
+    if(local && local.mode === 'override'){
+      return local.enabled ? local : {enabled:false, rules:[]};
+    }
+
+    const rules = [];
+    let enabled = false;
+
+    if(remote && remote.enabled){
+      enabled = true;
+      if(Array.isArray(remote.rules)) rules.push.apply(rules, remote.rules);
+    }
+
+    if(local && local.enabled){
+      enabled = true;
+      if(Array.isArray(local.rules)) rules.push.apply(rules, local.rules);
+    }
+
+    // Safety cap (remote + local)
+    if(rules.length > 160) rules.length = 160;
+
+    return { enabled, rules };
+  }
+
+  function applyAll(){
+    try{
+      const p = location.pathname || '/';
+      if(p.startsWith('/ops')) return; // do not self-patch console
+
+      const cfg = effectiveConfig();
+      if(!cfg || cfg.enabled !== true) return;
+      const rules = Array.isArray(cfg.rules) ? cfg.rules : [];
+      if(!rules.length) return;
+
+      rules.forEach(applyOne);
+    }catch(e){}
+  }
+
+  function boot(){
+    // 1) apply local immediately
+    applyAll();
+
+    // 2) fetch deploy config and re-apply
+    try{
+      loadRemote().then(()=>{ applyAll(); }).catch(()=>{});
+    }catch(e){}
+
+    // 3) Late-render safety window
+    try{
+      let ticks = 0;
+      const iv = setInterval(()=>{
+        applyAll();
+        if(++ticks >= 10) clearInterval(iv);
+      }, 320);
+
+      const mo = new MutationObserver(()=>{ applyAll(); });
+      mo.observe(document.documentElement, {childList:true, subtree:true});
+      setTimeout(()=>{ try{ mo.disconnect(); }catch(e){} }, 2600);
+    }catch(e){}
+  }
+
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+  else boot();
+})();

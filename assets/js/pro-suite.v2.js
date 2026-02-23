@@ -813,10 +813,8 @@
       var t = qs(document,'#copyToast');
       if(!t) return;
       t.textContent = msg;
-      // Support both legacy (.show) and current (.on) toast class names.
       t.classList.add('show');
-      t.classList.add('on');
-      setTimeout(function(){ t.classList.remove('show'); t.classList.remove('on'); }, 1600);
+      setTimeout(function(){ t.classList.remove('show'); }, 1600);
     }
 
     function getCode(){
@@ -1591,37 +1589,16 @@
       var code = pickText('#pCode');
       var ben = pickText('#pBenefit');
       var no = pickText('#pNotice');
-      // Only write when changed to avoid MutationObserver feedback loops.
-      var c = qs(sum,'[data-sum="code"]');
-      if(c && (c.textContent||'') !== code) c.textContent = code;
-      var b = qs(sum,'[data-sum="benefit"]');
-      if(b && (b.textContent||'') !== ben) b.textContent = ben;
-      var n = qs(sum,'[data-sum="notice"]');
-      if(n && (n.textContent||'') !== no) n.textContent = no;
+      var c = qs(sum,'[data-sum="code"]'); if(c) c.textContent = code;
+      var b = qs(sum,'[data-sum="benefit"]'); if(b) b.textContent = ben;
+      var n = qs(sum,'[data-sum="notice"]'); if(n) n.textContent = no;
     }
 
     update();
     try{
       if(window.MutationObserver){
-        // Observe ONLY the source fields (#pCode/#pBenefit/#pNotice).
-        // Observing the whole box can create an infinite microtask loop because
-        // update() writes into the box itself.
-        var scheduled = false;
-        var schedule = function(){
-          if(scheduled) return;
-          scheduled = true;
-          (window.requestAnimationFrame || setTimeout)(function(){
-            scheduled = false;
-            update();
-          }, 0);
-        };
-        var mo = new MutationObserver(function(){ schedule(); });
-        var t1 = qs(box,'#pCode');
-        var t2 = qs(box,'#pBenefit');
-        var t3 = qs(box,'#pNotice');
-        [t1,t2,t3].forEach(function(t){
-          if(t) mo.observe(t, {subtree:true, childList:true, characterData:true});
-        });
+        var mo = new MutationObserver(function(){ update(); });
+        mo.observe(box, {subtree:true, childList:true, characterData:true});
       }
     }catch(e){}
   }
