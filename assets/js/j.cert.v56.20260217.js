@@ -8,10 +8,10 @@
   'use strict';
 
   const CARDS = {
-    card1: { title: 'VEGAS', code: '6789', link: 'https://las403.com', telegram: 'UZU59',
+        card1: { title: 'VEGAS', code: '6789', link: 'https://las403.com', telegram: 'UZU59', landing: '/cert/vegas/', hero: '/img/landing/vegas-landing.webp',
       benefit: '스포츠·고액전용 입플 최대 30% 페이백 / 카지노 입플',
       notice: '가입코드 미입력 시 혜택 적용 불가' },
-card3: { title: '777 Bet', code: '6767', link: 'https://82clf.com/?code=6767', telegram: 'UZU59',
+    card3: { title: '777 Bet', code: '6767', link: 'https://82clf.com/?code=6767', telegram: 'UZU59', landing: '/cert/777/', hero: '/img/landing/777-landing.webp',
       benefit: '가입코드 6767 전용 혜택 / 스포츠·카지노 이용 가능',
       notice: '가입코드 미입력 시 혜택 적용 불가' },
   };
@@ -120,10 +120,10 @@ const cardSourcesById = (id) => {
     // - card3 -> img2.webp
     // 이미지가 누락된 경우를 대비해 jpg 단계에 data URI(SVG) 폴백을 둡니다.
     const map = {
-      card1: '/img/img1.webp?v=104',
-      card3: '/img/img2.webp?v=104',
+      card1: '/img/img1.webp?v=v20260223-2345',
+      card3: '/img/img2.webp?v=v20260223-2345',
     };
-    const webp = map[id] || '/img/logo.png?v=104';
+    const webp = map[id] || '/img/logo.png?v=v20260223-2245';
     return { gif: '', gif2: '', webp, jpg: certThumbSvgDataUri(id) };
   };
 
@@ -133,13 +133,22 @@ const cardSourcesById = (id) => {
   };
 
   const shareLinkFor = (id) => {
+    const c = CARDS[id] || {};
+    const destPath = c.landing || '/cert/';
     try {
-      const u = new URL(window.location.href);
-      u.pathname = '/cert/';
-      u.search = `?v=${encodeURIComponent(id)}`;
-      return u.toString();
+      const src = new URL(window.location.href);
+      // Build a clean share url while preserving only utm/ref params (if present)
+      const keep = new URLSearchParams();
+      const sp = new URLSearchParams(src.search);
+      for (const [k,v] of sp.entries()) {
+        if (k.startsWith('utm_') || k === 'ref') keep.set(k, v);
+      }
+      src.pathname = destPath;
+      src.search = keep.toString() ? `?${keep.toString()}` : '';
+      src.hash = '';
+      return src.toString();
     } catch {
-      return `/cert/?v=${encodeURIComponent(id)}`;
+      return destPath;
     }
   };
 
@@ -329,6 +338,38 @@ const cardSourcesById = (id) => {
 
     setPopupText();
 
+    // 1-sec pre-landing (hero image + dedicated landing URL)
+    const landingPath = c.landing || shareLinkFor(id);
+    const landingUrl = (() => {
+      try {
+        const u = new URL(window.location.href);
+        u.pathname = landingPath;
+        // keep only utm/ref params
+        const keep = new URLSearchParams();
+        const sp = new URLSearchParams(u.search);
+        for (const [k,v] of sp.entries()) { if (k.startsWith('utm_') || k === 'ref') keep.set(k, v); }
+        u.search = keep.toString() ? `?${keep.toString()}` : '';
+        u.hash = '';
+        return u.toString();
+      } catch { return landingPath; }
+    })();
+
+    const heroLink = $('pLandingHeroLink');
+    const heroImg = $('pHero');
+    const landingBtn = $('pLanding');
+
+    if (heroLink) heroLink.href = landingUrl;
+    if (landingBtn) landingBtn.href = landingUrl;
+
+    if (heroImg && c.hero) {
+      heroImg.src = c.hero;
+      try { heroImg.style.display = 'block'; } catch { /* ignore */ }
+      try { if (heroLink) heroLink.style.display = 'block'; } catch { /* ignore */ }
+    } else {
+      try { if (heroImg) heroImg.src = ''; } catch { /* ignore */ }
+      try { if (heroLink) heroLink.style.display = 'none'; } catch { /* ignore */ }
+    }
+
     const linkEl = $('pLink');
     if (linkEl) linkEl.href = c.link ? appendUtmSafe(c.link) : '#';
 
@@ -343,7 +384,7 @@ const cardSourcesById = (id) => {
 
     // Recent + fav
     try {
-      if (window.__88stAddRecentVendor) window.__88stAddRecentVendor({ id, title: c.title || id, href: `/cert/?v=${encodeURIComponent(id)}` });
+      if (window.__88stAddRecentVendor) window.__88stAddRecentVendor({ id, title: c.title || id, href: (c.landing || `/cert/?v=${encodeURIComponent(id)}`) });
       if (window.__88stRefreshUserMenu) window.__88stRefreshUserMenu();
     } catch { /* ignore */ }
 

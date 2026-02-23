@@ -98,6 +98,20 @@
       "/assets/js/pro-suite.v2.js"
     ];
 
+
+    // --- Page-specific bundle gating (stability-first) ---
+    // /cert is latency/interaction-sensitive and already has its own page script (j.cert).
+    // Loading heavy PRO SUITE here can cause freezes in some browsers (Firefox) and can interfere with the popup lifecycle.
+    // So we skip PRO SUITE assets on /cert and /ops.
+    try {
+      var __p = (window.location && window.location.pathname) ? (window.location.pathname + "") : "/";
+      var __isCert = __p.indexOf("/cert") === 0;
+      var __isOps = __p.indexOf("/ops") === 0;
+      if (__isCert || __isOps) {
+        cssList = cssList.filter(function (href) { return href.indexOf("pro-suite") === -1; });
+        jsList  = jsList.filter(function (src)  { return src.indexOf("pro-suite") === -1; });
+      }
+    } catch (e) {}
     // In OPS smoke mode, skip heavy global bundles. Page-specific scripts still run (e.g., j.cert).
     if (__smokeOn) {
       jsList = [];

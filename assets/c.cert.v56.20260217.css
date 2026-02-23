@@ -39,3 +39,8 @@
   filter: grayscale(.25);
   pointer-events: none;
 }
+
+/* Promo hero in popup (1-sec pre-landing) */
+.promo-hero-link{display:block;margin:10px 2px 8px;text-decoration:none}
+.promo-hero{width:100%;max-height:300px;object-fit:cover;object-position:top;border-radius:20px;border:1px solid rgba(20,24,34,.12);background:rgba(0,0,0,.06);box-shadow:0 18px 55px rgba(0,0,0,.12)}
+@media (max-width:420px){.promo-hero{max-height:260px}}
