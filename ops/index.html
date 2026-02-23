@@ -16,8 +16,8 @@
   <link rel="stylesheet" href="/assets/css/hdr.shell.v1.20260221.css?v=119"/>
 
   <!-- Global asset loader (cache-busted via build.ver.js) -->
-  <script defer src="/assets/js/build.ver.js?v=v20260223-1830"></script>
-  <script defer src="/assets/js/build.loader.js?v=v20260223-1830"></script>
+  <script defer src="/assets/js/build.ver.js?v=v20260223-2030"></script>
+  <script defer src="/assets/js/build.loader.js?v=v20260223-2030"></script>
 
   <style>
     :root{ --opsMax: 1040px; }
@@ -772,6 +772,7 @@
             smokeUpdate(token, { st:'TIMEOUT', nt:'응답 시간 초과(9s)' });
             smoke.results.push({ token, path, ok:false, timeout:true });
             if(smokeJson) smokeJson.value = JSON.stringify(smoke.results, null, 2);
+            try{ if(smoke.win && !smoke.win.closed) smoke.win.location.replace('about:blank'); }catch(e){}
             smokeNext();
           }, 9000);
         }
@@ -883,7 +884,10 @@
               smoke.results.push({ token, path: st.path, ok: !!d.ok, state: st });
               if(smokeJson) smokeJson.value = JSON.stringify(smoke.results, null, 2);
 
-              setTimeout(smokeNext, 120);
+              // Unload popup ASAP to avoid slow-script warnings during batch checks.
+              try{ if(smoke.win && !smoke.win.closed) smoke.win.location.replace('about:blank'); }catch(e3){}
+
+              setTimeout(smokeNext, 180);
             }catch(err){
               // ignore
             }
