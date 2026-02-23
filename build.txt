@@ -1,5 +1,5 @@
-build=v20260223-1545-v126
-note=v126 cta-modal-safety + global track stub + html cache bust sync
+build=v20260223-1745-v128
+note=v128 hotfix: vvip-global syntax fix (restored full JS execution) + cache bust
 commit=
 branch=
 assets_css=/assets/css/vvip-luxe.v75.css,/assets/css/vvip-hub.v85.css,/assets/css/patch.v100.premiumdash.20260222.css,/assets/css/pro-suite.v2.css

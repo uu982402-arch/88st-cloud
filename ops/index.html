@@ -16,8 +16,8 @@
   <link rel="stylesheet" href="/assets/css/hdr.shell.v1.20260221.css?v=119"/>
 
   <!-- Global asset loader (cache-busted via build.ver.js) -->
-  <script defer src="/assets/js/build.ver.js?v=v20260223-1545"></script>
-  <script defer src="/assets/js/build.loader.js?v=v20260223-1545"></script>
+  <script defer src="/assets/js/build.ver.js?v=v20260223-1745"></script>
+  <script defer src="/assets/js/build.loader.js?v=v20260223-1745"></script>
 
   <style>
     :root{ --opsMax: 1040px; }
@@ -179,7 +179,38 @@
         <div class="opsFooter">
           적용 키: <code>vvip_ops_dom_patch_v1</code> · 세션 키: <code>vvip_ops_authed_v1</code>
         </div>
+      
+      <!-- SMOKE CHECK -->
+      <section class="opsCard opsSection" style="margin-top:14px;">
+        <h2>전체 페이지 CTA 스모크 체크</h2>
+        <div class="hint">
+          배포 전 자동 점검용입니다. 주요 페이지를 순차적으로 열어 <b>JS 에러/필수 함수/CTA 클릭 가능/인증 모달 오픈</b>을 빠르게 확인합니다.
+          (보안 헤더로 iframe 테스트가 불가하여, 작은 팝업 창 1개를 재사용합니다.)
+        </div>
+        <div class="opsFlex">
+          <button id="opsSmokeRun" class="opsMiniBtn" type="button">전체 점검 실행</button>
+          <button id="opsSmokeStop" class="opsMiniBtn" type="button" disabled>중지</button>
+          <span id="opsSmokeStatus" class="opsMsg" style="margin:0;"></span>
+        </div>
+
+        <table class="opsTable" aria-label="스모크 체크 결과">
+          <thead>
+            <tr>
+              <th style="width:24%">page</th>
+              <th style="width:10%">status</th>
+              <th style="width:10%">errors</th>
+              <th style="width:14%">CTA (click/total)</th>
+              <th style="width:14%">cert modal</th>
+              <th>note</th>
+            </tr>
+          </thead>
+          <tbody id="opsSmokeBody"></tbody>
+        </table>
+
+        <textarea id="opsSmokeJson" class="opsArea" spellcheck="false" placeholder="(자동) 상세 결과 JSON — 필요 시 복사해서 공유/보관"></textarea>
       </section>
+
+</section>
     </section>
   </main>
 
@@ -468,7 +499,7 @@
         }catch(e){
           patchMsg('내보내기 생성됨 (텍스트 영역에서 복사)', false);
         }
-
+      }
 
       async function loadDeploy(){
         try{
@@ -532,7 +563,6 @@
         }catch(e){
           patchMsg('다운로드 생성 실패 (텍스트를 수동 저장하세요)', true);
         }
-      }
       }
 
       function importPatch(){
@@ -637,8 +667,232 @@
               caches.keys().then(keys=>Promise.all(keys.map(k=>caches.delete(k)))).catch(()=>{});
             }
           }catch(e){}
-          setTimeout(()=>location.reload(), 250);
+  
+        setTimeout(()=>location.reload(), 250);
         });
+
+        // --- CTA Smoke Check (popup-based; iframe blocked by security headers) ---
+        const smokeRunBtn = $('opsSmokeRun');
+        const smokeStopBtn = $('opsSmokeStop');
+        const smokeBody = $('opsSmokeBody');
+        const smokeJson = $('opsSmokeJson');
+        const smokeStatus = $('opsSmokeStatus');
+
+        const smoke = { running:false, stop:false, idx:0, queue:[], results:[], rows:{}, win:null, timer:null, pendingToken:'', pendingPath:'' };
+
+        function smokeSetStatus(text, isErr){
+          if(!smokeStatus) return;
+          smokeStatus.textContent = text || '';
+          smokeStatus.className = 'opsMsg' + (isErr ? ' opsErr' : '');
+        }
+
+        function smokeRow(token, path){
+          if(!smokeBody) return;
+          smoke.rows[token] = true;
+          const tr = document.createElement('tr');
+          tr.id = 'smk_' + token;
+          tr.innerHTML = `
+            <td><code>${esc(path)}</code></td>
+            <td data-k="st">…</td>
+            <td data-k="er">0</td>
+            <td data-k="cta">-</td>
+            <td data-k="md">-</td>
+            <td data-k="nt">-</td>
+          `;
+          smokeBody.appendChild(tr);
+        }
+
+        function smokeUpdate(token, patch){
+          const tr = document.getElementById('smk_' + token);
+          if(!tr) return;
+          const set = (k, v)=>{
+            const td = tr.querySelector('[data-k="'+k+'"]');
+            if(td) td.textContent = v;
+          };
+          if(patch.st != null) set('st', patch.st);
+          if(patch.er != null) set('er', patch.er);
+          if(patch.cta != null) set('cta', patch.cta);
+          if(patch.md != null) set('md', patch.md);
+          if(patch.nt != null) set('nt', patch.nt);
+        }
+
+        function smokeEnsureWin(){
+          try{
+            if(smoke.win && !smoke.win.closed) return smoke.win;
+          }catch(e){}
+          try{
+            smoke.win = window.open('about:blank', '88stSmokeCheck', 'popup,width=420,height=760');
+            return smoke.win;
+          }catch(e){
+            return null;
+          }
+        }
+
+        function smokeToken(){
+          return 't' + Date.now().toString(36) + Math.random().toString(36).slice(2,8);
+        }
+
+        function smokeNext(){
+          if(!smoke.running) return;
+          if(smoke.stop || smoke.idx >= smoke.queue.length){
+            smokeFinish();
+            return;
+          }
+
+          const path = smoke.queue[smoke.idx];
+          smoke.idx++;
+
+          const token = smokeToken();
+          smoke.pendingToken = token;
+          smoke.pendingPath = path;
+
+          smokeRow(token, path);
+          smokeUpdate(token, { st: 'LOADING', nt: '' });
+
+          const w = smokeEnsureWin();
+          if(!w){
+            smokeUpdate(token, { st:'POPUP BLOCKED', nt:'브라우저 팝업 차단 해제 필요' });
+            smokeSetStatus('팝업이 차단되었습니다. 88st.cloud 팝업 허용 후 다시 실행하세요.', true);
+            smokeFinish(true);
+            return;
+          }
+
+          smokeSetStatus(`진행: ${smoke.idx}/${smoke.queue.length}  ${path}`, false);
+
+          const url = path + (path.indexOf('?')>=0 ? '&' : '?')
+            + 'smoke=1'
+            + '&smoke_token=' + encodeURIComponent(token)
+            + '&smoke_origin=' + encodeURIComponent(location.origin)
+            + '&t=' + Date.now();
+
+          try{ w.location.href = url; }catch(e){}
+
+          try{ clearTimeout(smoke.timer); }catch(e){}
+          smoke.timer = setTimeout(()=>{
+            smokeUpdate(token, { st:'TIMEOUT', nt:'응답 시간 초과(9s)' });
+            smoke.results.push({ token, path, ok:false, timeout:true });
+            if(smokeJson) smokeJson.value = JSON.stringify(smoke.results, null, 2);
+            smokeNext();
+          }, 9000);
+        }
+
+        function smokeFinish(isErr){
+          smoke.running = false;
+          smoke.stop = false;
+          try{ clearTimeout(smoke.timer); }catch(e){}
+          if(smokeRunBtn) smokeRunBtn.disabled = false;
+          if(smokeStopBtn) smokeStopBtn.disabled = true;
+
+          const fails = smoke.results.filter(r=>r && r.ok === false).length;
+          const total = smoke.results.length || 0;
+          smokeSetStatus(isErr ? '중단됨' : (`완료: ${total}개 중 실패 ${fails}개`), !!(isErr || fails));
+
+          try{
+            if(smoke.win && !smoke.win.closed){
+              // close after a short delay (optional)
+              setTimeout(()=>{ try{ smoke.win.close(); }catch(e){} }, 250);
+            }
+          }catch(e){}
+        }
+
+        function smokeStart(){
+          if(smoke.running) return;
+
+          smoke.running = true;
+          smoke.stop = false;
+          smoke.idx = 0;
+          smoke.results = [];
+          smoke.rows = {};
+          smoke.pendingToken = '';
+          smoke.pendingPath = '';
+          if(smokeBody) smokeBody.innerHTML = '';
+          if(smokeJson) smokeJson.value = '';
+
+          if(smokeRunBtn) smokeRunBtn.disabled = true;
+          if(smokeStopBtn) smokeStopBtn.disabled = false;
+
+          // Use quick links as smoke targets (dedupe)
+          smoke.queue = (linkItems || []).map(x=>x.path).filter(p=>!!p && p !== '/ops/' && p !== '/ops');
+          smoke.queue = smoke.queue.filter((p, i, a)=>a.indexOf(p) === i);
+
+          smokeSetStatus('점검 시작… (팝업 창을 닫지 마세요)', false);
+
+          const w = smokeEnsureWin();
+          if(!w){
+            smokeSetStatus('팝업이 차단되었습니다. 88st.cloud 팝업 허용 후 다시 실행하세요.', true);
+            smokeFinish(true);
+            return;
+          }
+
+          smokeNext();
+        }
+
+        function smokeStopNow(){
+          smoke.stop = true;
+          smokeSetStatus('중지 요청됨…', true);
+        }
+
+        // One-time listener
+        if(!window.__OPS_SMOKE_LISTENER){
+          window.__OPS_SMOKE_LISTENER = 1;
+          window.addEventListener('message', (e)=>{
+            try{
+              if(e.origin !== location.origin) return;
+              const d = e.data || {};
+              if(!d.__88st_smoke) return;
+
+              const token = (d.token || '') + '';
+              if(!token) return;
+
+              // boot phase
+              if(d.phase === 'boot'){
+                if(smoke.rows[token]) smokeUpdate(token, { st:'BOOT' });
+                return;
+              }
+
+              // final report
+              if(!d.state || typeof d.ok !== 'boolean') return;
+
+              if(token !== smoke.pendingToken){
+                // ignore unexpected token (stale)
+              }
+
+              try{ clearTimeout(smoke.timer); }catch(e2){}
+
+              const st = d.state || {};
+              const chk = st.checks || {};
+              const errCount = (st.errors ? st.errors.length : 0) + (st.rejections ? st.rejections.length : 0);
+
+              const cta = (chk.cta_clickable != null && chk.cta_total != null) ? `${chk.cta_clickable}/${chk.cta_total}` : '-';
+              const md = (st.path && st.path.indexOf('/cert')===0) ? (chk.cert_modal_opens ? 'OK' : (chk.cert_modal_exists ? 'FAIL' : 'N/A')) : 'N/A';
+
+              const noteParts = [];
+              if(!chk.track) noteParts.push('track 미검출');
+              if(errCount) noteParts.push('JS 에러');
+              if((chk.cta_total || 0) > 0 && (chk.cta_clickable || 0) === 0) noteParts.push('CTA 클릭 불가');
+              if(st.path && st.path.indexOf('/cert')===0 && chk.cert_modal_exists && !chk.cert_modal_opens) noteParts.push('인증 모달 불가');
+
+              smokeUpdate(token, {
+                st: d.ok ? 'PASS' : 'FAIL',
+                er: String(errCount),
+                cta: cta,
+                md: md,
+                nt: noteParts.join(' · ') || ''
+              });
+
+              smoke.results.push({ token, path: st.path, ok: !!d.ok, state: st });
+              if(smokeJson) smokeJson.value = JSON.stringify(smoke.results, null, 2);
+
+              setTimeout(smokeNext, 120);
+            }catch(err){
+              // ignore
+            }
+          });
+        }
+
+        if(smokeRunBtn) smokeRunBtn.addEventListener('click', smokeStart);
+        if(smokeStopBtn) smokeStopBtn.addEventListener('click', smokeStopNow);
+
       }
 
       // Boot
