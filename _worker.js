@@ -57,6 +57,16 @@ if (path === '/community' || path.startsWith('/community/')) {
   return Response.redirect(target, 302);
 }
 
+
+      // OPS deploy patch config: always no-store (fast operations)
+      if (path === '/assets/config/ops.dom.patch.json') {
+        const res = await env.ASSETS.fetch(request);
+        const h = new Headers(res.headers);
+        h.set('cache-control', 'no-store, no-cache, must-revalidate, max-age=0');
+        h.set('pragma', 'no-cache');
+        h.set('expires', '0');
+        return new Response(res.body, { status: res.status, headers: h });
+      }
       // Static fallthrough
       return env.ASSETS.fetch(request);
 
