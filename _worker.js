@@ -16,6 +16,30 @@ export default {
       const path = rawPath.replace(/\/+$/, '') || '/';
       const method = request.method.toUpperCase();
 
+      // Fix: Chrome/Edge speculative prefetch can receive a Cloudflare "speculation refused" 503 and then
+      // poison subsequent navigations ("503 from prefetch cache").
+      // We normalize speculative requests by stripping purpose headers before serving from Pages assets.
+      if (method === 'GET') {
+        const secPurpose = (request.headers.get('Sec-Purpose') || request.headers.get('sec-purpose') || '').toLowerCase();
+        const purpose = (request.headers.get('Purpose') || request.headers.get('purpose') || '').toLowerCase();
+        const dest = (request.headers.get('Sec-Fetch-Dest') || request.headers.get('sec-fetch-dest') || '').toLowerCase();
+        const accept = (request.headers.get('Accept') || request.headers.get('accept') || '').toLowerCase();
+        const isPrefetch = secPurpose.includes('prefetch') || purpose === 'prefetch';
+        const isDoc = dest === 'document' || accept.includes('text/html');
+        if (isPrefetch && isDoc) {
+          const h = new Headers(request.headers);
+          // Strip speculation/prefetch intent headers so Pages asset serving treats it as a normal navigation.
+          h.delete('Purpose');
+          h.delete('purpose');
+          h.delete('Sec-Purpose');
+          h.delete('sec-purpose');
+          h.delete('Sec-Speculation-Tags');
+          h.delete('sec-speculation-tags');
+          const cleanReq = new Request(url.toString(), { method: 'GET', headers: h, redirect: 'follow' });
+          return env.ASSETS.fetch(cleanReq);
+        }
+      }
+
       // Preflight / defensive
       if (method === 'OPTIONS') {
         return new Response(null, { status: 204, headers: corsHeaders(request) });
