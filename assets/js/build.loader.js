@@ -102,6 +102,220 @@
     } else {
       loadJS();
     }
+
+    // --- OPS smoke check mode (runs ONLY when ?smoke=1) ---
+    try {
+      var sp = null;
+      try { sp = new URLSearchParams(window.location.search || ""); } catch (e) { sp = null; }
+      var smokeOn = false;
+      if (sp && (sp.get("smoke") === "1" || sp.get("smoke") === "true")) smokeOn = true;
+
+      if (smokeOn) {
+        var smokeToken = (sp.get("smoke_token") || "") + "";
+        var smokeOrigin = (sp.get("smoke_origin") || "") + "";
+        var smokeState = {
+          token: smokeToken,
+          path: (window.location && window.location.pathname) || "",
+          href: (window.location && window.location.href) || "",
+          build: v,
+          errors: [],
+          rejections: [],
+          checks: {}
+        };
+
+        function smokePost(payload) {
+          try {
+            if (window.opener && typeof window.opener.postMessage === "function") {
+              window.opener.postMessage(payload, smokeOrigin || "*");
+            }
+          } catch (e) {}
+        }
+
+        window.addEventListener("error", function (ev) {
+          try {
+            smokeState.errors.push({
+              message: (ev && ev.message) || "error",
+              filename: ev && ev.filename,
+              lineno: ev && ev.lineno,
+              colno: ev && ev.colno
+            });
+          } catch (e) {}
+        }, true);
+
+        window.addEventListener("unhandledrejection", function (ev) {
+          try { smokeState.rejections.push({ reason: String((ev && ev.reason) || "") }); } catch (e) {}
+        }, true);
+
+        function isVisible(el) {
+          try {
+            if (!el || !el.getBoundingClientRect) return false;
+            var cs = null;
+            try { cs = window.getComputedStyle ? getComputedStyle(el) : null; } catch (e) {}
+            if (cs) {
+              if (cs.display === "none") return false;
+              if (cs.visibility === "hidden") return false;
+              if (Number(cs.opacity || "1") <= 0.02) return false;
+            }
+            var r = el.getBoundingClientRect();
+            if (!r || r.width < 2 || r.height < 2) return false;
+            if (r.bottom < 0 || r.right < 0) return false;
+            var vw = window.innerWidth || 0, vh = window.innerHeight || 0;
+            if (vw && r.left > vw) return false;
+            if (vh && r.top > vh) return false;
+            return true;
+          } catch (e) { return false; }
+        }
+
+        function topHit(el) {
+          try {
+            if (!el || !el.getBoundingClientRect) return true;
+            var r = el.getBoundingClientRect();
+            var vw = window.innerWidth || 0, vh = window.innerHeight || 0;
+            var x = r.left + Math.min(r.width / 2, 24);
+            var y = r.top + Math.min(r.height / 2, 24);
+            if (vw) x = Math.max(0, Math.min(vw - 1, x));
+            if (vh) y = Math.max(0, Math.min(vh - 1, y));
+            var hit = document.elementFromPoint(x, y);
+            if (!hit) return true;
+            return (hit === el) || (el.contains && el.contains(hit));
+          } catch (e) { return true; }
+        }
+
+        function isClickable(el) {
+          try {
+            if (!isVisible(el)) return false;
+            if (el.disabled) return false;
+            var cs = null;
+            try { cs = window.getComputedStyle ? getComputedStyle(el) : null; } catch (e) {}
+            if (cs && cs.pointerEvents === "none") return false;
+            if (!topHit(el)) return false;
+            return true;
+          } catch (e) { return false; }
+        }
+
+        function pickCTAs() {
+          var out = [];
+          try {
+            var nodes = document.querySelectorAll("a,button,input[type='button'],input[type='submit']");
+            for (var i = 0; i < nodes.length; i++) {
+              if (out.length >= 80) break;
+              var el = nodes[i];
+              if (!el) continue;
+              if (el.closest && el.closest("[aria-hidden='true']")) continue;
+
+              var cls = (el.className || "") + "";
+              var role = (el.getAttribute && (el.getAttribute("role") || "")) || "";
+              var txt = ((el.innerText || el.textContent || el.value || "") + "").trim();
+
+              var good = false;
+              if (/(^|\s)(btn|button|cta|primary|chip|tab)(\s|$)/i.test(cls)) good = true;
+              if (/(계산|복사|이동|문의|열기|저장|확인|보기|시작|접속|바로|로그)/.test(txt)) good = true;
+              if (role === "button") good = true;
+
+              if (!good) continue;
+              out.push(el);
+            }
+          } catch (e) {}
+          return out;
+        }
+
+        function waitFor(fn, timeoutMs) {
+          return new Promise(function (resolve) {
+            var start = Date.now();
+            (function tick() {
+              var v2 = null;
+              try { v2 = fn(); } catch (e) {}
+              if (v2) { resolve(v2); return; }
+              if ((Date.now() - start) > timeoutMs) { resolve(null); return; }
+              setTimeout(tick, 80);
+            })();
+          });
+        }
+
+        function runCertModalCheck() {
+          // cert card click -> popup open check
+          return waitFor(function () {
+            return document.querySelector("#vendorGrid .card[data-card]");
+          }, 2500).then(function (card) {
+            var cnt = 0;
+            try { cnt = document.querySelectorAll("#vendorGrid .card[data-card]").length; } catch (e) {}
+            smokeState.checks.cert_card_count = cnt;
+            smokeState.checks.cert_modal_exists = !!document.getElementById("cardPopup");
+
+            if (!card) {
+              smokeState.checks.cert_modal_opens = false;
+              return null;
+            }
+
+            try { if (card.scrollIntoView) card.scrollIntoView({ block: "center", inline: "nearest" }); } catch (e) {}
+            try {
+              if (window.PointerEvent) {
+                card.dispatchEvent(new PointerEvent("pointerup", { bubbles: true, cancelable: true }));
+              }
+            } catch (e) {}
+            try { if (card.click) card.click(); } catch (e) {}
+
+            return waitFor(function () {
+              var p = document.getElementById("cardPopup");
+              if (!p) return null;
+              var open = (p.classList && p.classList.contains("open")) || (p.getAttribute && p.getAttribute("aria-hidden") === "false");
+              return open ? p : null;
+            }, 1200).then(function (p2) {
+              smokeState.checks.cert_modal_opens = !!p2;
+              try { var cbtn = document.getElementById("closeBtn"); if (cbtn && cbtn.click) cbtn.click(); } catch (e) {}
+              return p2;
+            });
+          });
+        }
+
+        function finalizeAndReport() {
+          try {
+            smokeState.checks.track = (typeof window.track === "function");
+            smokeState.checks.build_ver = (window.__BUILD_VER || "") + "";
+
+            var ctas = pickCTAs();
+            smokeState.checks.cta_total = ctas.length;
+
+            var clickable = 0;
+            for (var i = 0; i < ctas.length; i++) {
+              if (isClickable(ctas[i])) clickable++;
+            }
+            smokeState.checks.cta_clickable = clickable;
+
+            var ok = (smokeState.errors.length === 0 && smokeState.rejections.length === 0);
+            // cert modal must be operable if modal exists
+            if (smokeState.path.indexOf("/cert") === 0) {
+              if (smokeState.checks.cert_modal_exists && !smokeState.checks.cert_modal_opens) ok = false;
+            }
+            smokeState.ok = ok;
+
+            smokePost({ __88st_smoke: 1, token: smokeToken, ok: ok, state: smokeState });
+          } catch (e) {
+            smokePost({ __88st_smoke: 1, token: smokeToken, ok: false, state: smokeState });
+          }
+        }
+
+        // Run after page load + a small settle time (lets deferred scripts finish)
+        window.addEventListener("load", function () {
+          setTimeout(function () {
+            try {
+              if (smokeState.path.indexOf("/cert") === 0 && typeof Promise !== "undefined") {
+                runCertModalCheck().then(finalizeAndReport).catch(finalizeAndReport);
+              } else {
+                finalizeAndReport();
+              }
+            } catch (e) {
+              finalizeAndReport();
+            }
+          }, 900);
+        });
+
+        // early ping (lets OPS UI show "loading")
+        smokePost({ __88st_smoke: 1, token: smokeToken, phase: "boot", state: { path: smokeState.path, build: smokeState.build } });
+      }
+    } catch (e) {}
+
+
   } catch (e) {
     // fail silently; page will still render basic HTML
   }

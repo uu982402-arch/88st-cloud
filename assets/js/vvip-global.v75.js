@@ -355,19 +355,6 @@
     }catch(e){}
   }
 
-      });
-      clr.addEventListener('click', ()=>{ clearPersist(); try{ bar.remove(); }catch(e){} });
-
-      // Insert after hero if exists
-      const anchor = main.querySelector('.mg-hero, .st-land-hero, .st-hero, .tool-hero, .a-hero, .page-hero, section');
-      if(anchor && anchor.parentNode === main){
-        anchor.insertAdjacentElement('afterend', bar);
-      }else{
-        main.insertBefore(bar, main.firstChild);
-      }
-    }catch(e){}
-  }
-
   function bindPersistListeners(){
     try{
       if(!shouldEnablePersist()) return;
