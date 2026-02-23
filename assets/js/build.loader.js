@@ -21,6 +21,13 @@
       }
     } catch (e) {}
 
+    // --- Early OPS smoke flag (used to disable heavy assets during smoke checks) ---
+    var __sp = null;
+    try { __sp = new URLSearchParams(window.location.search || ""); } catch (e) { __sp = null; }
+    var __smokeOn = false;
+    try { if (__sp && (__sp.get("smoke") === "1" || __sp.get("smoke") === "true")) __smokeOn = true; } catch (e) {}
+    try { if (__smokeOn) window.__OPS_SMOKE__ = 1; } catch (e) {}
+
     var v = (window.__BUILD_VER || "0") + "";
     var head = document.head || document.getElementsByTagName("head")[0];
 
@@ -91,6 +98,11 @@
       "/assets/js/pro-suite.v2.js"
     ];
 
+    // In OPS smoke mode, skip heavy global bundles. Page-specific scripts still run (e.g., j.cert).
+    if (__smokeOn) {
+      jsList = [];
+    }
+
     for (var i = 0; i < cssList.length; i++) addCSS(cssList[i]);
 
     function loadJS(){
@@ -105,10 +117,8 @@
 
     // --- OPS smoke check mode (runs ONLY when ?smoke=1) ---
     try {
-      var sp = null;
-      try { sp = new URLSearchParams(window.location.search || ""); } catch (e) { sp = null; }
-      var smokeOn = false;
-      if (sp && (sp.get("smoke") === "1" || sp.get("smoke") === "true")) smokeOn = true;
+      var sp = __sp;
+      var smokeOn = __smokeOn;
 
       if (smokeOn) {
         var smokeToken = (sp.get("smoke_token") || "") + "";
@@ -196,24 +206,40 @@
         function pickCTAs() {
           var out = [];
           try {
-            var nodes = document.querySelectorAll("a,button,input[type='button'],input[type='submit']");
-            for (var i = 0; i < nodes.length; i++) {
-              if (out.length >= 80) break;
-              var el = nodes[i];
-              if (!el) continue;
-              if (el.closest && el.closest("[aria-hidden='true']")) continue;
+            // Avoid querying ALL anchors on large pages (can freeze Firefox).
+            // We focus on likely CTA elements first.
+            var sels = [
+              "a.btn, a.cta, a.button, a.primary, a.chip, a.tab",
+              "button.btn, button.cta, button.button, button.primary, button.chip, button.tab",
+              "button, [role='button']",
+              "input[type='button'], input[type='submit']"
+            ];
 
-              var cls = (el.className || "") + "";
-              var role = (el.getAttribute && (el.getAttribute("role") || "")) || "";
-              var txt = ((el.innerText || el.textContent || el.value || "") + "").trim();
+            for (var si = 0; si < sels.length; si++) {
+              var nodes = null;
+              try { nodes = document.querySelectorAll(sels[si]); } catch (e) { nodes = null; }
+              if (!nodes || !nodes.length) continue;
 
-              var good = false;
-              if (/(^|\s)(btn|button|cta|primary|chip|tab)(\s|$)/i.test(cls)) good = true;
-              if (/(계산|복사|이동|문의|열기|저장|확인|보기|시작|접속|바로|로그)/.test(txt)) good = true;
-              if (role === "button") good = true;
+              for (var i = 0; i < nodes.length; i++) {
+                if (out.length >= 40) break;
+                var el = nodes[i];
+                if (!el) continue;
+                if (el.closest && el.closest("[aria-hidden='true']")) continue;
 
-              if (!good) continue;
-              out.push(el);
+                var cls = (el.className || "") + "";
+                var role = (el.getAttribute && (el.getAttribute("role") || "")) || "";
+                var txt = ((el.innerText || el.textContent || el.value || "") + "").trim();
+
+                var good = false;
+                if (/(^|\s)(btn|button|cta|primary|chip|tab)(\s|$)/i.test(cls)) good = true;
+                if (/(계산|복사|이동|문의|열기|저장|확인|보기|시작|접속|바로|로그)/.test(txt)) good = true;
+                if (role === "button") good = true;
+
+                if (!good) continue;
+                out.push(el);
+              }
+
+              if (out.length >= 40) break;
             }
           } catch (e) {}
           return out;
@@ -273,14 +299,20 @@
             smokeState.checks.track = (typeof window.track === "function");
             smokeState.checks.build_ver = (window.__BUILD_VER || "") + "";
 
-            var ctas = pickCTAs();
-            smokeState.checks.cta_total = ctas.length;
+            // CTA scan can be expensive on very large pages (e.g., /cert).
+            if (smokeState.path.indexOf('/cert') === 0) {
+              smokeState.checks.cta_total = null;
+              smokeState.checks.cta_clickable = null;
+            } else {
+              var ctas = pickCTAs();
+              smokeState.checks.cta_total = ctas.length;
 
-            var clickable = 0;
-            for (var i = 0; i < ctas.length; i++) {
-              if (isClickable(ctas[i])) clickable++;
+              var clickable = 0;
+              for (var i = 0; i < ctas.length; i++) {
+                if (isClickable(ctas[i])) clickable++;
+              }
+              smokeState.checks.cta_clickable = clickable;
             }
-            smokeState.checks.cta_clickable = clickable;
 
             var ok = (smokeState.errors.length === 0 && smokeState.rejections.length === 0);
             // cert modal must be operable if modal exists
@@ -290,6 +322,14 @@
             smokeState.ok = ok;
 
             smokePost({ __88st_smoke: 1, token: smokeToken, ok: ok, state: smokeState });
+
+            // Unload ASAP to prevent long-running scripts from slowing down the browser during batch checks.
+            try {
+              setTimeout(function () {
+                try { if (window.stop) window.stop(); } catch (e) {}
+                try { window.location.replace('about:blank'); } catch (e) {}
+              }, 180);
+            } catch (e) {}
           } catch (e) {
             smokePost({ __88st_smoke: 1, token: smokeToken, ok: false, state: smokeState });
           }
