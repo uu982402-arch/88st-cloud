@@ -4,12 +4,13 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
 <title>777 BET | 가입코드·혜택 이미지 | 88ST</title>
-<meta name="description" content="777 BET 전용 혜택 이미지/가입코드/문의 링크를 한 페이지에서 빠르게 확인합니다."/>
-<meta name="keywords" content="인증사이트, 가입코드, 혜택, 이벤트, 777 BET, 88ST"/>
+<meta name="robots" content="index,follow"/>
+<meta name="description" content="777 Bet 전용 혜택 이미지·가입코드 안내. 토토/카지노/슬롯맛집·미니게임맛집 혜택을 빠르게 확인하세요."/>
+<meta name="keywords" content="토토, 스포츠토토, 토토사이트, 온라인카지노, 카지노사이트, 슬롯맛집, 미니게임맛집, 안전놀이터, 먹튀검증, 보증사이트, 인증사이트, 가입코드, 첫충, 매충, 페이백, 입플, 당일페이백, 롤링, 출금규정, 이벤트"/>
 <link rel="canonical" href="https://88st.cloud/cert/777/"/>
 <meta property="og:type" content="website"/>
 <meta property="og:title" content="777 BET | 가입코드·혜택 이미지 | 88ST"/>
-<meta property="og:description" content="777 BET 전용 혜택 이미지/가입코드/문의 링크를 한 페이지에서 빠르게 확인합니다."/>
+<meta property="og:description" content="777 Bet 전용 혜택 이미지·가입코드 안내. 토토/카지노/슬롯맛집·미니게임맛집 혜택을 빠르게 확인하세요."/>
 <meta property="og:image" content="/img/landing/777-landing.webp"/>
 <link rel="icon" href="/favicon.ico" type="image/x-icon"/>
 
@@ -24,7 +25,7 @@
 
 <link href="/assets/c.9995eeb5cf82.css" rel="stylesheet"/>
 <link href="/assets/css/hdr.shell.v1.20260221.css?v=119" rel="stylesheet"/>
-<link href="/assets/css/cert.landing.v1.20260223.css?v=134" rel="stylesheet"/>
+<link href="/assets/css/cert.landing.v1.20260223.css?v=136" rel="stylesheet"/>
 </head>
 <body>
 <div id="_88stShellHeader" class="header header--shell" role="banner">
@@ -66,9 +67,9 @@
     </div>
 
     <div class="lnd-actions" aria-label="바로가기">
-      <a class="lnd-btn primary" id="joinBtn" href="https://82clf.com/?code=6767" target="_blank" rel="noopener noreferrer">회원가입(이동) →</a>
+      <a class="lnd-btn primary" id="joinBtn" href="#" target="_blank" rel="noopener noreferrer">회원가입(이동) →</a>
       <button class="lnd-btn" id="copyBtn" type="button">코드 복사</button>
-      <a class="lnd-btn" href="https://t.me/UZU59" target="_blank" rel="noopener noreferrer">문의(텔레그램)</a>
+      <a class="lnd-btn" id="tgBtn" href="https://t.me/UZU59" target="_blank" rel="noopener noreferrer">문의(텔레그램)</a>
       <a class="lnd-btn" href="/cert/" >인증놀이터 바로가기</a>
     </div>
 
@@ -84,11 +85,23 @@
 
 <div aria-live="polite" id="copyToast">복사되었습니다</div>
 
+
 <script>
 (() => {
   'use strict';
-  const code = "6767";
+  const CFG_URL = '/assets/config/cert.landing.json';
+  const SLUG = '777';
+  const FALLBACK = {
+    code: '6767',
+    join_url: 'https://82clf.com/?code=6767',
+    telegram: 'https://t.me/UZU59',
+    title: '777 Bet',
+  };
+
   const toast = document.getElementById('copyToast');
+  const codeText = document.getElementById('codeText');
+  const joinBtn = document.getElementById('joinBtn');
+  const tgBtn = document.getElementById('tgBtn');
 
   function showToast(msg) {
     if (!toast) return;
@@ -112,40 +125,80 @@
         document.body.removeChild(ta);
         showToast('가입코드가 복사되었습니다');
         return true;
-      } catch (e2) {
+      } catch {
         showToast('복사 실패');
         return false;
       }
     }
   }
 
-  // keep utm params (if present) for outbound joins
-  try {
-    const joinBtn = document.getElementById('joinBtn');
-    if (joinBtn && joinBtn.href) {
-      const src = new URL(window.location.href);
-      const utm = new URLSearchParams(src.search);
-      const keep = new URLSearchParams();
-      for (const [k,v] of utm.entries()) {
-        if (k.startsWith('utm_') || k === 'ref') keep.set(k,v);
+  function pickVendor(cfg) {
+    try {
+      const vendors = cfg && cfg.vendors;
+      if (!vendors) return null;
+      if (vendors[SLUG]) return vendors[SLUG];
+      // find by slug/landing_path
+      for (const k of Object.keys(vendors)) {
+        const v = vendors[k];
+        if (!v) continue;
+        if ((v.slug && String(v.slug).toLowerCase() === SLUG) || (v.landing_path && v.landing_path === `/cert/${SLUG}/`)) return v;
       }
-      if ([...keep.keys()].length) {
-        const u = new URL(joinBtn.href);
-        keep.forEach((v,k) => {
-          if (!u.searchParams.has(k)) u.searchParams.set(k,v);
-        });
-        joinBtn.href = u.toString();
+    } catch {}
+    return null;
+  }
+
+  async function loadCfgAndApply() {
+    let v = null;
+    try {
+      const res = await fetch(CFG_URL, { cache: 'no-store' });
+      if (res && res.ok) {
+        const cfg = await res.json();
+        if (cfg && cfg.enabled !== false) {
+          v = pickVendor(cfg);
+          if (cfg.telegram && !FALLBACK.telegram) FALLBACK.telegram = String(cfg.telegram);
+          if (cfg.telegram && tgBtn) tgBtn.href = String(cfg.telegram);
+        }
       }
-    }
-  } catch {}
+    } catch {}
 
-  document.getElementById('copyBtn')?.addEventListener('click', () => {
-    copyText(code);
-    try { gtag('event', 'copy_code', { code_present: true, vendor: "777 BET" }); } catch {}
-  });
+    const code = (v && v.code) ? String(v.code) : FALLBACK.code;
+    const join = (v && v.join_url) ? String(v.join_url) : FALLBACK.join_url;
+    const tg = (v && (v.telegram_url || v.telegram)) ? String(v.telegram_url || v.telegram) : (tgBtn?.href || FALLBACK.telegram);
 
-  try { gtag('event','view_vendor_landing', { vendor: "777 BET" }); } catch {}
+    if (codeText) codeText.textContent = code;
+    if (joinBtn) joinBtn.href = join;
+    if (tgBtn) tgBtn.href = tg;
+
+    // keep utm params (if present) for outbound joins
+    try {
+      if (joinBtn && joinBtn.href) {
+        const src = new URL(window.location.href);
+        const sp = new URLSearchParams(src.search);
+        const keep = new URLSearchParams();
+        for (const [k,val] of sp.entries()) {
+          if (k.startsWith('utm_') || k === 'ref') keep.set(k,val);
+        }
+        if ([...keep.keys()].length) {
+          const u = new URL(joinBtn.href);
+          keep.forEach((val,k) => {
+            if (!u.searchParams.has(k)) u.searchParams.set(k,val);
+          });
+          joinBtn.href = u.toString();
+        }
+      }
+    } catch {}
+
+    document.getElementById('copyBtn')?.addEventListener('click', () => {
+      copyText(code);
+      try { gtag('event', 'copy_code', { code_present: true, vendor: FALLBACK.title }); } catch {}
+    });
+
+    try { gtag('event','view_vendor_landing', { vendor: FALLBACK.title }); } catch {}
+  }
+
+  loadCfgAndApply();
 })();
 </script>
+
 </body>
 </html>

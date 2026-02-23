@@ -16,8 +16,8 @@
   <link rel="stylesheet" href="/assets/css/hdr.shell.v1.20260221.css?v=119"/>
 
   <!-- Global asset loader (cache-busted via build.ver.js) -->
-  <script defer src="/assets/js/build.ver.js?v=v20260223-2245"></script>
-  <script defer src="/assets/js/build.loader.js?v=v20260223-2245"></script>
+  <script defer src="/assets/js/build.ver.js?v=v20260223-2500"></script>
+  <script defer src="/assets/js/build.loader.js?v=v20260223-2500"></script>
 
   <style>
     :root{ --opsMax: 1040px; }
@@ -167,6 +167,51 @@
         <div class="opsFooter">배포 경로: <code>/assets/config/ops.dom.patch.json</code> · 적용 모드: <code>merge</code>(기본) / <code>override</code>(로컬 전용)</div>
       </section>
 
+
+      <!-- CERT LANDING CONFIG -->
+      <section class="opsCard opsSection" style="margin-top:14px;">
+        <h2>인증 랜딩 설정(배포)</h2>
+        <div class="hint">
+          <b>/cert 모달 + 전용 URL(/cert/vegas/, /cert/777/)</b>에서 사용하는 <b>join 링크/가입코드/텔레그램</b>을 배포형 설정 파일로 관리합니다.
+          아래 값만 바꿔서 <code>/assets/config/cert.landing.json</code> 파일을 교체하면 <b>코드 수정 0</b>으로 전체 적용됩니다.
+        </div>
+
+        <div class="opsFlex">
+          <button id="opsCertLoad" class="opsMiniBtn" type="button">배포 설정 불러오기</button>
+          <button id="opsCertMake" class="opsMiniBtn" type="button">배포용 JSON 만들기</button>
+          <button id="opsCertCopy" class="opsMiniBtn" type="button">JSON 복사</button>
+          <button id="opsCertDownload" class="opsMiniBtn" type="button">배포파일 다운로드</button>
+        </div>
+
+        <table class="opsTable" aria-label="인증 랜딩 설정 테이블">
+          <thead>
+            <tr>
+              <th style="width:16%">vendor</th>
+              <th style="width:16%">code</th>
+              <th>join_url</th>
+              <th style="width:24%">telegram</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>VEGAS</b><div style="opacity:.75;font-size:12px;">/cert/vegas/</div></td>
+              <td><input id="certVegasCode" value="6789" /></td>
+              <td><input id="certVegasJoin" value="https://las403.com" /></td>
+              <td rowspan="2"><input id="certTelegram" value="https://t.me/UZU59" /></td>
+            </tr>
+            <tr>
+              <td><b>777 Bet</b><div style="opacity:.75;font-size:12px;">/cert/777/</div></td>
+              <td><input id="cert777Code" value="6767" /></td>
+              <td><input id="cert777Join" value="https://82clf.com/?code=6767" /></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <textarea id="opsCertJson" class="opsArea" spellcheck="false" placeholder="(자동) 배포용 JSON — 필요 시 편집 가능"></textarea>
+        <div id="opsCertMsg" class="opsMsg"></div>
+        <div class="opsFooter">배포 경로: <code>/assets/config/cert.landing.json</code> · 캐시: <code>no-store</code>(Worker)</div>
+      </section>
+
       <!-- DANGER ZONE -->
       <section class="opsCard opsSection" style="margin-top:14px;">
         <h2>운영 유틸리티</h2>
@@ -221,6 +266,7 @@
       const LOCK_KEY = 'vvip_ops_lock_v1';
       const PATCH_KEY = 'vvip_ops_dom_patch_v1';
       const DEPLOY_URL = '/assets/config/ops.dom.patch.json';
+      const CERT_DEPLOY_URL = '/assets/config/cert.landing.json';
       const BUILD_VER = (window.__BUILD_VER || '0') + '';
 
       const $ = (id)=>document.getElementById(id);
@@ -565,6 +611,150 @@
         }
       }
 
+
+      // --- CERT Landing deploy config (join/code/telegram) ---
+      let certBase = null;
+
+      const certMsg = (text, isErr) => {
+        const el = $('opsCertMsg');
+        if (!el) return;
+        el.textContent = text || '';
+        el.className = 'opsMsg' + (isErr ? ' opsErr' : '');
+      };
+
+      const pickVendor = (cfg, slug, idFallback) => {
+        try{
+          const vmap = (cfg && cfg.vendors) ? cfg.vendors : {};
+          if (vmap && vmap[slug]) return vmap[slug];
+          // try find by landing_path or id
+          for (const k in vmap){
+            const v = vmap[k];
+            if (!v) continue;
+            if ((v.slug && String(v.slug).toLowerCase() === String(slug).toLowerCase()) ||
+                (v.landing_path && v.landing_path === `/cert/${slug}/`) ||
+                (idFallback && v.id === idFallback)) return v;
+          }
+        }catch(e){}
+        return null;
+      };
+
+      function readCertUi(){
+        const telegram = String(($('certTelegram')?.value || '')).trim() || 'https://t.me/UZU59';
+        const vegasCode = String(($('certVegasCode')?.value || '')).trim();
+        const vegasJoin = String(($('certVegasJoin')?.value || '')).trim();
+        const s777Code = String(($('cert777Code')?.value || '')).trim();
+        const s777Join = String(($('cert777Join')?.value || '')).trim();
+        return { telegram, vegasCode, vegasJoin, s777Code, s777Join };
+      }
+
+      function buildCertDeployConfig(){
+        const ui = readCertUi();
+        const now = new Date();
+        const yyyy = now.getFullYear();
+        const mm = String(now.getMonth()+1).padStart(2,'0');
+        const dd = String(now.getDate()).padStart(2,'0');
+
+        // preserve benefit/notice if present in loaded config; otherwise keep sensible defaults
+        const base = certBase || {};
+        const vVegas = pickVendor(base, 'vegas', 'card1') || {};
+        const v777 = pickVendor(base, '777', 'card3') || {};
+
+        return {
+          enabled: true,
+          version: `${yyyy}-${mm}-${dd}`,
+          telegram: ui.telegram,
+          vendors: {
+            vegas: {
+              id: 'card1',
+              slug: 'vegas',
+              title: vVegas.title || 'VEGAS',
+              code: ui.vegasCode || vVegas.code || '6789',
+              join_url: ui.vegasJoin || vVegas.join_url || 'https://las403.com',
+              landing_path: '/cert/vegas/',
+              hero_image: '/img/landing/vegas-landing.webp',
+              thumb_image: '/img/img1.webp',
+              benefit: vVegas.benefit || '스포츠·고액전용 입플 최대 30% 페이백 / 카지노 입플',
+              notice: vVegas.notice || '가입코드 미입력 시 혜택 적용 불가'
+            },
+            "777": {
+              id: 'card3',
+              slug: '777',
+              title: v777.title || '777 Bet',
+              code: ui.s777Code || v777.code || '6767',
+              join_url: ui.s777Join || v777.join_url || 'https://82clf.com/?code=6767',
+              landing_path: '/cert/777/',
+              hero_image: '/img/landing/777-landing.webp',
+              thumb_image: '/img/img2.webp',
+              benefit: v777.benefit || '가입코드 6767 전용 혜택 / 스포츠·카지노 이용 가능',
+              notice: v777.notice || '가입코드 미입력 시 혜택 적용 불가'
+            }
+          },
+          meta: {
+            updatedAt: new Date().toISOString(),
+            by: '88st.ops.console'
+          }
+        };
+      }
+
+      async function opsCertLoad(){
+        try{
+          const url = CERT_DEPLOY_URL + (CERT_DEPLOY_URL.indexOf('?')>=0 ? '&' : '?') + 't=' + Date.now();
+          const res = await fetch(url, {cache:'no-store', credentials:'same-origin'});
+          if(!res || !res.ok){ certMsg('배포 설정을 불러올 수 없습니다. (파일이 없거나 응답 오류)', true); return; }
+          const cfg = await res.json().catch(()=>null);
+          if(!cfg || typeof cfg !== 'object'){ certMsg('배포 JSON 파싱 실패', true); return; }
+          certBase = cfg;
+
+          const vVegas = pickVendor(cfg, 'vegas', 'card1') || {};
+          const v777 = pickVendor(cfg, '777', 'card3') || {};
+          if($('certTelegram')) $('certTelegram').value = String(cfg.telegram || 'https://t.me/UZU59');
+          if($('certVegasCode')) $('certVegasCode').value = String(vVegas.code || '6789');
+          if($('certVegasJoin')) $('certVegasJoin').value = String(vVegas.join_url || 'https://las403.com');
+          if($('cert777Code')) $('cert777Code').value = String(v777.code || '6767');
+          if($('cert777Join')) $('cert777Join').value = String(v777.join_url || 'https://82clf.com/?code=6767');
+
+          $('opsCertJson').value = JSON.stringify(cfg, null, 2);
+          certMsg('배포 설정 불러오기 완료', false);
+        }catch(e){
+          certMsg('배포 설정 불러오기 실패', true);
+        }
+      }
+
+      function opsCertMake(){
+        const cfg = buildCertDeployConfig();
+        const text = JSON.stringify(cfg, null, 2);
+        $('opsCertJson').value = text;
+        certMsg('배포용 JSON 생성됨', false);
+        return text;
+      }
+
+      function opsCertCopy(){
+        const text = opsCertMake();
+        try{
+          navigator.clipboard.writeText(text);
+          certMsg('JSON이 클립보드로 복사됨', false);
+        }catch(e){
+          certMsg('복사 실패 — 텍스트 영역에서 수동 복사하세요', true);
+        }
+      }
+
+      function opsCertDownload(){
+        const text = opsCertMake();
+        try{
+          const blob = new Blob([text], {type:'application/json;charset=utf-8'});
+          const a = document.createElement('a');
+          a.href = URL.createObjectURL(blob);
+          a.download = 'cert.landing.json';
+          document.body.appendChild(a);
+          a.click();
+          setTimeout(()=>{ try{ URL.revokeObjectURL(a.href); }catch(e){} try{ a.remove(); }catch(e){} }, 200);
+          certMsg('배포파일 다운로드 시작됨 (cert.landing.json)', false);
+        }catch(e){
+          certMsg('다운로드 생성 실패 (텍스트를 수동 저장하세요)', true);
+        }
+      }
+
+
       function importPatch(){
         const raw = ($('opsJson').value||'').trim();
         if(!raw){ patchMsg('가져올 JSON이 없습니다.', true); return; }
@@ -616,6 +806,12 @@
         $('opsLoadDeploy').addEventListener('click', loadDeploy);
         $('opsExportDeploy').addEventListener('click', exportDeploy);
         $('opsDownloadDeploy').addEventListener('click', downloadDeploy);
+
+        // cert landing config
+        $('opsCertLoad').addEventListener('click', opsCertLoad);
+        $('opsCertMake').addEventListener('click', opsCertMake);
+        $('opsCertCopy').addEventListener('click', opsCertCopy);
+        $('opsCertDownload').addEventListener('click', opsCertDownload);
 
         $('opsRules').addEventListener('click', (e)=>{
           const btn = e.target && e.target.closest && e.target.closest('button[data-act="del"]');

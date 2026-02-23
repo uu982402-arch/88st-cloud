@@ -1,5 +1,5 @@
-build=v20260223-2030-v130
-note=v130 hotfix: CSP allow Cloudflare Insights beacon (removes console CSP errors) + cache bump
+build=v20260223-2500-v135
+note=v135 ops-config for cert landings + cert config deploy JSON + sitemap.xml fixed + cert pages SEO keywords
 commit=
 branch=
 assets_css=/assets/css/vvip-luxe.v75.css,/assets/css/vvip-hub.v85.css,/assets/css/patch.v100.premiumdash.20260222.css,/assets/css/pro-suite.v2.css
