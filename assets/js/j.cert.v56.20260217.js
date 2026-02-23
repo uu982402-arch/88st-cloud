@@ -194,6 +194,14 @@ const cardSourcesById = (id) => {
         openCard(id);
       }, true);
 
+      grid.addEventListener('pointerup', (ev) => {
+        const id = pick(ev);
+        if (!id) return;
+        ev.preventDefault();
+        ev.stopPropagation();
+        openCard(id);
+      }, true);
+
       grid.addEventListener('keydown', (ev) => {
         const t = ev.target;
         const el = t && t.closest ? t.closest('.card[data-card]') : null;
@@ -350,11 +358,19 @@ const cardSourcesById = (id) => {
 
     const popup = $('cardPopup');
     if (popup) {
+      try {
+      popup.style.setProperty('display','flex','important');
+      popup.style.setProperty('position','fixed','important');
+      popup.style.setProperty('inset','0','important');
+      popup.style.setProperty('z-index','99999','important');
+      popup.style.setProperty('pointer-events','auto','important');
+    } catch (e) {
       popup.style.display = 'flex';
       popup.style.position = 'fixed';
       popup.style.inset = '0';
       popup.style.zIndex = '99999';
       popup.style.pointerEvents = 'auto';
+    }
       popup.classList.add('open');
       popup.setAttribute('aria-hidden', 'false');
       try {
@@ -379,7 +395,12 @@ const cardSourcesById = (id) => {
     if (popup) {
       popup.classList.remove('open');
       popup.setAttribute('aria-hidden', 'true');
-      try { popup.style.display = 'none'; popup.style.pointerEvents = 'none'; } catch { /* ignore */ }
+      try {
+      popup.style.setProperty('display','none','important');
+      popup.style.setProperty('pointer-events','none','important');
+    } catch (e) {
+      try { popup.style.display = 'none'; popup.style.pointerEvents = 'none'; } catch (e2) { /* ignore */ }
+    }
     }
 
     try {

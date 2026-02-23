@@ -7,6 +7,20 @@
  */
 (function () {
   try {
+
+    // --- Analytics bridge (always-available track function) ---
+    try {
+      if (typeof window.track !== "function") {
+        window.track = function (name, params) {
+          try {
+            if (typeof window.gtag === "function") {
+              window.gtag("event", name, params || {});
+            }
+          } catch (e) {}
+        };
+      }
+    } catch (e) {}
+
     var v = (window.__BUILD_VER || "0") + "";
     var head = document.head || document.getElementsByTagName("head")[0];
 
