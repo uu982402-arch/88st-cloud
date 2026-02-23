@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="ko" data-theme="light">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<title>VEGAS | 가입코드·혜택 이미지 | 88ST</title>
+<meta name="description" content="VEGAS 전용 혜택 이미지/가입코드/문의 링크를 한 페이지에서 빠르게 확인합니다."/>
+<meta name="keywords" content="인증사이트, 가입코드, 혜택, 이벤트, VEGAS, 88ST"/>
+<link rel="canonical" href="https://88st.cloud/cert/vegas/"/>
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="VEGAS | 가입코드·혜택 이미지 | 88ST"/>
+<meta property="og:description" content="VEGAS 전용 혜택 이미지/가입코드/문의 링크를 한 페이지에서 빠르게 확인합니다."/>
+<meta property="og:image" content="/img/landing/vegas-landing.webp"/>
+<link rel="icon" href="/favicon.ico" type="image/x-icon"/>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KWT87FBY6S"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-KWT87FBY6S', { anonymize_ip: true });
+</script>
+
+<link href="/assets/c.9995eeb5cf82.css" rel="stylesheet"/>
+<link href="/assets/css/hdr.shell.v1.20260221.css?v=119" rel="stylesheet"/>
+<link href="/assets/css/cert.landing.v1.20260223.css?v=134" rel="stylesheet"/>
+</head>
+<body>
+<div id="_88stShellHeader" class="header header--shell" role="banner">
+  <div class="hdrShell">
+    <a class="hdrBrand" href="/" aria-label="홈으로 이동">
+      <img class="hdrLogo" src="/img/logo.png" alt="88ST"/>
+      <span class="hdrName">88ST.Cloud</span>
+    </a>
+
+    <nav class="hdrNavDesktop" aria-label="주요 메뉴">
+      <a class="hdrLink" href="/cert/">인증사이트</a>
+      <a class="hdrLink" href="/">홈</a>
+      <a class="hdrLink" href="/guide/">가이드</a>
+    </nav>
+
+    <details class="hdrNavMobile">
+      <summary class="hdrBurger" aria-label="메뉴 열기">≡</summary>
+      <div class="hdrMobileMenu" role="menu">
+        <a href="/cert/">인증사이트</a>
+        <a href="/">홈</a>
+        <a href="/guide/">가이드</a>
+      </div>
+    </details>
+  </div>
+</div>
+
+<div class="lnd-wrap">
+  <div class="lnd-hero">
+    <img src="/img/landing/vegas-landing.webp" alt="VEGAS 혜택 이미지" decoding="async" loading="eager"/>
+  </div>
+
+  <div class="lnd-card">
+    <h1 class="lnd-title">VEGAS · 전용 혜택</h1>
+    <p class="lnd-sub">가입코드/이벤트/문의 링크를 한 번에 확인하세요.</p>
+
+    <div class="lnd-codeRow" role="group" aria-label="가입코드">
+      <div class="lnd-code">가입코드 : <span id="codeText">6789</span></div>
+      <a class="lnd-btn ghost" href="/cert/" aria-label="인증놀이터 목록으로 이동">목록으로</a>
+    </div>
+
+    <div class="lnd-actions" aria-label="바로가기">
+      <a class="lnd-btn primary" id="joinBtn" href="https://las403.com" target="_blank" rel="noopener noreferrer">회원가입(이동) →</a>
+      <button class="lnd-btn" id="copyBtn" type="button">코드 복사</button>
+      <a class="lnd-btn" href="https://t.me/UZU59" target="_blank" rel="noopener noreferrer">문의(텔레그램)</a>
+      <a class="lnd-btn" href="/cert/" >인증놀이터 바로가기</a>
+    </div>
+
+    <div class="lnd-note">
+      <b>주의</b> · 가입/혜택/출금·롤링 조건은 수시로 변경될 수 있습니다. 최종 조건은 각 사이트 공지/규정을 기준으로 재확인하세요.
+    </div>
+
+    <div class="lnd-mini">
+      <a href="/ops/" rel="nofollow" style="display:none">ops</a>
+    </div>
+  </div>
+</div>
+
+<div aria-live="polite" id="copyToast">복사되었습니다</div>
+
+<script>
+(() => {
+  'use strict';
+  const code = "6789";
+  const toast = document.getElementById('copyToast');
+
+  function showToast(msg) {
+    if (!toast) return;
+    toast.textContent = msg || '복사되었습니다';
+    toast.classList.add('on');
+    setTimeout(() => toast.classList.remove('on'), 950);
+  }
+
+  async function copyText(v) {
+    try {
+      await navigator.clipboard.writeText(v);
+      showToast('가입코드가 복사되었습니다');
+      return true;
+    } catch (e) {
+      try {
+        const ta = document.createElement('textarea');
+        ta.value = v; ta.setAttribute('readonly','');
+        ta.style.position='fixed'; ta.style.left='-9999px';
+        document.body.appendChild(ta);
+        ta.select(); document.execCommand('copy');
+        document.body.removeChild(ta);
+        showToast('가입코드가 복사되었습니다');
+        return true;
+      } catch (e2) {
+        showToast('복사 실패');
+        return false;
+      }
+    }
+  }
+
+  // keep utm params (if present) for outbound joins
+  try {
+    const joinBtn = document.getElementById('joinBtn');
+    if (joinBtn && joinBtn.href) {
+      const src = new URL(window.location.href);
+      const utm = new URLSearchParams(src.search);
+      const keep = new URLSearchParams();
+      for (const [k,v] of utm.entries()) {
+        if (k.startsWith('utm_') || k === 'ref') keep.set(k,v);
+      }
+      if ([...keep.keys()].length) {
+        const u = new URL(joinBtn.href);
+        keep.forEach((v,k) => {
+          if (!u.searchParams.has(k)) u.searchParams.set(k,v);
+        });
+        joinBtn.href = u.toString();
+      }
+    }
+  } catch {}
+
+  document.getElementById('copyBtn')?.addEventListener('click', () => {
+    copyText(code);
+    try { gtag('event', 'copy_code', { code_present: true, vendor: "VEGAS" }); } catch {}
+  });
+
+  try { gtag('event','view_vendor_landing', { vendor: "VEGAS" }); } catch {}
+})();
+</script>
+</body>
+</html>
