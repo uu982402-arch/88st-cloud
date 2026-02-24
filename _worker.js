@@ -101,6 +101,17 @@ if (path === '/community' || path.startsWith('/community/')) {
         h.set('expires', '0');
         return new Response(res.body, { status: res.status, headers: h });
       }
+
+      // EVENT popup deploy config: always no-store (operational swaps)
+      if (path === '/assets/config/popup.event.json') {
+        const res = await env.ASSETS.fetch(request);
+        const h = new Headers(res.headers);
+        h.set('cache-control', 'no-store, no-cache, must-revalidate, max-age=0');
+        h.set('pragma', 'no-cache');
+        h.set('expires', '0');
+        return new Response(res.body, { status: res.status, headers: h });
+      }
+
       // Static fallthrough
       return env.ASSETS.fetch(request);
 

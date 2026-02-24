@@ -16,8 +16,8 @@
   <link rel="stylesheet" href="/assets/css/hdr.shell.v1.20260221.css?v=119"/>
 
   <!-- Global asset loader (cache-busted via build.ver.js) -->
-  <script defer src="/assets/js/build.ver.js?v=v20260223-2500"></script>
-  <script defer src="/assets/js/build.loader.js?v=v20260223-2500"></script>
+  <script defer src="/assets/js/build.ver.js?v=v20260224-1845"></script>
+  <script defer src="/assets/js/build.loader.js?v=v20260224-1845"></script>
 
   <style>
     :root{ --opsMax: 1040px; }
@@ -212,7 +212,86 @@
         <div class="opsFooter">배포 경로: <code>/assets/config/cert.landing.json</code> · 캐시: <code>no-store</code>(Worker)</div>
       </section>
 
-      <!-- DANGER ZONE -->
+      
+      <!-- EVENT POPUP CONFIG -->
+      <section class="opsCard opsSection" style="margin-top:14px;">
+        <h2>이벤트 팝업 설정(배포)</h2>
+        <div class="hint">
+          메인/가이드/분석기 진입 시 노출되는 <b>이벤트 이미지 팝업</b> 설정입니다.
+          아래 값만 바꿔서 <code>/assets/config/popup.event.json</code> 파일을 교체하면 <b>코드 수정 0</b>으로 전체 적용됩니다.
+          <br/>· <b>intervalHours</b>: <code>0</code>이면 매 방문마다, <code>24</code>이면 하루 1회 노출
+        </div>
+
+        <div class="opsFlex">
+          <button id="opsPopupLoad" class="opsMiniBtn" type="button">배포 설정 불러오기</button>
+          <button id="opsPopupMake" class="opsMiniBtn" type="button">배포용 JSON 만들기</button>
+          <button id="opsPopupCopy" class="opsMiniBtn" type="button">JSON 복사</button>
+          <button id="opsPopupDownload" class="opsMiniBtn" type="button">배포파일 다운로드</button>
+          <span style="flex:1"></span>
+          <button id="opsPopupOpenImage" class="opsMiniBtn" type="button">이미지 미리보기</button>
+        </div>
+
+        <table class="opsTable" aria-label="이벤트 팝업 설정 테이블">
+          <thead>
+            <tr>
+              <th style="width:22%">key</th>
+              <th>value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>enabled</b></td>
+              <td>
+                <label class="opsToggle" style="display:inline-flex;">
+                  <input id="popupEnabled" type="checkbox"/>
+                  <span>팝업 활성화</span>
+                </label>
+              </td>
+            </tr>
+            <tr>
+              <td><b>intervalHours</b></td>
+              <td>
+                <input id="popupInterval" type="number" inputmode="numeric" min="0" step="1" value="0" />
+                <div style="margin-top:6px; opacity:.75; font-size:12px; line-height:1.45;">
+                  0: 매 방문 노출 · 24: 하루 1회 · 168: 주 1회
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><b>image</b></td>
+              <td>
+                <input id="popupImage" value="/img/popup/event-popup.jpg" />
+                <div style="margin-top:6px; opacity:.75; font-size:12px; line-height:1.45;">
+                  권장: JPG/PNG (iOS 안정) · 1장만 넣고 모바일/PC는 자동 크롭(cover)
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><b>ctaText</b></td>
+              <td><input id="popupCtaText" value="@uzu59" /></td>
+            </tr>
+            <tr>
+              <td><b>ctaUrl</b></td>
+              <td><input id="popupCtaUrl" value="https://t.me/UZU59" /></td>
+            </tr>
+            <tr>
+              <td><b>excludePaths</b></td>
+              <td>
+                <input id="popupExclude" value="/cert/, /cert" readonly />
+                <div style="margin-top:6px; opacity:.75; font-size:12px; line-height:1.45;">
+                  인증 페이지(/cert)는 팝업을 띄우지 않도록 기본 제외합니다.
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <textarea id="opsPopupJson" class="opsArea" spellcheck="false" placeholder="(자동) 배포용 JSON — 필요 시 편집 가능"></textarea>
+        <div id="opsPopupMsg" class="opsMsg"></div>
+        <div class="opsFooter">배포 경로: <code>/assets/config/popup.event.json</code> · 캐시: <code>no-store</code>(Worker)</div>
+      </section>
+
+<!-- DANGER ZONE -->
       <section class="opsCard opsSection" style="margin-top:14px;">
         <h2>운영 유틸리티</h2>
         <div class="hint">최근 저장/입력/세션 데이터 등, 브라우저 로컬 상태를 빠르게 정리합니다.</div>
@@ -267,6 +346,7 @@
       const PATCH_KEY = 'vvip_ops_dom_patch_v1';
       const DEPLOY_URL = '/assets/config/ops.dom.patch.json';
       const CERT_DEPLOY_URL = '/assets/config/cert.landing.json';
+      const POPUP_DEPLOY_URL = '/assets/config/popup.event.json';
       const BUILD_VER = (window.__BUILD_VER || '0') + '';
 
       const $ = (id)=>document.getElementById(id);
@@ -614,6 +694,7 @@
 
       // --- CERT Landing deploy config (join/code/telegram) ---
       let certBase = null;
+      let popupBase = null;
 
       const certMsg = (text, isErr) => {
         const el = $('opsCertMsg');
@@ -755,6 +836,108 @@
       }
 
 
+
+      // --- Event popup deploy config ---
+      function popupMsg(text, isErr){
+        const el = $('opsPopupMsg');
+        el.textContent = text || '';
+        el.className = 'opsMsg' + (isErr ? ' opsErr' : '');
+      }
+
+      function readPopupUi(){
+        const enabled = !!($('popupEnabled') && $('popupEnabled').checked);
+        const raw = ($('popupInterval') && $('popupInterval').value || '').trim();
+        const n = Number(raw);
+        const intervalHours = Number.isFinite(n) ? Math.max(0, Math.floor(n)) : 0;
+
+        const image = String(($('popupImage') && $('popupImage').value || '').trim() || '/img/popup/event-popup.jpg');
+        const ctaText = String(($('popupCtaText') && $('popupCtaText').value || '').trim() || '@uzu59');
+        const ctaUrl = String(($('popupCtaUrl') && $('popupCtaUrl').value || '').trim() || 'https://t.me/UZU59');
+
+        return { enabled, intervalHours, image, ctaText, ctaUrl };
+      }
+
+      function buildPopupDeployConfig(){
+        const ui = readPopupUi();
+        const base = popupBase || {};
+        const exclude = Array.isArray(base.excludePaths) ? base.excludePaths : ['/cert/', '/cert'];
+
+        return {
+          enabled: ui.enabled,
+          intervalHours: ui.intervalHours,
+          image: ui.image,
+          ctaText: ui.ctaText,
+          ctaUrl: ui.ctaUrl,
+          excludePaths: exclude
+        };
+      }
+
+      async function opsPopupLoad(){
+        try{
+          const url = POPUP_DEPLOY_URL + (POPUP_DEPLOY_URL.indexOf('?')>=0 ? '&' : '?') + 't=' + Date.now();
+          const res = await fetch(url, { cache:'no-store', credentials:'same-origin' });
+          if(!res || !res.ok){ popupMsg('배포 설정을 불러올 수 없습니다. (파일이 없거나 응답 오류)', true); return; }
+          const cfg = await res.json().catch(()=>null);
+          if(!cfg || typeof cfg !== 'object'){ popupMsg('배포 JSON 파싱 실패', true); return; }
+
+          popupBase = cfg;
+
+          if($('popupEnabled')) $('popupEnabled').checked = (cfg.enabled === true);
+          if($('popupInterval')) $('popupInterval').value = String(Number(cfg.intervalHours||0));
+          if($('popupImage')) $('popupImage').value = String(cfg.image || '/img/popup/event-popup.jpg');
+          if($('popupCtaText')) $('popupCtaText').value = String(cfg.ctaText || '@uzu59');
+          if($('popupCtaUrl')) $('popupCtaUrl').value = String(cfg.ctaUrl || 'https://t.me/UZU59');
+
+          const ex = Array.isArray(cfg.excludePaths) ? cfg.excludePaths : ['/cert/','/cert'];
+          if($('popupExclude')) $('popupExclude').value = ex.join(', ');
+
+          $('opsPopupJson').value = JSON.stringify(cfg, null, 2);
+          popupMsg('배포 설정 불러오기 완료', false);
+        }catch(e){
+          popupMsg('배포 설정 불러오기 실패', true);
+        }
+      }
+
+      function opsPopupMake(){
+        const cfg = buildPopupDeployConfig();
+        const text = JSON.stringify(cfg, null, 2);
+        $('opsPopupJson').value = text;
+        popupMsg('배포용 JSON 생성됨', false);
+        return text;
+      }
+
+      function opsPopupCopy(){
+        const text = opsPopupMake();
+        try{
+          navigator.clipboard.writeText(text);
+          popupMsg('JSON이 클립보드로 복사됨', false);
+        }catch(e){
+          popupMsg('복사 실패 — 텍스트 영역에서 수동 복사하세요', true);
+        }
+      }
+
+      function opsPopupDownload(){
+        const text = opsPopupMake();
+        try{
+          const blob = new Blob([text], {type:'application/json;charset=utf-8'});
+          const a = document.createElement('a');
+          a.href = URL.createObjectURL(blob);
+          a.download = 'popup.event.json';
+          document.body.appendChild(a);
+          a.click();
+          setTimeout(()=>{ try{ URL.revokeObjectURL(a.href); }catch(e){} try{ a.remove(); }catch(e){} }, 200);
+          popupMsg('배포파일 다운로드 시작됨 (popup.event.json)', false);
+        }catch(e){
+          popupMsg('다운로드 생성 실패 (텍스트를 수동 저장하세요)', true);
+        }
+      }
+
+      function opsPopupOpenImage(){
+        const p = String(($('popupImage') && $('popupImage').value || '').trim() || '/img/popup/event-popup.jpg');
+        try{ window.open(p, '_blank', 'noopener'); }catch(e){}
+      }
+
+
       function importPatch(){
         const raw = ($('opsJson').value||'').trim();
         if(!raw){ patchMsg('가져올 JSON이 없습니다.', true); return; }
@@ -812,6 +995,13 @@
         $('opsCertMake').addEventListener('click', opsCertMake);
         $('opsCertCopy').addEventListener('click', opsCertCopy);
         $('opsCertDownload').addEventListener('click', opsCertDownload);
+
+        // event popup config
+        $('opsPopupLoad').addEventListener('click', opsPopupLoad);
+        $('opsPopupMake').addEventListener('click', opsPopupMake);
+        $('opsPopupCopy').addEventListener('click', opsPopupCopy);
+        $('opsPopupDownload').addEventListener('click', opsPopupDownload);
+        $('opsPopupOpenImage').addEventListener('click', opsPopupOpenImage);
 
         $('opsRules').addEventListener('click', (e)=>{
           const btn = e.target && e.target.closest && e.target.closest('button[data-act="del"]');
