@@ -163,13 +163,16 @@ const cardSourcesById = (id) => {
     // - config의 thumb_image가 있으면 그걸 우선 사용
     // - 없으면 card1/img1.webp, card3/img2.webp 기본값 사용
     const fallback = {
-      card1: '/img/img1.webp',
-      card3: '/img/img2.webp',
+      card1: '/img/img1.jpg',
+      card3: '/img/img2.jpg',
     };
     const c = (CARDS && CARDS[id]) ? CARDS[id] : {};
     const base = (c && c.thumb) ? String(c.thumb) : (fallback[id] || '/img/logo.png');
     const webp = base;
-    return { gif: '', gif2: '', webp, jpg: certThumbSvgDataUri(id) };
+    // iOS/저사양 브라우저에서 webp 디코딩/로딩 문제가 있을 수 있어 jpg를 1차 대체로 제공
+    const jpg = (String(base).endsWith('.webp')) ? String(base).replace(/\.webp$/i, '.jpg') : String(base);
+    // 만약 jpg도 실패하면 최종적으로 SVG 썸네일(data URI)로 폴백
+    return { gif: '', gif2: '', webp, jpg: jpg || certThumbSvgDataUri(id) };
   };
 
   const appendUtmSafe = (url) => {
