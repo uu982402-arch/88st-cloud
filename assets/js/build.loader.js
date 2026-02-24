@@ -90,7 +90,8 @@
       "/assets/css/vvip-luxe.v75.css",
       "/assets/css/vvip-hub.v85.css",
       "/assets/css/patch.v100.premiumdash.20260222.css",
-      "/assets/css/pro-suite.v2.css"
+      "/assets/css/pro-suite.v2.css",
+      "/assets/css/typography.premium.v1.css"
     ];
     var jsList = (assets && assets.js && assets.js.length) ? assets.js : [
       "/assets/js/vvip-global.v75.js",

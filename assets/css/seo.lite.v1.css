@@ -20,6 +20,20 @@
   align-items: end;
 }
 
+/* Search-first UX: collapse advanced selects by default */
+.seoLite__advRow{
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.seoLite__advRow .seoLite__btn{
+  padding: 8px 10px;
+  border-radius: 999px;
+}
+.seoLite__advanced{ display: contents; }
+.seoLite__advanced.is-collapsed{ display: none; }
+
 .seoLite__field { grid-column: span 6; }
 .seoLite__field.small { grid-column: span 3; }
 .seoLite__field.full { grid-column: span 12; }
