@@ -50,13 +50,22 @@
   }
 
   function mount(cfg){
+    // Fixed image path (swap the file only, no config/code edits)
+    const imgSrc = '/img/popup/event-popup.jpg';
+    // safe CSS url() for background
+    const bgUrl = `url(\"${imgSrc.replace(/\\\\/g,'/').replace(/\"/g,'%22')}\")`;
     const wrap = document.createElement('div');
     wrap.className = 'evtPop';
     wrap.setAttribute('role','dialog');
     wrap.setAttribute('aria-modal','true');
     wrap.innerHTML = `
       <div class="evtPop__card">
-        <img class="evtPop__img" alt="88ST.Cloud" src="${cfg.image}">
+        <div class="evtPop__media" style="--evt-img:${bgUrl}">
+          <div class="evtPop__bg" aria-hidden="true"></div>
+          <div class="evtPop__fg">
+            <img class="evtPop__img" alt="88ST.Cloud" src="${imgSrc}">
+          </div>
+        </div>
         <button class="evtPop__close" type="button" aria-label="close">✕</button>
         <div class="evtPop__cta">
           <a class="evtPop__btn" href="${cfg.ctaUrl}" target="_blank" rel="noopener noreferrer">${cfg.ctaText || '@uzu59'}</a>

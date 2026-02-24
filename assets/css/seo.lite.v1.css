@@ -1,0 +1,193 @@
+/* 88ST.Cloud - Guide SEO Tool (Lite, public, zero-cost)
+   Keep styles minimal and aligned with existing hub/guide UI. */
+
+.seoLite {
+  display: grid;
+  gap: 14px;
+}
+
+.seoLite__panel {
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(20,22,28,.65);
+  border-radius: 16px;
+  padding: 14px;
+}
+
+.seoLite__controls {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 10px;
+  align-items: end;
+}
+
+.seoLite__field { grid-column: span 6; }
+.seoLite__field.small { grid-column: span 3; }
+.seoLite__field.full { grid-column: span 12; }
+
+.seoLite label {
+  display: block;
+  font-size: 12px;
+  opacity: .85;
+  margin: 0 0 6px;
+}
+
+.seoLite select,
+.seoLite input,
+.seoLite textarea {
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(9,10,14,.55);
+  color: inherit;
+  padding: 10px 12px;
+  outline: none;
+}
+
+.seoLite textarea {
+  min-height: 138px;
+  resize: vertical;
+  line-height: 1.55;
+}
+
+.seoLite__btnRow {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.seoLite__btn {
+  appearance: none;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.06);
+  color: inherit;
+  padding: 10px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform .06s ease, background .12s ease;
+}
+
+.seoLite__btn.primary {
+  background: rgba(255,215,0,.12);
+  border-color: rgba(255,215,0,.25);
+}
+
+.seoLite__btn:active { transform: translateY(1px); }
+
+.seoLite__muted {
+  font-size: 12px;
+  opacity: .78;
+  line-height: 1.6;
+}
+
+.seoLite__grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.seoLite__out { grid-column: span 6; }
+.seoLite__out.full { grid-column: span 12; }
+
+.seoLite__outHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.seoLite__outTitle {
+  font-weight: 700;
+}
+
+.seoLite__pill {
+  font-size: 11px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.05);
+  opacity: .9;
+}
+
+.seoLite__toast {
+  position: fixed;
+  left: 50%;
+  bottom: 18px;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,.78);
+  border: 1px solid rgba(255,255,255,.12);
+  padding: 10px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .18s ease;
+  z-index: 9999;
+}
+
+.seoLite__toast.on { opacity: 1; }
+
+@media (max-width: 900px){
+  .seoLite__field { grid-column: span 12; }
+  .seoLite__field.small { grid-column: span 6; }
+  .seoLite__out { grid-column: span 12; }
+}
+
+
+/* Conversion CTA (public guide) */
+.seoLite__cta{
+  margin-top: 10px;
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid rgba(255,215,0,.22);
+  background: linear-gradient(180deg, rgba(255,215,0,.10), rgba(20,22,28,.55));
+  border-radius: 16px;
+  padding: 14px;
+}
+.seoLite__ctaTitle{
+  font-weight: 800;
+  letter-spacing: .2px;
+  margin-bottom: 6px;
+}
+.seoLite__ctaSub{
+  font-size: 12px;
+  opacity: .82;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+.seoLite__ctaHint{
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: 12px;
+  opacity: .9;
+}
+.seoLite__code{
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,.16);
+  background: rgba(0,0,0,.35);
+  white-space: nowrap;
+}
+.seoLite__ctaActions{
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+@media (max-width: 900px){
+  .seoLite__cta{
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .seoLite__ctaActions{
+    justify-content: flex-start;
+  }
+}

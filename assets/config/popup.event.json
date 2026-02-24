@@ -5,7 +5,9 @@
   "ctaText": "@uzu59",
   "ctaUrl": "https://t.me/UZU59",
   "excludePaths": [
+    "/cert",
     "/cert/",
-    "/cert"
+    "/guide/seo-tool",
+    "/guide/seo-tool/"
   ]
 }
