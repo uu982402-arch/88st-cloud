@@ -130,6 +130,48 @@
       loadJS();
     }
 
+    // --- Scam banner (impersonation warning) hardening ---
+    // Some pages render the banner markup but do not bind the close action.
+    // We bind it here so every page can always dismiss it.
+    try {
+      if (typeof window.closeScam !== 'function') {
+        window.closeScam = function(){
+          try {
+            var d = (new Date()).toISOString().slice(0,10);
+            try { localStorage.setItem('scam_popup_date', d); } catch (e) {}
+            var el = document.getElementById('scamPopup');
+            if (el) el.style.display = 'none';
+          } catch (e) {}
+        };
+      }
+
+      function bindScamPopup(){
+        try {
+          var el = document.getElementById('scamPopup');
+          if (!el) return;
+          var btn = el.querySelector('.scam-box .btn');
+          if (!btn || btn.dataset.bound === '1') return;
+          btn.dataset.bound = '1';
+          // accessibility + reliable clicks
+          if (!btn.getAttribute('role')) btn.setAttribute('role','button');
+          if (!btn.hasAttribute('tabindex')) btn.setAttribute('tabindex','0');
+          btn.addEventListener('click', function(){ try{ window.closeScam(); }catch(e){} });
+          btn.addEventListener('keydown', function(e){
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              try{ window.closeScam(); }catch(_){}
+            }
+          });
+        } catch (e) {}
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', bindScamPopup);
+      } else {
+        bindScamPopup();
+      }
+    } catch (e) {}
+
     // --- OPS smoke check mode (runs ONLY when ?smoke=1) ---
     try {
       var sp = __sp;
