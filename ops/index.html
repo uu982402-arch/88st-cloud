@@ -16,8 +16,8 @@
   <link rel="stylesheet" href="/assets/css/hdr.shell.v1.20260221.css?v=119"/>
 
   <!-- Global asset loader (cache-busted via build.ver.js) -->
-  <script defer src="/assets/js/build.ver.js?v=v20260224-1845"></script>
-  <script defer src="/assets/js/build.loader.js?v=v20260224-1845"></script>
+  <script defer src="/assets/js/build.ver.js?v=v20260224-2015"></script>
+  <script defer src="/assets/js/build.loader.js?v=v20260224-2015"></script>
 
   <style>
     :root{ --opsMax: 1040px; }
@@ -86,6 +86,7 @@
     .opsFooter{ margin-top:14px; opacity:.7; font-size:12px; }
     .opsFooter code{ opacity:1; }
   </style>
+<script src="/assets/js/seo.apply.v1.js?v=v20260224-2330"></script>
 </head>
 
 <body>
@@ -260,9 +261,9 @@
             <tr>
               <td><b>image</b></td>
               <td>
-                <input id="popupImage" value="/img/popup/event-popup.jpg" />
+                <input id="popupImage" value="/img/popup/event-popup.jpg" readonly />
                 <div style="margin-top:6px; opacity:.75; font-size:12px; line-height:1.45;">
-                  권장: JPG/PNG (iOS 안정) · 1장만 넣고 모바일/PC는 자동 크롭(cover)
+                  <b>경로 고정</b>: <code>/img/popup/event-popup.jpg</code> · 이 파일만 교체하면 이미지가 바뀝니다 (코드/JSON 수정 0)
                 </div>
               </td>
             </tr>
@@ -299,6 +300,7 @@
           <button id="opsClearRecent" class="opsMiniBtn" type="button">최근 사용 초기화</button>
           <button id="opsClearPersist" class="opsMiniBtn" type="button">최근 입력 초기화</button>
           <button id="opsHardReload" class="opsMiniBtn" type="button">강력 새로고침</button>
+          <a class="opsMiniBtn" href="/seo/" target="_blank" rel="noopener">SEO 키워드/카피 생성기</a>
         </div>
         <div class="opsFooter">
           적용 키: <code>vvip_ops_dom_patch_v1</code> · 세션 키: <code>vvip_ops_authed_v1</code>
@@ -850,7 +852,8 @@
         const n = Number(raw);
         const intervalHours = Number.isFinite(n) ? Math.max(0, Math.floor(n)) : 0;
 
-        const image = String(($('popupImage') && $('popupImage').value || '').trim() || '/img/popup/event-popup.jpg');
+        // Fixed path for zero-ops image swapping
+        const image = '/img/popup/event-popup.jpg';
         const ctaText = String(($('popupCtaText') && $('popupCtaText').value || '').trim() || '@uzu59');
         const ctaUrl = String(($('popupCtaUrl') && $('popupCtaUrl').value || '').trim() || 'https://t.me/UZU59');
 
@@ -884,7 +887,7 @@
 
           if($('popupEnabled')) $('popupEnabled').checked = (cfg.enabled === true);
           if($('popupInterval')) $('popupInterval').value = String(Number(cfg.intervalHours||0));
-          if($('popupImage')) $('popupImage').value = String(cfg.image || '/img/popup/event-popup.jpg');
+          if($('popupImage')) $('popupImage').value = '/img/popup/event-popup.jpg';
           if($('popupCtaText')) $('popupCtaText').value = String(cfg.ctaText || '@uzu59');
           if($('popupCtaUrl')) $('popupCtaUrl').value = String(cfg.ctaUrl || 'https://t.me/UZU59');
 
@@ -933,7 +936,7 @@
       }
 
       function opsPopupOpenImage(){
-        const p = String(($('popupImage') && $('popupImage').value || '').trim() || '/img/popup/event-popup.jpg');
+        const p = '/img/popup/event-popup.jpg';
         try{ window.open(p, '_blank', 'noopener'); }catch(e){}
       }
 

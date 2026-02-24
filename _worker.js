@@ -112,6 +112,36 @@ if (path === '/community' || path.startsWith('/community/')) {
         return new Response(res.body, { status: res.status, headers: h });
       }
 
+      // SEO keyword bank: always no-store (operational swaps)
+      if (path === '/assets/config/seo.bank.json') {
+        const res = await env.ASSETS.fetch(request);
+        const h = new Headers(res.headers);
+        h.set('cache-control', 'no-store, no-cache, must-revalidate, max-age=0');
+        h.set('pragma', 'no-cache');
+        h.set('expires', '0');
+        return new Response(res.body, { status: res.status, headers: h });
+      }
+
+      // SEO meta deploy file: always no-store (operational swaps)
+      if (path === '/assets/config/seo.meta.json') {
+        const res = await env.ASSETS.fetch(request);
+        const h = new Headers(res.headers);
+        h.set('cache-control', 'no-store, no-cache, must-revalidate, max-age=0');
+        h.set('pragma', 'no-cache');
+        h.set('expires', '0');
+        return new Response(res.body, { status: res.status, headers: h });
+      }
+
+      // EVENT popup image: fixed path swap (image replace only, no config changes)
+      if (path === '/img/popup/event-popup.jpg') {
+        const res = await env.ASSETS.fetch(request);
+        const h = new Headers(res.headers);
+        h.set('cache-control', 'no-store, no-cache, must-revalidate, max-age=0');
+        h.set('pragma', 'no-cache');
+        h.set('expires', '0');
+        return new Response(res.body, { status: res.status, headers: h });
+      }
+
       // Static fallthrough
       return env.ASSETS.fetch(request);
 

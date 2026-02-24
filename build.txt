@@ -1,7 +1,7 @@
-build=v20260223-2500-v135
-note=v135 ops-config for cert landings + cert config deploy JSON + sitemap.xml fixed + cert pages SEO keywords
+build=v20260225-2030-v144
+note=v144 guide/seo-tool CTA 강화(문구 복사+버튼), css/js 쿼리 갱신
 commit=
 branch=
 assets_css=/assets/css/vvip-luxe.v75.css,/assets/css/vvip-hub.v85.css,/assets/css/patch.v100.premiumdash.20260222.css,/assets/css/pro-suite.v2.css
 assets_js=/assets/js/vvip-global.v75.js,/assets/js/j.searchtyping.v83.20260219.js,/assets/js/pro-suite.v2.js
-generated_utc=2026-02-23T10:27:16.588202Z
+generated_utc=2026-02-24T21:22:10.622004Z

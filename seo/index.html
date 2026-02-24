@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+  <title>SEO 키워드/카피 생성기 | 88ST OPS</title>
+  <meta name="robots" content="noindex,nofollow,noarchive,nosnippet"/>
+  <link rel="canonical" href="https://88st.cloud/seo/"/>
+  <link rel="icon" href="/favicon.ico"/>
+  <link rel="stylesheet" href="/assets/css/seo.tool.v1.css?v=v1"/>
+<script src="/assets/js/seo.apply.v1.js?v=v20260224-2330"></script>
+</head>
+<body>
+  <div class="gate" id="gate">
+    <div class="gate-card">
+      <div class="gate-brand">88ST.Cloud</div>
+      <h1 class="gate-title">SEO 키워드/카피 생성기</h1>
+      <p class="gate-sub">운영자 전용 페이지입니다.</p>
+      <div class="gate-row">
+        <input id="pw" type="password" inputmode="text" autocomplete="current-password" placeholder="비밀번호"/>
+        <button id="btnLogin" class="btn primary">입장</button>
+      </div>
+      <div class="gate-meta">
+        <button id="btnGoOps" class="btn ghost">/ops로 이동</button>
+        <span id="gateMsg" class="msg"></span>
+      </div>
+    </div>
+  </div>
+
+  <header class="topbar" id="appTop" hidden>
+    <div class="top-left">
+      <div class="badge">OPS</div>
+      <div class="title">SEO 키워드 · 제목/메타 · 카피 정리</div>
+    </div>
+    <div class="top-right">
+      <a class="btn ghost" href="/ops/">OPS</a>
+      <button class="btn ghost" id="btnReloadBank">뱅크 새로고침</button>
+    </div>
+  </header>
+
+  <main class="wrap" id="app" hidden>
+    <section class="grid">
+      <div class="card">
+        <h2>1) 키워드 클러스터 생성</h2>
+        <div class="row">
+          <label class="lab">주제/서비스</label>
+          <input id="topic" class="inp" placeholder="예: 스포츠 배당 분석기, EV 계산기, 인증놀이터"/>
+        </div>
+        <div class="row">
+          <label class="lab">카테고리</label>
+          <select id="cat" class="inp">
+            <option value="sports">스포츠 분석/배당</option>
+            <option value="ev">EV/켈리/확률</option>
+            <option value="arb">아비트리지/마진</option>
+            <option value="cert">인증/프로모션</option>
+            <option value="general">일반(가이드/도구)</option>
+          </select>
+        </div>
+        <div class="row">
+          <label class="lab">톤</label>
+          <select id="tone" class="inp">
+            <option value="luxe">짧게 · 고급 톤</option>
+            <option value="plain">설명형</option>
+            <option value="cta">전환형(CTA 강화)</option>
+          </select>
+        </div>
+        <div class="row">
+          <label class="lab">키워드 포함</label>
+          <div class="chips">
+            <label class="chip"><input type="checkbox" id="kwBrand" checked/> 브랜드(88st/88st.cloud)</label>
+            <label class="chip"><input type="checkbox" id="kwKR" checked/> 한국어 롱테일</label>
+            <label class="chip"><input type="checkbox" id="kwEN"/> 영문 약어(EV/Kelly)</label>
+          </div>
+        </div>
+        <div class="row actions">
+          <button class="btn primary" id="btnGenKw">키워드 생성</button>
+          <button class="btn" id="btnClearKw">초기화</button>
+        </div>
+
+        <h3>결과</h3>
+        <textarea id="outKw" class="ta" placeholder="키워드 클러스터 결과가 여기에 생성됩니다." spellcheck="false"></textarea>
+        <div class="row actions">
+          <button class="btn ghost" id="btnCopyKw">복사</button>
+          <button class="btn ghost" id="btnDlKw">TXT 다운로드</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>2) 제목/메타/아웃라인 생성</h2>
+        <div class="row">
+          <label class="lab">페이지 경로</label>
+          <input id="path" class="inp" placeholder="예: /analysis/  /guide/  /cert/vegas/"/>
+        </div>
+        <div class="row">
+          <label class="lab">핵심 키워드</label>
+          <input id="focus" class="inp" placeholder="예: 배당 분석, EV 계산기, 인증사이트"/>
+        </div>
+        <div class="row actions">
+          <button class="btn primary" id="btnGenMeta">생성</button>
+          <button class="btn" id="btnClearMeta">초기화</button>
+        </div>
+
+        <h3>Title(제목) / Meta Description / Keywords</h3>
+        <textarea id="outMeta" class="ta" placeholder="Title/Meta/Keywords 추천이 생성됩니다." spellcheck="false"></textarea>
+
+        <h3>H2 아웃라인(가이드형)</h3>
+        <textarea id="outOutline" class="ta mini" placeholder="H2 아웃라인이 생성됩니다." spellcheck="false"></textarea>
+
+        <div class="row actions">
+          <button class="btn ghost" id="btnCopyMeta">복사</button>
+          <button class="btn ghost" id="btnDlMeta">TXT 다운로드</button>
+          <button class="btn ghost" id="btnMakeJson">seo.meta.json 스니펫 생성</button>
+        </div>
+
+        <h3>seo.meta.json 스니펫</h3>
+        <textarea id="outJson" class="ta mini" placeholder="경로별 meta JSON 스니펫이 생성됩니다." spellcheck="false"></textarea>
+        <div class="row actions">
+          <button class="btn ghost" id="btnCopyJson">복사</button>
+          <button class="btn ghost" id="btnDlJson">JSON 다운로드</button>
+        </div>
+        <p class="hint">※ 이 도구는 외부 API 없이, 내부 키워드 뱅크/템플릿으로 생성합니다(0원/정적).</p>
+      </div>
+
+      <div class="card">
+        <h2>3) 본문 리라이팅(룰 기반)</h2>
+        <p class="sub">AI 호출 없이 “정리/압축/톤 통일”만 해줍니다. 긴 글을 넣고 “정리”를 누르면 됩니다.</p>
+        <div class="row">
+          <label class="lab">원문</label>
+        </div>
+        <textarea id="src" class="ta" placeholder="원문을 붙여넣으세요." spellcheck="false"></textarea>
+
+        <div class="row actions">
+          <button class="btn primary" id="btnRewriteShort">짧게 정리</button>
+          <button class="btn primary" id="btnRewriteExplain">설명형 정리</button>
+          <button class="btn" id="btnCleanup">공백/줄정리</button>
+        </div>
+
+        <h3>결과</h3>
+        <textarea id="outBody" class="ta" placeholder="정리된 문장이 여기에 생성됩니다." spellcheck="false"></textarea>
+        <div class="row actions">
+          <button class="btn ghost" id="btnCopyBody">복사</button>
+          <button class="btn ghost" id="btnDlBody">TXT 다운로드</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>키워드 뱅크(seo.bank.json)</h2>
+        <p class="sub">운영자가 키워드/템플릿을 직접 수정할 수 있습니다. 이 파일만 교체하면 도구 결과도 즉시 바뀝니다.</p>
+        <div class="row actions">
+          <button class="btn ghost" id="btnLoadBank">현재 뱅크 불러오기</button>
+          <button class="btn ghost" id="btnCopyBank">복사</button>
+          <button class="btn ghost" id="btnDlBank">JSON 다운로드</button>
+        </div>
+        <textarea id="bank" class="ta" placeholder="seo.bank.json 내용" spellcheck="false"></textarea>
+        <p class="hint">배포 경로: <code>/assets/config/seo.bank.json</code> (Worker: no-store)</p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    window.__SEO_GATE__ = {
+      HASH_HEX: "23c9221f8d58970a191a4762e4c9ca052c08c905b44e293ee4b2f6ed2a9b1755",
+      AUTH_KEY: "vvip_ops_authed_v1"
+    };
+  </script>
+  <script src="/assets/js/seo.tool.v1.js?v=v1" defer></script>
+</body>
+</html>
