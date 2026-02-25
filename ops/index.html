@@ -18,6 +18,7 @@
   <!-- Global asset loader (cache-busted via build.ver.js) -->
   <script defer src="/assets/js/build.ver.js?v=v20260226-0145"></script>
   <script defer src="/assets/js/build.loader.js?v=v20260226-0145"></script>
+  <script defer src="/assets/js/ops.sitemap.v1.20260226.js?v=v20260226-2330"></script>
 
   <style>
     :root{ --opsMax: 1040px; }
@@ -306,6 +307,29 @@
           적용 키: <code>vvip_ops_dom_patch_v1</code> · 세션 키: <code>vvip_ops_authed_v1</code>
         </div>
       
+
+      <!-- SITEMAP PURGE LIST -->
+      <section class="opsCard opsSection" style="margin-top:14px;">
+        <h2>사이트맵 → 전페이지 퍼지 리스트</h2>
+        <div class="hint">
+          현재 배포된 <code>/sitemap.xml</code>을 자동 파싱해서 <b>전페이지 URL 리스트</b>와 <b>Cloudflare Purge(JSON)</b>를 한 번에 생성합니다.
+          <br/>· <b>FULL URL</b>: Cloudflare Purge API의 <code>files</code> 배열에 그대로 사용
+          <br/>· <b>RELATIVE PATH</b>: 전페이지 빠른 점검/공유용
+        </div>
+
+        <div class="opsFlex">
+          <button id="opsSitemapLoad" class="opsMiniBtn" type="button">sitemap.xml 불러오기</button>
+          <button id="opsSitemapCopy" class="opsMiniBtn" type="button">리스트 복사</button>
+          <button id="opsSitemapCopyJson" class="opsMiniBtn" type="button">JSON 복사</button>
+          <span style="flex:1"></span>
+          <span class="opsBadge" id="opsSitemapMeta">총 0개</span>
+        </div>
+
+        <textarea id="opsSitemapOut" class="opsArea" spellcheck="false" placeholder="(자동) FULL URL / RELATIVE PATH 퍼지 리스트"></textarea>
+        <textarea id="opsSitemapJson" class="opsArea" spellcheck="false" placeholder="(자동) Cloudflare Purge JSON"></textarea>
+        <div id="opsSitemapMsg" class="opsMsg"></div>
+      </section>
+
       <!-- SMOKE CHECK -->
       <section class="opsCard opsSection" style="margin-top:14px;">
         <h2>전체 페이지 CTA 스모크 체크</h2>
