@@ -1,0 +1,42 @@
+{
+  "version": "v152",
+  "brand": {
+    "name": "88ST.Cloud",
+    "mark": "88",
+    "themeColor": "#0b0c10"
+  },
+  "links": {
+    "home": "/",
+    "cert": "/cert/",
+    "telegram": "https://t.me/UZU59"
+  },
+  "features": {
+    "shareCard": true,
+    "sessionSafety": true,
+    "certCrossPromo": true,
+    "guideCourses": true,
+    "proSuite": true,
+    "presetBar": true,
+    "logbookReport": true
+  },
+  "presets": {
+    "default": "balanced"
+  },
+  "risk": {
+    "lockEnabledDefault": false,
+    "stopLossPct": 3,
+    "takeProfitPct": 5,
+    "cooldownMin": 15
+  },
+  "promo": {
+    "cert": {
+      "enabled": true,
+      "label": "인증사이트",
+      "cta": "원클릭 복사+이동",
+      "hideAfterHours": 24
+    }
+  },
+  "ops": {
+    "smokeMax": 60
+  }
+}

@@ -1,0 +1,44 @@
+/* Logbook Category Report (v1.20260226)
+ * Injected by /assets/js/logbook.report.v1.20260226.js
+ */
+
+.psLogTabs{ margin-top: 10px; display:flex; gap:8px; flex-wrap:wrap; }
+.psLogTab{
+  border:1px solid rgba(255,255,255,.14);
+  background: rgba(0,0,0,.12);
+  color: inherit;
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-weight: 900;
+  cursor: pointer;
+}
+[data-theme="light"] .psLogTab{ background: rgba(255,255,255,.65); border-color: rgba(0,0,0,.10); }
+.psLogTab.active{ border-color: rgba(121, 83, 255, .72); box-shadow: 0 10px 26px rgba(121,83,255,.12); }
+
+.psLogPane{ display:none; margin-top: 12px; }
+.psLogPane.active{ display:block; }
+
+.psCatGrid{ display:grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap:10px; }
+@media (max-width: 920px){ .psCatGrid{ grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 520px){ .psCatGrid{ grid-template-columns: 1fr; } }
+
+.psCatCard{
+  border-radius: 16px;
+  border:1px solid rgba(255,255,255,.12);
+  background: rgba(0,0,0,.10);
+  padding: 12px;
+}
+[data-theme="light"] .psCatCard{ background: rgba(255,255,255,.68); border-color: rgba(0,0,0,.10); }
+.psCatCard .t{ font-weight: 900; letter-spacing:-.02em; display:flex; align-items:center; justify-content:space-between; gap:10px; }
+.psCatCard .t .b{ font-size:12px; opacity:.76; font-weight:800; }
+.psCatCard .kpis{ margin-top:10px; display:grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap:8px; }
+.psCatCard .kpi{ border-radius: 14px; border:1px solid rgba(255,255,255,.10); background: rgba(255,255,255,.04); padding: 8px 10px; }
+[data-theme="light"] .psCatCard .kpi{ background: rgba(0,0,0,.03); border-color: rgba(0,0,0,.08); }
+.psCatCard .kpi .k{ font-size:11px; opacity:.74; }
+.psCatCard .kpi .v{ margin-top:4px; font-weight:900; letter-spacing:-.02em; }
+.psCatCard .kpi .v.pos{ color: #66f6b7; }
+.psCatCard .kpi .v.neg{ color: #ff6b6b; }
+[data-theme="light"] .psCatCard .kpi .v.pos{ color: #0c7a4d; }
+[data-theme="light"] .psCatCard .kpi .v.neg{ color: #c51f1f; }
+
+.psCatHint{ margin-top: 10px; font-size: 12px; opacity: .78; line-height: 1.45; }

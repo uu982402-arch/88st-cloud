@@ -91,14 +91,16 @@
       "/assets/css/vvip-luxe.v75.css",
       "/assets/css/vvip-hub.v85.css",
       "/assets/css/patch.v100.premiumdash.20260222.css",
-      "/assets/css/pro-suite.v2.css",
+      "/assets/css/pro-suite.v3.css",
       "/assets/css/typography.premium.v2.css"
     ];
     var jsList = (assets && assets.js && assets.js.length) ? assets.js : [
       "/assets/js/ui.fix.v1.20260226.js",
+      "/assets/js/site.runtime.v1.20260226.js",
+      "/assets/js/share.session.v1.20260226.js",
       "/assets/js/vvip-global.v75.js",
       "/assets/js/j.searchtyping.v83.20260219.js",
-      "/assets/js/pro-suite.v2.js"
+      "/assets/js/pro-suite.v3.js"
     ];
 
 
