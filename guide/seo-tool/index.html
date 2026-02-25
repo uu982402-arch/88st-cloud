@@ -21,14 +21,14 @@
 <link rel="stylesheet" href="/assets/c.9995eeb5cf82.css"/>
 <link rel="stylesheet" href="/assets/c.0b3d8a45f8c9.css"/>
 <link rel="stylesheet" href="/assets/c.a50dd3bc5b33.css"/>
-<link rel="stylesheet" href="/assets/css/seo.lite.v1.css?v=147"/>
+<link rel="stylesheet" href="/assets/css/seo.lite.v1.css?v=148"/>
 <link rel="stylesheet" href="/assets/css/hdr.shell.v1.20260221.css?v=119"/>
 
 <meta name="theme-color" content="#0b0c10"/>
 
-<script defer src="/assets/js/build.ver.js?v=v20260226-0130"></script>
-<script defer src="/assets/js/build.loader.js?v=v20260226-0130"></script>
-<script defer src="/assets/js/seo.lite.v1.js?v=147"></script>
+<script defer src="/assets/js/build.ver.js?v=v20260226-0145"></script>
+<script defer src="/assets/js/build.loader.js?v=v20260226-0145"></script>
+<script defer src="/assets/js/seo.lite.v1.js?v=148"></script>
 <script src="/assets/js/seo.apply.v1.js?v=v20260224-2330"></script>
 </head>
 <body>
@@ -135,21 +135,19 @@
     </section>
 
     <section class="hub-section">
-      <div class="hub-head hub-head--seoToggle">
-        <div>
-          <h2>생성기</h2>
-          <div class="sub">검색형 입력 중심으로 생성됩니다. (옵션은 필요할 때만 스위치로 펼치세요)</div>
-        </div>
-
-        <!-- Search-only UX: options are hidden by default, exposed via a tiny switch -->
-        <div class="seoLite__toggleWrap" aria-label="옵션 토글">
-          <span class="seoLite__toggleLabel">옵션</span>
-          <label class="seoLite__switch" title="카테고리·의도·톤 옵션">
-            <input id="advSwitch" type="checkbox" role="switch" aria-label="옵션 펼치기" />
-            <span class="seoLite__slider" aria-hidden="true"></span>
-          </label>
-        </div>
-      </div>
+      <div class="hub-head seoLiteHead">
+  <div>
+    <h2>생성기</h2>
+    <div class="sub">카테고리/의도/톤을 선택하면 키워드·제목·메타·아웃라인이 자동 생성됩니다.</div>
+  </div>
+  <div class="seoLite__switchWrap" aria-label="옵션 토글">
+    <div class="seoLite__switchLabel">옵션</div>
+    <label class="seoLite__switch">
+      <input id="seoOptSwitch" type="checkbox" aria-label="카테고리/의도/톤 옵션 표시"/>
+      <span class="knob"></span>
+    </label>
+  </div>
+</div>
 
       <div class="seoLite">
         <div class="seoLite__panel">
@@ -160,6 +158,7 @@
               <datalist id="seoQueryList"></datalist>
               <div class="seoLite__muted" style="margin-top:6px;">※ 이 칸에 입력하면 “입력 키워드 중심”으로 결과가 확장됩니다. (카테고리/의도/톤은 확장 규칙에만 사용)</div>
             </div>
+</div>
 
             <div id="seoAdvanced" class="seoLite__advanced is-collapsed">
             <div class="seoLite__field small">
@@ -235,7 +234,7 @@
 
           <div class="seoLite__panel seoLite__out">
             <div class="seoLite__outHead">
-              <div class="seoLite__outTitle">커뮤니티 제목 후보</div>
+              <div class="seoLite__outTitle">Title(제목) 후보</div>
               <div style="display:flex; gap:8px; align-items:center;">
                 <span class="seoLite__pill"><span id="ttlCount">0</span>개</span>
                 <button class="seoLite__btn btnCopy" type="button" data-target="#outTitles">복사</button>
@@ -243,18 +242,6 @@
               </div>
             </div>
             <textarea id="outTitles" spellcheck="false"></textarea>
-          </div>
-
-          <div class="seoLite__panel seoLite__out full">
-            <div class="seoLite__outHead">
-              <div class="seoLite__outTitle">커뮤니티 게시글 본문(템플릿)</div>
-              <div style="display:flex; gap:8px; align-items:center;">
-                <span class="seoLite__pill">바로 사용</span>
-                <button class="seoLite__btn btnCopy" type="button" data-target="#outPost">복사</button>
-                <button class="seoLite__btn btnDown" type="button" data-target="#outPost" data-fn="post.txt">TXT</button>
-              </div>
-            </div>
-            <textarea id="outPost" spellcheck="false"></textarea>
           </div>
 
           <div class="seoLite__panel seoLite__out">
@@ -279,6 +266,19 @@
               </div>
             </div>
             <textarea id="outOutline" spellcheck="false"></textarea>
+          </div>
+
+
+          <div class="seoLite__panel seoLite__out full">
+            <div class="seoLite__outHead">
+              <div class="seoLite__outTitle">커뮤니티 게시글 본문(템플릿)</div>
+              <div style="display:flex; gap:8px; align-items:center;">
+                <span class="seoLite__pill">자동</span>
+                <button class="seoLite__btn btnCopy" type="button" data-target="#outCommunity">복사</button>
+                <button class="seoLite__btn btnDown" type="button" data-target="#outCommunity" data-fn="community_post.txt">TXT</button>
+              </div>
+            </div>
+            <textarea id="outCommunity" spellcheck="false"></textarea>
           </div>
         </div>
       </div>
