@@ -112,7 +112,18 @@ if (path === '/community' || path.startsWith('/community/')) {
         return new Response(res.body, { status: res.status, headers: h });
       }
 
-      // SEO keyword bank: always no-store (operational swaps)
+      
+      // SITE runtime deploy config: always no-store (operational swaps)
+      if (path === '/assets/config/site.runtime.json') {
+        const res = await env.ASSETS.fetch(request);
+        const h = new Headers(res.headers);
+        h.set('cache-control', 'no-store, no-cache, must-revalidate, max-age=0');
+        h.set('pragma', 'no-cache');
+        h.set('expires', '0');
+        return new Response(res.body, { status: res.status, headers: h });
+      }
+
+// SEO keyword bank: always no-store (operational swaps)
       if (path === '/assets/config/seo.bank.json') {
         const res = await env.ASSETS.fetch(request);
         const h = new Headers(res.headers);

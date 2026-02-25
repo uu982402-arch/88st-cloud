@@ -16,9 +16,10 @@
   <link rel="stylesheet" href="/assets/css/hdr.shell.v1.20260221.css?v=119"/>
 
   <!-- Global asset loader (cache-busted via build.ver.js) -->
-  <script defer src="/assets/js/build.ver.js?v=v20260226-0145"></script>
-  <script defer src="/assets/js/build.loader.js?v=v20260226-0145"></script>
-  <script defer src="/assets/js/ops.sitemap.v1.20260226.js?v=v20260226-2330"></script>
+  <script defer src="/assets/js/build.ver.js?v=v20260226-2445"></script>
+  <script defer src="/assets/js/build.loader.js?v=v20260226-2445"></script>
+  <script defer src="/assets/js/ops.sitemap.v1.20260226.js?v=v20260226-2445"></script>
+  <script defer src="/assets/js/ops.sitecfg.v152.js?v=v20260226-2445"></script>
 
   <style>
     :root{ --opsMax: 1040px; }
@@ -301,12 +302,105 @@
           <button id="opsClearRecent" class="opsMiniBtn" type="button">최근 사용 초기화</button>
           <button id="opsClearPersist" class="opsMiniBtn" type="button">최근 입력 초기화</button>
           <button id="opsHardReload" class="opsMiniBtn" type="button">강력 새로고침</button>
+          <button id="opsClearPreset" class="opsMiniBtn" type="button">추천 설정 초기화</button>
           <a class="opsMiniBtn" href="/seo/" target="_blank" rel="noopener">SEO 키워드/카피 생성기</a>
         </div>
         <div class="opsFooter">
           적용 키: <code>vvip_ops_dom_patch_v1</code> · 세션 키: <code>vvip_ops_authed_v1</code>
         </div>
       
+
+      <!-- SITE RUNTIME CONFIG -->
+      <section class="opsCard opsSection" style="margin-top:14px;">
+        <h2>사이트 런타임 설정(배포)</h2>
+        <div class="hint">
+          <code>/assets/config/site.runtime.json</code> 하나로 <b>전페이지 공통 기능(공유 카드/세이프티 락/인증 추천/가이드 루트)</b>을 관리합니다.
+          <br/>· <b>배포 적용</b>: 아래에서 JSON 생성 → <code>site.runtime.json</code> 파일로 저장해 교체
+          <br/>· <b>로컬 테스트</b>: “로컬 오버라이드 적용”을 누르면 이 브라우저에서만 즉시 반영
+        </div>
+
+        <div class="opsFlex">
+          <button id="opsSiteLoad" class="opsMiniBtn" type="button">배포 설정 불러오기</button>
+          <button id="opsSiteMake" class="opsMiniBtn" type="button">JSON 생성</button>
+          <button id="opsSiteCopy" class="opsMiniBtn" type="button">JSON 복사</button>
+          <button id="opsSiteDownload" class="opsMiniBtn" type="button">배포파일 다운로드</button>
+          <span style="flex:1"></span>
+          <button id="opsSiteApply" class="opsMiniBtn" type="button">로컬 오버라이드 적용</button>
+          <button id="opsSiteClear" class="opsMiniBtn" type="button">로컬 오버라이드 제거</button>
+        </div>
+
+        <table class="opsTable" aria-label="사이트 런타임 설정 테이블">
+          <thead>
+            <tr>
+              <th style="width:22%">key</th>
+              <th>value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>telegram</b></td>
+              <td><input id="siteTelegram" value="https://t.me/UZU59" /></td>
+            </tr>
+            <tr>
+              <td><b>features</b></td>
+              <td>
+                <div class="opsFlex" style="margin-top:0;">
+                  <label class="opsToggle"><input id="siteShareCard" type="checkbox" checked/><span>공유 카드(이미지)</span></label>
+                  <label class="opsToggle"><input id="siteSessionSafety" type="checkbox" checked/><span>세이프티 락</span></label>
+                  <label class="opsToggle"><input id="siteCertPromo" type="checkbox" checked/><span>인증 추천 카드</span></label>
+                  <label class="opsToggle"><input id="siteGuideCourses" type="checkbox" checked/><span>추천 루트</span></label>
+                  <label class="opsToggle"><input id="siteProSuite" type="checkbox" checked/><span>PRO SUITE</span></label>
+                  <label class="opsToggle"><input id="sitePresetBar" type="checkbox" checked/><span>추천 설정(프리셋)</span></label>
+                  <label class="opsToggle"><input id="siteLogbookReport" type="checkbox" checked/><span>로그북 성과 분해</span></label>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><b>presets.default</b></td>
+              <td>
+                <select id="sitePresetDefault" style="max-width:220px;">
+                  <option value="balanced" selected>밸런스(추천)</option>
+                  <option value="safe">안전(낙폭 우선)</option>
+                  <option value="aggressive">공격(변동성 큼)</option>
+                </select>
+                <div style="margin-top:6px; opacity:.75; font-size:12px; line-height:1.45;">
+                  기본 추천 프로필입니다. 사용자는 페이지 상단 “추천 설정”에서 선택 부담 없이 바꿀 수 있습니다.
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><b>risk</b></td>
+              <td>
+                <div class="opsFlex" style="margin-top:0;">
+                  <label class="opsToggle"><input id="siteLockDefault" type="checkbox"/><span>기본 ON</span></label>
+                </div>
+                <div class="opsFlex">
+                  <input id="siteStopLoss" type="number" step="0.1" min="0.1" value="3" style="max-width:140px;" />
+                  <div style="opacity:.75;font-size:12px;">손절 %</div>
+                  <input id="siteTakeProfit" type="number" step="0.1" min="0.1" value="5" style="max-width:140px;" />
+                  <div style="opacity:.75;font-size:12px;">익절 %</div>
+                  <input id="siteCooldown" type="number" step="1" min="0" value="15" style="max-width:140px;" />
+                  <div style="opacity:.75;font-size:12px;">쿨다운 분</div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><b>promo.hideAfter</b></td>
+              <td>
+                <input id="sitePromoHide" type="number" step="1" min="0" value="24" style="max-width:180px;" />
+                <div style="margin-top:6px; opacity:.75; font-size:12px; line-height:1.45;">
+                  인증 추천 카드를 닫은 후, 다시 노출되기까지 대기 시간(시간).
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <textarea id="opsSiteJson" class="opsArea" spellcheck="false" placeholder="(자동) 배포용 JSON"></textarea>
+        <div id="opsSiteMsg" class="opsMsg"></div>
+        <div class="opsFooter">배포 경로: <code>/assets/config/site.runtime.json</code></div>
+      </section>
+
 
       <!-- SITEMAP PURGE LIST -->
       <section class="opsCard opsSection" style="margin-top:14px;">
@@ -1082,6 +1176,13 @@
           }catch(e){}
   
         setTimeout(()=>location.reload(), 250);
+        });
+
+        $('opsClearPreset').addEventListener('click', ()=>{
+          if(!confirm('추천 설정(프리셋)과 숨김 상태를 초기화할까요?')) return;
+          try{ localStorage.removeItem('__88st_preset_profile_v1'); }catch(e){}
+          try{ localStorage.removeItem('__88st_preset_dismiss_v1'); }catch(e){}
+          patchMsg('추천 설정 초기화 완료', false);
         });
 
         // --- CTA Smoke Check (popup-based; iframe blocked by security headers) ---

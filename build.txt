@@ -1,7 +1,1 @@
-build=v20260226-2330-v150
-note=v150 OPS sitemap 퍼지리스트 + UI 클릭/모달 가드 + 대비(텍스트) 패치
-commit=
-branch=
-assets_css=/assets/css/theme.tokens.v1.20260226.css,/assets/css/vvip-luxe.v75.css,/assets/css/vvip-hub.v85.css,/assets/css/patch.v100.premiumdash.20260222.css,/assets/css/pro-suite.v2.css,/assets/css/typography.premium.v2.css,/assets/css/patch.v101.contrast.20260226.css
-assets_js=/assets/js/ui.fix.v1.20260226.js,/assets/js/ui.guard.v1.20260226.js,/assets/js/vvip-global.v75.js,/assets/js/j.searchtyping.v83.20260219.js,/assets/js/pro-suite.v2.js
-generated_utc=2026-02-25T02:31:00Z
+build=v20260226-2445-v152
