@@ -405,16 +405,25 @@
       b: obsBayesRaw.b==null ? '—' : (obsBayesRaw.b*100).toFixed(2)+'%',
       t: obsBayesRaw.t==null ? '—' : (obsBayesRaw.t*100).toFixed(2)+'%',
     };
-    const bestObs = (obsBayesRaw.p==null) ? null : (function(){
+    const obsSorted = (obsBayesRaw.p==null) ? null : (function(){
       const arr = [
         {id:'B', p:obsBayesRaw.b},
         {id:'P', p:obsBayesRaw.p},
         {id:'T', p:obsBayesRaw.t},
       ].filter(x=>Number.isFinite(x.p));
       arr.sort((a,b)=>b.p-a.p);
-      return arr[0] || null;
+      return arr;
     })();
+    const bestObs = (obsSorted && obsSorted.length) ? obsSorted[0] : null;
+    const secondObs = (obsSorted && obsSorted.length>1) ? obsSorted[1] : null;
     const bestObsLabel = bestObs ? (bestObs.id==='B'?'BANKER':bestObs.id==='P'?'PLAYER':'TIE') : '—';
+    const edgeObs = (bestObs && secondObs && Number.isFinite(bestObs.p) && Number.isFinite(secondObs.p)) ? (bestObs.p - secondObs.p) : 0;
+    const predConf = Math.round(clamp(
+      (Math.min(1, NW/50) * 60) + Math.min(40, edgeObs * 250) - Math.min(20, chi2 * 1.4),
+      0,
+      100
+    ));
+    const edgeLabel = (Number.isFinite(edgeObs) && edgeObs>0) ? `Δ ${(edgeObs*100).toFixed(1)}%p · 신뢰도 ${predConf}/100` : `신뢰도 ${predConf}/100`;
 
     score = Math.round(clamp(score, 10, 95));
     const level = score >= 80 ? "양호" : score >= 65 ? "보통" : score >= 50 ? "주의" : "위험";
@@ -474,7 +483,7 @@
 
           <div class="cs-shoe-ana-prob big">
             <span class="k">다음 핸드 예상 확률 <span class="shoe-pill alt">관측·보정</span></span>
-            <span class="v"><b>B ${obsBayes.b}</b> / <b>P ${obsBayes.p}</b> / <b>T ${obsBayes.t}</b> <span style="margin-left:10px;color:rgba(255,255,255,.78)">우세: <b style="color:rgba(255,255,255,.94)">${bestObsLabel}</b></span></span>
+            <span class="v"><b>B ${obsBayes.b}</b> / <b>P ${obsBayes.p}</b> / <b>T ${obsBayes.t}</b> <span style="margin-left:10px;color:rgba(255,255,255,.78)">우세: <b style="color:rgba(255,255,255,.94)">${bestObsLabel}</b> <span class="shoe-pill alt" style="margin-left:6px;opacity:.92;">${edgeLabel}</span></span></span>
           </div>
 
           <div class="cs-shoe-ana-prob">

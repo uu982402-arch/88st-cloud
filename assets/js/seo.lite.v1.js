@@ -118,6 +118,14 @@
       base: ['바카라 전략', '바카라 확률', '추세/흐름', '플레이어/뱅커', '타이/페어', '진입 타이밍'],
       niche: ['바카라 가이드', '바카라 패턴', '바카라 계산기']
     },
+    roulette: {
+      base: ['룰렛 확률', '룰렛 하우스엣지', '유럽 룰렛', '미국 룰렛', '컬러/홀짝', '세션 관리'],
+      niche: ['룰렛 전략', '룰렛 가이드', '룰렛 배팅']
+    },
+    blackjack: {
+      base: ['블랙잭 확률', '기본전략', '딜러 업카드', '카운팅', '하우스엣지', '리스크 관리'],
+      niche: ['블랙잭 가이드', '블랙잭 전략', '블랙잭 룰']
+    },
     slot: {
       base: ['슬롯 RTP', '슬롯 변동성', '맥스윈', '프라그마틱 RTP', '슬롯 분석', 'RTP 확인'],
       niche: ['슬롯맛집', '슬롯 추천', 'RTP 높은 슬롯', '프라그마틱 슬롯']
@@ -125,6 +133,10 @@
     minigame: {
       base: ['미니게임 분석', '확률 추정', '연속/편차', '다음 확률', '리스크 태그', '승률 관리'],
       niche: ['미니게임맛집', '미니게임 추천', '사다리', '파워볼', '하이로우']
+    },
+    virtual: {
+      base: ['버추얼 스포츠', '가상 경기', '시뮬레이션 배당', '공정확률', '오버라운드', '리스크 관리'],
+      niche: ['가상스포츠', '버추얼 축구', '버추얼 농구']
     },
 
     // Promo / Community
@@ -146,7 +158,10 @@
     definition: ['뜻', '정의', '개념', '용어', '의미'],
     faq: ['FAQ', '문제해결', '오류', '자주 묻는 질문', '해결 방법'],
     safety: ['안전', '검증', '주의', '체크', '주의사항'],
-    bonus: ['보너스', '이벤트', '혜택', '프로모션', '가입 혜택']
+    bonus: ['보너스', '이벤트', '혜택', '프로모션', '가입 혜택'],
+    template: ['템플릿', '양식', '문장 예시', '카피', '구성'],
+    list: ['모음', '리스트', 'TOP10', '추천 리스트', '정리본'],
+    seo: ['키워드', '메타', 'SEO', '구조(H2)', '클러스터']
   };
 
   var MOD = {
@@ -156,8 +171,29 @@
     newbie: ['초보', '입문', '쉬운', '처음', '기초'],
     mobile: ['모바일', '간단', '원클릭', '빠른 입력'],
     sales: ['혜택', '추천', '무료', '즉시', '확인'],
-    calm: ['신뢰', '안정', '정리', '원칙', '안전']
+    calm: ['신뢰', '안정', '정리', '원칙', '안전'],
+    neutral: ['객관', '기준', '체크', '정리', '보수'],
+    community: ['커뮤니티', '공유', '참고', '의견', '토론']
   };
+
+  function pickTopics(query, keywords){
+    var seeds = [];
+    var q = normalizeQuery(query);
+    if(q){
+      var parts = q.split(/[\/\,\|]+/g).map(function(x){return String(x||'').trim();}).filter(Boolean);
+      seeds = seeds.concat(parts.length ? parts : [q]);
+    }
+    if(Array.isArray(keywords) && keywords.length){
+      // only keep compact seeds (avoid longtail phrases)
+      var k = keywords.filter(function(x){
+        x = String(x||'').trim();
+        return x && x.length <= 18;
+      }).slice(0, 10);
+      seeds = seeds.concat(k);
+    }
+    seeds = uniq(seeds);
+    return seeds.slice(0, 3);
+  }
 
   function normalizeQuery(q){
     var s = String(q || '').replace(/\s+/g,' ').trim();
@@ -229,9 +265,11 @@
     return out;
   }
 
-  function buildTitles(catKey, intentKey, query){
+  function buildTitles(catKey, intentKey, query, keywords){
     var p = BANK[catKey] || BANK.sports;
-    var topic = normalizeQuery(query) || (p.base[0] || '키워드');
+    var picks = pickTopics(query, keywords);
+    var topic = picks[0] || (p.base[0] || '키워드');
+    var topic2 = picks[1] || (p.niche && p.niche[0]) || '';
     var intent = (INTENT[intentKey] || INTENT.howto);
     var i0 = intent[0] || '가이드';
     var i1 = intent[1] || i0;
@@ -247,6 +285,11 @@
       topic + ' ' + i0 + '에서 자주 하는 실수 TOP5',
       topic + ' ' + i0 + ' 한 장 요약: 개념·예시·주의사항'
     ];
+
+    if(topic2){
+      t.push(topic + ' vs ' + topic2 + ' 비교: 무엇이 다를까?');
+      t.push(topic + ' ' + i0 + ' + ' + topic2 + ' 체크 포인트');
+    }
 
     // Add a few niche-driven variants for broader coverage
     (p.niche || []).slice(0, 4).forEach(function(n){
@@ -266,9 +309,10 @@
     return t;
   }
 
-  function buildDescriptions(catKey, query){
+  function buildDescriptions(catKey, query, keywords){
     var p = BANK[catKey] || BANK.sports;
-    var topic = normalizeQuery(query) || (p.base[0] || '키워드');
+    var picks = pickTopics(query, keywords);
+    var topic = picks[0] || (p.base[0] || '키워드');
     var d = [
       topic + '를 처음 보는 사람도 이해할 수 있게 핵심만 정리했습니다. 기준·예시·주의사항을 한 번에 확인하세요.',
       topic + ' 관련 키워드(클러스터)와 글 구조(H2)를 함께 제시합니다. 제목/본문 구성에 바로 적용할 수 있습니다.',
@@ -294,9 +338,11 @@
     return out;
   }
 
-  function buildCommunityPost(catKey, intentKey, toneKey, query){
+  function buildCommunityPost(catKey, intentKey, toneKey, query, keywords){
     var p = BANK[catKey] || BANK.sports;
-    var topic = normalizeQuery(query) || (p.base[0] || '키워드');
+    var picks = pickTopics(query, keywords);
+    var topic = picks[0] || (p.base[0] || '키워드');
+    var topKw = Array.isArray(keywords) ? keywords.slice(0, 14) : [];
     var intent = (INTENT[intentKey] || INTENT.howto);
     var i0 = intent[0] || '가이드';
     var mod = (MOD[toneKey] || MOD.luxe);
@@ -331,6 +377,11 @@
     lines.push('');
     lines.push('🏷️ 관련 키워드');
     lines.push(tags.join(' '));
+    if(topKw.length){
+      lines.push('');
+      lines.push('🔎 추천 키워드(복붙용)');
+      lines.push('- ' + topKw.join(' / '));
+    }
 
     return lines.join('\n');
   }
@@ -361,10 +412,10 @@ function renderOut(id, lines){
 
     var q = normalizeQuery(st.query);
     var kw = buildKeywords(st.cat, st.intent, st.tone, st.limit, q);
-    var ttl = buildTitles(st.cat, st.intent, q);
-    var desc = buildDescriptions(st.cat, q);
+    var ttl = buildTitles(st.cat, st.intent, q, kw);
+    var desc = buildDescriptions(st.cat, q, kw);
     var outline = buildOutline(st.cat, q);
-    var post = buildCommunityPost(st.cat, st.intent, st.tone, q);
+    var post = buildCommunityPost(st.cat, st.intent, st.tone, q, kw);
 
     renderOut('#outKeywords', kw);
     renderOut('#outTitles', ttl);
