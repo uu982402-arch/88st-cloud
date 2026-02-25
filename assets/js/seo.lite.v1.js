@@ -229,214 +229,113 @@
     return out;
   }
 
-  function primarySeed(catKey, query){
+  function buildTitles(catKey, intentKey, query){
     var p = BANK[catKey] || BANK.sports;
-    var q = normalizeQuery(query);
-    if(q) return q.split(/[\/\,\|]+/g)[0].trim();
-    // fallback: pick a more "search-like" seed
-    var seed = (p && p.niche && p.niche[0]) ? p.niche[0] : ((p && p.base && p.base[0]) ? p.base[0] : '키워드');
-    return String(seed || '키워드').trim();
-  }
+    var topic = normalizeQuery(query) || (p.base[0] || '키워드');
+    var intent = (INTENT[intentKey] || INTENT.howto);
+    var i0 = intent[0] || '가이드';
+    var i1 = intent[1] || i0;
 
-  function buildTitles(catKey, intentKey, toneKey, query){
-    var base = primarySeed(catKey, query);
-    var intent = intentKey || 'howto';
-    var tone = toneKey || 'luxe';
+    // Topic-first titles (no brand / no tool-promo)
+    var t = [
+      topic + ' ' + i0 + ' 총정리 (핵심만)',
+      topic + ' ' + i0 + ': 실수 줄이는 기준 7가지',
+      topic + ' ' + i1 + ' 예시 — 바로 써먹는 템플릿',
+      '초보도 이해하는 ' + topic + ' ' + i0 + ' (체크리스트 포함)',
+      topic + ' ' + i0 + ' FAQ: 자주 묻는 질문 12개',
+      topic + ' 관련 키워드 묶음(클러스터) + 구조(H2) 예시',
+      topic + ' ' + i0 + '에서 자주 하는 실수 TOP5',
+      topic + ' ' + i0 + ' 한 장 요약: 개념·예시·주의사항'
+    ];
 
-    // intent-oriented title frames (community-friendly)
-    var frames = {
-      howto: [
-        base + ' 사용법 한 번에 정리 (초보용)',
-        base + ' 시작하기: 실수 줄이는 5단계',
-        base + ' 이렇게 보면 편하다 (체크리스트)'
-      ],
-      calc: [
-        base + ' 계산/변환 빠르게 하는 법 + 예시',
-        base + ' 계산기 없이도 이해되는 핵심 공식',
-        base + ' 숫자 입력할 때 자주 하는 실수 5가지'
-      ],
-      strategy: [
-        base + ' 전략 체크리스트 (과몰입 방지 포함)',
-        base + ' 리스크 줄이는 기준 7가지',
-        base + ' 이 구간은 피하자: 위험 신호 정리'
-      ],
-      review: [
-        base + ' 비교 포인트 6가지 (기준 먼저)',
-        base + ' 선택할 때 보는 1순위/2순위',
-        base + ' 초보가 자주 놓치는 함정 정리'
-      ],
-      definition: [
-        base + ' 뜻/정의 — 1분 요약 + 예시',
-        base + ' 개념을 딱 정리하면 이렇게',
-        base + ' 헷갈리는 용어 차이 한 번에'
-      ],
-      faq: [
-        base + ' FAQ: 자주 묻는 질문 10개',
-        base + ' 잘 안 될 때 먼저 확인할 것',
-        base + ' 오류/막힘 해결 체크리스트'
-      ],
-      safety: [
-        base + ' 안전 체크: 이것만 보면 된다',
-        base + ' 사칭/피싱 피하는 기준 7가지',
-        base + ' 안전하게 쓰려면 꼭 확인할 항목'
-      ],
-      bonus: [
-        base + ' 보너스/이벤트 볼 때 체크 6개',
-        base + ' 혜택이 커 보여도 이건 확인',
-        base + ' 규정(롤링/제한) 빠르게 보는 법'
-      ]
-    };
-
-    var baseTitles = frames[intent] || frames.howto;
-
-    // tone adjustments
-    var toneAdd = {
-      pro: ['(데이터 기준)', '(지표 기반)', '(확률/수치 중심)'],
-      short: ['(핵심만)', '(요약)', '(3줄 정리)'],
-      newbie: ['(초보용)', '(입문)', '(기초부터)'],
-      mobile: ['(모바일)', '(원클릭)', '(간단 버전)'],
-      sales: ['(혜택 확인)', '(추천 기준)', '(바로 적용)'],
-      calm: ['(차분하게)', '(안전 중심)', '(원칙 정리)'],
-      luxe: ['(실전)', '(깔끔 정리)', '(기준 위주)']
-    };
-    var adds = toneAdd[tone] || toneAdd.luxe;
-
-    var out = [];
-    baseTitles.forEach(function(t){ out.push(t); });
-    adds.slice(0,3).forEach(function(a){
-      out.push(base + ' ' + (INTENT[intent] && INTENT[intent][0] ? INTENT[intent][0] : '가이드') + ' ' + a);
+    // Add a few niche-driven variants for broader coverage
+    (p.niche || []).slice(0, 4).forEach(function(n){
+      t.push(n + ' ' + i0 + ' (초보용)');
     });
-    // a couple of evergreen patterns
-    out.push(base + ' 체크리스트: 지금 바로 확인');
-    out.push(base + ' 정리 — 핵심/예시/주의사항');
-    out.push(base + ' 관련 키워드 묶음(롱테일) 예시');
 
-    return uniq(out);
+    return uniq(t);
   }
 
   function clampDesc(s, min, max){
     var t = String(s || '').replace(/\s+/g,' ').trim();
     if (t.length > max) t = t.slice(0, max-1).trim() + '…';
     if (t.length < min) {
-      t = (t + ' — 88ST.Cloud에서 빠르게 생성').slice(0, max);
+      // pad without brand/promo
+      t = (t + ' — 기준·예시·주의사항까지 한 번에 정리').replace(/\s+/g,' ').slice(0, max);
     }
     return t;
   }
 
-  function buildDescriptions(catKey, intentKey, toneKey, query){
-    var base = primarySeed(catKey, query);
-    var intent = intentKey || 'howto';
-    var tone = toneKey || 'luxe';
-
-    var intentLine = {
-      howto: '사용법/순서를 초보도 따라할 수 있게 정리합니다.',
-      calc: '계산·변환 포인트와 예시를 함께 제공합니다.',
-      strategy: '리스크를 줄이는 기준과 체크리스트를 제공합니다.',
-      review: '비교·선택 기준을 정리해 빠르게 판단할 수 있게 돕습니다.',
-      definition: '용어를 1분 안에 이해할 수 있도록 뜻/예시로 정리합니다.',
-      faq: '자주 묻는 질문/실수/해결 방법을 한 번에 모았습니다.',
-      safety: '사칭·피싱·주의 신호를 중심으로 안전 체크 포인트를 정리합니다.',
-      bonus: '보너스/규정(롤링/제한/상한) 체크 포인트를 요약합니다.'
-    };
-
-    var toneLine = {
-      pro: '데이터/지표 중심으로 짧게 요약합니다.',
-      short: '핵심만 3~5줄로 요약합니다.',
-      newbie: '초보 기준으로 쉬운 표현으로 정리합니다.',
-      mobile: '모바일에서 읽기 쉬운 구조로 정리합니다.',
-      sales: '바로 적용 가능한 체크 포인트에 집중합니다.',
-      calm: '과장 없이 원칙과 기준만 담습니다.',
-      luxe: '깔끔한 문장과 구조로 정리합니다.'
-    };
-
+  function buildDescriptions(catKey, query){
+    var p = BANK[catKey] || BANK.sports;
+    var topic = normalizeQuery(query) || (p.base[0] || '키워드');
     var d = [
-      base + ' 관련 글을 쓰기 위한 키워드/제목/구조를 한 번에 뽑아드립니다. ' + (intentLine[intent]||intentLine.howto),
-      base + ' 커뮤니티용 제목과 본문 템플릿을 생성합니다. ' + (toneLine[tone]||toneLine.luxe),
-      '검색 의도에 맞춰 ' + base + ' 키워드 클러스터를 묶고, 글 구조(H2)까지 같이 제안합니다.',
-      base + ' 글을 쓸 때 자주 하는 실수를 피하도록 체크리스트를 포함합니다.',
-      base + ' 관련 키워드를 롱테일로 확장해, 게시글/가이드 주제를 자연스럽게 넓힙니다.'
+      topic + '를 처음 보는 사람도 이해할 수 있게 핵심만 정리했습니다. 기준·예시·주의사항을 한 번에 확인하세요.',
+      topic + ' 관련 키워드(클러스터)와 글 구조(H2)를 함께 제시합니다. 제목/본문 구성에 바로 적용할 수 있습니다.',
+      topic + '에서 자주 하는 실수와 체크 포인트를 정리했습니다. 초보 기준으로 빠르게 점검해보세요.',
+      topic + ' 개념부터 실전 적용 예시까지 요약했습니다. 불필요한 말은 빼고 필요한 기준만 남겼습니다.',
+      topic + ' FAQ: 많이 물어보는 질문과 답을 모아 빠르게 찾아볼 수 있게 구성했습니다.'
     ];
-
     return uniq(d.map(function(x){ return clampDesc(x, 110, 155); }));
-  }
-
-  function buildCommunityPost(catKey, intentKey, toneKey, query, kwList, titleList){
-    var base = primarySeed(catKey, query);
-    var intent = intentKey || 'howto';
-    var tone = toneKey || 'luxe';
-    var title = (titleList && titleList.length) ? titleList[0] : (base + ' 정리');
-
-    var related = (kwList || []).filter(function(k){ return k && k !== base; }).slice(0, 10);
-    var relLine = related.length ? ('• ' + related.slice(0,6).join('\n• ')) : '• (생성된 키워드에서 보조 키워드를 골라 넣으세요)';
-
-    // tone: how detailed should the body be
-    var depth = (tone === 'short') ? 'short' : (tone === 'pro' ? 'pro' : 'base');
-
-    var intro = {
-      short: base + ' 관련해서 핵심만 짧게 정리합니다.\n',
-      pro: base + ' 관련 글/정리할 때 “의도→구조→체크” 순서로 잡으면 내용이 흔들리지 않습니다.\n',
-      base: base + ' 관련해서 자주 묻는 포인트를 커뮤니티용으로 정리했습니다.\n'
-    };
-
-    var blocks = [];
-    blocks.push('제목: ' + title);
-    blocks.push('');
-    blocks.push(intro[depth] || intro.base);
-    blocks.push('✅ 핵심 요약');
-    if(intent === 'calc'){
-      blocks.push('• 입력값(배당/확률/라인)을 먼저 정리하고, 변환/계산은 마지막에 합니다.');
-      blocks.push('• 단위/소수점/2-way·3-way 구분만 맞아도 실수의 80%가 줄어듭니다.');
-    }else if(intent === 'strategy'){
-      blocks.push('• 기준을 먼저 정하고(리스크/상한), 그 다음에 케이스별로 적용합니다.');
-      blocks.push('• “연속/감정 배팅”을 막는 장치(한도/쿨다운)가 있으면 결과가 안정적입니다.');
-    }else if(intent === 'safety'){
-      blocks.push('• 사칭/피싱은 “문의처 분산”에서 가장 많이 생깁니다. 공식 채널만 고정하세요.');
-      blocks.push('• 혜택보다 규정(롤링/제한/상한/환전)을 먼저 확인하는 게 안전합니다.');
-    }else if(intent === 'bonus'){
-      blocks.push('• 보너스는 %보다 “롤링 배수/제한 게임/상한/환전 조건”이 핵심입니다.');
-      blocks.push('• 조건이 복잡하면, 체크리스트로 한 번에 비교하는 게 가장 빠릅니다.');
-    }else if(intent === 'definition'){
-      blocks.push('• 용어는 “한 문장 정의 + 예시 1개”만 있어도 이해가 빨라집니다.');
-      blocks.push('• 같은 단어라도 종목/마켓에 따라 의미가 달라질 수 있어요.');
-    }else if(intent === 'faq'){
-      blocks.push('• 막히는 지점은 대부분 입력값/규정/기본 개념에서 발생합니다.');
-      blocks.push('• 질문은 “상황+숫자+목표” 3가지만 적어도 답이 빨라집니다.');
-    }else{
-      blocks.push('• 글 목적(가이드/체크/비교)을 1개로 고정하면 내용이 깔끔해집니다.');
-      blocks.push('• 핵심 키워드 1개 + 보조 키워드 6~10개로 구조를 잡으면 확장도 쉽습니다.');
-    }
-
-    blocks.push('');
-    blocks.push('📌 체크리스트');
-    blocks.push('1) 목적 1개 고정(가이드/계산/전략/비교)');
-    blocks.push('2) 핵심 키워드 1개 + 보조 6~10개 선택');
-    blocks.push('3) H2 구조 5~7개로 먼저 뼈대 만들기');
-    blocks.push('4) 과장/중복 문장 줄이고, 숫자/기준을 넣기');
-    blocks.push('');
-    blocks.push('🔎 같이 쓰기 좋은 관련 키워드');
-    blocks.push(relLine);
-    blocks.push('');
-    blocks.push('댓글로 "어떤 상황"인지 적어주면 더 구체적으로 정리해드릴게요.');
-
-    return blocks.join('\n');
   }
 
   function buildOutline(catKey, query){
     var p = BANK[catKey] || BANK.sports;
-    var base = normalizeQuery(query) || (p.base[0] || '키워드');
+    var topic = normalizeQuery(query) || (p.base[0] || '키워드');
     var out = [
-      'H2: ' + base + ' 키워드 클러스터란?',
-      'H2: 검색 의도(가이드/계산기/전략)별 구조',
-      'H2: 초보가 많이 쓰는 제목 패턴 7가지',
-      'H2: 메타 설명(Description) 120~155자 작성법',
-      'H2: 예시 키워드 묶음 3세트',
-      'H2: 체크리스트 — 스팸 키워드 피하는 법',
+      'H2: ' + topic + ' 한 줄 정의',
+      'H2: 왜 중요한가? (핵심 포인트 3가지)',
+      'H2: 기준/룰 — 체크리스트',
+      'H2: 예시 — 상황별 적용 방법',
+      'H2: 자주 하는 실수 TOP5',
+      'H2: 추천 키워드 클러스터(보조 키워드)',
       'H2: FAQ'
     ];
     return out;
   }
 
-  function renderOut(id, lines){
+  function buildCommunityPost(catKey, intentKey, toneKey, query){
+    var p = BANK[catKey] || BANK.sports;
+    var topic = normalizeQuery(query) || (p.base[0] || '키워드');
+    var intent = (INTENT[intentKey] || INTENT.howto);
+    var i0 = intent[0] || '가이드';
+    var mod = (MOD[toneKey] || MOD.luxe);
+    var m0 = mod[0] || '핵심';
+
+    var tags = [];
+    var baseTag = topic.replace(/\s+/g,'');
+    if(baseTag) tags.push('#' + baseTag);
+    (p.niche||[]).slice(0,4).forEach(function(x){ tags.push('#' + String(x).replace(/\s+/g,'')); });
+    tags.push('#' + String(i0).replace(/\s+/g,''));
+
+    var lines = [];
+    lines.push('[' + topic + ' ' + i0 + '] ' + m0 + ' 기준 총정리');
+    lines.push('');
+    lines.push('✅ 핵심 요약');
+    lines.push('- ' + topic + '에서 먼저 확인할 것: 기준/조건/예외');
+    lines.push('- 초보는 “용어 정의 → 체크리스트 → 예시” 순서로 보면 실수 줄어듭니다.');
+    lines.push('');
+    lines.push('📌 체크리스트(바로 적용)');
+    lines.push('- 핵심 조건 3개(필수/권장/주의)로 나눠서 정리');
+    lines.push('- 숫자/비율/제한 조건은 표로(있다면)');
+    lines.push('- 예외 케이스(자주 틀리는 포인트) 2개 이상 명시');
+    lines.push('');
+    lines.push('🧩 예시 템플릿');
+    lines.push('- 상황: ___');
+    lines.push('- 적용: ___ (왜 이렇게 하는지 1문장 설명)');
+    lines.push('- 주의: ___');
+    lines.push('');
+    lines.push('❓ 자주 묻는 질문(FAQ)');
+    lines.push('- Q. ' + topic + '에서 가장 많이 실수하는 부분은?');
+    lines.push('  A. 기준/조건을 한 줄로 못 정리하고 예외를 놓치는 경우가 많습니다.');
+    lines.push('');
+    lines.push('🏷️ 관련 키워드');
+    lines.push(tags.join(' '));
+
+    return lines.join('\n');
+  }
+
+function renderOut(id, lines){
     var ta = $(id);
     if(!ta) return;
     ta.value = (lines || []).join('\n');
@@ -462,16 +361,18 @@
 
     var q = normalizeQuery(st.query);
     var kw = buildKeywords(st.cat, st.intent, st.tone, st.limit, q);
-    var ttl = buildTitles(st.cat, st.intent, st.tone, q);
-    var desc = buildDescriptions(st.cat, st.intent, st.tone, q);
+    var ttl = buildTitles(st.cat, st.intent, q);
+    var desc = buildDescriptions(st.cat, q);
     var outline = buildOutline(st.cat, q);
-    var post = buildCommunityPost(st.cat, st.intent, st.tone, q, kw, ttl);
+    var post = buildCommunityPost(st.cat, st.intent, st.tone, q);
 
     renderOut('#outKeywords', kw);
     renderOut('#outTitles', ttl);
     renderOut('#outDesc', desc);
     renderOut('#outOutline', outline);
-    renderOut('#outPost', [post]);
+
+    var outPost = $('#outCommunity');
+    if(outPost) outPost.value = post || '';
 
     setCount('#kwCount', kw.length);
     setCount('#ttlCount', ttl.length);
@@ -487,8 +388,8 @@
     $('#outTitles').value='';
     $('#outDesc').value='';
     $('#outOutline').value='';
-    var op = $('#outPost');
-    if(op) op.value='';
+    var oc = $('#outCommunity');
+    if(oc) oc.value='';
     setCount('#kwCount', 0);
     setCount('#ttlCount', 0);
     setCount('#descCount', 0);
@@ -499,7 +400,7 @@
     // Search-first mode: hide advanced selects unless user expands
     (function initAdvancedToggle(){
       var adv = $('#seoAdvanced');
-      var sw = $('#advSwitch');
+      var sw = $('#seoOptSwitch');
       if(!adv || !sw) return;
 
       function setOpen(open, persist){
@@ -520,8 +421,7 @@
       setOpen(open, false);
 
       sw.addEventListener('change', function(){
-        open = !!sw.checked;
-        setOpen(open, true);
+        setOpen(!!sw.checked, true);
       });
     })();
 
