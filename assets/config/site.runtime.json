@@ -1,5 +1,5 @@
 {
-  "version": "v152",
+  "version": "v154",
   "brand": {
     "name": "88ST.Cloud",
     "mark": "88",
@@ -17,7 +17,14 @@
     "guideCourses": true,
     "proSuite": true,
     "presetBar": true,
-    "logbookReport": true
+    "logbookReport": true,
+    "logbookCategoryChips": true,
+    "homeActionBar": true,
+    "homeCertCards": true,
+    "homeMirrorHelper": true,
+    "homeRecentUsed": true,
+    "homeTodayStatus": true,
+    "homeQuickLog": true
   },
   "presets": {
     "default": "balanced"

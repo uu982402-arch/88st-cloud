@@ -1239,6 +1239,18 @@
       '      <div class="ps-field"><label>메모(선택)</label><input data-k="note" placeholder="예: 라인 무브 확인"/></div>',
       '      <div class="ps-field"><label>태그(선택)</label><input data-k="tag" placeholder="예: 보수/중립/공격"/></div>',
       '    </div>',
+      '    <div class="ps-row" style="margin-top:10px; grid-template-columns:1fr;">',
+      '      <div class="ps-field">',
+      '        <label>카테고리</label>',
+      '        <div class="psCatPick" data-k="catPick">',
+      '          <button class="psChip" type="button" data-cat="sports">스포츠</button>',
+      '          <button class="psChip" type="button" data-cat="casino">카지노</button>',
+      '          <button class="psChip" type="button" data-cat="slot">슬롯</button>',
+      '          <button class="psChip" type="button" data-cat="minigame">미니게임</button>',
+      '        </div>',
+      '        <div class="psChipHint"><span class="psAutoBadge">AUTO</span><span data-out="catAutoLabel">—</span><span class="psChipHint2">· 필요할 때 한 번만 눌러 고정</span></div>',
+      '      </div>',
+      '    </div>',
       '    <div class="ps-actions">',
       '      <button class="ps-btn primary" type="button" data-act="add">저장</button>',
       '      <button class="ps-btn ghost" type="button" data-act="quickW">WIN</button>',
@@ -1338,9 +1350,99 @@
       res: container.querySelector('[data-k="res"]'),
       note: container.querySelector('[data-k="note"]'),
       tag: container.querySelector('[data-k="tag"]'),
+      catPick: container.querySelector('[data-k="catPick"]'),
+      catAutoLabel: container.querySelector('[data-out="catAutoLabel"]'),
       imp: container.querySelector('[data-k="import"]')
     };
     if(inputs.date) inputs.date.value = today();
+
+    // --- Category chips (Sports/Casino/Slot/Minigame) ---
+    var CAT_KEY_LAST = '__88st_logbook_lastcat_v1';
+    var catState = { selected: null, auto: 'sports' };
+    function isCat(c){ return c==='sports'||c==='casino'||c==='slot'||c==='minigame'; }
+    function catLabel(c){
+      if(c==='casino') return '카지노';
+      if(c==='slot') return '슬롯';
+      if(c==='minigame') return '미니게임';
+      return '스포츠';
+    }
+    function classifyText(s){
+      s = (s||'').toLowerCase();
+      try{
+        if(/바카라|baccarat|룰렛|roulette|블랙잭|blackjack|카지노|casino/.test(s)) return 'casino';
+        if(/슬롯|slot|rtp|프라그마틱|pragmatic|스핀|bonus hunt|보너스/.test(s)) return 'slot';
+        if(/미니|minigame|하이로우|hilo|주사위|dice|크래시|crash|코인|coin|플립|flip/.test(s)) return 'minigame';
+      }catch(e){}
+      return 'sports';
+    }
+    function queryCat(){
+      try{
+        var sp = new URLSearchParams(location.search||'');
+        var c = (sp.get('cat')||'').toLowerCase();
+        return isCat(c) ? c : null;
+      }catch(e){ return null; }
+    }
+    function lastCat(){
+      try{
+        var c = (localStorage.getItem(CAT_KEY_LAST)||'').toLowerCase();
+        return isCat(c) ? c : null;
+      }catch(e){ return null; }
+    }
+    function computeAutoCat(){
+      var qc = queryCat();
+      if(qc) return qc;
+      var txt = '';
+      txt += ' ' + ((inputs.sport && inputs.sport.value) || '');
+      txt += ' ' + ((inputs.market && inputs.market.value) || '');
+      txt += ' ' + ((inputs.note && inputs.note.value) || '');
+      txt += ' ' + ((inputs.tag && inputs.tag.value) || '');
+      txt = (txt||'').trim();
+      if(txt) return classifyText(txt);
+      var lc = lastCat();
+      return lc || 'sports';
+    }
+    function syncCatUI(){
+      if(!inputs.catPick) return;
+      // feature gate
+      try{ if(window.__88st_cfg && window.__88st_cfg('features.logbookCategoryChips', true) === false) { inputs.catPick.parentNode.style.display='none'; return; } }catch(e){}
+      catState.auto = computeAutoCat();
+      if(inputs.catAutoLabel) inputs.catAutoLabel.textContent = catLabel(catState.auto);
+
+      var btns = inputs.catPick.querySelectorAll('button[data-cat]');
+      for(var bi=0; bi<btns.length; bi++){
+        var b = btns[bi];
+        var c = (b.getAttribute('data-cat')||'').toLowerCase();
+        var sel = catState.selected && c===catState.selected;
+        var aut = (!catState.selected) && c===catState.auto;
+        b.classList.toggle('active', !!sel);
+        b.classList.toggle('auto', !!aut);
+        b.setAttribute('aria-pressed', sel ? 'true' : 'false');
+      }
+    }
+
+    // bind chip clicks
+    try{
+      if(inputs.catPick){
+        var __btns = inputs.catPick.querySelectorAll('button[data-cat]');
+        for(var ci=0; ci<__btns.length; ci++){
+          var b = __btns[ci];
+          b.addEventListener('click', function(){
+            var c = (b.getAttribute('data-cat')||'').toLowerCase();
+            if(!isCat(c)) return;
+            // click again -> back to AUTO
+            if(catState.selected===c) catState.selected = null;
+            else catState.selected = c;
+            try{ localStorage.setItem(CAT_KEY_LAST, (catState.selected||catState.auto||'sports')); }catch(e){}
+            syncCatUI();
+          });
+        }
+      }
+      ['sport','market','note','tag'].forEach(function(k){
+        var el = inputs[k];
+        if(el) el.addEventListener('input', function(){ if(!catState.selected) syncCatUI(); });
+      });
+    }catch(e){}
+    syncCatUI();
 
     var mode = 'week';
 
@@ -1388,7 +1490,17 @@
 
     function setK(id, v){ var el = container.querySelector('[data-kpi="'+id+'"]'); if(el) el.textContent = v; }
 
+    function catOfEntry(e){
+      try{
+        var c = (e && e.cat) ? String(e.cat).toLowerCase() : '';
+        if(isCat(c)) return c;
+        var txt = ((e.sport||'')+' '+(e.market||'')+' '+(e.tag||'')+' '+(e.note||''));
+        return classifyText(txt);
+      }catch(ex){ return 'sports'; }
+    }
+
     function renderTable(items){
+
       var box = container.querySelector('[data-out="table"]');
       if(!box) return;
       var rows = items.slice().sort(function(a,b){ return (b.ts||0)-(a.ts||0); }).slice(0,50);
@@ -1400,7 +1512,7 @@
           var cls = pl>0?'pos':(pl<0?'neg':'neu');
           return '<tr>'+
             '<td>'+escapeHtml(e.date||'')+'</td>'+
-            '<td>'+escapeHtml(e.sport||'')+'</td>'+
+            '<td><span class="pill cat '+catOfEntry(e)+'">'+escapeHtml(catLabel(catOfEntry(e)))+'</span> '+escapeHtml(e.sport||'')+'</td>'+'</td>'+
             '<td>'+escapeHtml(e.market||'')+'</td>'+
             '<td>'+escapeHtml(String(e.odds||''))+'</td>'+
             '<td>'+fmtWon(+e.stake||0)+'</td>'+
@@ -1428,6 +1540,19 @@
 
     function refresh(){
       var arr = read();
+      // Backfill missing category for old entries (one-time migration)
+      try{
+        var changed = false;
+        for(var i=0;i<arr.length;i++){
+          var c = arr[i] && arr[i].cat ? String(arr[i].cat).toLowerCase() : '';
+          if(!isCat(c)){
+            arr[i].cat = classifyText(((arr[i].sport||'')+' '+(arr[i].market||'')+' '+(arr[i].tag||'')+' '+(arr[i].note||'')));
+            changed = true;
+          }
+        }
+        if(changed) write(arr);
+      }catch(e){}
+
       var range = null;
       if(mode==='week') range = weekRange();
       if(mode==='month') range = monthRange();
@@ -1465,8 +1590,10 @@
         stake: stake,
         res: resOverride || (inputs.res && inputs.res.value) || 'W',
         note: (inputs.note && inputs.note.value||'').trim(),
-        tag: (inputs.tag && inputs.tag.value||'').trim()
+        tag: (inputs.tag && inputs.tag.value||'').trim(),
+        cat: (catState && catState.selected) ? catState.selected : computeAutoCat()
       };
+      try{ localStorage.setItem(CAT_KEY_LAST, (e.cat||'sports')); }catch(e2){}
       var arr = read();
       arr.push(e);
       write(arr);
@@ -1534,7 +1661,8 @@
             stake: +e.stake || 0,
             res: (e.res||'W'),
             note: (e.note||''),
-            tag: (e.tag||'')
+            tag: (e.tag||''),
+            cat: (function(){ try{ var c=(e.cat||'').toLowerCase(); return isCat(c)?c: classifyText(((e.sport||'')+' '+(e.market||'')+' '+(e.tag||'')+' '+(e.note||''))); }catch(ex){ return 'sports'; } })()
           };
         }).filter(function(e){ return e.stake>0 && e.odds>1; });
         write(arr);

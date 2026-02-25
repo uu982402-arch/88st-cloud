@@ -44,6 +44,8 @@
 
   function classify(e){
     try{
+      var c0 = (e && e.cat) ? String(e.cat).toLowerCase() : '';
+      if(c0==='sports'||c0==='casino'||c0==='slot'||c0==='minigame') return c0;
       var s = ((e.sport||'')+' '+(e.market||'')+' '+(e.tag||'')+' '+(e.note||'')).toLowerCase();
       // Casino
       if(/바카라|baccarat|룰렛|roulette|블랙잭|blackjack|카지노|casino/.test(s)) return 'casino';
@@ -259,7 +261,7 @@
         }
 
         paneCat.innerHTML = [
-          '<div class="ps-note">카테고리는 입력 텍스트(종목/마켓/메모/태그) 기준으로 자동 분류됩니다. (필요 시 태그에 <b>카지노/슬롯/미니</b>를 넣으면 더 정확해집니다.)</div>',
+          '<div class="ps-note">카테고리는 기본 자동 분류되며, 저장 시 <b>카테고리 값</b>이 함께 기록됩니다. (필요할 때 상단 “카테고리 칩”을 한 번만 눌러 고정하면 정확도가 100%에 가까워집니다.)</div>',
           '<div class="psCatGrid" style="margin-top:10px">',
           cardHTML('sports'),
           cardHTML('casino'),

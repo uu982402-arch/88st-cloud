@@ -96,8 +96,9 @@
     }catch(e){}
   }
 
-  function extendHeader(){
+  function extendHeader(cfg){
     try{
+      var ft = (cfg && cfg.features) ? cfg.features : {};
       // Desktop
       var dd = document.querySelectorAll('.hdrDD');
       dd.forEach(function(d){
@@ -105,13 +106,18 @@
         var label = sum ? (sum.textContent||'').trim() : '';
         var menu = d.querySelector('.hdrMenu');
         if(!menu) return;
+        try{ menu.querySelectorAll('a[href="/ops/"]').forEach(function(a){ a.remove(); }); }catch(e){}
+        if(label.indexOf('분석기')>=0){
+          addLink(menu, '/tool-virtual/', '가상게임 분석기');
+        }
         if(label.indexOf('계산기')>=0){
           addLink(menu, '/tool/fair-odds/', '공정배당(Fair Odds)');
           addLink(menu, '/tool/overround/', '오버라운드');
           addLink(menu, '/tool/kelly/', 'Kelly 비중');
         }
         if(label.indexOf('가이드')>=0){
-          addLink(menu, '/guide/courses/', '추천 루트');
+          if(ft.guideCourses!==false) addLink(menu, '/guide/courses/', '추천 루트');
+          addLink(menu, '/guide/seo-tool/', 'SEO 키워드 도구');
         }
       });
 
@@ -122,13 +128,18 @@
         var label = sum ? (sum.textContent||'').trim() : '';
         var menu = d.querySelector('.hdrMenu');
         if(!menu) return;
+        try{ menu.querySelectorAll('a[href="/ops/"]').forEach(function(a){ a.remove(); }); }catch(e){}
+        if(label.indexOf('분석기')>=0){
+          addLink(menu, '/tool-virtual/', '가상게임 분석기');
+        }
         if(label.indexOf('계산기')>=0){
           addLink(menu, '/tool/fair-odds/', '공정배당(Fair Odds)');
           addLink(menu, '/tool/overround/', '오버라운드');
           addLink(menu, '/tool/kelly/', 'Kelly 비중');
         }
         if(label.indexOf('가이드')>=0){
-          addLink(menu, '/guide/courses/', '추천 루트');
+          if(ft.guideCourses!==false) addLink(menu, '/guide/courses/', '추천 루트');
+          addLink(menu, '/guide/seo-tool/', 'SEO 키워드 도구');
         }
       });
     }catch(e){}
@@ -136,7 +147,7 @@
 
   function boot(){
     loadCfg().then(function(){
-      extendHeader();
+      extendHeader(window.__88st_cfg_obj||{});
     });
   }
 
