@@ -278,7 +278,8 @@
     // gate
     $('btnLogin').addEventListener('click', doLogin);
     $('pw').addEventListener('keydown', (e)=>{ if(e.key==='Enter') doLogin(); });
-    $('btnGoOps').addEventListener('click', ()=>location.href='/ops/');
+    // OPS link removed (admin page hidden from users)
+    try{ var __go=$('btnGoOps'); if(__go) __go.remove(); }catch(e){}
     if(authed()){
       showApp();
     }

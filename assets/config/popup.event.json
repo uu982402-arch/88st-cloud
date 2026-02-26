@@ -7,7 +7,5 @@
   "excludePaths": [
     "/cert",
     "/cert/",
-    "/guide/seo-tool",
-    "/guide/seo-tool/"
   ]
 }

@@ -116,9 +116,7 @@
           addLink(menu, '/tool/kelly/', 'Kelly 비중');
         }
         if(label.indexOf('가이드')>=0){
-          if(ft.guideCourses!==false) addLink(menu, '/guide/courses/', '추천 루트');
-          addLink(menu, '/guide/seo-tool/', 'SEO 키워드 도구');
-        }
+          if(ft.guideCourses!==false) addLink(menu, '/guide/courses/', '추천 루트');        }
       });
 
       // Mobile
@@ -138,9 +136,7 @@
           addLink(menu, '/tool/kelly/', 'Kelly 비중');
         }
         if(label.indexOf('가이드')>=0){
-          if(ft.guideCourses!==false) addLink(menu, '/guide/courses/', '추천 루트');
-          addLink(menu, '/guide/seo-tool/', 'SEO 키워드 도구');
-        }
+          if(ft.guideCourses!==false) addLink(menu, '/guide/courses/', '추천 루트');        }
       });
     }catch(e){}
   }

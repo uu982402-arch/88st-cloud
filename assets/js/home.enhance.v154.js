@@ -150,6 +150,7 @@
   }
 
   function buildActionBar(cfg, certCfg){
+    try{ if(document.querySelector('.homeActionBar')) return; }catch(e){}
     var f = (cfg && cfg.features) ? cfg.features : {};
     if(!f.homeActionBar) return;
 
@@ -422,6 +423,7 @@
   }
 
   function renderRecentUsed(cfg){
+    try{ if(document.getElementById('homeRecentUsed')) return; }catch(e){}
     var f = (cfg && cfg.features) ? cfg.features : {};
     if(!f.homeRecentUsed) return;
 
@@ -499,6 +501,7 @@
   }
 
   function injectTodayStatus(cfg){
+    try{ if(document.getElementById('homeTodayStatus')) return; }catch(e){}
     var f = (cfg && cfg.features) ? cfg.features : {};
     if(!f.homeTodayStatus) return;
 
