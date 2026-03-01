@@ -1,3 +1,8 @@
 # Temporary: disable community routes
 /community/* / 302
 /community / 302
+/tool/overround/* /tool-margin/:splat 301
+/tool/overround /tool-margin 301
+/tool/ev/* /tool-ev/:splat 301
+/tool/ev /tool-ev 301
+/casino/landing-a_index.html /landing-a 301
