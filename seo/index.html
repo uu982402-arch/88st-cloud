@@ -1,167 +1,116 @@
 <!DOCTYPE html>
-<html lang="ko" data-theme="light">
+<html data-theme="light" lang="ko">
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
-  <title>SEO 키워드/카피 생성기 | 88ST</title>
+  <title>SEO Console | 88ST</title>
   <meta name="robots" content="noindex,nofollow,noarchive,nosnippet"/>
   <link rel="canonical" href="https://88st.cloud/seo/"/>
-  <link rel="icon" href="/favicon.ico"/>
-  <link rel="stylesheet" href="/assets/css/seo.tool.v1.css?v=v1"/>
-  <link rel="stylesheet" href="/assets/css/typography.premium.v2.css?v=v20260226-0145"/>
-<script src="/assets/js/seo.apply.v1.js?v=v20260224-2330"></script>
+
+  <link href="/favicon.ico" rel="icon" type="image/x-icon"/>
+  <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+
+  <link href="/assets/css/x.9d7841e705c5.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="/assets/css/hdr.shell.v1.20260221.css?v=119"/>
+
+  <script defer src="/assets/js/build.ver.js"></script>
+  <script defer src="/assets/js/build.loader.js"></script>
+  <script defer src="/assets/js/seo.console.v1.20260228.js"></script>
+
+  <style>
+    :root{ --max: 1120px; }
+    body{ margin:0; min-height:100vh; }
+    .wrap{ width:100%; max-width:var(--max); margin:0 auto; padding:26px 16px 64px; }
+    .card{ border-radius:18px; border:1px solid rgba(255,255,255,.08); background: rgba(20,20,24,.55); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); box-shadow: 0 18px 50px rgba(0,0,0,.35); }
+    [data-theme="light"] .card{ background: rgba(255,255,255,.72); border-color: rgba(0,0,0,.08); box-shadow: 0 18px 50px rgba(0,0,0,.12); }
+    .top{ display:flex; align-items:flex-start; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+    .ttl{ font-size:18px; font-weight:900; letter-spacing:-.02em; }
+    .sub{ margin-top:8px; opacity:.78; line-height:1.45; font-size:13px; max-width:780px; }
+    .row{ display:flex; gap:10px; margin-top:12px; flex-wrap:wrap; }
+    .row input{ flex:1; min-width:240px; height:44px; border-radius:12px; padding:0 12px; border:1px solid rgba(255,255,255,.12); background: rgba(0,0,0,.18); color: inherit; outline:none; }
+    [data-theme="light"] .row input{ background: rgba(255,255,255,.8); border-color: rgba(0,0,0,.12); }
+    .btn{ height:44px; border-radius:12px; padding:0 14px; border:1px solid rgba(255,255,255,.14); background: rgba(255,255,255,.06); color: inherit; font-weight:800; cursor:pointer; }
+    [data-theme="light"] .btn{ background: rgba(0,0,0,.04); border-color: rgba(0,0,0,.12); }
+    .btn.primary{ background: rgba(121, 83, 255, .30); border-color: rgba(121, 83, 255, .55); }
+    [data-theme="light"] .btn.primary{ background: rgba(121, 83, 255, .16); }
+    .btn:active{ transform: translateY(1px); }
+    .msg{ margin-top:10px; font-size:13px; opacity:.88; }
+    .err{ color:#ff6b6b; }
+    [data-theme="light"] .err{ color:#c51f1f; }
+
+    .grid{ margin-top:14px; display:grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap:10px; }
+    @media (max-width: 980px){ .grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 520px){ .grid{ grid-template-columns: 1fr; } }
+    .kpi{ padding:14px 14px; border-radius:16px; border:1px solid rgba(255,255,255,.12); background: rgba(0,0,0,.10); }
+    [data-theme="light"] .kpi{ background: rgba(255,255,255,.65); border-color: rgba(0,0,0,.10); }
+    .kpi .k{ font-size:12px; opacity:.75; font-weight:800; }
+    .kpi .v{ margin-top:6px; font-size:20px; font-weight:1000; letter-spacing:-.02em; }
+    .kpi .m{ margin-top:6px; font-size:12px; opacity:.75; }
+
+    .table{ margin-top:14px; width:100%; border-collapse:separate; border-spacing:0; overflow:hidden; border-radius:16px; border:1px solid rgba(255,255,255,.12); }
+    [data-theme="light"] .table{ border-color: rgba(0,0,0,.10); }
+    .table th, .table td{ padding:10px 10px; font-size:13px; text-align:left; border-bottom:1px solid rgba(255,255,255,.08); }
+    [data-theme="light"] .table th, [data-theme="light"] .table td{ border-bottom:1px solid rgba(0,0,0,.07); }
+    .table th{ font-size:12px; opacity:.80; font-weight:900; background: rgba(0,0,0,.10); }
+    [data-theme="light"] .table th{ background: rgba(0,0,0,.03); }
+    .table tr:last-child td{ border-bottom:none; }
+    .mono{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size:12px; }
+    .pill{ display:inline-flex; align-items:center; gap:6px; border-radius:999px; padding:4px 10px; font-size:12px; font-weight:800; border:1px solid rgba(255,255,255,.12); opacity:.9; }
+    [data-theme="light"] .pill{ border-color: rgba(0,0,0,.12); }
+  </style>
 </head>
+
 <body>
-  <div class="gate" id="gate">
-    <div class="gate-card">
-      <div class="gate-brand">88ST.Cloud</div>
-      <h1 class="gate-title">SEO 키워드/카피 생성기</h1>
-      <p class="gate-sub">운영자 전용 페이지입니다.</p>
-      <div class="gate-row">
-        <input id="pw" type="password" inputmode="text" autocomplete="current-password" placeholder="비밀번호"/>
-        <button id="btnLogin" class="btn primary">입장</button>
+  <div class="wrap">
+    <div class="card" style="padding:18px 18px;">
+      <div class="top">
+        <div>
+          <div class="ttl">SEO Console <span class="pill" id="seoStatus">offline</span></div>
+          <div class="sub">
+            Search Console(GSC) 데이터를 기준으로 “상위노출 기회(Quick Win)”를 뽑아주는 운영자 콘솔입니다.
+            <br/>※ 이 페이지는 <b>noindex</b>이며, API 쓰기 작업은 <b>ADMIN_TOKEN</b>으로 보호됩니다.
+          </div>
+        </div>
+        <div class="mono" id="seoMeta" style="opacity:.7"></div>
       </div>
-      <div class="gate-meta">
-        <span id="gateMsg" class="msg"></span>
+
+      <div class="row">
+        <input id="adminToken" type="password" placeholder="ADMIN_TOKEN (Cloudflare env secret)"/>
+        <button class="btn primary" id="btnSaveToken">저장</button>
+        <button class="btn" id="btnSync">지금 동기화</button>
+        <button class="btn" id="btnRefresh">새로고침</button>
+      </div>
+      <div class="msg" id="msg"></div>
+
+      <div class="grid" id="kpiGrid" style="display:none"></div>
+
+      <table class="table" id="oppTable" style="display:none">
+        <thead>
+          <tr>
+            <th style="width:96px">점수</th>
+            <th>쿼리</th>
+            <th>페이지</th>
+            <th style="width:110px">노출</th>
+            <th style="width:90px">클릭</th>
+            <th style="width:90px">CTR</th>
+            <th style="width:100px">평균순위</th>
+            <th style="width:180px">추천</th>
+          </tr>
+        </thead>
+        <tbody id="oppBody"></tbody>
+      </table>
+    </div>
+
+    <div style="height:14px"></div>
+
+    <div class="card" style="padding:16px 18px;">
+      <div class="ttl" style="font-size:15px">설정 체크</div>
+      <div class="sub" style="margin-top:8px">
+        동기화가 실패하면 아래 4개 env secret이 누락된 경우가 거의 전부입니다:
+        <span class="mono">GSC_SITE_URL</span>, <span class="mono">GSC_CLIENT_ID</span>, <span class="mono">GSC_CLIENT_SECRET</span>, <span class="mono">GSC_REFRESH_TOKEN</span>.
+        <br/>D1 바인딩은 기존처럼 <span class="mono">DB</span>로 유지합니다.
       </div>
     </div>
   </div>
-
-  <header class="topbar" id="appTop" hidden>
-    <div class="top-left">
-      <div class="badge">OPS</div>
-      <div class="title">SEO 키워드 · 제목/메타 · 카피 정리</div>
-    </div>
-    <div class="top-right">
-      <button class="btn ghost" id="btnReloadBank">뱅크 새로고침</button>
-    </div>
-  </header>
-
-  <main class="wrap" id="app" hidden>
-    <section class="grid">
-      <div class="card">
-        <h2>1) 키워드 클러스터 생성</h2>
-        <div class="row">
-          <label class="lab">주제/서비스</label>
-          <input id="topic" class="inp" placeholder="예: 스포츠 배당 분석기, EV 계산기, 인증놀이터"/>
-        </div>
-        <div class="row">
-          <label class="lab">카테고리</label>
-          <select id="cat" class="inp">
-            <option value="sports">스포츠 분석/배당</option>
-            <option value="ev">EV/켈리/확률</option>
-            <option value="arb">아비트리지/마진</option>
-            <option value="cert">인증/프로모션</option>
-            <option value="general">일반(가이드/도구)</option>
-          </select>
-        </div>
-        <div class="row">
-          <label class="lab">톤</label>
-          <select id="tone" class="inp">
-            <option value="luxe">짧게 · 고급 톤</option>
-            <option value="plain">설명형</option>
-            <option value="cta">전환형(CTA 강화)</option>
-          </select>
-        </div>
-        <div class="row">
-          <label class="lab">키워드 포함</label>
-          <div class="chips">
-            <label class="chip"><input type="checkbox" id="kwBrand" checked/> 브랜드(88st/88st.cloud)</label>
-            <label class="chip"><input type="checkbox" id="kwKR" checked/> 한국어 롱테일</label>
-            <label class="chip"><input type="checkbox" id="kwEN"/> 영문 약어(EV/Kelly)</label>
-          </div>
-        </div>
-        <div class="row actions">
-          <button class="btn primary" id="btnGenKw">키워드 생성</button>
-          <button class="btn" id="btnClearKw">초기화</button>
-        </div>
-
-        <h3>결과</h3>
-        <textarea id="outKw" class="ta" placeholder="키워드 클러스터 결과가 여기에 생성됩니다." spellcheck="false"></textarea>
-        <div class="row actions">
-          <button class="btn ghost" id="btnCopyKw">복사</button>
-          <button class="btn ghost" id="btnDlKw">TXT 다운로드</button>
-        </div>
-      </div>
-
-      <div class="card">
-        <h2>2) 제목/메타/아웃라인 생성</h2>
-        <div class="row">
-          <label class="lab">페이지 경로</label>
-          <input id="path" class="inp" placeholder="예: /analysis/  /guide/  /cert/vegas/"/>
-        </div>
-        <div class="row">
-          <label class="lab">핵심 키워드</label>
-          <input id="focus" class="inp" placeholder="예: 배당 분석, EV 계산기, 인증사이트"/>
-        </div>
-        <div class="row actions">
-          <button class="btn primary" id="btnGenMeta">생성</button>
-          <button class="btn" id="btnClearMeta">초기화</button>
-        </div>
-
-        <h3>Title(제목) / Meta Description / Keywords</h3>
-        <textarea id="outMeta" class="ta" placeholder="Title/Meta/Keywords 추천이 생성됩니다." spellcheck="false"></textarea>
-
-        <h3>H2 아웃라인(가이드형)</h3>
-        <textarea id="outOutline" class="ta mini" placeholder="H2 아웃라인이 생성됩니다." spellcheck="false"></textarea>
-
-        <div class="row actions">
-          <button class="btn ghost" id="btnCopyMeta">복사</button>
-          <button class="btn ghost" id="btnDlMeta">TXT 다운로드</button>
-          <button class="btn ghost" id="btnMakeJson">seo.meta.json 스니펫 생성</button>
-        </div>
-
-        <h3>seo.meta.json 스니펫</h3>
-        <textarea id="outJson" class="ta mini" placeholder="경로별 meta JSON 스니펫이 생성됩니다." spellcheck="false"></textarea>
-        <div class="row actions">
-          <button class="btn ghost" id="btnCopyJson">복사</button>
-          <button class="btn ghost" id="btnDlJson">JSON 다운로드</button>
-        </div>
-        <p class="hint">※ 이 도구는 외부 API 없이, 내부 키워드 뱅크/템플릿으로 생성합니다(0원/정적).</p>
-      </div>
-
-      <div class="card">
-        <h2>3) 본문 리라이팅(룰 기반)</h2>
-        <p class="sub">AI 호출 없이 “정리/압축/톤 통일”만 해줍니다. 긴 글을 넣고 “정리”를 누르면 됩니다.</p>
-        <div class="row">
-          <label class="lab">원문</label>
-        </div>
-        <textarea id="src" class="ta" placeholder="원문을 붙여넣으세요." spellcheck="false"></textarea>
-
-        <div class="row actions">
-          <button class="btn primary" id="btnRewriteShort">짧게 정리</button>
-          <button class="btn primary" id="btnRewriteExplain">설명형 정리</button>
-          <button class="btn" id="btnCleanup">공백/줄정리</button>
-        </div>
-
-        <h3>결과</h3>
-        <textarea id="outBody" class="ta" placeholder="정리된 문장이 여기에 생성됩니다." spellcheck="false"></textarea>
-        <div class="row actions">
-          <button class="btn ghost" id="btnCopyBody">복사</button>
-          <button class="btn ghost" id="btnDlBody">TXT 다운로드</button>
-        </div>
-      </div>
-
-      <div class="card">
-        <h2>키워드 뱅크(seo.bank.json)</h2>
-        <p class="sub">운영자가 키워드/템플릿을 직접 수정할 수 있습니다. 이 파일만 교체하면 도구 결과도 즉시 바뀝니다.</p>
-        <div class="row actions">
-          <button class="btn ghost" id="btnLoadBank">현재 뱅크 불러오기</button>
-          <button class="btn ghost" id="btnCopyBank">복사</button>
-          <button class="btn ghost" id="btnDlBank">JSON 다운로드</button>
-        </div>
-        <textarea id="bank" class="ta" placeholder="seo.bank.json 내용" spellcheck="false"></textarea>
-        <p class="hint">배포 경로: <code>/assets/config/seo.bank.json</code> (Worker: no-store)</p>
-      </div>
-    </section>
-  </main>
-
-  <script>
-    window.__SEO_GATE__ = {
-      HASH_HEX: "23c9221f8d58970a191a4762e4c9ca052c08c905b44e293ee4b2f6ed2a9b1755",
-      AUTH_KEY: "vvip_ops_authed_v1"
-    };
-  </script>
-  <script src="/assets/js/seo.tool.v1.js?v=v1" defer></script>
 </body>
 </html>
