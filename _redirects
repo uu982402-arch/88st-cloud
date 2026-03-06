@@ -1,3 +1,5 @@
 # Temporary: disable community routes
+/odds  /odds/  301
+/odds/ /odds/index.html 200
 /community/* / 302
 /community / 302
