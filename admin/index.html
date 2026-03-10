@@ -12,26 +12,14 @@
 <body>
   <div class="auth-gate" id="auth-gate" aria-hidden="false">
     <div class="auth-card">
-      <div class="auth-card-top">
-        <div>
-          <div class="brand-badge">88ST Admin</div>
-          <h2>텔레그램 승인 로그인</h2>
-          <p id="auth-copy">관리자 페이지는 승인 후 입장됩니다. 버튼을 누르면 관리자 텔레그램으로 로그인 요청이 전송됩니다.</p>
-        </div>
-        <div class="auth-side-note">
-          <strong>로그인 흐름</strong>
-          <div class="auth-steps">
-            <span>요청 전송</span>
-            <span>텔레그램 승인</span>
-            <span>자동 입장</span>
-          </div>
-        </div>
-      </div>
-      <div class="actions top-gap auth-actions">
+      <div class="brand-badge">88ST Admin</div>
+      <h2>텔레그램 승인 로그인</h2>
+      <p id="auth-copy">관리자 페이지 접속은 텔레그램 승인 후 진행됩니다. 아래 버튼을 누르면 관리자 텔레그램으로 승인 요청이 전송됩니다.</p>
+      <div class="actions top-gap">
         <button class="glass-btn primary" data-action="request-login">텔레그램으로 승인 요청</button>
         <button class="glass-btn" data-action="check-login">상태 다시 확인</button>
       </div>
-      <div class="auth-status warn" id="auth-status">텔레그램 승인 로그인이 필요합니다.</div>
+      <div class="auth-status" id="auth-status">로그인이 필요합니다.</div>
     </div>
   </div>
   <div class="admin-shell locked" id="admin-shell">
