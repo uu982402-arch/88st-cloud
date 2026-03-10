@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>88ST 관리자 페이지</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <div class="admin-shell">
+    <aside class="sidebar">
+      <div class="brand-card">
+        <div class="brand-badge">88ST Admin</div>
+        <h1>운영 관리자 허브</h1>
+        <p>프로모, 그룹 허용, 문구, 웹앱 링크, 로그를 한 화면에서 관리하는 정적 관리자 페이지 초안입니다.</p>
+      </div>
+
+      <nav class="menu">
+        <button class="menu-item active" data-panel="dashboard">대시보드</button>
+        <button class="menu-item" data-panel="promos">프로모/인증놀이터</button>
+        <button class="menu-item" data-panel="groups">그룹 관리</button>
+        <button class="menu-item" data-panel="texts">키워드/문구 관리</button>
+        <button class="menu-item" data-panel="analysis">배당 분석 설정</button>
+        <button class="menu-item" data-panel="landing">웹앱/랜딩 관리</button>
+        <button class="menu-item" data-panel="schedules">스케줄/뉴스 관리</button>
+        <button class="menu-item" data-panel="logs">로그/이력</button>
+        <button class="menu-item" data-panel="security">권한/보안</button>
+      </nav>
+
+      <div class="sidebar-note">
+        <strong>연동 방향</strong>
+        <p>이 화면은 정적 UI 초안입니다. 실제 데이터 저장과 변경은 Worker의 <code>/admin-api/*</code>에서 처리하도록 설계했습니다.</p>
+      </div>
+    </aside>
+
+    <main class="content">
+      <header class="hero">
+        <div>
+          <div class="eyebrow">운영 현황</div>
+          <h2 id="panel-title">운영 대시보드</h2>
+          <p id="panel-subtitle">오늘 상태, 광고 노출, 그룹 허용, 오류 로그를 빠르게 확인할 수 있습니다.</p>
+        </div>
+        <div class="hero-actions">
+          <button class="glass-btn primary">업체 추가</button>
+          <button class="glass-btn">그룹 추가</button>
+          <button class="glass-btn">테스트 발송</button>
+        </div>
+      </header>
+
+      <section class="panel active" id="dashboard">
+        <div class="kpi-grid">
+          <article class="kpi-card"><span>오늘 요청 수</span><strong>1,248</strong><small>전일 대비 +12.4%</small></article>
+          <article class="kpi-card"><span>활성 그룹 수</span><strong>38</strong><small>허용 그룹 기준</small></article>
+          <article class="kpi-card"><span>활성 업체 수</span><strong>6</strong><small>웹/DM 노출 포함</small></article>
+          <article class="kpi-card"><span>미정산 결과 수</span><strong>87</strong><small>최근 7일 기준</small></article>
+          <article class="kpi-card"><span>오류 수</span><strong>3</strong><small>최근 24시간</small></article>
+        </div>
+
+        <div class="grid two-up">
+          <section class="surface">
+            <div class="section-head">
+              <div>
+                <h3>최근 변경 이력</h3>
+                <p>누가 무엇을 바꿨는지 빠르게 확인합니다.</p>
+              </div>
+              <span class="chip">Audit</span>
+            </div>
+            <div class="stack-list">
+              <article class="row-card">
+                <strong>프로모 링크 수정</strong>
+                <p>VEGAS URL 변경 · 관리자 8551197689 · 5분 전</p>
+              </article>
+              <article class="row-card">
+                <strong>그룹 허용 추가</strong>
+                <p>축구정보방 등록 · 관리자 8551197689 · 17분 전</p>
+              </article>
+              <article class="row-card">
+                <strong>안내 문구 수정</strong>
+                <p>playground.notice 변경 · 관리자 8551197689 · 1시간 전</p>
+              </article>
+            </div>
+          </section>
+
+          <section class="surface">
+            <div class="section-head">
+              <div>
+                <h3>빠른 액션</h3>
+                <p>운영자가 자주 쓰는 작업을 바로 실행합니다.</p>
+              </div>
+              <span class="chip">Quick</span>
+            </div>
+            <div class="action-grid">
+              <button class="action-tile">프로모 추가</button>
+              <button class="action-tile">그룹 허용 추가</button>
+              <button class="action-tile">웹앱 링크 수정</button>
+              <button class="action-tile">문구 미리보기</button>
+              <button class="action-tile">테스트 DM 발송</button>
+              <button class="action-tile">뉴스 테스트</button>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section class="panel" id="promos">
+        <section class="surface">
+          <div class="section-head">
+            <div>
+              <h3>프로모 / 인증놀이터 목록</h3>
+              <p>광고 업체 추가, 수정, 숨김, 정렬 순서를 관리합니다.</p>
+            </div>
+            <div class="section-tools">
+              <input type="search" id="promo-search" placeholder="업체명, 코드, 링크 검색" />
+              <button class="glass-btn primary small">신규 등록</button>
+            </div>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>상태</th>
+                  <th>순서</th>
+                  <th>업체명</th>
+                  <th>표시명</th>
+                  <th>코드</th>
+                  <th>노출</th>
+                  <th>기간</th>
+                  <th>액션</th>
+                </tr>
+              </thead>
+              <tbody id="promo-table-body"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="surface form-surface">
+          <div class="section-head">
+            <div>
+              <h3>업체 상세 편집</h3>
+              <p>삭제보다 OFF 위주로 운영하고, 순서만 바꿔 교체하는 구조를 권장합니다.</p>
+            </div>
+            <span class="chip success">Safe</span>
+          </div>
+
+          <div class="form-grid">
+            <label>업체명<input type="text" value="VEGAS" /></label>
+            <label>표시명<input type="text" value="VEGAS" /></label>
+            <label>링크 URL<input type="text" value="https://las403.com" /></label>
+            <label>프로모 코드<input type="text" value="6789" /></label>
+            <label>버튼 라벨<input type="text" value="인증 사이트 입장" /></label>
+            <label>버튼 색상
+              <select>
+                <option>골드</option>
+                <option>에메랄드</option>
+                <option>블루</option>
+              </select>
+            </label>
+            <label class="full">설명 문구<textarea>빠른 입장과 코드 확인을 한 흐름으로 이용할 수 있습니다.</textarea></label>
+          </div>
+
+          <div class="toggle-row">
+            <label><input type="checkbox" checked /> 전체 노출</label>
+            <label><input type="checkbox" checked /> 웹 노출</label>
+            <label><input type="checkbox" checked /> DM 노출</label>
+            <label><input type="checkbox" /> 그룹 노출</label>
+            <label><input type="checkbox" checked /> 추천 배지</label>
+          </div>
+
+          <div class="hero-actions">
+            <button class="glass-btn primary">저장</button>
+            <button class="glass-btn">복제</button>
+            <button class="glass-btn">미리보기</button>
+            <button class="glass-btn danger">OFF 처리</button>
+          </div>
+        </section>
+      </section>
+
+      <section class="panel" id="groups">
+        <div class="grid two-up">
+          <section class="surface">
+            <div class="section-head">
+              <div>
+                <h3>그룹 목록</h3>
+                <p>허용/차단, 최근 활동, 메모를 한 번에 관리합니다.</p>
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>상태</th>
+                    <th>그룹명</th>
+                    <th>chat_id</th>
+                    <th>최근 활동</th>
+                    <th>액션</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td><span class="status on">허용</span></td><td>축구정보방</td><td>-100123456789</td><td>5분 전</td><td>상세 · 차단</td></tr>
+                  <tr><td><span class="status warn">대기</span></td><td>테스트그룹</td><td>-100987654321</td><td>1일 전</td><td>허용 · 상세</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="surface">
+            <div class="section-head">
+              <div>
+                <h3>그룹 상세</h3>
+                <p>선택한 그룹의 현재 상태와 최근 사용량을 확인합니다.</p>
+              </div>
+            </div>
+            <div class="stack-list compact">
+              <article class="row-card"><strong>그룹명</strong><p>축구정보방</p></article>
+              <article class="row-card"><strong>허용 상태</strong><p>허용 · 최근 5분 전 사용</p></article>
+              <article class="row-card"><strong>메모</strong><p>스포츠 분석 요청이 많은 핵심 그룹</p></article>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section class="panel" id="texts">
+        <div class="grid two-up">
+          <section class="surface">
+            <div class="section-head">
+              <div>
+                <h3>문구 키 목록</h3>
+                <p>상태 문구, 안내 문구, 버튼 라벨을 분리해 관리합니다.</p>
+              </div>
+            </div>
+            <div class="stack-list compact">
+              <article class="row-card active-select"><strong>playground.notice</strong><p>인증놀이터 안내 문구</p></article>
+              <article class="row-card"><strong>tg_match_entry.intro</strong><p>경기 선택 웹앱 안내 문구</p></article>
+              <article class="row-card"><strong>odds.hero.subtitle</strong><p>배당분석 랜딩 보조 문구</p></article>
+            </div>
+          </section>
+
+          <section class="surface">
+            <div class="section-head">
+              <div>
+                <h3>문구 편집</h3>
+                <p>내부 로직 용어를 드러내지 않고 사용자용 문구만 수정합니다.</p>
+              </div>
+            </div>
+            <label class="full editor-label">문구 내용
+              <textarea class="editor-area">인증 사이트 선택 → 코드 확인 → 텔레그램 분석
+
+인증 사이트 입장과 코드 확인은
+이 화면에서 빠르게 진행할 수 있습니다.
+
+배당 분석은 텔레그램에서
+이어서 이용하실 수 있습니다.</textarea>
+            </label>
+            <div class="hero-actions">
+              <button class="glass-btn primary">저장</button>
+              <button class="glass-btn">이전 버전 복원</button>
+              <button class="glass-btn">모바일 미리보기</button>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section class="panel" id="analysis">
+        <section class="surface">
+          <div class="section-head">
+            <div>
+              <h3>배당 분석 설정</h3>
+              <p>내부 수학식이 아니라 운영 옵션만 켜고 끄는 구조를 권장합니다.</p>
+            </div>
+          </div>
+          <div class="toggle-grid">
+            <label><input type="checkbox" checked /> 경기 선택 웹앱 사용</label>
+            <label><input type="checkbox" checked /> 결과 회수 버튼 사용</label>
+            <label><input type="checkbox" checked /> 기록 저장 사용</label>
+            <label><input type="checkbox" checked /> 최근 기록 표시</label>
+            <label><input type="checkbox" checked /> 관망 안내 사용</label>
+            <label><input type="checkbox" /> 유소년 경기 노출</label>
+            <label><input type="checkbox" checked /> 여자 경기 노출</label>
+            <label><input type="checkbox" checked /> e스포츠 카탈로그 사용</label>
+          </div>
+        </section>
+      </section>
+
+      <section class="panel" id="landing">
+        <section class="surface form-surface">
+          <div class="section-head">
+            <div>
+              <h3>웹앱 / 랜딩 관리</h3>
+              <p>링크, 버튼 문구, 문의 URL, 랜딩 미리보기를 관리합니다.</p>
+            </div>
+          </div>
+          <div class="form-grid">
+            <label>tg-match-entry URL<input type="text" value="https://88st.cloud/tg-match-entry/" /></label>
+            <label>odds URL<input type="text" value="https://88st.cloud/odds/" /></label>
+            <label>playground URL<input type="text" value="https://88st.cloud/tg-odds/app" /></label>
+            <label>텔레그램 문의 URL<input type="text" value="https://t.me/KAKAcloud" /></label>
+            <label>문의 버튼 라벨<input type="text" value="텔레그램 문의" /></label>
+            <label>배당분석 버튼 라벨<input type="text" value="배당분석 바로가기" /></label>
+          </div>
+          <div class="hero-actions">
+            <button class="glass-btn primary">저장</button>
+            <button class="glass-btn">미리보기</button>
+          </div>
+        </section>
+      </section>
+
+      <section class="panel" id="schedules">
+        <div class="grid two-up">
+          <section class="surface">
+            <div class="section-head">
+              <div>
+                <h3>뉴스 / 스케줄</h3>
+                <p>뉴스, TOP3, 드립, 테스트 발송 상태를 관리합니다.</p>
+              </div>
+            </div>
+            <div class="toggle-grid compact-grid">
+              <label><input type="checkbox" checked /> 뉴스 발송 사용</label>
+              <label><input type="checkbox" checked /> 드립 발송 사용</label>
+              <label><input type="checkbox" checked /> AI 요약 사용</label>
+              <label><input type="checkbox" /> 수동 테스트만 허용</label>
+            </div>
+          </section>
+          <section class="surface">
+            <div class="section-head">
+              <div>
+                <h3>시간표 요약</h3>
+                <p>실제 값은 Worker API 저장값을 불러오는 구조를 권장합니다.</p>
+              </div>
+            </div>
+            <div class="stack-list compact">
+              <article class="row-card"><strong>soccer</strong><p>09:00 · 13:00 · 18:00 · 21:00 · 00:00</p></article>
+              <article class="row-card"><strong>basketball</strong><p>09:00 · 13:15 · 18:15 · 21:15 · 00:15</p></article>
+              <article class="row-card"><strong>TOP3</strong><p>09:30 · 12:00 · 15:00 · 01:00</p></article>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section class="panel" id="logs">
+        <div class="grid two-up">
+          <section class="surface">
+            <div class="section-head">
+              <div>
+                <h3>시스템 로그</h3>
+                <p>오류와 이벤트 로그를 탭 없이 빠르게 보는 시안입니다.</p>
+              </div>
+            </div>
+            <div class="stack-list compact">
+              <article class="row-card"><strong>[INFO] 뉴스 스케줄 실행</strong><p>soccer digest sent · 2026-03-10 09:00</p></article>
+              <article class="row-card"><strong>[WARN] DM 프로모 일부 실패</strong><p>copyMessage partial fail · 2026-03-10 08:02</p></article>
+              <article class="row-card"><strong>[ERROR] fetch retry triggered</strong><p>odds import timeout handled · 2026-03-10 07:50</p></article>
+            </div>
+          </section>
+
+          <section class="surface">
+            <div class="section-head">
+              <div>
+                <h3>관리자 액션 로그</h3>
+                <p>중요 설정 변경은 모두 이력으로 남기는 구조를 권장합니다.</p>
+              </div>
+            </div>
+            <div class="stack-list compact">
+              <article class="row-card"><strong>promo_items.update</strong><p>VEGAS URL 변경 · 5분 전</p></article>
+              <article class="row-card"><strong>ui_texts.update</strong><p>playground.notice 수정 · 1시간 전</p></article>
+              <article class="row-card"><strong>bot_groups.allow</strong><p>축구정보방 허용 · 1시간 전</p></article>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section class="panel" id="security">
+        <div class="grid two-up">
+          <section class="surface">
+            <div class="section-head">
+              <div>
+                <h3>관리자 권한</h3>
+                <p>Cloudflare Access 또는 Telegram 기반 인증 세션을 권장합니다.</p>
+              </div>
+            </div>
+            <div class="stack-list compact">
+              <article class="row-card"><strong>primary-admin</strong><p>telegram_user_id: 8551197689 · super_admin</p></article>
+              <article class="row-card"><strong>보안 원칙</strong><p>정적 UI는 공개 가능하더라도 실제 저장 API는 관리자 인증 뒤에만 두어야 합니다.</p></article>
+            </div>
+          </section>
+          <section class="surface">
+            <div class="section-head">
+              <div>
+                <h3>세션 / 접근 메모</h3>
+                <p>세션 만료, 강제 로그아웃, 접속 이력은 별도 API 연동 영역입니다.</p>
+              </div>
+            </div>
+            <div class="stack-list compact">
+              <article class="row-card"><strong>권장 경로</strong><p>/admin/ 는 사이트 UI, /admin-api/* 는 Worker API, D1 은 설정/로그, KV 는 세션/캐시 용도</p></article>
+            </div>
+          </section>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>
