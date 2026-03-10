@@ -85,31 +85,161 @@ let selectedTextId = state.texts[0]?.id || null;
 let toastTimer = null;
 
 const API_BASE = `${location.origin}/tg-odds/admin-api`;
-const ADMIN_KEY_STORAGE = '88stAdminApiKey_v1';
+const AUTH_REQUEST_STORAGE = '88stAdminAuthPending_v1';
 let apiEnabled = false;
+const authState = {
+  authorized: false,
+  admin: null,
+  pending: null,
+  pollTimer: null,
+};
 
+function loadPendingAuth() {
+  try {
+    const raw = localStorage.getItem(AUTH_REQUEST_STORAGE);
+    return raw ? JSON.parse(raw) : null;
+  } catch {
+    return null;
+  }
+}
+function savePendingAuth(value) {
+  authState.pending = value || null;
+  if (value) localStorage.setItem(AUTH_REQUEST_STORAGE, JSON.stringify(value));
+  else localStorage.removeItem(AUTH_REQUEST_STORAGE);
+}
+function setAuthStatus(message, kind = 'info') {
+  const el = document.getElementById('auth-status');
+  if (!el) return;
+  el.textContent = message;
+  el.className = `auth-status ${kind}`;
+}
+function setAuthGate(open) {
+  const gate = document.getElementById('auth-gate');
+  const shell = document.getElementById('admin-shell');
+  if (!gate || !shell) return;
+  gate.classList.toggle('hidden', !open);
+  gate.setAttribute('aria-hidden', open ? 'false' : 'true');
+  shell.classList.toggle('locked', open);
+}
+function updateAuthMeta() {
+  const btn = document.getElementById('auth-logout-btn');
+  if (btn) btn.style.display = authState.authorized ? '' : 'none';
+  const copy = document.getElementById('auth-copy');
+  if (copy && authState.authorized && authState.admin) {
+    copy.textContent = `${authState.admin.name || authState.admin.telegramId} 계정으로 로그인되었습니다.`;
+  }
+}
 function apiHeaders(withJson = true) {
   const headers = { accept: 'application/json' };
-  const adminKey = localStorage.getItem(ADMIN_KEY_STORAGE) || '';
-  if (adminKey) headers['x-admin-key'] = adminKey;
   if (withJson) headers['content-type'] = 'application/json';
   return headers;
 }
 async function apiFetch(path, options = {}) {
-  const makeRequest = async () => fetch(`${API_BASE}${path}`, { ...options, headers: { ...apiHeaders(!(options.body instanceof FormData)), ...(options.headers || {}) } });
-  let res = await makeRequest();
+  const res = await fetch(`${API_BASE}${path}`, {
+    credentials: 'same-origin',
+    ...options,
+    headers: { ...apiHeaders(!(options.body instanceof FormData)), ...(options.headers || {}) }
+  });
   if (res.status === 401) {
-    const adminKey = window.prompt('관리자 키를 입력해주세요.', '') || '';
-    if (adminKey) {
-      localStorage.setItem(ADMIN_KEY_STORAGE, adminKey.trim());
-      res = await makeRequest();
-    }
+    authState.authorized = false;
+    authState.admin = null;
+    setAuthGate(true);
+    setAuthStatus('텔레그램 승인 로그인이 필요합니다.', 'warn');
+    throw new Error('unauthorized');
   }
   if (!res.ok) {
     const text = await res.text();
     throw new Error(text || `API ${res.status}`);
   }
   return await res.json();
+}
+async function checkSessionAuth(silent = false) {
+  try {
+    const data = await apiFetch('/auth/me', { method: 'GET' });
+    authState.authorized = true;
+    authState.admin = data.admin || null;
+    setAuthGate(false);
+    updateAuthMeta();
+    if (!silent) setAuthStatus('텔레그램 승인 로그인 완료', 'success');
+    return true;
+  } catch {
+    authState.authorized = false;
+    authState.admin = null;
+    updateAuthMeta();
+    setAuthGate(true);
+    return false;
+  }
+}
+async function requestTelegramLogin() {
+  try {
+    setAuthStatus('관리자 텔레그램으로 승인 요청을 전송 중입니다…');
+    const data = await apiFetch('/auth/request', { method: 'POST', body: JSON.stringify({ ua: navigator.userAgent }) });
+    savePendingAuth({ requestId: data.requestId, requestToken: data.requestToken, expiresAt: data.expiresAt });
+    setAuthStatus('텔레그램으로 승인 요청을 전송했습니다. 텔레그램에서 승인 버튼을 눌러주세요.', 'success');
+    startAuthPolling();
+  } catch (err) {
+    console.error(err);
+    setAuthStatus('로그인 요청 전송에 실패했습니다. 잠시 후 다시 시도해주세요.', 'error');
+  }
+}
+async function checkPendingApproval(manual = false) {
+  const pending = authState.pending || loadPendingAuth();
+  if (!pending?.requestId || !pending?.requestToken) {
+    if (manual) setAuthStatus('진행 중인 로그인 요청이 없습니다.', 'warn');
+    return false;
+  }
+  try {
+    const data = await apiFetch(`/auth/status?request_id=${encodeURIComponent(pending.requestId)}&request_token=${encodeURIComponent(pending.requestToken)}`, { method: 'GET' });
+    if (data.status === 'approved') {
+      savePendingAuth(null);
+      stopAuthPolling();
+      await checkSessionAuth(true);
+      await syncRemoteBootstrap(true);
+      renderAll();
+      showToast('텔레그램 승인 로그인 완료');
+      return true;
+    }
+    if (data.status === 'rejected') {
+      savePendingAuth(null);
+      stopAuthPolling();
+      setAuthStatus('텔레그램에서 로그인 요청이 거부되었습니다.', 'error');
+      return false;
+    }
+    if (data.status === 'expired') {
+      savePendingAuth(null);
+      stopAuthPolling();
+      setAuthStatus('로그인 요청이 만료되었습니다. 다시 요청해주세요.', 'warn');
+      return false;
+    }
+    if (manual) setAuthStatus('아직 승인 대기 중입니다. 텔레그램을 확인해주세요.');
+    return false;
+  } catch (err) {
+    console.error(err);
+    if (manual) setAuthStatus('승인 상태 확인에 실패했습니다.', 'error');
+    return false;
+  }
+}
+function startAuthPolling() {
+  stopAuthPolling();
+  authState.pollTimer = setInterval(() => { checkPendingApproval(false); }, 2500);
+}
+function stopAuthPolling() {
+  if (authState.pollTimer) clearInterval(authState.pollTimer);
+  authState.pollTimer = null;
+}
+async function logoutAdmin() {
+  try {
+    await apiFetch('/auth/logout', { method: 'POST' });
+  } catch (err) {
+    console.error(err);
+  }
+  authState.authorized = false;
+  authState.admin = null;
+  savePendingAuth(null);
+  stopAuthPolling();
+  updateAuthMeta();
+  setAuthGate(true);
+  setAuthStatus('로그아웃되었습니다. 다시 로그인해주세요.', 'warn');
 }
 function mergeRemoteState(payload) {
   if (!payload || typeof payload !== 'object') return;
@@ -136,7 +266,7 @@ async function syncRemoteBootstrap(silent = false) {
     if (!silent) showToast('관리자 API 연동 완료');
   } catch (err) {
     apiEnabled = false;
-    if (!silent) showToast('관리자 API 연결 실패 · 로컬 모드로 동작합니다.', 'warn');
+    if (!silent && String(err?.message || err) !== 'unauthorized') showToast('관리자 API 연결 실패 · 로컬 모드로 동작합니다.', 'warn');
   }
 }
 async function syncRemoteAfterMutation(message, kind = 'success') {
@@ -454,6 +584,15 @@ function findGroup(id) { return state.groups.find((x)=>x.id===id); }
 async function handleAction(action, target) {
   const id = target.dataset.id;
   switch (action) {
+    case 'request-login':
+      await requestTelegramLogin();
+      return;
+    case 'check-login':
+      await checkPendingApproval(true);
+      return;
+    case 'logout-admin':
+      await logoutAdmin();
+      return;
     case 'switch-panel':
       setActivePanel(target.dataset.targetPanel);
       return;
@@ -728,6 +867,20 @@ async function init() {
   bindEvents();
   renderAll();
   setActivePanel(activePanel);
-  await syncRemoteBootstrap(true);
+  updateAuthMeta();
+  const authed = await checkSessionAuth(true);
+  if (authed) {
+    await syncRemoteBootstrap(true);
+    return;
+  }
+  const pending = loadPendingAuth();
+  if (pending?.requestId && pending?.requestToken) {
+    authState.pending = pending;
+    setAuthStatus('텔레그램 승인 대기 중입니다. 텔레그램 메시지를 확인해주세요.');
+    startAuthPolling();
+    await checkPendingApproval(false);
+  } else {
+    setAuthStatus('텔레그램 승인 로그인이 필요합니다.', 'warn');
+  }
 }
 document.addEventListener('DOMContentLoaded', init);
