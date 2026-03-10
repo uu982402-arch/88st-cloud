@@ -117,6 +117,7 @@ function setAuthGate(open) {
   const gate = document.getElementById('auth-gate');
   const shell = document.getElementById('admin-shell');
   if (!gate || !shell) return;
+  document.body.classList.toggle('auth-locked', open);
   gate.classList.toggle('hidden', !open);
   gate.setAttribute('aria-hidden', open ? 'false' : 'true');
   shell.classList.toggle('locked', open);
@@ -144,7 +145,7 @@ async function apiFetch(path, options = {}) {
     authState.authorized = false;
     authState.admin = null;
     setAuthGate(true);
-    setAuthStatus('텔레그램 승인 로그인이 필요합니다.', 'warn');
+    setAuthStatus('텔레그램 승인 로그인이 필요합니다. 아래 버튼을 눌러 승인 요청을 보내주세요.', 'warn');
     throw new Error('unauthorized');
   }
   if (!res.ok) {
@@ -179,7 +180,7 @@ async function requestTelegramLogin() {
     startAuthPolling();
   } catch (err) {
     console.error(err);
-    setAuthStatus('로그인 요청 전송에 실패했습니다. 잠시 후 다시 시도해주세요.', 'error');
+    setAuthStatus('로그인 요청 전송에 실패했습니다. 봇과 관리자 계정이 DM 연결되어 있는지 확인한 뒤 다시 시도해주세요.', 'error');
   }
 }
 async function checkPendingApproval(manual = false) {
@@ -880,7 +881,7 @@ async function init() {
     startAuthPolling();
     await checkPendingApproval(false);
   } else {
-    setAuthStatus('텔레그램 승인 로그인이 필요합니다.', 'warn');
+    setAuthStatus('텔레그램 승인 로그인이 필요합니다. 아래 버튼을 눌러 승인 요청을 보내주세요.', 'warn');
   }
 }
 document.addEventListener('DOMContentLoaded', init);
