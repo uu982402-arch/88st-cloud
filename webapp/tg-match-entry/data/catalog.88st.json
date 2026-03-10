@@ -1,0 +1,3878 @@
+{
+  "sports": [
+    {
+      "code": "SOCCER",
+      "name": "축구",
+      "emoji": "⚽"
+    },
+    {
+      "code": "BASKETBALL",
+      "name": "농구",
+      "emoji": "🏀"
+    },
+    {
+      "code": "BASEBALL",
+      "name": "야구",
+      "emoji": "⚾"
+    },
+    {
+      "code": "HOCKEY",
+      "name": "아이스하키",
+      "emoji": "🏒"
+    },
+    {
+      "code": "AMFOOT",
+      "name": "미식축구",
+      "emoji": "🏈"
+    },
+    {
+      "code": "VOLLEYBALL",
+      "name": "배구",
+      "emoji": "🏐"
+    },
+    {
+      "code": "HANDBALL",
+      "name": "핸드볼",
+      "emoji": "🤾"
+    },
+    {
+      "code": "ESPORTS",
+      "name": "e스포츠",
+      "emoji": "🎮"
+    },
+    {
+      "code": "TENNIS",
+      "name": "테니스",
+      "emoji": "🎾"
+    },
+    {
+      "code": "TABLETENNIS",
+      "name": "탁구",
+      "emoji": "🏓"
+    },
+    {
+      "code": "FUTSAL",
+      "name": "풋살",
+      "emoji": "🥅"
+    },
+    {
+      "code": "CRICKET",
+      "name": "크리켓",
+      "emoji": "🏏"
+    },
+    {
+      "code": "OTHER",
+      "name": "기타",
+      "emoji": "➕"
+    }
+  ],
+  "leagues": [
+    {
+      "sportCode": "SOCCER",
+      "code": "EPL",
+      "name": "EPL",
+      "stage": "LEAGUE",
+      "region": "DOMESTIC",
+      "teams": [
+        {
+          "id": "ARSENAL",
+          "label": "Arsenal"
+        },
+        {
+          "id": "ASTONVIL",
+          "label": "Aston Villa"
+        },
+        {
+          "id": "CHELSEA",
+          "label": "Chelsea"
+        },
+        {
+          "id": "LIVERPOO",
+          "label": "Liverpool"
+        },
+        {
+          "id": "MANCITY",
+          "label": "Man City"
+        },
+        {
+          "id": "MANUNITE",
+          "label": "Man United"
+        },
+        {
+          "id": "NEWCASTL",
+          "label": "Newcastle"
+        },
+        {
+          "id": "TOTTENHA",
+          "label": "Tottenham"
+        },
+        {
+          "id": "WESTHAM",
+          "label": "West Ham"
+        },
+        {
+          "id": "WOLVES",
+          "label": "Wolves"
+        }
+      ],
+      "countryName": "영국",
+      "regionLabel": "국내/정규리그"
+    },
+    {
+      "sportCode": "SOCCER",
+      "code": "CHAMP",
+      "name": "EFL Championship",
+      "stage": "LEAGUE",
+      "region": "DOMESTIC",
+      "teams": [
+        {
+          "id": "LEEDS",
+          "label": "Leeds"
+        },
+        {
+          "id": "LEICESTE",
+          "label": "Leicester"
+        },
+        {
+          "id": "SOUTHAMP",
+          "label": "Southampton"
+        },
+        {
+          "id": "SUNDERLA",
+          "label": "Sunderland"
+        },
+        {
+          "id": "NORWICH",
+          "label": "Norwich"
+        },
+        {
+          "id": "MIDDLESB",
+          "label": "Middlesbrough"
+        },
+        {
+          "id": "COVENTRY",
+          "label": "Coventry"
+        },
+        {
+          "id": "HULL",
+          "label": "Hull"
+        },
+        {
+          "id": "BLACKBUR",
+          "label": "Blackburn"
+        },
+        {
+          "id": "WATFORD",
+          "label": "Watford"
+        }
+      ],
+      "countryName": "영국",
+      "regionLabel": "국내/정규리그"
+    },
+    {
+      "sportCode": "SOCCER",
+      "code": "FACL",
+      "name": "FA Cup",
+      "stage": "CLUB_CUP",
+      "region": "CUP",
+      "teams": [
+        {
+          "id": "ARSENAL",
+          "label": "Arsenal"
+        },
+        {
+          "id": "CHELSEA",
+          "label": "Chelsea"
+        },
+        {
+          "id": "LIVERPOO",
+          "label": "Liverpool"
+        },
+        {
+          "id": "MANCITY",
+          "label": "Man City"
+        },
+        {
+          "id": "MANUNITE",
+          "label": "Man United"
+        },
+        {
+          "id": "TOTTENHA",
+          "label": "Tottenham"
+        },
+        {
+          "id": "ASTONVIL",
+          "label": "Aston Villa"
+        },
+        {
+          "id": "NEWCASTL",
+          "label": "Newcastle"
+        }
+      ],
+      "countryName": "영국",
+      "regionLabel": "클럽/컵대회"
+    },
+    {
+      "sportCode": "SOCCER",
+      "code": "LALIGA",
+      "name": "LaLiga",
+      "stage": "LEAGUE",
+      "region": "DOMESTIC",
+      "teams": [
+        {
+          "id": "REALMADR",
+          "label": "Real Madrid"
+        },
+        {
+          "id": "BARCELON",
+          "label": "Barcelona"
+        },
+        {
+          "id": "ATLETICO",
+          "label": "Atletico"
+        },
+        {
+          "id": "SEVILLA",
+          "label": "Sevilla"
+        },
+        {
+          "id": "BETIS",
+          "label": "Betis"
+        },
+        {
+          "id": "VILLARRE",
+          "label": "Villarreal"
+        },
+        {
+          "id": "VALENCIA",
+          "label": "Valencia"
+        },
+        {
+          "id": "SOCIEDAD",
+          "label": "Sociedad"
+        },
+        {
+          "id": "ATHLETIC",
+          "label": "Athletic"
+        },
+        {
+          "id": "GIRONA",
+          "label": "Girona"
+        }
+      ],
+      "countryName": "스페인",
+      "regionLabel": "국내/정규리그"
+    },
+    {
+      "sportCode": "SOCCER",
+      "code": "CDR",
+      "name": "Copa del Rey",
+      "stage": "CLUB_CUP",
+      "region": "CUP",
+      "teams": [
+        {
+          "id": "REALMADR",
+          "label": "Real Madrid"
+        },
+        {
+          "id": "BARCELON",
+          "label": "Barcelona"
+        },
+        {
+          "id": "ATLETICO",
+          "label": "Atletico"
+        },
+        {
+          "id": "SEVILLA",
+          "label": "Sevilla"
+        },
+        {
+          "id": "BETIS",
+          "label": "Betis"
+        },
+        {
+          "id": "VALENCIA",
+          "label": "Valencia"
+        },
+        {
+          "id": "SOCIEDAD",
+          "label": "Sociedad"
+        },
+        {
+          "id": "ATHLETIC",
+          "label": "Athletic"
+        }
+      ],
+      "countryName": "스페인",
+      "regionLabel": "클럽/컵대회"
+    },
+    {
+      "sportCode": "SOCCER",
+      "code": "SERIEA",
+      "name": "Serie A",
+      "stage": "LEAGUE",
+      "region": "DOMESTIC",
+      "teams": [
+        {
+          "id": "INTER",
+          "label": "Inter"
+        },
+        {
+          "id": "ACMILAN",
+          "label": "AC Milan"
+        },
+        {
+          "id": "JUVENTUS",
+          "label": "Juventus"
+        },
+        {
+          "id": "NAPOLI",
+          "label": "Napoli"
+        },
+        {
+          "id": "ROMA",
+          "label": "Roma"
+        },
+        {
+          "id": "LAZIO",
+          "label": "Lazio"
+        },
+        {
+          "id": "ATALANTA",
+          "label": "Atalanta"
+        },
+        {
+          "id": "FIORENTI",
+          "label": "Fiorentina"
+        },
+        {
+          "id": "BOLOGNA",
+          "label": "Bologna"
+        },
+        {
+          "id": "TORINO",
+          "label": "Torino"
+        }
+      ],
+      "countryName": "이탈리아",
+      "regionLabel": "국내/정규리그"
+    },
+    {
+      "sportCode": "SOCCER",
+      "code": "COPPA",
+      "name": "Coppa Italia",
+      "stage": "CLUB_CUP",
+      "region": "CUP",
+      "teams": [
+        {
+          "id": "INTER",
+          "label": "Inter"
+        },
+        {
+          "id": "ACMILAN",
+          "label": "AC Milan"
+        },
+        {
+          "id": "JUVENTUS",
+          "label": "Juventus"
+        },
+        {
+          "id": "NAPOLI",
+          "label": "Napoli"
+        },
+        {
+          "id": "ROMA",
+          "label": "Roma"
+        },
+        {
+          "id": "LAZIO",
+          "label": "Lazio"
+        },
+        {
+          "id": "ATALANTA",
+          "label": "Atalanta"
+        },
+        {
+          "id": "FIORENTI",
+          "label": "Fiorentina"
+        }
+      ],
+      "countryName": "이탈리아",
+      "regionLabel": "클럽/컵대회"
+    },
+    {
+      "sportCode": "SOCCER",
+      "code": "BUNDES",
+      "name": "Bundesliga",
+      "stage": "LEAGUE",
+      "region": "DOMESTIC",
+      "teams": [
+        {
+          "id": "BAYERN",
+          "label": "Bayern"
+        },
+        {
+          "id": "DORTMUND",
+          "label": "Dortmund"
+        },
+        {
+          "id": "LEIPZIG",
+          "label": "Leipzig"
+        },
+        {
+          "id": "LEVERKUS",
+          "label": "Leverkusen"
+        },
+        {
+          "id": "FRANKFUR",
+          "label": "Frankfurt"
+        },
+        {
+          "id": "STUTTGAR",
+          "label": "Stuttgart"
+        },
+        {
+          "id": "FREIBURG",
+          "label": "Freiburg"
+        },
+        {
+          "id": "WOLFSBUR",
+          "label": "Wolfsburg"
+        },
+        {
+          "id": "UNIONBER",
+          "label": "Union Berlin"
+        },
+        {
+          "id": "MAINZ",
+          "label": "Mainz"
+        }
+      ],
+      "countryName": "독일",
+      "regionLabel": "국내/정규리그"
+    },
+    {
+      "sportCode": "SOCCER",
+      "code": "DFB",
+      "name": "DFB Pokal",
+      "stage": "CLUB_CUP",
+      "region": "CUP",
+      "teams": [
+        {
+          "id": "BAYERN",
+          "label": "Bayern"
+        },
+        {
+          "id": "DORTMUND",
+          "label": "Dortmund"
+        },
+        {
+          "id": "LEVERKUS",
+          "label": "Leverkusen"
+        },
+        {
+          "id": "LEIPZIG",
+          "label": "Leipzig"
+        },
+        {
+          "id": "FRANKFUR",
+          "label": "Frankfurt"
+        },
+        {
+          "id": "FREIBURG",
+          "label": "Freiburg"
+        },
+        {
+          "id": "WOLFSBUR",
+          "label": "Wolfsburg"
+        },
+        {
+          "id": "STUTTGAR",
+          "label": "Stuttgart"
+        }
+      ],
+      "countryName": "독일",
+      "regionLabel": "클럽/컵대회"
+    },
+    {
+      "sportCode": "SOCCER",
+      "code": "L1",
+      "name": "Ligue 1",
+      "stage": "LEAGUE",
+      "region": "DOMESTIC",
+      "teams": [
+        {
+          "id": "PSG",
+          "label": "PSG"
+        },
+        {
+          "id": "MARSEILL",
+          "label": "Marseille"
+        },
+        {
+          "id": "LYON",
+          "label": "Lyon"
+        },
+        {
+          "id": "MONACO",
+          "label": "Monaco"
+        },
+        {
+          "id": "LILLE",
+          "label": "Lille"
+        },
+        {
+          "id": "RENNES",
+          "label": "Rennes"
+        },
+        {
+          "id": "NICE",
+          "label": "Nice"
+        },
+        {
+          "id": "LENS",
+          "label": "Lens"
+        },
+        {
+          "id": "NANTES",
+          "label": "Nantes"
+        },
+        {
+          "id": "STRASBOU",
+          "label": "Strasbourg"
+        }
+      ],
+      "countryName": "프랑스",
+      "regionLabel": "국내/정규리그"
+    },
+    {
+      "sportCode": "SOCCER",
+      "code": "CDF",
+      "name": "Coupe de France",
+      "stage": "CLUB_CUP",
+      "region": "CUP",
+      "teams": [
+        {
+          "id": "PSG",
+          "label": "PSG"
+        },
+        {
+          "id": "MARSEILL",
+          "label": "Marseille"
+        },
+        {
+          "id": "LYON",
+          "label": "Lyon"
+        },
+        {
+          "id": "MONACO",
+          "label": "Monaco"
+        },
+        {
+          "id": "LILLE",
+          "label": "Lille"
+        },
+        {
+          "id": "RENNES",
+          "label": "Rennes"
+        },
+        {
+          "id": "NICE",
+          "label": "Nice"
+        },
+        {
+          "id": "LENS",
+          "label": "Lens"
+        }
+      ],
+      "countryName": "프랑스",
+      "regionLabel": "클럽/컵대회"
+    },
+    {
+      "sportCode": "SOCCER",
+      "code": "ERED",
+      "name": "Eredivisie",
+      "stage": "LEAGUE",
+      "region": "DOMESTIC",
+      "teams": [
+        {
+          "id": "AJAX",
+          "label": "Ajax"
+        },
+        {
+          "id": "PSV",
+          "label": "PSV"
+        },
+        {
+          "id": "FEYENOOR",
+          "label": "Feyenoord"
+        },
+        {
+          "id": "AZ",
+          "label": "AZ"
+        },
+        {
+          "id": "TWENTE",
+          "label": "Twente"
+        },
+        {
+          "id": "UTRECHT",
+          "label": "Utrecht"
+        },
+        {
+          "id": "HEERENVE",
+          "label": "Heerenveen"
+        },
+        {
+          "id": "NEC",
+          "label": "NEC"
+        }
+      ],
+      "countryName": "네덜란드",
+      "regionLabel": "국내/정규리그"
+    },
+    {
+      "sportCode": "SOCCER",
+      "code": "POR1",
+      "name": "Primeira Liga",
+      "stage": "LEAGUE",
+      "region": "DOMESTIC",
+      "teams": [
+        {
+          "id": "BENFICA",
+          "label": "Benfica"
+        },
+        {
+          "id": "PORTO",
+          "label": "Porto"
+        },
+        {
+          "id": "SPORTING",
+          "label": "Sporting"
+        },
+        {
+          "id": "BRAGA",
+          "label": "Braga"
+        },
+        {
+          "id": "GUIMARAE",
+          "label": "Guimaraes"
+        },
+        {
+          "id": "BOAVISTA",
+          "label": "Boavista"
+        },
+        {
+          "id": "FAMALICA",
+          "label": "Famalicao"
+        },
+        {
+          "id": "CASAPIA",
+          "label": "Casa Pia"
+        }
+      ],
+      "countryName": "포르투갈",
+      "regionLabel": "국내/정규리그"
+    },
+    {
+      "sportCode": "SOCCER",
+      "code": "K1",
+      "name": "K League 1",
+      "stage": "LEAGUE",
+      "region": "DOMESTIC",
+      "teams": [
+        {
+          "id": "ULSAN",
+          "label": "Ulsan"
+        },
+        {
+          "id": "JEONBUK",
+          "label": "Jeonbuk"
+        },
+        {
+          "id": "POHANG",
+          "label": "Pohang"
+        },
+        {
+          "id": "SEOUL",
+          "label": "Seoul"
+        },
+        {
+          "id": "INCHEON",
+          "label": "Incheon"
+        },
+        {
+          "id": "SUWONFC",
+          "label": "Suwon FC"
+        },
+        {
+          "id": "DAEGU",
+          "label": "Daegu"
+        },
+        {
+          "id": "JEJU",
+          "label": "Jeju"
+        },
+        {
+          "id": "DAEJEON",
+          "label": "Daejeon"
+        },
+        {
+          "id": "GWANGJU",
+          "label": "Gwangju"
+        }
+      ],
+      "countryName": "대한민국",
+      "regionLabel": "국내/정규리그"
+    },
+    {
+      "sportCode": "SOCCER",
+      "code": "KFA",
+      "name": "Korean FA Cup",
+      "stage": "CLUB_CUP",
+      "region": "CUP",
+      "teams": [
+        {
+          "id": "ULSAN",
+          "label": "Ulsan"
+        },
+        {
+          "id": "JEONBUK",
+          "label": "Jeonbuk"
+        },
+        {
+          "id": "POHANG",
+          "label": "Pohang"
+        },
+        {
+          "id": "SEOUL",
+          "label": "Seoul"
+        },
+        {
+          "id": "INCHEON",
+          "label": "Incheon"
+        },
+        {
+          "id": "JEJU",
+          "label": "Jeju"
+        },
+        {
+          "id": "DAEJEON",
+          "label": "Daejeon"
+        },
+        {
+          "id": "GWANGJU",
+          "label": "Gwangju"
+        }
+      ],
+      "countryName": "대한민국",
+      "regionLabel": "클럽/컵대회"
+    },
+    {
+      "sportCode": "SOCCER",
+      "code": "J1",
+      "name": "J1 League",
+      "stage": "LEAGUE",
+      "region": "DOMESTIC",
+      "teams": [
+        {
+          "id": "KAWASAKI",
+          "label": "Kawasaki"
+        },
+        {
+          "id": "YOKOHAMA",
+          "label": "Yokohama FM"
+        },
+        {
+          "id": "KASHIMA",
+          "label": "Kashima"
+        },
+        {
+          "id": "URAWA",
+          "label": "Urawa"
+        },
+        {
+          "id": "CEREZOOS",
+          "label": "Cerezo Osaka"
+        },
+        {
+          "id": "GAMBAOSA",
+          "label": "Gamba Osaka"
+        },
+        {
+          "id": "FCTOKYO",
+          "label": "FC Tokyo"
+        },
+        {
+          "id": "NAGOYA",
+          "label": "Nagoya"
+        }
+      ],
+      "countryName": "일본",
+      "regionLabel": "국내/정규리그"
+    },
+    {
+      "sportCode": "SOCCER",
+      "code": "JPNCUP",
+      "name": "Emperor Cup",
+      "stage": "CLUB_CUP",
+      "region": "CUP",
+      "teams": [
+        {
+          "id": "KAWASAKI",
+          "label": "Kawasaki"
+        },
+        {
+          "id": "YOKOHAMA",
+          "label": "Yokohama FM"
+        },
+        {
+          "id": "KASHIMA",
+          "label": "Kashima"
+        },
+        {
+          "id": "URAWA",
+          "label": "Urawa"
+        },
+        {
+          "id": "CEREZOOS",
+          "label": "Cerezo Osaka"
+        },
+        {
+          "id": "GAMBAOSA",
+          "label": "Gamba Osaka"
+        },
+        {
+          "id": "FCTOKYO",
+          "label": "FC Tokyo"
+        },
+        {
+          "id": "NAGOYA",
+          "label": "Nagoya"
+        }
+      ],
+      "countryName": "일본",
+      "regionLabel": "클럽/컵대회"
+    },
+    {
+      "sportCode": "SOCCER",
+      "code": "MLS",
+      "name": "MLS",
+      "stage": "LEAGUE",
+      "region": "DOMESTIC",
+      "teams": [
+        {
+          "id": "INTERMIA",
+          "label": "Inter Miami"
+        },
+        {
+          "id": "LAGALAXY",
+          "label": "LA Galaxy"
+        },
+        {
+          "id": "LAFC",
+          "label": "LAFC"
+        },
+        {
+          "id": "SEATTLE",
+          "label": "Seattle"
+        },
+        {
+          "id": "ATLANTAU",
+          "label": "Atlanta United"
+        },
+        {
+          "id": "NYCFC",
+          "label": "NYCFC"
+        },
+        {
+          "id": "COLUMBUS",
+          "label": "Columbus"
+        },
+        {
+          "id": "AUSTIN",
+          "label": "Austin"
+        }
+      ],
+      "countryName": "미국",
+      "regionLabel": "국내/정규리그"
+    },
+    {
+      "sportCode": "SOCCER",
+      "code": "BRA1",
+      "name": "Brasileirao Serie A",
+      "stage": "LEAGUE",
+      "region": "DOMESTIC",
+      "teams": [
+        {
+          "id": "FLAMENGO",
+          "label": "Flamengo"
+        },
+        {
+          "id": "PALMEIRA",
+          "label": "Palmeiras"
+        },
+        {
+          "id": "CORINTHI",
+          "label": "Corinthians"
+        },
+        {
+          "id": "SANTOS",
+          "label": "Santos"
+        },
+        {
+          "id": "SAOPAULO",
+          "label": "Sao Paulo"
+        },
+        {
+          "id": "GREMIO",
+          "label": "Gremio"
+        },
+        {
+          "id": "ATLETICO",
+          "label": "Atletico MG"
+        },
+        {
+          "id": "FLUMINEN",
+          "label": "Fluminense"
+        }
+      ],
+      "countryName": "브라질",
+      "regionLabel": "국내/정규리그"
+    },
+    {
+      "sportCode": "SOCCER",
+      "code": "ARG1",
+      "name": "Liga Profesional",
+      "stage": "LEAGUE",
+      "region": "DOMESTIC",
+      "teams": [
+        {
+          "id": "RIVERPLA",
+          "label": "River Plate"
+        },
+        {
+          "id": "BOCAJUNI",
+          "label": "Boca Juniors"
+        },
+        {
+          "id": "RACINGCL",
+          "label": "Racing Club"
+        },
+        {
+          "id": "SANLOREN",
+          "label": "San Lorenzo"
+        },
+        {
+          "id": "INDEPEND",
+          "label": "Independiente"
+        },
+        {
+          "id": "VELEZ",
+          "label": "Velez"
+        },
+        {
+          "id": "ESTUDIAN",
+          "label": "Estudiantes"
+        },
+        {
+          "id": "TALLERES",
+          "label": "Talleres"
+        }
+      ],
+      "countryName": "아르헨티나",
+      "regionLabel": "국내/정규리그"
+    },
+    {
+      "sportCode": "SOCCER",
+      "code": "SAUDI",
+      "name": "Saudi Pro League",
+      "stage": "LEAGUE",
+      "region": "DOMESTIC",
+      "teams": [
+        {
+          "id": "ALHILAL",
+          "label": "Al Hilal"
+        },
+        {
+          "id": "ALNASSR",
+          "label": "Al Nassr"
+        },
+        {
+          "id": "ALITTIHA",
+          "label": "Al Ittihad"
+        },
+        {
+          "id": "ALAHLI",
+          "label": "Al Ahli"
+        },
+        {
+          "id": "ALSHABAB",
+          "label": "Al Shabab"
+        },
+        {
+          "id": "ALTAAWOU",
+          "label": "Al Taawoun"
+        },
+        {
+          "id": "ALETTIFA",
+          "label": "Al Ettifaq"
+        },
+        {
+          "id": "ALFATEH",
+          "label": "Al Fateh"
+        }
+      ],
+      "countryName": "사우디아라비아",
+      "regionLabel": "국내/정규리그"
+    },
+    {
+      "sportCode": "SOCCER",
+      "code": "UCL",
+      "name": "UEFA Champions League",
+      "stage": "CLUB_CUP",
+      "region": "EUROPE",
+      "teams": [
+        {
+          "id": "REALMADR",
+          "label": "Real Madrid"
+        },
+        {
+          "id": "MANCITY",
+          "label": "Man City"
+        },
+        {
+          "id": "BAYERN",
+          "label": "Bayern"
+        },
+        {
+          "id": "PSG",
+          "label": "PSG"
+        },
+        {
+          "id": "BARCELON",
+          "label": "Barcelona"
+        },
+        {
+          "id": "ARSENAL",
+          "label": "Arsenal"
+        },
+        {
+          "id": "INTER",
+          "label": "Inter"
+        },
+        {
+          "id": "LIVERPOO",
+          "label": "Liverpool"
+        }
+      ],
+      "countryName": "유럽",
+      "regionLabel": "클럽 대항전"
+    },
+    {
+      "sportCode": "SOCCER",
+      "code": "UEL",
+      "name": "UEFA Europa League",
+      "stage": "CLUB_CUP",
+      "region": "EUROPE",
+      "teams": [
+        {
+          "id": "ROMA",
+          "label": "Roma"
+        },
+        {
+          "id": "SEVILLA",
+          "label": "Sevilla"
+        },
+        {
+          "id": "LIVERPOO",
+          "label": "Liverpool"
+        },
+        {
+          "id": "LEVERKUS",
+          "label": "Leverkusen"
+        },
+        {
+          "id": "ATALANTA",
+          "label": "Atalanta"
+        },
+        {
+          "id": "SPORTING",
+          "label": "Sporting"
+        },
+        {
+          "id": "MARSEILL",
+          "label": "Marseille"
+        },
+        {
+          "id": "VILLARRE",
+          "label": "Villarreal"
+        }
+      ],
+      "countryName": "유럽",
+      "regionLabel": "클럽 대항전"
+    },
+    {
+      "sportCode": "SOCCER",
+      "code": "UECL",
+      "name": "UEFA Conference League",
+      "stage": "CLUB_CUP",
+      "region": "EUROPE",
+      "teams": [
+        {
+          "id": "FIORENTI",
+          "label": "Fiorentina"
+        },
+        {
+          "id": "ASTONVIL",
+          "label": "Aston Villa"
+        },
+        {
+          "id": "LILLE",
+          "label": "Lille"
+        },
+        {
+          "id": "CLUBBRUG",
+          "label": "Club Brugge"
+        },
+        {
+          "id": "PAOK",
+          "label": "PAOK"
+        },
+        {
+          "id": "FENERBAH",
+          "label": "Fenerbahce"
+        },
+        {
+          "id": "RAPIDWIE",
+          "label": "Rapid Wien"
+        },
+        {
+          "id": "MACCABI",
+          "label": "Maccabi"
+        }
+      ],
+      "countryName": "유럽",
+      "regionLabel": "클럽 대항전"
+    },
+    {
+      "sportCode": "SOCCER",
+      "code": "ACL",
+      "name": "AFC Champions League",
+      "stage": "CLUB_CUP",
+      "region": "ASIA",
+      "teams": [
+        {
+          "id": "ULSAN",
+          "label": "Ulsan"
+        },
+        {
+          "id": "JEONBUK",
+          "label": "Jeonbuk"
+        },
+        {
+          "id": "YOKOHAMA",
+          "label": "Yokohama FM"
+        },
+        {
+          "id": "KAWASAKI",
+          "label": "Kawasaki"
+        },
+        {
+          "id": "ALHILAL",
+          "label": "Al Hilal"
+        },
+        {
+          "id": "ALNASSR",
+          "label": "Al Nassr"
+        },
+        {
+          "id": "ALAIN",
+          "label": "Al Ain"
+        },
+        {
+          "id": "PERSEPOL",
+          "label": "Persepolis"
+        }
+      ],
+      "countryName": "아시아",
+      "regionLabel": "클럽 대항전"
+    },
+    {
+      "sportCode": "SOCCER",
+      "code": "WCQ",
+      "name": "World Cup Qualifiers",
+      "stage": "INTL",
+      "region": "INTL",
+      "teams": [
+        {
+          "id": "KOREA",
+          "label": "Korea"
+        },
+        {
+          "id": "JAPAN",
+          "label": "Japan"
+        },
+        {
+          "id": "AUSTRALI",
+          "label": "Australia"
+        },
+        {
+          "id": "IRAN",
+          "label": "Iran"
+        },
+        {
+          "id": "SAUDIARA",
+          "label": "Saudi Arabia"
+        },
+        {
+          "id": "QATAR",
+          "label": "Qatar"
+        },
+        {
+          "id": "IRAQ",
+          "label": "Iraq"
+        },
+        {
+          "id": "UAE",
+          "label": "UAE"
+        }
+      ],
+      "countryName": "국가대표",
+      "regionLabel": "국제대회/예선"
+    },
+    {
+      "sportCode": "SOCCER",
+      "code": "WORLDCUP",
+      "name": "FIFA World Cup",
+      "stage": "INTL",
+      "region": "INTL",
+      "teams": [
+        {
+          "id": "BRAZIL",
+          "label": "Brazil"
+        },
+        {
+          "id": "ARGENTIN",
+          "label": "Argentina"
+        },
+        {
+          "id": "FRANCE",
+          "label": "France"
+        },
+        {
+          "id": "ENGLAND",
+          "label": "England"
+        },
+        {
+          "id": "GERMANY",
+          "label": "Germany"
+        },
+        {
+          "id": "SPAIN",
+          "label": "Spain"
+        },
+        {
+          "id": "KOREA",
+          "label": "Korea"
+        },
+        {
+          "id": "JAPAN",
+          "label": "Japan"
+        }
+      ],
+      "countryName": "국가대표",
+      "regionLabel": "국제대회/본선"
+    },
+    {
+      "sportCode": "SOCCER",
+      "code": "EURO",
+      "name": "UEFA Euro",
+      "stage": "INTL",
+      "region": "INTL",
+      "teams": [
+        {
+          "id": "ENGLAND",
+          "label": "England"
+        },
+        {
+          "id": "FRANCE",
+          "label": "France"
+        },
+        {
+          "id": "GERMANY",
+          "label": "Germany"
+        },
+        {
+          "id": "SPAIN",
+          "label": "Spain"
+        },
+        {
+          "id": "ITALY",
+          "label": "Italy"
+        },
+        {
+          "id": "NETHERLA",
+          "label": "Netherlands"
+        },
+        {
+          "id": "PORTUGAL",
+          "label": "Portugal"
+        },
+        {
+          "id": "BELGIUM",
+          "label": "Belgium"
+        }
+      ],
+      "countryName": "국가대표",
+      "regionLabel": "국제대회/본선"
+    },
+    {
+      "sportCode": "SOCCER",
+      "code": "COPA",
+      "name": "Copa America",
+      "stage": "INTL",
+      "region": "INTL",
+      "teams": [
+        {
+          "id": "ARGENTIN",
+          "label": "Argentina"
+        },
+        {
+          "id": "BRAZIL",
+          "label": "Brazil"
+        },
+        {
+          "id": "URUGUAY",
+          "label": "Uruguay"
+        },
+        {
+          "id": "COLOMBIA",
+          "label": "Colombia"
+        },
+        {
+          "id": "CHILE",
+          "label": "Chile"
+        },
+        {
+          "id": "PERU",
+          "label": "Peru"
+        },
+        {
+          "id": "MEXICO",
+          "label": "Mexico"
+        },
+        {
+          "id": "USA",
+          "label": "USA"
+        }
+      ],
+      "countryName": "국가대표",
+      "regionLabel": "국제대회/본선"
+    },
+    {
+      "sportCode": "SOCCER",
+      "code": "AFCON",
+      "name": "Africa Cup of Nations",
+      "stage": "INTL",
+      "region": "INTL",
+      "teams": [
+        {
+          "id": "MOROCCO",
+          "label": "Morocco"
+        },
+        {
+          "id": "SENEGAL",
+          "label": "Senegal"
+        },
+        {
+          "id": "EGYPT",
+          "label": "Egypt"
+        },
+        {
+          "id": "NIGERIA",
+          "label": "Nigeria"
+        },
+        {
+          "id": "GHANA",
+          "label": "Ghana"
+        },
+        {
+          "id": "ALGERIA",
+          "label": "Algeria"
+        },
+        {
+          "id": "CAMEROON",
+          "label": "Cameroon"
+        },
+        {
+          "id": "IVORYCOA",
+          "label": "Ivory Coast"
+        }
+      ],
+      "countryName": "국가대표",
+      "regionLabel": "국제대회/본선"
+    },
+    {
+      "sportCode": "SOCCER",
+      "code": "WWC",
+      "name": "FIFA Women's World Cup",
+      "stage": "WOMEN",
+      "region": "INTL",
+      "teams": [
+        {
+          "id": "USAWOMEN",
+          "label": "USA Women"
+        },
+        {
+          "id": "ENGLANDW",
+          "label": "England Women"
+        },
+        {
+          "id": "SPAINWOM",
+          "label": "Spain Women"
+        },
+        {
+          "id": "GERMANYW",
+          "label": "Germany Women"
+        },
+        {
+          "id": "JAPANWOM",
+          "label": "Japan Women"
+        },
+        {
+          "id": "AUSTRALI",
+          "label": "Australia Women"
+        },
+        {
+          "id": "FRANCEWO",
+          "label": "France Women"
+        },
+        {
+          "id": "KOREAWOM",
+          "label": "Korea Women"
+        }
+      ],
+      "countryName": "여자 국가대표",
+      "regionLabel": "여자/국제대회"
+    },
+    {
+      "sportCode": "SOCCER",
+      "code": "WEURO",
+      "name": "UEFA Women's Euro",
+      "stage": "WOMEN",
+      "region": "INTL",
+      "teams": [
+        {
+          "id": "ENGLANDW",
+          "label": "England Women"
+        },
+        {
+          "id": "SPAINWOM",
+          "label": "Spain Women"
+        },
+        {
+          "id": "GERMANYW",
+          "label": "Germany Women"
+        },
+        {
+          "id": "FRANCEWO",
+          "label": "France Women"
+        },
+        {
+          "id": "SWEDENWO",
+          "label": "Sweden Women"
+        },
+        {
+          "id": "NETHERLA",
+          "label": "Netherlands Women"
+        },
+        {
+          "id": "ITALYWOM",
+          "label": "Italy Women"
+        },
+        {
+          "id": "NORWAYWO",
+          "label": "Norway Women"
+        }
+      ],
+      "countryName": "여자 국가대표",
+      "regionLabel": "여자/국제대회"
+    },
+    {
+      "sportCode": "SOCCER",
+      "code": "WSL",
+      "name": "Women's Super League",
+      "stage": "WOMEN",
+      "region": "DOMESTIC",
+      "teams": [
+        {
+          "id": "CHELSEAW",
+          "label": "Chelsea Women"
+        },
+        {
+          "id": "ARSENALW",
+          "label": "Arsenal Women"
+        },
+        {
+          "id": "MANCITYW",
+          "label": "Man City Women"
+        },
+        {
+          "id": "MANUNITE",
+          "label": "Man United Women"
+        },
+        {
+          "id": "LIVERPOO",
+          "label": "Liverpool Women"
+        },
+        {
+          "id": "TOTTENHA",
+          "label": "Tottenham Women"
+        },
+        {
+          "id": "EVERTONW",
+          "label": "Everton Women"
+        },
+        {
+          "id": "LEICESTE",
+          "label": "Leicester Women"
+        }
+      ],
+      "countryName": "영국",
+      "regionLabel": "여자/국내리그"
+    },
+    {
+      "sportCode": "SOCCER",
+      "code": "UWCL",
+      "name": "UEFA Women's Champions League",
+      "stage": "WOMEN",
+      "region": "EUROPE",
+      "teams": [
+        {
+          "id": "BARCELON",
+          "label": "Barcelona Women"
+        },
+        {
+          "id": "CHELSEAW",
+          "label": "Chelsea Women"
+        },
+        {
+          "id": "LYONWOME",
+          "label": "Lyon Women"
+        },
+        {
+          "id": "PSGWOMEN",
+          "label": "PSG Women"
+        },
+        {
+          "id": "BAYERNWO",
+          "label": "Bayern Women"
+        },
+        {
+          "id": "ARSENALW",
+          "label": "Arsenal Women"
+        },
+        {
+          "id": "WOLFSBUR",
+          "label": "Wolfsburg Women"
+        },
+        {
+          "id": "ROMAWOME",
+          "label": "Roma Women"
+        }
+      ],
+      "countryName": "유럽",
+      "regionLabel": "여자/클럽대항전"
+    },
+    {
+      "sportCode": "SOCCER",
+      "code": "U20WC",
+      "name": "FIFA U-20 World Cup",
+      "stage": "YOUTH",
+      "region": "INTL",
+      "teams": [
+        {
+          "id": "BRAZILU2",
+          "label": "Brazil U20"
+        },
+        {
+          "id": "ARGENTIN",
+          "label": "Argentina U20"
+        },
+        {
+          "id": "FRANCEU2",
+          "label": "France U20"
+        },
+        {
+          "id": "ENGLANDU",
+          "label": "England U20"
+        },
+        {
+          "id": "KOREAU20",
+          "label": "Korea U20"
+        },
+        {
+          "id": "JAPANU20",
+          "label": "Japan U20"
+        },
+        {
+          "id": "SPAINU20",
+          "label": "Spain U20"
+        },
+        {
+          "id": "ITALYU20",
+          "label": "Italy U20"
+        }
+      ],
+      "countryName": "유소년 국가대표",
+      "regionLabel": "유소년/국제대회"
+    },
+    {
+      "sportCode": "SOCCER",
+      "code": "U17WC",
+      "name": "FIFA U-17 World Cup",
+      "stage": "YOUTH",
+      "region": "INTL",
+      "teams": [
+        {
+          "id": "BRAZILU1",
+          "label": "Brazil U17"
+        },
+        {
+          "id": "ARGENTIN",
+          "label": "Argentina U17"
+        },
+        {
+          "id": "FRANCEU1",
+          "label": "France U17"
+        },
+        {
+          "id": "ENGLANDU",
+          "label": "England U17"
+        },
+        {
+          "id": "KOREAU17",
+          "label": "Korea U17"
+        },
+        {
+          "id": "JAPANU17",
+          "label": "Japan U17"
+        },
+        {
+          "id": "SPAINU17",
+          "label": "Spain U17"
+        },
+        {
+          "id": "GERMANYU",
+          "label": "Germany U17"
+        }
+      ],
+      "countryName": "유소년 국가대표",
+      "regionLabel": "유소년/국제대회"
+    },
+    {
+      "sportCode": "SOCCER",
+      "code": "UEFAU19",
+      "name": "UEFA U-19 Championship",
+      "stage": "YOUTH",
+      "region": "INTL",
+      "teams": [
+        {
+          "id": "ENGLANDU",
+          "label": "England U19"
+        },
+        {
+          "id": "SPAINU19",
+          "label": "Spain U19"
+        },
+        {
+          "id": "FRANCEU1",
+          "label": "France U19"
+        },
+        {
+          "id": "GERMANYU",
+          "label": "Germany U19"
+        },
+        {
+          "id": "ITALYU19",
+          "label": "Italy U19"
+        },
+        {
+          "id": "PORTUGAL",
+          "label": "Portugal U19"
+        },
+        {
+          "id": "NETHERLA",
+          "label": "Netherlands U19"
+        },
+        {
+          "id": "BELGIUMU",
+          "label": "Belgium U19"
+        }
+      ],
+      "countryName": "유소년 국가대표",
+      "regionLabel": "유소년/국제대회"
+    },
+    {
+      "sportCode": "BASKETBALL",
+      "code": "NBA",
+      "name": "NBA",
+      "stage": "LEAGUE",
+      "region": "DOMESTIC",
+      "teams": [
+        {
+          "id": "LAKERS",
+          "label": "Lakers"
+        },
+        {
+          "id": "WARRIORS",
+          "label": "Warriors"
+        },
+        {
+          "id": "CELTICS",
+          "label": "Celtics"
+        },
+        {
+          "id": "BUCKS",
+          "label": "Bucks"
+        },
+        {
+          "id": "NUGGETS",
+          "label": "Nuggets"
+        },
+        {
+          "id": "HEAT",
+          "label": "Heat"
+        },
+        {
+          "id": "SUNS",
+          "label": "Suns"
+        },
+        {
+          "id": "MAVERICK",
+          "label": "Mavericks"
+        },
+        {
+          "id": "KNICKS",
+          "label": "Knicks"
+        },
+        {
+          "id": "CLIPPERS",
+          "label": "Clippers"
+        }
+      ],
+      "countryName": "미국",
+      "regionLabel": "국내/정규리그"
+    },
+    {
+      "sportCode": "BASKETBALL",
+      "code": "WNBA",
+      "name": "WNBA",
+      "stage": "WOMEN",
+      "region": "DOMESTIC",
+      "teams": [
+        {
+          "id": "ACES",
+          "label": "Aces"
+        },
+        {
+          "id": "LIBERTY",
+          "label": "Liberty"
+        },
+        {
+          "id": "STORM",
+          "label": "Storm"
+        },
+        {
+          "id": "MERCURY",
+          "label": "Mercury"
+        },
+        {
+          "id": "SKY",
+          "label": "Sky"
+        },
+        {
+          "id": "SUN",
+          "label": "Sun"
+        },
+        {
+          "id": "DREAM",
+          "label": "Dream"
+        },
+        {
+          "id": "WINGS",
+          "label": "Wings"
+        }
+      ],
+      "countryName": "미국",
+      "regionLabel": "여자/국내리그"
+    },
+    {
+      "sportCode": "BASKETBALL",
+      "code": "KBL",
+      "name": "KBL",
+      "stage": "LEAGUE",
+      "region": "DOMESTIC",
+      "teams": [
+        {
+          "id": "KCC",
+          "label": "KCC"
+        },
+        {
+          "id": "SK",
+          "label": "SK"
+        },
+        {
+          "id": "LG",
+          "label": "LG"
+        },
+        {
+          "id": "DB",
+          "label": "DB"
+        },
+        {
+          "id": "KT",
+          "label": "KT"
+        },
+        {
+          "id": "HYUNDAIM",
+          "label": "Hyundai Mobis"
+        },
+        {
+          "id": "KOGAS",
+          "label": "Kogas"
+        },
+        {
+          "id": "SONICBOO",
+          "label": "Sonicboom"
+        }
+      ],
+      "countryName": "대한민국",
+      "regionLabel": "국내/정규리그"
+    },
+    {
+      "sportCode": "BASKETBALL",
+      "code": "WKBL",
+      "name": "WKBL",
+      "stage": "WOMEN",
+      "region": "DOMESTIC",
+      "teams": [
+        {
+          "id": "BNK",
+          "label": "BNK"
+        },
+        {
+          "id": "WOORI",
+          "label": "Woori"
+        },
+        {
+          "id": "SHINHAN",
+          "label": "Shinhan"
+        },
+        {
+          "id": "KBSTARS",
+          "label": "KB Stars"
+        },
+        {
+          "id": "HANA",
+          "label": "Hana"
+        },
+        {
+          "id": "SAMSUNG",
+          "label": "Samsung"
+        }
+      ],
+      "countryName": "대한민국",
+      "regionLabel": "여자/국내리그"
+    },
+    {
+      "sportCode": "BASKETBALL",
+      "code": "EL",
+      "name": "EuroLeague",
+      "stage": "CLUB_CUP",
+      "region": "EUROPE",
+      "teams": [
+        {
+          "id": "REALMADR",
+          "label": "Real Madrid"
+        },
+        {
+          "id": "BARCELON",
+          "label": "Barcelona"
+        },
+        {
+          "id": "OLYMPIAC",
+          "label": "Olympiacos"
+        },
+        {
+          "id": "PANATHIN",
+          "label": "Panathinaikos"
+        },
+        {
+          "id": "FENERBAH",
+          "label": "Fenerbahce"
+        },
+        {
+          "id": "MACCABI",
+          "label": "Maccabi"
+        },
+        {
+          "id": "MONACO",
+          "label": "Monaco"
+        },
+        {
+          "id": "VIRTUS",
+          "label": "Virtus"
+        }
+      ],
+      "countryName": "유럽",
+      "regionLabel": "클럽 대항전"
+    },
+    {
+      "sportCode": "BASKETBALL",
+      "code": "FIBA",
+      "name": "FIBA World Cup",
+      "stage": "INTL",
+      "region": "INTL",
+      "teams": [
+        {
+          "id": "USA",
+          "label": "USA"
+        },
+        {
+          "id": "SPAIN",
+          "label": "Spain"
+        },
+        {
+          "id": "GERMANY",
+          "label": "Germany"
+        },
+        {
+          "id": "SERBIA",
+          "label": "Serbia"
+        },
+        {
+          "id": "FRANCE",
+          "label": "France"
+        },
+        {
+          "id": "AUSTRALI",
+          "label": "Australia"
+        },
+        {
+          "id": "CANADA",
+          "label": "Canada"
+        },
+        {
+          "id": "JAPAN",
+          "label": "Japan"
+        }
+      ],
+      "countryName": "국가대표",
+      "regionLabel": "국제대회/본선"
+    },
+    {
+      "sportCode": "BASKETBALL",
+      "code": "NCAA",
+      "name": "NCAA",
+      "stage": "LEAGUE",
+      "region": "DOMESTIC",
+      "teams": [
+        {
+          "id": "DUKE",
+          "label": "Duke"
+        },
+        {
+          "id": "KANSAS",
+          "label": "Kansas"
+        },
+        {
+          "id": "UCONN",
+          "label": "UConn"
+        },
+        {
+          "id": "KENTUCKY",
+          "label": "Kentucky"
+        },
+        {
+          "id": "UNC",
+          "label": "UNC"
+        },
+        {
+          "id": "GONZAGA",
+          "label": "Gonzaga"
+        },
+        {
+          "id": "ARIZONA",
+          "label": "Arizona"
+        },
+        {
+          "id": "BAYLOR",
+          "label": "Baylor"
+        }
+      ],
+      "countryName": "미국",
+      "regionLabel": "대학/리그"
+    },
+    {
+      "sportCode": "BASEBALL",
+      "code": "KBO",
+      "name": "KBO",
+      "stage": "LEAGUE",
+      "region": "DOMESTIC",
+      "teams": [
+        {
+          "id": "LGTWINS",
+          "label": "LG Twins"
+        },
+        {
+          "id": "DOOSAN",
+          "label": "Doosan"
+        },
+        {
+          "id": "KIA",
+          "label": "KIA"
+        },
+        {
+          "id": "SSG",
+          "label": "SSG"
+        },
+        {
+          "id": "NC",
+          "label": "NC"
+        },
+        {
+          "id": "KT",
+          "label": "KT"
+        },
+        {
+          "id": "LOTTE",
+          "label": "Lotte"
+        },
+        {
+          "id": "SAMSUNG",
+          "label": "Samsung"
+        },
+        {
+          "id": "HANWHA",
+          "label": "Hanwha"
+        },
+        {
+          "id": "KIWOOM",
+          "label": "Kiwoom"
+        }
+      ],
+      "countryName": "대한민국",
+      "regionLabel": "국내/정규리그"
+    },
+    {
+      "sportCode": "BASEBALL",
+      "code": "MLB",
+      "name": "MLB",
+      "stage": "LEAGUE",
+      "region": "DOMESTIC",
+      "teams": [
+        {
+          "id": "DODGERS",
+          "label": "Dodgers"
+        },
+        {
+          "id": "YANKEES",
+          "label": "Yankees"
+        },
+        {
+          "id": "METS",
+          "label": "Mets"
+        },
+        {
+          "id": "BRAVES",
+          "label": "Braves"
+        },
+        {
+          "id": "ASTROS",
+          "label": "Astros"
+        },
+        {
+          "id": "PHILLIES",
+          "label": "Phillies"
+        },
+        {
+          "id": "PADRES",
+          "label": "Padres"
+        },
+        {
+          "id": "RANGERS",
+          "label": "Rangers"
+        },
+        {
+          "id": "BLUEJAYS",
+          "label": "Blue Jays"
+        },
+        {
+          "id": "MARINERS",
+          "label": "Mariners"
+        }
+      ],
+      "countryName": "미국",
+      "regionLabel": "국내/정규리그"
+    },
+    {
+      "sportCode": "BASEBALL",
+      "code": "NPB",
+      "name": "NPB",
+      "stage": "LEAGUE",
+      "region": "DOMESTIC",
+      "teams": [
+        {
+          "id": "YOMIURI",
+          "label": "Yomiuri"
+        },
+        {
+          "id": "HANSHIN",
+          "label": "Hanshin"
+        },
+        {
+          "id": "SOFTBANK",
+          "label": "SoftBank"
+        },
+        {
+          "id": "ORIX",
+          "label": "Orix"
+        },
+        {
+          "id": "CHUNICHI",
+          "label": "Chunichi"
+        },
+        {
+          "id": "RAKUTEN",
+          "label": "Rakuten"
+        },
+        {
+          "id": "SEIBU",
+          "label": "Seibu"
+        },
+        {
+          "id": "YAKULT",
+          "label": "Yakult"
+        }
+      ],
+      "countryName": "일본",
+      "regionLabel": "국내/정규리그"
+    },
+    {
+      "sportCode": "BASEBALL",
+      "code": "WBC",
+      "name": "World Baseball Classic",
+      "stage": "INTL",
+      "region": "INTL",
+      "teams": [
+        {
+          "id": "KOREA",
+          "label": "Korea"
+        },
+        {
+          "id": "JAPAN",
+          "label": "Japan"
+        },
+        {
+          "id": "USA",
+          "label": "USA"
+        },
+        {
+          "id": "MEXICO",
+          "label": "Mexico"
+        },
+        {
+          "id": "DOMINICA",
+          "label": "Dominican Republic"
+        },
+        {
+          "id": "VENEZUEL",
+          "label": "Venezuela"
+        },
+        {
+          "id": "CHINESET",
+          "label": "Chinese Taipei"
+        },
+        {
+          "id": "CUBA",
+          "label": "Cuba"
+        }
+      ],
+      "countryName": "국가대표",
+      "regionLabel": "국제대회/본선"
+    },
+    {
+      "sportCode": "HOCKEY",
+      "code": "NHL",
+      "name": "NHL",
+      "stage": "LEAGUE",
+      "region": "DOMESTIC",
+      "teams": [
+        {
+          "id": "RANGERS",
+          "label": "Rangers"
+        },
+        {
+          "id": "BRUINS",
+          "label": "Bruins"
+        },
+        {
+          "id": "MAPLELEA",
+          "label": "Maple Leafs"
+        },
+        {
+          "id": "AVALANCH",
+          "label": "Avalanche"
+        },
+        {
+          "id": "OILERS",
+          "label": "Oilers"
+        },
+        {
+          "id": "GOLDENKN",
+          "label": "Golden Knights"
+        },
+        {
+          "id": "PANTHERS",
+          "label": "Panthers"
+        },
+        {
+          "id": "STARS",
+          "label": "Stars"
+        }
+      ],
+      "countryName": "북미",
+      "regionLabel": "국내/정규리그"
+    },
+    {
+      "sportCode": "HOCKEY",
+      "code": "KHL",
+      "name": "KHL",
+      "stage": "LEAGUE",
+      "region": "DOMESTIC",
+      "teams": [
+        {
+          "id": "CSKAMOSC",
+          "label": "CSKA Moscow"
+        },
+        {
+          "id": "SKA",
+          "label": "SKA"
+        },
+        {
+          "id": "AKBARS",
+          "label": "Ak Bars"
+        },
+        {
+          "id": "DYNAMOMO",
+          "label": "Dynamo Moscow"
+        },
+        {
+          "id": "LOKOMOTI",
+          "label": "Lokomotiv"
+        },
+        {
+          "id": "AVANGARD",
+          "label": "Avangard"
+        },
+        {
+          "id": "SPARTAK",
+          "label": "Spartak"
+        },
+        {
+          "id": "TRAKTOR",
+          "label": "Traktor"
+        }
+      ],
+      "countryName": "유라시아",
+      "regionLabel": "국내/정규리그"
+    },
+    {
+      "sportCode": "HOCKEY",
+      "code": "IIHF",
+      "name": "IIHF Worlds",
+      "stage": "INTL",
+      "region": "INTL",
+      "teams": [
+        {
+          "id": "CANADA",
+          "label": "Canada"
+        },
+        {
+          "id": "USA",
+          "label": "USA"
+        },
+        {
+          "id": "SWEDEN",
+          "label": "Sweden"
+        },
+        {
+          "id": "FINLAND",
+          "label": "Finland"
+        },
+        {
+          "id": "CZECHIA",
+          "label": "Czechia"
+        },
+        {
+          "id": "GERMANY",
+          "label": "Germany"
+        },
+        {
+          "id": "SWITZERL",
+          "label": "Switzerland"
+        },
+        {
+          "id": "SLOVAKIA",
+          "label": "Slovakia"
+        }
+      ],
+      "countryName": "국가대표",
+      "regionLabel": "국제대회/본선"
+    },
+    {
+      "sportCode": "AMFOOT",
+      "code": "NFL",
+      "name": "NFL",
+      "stage": "LEAGUE",
+      "region": "DOMESTIC",
+      "teams": [
+        {
+          "id": "CHIEFS",
+          "label": "Chiefs"
+        },
+        {
+          "id": "49ERS",
+          "label": "49ers"
+        },
+        {
+          "id": "EAGLES",
+          "label": "Eagles"
+        },
+        {
+          "id": "BILLS",
+          "label": "Bills"
+        },
+        {
+          "id": "COWBOYS",
+          "label": "Cowboys"
+        },
+        {
+          "id": "RAVENS",
+          "label": "Ravens"
+        },
+        {
+          "id": "LIONS",
+          "label": "Lions"
+        },
+        {
+          "id": "PACKERS",
+          "label": "Packers"
+        }
+      ],
+      "countryName": "미국",
+      "regionLabel": "국내/정규리그"
+    },
+    {
+      "sportCode": "AMFOOT",
+      "code": "NCAAF",
+      "name": "NCAA Football",
+      "stage": "LEAGUE",
+      "region": "DOMESTIC",
+      "teams": [
+        {
+          "id": "ALABAMA",
+          "label": "Alabama"
+        },
+        {
+          "id": "GEORGIA",
+          "label": "Georgia"
+        },
+        {
+          "id": "MICHIGAN",
+          "label": "Michigan"
+        },
+        {
+          "id": "OHIOSTAT",
+          "label": "Ohio State"
+        },
+        {
+          "id": "TEXAS",
+          "label": "Texas"
+        },
+        {
+          "id": "OREGON",
+          "label": "Oregon"
+        },
+        {
+          "id": "LSU",
+          "label": "LSU"
+        },
+        {
+          "id": "NOTREDAM",
+          "label": "Notre Dame"
+        }
+      ],
+      "countryName": "미국",
+      "regionLabel": "대학/리그"
+    },
+    {
+      "sportCode": "AMFOOT",
+      "code": "SUPERBOWL",
+      "name": "Super Bowl",
+      "stage": "INTL",
+      "region": "INTL",
+      "teams": [
+        {
+          "id": "AFCCHAMP",
+          "label": "AFC Champion"
+        },
+        {
+          "id": "NFCCHAMP",
+          "label": "NFC Champion"
+        }
+      ],
+      "countryName": "미국",
+      "regionLabel": "포스트시즌/결승"
+    },
+    {
+      "sportCode": "VOLLEYBALL",
+      "code": "VLEAGUEM",
+      "name": "V-League Men",
+      "stage": "LEAGUE",
+      "region": "DOMESTIC",
+      "teams": [
+        {
+          "id": "KOREANAI",
+          "label": "Korean Air"
+        },
+        {
+          "id": "HYUNDAIC",
+          "label": "Hyundai Capital"
+        },
+        {
+          "id": "WOORICAR",
+          "label": "Woori Card"
+        },
+        {
+          "id": "OKFINANC",
+          "label": "OK Financial"
+        },
+        {
+          "id": "SAMSUNGF",
+          "label": "Samsung Fire"
+        },
+        {
+          "id": "KBINSURA",
+          "label": "KB Insurance"
+        },
+        {
+          "id": "KEPCO",
+          "label": "KEPCO"
+        }
+      ],
+      "countryName": "대한민국",
+      "regionLabel": "국내/정규리그"
+    },
+    {
+      "sportCode": "VOLLEYBALL",
+      "code": "VLEAGUEW",
+      "name": "V-League Women",
+      "stage": "WOMEN",
+      "region": "DOMESTIC",
+      "teams": [
+        {
+          "id": "PINKSPID",
+          "label": "Pink Spiders"
+        },
+        {
+          "id": "REDSPARK",
+          "label": "Red Sparks"
+        },
+        {
+          "id": "IBK",
+          "label": "IBK"
+        },
+        {
+          "id": "GSCALTEX",
+          "label": "GS Caltex"
+        },
+        {
+          "id": "PEPPER",
+          "label": "Pepper"
+        },
+        {
+          "id": "HIPASS",
+          "label": "Hi-Pass"
+        },
+        {
+          "id": "HYUNDAIE",
+          "label": "Hyundai E&C"
+        }
+      ],
+      "countryName": "대한민국",
+      "regionLabel": "여자/국내리그"
+    },
+    {
+      "sportCode": "VOLLEYBALL",
+      "code": "VNL",
+      "name": "Volleyball Nations League",
+      "stage": "INTL",
+      "region": "INTL",
+      "teams": [
+        {
+          "id": "BRAZIL",
+          "label": "Brazil"
+        },
+        {
+          "id": "POLAND",
+          "label": "Poland"
+        },
+        {
+          "id": "JAPAN",
+          "label": "Japan"
+        },
+        {
+          "id": "USA",
+          "label": "USA"
+        },
+        {
+          "id": "ITALY",
+          "label": "Italy"
+        },
+        {
+          "id": "FRANCE",
+          "label": "France"
+        },
+        {
+          "id": "SLOVENIA",
+          "label": "Slovenia"
+        },
+        {
+          "id": "KOREA",
+          "label": "Korea"
+        }
+      ],
+      "countryName": "국가대표",
+      "regionLabel": "국제대회/본선"
+    },
+    {
+      "sportCode": "VOLLEYBALL",
+      "code": "CEVCL",
+      "name": "CEV Champions League",
+      "stage": "CLUB_CUP",
+      "region": "EUROPE",
+      "teams": [
+        {
+          "id": "PERUGIA",
+          "label": "Perugia"
+        },
+        {
+          "id": "TRENTINO",
+          "label": "Trentino"
+        },
+        {
+          "id": "LUBE",
+          "label": "Lube"
+        },
+        {
+          "id": "ZAKSA",
+          "label": "ZAKSA"
+        },
+        {
+          "id": "HALKBANK",
+          "label": "Halkbank"
+        },
+        {
+          "id": "JASTRZEB",
+          "label": "Jastrzebski"
+        },
+        {
+          "id": "VAKIFBAN",
+          "label": "Vakifbank"
+        },
+        {
+          "id": "CONEGLIA",
+          "label": "Conegliano"
+        }
+      ],
+      "countryName": "유럽",
+      "regionLabel": "클럽 대항전"
+    },
+    {
+      "sportCode": "HANDBALL",
+      "code": "KHANDBALL",
+      "name": "Korea Handball League",
+      "stage": "LEAGUE",
+      "region": "DOMESTIC",
+      "teams": [
+        {
+          "id": "SKHAWKS",
+          "label": "SK Hawks"
+        },
+        {
+          "id": "DOOSAN",
+          "label": "Doosan"
+        },
+        {
+          "id": "INCHEON",
+          "label": "Incheon"
+        },
+        {
+          "id": "SANGMU",
+          "label": "Sangmu"
+        },
+        {
+          "id": "CHUNGNAM",
+          "label": "Chungnam"
+        },
+        {
+          "id": "SEOULCIT",
+          "label": "Seoul City"
+        }
+      ],
+      "countryName": "대한민국",
+      "regionLabel": "국내/정규리그"
+    },
+    {
+      "sportCode": "HANDBALL",
+      "code": "EHFCL",
+      "name": "EHF Champions League",
+      "stage": "CLUB_CUP",
+      "region": "EUROPE",
+      "teams": [
+        {
+          "id": "BARCELON",
+          "label": "Barcelona"
+        },
+        {
+          "id": "PSG",
+          "label": "PSG"
+        },
+        {
+          "id": "VESZPREM",
+          "label": "Veszprem"
+        },
+        {
+          "id": "KIELCE",
+          "label": "Kielce"
+        },
+        {
+          "id": "KIEL",
+          "label": "Kiel"
+        },
+        {
+          "id": "AALBORG",
+          "label": "Aalborg"
+        },
+        {
+          "id": "MAGDEBUR",
+          "label": "Magdeburg"
+        },
+        {
+          "id": "NANTES",
+          "label": "Nantes"
+        }
+      ],
+      "countryName": "유럽",
+      "regionLabel": "클럽 대항전"
+    },
+    {
+      "sportCode": "HANDBALL",
+      "code": "IHFWC",
+      "name": "IHF World Championship",
+      "stage": "INTL",
+      "region": "INTL",
+      "teams": [
+        {
+          "id": "DENMARK",
+          "label": "Denmark"
+        },
+        {
+          "id": "FRANCE",
+          "label": "France"
+        },
+        {
+          "id": "SWEDEN",
+          "label": "Sweden"
+        },
+        {
+          "id": "SPAIN",
+          "label": "Spain"
+        },
+        {
+          "id": "NORWAY",
+          "label": "Norway"
+        },
+        {
+          "id": "GERMANY",
+          "label": "Germany"
+        },
+        {
+          "id": "EGYPT",
+          "label": "Egypt"
+        },
+        {
+          "id": "CROATIA",
+          "label": "Croatia"
+        }
+      ],
+      "countryName": "국가대표",
+      "regionLabel": "국제대회/본선"
+    },
+    {
+      "sportCode": "ESPORTS",
+      "code": "LCK",
+      "name": "LoL Champions Korea",
+      "stage": "LEAGUE",
+      "region": "DOMESTIC",
+      "teams": [
+        {
+          "id": "T1",
+          "label": "T1"
+        },
+        {
+          "id": "GENG",
+          "label": "Gen.G"
+        },
+        {
+          "id": "DK",
+          "label": "DK"
+        },
+        {
+          "id": "KT",
+          "label": "KT"
+        },
+        {
+          "id": "HLE",
+          "label": "HLE"
+        },
+        {
+          "id": "DRX",
+          "label": "DRX"
+        },
+        {
+          "id": "KDF",
+          "label": "KDF"
+        },
+        {
+          "id": "BRO",
+          "label": "BRO"
+        },
+        {
+          "id": "NS",
+          "label": "NS"
+        },
+        {
+          "id": "FOX",
+          "label": "FOX"
+        }
+      ],
+      "countryName": "대한민국",
+      "regionLabel": "리그/정규시즌"
+    },
+    {
+      "sportCode": "ESPORTS",
+      "code": "LPL",
+      "name": "LoL Pro League",
+      "stage": "LEAGUE",
+      "region": "DOMESTIC",
+      "teams": [
+        {
+          "id": "BLG",
+          "label": "BLG"
+        },
+        {
+          "id": "JDG",
+          "label": "JDG"
+        },
+        {
+          "id": "TES",
+          "label": "TES"
+        },
+        {
+          "id": "LNG",
+          "label": "LNG"
+        },
+        {
+          "id": "WBG",
+          "label": "WBG"
+        },
+        {
+          "id": "EDG",
+          "label": "EDG"
+        },
+        {
+          "id": "RNG",
+          "label": "RNG"
+        },
+        {
+          "id": "FPX",
+          "label": "FPX"
+        }
+      ],
+      "countryName": "중국",
+      "regionLabel": "리그/정규시즌"
+    },
+    {
+      "sportCode": "ESPORTS",
+      "code": "LEC",
+      "name": "League EMEA Championship",
+      "stage": "LEAGUE",
+      "region": "DOMESTIC",
+      "teams": [
+        {
+          "id": "G2",
+          "label": "G2"
+        },
+        {
+          "id": "FNATIC",
+          "label": "Fnatic"
+        },
+        {
+          "id": "MADLIONS",
+          "label": "MAD Lions"
+        },
+        {
+          "id": "BDS",
+          "label": "BDS"
+        },
+        {
+          "id": "SK",
+          "label": "SK"
+        },
+        {
+          "id": "VITALITY",
+          "label": "Vitality"
+        },
+        {
+          "id": "ROGUE",
+          "label": "Rogue"
+        },
+        {
+          "id": "HERETICS",
+          "label": "Heretics"
+        }
+      ],
+      "countryName": "유럽",
+      "regionLabel": "리그/정규시즌"
+    },
+    {
+      "sportCode": "ESPORTS",
+      "code": "LCS",
+      "name": "LoL Championship Series",
+      "stage": "LEAGUE",
+      "region": "DOMESTIC",
+      "teams": [
+        {
+          "id": "CLOUD9",
+          "label": "Cloud9"
+        },
+        {
+          "id": "TL",
+          "label": "TL"
+        },
+        {
+          "id": "FLYQUEST",
+          "label": "FlyQuest"
+        },
+        {
+          "id": "100T",
+          "label": "100T"
+        },
+        {
+          "id": "NRG",
+          "label": "NRG"
+        },
+        {
+          "id": "DIG",
+          "label": "DIG"
+        },
+        {
+          "id": "IMMORTAL",
+          "label": "Immortals"
+        },
+        {
+          "id": "SHOPIFY",
+          "label": "Shopify"
+        }
+      ],
+      "countryName": "북미",
+      "regionLabel": "리그/정규시즌"
+    },
+    {
+      "sportCode": "ESPORTS",
+      "code": "MSI",
+      "name": "LoL MSI",
+      "stage": "INTL",
+      "region": "INTL",
+      "teams": [
+        {
+          "id": "T1",
+          "label": "T1"
+        },
+        {
+          "id": "GENG",
+          "label": "Gen.G"
+        },
+        {
+          "id": "BLG",
+          "label": "BLG"
+        },
+        {
+          "id": "JDG",
+          "label": "JDG"
+        },
+        {
+          "id": "G2",
+          "label": "G2"
+        },
+        {
+          "id": "FNATIC",
+          "label": "Fnatic"
+        },
+        {
+          "id": "TL",
+          "label": "TL"
+        },
+        {
+          "id": "PSG",
+          "label": "PSG"
+        }
+      ],
+      "countryName": "국제전",
+      "regionLabel": "국제대회/본선"
+    },
+    {
+      "sportCode": "ESPORTS",
+      "code": "WORLDS",
+      "name": "LoL Worlds",
+      "stage": "INTL",
+      "region": "INTL",
+      "teams": [
+        {
+          "id": "T1",
+          "label": "T1"
+        },
+        {
+          "id": "GENG",
+          "label": "Gen.G"
+        },
+        {
+          "id": "BLG",
+          "label": "BLG"
+        },
+        {
+          "id": "JDG",
+          "label": "JDG"
+        },
+        {
+          "id": "G2",
+          "label": "G2"
+        },
+        {
+          "id": "FNATIC",
+          "label": "Fnatic"
+        },
+        {
+          "id": "TL",
+          "label": "TL"
+        },
+        {
+          "id": "PSG",
+          "label": "PSG"
+        }
+      ],
+      "countryName": "국제전",
+      "regionLabel": "국제대회/본선"
+    },
+    {
+      "sportCode": "ESPORTS",
+      "code": "VCTPAC",
+      "name": "VCT Pacific",
+      "stage": "LEAGUE",
+      "region": "DOMESTIC",
+      "teams": [
+        {
+          "id": "PRX",
+          "label": "PRX"
+        },
+        {
+          "id": "DRX",
+          "label": "DRX"
+        },
+        {
+          "id": "GENG",
+          "label": "Gen.G"
+        },
+        {
+          "id": "T1",
+          "label": "T1"
+        },
+        {
+          "id": "ZETA",
+          "label": "ZETA"
+        },
+        {
+          "id": "RRQ",
+          "label": "RRQ"
+        },
+        {
+          "id": "TS",
+          "label": "TS"
+        },
+        {
+          "id": "GE",
+          "label": "GE"
+        }
+      ],
+      "countryName": "아시아태평양",
+      "regionLabel": "리그/정규시즌"
+    },
+    {
+      "sportCode": "ESPORTS",
+      "code": "VCTEMEA",
+      "name": "VCT EMEA",
+      "stage": "LEAGUE",
+      "region": "DOMESTIC",
+      "teams": [
+        {
+          "id": "FNC",
+          "label": "FNC"
+        },
+        {
+          "id": "NAVI",
+          "label": "NAVI"
+        },
+        {
+          "id": "TH",
+          "label": "TH"
+        },
+        {
+          "id": "FUT",
+          "label": "FUT"
+        },
+        {
+          "id": "KC",
+          "label": "KC"
+        },
+        {
+          "id": "VIT",
+          "label": "VIT"
+        },
+        {
+          "id": "GX",
+          "label": "GX"
+        },
+        {
+          "id": "BBL",
+          "label": "BBL"
+        }
+      ],
+      "countryName": "유럽",
+      "regionLabel": "리그/정규시즌"
+    },
+    {
+      "sportCode": "ESPORTS",
+      "code": "VCTAM",
+      "name": "VCT Americas",
+      "stage": "LEAGUE",
+      "region": "DOMESTIC",
+      "teams": [
+        {
+          "id": "SEN",
+          "label": "SEN"
+        },
+        {
+          "id": "NRG",
+          "label": "NRG"
+        },
+        {
+          "id": "LOUD",
+          "label": "LOUD"
+        },
+        {
+          "id": "LEV",
+          "label": "LEV"
+        },
+        {
+          "id": "C9",
+          "label": "C9"
+        },
+        {
+          "id": "100T",
+          "label": "100T"
+        },
+        {
+          "id": "KRU",
+          "label": "KRU"
+        },
+        {
+          "id": "MIBR",
+          "label": "MIBR"
+        }
+      ],
+      "countryName": "미주",
+      "regionLabel": "리그/정규시즌"
+    },
+    {
+      "sportCode": "ESPORTS",
+      "code": "CS2MAJOR",
+      "name": "CS2 Major",
+      "stage": "INTL",
+      "region": "INTL",
+      "teams": [
+        {
+          "id": "NAVI",
+          "label": "NAVI"
+        },
+        {
+          "id": "SPIRIT",
+          "label": "Spirit"
+        },
+        {
+          "id": "FAZE",
+          "label": "FaZe"
+        },
+        {
+          "id": "VITALITY",
+          "label": "Vitality"
+        },
+        {
+          "id": "G2",
+          "label": "G2"
+        },
+        {
+          "id": "MOUZ",
+          "label": "MOUZ"
+        },
+        {
+          "id": "HEROIC",
+          "label": "Heroic"
+        },
+        {
+          "id": "FURIA",
+          "label": "FURIA"
+        }
+      ],
+      "countryName": "국제전",
+      "regionLabel": "국제대회/본선"
+    },
+    {
+      "sportCode": "ESPORTS",
+      "code": "TI",
+      "name": "The International",
+      "stage": "INTL",
+      "region": "INTL",
+      "teams": [
+        {
+          "id": "TEAMSPIR",
+          "label": "Team Spirit"
+        },
+        {
+          "id": "LIQUID",
+          "label": "Liquid"
+        },
+        {
+          "id": "GG",
+          "label": "GG"
+        },
+        {
+          "id": "FALCONS",
+          "label": "Falcons"
+        },
+        {
+          "id": "XG",
+          "label": "XG"
+        },
+        {
+          "id": "PSGQUEST",
+          "label": "PSG Quest"
+        },
+        {
+          "id": "LGD",
+          "label": "LGD"
+        },
+        {
+          "id": "AURORA",
+          "label": "Aurora"
+        }
+      ],
+      "countryName": "국제전",
+      "regionLabel": "국제대회/본선"
+    },
+    {
+      "sportCode": "TENNIS",
+      "code": "ATP",
+      "name": "ATP Tour",
+      "stage": "LEAGUE",
+      "region": "DOMESTIC",
+      "teams": [
+        {
+          "id": "DJOKOVIC",
+          "label": "Djokovic"
+        },
+        {
+          "id": "ALCARAZ",
+          "label": "Alcaraz"
+        },
+        {
+          "id": "SINNER",
+          "label": "Sinner"
+        },
+        {
+          "id": "MEDVEDEV",
+          "label": "Medvedev"
+        },
+        {
+          "id": "ZVEREV",
+          "label": "Zverev"
+        },
+        {
+          "id": "RUBLEV",
+          "label": "Rublev"
+        },
+        {
+          "id": "RUNE",
+          "label": "Rune"
+        },
+        {
+          "id": "TSITSIPA",
+          "label": "Tsitsipas"
+        }
+      ],
+      "countryName": "국제투어",
+      "regionLabel": "투어/남자"
+    },
+    {
+      "sportCode": "TENNIS",
+      "code": "WTA",
+      "name": "WTA Tour",
+      "stage": "WOMEN",
+      "region": "DOMESTIC",
+      "teams": [
+        {
+          "id": "SWIATEK",
+          "label": "Swiatek"
+        },
+        {
+          "id": "SABALENK",
+          "label": "Sabalenka"
+        },
+        {
+          "id": "GAUFF",
+          "label": "Gauff"
+        },
+        {
+          "id": "RYBAKINA",
+          "label": "Rybakina"
+        },
+        {
+          "id": "PEGULA",
+          "label": "Pegula"
+        },
+        {
+          "id": "JABEUR",
+          "label": "Jabeur"
+        },
+        {
+          "id": "SAKKARI",
+          "label": "Sakkari"
+        },
+        {
+          "id": "ZHENG",
+          "label": "Zheng"
+        }
+      ],
+      "countryName": "국제투어",
+      "regionLabel": "투어/여자"
+    },
+    {
+      "sportCode": "TENNIS",
+      "code": "GRANDSLAM",
+      "name": "Grand Slam",
+      "stage": "INTL",
+      "region": "INTL",
+      "teams": [
+        {
+          "id": "DJOKOVIC",
+          "label": "Djokovic"
+        },
+        {
+          "id": "ALCARAZ",
+          "label": "Alcaraz"
+        },
+        {
+          "id": "SINNER",
+          "label": "Sinner"
+        },
+        {
+          "id": "MEDVEDEV",
+          "label": "Medvedev"
+        },
+        {
+          "id": "SWIATEK",
+          "label": "Swiatek"
+        },
+        {
+          "id": "SABALENK",
+          "label": "Sabalenka"
+        },
+        {
+          "id": "GAUFF",
+          "label": "Gauff"
+        },
+        {
+          "id": "RYBAKINA",
+          "label": "Rybakina"
+        }
+      ],
+      "countryName": "국제전",
+      "regionLabel": "국제대회/메이저"
+    },
+    {
+      "sportCode": "TENNIS",
+      "code": "DAVIS",
+      "name": "Davis Cup",
+      "stage": "INTL",
+      "region": "INTL",
+      "teams": [
+        {
+          "id": "SERBIA",
+          "label": "Serbia"
+        },
+        {
+          "id": "SPAIN",
+          "label": "Spain"
+        },
+        {
+          "id": "ITALY",
+          "label": "Italy"
+        },
+        {
+          "id": "USA",
+          "label": "USA"
+        },
+        {
+          "id": "AUSTRALI",
+          "label": "Australia"
+        },
+        {
+          "id": "FRANCE",
+          "label": "France"
+        },
+        {
+          "id": "GERMANY",
+          "label": "Germany"
+        },
+        {
+          "id": "KOREA",
+          "label": "Korea"
+        }
+      ],
+      "countryName": "국가대표",
+      "regionLabel": "국제대회/국가전"
+    },
+    {
+      "sportCode": "TENNIS",
+      "code": "BJK",
+      "name": "Billie Jean King Cup",
+      "stage": "WOMEN",
+      "region": "INTL",
+      "teams": [
+        {
+          "id": "POLAND",
+          "label": "Poland"
+        },
+        {
+          "id": "BELARUS",
+          "label": "Belarus"
+        },
+        {
+          "id": "USA",
+          "label": "USA"
+        },
+        {
+          "id": "SPAIN",
+          "label": "Spain"
+        },
+        {
+          "id": "CZECHIA",
+          "label": "Czechia"
+        },
+        {
+          "id": "ITALY",
+          "label": "Italy"
+        },
+        {
+          "id": "FRANCE",
+          "label": "France"
+        },
+        {
+          "id": "KOREA",
+          "label": "Korea"
+        }
+      ],
+      "countryName": "국가대표",
+      "regionLabel": "여자/국가전"
+    },
+    {
+      "sportCode": "TABLETENNIS",
+      "code": "WTTM",
+      "name": "WTT Men",
+      "stage": "LEAGUE",
+      "region": "DOMESTIC",
+      "teams": [
+        {
+          "id": "FANZHEND",
+          "label": "Fan Zhendong"
+        },
+        {
+          "id": "WANGCHUQ",
+          "label": "Wang Chuqin"
+        },
+        {
+          "id": "MALONG",
+          "label": "Ma Long"
+        },
+        {
+          "id": "LINYUNJU",
+          "label": "Lin Yun-Ju"
+        },
+        {
+          "id": "HARIMOTO",
+          "label": "Harimoto"
+        },
+        {
+          "id": "CALDERAN",
+          "label": "Calderano"
+        },
+        {
+          "id": "MOREGARD",
+          "label": "Moregard"
+        },
+        {
+          "id": "JANGWOOJ",
+          "label": "Jang Woojin"
+        }
+      ],
+      "countryName": "국제투어",
+      "regionLabel": "투어/남자"
+    },
+    {
+      "sportCode": "TABLETENNIS",
+      "code": "WTTW",
+      "name": "WTT Women",
+      "stage": "WOMEN",
+      "region": "DOMESTIC",
+      "teams": [
+        {
+          "id": "SUNYINGS",
+          "label": "Sun Yingsha"
+        },
+        {
+          "id": "CHENMENG",
+          "label": "Chen Meng"
+        },
+        {
+          "id": "WANGMANY",
+          "label": "Wang Manyu"
+        },
+        {
+          "id": "HINAHAYA",
+          "label": "Hina Hayata"
+        },
+        {
+          "id": "SHINYUBI",
+          "label": "Shin Yubin"
+        },
+        {
+          "id": "ITOMIMA",
+          "label": "Ito Mima"
+        },
+        {
+          "id": "BERNADET",
+          "label": "Bernadette"
+        },
+        {
+          "id": "JEONJIHE",
+          "label": "Jeon Jihee"
+        }
+      ],
+      "countryName": "국제투어",
+      "regionLabel": "투어/여자"
+    },
+    {
+      "sportCode": "TABLETENNIS",
+      "code": "WTTC",
+      "name": "World Table Tennis Championships",
+      "stage": "INTL",
+      "region": "INTL",
+      "teams": [
+        {
+          "id": "CHINA",
+          "label": "China"
+        },
+        {
+          "id": "KOREA",
+          "label": "Korea"
+        },
+        {
+          "id": "JAPAN",
+          "label": "Japan"
+        },
+        {
+          "id": "GERMANY",
+          "label": "Germany"
+        },
+        {
+          "id": "SWEDEN",
+          "label": "Sweden"
+        },
+        {
+          "id": "BRAZIL",
+          "label": "Brazil"
+        },
+        {
+          "id": "FRANCE",
+          "label": "France"
+        },
+        {
+          "id": "TAIWAN",
+          "label": "Taiwan"
+        }
+      ],
+      "countryName": "국제전",
+      "regionLabel": "국제대회/본선"
+    },
+    {
+      "sportCode": "FUTSAL",
+      "code": "KFL",
+      "name": "Korea Futsal League",
+      "stage": "LEAGUE",
+      "region": "DOMESTIC",
+      "teams": [
+        {
+          "id": "SEOULEUN",
+          "label": "Seoul Eunpyeong"
+        },
+        {
+          "id": "GYEONGGI",
+          "label": "Gyeonggi LB"
+        },
+        {
+          "id": "JEONJUMA",
+          "label": "Jeonju MAG"
+        },
+        {
+          "id": "BUSANBLU",
+          "label": "Busan Bluewave"
+        },
+        {
+          "id": "DAEGUFS",
+          "label": "Daegu FS"
+        }
+      ],
+      "countryName": "대한민국",
+      "regionLabel": "국내/정규리그"
+    },
+    {
+      "sportCode": "FUTSAL",
+      "code": "UEFAF",
+      "name": "UEFA Futsal",
+      "stage": "INTL",
+      "region": "INTL",
+      "teams": [
+        {
+          "id": "SPAIN",
+          "label": "Spain"
+        },
+        {
+          "id": "PORTUGAL",
+          "label": "Portugal"
+        },
+        {
+          "id": "KAZAKHST",
+          "label": "Kazakhstan"
+        },
+        {
+          "id": "UKRAINE",
+          "label": "Ukraine"
+        },
+        {
+          "id": "ITALY",
+          "label": "Italy"
+        },
+        {
+          "id": "CROATIA",
+          "label": "Croatia"
+        },
+        {
+          "id": "FRANCE",
+          "label": "France"
+        },
+        {
+          "id": "NETHERLA",
+          "label": "Netherlands"
+        }
+      ],
+      "countryName": "유럽",
+      "regionLabel": "국제대회/본선"
+    },
+    {
+      "sportCode": "FUTSAL",
+      "code": "FUTSALWC",
+      "name": "Futsal World Cup",
+      "stage": "INTL",
+      "region": "INTL",
+      "teams": [
+        {
+          "id": "BRAZIL",
+          "label": "Brazil"
+        },
+        {
+          "id": "PORTUGAL",
+          "label": "Portugal"
+        },
+        {
+          "id": "SPAIN",
+          "label": "Spain"
+        },
+        {
+          "id": "ARGENTIN",
+          "label": "Argentina"
+        },
+        {
+          "id": "IRAN",
+          "label": "Iran"
+        },
+        {
+          "id": "KAZAKHST",
+          "label": "Kazakhstan"
+        },
+        {
+          "id": "THAILAND",
+          "label": "Thailand"
+        },
+        {
+          "id": "MOROCCO",
+          "label": "Morocco"
+        }
+      ],
+      "countryName": "국가대표",
+      "regionLabel": "국제대회/본선"
+    },
+    {
+      "sportCode": "CRICKET",
+      "code": "IPL",
+      "name": "Indian Premier League",
+      "stage": "LEAGUE",
+      "region": "DOMESTIC",
+      "teams": [
+        {
+          "id": "MUMBAIIN",
+          "label": "Mumbai Indians"
+        },
+        {
+          "id": "CSK",
+          "label": "CSK"
+        },
+        {
+          "id": "RCB",
+          "label": "RCB"
+        },
+        {
+          "id": "KKR",
+          "label": "KKR"
+        },
+        {
+          "id": "RR",
+          "label": "RR"
+        },
+        {
+          "id": "SRH",
+          "label": "SRH"
+        },
+        {
+          "id": "LSG",
+          "label": "LSG"
+        },
+        {
+          "id": "DC",
+          "label": "DC"
+        }
+      ],
+      "countryName": "인도",
+      "regionLabel": "국내/정규리그"
+    },
+    {
+      "sportCode": "CRICKET",
+      "code": "BBL",
+      "name": "Big Bash League",
+      "stage": "LEAGUE",
+      "region": "DOMESTIC",
+      "teams": [
+        {
+          "id": "SIXERS",
+          "label": "Sixers"
+        },
+        {
+          "id": "THUNDER",
+          "label": "Thunder"
+        },
+        {
+          "id": "HEAT",
+          "label": "Heat"
+        },
+        {
+          "id": "STARS",
+          "label": "Stars"
+        },
+        {
+          "id": "RENEGADE",
+          "label": "Renegades"
+        },
+        {
+          "id": "SCORCHER",
+          "label": "Scorchers"
+        },
+        {
+          "id": "HURRICAN",
+          "label": "Hurricanes"
+        },
+        {
+          "id": "STRIKERS",
+          "label": "Strikers"
+        }
+      ],
+      "countryName": "호주",
+      "regionLabel": "국내/정규리그"
+    },
+    {
+      "sportCode": "CRICKET",
+      "code": "CWC",
+      "name": "Cricket World Cup",
+      "stage": "INTL",
+      "region": "INTL",
+      "teams": [
+        {
+          "id": "INDIA",
+          "label": "India"
+        },
+        {
+          "id": "AUSTRALI",
+          "label": "Australia"
+        },
+        {
+          "id": "ENGLAND",
+          "label": "England"
+        },
+        {
+          "id": "PAKISTAN",
+          "label": "Pakistan"
+        },
+        {
+          "id": "SOUTHAFR",
+          "label": "South Africa"
+        },
+        {
+          "id": "NEWZEALA",
+          "label": "New Zealand"
+        },
+        {
+          "id": "SRILANKA",
+          "label": "Sri Lanka"
+        },
+        {
+          "id": "BANGLADE",
+          "label": "Bangladesh"
+        }
+      ],
+      "countryName": "국가대표",
+      "regionLabel": "국제대회/본선"
+    },
+    {
+      "sportCode": "OTHER",
+      "code": "UFC",
+      "name": "UFC",
+      "stage": "INTL",
+      "region": "INTL",
+      "teams": [
+        {
+          "id": "MAINEVEN",
+          "label": "Main Event A"
+        },
+        {
+          "id": "MAINEVEN",
+          "label": "Main Event B"
+        }
+      ],
+      "countryName": "국제전",
+      "regionLabel": "격투/이벤트"
+    },
+    {
+      "sportCode": "OTHER",
+      "code": "BOXING",
+      "name": "Boxing Main Event",
+      "stage": "INTL",
+      "region": "INTL",
+      "teams": [
+        {
+          "id": "REDCORNE",
+          "label": "Red Corner"
+        },
+        {
+          "id": "BLUECORN",
+          "label": "Blue Corner"
+        }
+      ],
+      "countryName": "국제전",
+      "regionLabel": "격투/이벤트"
+    },
+    {
+      "sportCode": "OTHER",
+      "code": "RUGBYWC",
+      "name": "Rugby World Cup",
+      "stage": "INTL",
+      "region": "INTL",
+      "teams": [
+        {
+          "id": "SOUTHAFR",
+          "label": "South Africa"
+        },
+        {
+          "id": "NEWZEALA",
+          "label": "New Zealand"
+        },
+        {
+          "id": "ENGLAND",
+          "label": "England"
+        },
+        {
+          "id": "FRANCE",
+          "label": "France"
+        },
+        {
+          "id": "IRELAND",
+          "label": "Ireland"
+        },
+        {
+          "id": "AUSTRALI",
+          "label": "Australia"
+        },
+        {
+          "id": "ARGENTIN",
+          "label": "Argentina"
+        },
+        {
+          "id": "JAPAN",
+          "label": "Japan"
+        }
+      ],
+      "countryName": "국가대표",
+      "regionLabel": "국제대회/본선"
+    }
+  ]
+}
