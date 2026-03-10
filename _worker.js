@@ -329,7 +329,7 @@ function normBoard(v) {
   return (b === 'promo') ? 'promo' : 'free';
 }
 
-function clampInt(v, def = 0, min = 0, max = 999999999) {
+function clampIntDefaultFirst(v, def = 0, min = 0, max = 999999999) {
   const n = parseInt(String(v ?? ''), 10);
   if (Number.isNaN(n)) return def;
   return Math.max(min, Math.min(max, n));
@@ -391,7 +391,7 @@ async function handlePostsGet(request, env) {
   const q = normalizeText(url.searchParams.get('q') || '', 80);
   const sort = String(url.searchParams.get('sort') || 'latest').toLowerCase();
   const board = normBoard(url.searchParams.get('board') || url.searchParams.get('b') || 'free');
-  const page = clampInt(url.searchParams.get('page'), 1, 1, 200);
+  const page = clampIntDefaultFirst(url.searchParams.get('page'), 1, 1, 200);
   const pageSize = 20;
   const offset = (page - 1) * pageSize;
 
@@ -578,7 +578,7 @@ function isoDate(d){
   try{ return new Date(d).toISOString().slice(0,10); }catch(e){ return ''; }
 }
 
-function clampInt(v, min, max, def){
+function clampIntRange(v, min, max, def){
   const n = Number(v);
   if(!Number.isFinite(n)) return def;
   return Math.max(min, Math.min(max, Math.floor(n)));
@@ -643,7 +643,7 @@ async function handleSeoOpportunities(request, env){
   await ensureSchema(db);
 
   const url = new URL(request.url);
-  const limit = clampInt(url.searchParams.get('limit'), 1, 200, 50);
+  const limit = clampIntRange(url.searchParams.get('limit'), 1, 200, 50);
 
   const rs = await db.prepare(
     'SELECT score, query, page_path, page, clicks, impressions, ctr, position, reco FROM seo_opportunities ORDER BY score DESC, computed_at DESC LIMIT ?'
@@ -658,7 +658,7 @@ async function handleSeoSync(request, env, ctx){
 
   let body = null;
   try{ body = await request.json(); }catch(e){ body = {}; }
-  const days = clampInt(body?.days, 7, 90, 28);
+  const days = clampIntRange(body?.days, 7, 90, 28);
 
   try{
     const out = await seoSyncCore(env, ctx, { days, reason:'manual' });
@@ -679,7 +679,7 @@ async function seoSyncCore(env, ctx, opts){
   const rtk = String(env.GSC_REFRESH_TOKEN || '').trim();
   if(!siteUrl || !cid || !csec || !rtk) throw new Error('Missing env: GSC_SITE_URL / GSC_CLIENT_ID / GSC_CLIENT_SECRET / GSC_REFRESH_TOKEN');
 
-  const days = clampInt(opts?.days, 7, 90, 28);
+  const days = clampIntRange(opts?.days, 7, 90, 28);
 
   // GSC data often lags 1~2 days. Use endDate = today-3days (UTC) for stability.
   const end = new Date(Date.now() - 3*864e5);
