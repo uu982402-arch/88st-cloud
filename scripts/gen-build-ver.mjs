@@ -94,7 +94,6 @@ const foundationJs = [
   '/assets/js/ui.fix.v1.20260226.js',
   '/assets/js/ui.guard.v1.20260226.js',
   '/assets/js/site.runtime.v1.20260226.js',
-  '/assets/js/share.session.v1.20260226.js',
   '/assets/js/global.unify.v2.20260313.js'
 ].filter((f) => fs.existsSync(path.join(root, f.replace(/^\//,''))));
 
