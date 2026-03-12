@@ -170,7 +170,7 @@
       '    <span class="habChip" id="_habVendorChip" role="button" tabindex="0" aria-label="인증 선택">✅ <span id="_habVendorText">'+escapeHtml(safeLabel)+'</span></span>',
       '    <div class="habTitle">',
       '      <div class="t">원클릭 액션</div>',
-      '      <div class="d">복사+이동 / 문의 / 빠른 기록</div>',
+      '      <div class="d">복사+이동 / 문의 / 빠른 이동</div>',
       '    </div>',
       '  </div>',
       '  <div class="habRight">',
@@ -503,7 +503,7 @@
   function injectTodayStatus(cfg){
     try{ if(document.getElementById('homeTodayStatus')) return; }catch(e){}
     var f = (cfg && cfg.features) ? cfg.features : {};
-    if(!f.homeTodayStatus) return;
+    return; // 메인 인덱스 세이프티 락 위젯 제거
 
     var day = todayKey();
     var betlog = readLS('88st_betlog_v1', []);
@@ -676,6 +676,7 @@
   }
 
   function boot(cfg){
+    cfg = cfg || {}; cfg.features = cfg.features || {}; cfg.features.homeTodayStatus = false; cfg.features.homeQuickLog = false;
     if(!isHome()) return;
 
     // ensure CSS loaded only once (for pages that don't use build.loader)
@@ -708,7 +709,7 @@
       window.__88st_ready(function(cfg){ boot(cfg||{}); });
     }else{
       // fallback without cfg
-      boot({features:{homeActionBar:true, homeCertCards:true, homeMirrorHelper:true, homeRecentUsed:true, homeTodayStatus:true, homeQuickLog:true}, links:{telegram:''}});
+      boot({features:{homeActionBar:true, homeCertCards:true, homeMirrorHelper:true, homeRecentUsed:true, homeTodayStatus:false, homeQuickLog:false}, links:{telegram:''}});
     }
   }
 
