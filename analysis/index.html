@@ -231,51 +231,6 @@
 <script defer src="/assets/js/global.unify.v2.20260313.js"></script>
 <script defer src="/assets/js/popup.event.v1.js?v=v20260225-1900"></script>
 
-<style>
-/* v113+ /analysis → Logbook quick-save modal */
-.lb-modal{position:fixed; inset:0; z-index:6400; display:none;}
-.lb-modal.open{display:block;}
-.lb-backdrop{position:absolute; inset:0; background:rgba(0,0,0,.62);}
-.lb-panel{position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
-  width:min(720px, calc(100vw - 24px));
-  max-height:calc(100vh - 24px);
-  overflow:auto;
-  border-radius:22px;
-  border:1px solid rgba(0,0,0,.10);
-  background:rgba(255,255,255,.92);
-  box-shadow:0 22px 70px rgba(0,0,0,.28);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  padding:14px;
-}
-.lb-head{display:flex; align-items:center; justify-content:space-between; gap:10px;}
-.lb-head .t{font-weight:1000; font-size:16px;}
-.lb-body{margin-top:10px;}
-.lb-chips{display:grid; gap:10px; grid-template-columns:repeat(3, minmax(0,1fr)); margin-top:10px;}
-@media(max-width:720px){.lb-chips{grid-template-columns:repeat(2, minmax(0,1fr));}}
-.lb-chip{display:flex; flex-direction:column; gap:6px; align-items:flex-start; justify-content:center;
-  padding:12px 12px; border-radius:18px; border:1px solid rgba(0,0,0,.10);
-  background:rgba(0,0,0,.03);
-  cursor:pointer; font-weight:950;
-}
-.lb-chip:hover{filter:brightness(1.02); border-color: rgba(0,0,0,.16);} 
-.lb-chip.is-on{border-color: rgba(37,99,235,.35); background: rgba(37,99,235,.08);} 
-.lb-chip .k{font-size:12px; opacity:.75; font-weight:900;}
-.lb-chip .v{font-size:16px; font-variant-numeric:tabular-nums;}
-.lb-row{display:grid; gap:10px; grid-template-columns: 1.2fr .8fr; margin-top:10px;}
-@media(max-width:560px){
-  .lb-panel{left:50%; top:auto; bottom:12px; transform:translateX(-50%);}
-  .lb-row{grid-template-columns:1fr;}
-}
-/* toast */
-#lbToast{position:fixed; left:50%; bottom:18px; transform:translateX(-50%);
-  z-index:6500; padding:10px 12px; border-radius:999px;
-  border:1px solid rgba(0,0,0,.10);
-  background:rgba(255,255,255,.85);
-  box-shadow:0 16px 46px rgba(0,0,0,.22);
-  font-weight:950; font-size:13px; display:none;}
-#lbToast.show{display:block;}
-</style>
 
 <link rel="stylesheet" href="/assets/css/hdr.shell.v1.20260221.css?v=119"/>
 <script src="/assets/js/seo.apply.v1.js?v=v20260224-2330"></script>
@@ -332,7 +287,7 @@
           <a href="/tool-ev/">EV 계산기</a>
           <a href="/tool-odds/">배당↔확률 변환</a>
           <a href="/tool-casino/">바카라 전략 계산기</a>
-                    <a href="/calc/">계산기 홈</a>
+                    
         </div>
       </details>
 
@@ -368,7 +323,7 @@
               <a href="/tool-ev/">EV 계산기</a>
               <a href="/tool-odds/">배당↔확률 변환</a>
               <a href="/tool-casino/">바카라 전략 계산기</a>
-                            <a href="/calc/">계산기 홈</a>
+                            
             </div>
           </details>
 
