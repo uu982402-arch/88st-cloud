@@ -1,62 +1,42 @@
 {
   "/": {
-    "title": "88ST | 스포츠 배당 분석기 · EV · 마진 · 켈리 계산기",
-    "description": "스포츠 배당 분석기, EV·마진·공정배당·켈리 계산기와 인증 비교, 핵심 가이드를 한 곳에서 확인하세요.",
-    "keywords": "스포츠 배당 분석기, EV 계산기, 마진 계산기, 켈리 계산기, 공정배당, 인증사이트",
-    "canonical": "https://88st.cloud/"
+    "title": "88ST | 스포츠 배당 분석 허브 · EV · 마진 · 켈리 계산기",
+    "description": "스포츠 배당 분석기, 공정확률·마진·EV·켈리 계산기, 인증사이트 비교와 핵심 가이드를 한곳에서 정리하는 프리미엄 분석 허브입니다.",
+    "keywords": "스포츠 배당 분석기, 공정확률, 마진 계산기, EV 계산기, Kelly 기준, 인증사이트 비교"
   },
   "/analysis/": {
-    "title": "스포츠 배당 정밀 분석기 | 공정확률·시장합의·오버라운드·EV | 88ST",
-    "description": "배당만으로 공정확률, 공정배당, 오버라운드, 시장 합의, 오즈 무브, 스테이킹 기준까지 한 번에 해석하는 스포츠 배당 정밀 분석기.",
-    "keywords": "스포츠 배당 분석기, 공정확률, 공정배당, 오버라운드, 시장합의, 오즈무브, EV, Kelly",
-    "canonical": "https://88st.cloud/analysis/"
+    "title": "스포츠 배당 정밀 분석기 | 공정확률·오버라운드·EV 해석 | 88ST",
+    "description": "배당을 공정확률, 오버라운드, 시장 합의, 오즈 무브, Kelly 스테이킹 관점까지 확장 해석하는 스포츠 배당 정밀 분석기.",
+    "keywords": "스포츠 배당 분석기, 공정확률, 오버라운드, 공정배당, 오즈 무브, Kelly"
   },
   "/cert/": {
-    "title": "인증사이트 비교 | 가입코드·혜택·출금규정 체크 | 88ST",
-    "description": "가입코드, 혜택, 주의사항, 출금·롤링 조건을 한 화면에서 비교할 수 있는 인증사이트 비교 허브입니다.",
-    "keywords": "인증사이트, 가입코드, 혜택 비교, 출금규정, 롤링조건, 보증사이트",
-    "canonical": "https://88st.cloud/cert/"
+    "title": "인증사이트 비교 | 가입코드·혜택·체크포인트 | 88ST",
+    "description": "인증사이트의 혜택, 체크포인트, 가입코드, 기본 조건을 비교 정리한 인증 비교 허브.",
+    "keywords": "인증사이트, 가입코드, 혜택, 체크포인트, 안전 체크"
   },
   "/tool-margin/": {
-    "title": "배당 마진 계산기 | 오버라운드·비그 제거 | 88ST",
-    "description": "오버라운드와 북메이커 마진을 빠르게 계산하고 공정확률·공정배당까지 확인하는 배당 마진 계산기.",
-    "keywords": "배당 마진 계산기, 오버라운드 계산기, 비그 제거, 공정배당",
-    "canonical": "https://88st.cloud/tool-margin/"
+    "title": "배당 마진 계산기 | 오버라운드·공정확률 | 88ST",
+    "description": "북메이커 오버라운드와 공정확률, 공정배당을 빠르게 계산하는 마진 계산기.",
+    "keywords": "마진 계산기, 오버라운드, 공정확률"
   },
   "/tool-ev/": {
-    "title": "EV 계산기 | 기대값·손익분기 확률 계산 | 88ST",
-    "description": "배당과 추정 승률을 입력해 기대값(EV), 손익분기 확률, 진입 타당성을 빠르게 계산합니다.",
-    "keywords": "EV 계산기, 기대값 계산, 손익분기 확률, 스포츠 배당",
-    "canonical": "https://88st.cloud/tool-ev/"
+    "title": "EV 계산기 | 기대값·손익분기 확률 | 88ST",
+    "description": "배당과 추정 승률을 기반으로 기대값(EV)과 손익분기 확률을 계산합니다.",
+    "keywords": "EV 계산기, 기대값, 손익분기 확률"
   },
   "/tool-odds/": {
     "title": "배당 확률 변환기 | Odds to Probability | 88ST",
-    "description": "십진 배당과 확률을 상호 변환하고 암시 확률을 빠르게 확인하는 배당 확률 변환기.",
-    "keywords": "배당 확률 변환기, odds probability converter, implied probability",
-    "canonical": "https://88st.cloud/tool-odds/"
+    "description": "십진 배당과 implied probability를 빠르게 변환하는 배당↔확률 변환기.",
+    "keywords": "배당 변환, 확률 변환, implied probability"
   },
   "/tool/kelly/": {
-    "title": "켈리 계산기 | Kelly Criterion·베팅 비중 | 88ST",
-    "description": "추정 승률과 배당을 바탕으로 Full Kelly, Half Kelly, Quarter Kelly 비중을 계산합니다.",
-    "keywords": "Kelly 계산기, Kelly Criterion, 베팅 비중 계산",
-    "canonical": "https://88st.cloud/tool/kelly/"
-  },
-  "/tool/fair-odds/": {
-    "title": "공정배당 계산기 | No-Vig Fair Odds | 88ST",
-    "description": "비그를 제거한 공정확률과 공정배당을 빠르게 확인하는 Fair Odds 계산기.",
-    "keywords": "공정배당 계산기, fair odds, no vig, 공정확률",
-    "canonical": "https://88st.cloud/tool/fair-odds/"
+    "title": "Kelly 비중 계산기 | 베팅 비중·스테이킹 | 88ST",
+    "description": "Full·Half·Quarter Kelly 기준으로 베팅 비중을 계산합니다.",
+    "keywords": "Kelly criterion, Kelly 계산기, 베팅 비중"
   },
   "/guide/": {
-    "title": "배당 분석 가이드 | 공정확률·EV·체크포인트 | 88ST",
-    "description": "공정확률, EV, 켈리, 인증 체크포인트까지 핵심 개념을 정리한 88ST 가이드 허브입니다.",
-    "keywords": "배당 분석 가이드, 공정확률, EV, 켈리, 체크포인트",
-    "canonical": "https://88st.cloud/guide/"
-  },
-  "/guide/seo-tool/": {
-    "title": "키워드 생성 툴 | 88ST.Cloud",
-    "description": "키워드 클러스터·타이틀·메타 설명을 1분 안에 생성하는 무료 키워드 툴. 외부 API 없이 100% 로컬 생성.",
-    "keywords": "키워드 생성, 키워드 클러스터, SEO 제목, 메타 설명, 타이틀 생성기",
-    "canonical": "https://88st.cloud/guide/seo-tool/"
+    "title": "배당 분석 가이드 | 공정확률·EV·체크리스트 | 88ST",
+    "description": "배당 분석, 공정확률, EV, 체크리스트 기초를 빠르게 이해할 수 있는 가이드 모음.",
+    "keywords": "배당 분석 가이드, 공정확률, EV, 체크리스트"
   }
 }
