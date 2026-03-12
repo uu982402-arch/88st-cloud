@@ -12,19 +12,19 @@
   },
   "features": {
     "shareCard": true,
-    "sessionSafety": true,
+    "sessionSafety": false,
     "certCrossPromo": true,
     "guideCourses": true,
     "proSuite": true,
     "presetBar": true,
-    "logbookReport": true,
-    "logbookCategoryChips": true,
+    "logbookReport": false,
+    "logbookCategoryChips": false,
     "homeActionBar": true,
     "homeCertCards": true,
     "homeMirrorHelper": true,
     "homeRecentUsed": true,
-    "homeTodayStatus": true,
-    "homeQuickLog": true
+    "homeTodayStatus": false,
+    "homeQuickLog": false
   },
   "presets": {
     "default": "balanced"
