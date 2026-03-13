@@ -329,8 +329,7 @@
           <a href="/tool-ev/">EV 계산기</a>
           <a href="/tool-odds/">배당↔확률 변환</a>
           <a href="/tool-casino/">바카라 전략 계산기</a>
-          <a href="/logbook/">베팅 로그북</a>
-          <a href="/calc/">계산기 홈</a>
+<a href="/calc/">계산기 홈</a>
         </div>
       </details>
 
@@ -366,8 +365,7 @@
               <a href="/tool-ev/">EV 계산기</a>
               <a href="/tool-odds/">배당↔확률 변환</a>
               <a href="/tool-casino/">바카라 전략 계산기</a>
-              <a href="/logbook/">베팅 로그북</a>
-              <a href="/calc/">계산기 홈</a>
+<a href="/calc/">계산기 홈</a>
             </div>
           </details>
 
@@ -564,8 +562,7 @@
 <div style="font-weight:900;font-size:16px">요약 · 참고</div>
 </div>
 <div class="pro-inline" style="gap:10px;justify-content:flex-end">
-  <button class="pro-btn secondary" id="btnSaveToLogbook" type="button">로그북 저장</button>
-  <button class="pro-btn ghost" id="btnCopySummary" type="button">요약 복사</button>
+    <button class="pro-btn ghost" id="btnCopySummary" type="button">요약 복사</button>
 </div>
 </div>
 <div class="pro-miniout" id="summaryOut" style="margin-top:10px"></div>
@@ -573,91 +570,6 @@
         ※ 가상/스포츠 공통: 정배가 높아도 역배는 충분히 나옵니다. 확률은 “장기 빈도”이고, 단기에는 변동성이 큽니다.
       </div>
 
-<!-- Logbook Summary (local) -->
-<details class="pro-opts" id="lbSummary" style="margin-top:12px">
-  <summary>
-    <div class="sum-left">📒 로그북 요약</div>
-    <div class="sum-badge">접기/펼치기</div>
-  </summary>
-  <div class="pro-opts-body">
-    <div class="pro-inline" style="justify-content:space-between;align-items:center">
-      <div class="pro-inline" style="gap:8px;align-items:center">
-        <span class="pro-badge" id="lbBadge">이번주 —</span>
-        <span class="pro-note" style="margin:0">/logbook/ 기록 기반 (로컬 저장)</span>
-      </div>
-      <div class="pro-inline">
-        <button class="pro-btn secondary" id="btnLbRefresh" type="button">새로고침</button>
-        <button class="pro-btn primary" id="btnOpenLogbook" type="button">로그북 열기</button>
-      </div>
-    </div>
-
-    <div class="pro-divider"></div>
-
-    <div class="pro-kv">
-      <div class="pro-kvi"><div class="k">주간 ROI</div><div class="v" id="lbWroi">—</div><div class="s" id="lbWnote">—</div></div>
-      <div class="pro-kvi"><div class="k">월간 ROI</div><div class="v" id="lbMroi">—</div><div class="s" id="lbMnote">—</div></div>
-      <div class="pro-kvi"><div class="k">전체 기록</div><div class="v" id="lbCnt">—</div><div class="s">누적 기준</div></div>
-    </div>
-
-    <div class="pro-divider"></div>
-
-    <div class="pro-inline" style="justify-content:space-between;align-items:center">
-      <div>
-        <div class="pro-kicker" style="margin-bottom:6px">RECENT 5</div>
-        <div style="font-weight:900;font-size:16px">최근 기록</div>
-      </div>
-      <div class="pro-inline" style="gap:10px">
-        <div class="pro-kicker" style="margin:0">MDD</div>
-        <div style="font-weight:900;font-variant-numeric:tabular-nums" id="lbMdd">—</div>
-      </div>
-    </div>
-    <div class="pro-scanlist" id="lbRecent" style="margin-top:10px"></div>
-
-    <div class="pro-note" style="margin-top:10px">TIP) 로그북은 서버로 전송하지 않습니다. 기기 변경 전에는 /logbook/에서 JSON 백업을 권장합니다.</div>
-  </div>
-</details>
-
-<!-- Quick save to Logbook modal -->
-<div class="lb-modal" id="lbSaveModal" aria-hidden="true">
-  <div class="lb-backdrop" data-close="1"></div>
-  <div class="lb-panel" role="dialog" aria-modal="true" aria-label="로그북 저장">
-    <div class="lb-head">
-      <div class="t">📒 로그북 저장</div>
-      <button class="pro-btn ghost" type="button" data-close="1">닫기</button>
-    </div>
-    <div class="lb-body">
-      <div class="pro-note">현재 입력값에서 <b>선택(칩)</b>만 고르면 됩니다. (금액이 있으면 칩 클릭으로 즉시 저장)</div>
-      <div class="lb-chips" id="lbPick"></div>
-      <div class="lb-row">
-        <div class="pro-field">
-          <label for="lbStake">금액(원)</label>
-          <input id="lbStake" inputmode="numeric" placeholder="예: 50,000" />
-        </div>
-        <div class="pro-field">
-          <label for="lbRes">결과</label>
-          <select id="lbRes">
-            <option value="V" selected>미정(VOID)</option>
-            <option value="W">WIN</option>
-            <option value="L">LOSE</option>
-          </select>
-        </div>
-      </div>
-      <div class="pro-field" style="margin-top:10px">
-        <label for="lbNote">메모(선택)</label>
-        <input id="lbNote" placeholder="예: 라인 무브 체크 / 공정대비 유리" />
-      </div>
-      <div class="pro-actions" style="margin-top:10px">
-        <button class="pro-btn primary" id="lbSaveBtn" type="button">저장</button>
-        <button class="pro-btn ghost" type="button" data-close="1">취소</button>
-      </div>
-      <div class="pro-note" id="lbPreview" style="margin-top:8px;opacity:.85"></div>
-    </div>
-  </div>
-</div>
-<div id="lbToast" role="status" aria-live="polite"></div>
-
-</section>
-</div>
 <section class="pro-card" id="proScan" style="margin-top:14px;display:none">
 <div class="pro-inline" style="justify-content:space-between">
 <div>
@@ -675,7 +587,6 @@
 
 <script src="../assets/js/inline-bundles/b.e942e1c830.js?v=v20260225-1900"></script>
 <script defer="" src="/assets/js/inline-bundles/b.analysis.pro.v52.20260216.js"></script>
-<script defer="" src="/assets/js/inline-bundles/b.analysis.logbook.bridge.v2.20260221.js"></script>
 <script defer="" src="/assets/js/ai.brief.v68.js"></script>
 </body>
 </html>
