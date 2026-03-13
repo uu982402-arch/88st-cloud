@@ -3,7 +3,7 @@
   "brand": {
     "name": "88ST.Cloud",
     "mark": "88",
-    "themeColor": "#0B1220"
+    "themeColor": "#0b0c10"
   },
   "links": {
     "home": "/",
@@ -12,19 +12,19 @@
   },
   "features": {
     "shareCard": true,
-    "sessionSafety": false,
+    "sessionSafety": true,
     "certCrossPromo": true,
     "guideCourses": true,
     "proSuite": true,
     "presetBar": true,
-    "logbookReport": false,
-    "logbookCategoryChips": false,
+    "logbookReport": true,
+    "logbookCategoryChips": true,
     "homeActionBar": true,
     "homeCertCards": true,
     "homeMirrorHelper": true,
     "homeRecentUsed": true,
-    "homeTodayStatus": false,
-    "homeQuickLog": false
+    "homeTodayStatus": true,
+    "homeQuickLog": true
   },
   "presets": {
     "default": "balanced"

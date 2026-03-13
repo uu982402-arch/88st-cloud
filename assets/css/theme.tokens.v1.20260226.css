@@ -1,96 +1,101 @@
 /* theme.tokens.v1.20260226.css
- * Unified premium color tokens for 88ST refresh
+ * Cross-page design tokens for 88ST.Cloud
+ * - Many legacy pages use CSS vars like --text/--muted/--panel/--bd/--gold.
+ * - New luxe shell uses --vvip-* tokens.
+ * This file bridges both to prevent "글씨색상/모달/버튼" regressions.
  */
 
 :root{
-  color-scheme: light;
-  --vvip-bg:#f5f2ea;
-  --vvip-surface:#fffdfa;
-  --vvip-surface-2:#f3ede3;
-  --vvip-text:#0f172a;
-  --vvip-muted:rgba(57,67,86,.78);
-  --vvip-accent:#10233f;
-  --vvip-accent-2:#d8b36a;
-  --vvip-ok:#0f7a4f;
-  --vvip-danger:#b3261e;
-  --vvip-warn:#9a6700;
+  /* Core text tokens */
+  --text: var(--vvip-text, rgba(15,23,42,.92));
+  --text-2: rgba(15,23,42,.82);
+  --muted: var(--vvip-muted, rgba(91,100,114,.78));
+  --muted-2: rgba(91,100,114,.62);
 
-  --text:var(--vvip-text);
-  --text-2:rgba(15,23,42,.86);
-  --muted:var(--vvip-muted);
-  --muted-2:rgba(70,80,98,.62);
+  /* Surfaces */
+  --bg: var(--vvip-bg, #ffffff);
+  --panel: rgba(245,246,248,.92);
+  --panel-2: rgba(238,242,247,.90);
+  --panel-border: rgba(15,23,42,.10);
+  --bd: var(--panel-border);
 
-  --bg:radial-gradient(1200px 640px at 8% 0%, rgba(216,179,106,.14), transparent 58%), radial-gradient(980px 580px at 100% 0%, rgba(16,35,63,.08), transparent 62%), #f5f2ea;
-  --bg-solid:#f5f2ea;
-  --panel:rgba(255,252,247,.94);
-  --panel-2:rgba(245,237,227,.90);
-  --panel-border:rgba(16,35,63,.10);
-  --panel-border-2:rgba(16,35,63,.16);
-  --bd:var(--panel-border);
-  --card:rgba(255,251,245,.82);
-  --line:rgba(16,35,63,.10);
+  /* Accent (deep blue) */
+  --accent-rgb: 30,58,138;
+  --accentRGB: var(--accent-rgb);
+  --gold: var(--vvip-accent, #1E3A8A);
+  --gold2: var(--vvip-accent-2, #60A5FA);
+  --blue-rgb: 96,165,250;
 
-  --accent-rgb:16,35,63;
-  --accentRGB:var(--accent-rgb);
-  --gold:#10233f;
-  --gold2:#d8b36a;
-  --blue-rgb:42,103,198;
+  /* States */
+  --ok: var(--vvip-ok, #166534);
+  --bad: var(--vvip-danger, #B91C1C);
+  --warn: var(--vvip-warn, #B45309);
 
-  --ok:var(--vvip-ok);
-  --bad:var(--vvip-danger);
-  --warn:var(--vvip-warn);
-
-  --shadow-xs:0 8px 18px rgba(16,35,63,.05);
-  --shadow-sm:0 16px 34px rgba(16,35,63,.07);
-  --shadow-md:0 22px 48px rgba(16,35,63,.10);
-  --shadow-lg:0 28px 74px rgba(16,35,63,.16);
+  /* Shadows */
+  --shadow-xs: 0 6px 16px rgba(15,23,42,.06);
+  --shadow-sm: 0 10px 28px rgba(15,23,42,.07);
+  --shadow-md: 0 14px 40px rgba(15,23,42,.08);
+  --shadow-lg: 0 18px 56px rgba(15,23,42,.12);
 }
 
 html[data-theme="light"], html[data-theme="light"] body{
   background: var(--bg) !important;
-  background-color: var(--bg-solid) !important;
   color: var(--text) !important;
 }
 
 html[data-theme="dark"]{
-  color-scheme: dark;
-  --text:rgba(240,243,248,.94);
-  --text-2:rgba(236,239,245,.86);
-  --muted:rgba(177,186,204,.78);
-  --muted-2:rgba(177,186,204,.60);
+  --text: rgba(231,233,238,.92);
+  --text-2: rgba(231,233,238,.82);
+  --muted: rgba(167,176,192,.78);
+  --muted-2: rgba(167,176,192,.62);
 
-  --bg:radial-gradient(1100px 560px at 8% 0%, rgba(216,179,106,.12), transparent 52%), radial-gradient(960px 620px at 100% 0%, rgba(52,90,158,.20), transparent 60%), #070b13;
-  --bg-solid:#070b13;
-  --panel:rgba(15,21,34,.90);
-  --panel-2:rgba(11,16,27,.94);
-  --panel-border:rgba(216,179,106,.14);
-  --panel-border-2:rgba(216,179,106,.22);
-  --bd:var(--panel-border);
-  --card:rgba(12,18,30,.88);
-  --line:rgba(216,179,106,.14);
+  --bg: #05060b;
+  --panel: rgba(255,255,255,.06);
+  --panel-2: rgba(255,255,255,.04);
+  --panel-border: rgba(255,255,255,.12);
+  --bd: var(--panel-border);
 
-  --accent-rgb:216,179,106;
-  --accentRGB:var(--accent-rgb);
-  --gold:#d8b36a;
-  --gold2:#f2d59b;
-  --blue-rgb:112,157,255;
-
-  --shadow-xs:0 10px 26px rgba(0,0,0,.28);
-  --shadow-sm:0 16px 38px rgba(0,0,0,.34);
-  --shadow-md:0 22px 52px rgba(0,0,0,.40);
-  --shadow-lg:0 30px 78px rgba(0,0,0,.52);
+  --shadow-xs: 0 10px 26px rgba(0,0,0,.28);
+  --shadow-sm: 0 14px 34px rgba(0,0,0,.32);
+  --shadow-md: 0 18px 44px rgba(0,0,0,.36);
+  --shadow-lg: 0 24px 64px rgba(0,0,0,.45);
 }
 
-body{ background: var(--bg) !important; background-color: var(--bg-solid) !important; }
-
+/* --- Scam popup (사칭 주의) : click-safe + luxe tone --- */
 .scam-popup{pointer-events:auto;}
 .scam-popup .scam-box{pointer-events:auto;}
 .scam-popup .scam-box .btn{pointer-events:auto;}
-html[data-theme="light"] .scam-popup{ background: rgba(15,23,42,.56) !important; }
-html[data-theme="light"] .scam-box{ background: rgba(255,252,247,.98) !important; border:1px solid rgba(16,35,63,.10) !important; box-shadow: var(--shadow-lg) !important; }
-html[data-theme="light"] .scam-box .scam-msg, html[data-theme="light"] .scam-box p{ color:var(--text-2) !important; }
-html[data-theme="light"] .scam-box .btn{ display:flex; align-items:center; justify-content:center; min-height:44px; background: linear-gradient(135deg, rgba(16,35,63,1), rgba(31,53,87,.96)) !important; color:#fff !important; border:1px solid rgba(16,35,63,.42) !important; box-shadow:0 14px 28px rgba(16,35,63,.16) !important; }
 
-.page-casino-strategy-index .grid{ grid-template-columns: repeat(3, minmax(0, 1fr)); }
-@media (max-width: 980px){ .page-casino-strategy-index .grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 620px){ .page-casino-strategy-index .grid{ grid-template-columns: 1fr; } }
+html[data-theme="light"] .scam-popup{
+  background: rgba(15,23,42,.55) !important;
+}
+html[data-theme="light"] .scam-box{
+  background: rgba(255,255,255,.96) !important;
+  border: 1px solid rgba(15,23,42,.12) !important;
+  box-shadow: var(--shadow-lg) !important;
+}
+html[data-theme="light"] .scam-box .scam-msg,
+html[data-theme="light"] .scam-box p{
+  color: var(--text-2) !important;
+}
+html[data-theme="light"] .scam-box .btn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:44px;
+  background: linear-gradient(180deg, rgba(var(--accent-rgb),.96), rgba(var(--accent-rgb),.86)) !important;
+  color: #fff !important;
+  border: 1px solid rgba(var(--accent-rgb),.45) !important;
+  box-shadow: 0 12px 26px rgba(var(--accent-rgb),.18) !important;
+}
+
+/* --- Casino-strategy index grid fix (cards list) --- */
+.page-casino-strategy-index .grid{
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+@media (max-width: 980px){
+  .page-casino-strategy-index .grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 620px){
+  .page-casino-strategy-index .grid{ grid-template-columns: 1fr; }
+}
