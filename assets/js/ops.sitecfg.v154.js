@@ -28,15 +28,10 @@
         telegram: String(($('siteTelegram') && $('siteTelegram').value) || 'https://t.me/UZU59').trim()
       },
       features: {
-        shareCard: !!($('siteShareCard') && $('siteShareCard').checked),
-        sessionSafety: !!($('siteSessionSafety') && $('siteSessionSafety').checked),
-        certCrossPromo: !!($('siteCertPromo') && $('siteCertPromo').checked),
+        shareCard: !!($('siteShareCard') && $('siteShareCard').checked),        certCrossPromo: !!($('siteCertPromo') && $('siteCertPromo').checked),
         guideCourses: !!($('siteGuideCourses') && $('siteGuideCourses').checked),
         proSuite: !!($('siteProSuite') && $('siteProSuite').checked),
-        presetBar: !!($('sitePresetBar') && $('sitePresetBar').checked),
-        logbookReport: !!($('siteLogbookReport') && $('siteLogbookReport').checked),
-        logbookCategoryChips: !!($('siteLogbookCategory') && $('siteLogbookCategory').checked),
-        homeActionBar: !!($('siteHomeActionBar') && $('siteHomeActionBar').checked),
+        presetBar: !!($('sitePresetBar') && $('sitePresetBar').checked),        homeActionBar: !!($('siteHomeActionBar') && $('siteHomeActionBar').checked),
         homeCertCards: !!($('siteHomeCertCards') && $('siteHomeCertCards').checked),
         homeMirrorHelper: !!($('siteHomeMirrorHelper') && $('siteHomeMirrorHelper').checked),
         homeRecentUsed: !!($('siteHomeRecentUsed') && $('siteHomeRecentUsed').checked),
@@ -88,15 +83,10 @@
   function applyToForm(j){
     try{
       if($('siteTelegram')) $('siteTelegram').value = (j.links && j.links.telegram) ? j.links.telegram : 'https://t.me/UZU59';
-      if($('siteShareCard')) $('siteShareCard').checked = !!(j.features && j.features.shareCard);
-      if($('siteSessionSafety')) $('siteSessionSafety').checked = !!(j.features && j.features.sessionSafety);
-      if($('siteCertPromo')) $('siteCertPromo').checked = !!(j.features && j.features.certCrossPromo);
+      if($('siteShareCard')) $('siteShareCard').checked = !!(j.features && j.features.shareCard);      if($('siteCertPromo')) $('siteCertPromo').checked = !!(j.features && j.features.certCrossPromo);
       if($('siteGuideCourses')) $('siteGuideCourses').checked = !!(j.features && j.features.guideCourses);
       if($('siteProSuite')) $('siteProSuite').checked = !!(j.features && j.features.proSuite);
-      if($('sitePresetBar')) $('sitePresetBar').checked = !!(j.features && j.features.presetBar);
-      if($('siteLogbookReport')) $('siteLogbookReport').checked = !!(j.features && j.features.logbookReport);
-      if($('siteLogbookCategory')) $('siteLogbookCategory').checked = !!(j.features && j.features.logbookCategoryChips);
-      if($('siteHomeActionBar')) $('siteHomeActionBar').checked = !!(j.features && j.features.homeActionBar);
+      if($('sitePresetBar')) $('sitePresetBar').checked = !!(j.features && j.features.presetBar);      if($('siteHomeActionBar')) $('siteHomeActionBar').checked = !!(j.features && j.features.homeActionBar);
       if($('siteHomeCertCards')) $('siteHomeCertCards').checked = !!(j.features && j.features.homeCertCards);
       if($('siteHomeMirrorHelper')) $('siteHomeMirrorHelper').checked = !!(j.features && j.features.homeMirrorHelper);
       if($('siteHomeRecentUsed')) $('siteHomeRecentUsed').checked = !!(j.features && j.features.homeRecentUsed);
