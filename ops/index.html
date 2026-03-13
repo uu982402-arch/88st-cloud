@@ -314,7 +314,7 @@
       <section class="opsCard opsSection" style="margin-top:14px;">
         <h2>사이트 런타임 설정(배포)</h2>
         <div class="hint">
-          <code>/assets/config/site.runtime.json</code> 하나로 <b>전페이지 공통 기능(공유 카드/세이프티 락/인증 추천/가이드 루트)</b>을 관리합니다.
+          <code>/assets/config/site.runtime.json</code> 하나로 <b>전페이지 공통 기능(공유 카드/인증 추천/가이드 루트)</b>을 관리합니다.
           <br/>· <b>배포 적용</b>: 아래에서 JSON 생성 → <code>site.runtime.json</code> 파일로 저장해 교체
           <br/>· <b>로컬 테스트</b>: “로컬 오버라이드 적용”을 누르면 이 브라우저에서만 즉시 반영
         </div>
@@ -346,13 +346,13 @@
               <td>
                 <div class="opsFlex" style="margin-top:0;">
                   <label class="opsToggle"><input id="siteShareCard" type="checkbox" checked/><span>공유 카드(이미지)</span></label>
-                  <label class="opsToggle"><input id="siteSessionSafety" type="checkbox" checked/><span>세이프티 락</span></label>
+                  
                   <label class="opsToggle"><input id="siteCertPromo" type="checkbox" checked/><span>인증 추천 카드</span></label>
                   <label class="opsToggle"><input id="siteGuideCourses" type="checkbox" checked/><span>추천 루트</span></label>
                   <label class="opsToggle"><input id="siteProSuite" type="checkbox" checked/><span>PRO SUITE</span></label>
                   <label class="opsToggle"><input id="sitePresetBar" type="checkbox" checked/><span>추천 설정(프리셋)</span></label>
-                  <label class="opsToggle"><input id="siteLogbookReport" type="checkbox" checked/><span>로그북 성과 분해</span></label>
-                  <label class="opsToggle"><input id="siteLogbookCategory" type="checkbox" checked/><span>로그북 카테고리 칩</span></label>
+                  
+                  
                   <label class="opsToggle"><input id="siteHomeActionBar" type="checkbox" checked/><span>홈 액션바</span></label>
                   <label class="opsToggle"><input id="siteHomeCertCards" type="checkbox" checked/><span>홈 인증카드 고급화</span></label>
                   <label class="opsToggle"><input id="siteHomeMirrorHelper" type="checkbox" checked/><span>홈 접속이슈 안내</span></label>
@@ -593,7 +593,6 @@
         {name:'슬롯', path:'/slot/'},
         {name:'가이드', path:'/guide/'},
         {name:'계산기 허브', path:'/calc/'},
-        {name:'기록', path:'/logbook/'},
         {name:'운세 브리핑', path:'/fortune/'},
         {name:'랜딩 A', path:'/landing-a/'},
         {name:'랜딩 B', path:'/landing-b/'},
