@@ -887,32 +887,30 @@ async function handleSportsNews(request, env, ctx) {
   const limit = Math.max(4, Math.min(12, Number(url.searchParams.get('limit') || 8)));
   const cache = caches.default;
   const cacheKey = new Request(url.origin + `/api/news?limit=${limit}`);
-  if (!refresh) {
-    const cached = await cache.match(cacheKey);
-    if (cached) return cached;
-  }
+  const stale = await cache.match(cacheKey);
+  if (!refresh && stale) return stale;
 
-  const feeds = [
+  const generatedAt = new Date().toISOString();
+  const primaryFeeds = [
     { source: 'ESPN', category: '일반', url: 'https://www.espn.com/espn/rss/news' },
     { source: 'ESPN', category: '축구', url: 'https://www.espn.com/espn/rss/soccer/news' },
     { source: 'ESPN', category: '농구', url: 'https://www.espn.com/espn/rss/nba/news' },
     { source: 'ESPN', category: '야구', url: 'https://www.espn.com/espn/rss/mlb/news' }
   ];
 
-  const settled = await Promise.allSettled(feeds.map((feed) => fetch(feed.url, {
-    headers: {
-      'user-agent': '88ST-NewsFetcher/1.0 (+https://88st.cloud/)'
-    }
-  }).then(async (res) => {
-    if (!res.ok) throw new Error(`feed_${res.status}`);
-    const xml = await res.text();
-    return parseSportsRss(xml, feed).slice(0, 3);
-  })));
+  const [primaryItems, backupItems] = await Promise.all([
+    fetchEspnFeedItems(primaryFeeds),
+    fetchBackupNewsItems()
+  ]);
 
-  let items = settled.flatMap((entry) => entry.status === 'fulfilled' ? entry.value : []);
-  items = items
-    .filter((item) => item && item.title && item.link)
+  let items = dedupeNewsItems([...primaryItems, ...backupItems])
     .sort((a, b) => (Date.parse(b.publishedAt || 0) || 0) - (Date.parse(a.publishedAt || 0) || 0));
+
+  if (!items.length && stale) {
+    const headers = new Headers(stale.headers);
+    headers.set('x-88st-news-fallback', 'stale-cache');
+    return new Response(stale.body, { status: 200, headers });
+  }
 
   if (!items.length) {
     items = [
@@ -922,7 +920,7 @@ async function handleSportsNews(request, env, ctx) {
         title: '실시간 뉴스 피드 연결이 잠시 지연되고 있습니다',
         link: 'https://88st.cloud/analysis/',
         summary: '잠시 후 다시 시도하거나 스포츠 분석기와 텔레그램 스포츠 봇 허브로 바로 이동해 주세요.',
-        publishedAt: new Date().toISOString()
+        publishedAt: generatedAt
       },
       {
         source: '88ST',
@@ -930,15 +928,16 @@ async function handleSportsNews(request, env, ctx) {
         title: '웹 스포츠 분석기로 바로 이동',
         link: 'https://88st.cloud/analysis/',
         summary: '현재 메인 허브에서는 뉴스 확인 뒤 곧바로 분석기로 이동하는 흐름을 우선 제공합니다.',
-        publishedAt: new Date().toISOString()
+        publishedAt: generatedAt
       }
     ];
   }
 
+  const usedSources = Array.from(new Set(items.map((item) => item.source).filter(Boolean)));
   const body = JSON.stringify({
     ok: true,
-    generatedAt: new Date().toISOString(),
-    source: 'ESPN RSS',
+    generatedAt,
+    sources: usedSources,
     items: items.slice(0, limit)
   });
 
@@ -946,7 +945,8 @@ async function handleSportsNews(request, env, ctx) {
     status: 200,
     headers: {
       'content-type': 'application/json; charset=utf-8',
-      'cache-control': 'public, max-age=0, s-maxage=900',
+      'cache-control': 'public, max-age=0, s-maxage=900, stale-while-revalidate=3600',
+      'x-88st-news-fallback': backupItems.length ? 'backup-enabled' : 'primary-only',
       ...corsHeaders(request)
     }
   });
@@ -955,29 +955,131 @@ async function handleSportsNews(request, env, ctx) {
   return response;
 }
 
+async function fetchEspnFeedItems(feeds) {
+  const settled = await Promise.allSettled(feeds.map((feed) => fetch(feed.url, {
+    headers: {
+      'user-agent': '88ST-NewsFetcher/1.1 (+https://88st.cloud/)',
+      'accept': 'application/rss+xml, application/xml;q=0.9, text/xml;q=0.8, */*;q=0.1'
+    }
+  }).then(async (res) => {
+    if (!res.ok) throw new Error(`feed_${res.status}`);
+    const xml = await res.text();
+    return parseSportsRss(xml, feed).slice(0, 3);
+  })));
+
+  return settled.flatMap((entry) => entry.status === 'fulfilled' ? entry.value : []);
+}
+
+async function fetchBackupNewsItems() {
+  const backups = [
+    fetchReutersSportsItems(),
+    fetchGoogleNewsSportsItems('해외 스포츠', '일반'),
+    fetchGoogleNewsSportsItems('soccer OR football', '축구'),
+    fetchGoogleNewsSportsItems('NBA basketball', '농구'),
+    fetchGoogleNewsSportsItems('MLB baseball', '야구')
+  ];
+  const settled = await Promise.allSettled(backups);
+  return settled.flatMap((entry) => entry.status === 'fulfilled' ? entry.value : []);
+}
+
+async function fetchReutersSportsItems() {
+  const res = await fetch('https://www.reuters.com/sports/', {
+    headers: {
+      'user-agent': '88ST-NewsFetcher/1.1 (+https://88st.cloud/)',
+      'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    }
+  });
+  if (!res.ok) throw new Error(`reuters_${res.status}`);
+  const html = await res.text();
+  return parseReutersSportsHtml(html).slice(0, 4);
+}
+
+async function fetchGoogleNewsSportsItems(query, category) {
+  const feedUrl = 'https://news.google.com/rss/search?q=' + encodeURIComponent(query) + '&hl=en-US&gl=US&ceid=US:en';
+  const res = await fetch(feedUrl, {
+    headers: {
+      'user-agent': '88ST-NewsFetcher/1.1 (+https://88st.cloud/)',
+      'accept': 'application/rss+xml, application/xml;q=0.9, text/xml;q=0.8, */*;q=0.1'
+    }
+  });
+  if (!res.ok) throw new Error(`google_news_${res.status}`);
+  const xml = await res.text();
+  return parseSportsRss(xml, { source: 'Google News', category }).slice(0, 2);
+}
+
 function parseSportsRss(xml, feed) {
   const items = [];
-  const blocks = xml.match(/<item\b[\s\S]*?<\/item>/gi) || [];
+  const blocks = xml.match(/<item[\s\S]*?<\/item>/gi) || [];
   for (const block of blocks) {
     const title = extractXmlTag(block, 'title');
     const link = extractXmlTag(block, 'link');
     const description = extractXmlTag(block, 'description');
     const pubDate = extractXmlTag(block, 'pubDate');
     if (!title || !link) continue;
+    const cleanTitle = decodeXml(title).replace(/\s+-\s+Reuters$/i, '').trim();
+    const cleanLink = decodeXml(link).trim();
+    if (!cleanTitle || !cleanLink) continue;
     items.push({
       source: feed.source,
       category: feed.category,
-      title: decodeXml(title),
-      link: decodeXml(link).trim(),
+      title: cleanTitle,
+      link: cleanLink,
       summary: summarizeText(decodeXml(description)),
-      publishedAt: pubDate ? new Date(pubDate).toISOString() : new Date().toISOString()
+      publishedAt: safeIsoDate(pubDate)
     });
   }
   return items;
 }
 
+function parseReutersSportsHtml(html) {
+  const items = [];
+  const seen = new Set();
+  const re = /<a[^>]+href="(\/sports\/[^"#?]+)"[^>]*>([\s\S]*?)<\/a>/gi;
+  let match;
+  while ((match = re.exec(html)) && items.length < 8) {
+    const href = match[1];
+    const rawText = decodeXml(match[2]);
+    const title = rawText.replace(/\s+/g, ' ').trim();
+    if (!href || !title || title.length < 18) continue;
+    const link = href.startsWith('http') ? href : 'https://www.reuters.com' + href;
+    const dedupeKey = (title + '|' + link).toLowerCase();
+    if (seen.has(dedupeKey)) continue;
+    seen.add(dedupeKey);
+    items.push({
+      source: 'Reuters',
+      category: inferCategory(title, href),
+      title,
+      link,
+      summary: 'Reuters Sports 최신 기사에서 확인한 백업 뉴스 카드입니다. 원문 링크에서 자세한 내용을 확인할 수 있습니다.',
+      publishedAt: new Date().toISOString()
+    });
+  }
+  return items;
+}
+
+function inferCategory(title = '', href = '') {
+  const hay = `${title} ${href}`.toLowerCase();
+  if (/(soccer|football|premier league|champions league|uefa|fifa)/.test(hay)) return '축구';
+  if (/(nba|basketball|ncaab|wnba)/.test(hay)) return '농구';
+  if (/(mlb|baseball)/.test(hay)) return '야구';
+  return '일반';
+}
+
+function dedupeNewsItems(items) {
+  const seen = new Set();
+  const result = [];
+  for (const item of items) {
+    if (!item || !item.title || !item.link) continue;
+    const key = `${String(item.title).trim().toLowerCase()}|${String(item.link).trim().toLowerCase()}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    result.push(item);
+  }
+  return result;
+}
+
 function extractXmlTag(block, tag) {
-  const re = new RegExp(`<${tag}\\b[^>]*>([\\s\\S]*?)<\\/${tag}>`, 'i');
+  const re = new RegExp(`<${tag}\b[^>]*>([\s\S]*?)<\/${tag}>`, 'i');
   const match = block.match(re);
   if (!match) return '';
   return match[1].replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, '$1').trim();
@@ -1004,3 +1106,7 @@ function summarizeText(value = '') {
   return clean.length > 160 ? clean.slice(0, 157).trimEnd() + '…' : clean;
 }
 
+function safeIsoDate(value) {
+  const ts = Date.parse(value || '');
+  return Number.isFinite(ts) ? new Date(ts).toISOString() : new Date().toISOString();
+}
