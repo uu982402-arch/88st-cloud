@@ -100,6 +100,26 @@ button{font:inherit}
 .promo-card{position:relative;min-height:340px;border-radius:var(--radius-xl);overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow);background:#0d1d33}
 .promo-card img{width:100%;height:100%;object-fit:cover;filter:saturate(1.06) contrast(1.04)}
 .promo-overlay{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:end;padding:28px;background:linear-gradient(180deg,rgba(3,8,16,.02),rgba(3,8,16,.84) 58%,rgba(3,8,16,.92) 100%)}
+.promo-site{cursor:pointer}
+.promo-site:focus-visible{outline:2px solid rgba(134,208,255,.72);outline-offset:4px}
+.promo-meta{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 18px}
+.promo-meta span{display:inline-flex;align-items:center;padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);font-size:.86rem;font-weight:700;color:#e8f4ff}
+.promo-open-btn{width:fit-content}
+.promo-modal{position:fixed;inset:0;z-index:160;display:none}
+.promo-modal.is-open{display:block}
+body.modal-open{overflow:hidden}
+.promo-modal__backdrop{position:absolute;inset:0;background:rgba(2,7,15,.74);backdrop-filter:blur(10px)}
+.promo-modal__dialog{position:relative;z-index:1;width:min(540px,calc(100vw - 24px));margin:min(10vh,72px) auto 0;padding:28px;border-radius:28px;border:1px solid rgba(255,255,255,.12);background:linear-gradient(180deg,#0d1d33,#091524);box-shadow:0 28px 80px rgba(0,0,0,.42)}
+.promo-modal__close{position:absolute;top:14px;right:14px;width:42px;height:42px;border:0;border-radius:999px;background:rgba(255,255,255,.08);color:#fff;cursor:pointer}
+.promo-modal__eyebrow{margin:0 0 10px;color:#b8ddff;font-size:.78rem;font-weight:900;letter-spacing:.12em}
+.promo-modal__dialog h2{margin:0 0 8px;font-size:1.85rem;line-height:1.14}
+.promo-modal__desc,.promo-modal__notice{margin:0;color:rgba(255,255,255,.76)}
+.promo-modal__codebox{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:20px 0 14px;padding:16px 18px;border-radius:18px;background:rgba(255,255,255,.05);border:1px solid rgba(134,208,255,.18)}
+.promo-modal__codebox span{font-size:.92rem;color:#cde7ff}
+.promo-modal__codebox strong{font-size:1.35rem;letter-spacing:.06em}
+.promo-modal__benefit{margin-bottom:10px;padding:14px 16px;border-radius:18px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:#e7f4ff}
+.promo-modal__actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
+.promo-modal__actions .btn{flex:1 1 180px}
 .notice-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
 .notice-card{display:flex;flex-direction:column;gap:16px}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 18px;border-radius:15px;font-weight:800;line-height:1;border:1px solid transparent;transition:transform .16s ease, box-shadow .16s ease, background .16s ease}
@@ -136,4 +156,5 @@ button{font:inherit}
   .news-grid{grid-template-columns:1fr}
   .card-glass,.card-solid,.news-card{padding:20px}
   .promo-card{min-height:300px}
+  .promo-modal__dialog{padding:22px;border-radius:22px}
 }
