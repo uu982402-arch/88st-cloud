@@ -15,7 +15,10 @@
   --radius-lg:22px;
   --radius-md:16px;
   --container:min(1180px, calc(100vw - 32px));
+  --headline-1:2.9em;
+  --headline-2:3.0em;
 }
+
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;font-family:Inter,"Noto Sans KR",system-ui,-apple-system,sans-serif;background:
@@ -30,6 +33,24 @@ button{font:inherit}
 .skip-link:focus{left:12px;top:12px;width:auto;height:auto;padding:10px 14px;border-radius:12px;background:#fff;color:#111;z-index:200}
 .container{width:var(--container);margin:0 auto}
 .section{padding:72px 0}
+
+.h-balance{
+  text-wrap:balance;
+}
+.card-headline-1,
+.card-headline-2,
+.news-card h3,
+.focus-list b,
+.service-card h3,
+.mini-card h3,
+.notice-card h3,
+.promo-overlay h3{
+  display:-webkit-box;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+  text-wrap:balance;
+}
+
 .site-header{position:sticky;top:0;z-index:80;backdrop-filter:blur(18px);background:rgba(6,17,29,.72);border-bottom:1px solid var(--line)}
 .header-inner{display:flex;align-items:center;justify-content:space-between;gap:18px;min-height:76px}
 .brand{display:flex;align-items:center;gap:14px;min-width:0}
@@ -60,7 +81,7 @@ button{font:inherit}
 .panel-head strong{font-size:1.28rem}
 .focus-list{list-style:none;padding:0;margin:0;display:grid;gap:15px}
 .focus-list li{padding:16px;border-radius:18px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08)}
-.focus-list b{display:block;margin-bottom:6px;font-size:1rem}
+.focus-list b{display:-webkit-box;margin-bottom:6px;font-size:1rem;line-height:1.35;-webkit-line-clamp:2;min-height:calc(1.35em * 2)}
 .focus-list span{display:block;color:var(--soft);font-size:.95rem;line-height:1.55}
 .focus-tags,.community-tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
 .focus-tags span,.community-tags span{padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);color:#dceeff;font-size:.9rem}
@@ -82,12 +103,12 @@ button{font:inherit}
 @keyframes shine{0%{background-position:200% 0}100%{background-position:-40% 0}}
 .news-meta{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:.84rem;color:rgba(255,255,255,.68)}
 .news-badge{display:inline-flex;align-items:center;padding:7px 10px;border-radius:999px;background:rgba(90,176,255,.15);border:1px solid rgba(134,208,255,.22);font-weight:700;color:#dff1ff}
-.news-card h3{margin:0;font-size:1.08rem;line-height:1.35}
+.news-card h3{margin:0;font-size:1.08rem;line-height:1.35;-webkit-line-clamp:2;min-height:calc(1.35em * 2)}
 .news-card p{margin:0;color:var(--soft);font-size:.95rem;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .text-link{display:inline-flex;align-items:center;gap:8px;font-weight:700;color:#dcecff}
 .text-link::after{content:'→'}
 .service-grid,.notice-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
-.service-card h3,.promo-overlay h3,.notice-card h3,.mini-card h3{margin:12px 0 10px;font-size:1.45rem;line-height:1.2}
+.service-card h3,.promo-overlay h3,.notice-card h3,.mini-card h3{margin:12px 0 10px;font-size:1.45rem;line-height:1.2;-webkit-line-clamp:2;min-height:calc(1.2em * 2)}
 .service-card p,.notice-card p,.mini-card p{margin:0;color:var(--soft)}
 .service-card ul{list-style:none;padding:0;margin:18px 0 22px;display:grid;gap:10px}
 .service-card li{position:relative;padding-left:16px;color:#e9f4ff}
@@ -157,4 +178,62 @@ body.modal-open{overflow:hidden}
   .card-glass,.card-solid,.news-card{padding:20px}
   .promo-card{min-height:300px}
   .promo-modal__dialog{padding:22px;border-radius:22px}
+}
+
+
+.news-card{justify-content:space-between}
+.news-card > :last-child{margin-top:auto}
+.service-card,.notice-card,.mini-card{display:flex;flex-direction:column}
+.service-card .btn,.notice-card .btn,.notice-card .text-link{margin-top:auto}
+.service-card p,.notice-card p,.mini-card p{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden;min-height:calc(1.6em * 3)}
+.focus-list span{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;min-height:calc(1.55em * 2)}
+.promo-overlay h3{-webkit-line-clamp:2;min-height:calc(1.2em * 2)}
+.promo-overlay p:nth-of-type(2){display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;min-height:calc(1.6em * 2)}
+.mini-card{min-height:170px}
+.notice-card{min-height:250px}
+.service-card{min-height:388px}
+@media (max-width: 920px){
+  .service-card,.notice-card,.mini-card{min-height:auto}
+}
+@media (max-width: 640px){
+  .news-card h3,.service-card h3,.promo-overlay h3,.notice-card h3,.mini-card h3,.focus-list b{min-height:0}
+  .service-card p,.notice-card p,.mini-card p,.focus-list span,.promo-overlay p:nth-of-type(2){min-height:0}
+}
+
+
+.guide-showcase-head{align-items:end}
+.guide-showcase-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.guide-showcase-panel{padding:0;overflow:hidden}
+.guide-showcase-panel--casino{background:linear-gradient(180deg,#102338,#0b192a)}
+.guide-showcase-panel--minigame{background:linear-gradient(180deg,#121f44,#0b1834)}
+.guide-showcase-panel__header,.guide-showcase-panel__footer{padding:28px}
+.guide-showcase-panel__header{display:flex;justify-content:space-between;gap:18px;align-items:flex-start}
+.guide-showcase-panel__header h3{margin:10px 0 10px;font-size:1.7rem;line-height:1.15;letter-spacing:-.03em}
+.guide-showcase-panel__header p,.guide-showcase-panel__footer p{margin:0;color:var(--soft)}
+.guide-showcase-chip{display:inline-flex;align-items:center;padding:7px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05);font-size:.76rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:#d8ebff}
+.guide-showcase-controls{display:flex;gap:10px;flex-shrink:0}
+.guide-nav-btn{width:46px;height:46px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);color:#eef6ff;cursor:pointer;transition:transform .16s ease,background .16s ease,border-color .16s ease,opacity .16s ease}
+.guide-nav-btn:hover{transform:translateY(-1px);background:rgba(90,176,255,.16);border-color:rgba(134,208,255,.34)}
+.guide-nav-btn[disabled]{opacity:.38;cursor:default;transform:none}
+.guide-carousel{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(240px, 270px);gap:16px;overflow-x:auto;overscroll-behavior-x:contain;padding:0 28px 10px;scroll-snap-type:x mandatory;scrollbar-width:none}
+.guide-carousel::-webkit-scrollbar{display:none}
+.guide-mini-card{scroll-snap-align:start;display:flex;flex-direction:column;min-height:240px;padding:22px;border-radius:22px;border:1px solid rgba(255,255,255,.08);background:linear-gradient(180deg,rgba(255,255,255,.075),rgba(255,255,255,.035));box-shadow:0 18px 40px rgba(0,0,0,.24);transition:transform .16s ease,border-color .16s ease,background .16s ease}
+.guide-mini-card:hover{transform:translateY(-2px);border-color:rgba(134,208,255,.32);background:linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,.045))}
+.guide-mini-card:focus-visible{outline:2px solid rgba(134,208,255,.72);outline-offset:4px}
+.guide-mini-card__label{display:inline-flex;align-items:center;width:fit-content;padding:7px 11px;border-radius:999px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);font-size:.75rem;font-weight:800;color:#dff1ff;letter-spacing:.05em}
+.guide-mini-card h4{margin:14px 0 10px;font-size:1.18rem;line-height:1.25;letter-spacing:-.02em;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:calc(1.25em * 2)}
+.guide-mini-card p{margin:0;color:var(--soft);display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;min-height:calc(1.58em * 4)}
+.guide-mini-card::after{content:'상세 소개 보기';margin-top:auto;padding-top:18px;font-size:.92rem;font-weight:800;color:#dcecff}
+.guide-showcase-panel__footer{display:flex;justify-content:space-between;gap:14px;align-items:center;border-top:1px solid rgba(255,255,255,.08)}
+.guide-showcase-panel__footer p{max-width:420px;font-size:.94rem}
+@media (max-width: 1120px){
+  .guide-showcase-grid{grid-template-columns:1fr}
+}
+@media (max-width: 640px){
+  .guide-showcase-panel__header,.guide-showcase-panel__footer{padding:22px}
+  .guide-showcase-panel__header,.guide-showcase-panel__footer{flex-direction:column;align-items:stretch}
+  .guide-showcase-controls{justify-content:flex-end}
+  .guide-carousel{grid-auto-columns:minmax(220px,78vw);padding:0 22px 10px}
+  .guide-mini-card{min-height:220px}
+  .guide-mini-card h4,.guide-mini-card p{min-height:0}
 }
