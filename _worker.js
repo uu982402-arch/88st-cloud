@@ -977,7 +977,7 @@ function parseSportsRss(xml, feed) {
 }
 
 function extractXmlTag(block, tag) {
-  const re = new RegExp(`<${tag}\b[^>]*>([\s\S]*?)<\/${tag}>`, 'i');
+  const re = new RegExp(`<${tag}\\b[^>]*>([\\s\\S]*?)<\\/${tag}>`, 'i');
   const match = block.match(re);
   if (!match) return '';
   return match[1].replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, '$1').trim();
