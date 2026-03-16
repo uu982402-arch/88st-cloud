@@ -1,9 +1,0 @@
-User-agent: *
-Disallow: /ops/
-Disallow: /seo/
-Disallow: /guide/seo-tool/
-Allow: /
-
-
-Sitemap: https://88st.cloud/sitemap.xml
-Sitemap: https://88st.cloud/sitemap.txt
