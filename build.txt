@@ -1,0 +1,6 @@
+build=v20260317-open-allpacks
+commit=
+branch=
+assets_css=/assets/css/vvip-luxe.v75.css,/assets/css/vvip-hub.v85.css,/assets/css/pro-suite.v3.css,/assets/css/open.final.v1.20260317.css,/assets/css/open.guides.v1.20260317.css,/assets/css/open.analysis.v1.20260317.css
+assets_js=/assets/js/vvip-global.v75.js,/assets/js/pro-suite.v3.js,/assets/js/open.final.v1.20260317.js,/assets/js/open.guides.v1.20260317.js,/assets/js/open.analysis.v1.20260317.js
+generated_utc=2026-03-17T00:00:00Z
