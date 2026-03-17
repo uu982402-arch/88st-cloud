@@ -6,6 +6,6 @@
   "ctaUrl": "https://t.me/UZU59",
   "excludePaths": [
     "/cert",
-    "/cert/",
+    "/cert/"
   ]
 }
