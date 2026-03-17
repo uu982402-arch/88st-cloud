@@ -219,6 +219,33 @@
     });
   }
 
+
+  function pickAction(item) {
+    if (item && item.actionHref) {
+      return { href: item.actionHref, label: item.actionLabel || '관련 페이지 보기', external: /^https?:/i.test(item.actionHref) };
+    }
+    const cat = item?.category || '일반';
+    if (cat === '축구' || cat === '농구' || cat === '야구') return { href: '/analysis/', label: '분석기로 이어보기', external: false };
+    return { href: '/play-guides/', label: '가이드 라이브러리', external: false };
+  }
+
+  function whyLine(item) {
+    const text = String(item?.whyImportant || item?.impact || '').trim();
+    if (!text) return '';
+    return `<div class="news-why"><b>왜 중요하나</b><span>${escapeHtml(trimSummary(text, 92))}</span></div>`;
+  }
+
+  function normalizeItems(list) {
+    const seen = new Set();
+    return (Array.isArray(list) ? list : []).filter((item) => {
+      if (!item) return false;
+      const key = `${String(item.title || '').toLowerCase().replace(/[^a-z0-9가-힣 ]/gi,' ').replace(/\s+/g,' ').trim()}|${String(item.category || '')}`;
+      if (!key || seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    }).slice(0, 8);
+  }
+
   function render(list) {
     if (!list.length) {
       grid.innerHTML = '<div class="empty-state">노출 가능한 브리핑이 없습니다. 카테고리를 바꾸거나 잠시 후 다시 불러와 주세요.</div>';
@@ -231,6 +258,8 @@
       const title = trimHeadline(item.title || '주요 스포츠 브리핑', 58);
       const summary = trimSummary(item.summary || '원문에서 자세한 내용을 확인할 수 있습니다.', 110);
       const published = item.publishedAt ? fmt.format(new Date(item.publishedAt)) : '방금 업데이트';
+      const action = pickAction(item);
+      const originHref = item.link || '#';
       return `
         <article class="news-card" data-category="${escapeHtml(category)}">
           <div class="news-meta">
@@ -238,10 +267,14 @@
             <span>${escapeHtml(source)}</span>
           </div>
           <h3>${escapeHtml(title)}</h3>
-          <p>${escapeHtml(summary)}</p>
-          <div class="news-meta">
+          <p class="news-summary">${escapeHtml(summary)}</p>
+          ${whyLine(item)}
+          <div class="news-meta news-meta-bottom">
             <span>${escapeHtml(published)} 기준</span>
-            <a class="text-link" href="${escapeHtml(item.link)}" target="_blank" rel="noopener">기사 보기</a>
+            <a class="text-link" href="${escapeHtml(originHref)}" target="_blank" rel="noopener">원문 보기</a>
+          </div>
+          <div class="news-actions">
+            <a class="btn btn-primary btn-sm" href="${escapeHtml(action.href)}"${action.external ? ' target="_blank" rel="noopener"' : ''}>${escapeHtml(action.label)}</a>
           </div>
         </article>
       `;
@@ -262,19 +295,19 @@
       const res = await fetch(`/api/news?limit=8${force ? '&refresh=1' : ''}`, { headers: { accept: 'application/json' } });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const data = await res.json();
-      items = Array.isArray(data.items) ? data.items : [];
+      items = normalizeItems(Array.isArray(data.items) ? data.items : []);
       updateFocusCards(items);
       applyFilter(activeFilter);
       const stamp = data.generatedAt ? fmt.format(new Date(data.generatedAt)) : fmt.format(new Date());
-      const sourceLine = Array.isArray(data.sources) && data.sources.length ? ` · ${data.sources.join(' + ')}` : '';
+      const sourceLine = Array.isArray(data.sources) && data.sources.length ? ` · ${data.sources.slice(0,3).join(' + ')}` : '';
       updatedAt.textContent = `최신 브리핑 ${stamp}${sourceLine}`;
     } catch (err) {
-      items = [
+      items = normalizeItems([
         { category: '축구', source: '88ST Briefing', title: '축구 핵심 변수 우선 점검', summary: '라인업 변화, 부상·결장, 원정 일정 간격을 먼저 정리하면 실시간 브리핑이 지연돼도 기본 흐름을 읽을 수 있습니다.', link: '/analysis/' },
         { category: '농구', source: '88ST Briefing', title: '농구 일정 밀도와 출전 변수 확인', summary: '백투백 일정, 핵심 자원 출전 여부, 최근 페이스를 함께 보면 경기 전 구조를 훨씬 선명하게 잡을 수 있습니다.', link: '/analysis/' },
         { category: '야구', source: '88ST Briefing', title: '선발·불펜 흐름 체크', summary: '야구는 선발 매치업과 불펜 소모, 타선 흐름을 같이 확인해야 당일 리듬을 안정적으로 볼 수 있습니다.', link: '/analysis/' },
         { category: '일반', source: '88ST Briefing', title: '스포츠 브리핑 재연결 진행 중', summary: '외부 피드 재연결 중에도 메인 허브에서는 스포츠 중심 카드와 핵심 연결 동선을 유지합니다.', link: '/odds/' }
-      ];
+      ]);
       updateFocusCards(items);
       applyFilter(activeFilter);
       updatedAt.textContent = '외부 브리핑 지연으로 예비 스포츠 카드 표시 중';
