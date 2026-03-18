@@ -346,6 +346,12 @@
       }
     }
 
+    function toggleWrap(node, show) {
+      if (!node) return;
+      node.hidden = !show;
+      node.style.display = show ? '' : 'none';
+    }
+
     function syncFields(resetUnused = false) {
       const market = marketField?.value || '1x2';
       const is1x2 = market === '1x2';
@@ -355,17 +361,19 @@
 
       if (resetUnused) clearInactive(market);
 
-      if (drawField) drawField.hidden = !is1x2;
-      if (lineField) lineField.hidden = !(isOU || isHcp);
-      if (secondaryOver) secondaryOver.hidden = !isOU;
-      if (secondaryUnder) secondaryUnder.hidden = !isOU;
-      if (awayWrap) awayWrap.hidden = isOU;
+      toggleWrap(drawField, is1x2);
+      toggleWrap(lineField, isOU || isHcp);
+      toggleWrap(secondaryOver, isOU);
+      toggleWrap(secondaryUnder, isOU);
+      toggleWrap(awayWrap, !isOU);
+      const homeWrap = homeInput?.closest('.field');
+      toggleWrap(homeWrap, !isOU);
 
-      if (homeLabel) homeLabel.textContent = isOU ? '오버 배당' : (isHcp ? '홈 핸디 배당' : '홈 배당');
+      if (homeLabel) homeLabel.textContent = isHcp ? '홈 핸디 배당' : '홈 배당';
       if (awayLabel) awayLabel.textContent = isHcp ? '원정 핸디 배당' : '원정 배당';
       if (lineLabel) lineLabel.textContent = isOU ? '기준점' : '핸디 기준점';
 
-      if (homeInput) homeInput.placeholder = isHcp ? '예: 2.05' : isOU ? '' : '예: 1.92';
+      if (homeInput) homeInput.placeholder = isHcp ? '예: 2.05' : '예: 1.92';
       if (awayInput) awayInput.placeholder = isHcp ? '예: 1.80' : '예: 2.05';
       if (lineInput) lineInput.placeholder = isOU ? '예: 2.5' : '예: -1.5';
       if (helper) helper.textContent = marketGuide(market);
