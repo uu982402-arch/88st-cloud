@@ -1,0 +1,9 @@
+{
+  "name": "88st-cloud-static-site",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Static build shim for Cloudflare Pages",
+  "scripts": {
+    "build": "node scripts/gen-build-ver.mjs"
+  }
+}
