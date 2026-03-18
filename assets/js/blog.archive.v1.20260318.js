@@ -76,9 +76,7 @@
         statCard('CASINO', byCat(posts,'casino').length, '카지노 글 모음', '바카라·룰렛·블랙잭·라이브 글을 겹치지 않는 주제로 더 촘촘히 확장했습니다.', '/casino/', latestByCat('casino')),
         statCard('SLOT', byCat(posts,'slot').length, '슬롯 글 모음', 'RTP, 구조, 기능, 오토스핀, 세션 운영 글을 블로그 아카이브형으로 늘렸습니다.', '/slot/', latestByCat('slot')),
         statCard('BONUS', byCat(posts,'bonus').length, '보너스 체크', '약관, 최대 베팅, 만료, 출금 체크 등 서로 다른 보너스 포인트를 분리했습니다.', '/bonus/', latestByCat('bonus')),
-        statCard('STRATEGY', byCat(posts,'strategy').length, '전략·운영', '단위 설정, 틸트, 중단 루틴, 예산 잠금, 기록 글까지 운영 기준을 넓혔습니다.', '/strategy/', latestByCat('strategy')),
-        statCard('GUIDE', byCat(posts,'guide').length, '상세 가이드 아카이브', '배팅기법·미니게임 상세 가이드는 유지하고 블로그형 카테고리와 함께 읽습니다.', '/play-guides/', '/play-guides/casino-betting/'),
-        `<article class="category-card"><span class="kicker">AUTO</span><div class="stat">JSON</div><h3>최신글은 자동 정렬됩니다</h3><p>새 글을 추가한 뒤 posts.index 데이터에 1줄만 넣으면, 메인의 최신글·인기글·카테고리 최근 업데이트가 같이 바뀝니다.</p><div class="card-link-row"><a class="btn btn-primary btn-sm" href="#latestFlow">작동 방식 보기</a><a class="text-link" href="/archive/">전체 글 아카이브</a></div></article>`
+        statCard('STRATEGY', byCat(posts,'strategy').length, '전략·운영', '단위 설정, 틸트, 중단 루틴, 예산 잠금, 기록 글까지 운영 기준을 넓혔습니다.', '/strategy/', latestByCat('strategy'))
       ].join('');
     }
     const curation = qs('#editorCurationGrid');
