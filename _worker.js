@@ -1,4 +1,4 @@
-// 88ST Cloud Pages Advanced Mode Worker (_worker.js)
+// 레븐 Pages Advanced Mode Worker (_worker.js)
 // Community board API: D1 + Turnstile
 // - /api/posts        GET(list) / POST(create)
 // - /api/posts/:id    GET(detail)
@@ -943,7 +943,7 @@ async function handleSportsNews(request, env, ctx) {
 async function fetchEspnFeedItems(feeds) {
   const settled = await Promise.allSettled(feeds.map((feed) => fetch(feed.url, {
     headers: {
-      'user-agent': '88ST-NewsFetcher/1.1 (+https://88st.cloud/)',
+      'user-agent': '레븐-NewsFetcher/1.1 (+https://88st.cloud/)',
       'accept': 'application/rss+xml, application/xml;q=0.9, text/xml;q=0.8, */*;q=0.1'
     }
   }).then(async (res) => {
@@ -971,7 +971,7 @@ async function fetchBackupNewsItems() {
 async function fetchReutersSportsItems() {
   const res = await fetch('https://www.reuters.com/sports/', {
     headers: {
-      'user-agent': '88ST-NewsFetcher/1.1 (+https://88st.cloud/)',
+      'user-agent': '레븐-NewsFetcher/1.1 (+https://88st.cloud/)',
       'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
     }
   });
@@ -985,7 +985,7 @@ async function fetchBbcSportItems(path, category) {
   const feedUrl = `https://newsrss.bbc.co.uk/rss/sportonline_uk_edition/${path}/rss.xml`;
   const res = await fetch(feedUrl, {
     headers: {
-      'user-agent': '88ST-NewsFetcher/1.1 (+https://88st.cloud/)',
+      'user-agent': '레븐-NewsFetcher/1.1 (+https://88st.cloud/)',
       'accept': 'application/rss+xml, application/xml;q=0.9, text/xml;q=0.8, */*;q=0.1'
     }
   });
@@ -998,7 +998,7 @@ async function fetchGoogleNewsSportsItems(query, category) {
   const feedUrl = 'https://news.google.com/rss/search?q=' + encodeURIComponent(query) + '&hl=en-US&gl=US&ceid=US:en';
   const res = await fetch(feedUrl, {
     headers: {
-      'user-agent': '88ST-NewsFetcher/1.1 (+https://88st.cloud/)',
+      'user-agent': '레븐-NewsFetcher/1.1 (+https://88st.cloud/)',
       'accept': 'application/rss+xml, application/xml;q=0.9, text/xml;q=0.8, */*;q=0.1'
     }
   });
@@ -1246,7 +1246,7 @@ function escapeForRegExp(value = '') {
 function buildCuratedSportsFallback(generatedAt = new Date().toISOString()) {
   return [
     {
-      source: '88ST Briefing',
+      source: '레븐 브리핑',
       category: '축구',
       title: '축구 브리핑 연결 지연 시 먼저 확인할 포인트',
       link: 'https://88st.cloud/analysis/',
@@ -1254,7 +1254,7 @@ function buildCuratedSportsFallback(generatedAt = new Date().toISOString()) {
       publishedAt: generatedAt
     },
     {
-      source: '88ST Briefing',
+      source: '레븐 브리핑',
       category: '농구',
       title: '농구 브리핑 연결 지연 시 체크할 핵심 변수',
       link: 'https://88st.cloud/analysis/',
@@ -1262,7 +1262,7 @@ function buildCuratedSportsFallback(generatedAt = new Date().toISOString()) {
       publishedAt: generatedAt
     },
     {
-      source: '88ST Briefing',
+      source: '레븐 브리핑',
       category: '야구',
       title: '야구 브리핑 연결 지연 시 확인할 기본 흐름',
       link: 'https://88st.cloud/analysis/',
@@ -1270,7 +1270,7 @@ function buildCuratedSportsFallback(generatedAt = new Date().toISOString()) {
       publishedAt: generatedAt
     },
     {
-      source: '88ST Briefing',
+      source: '레븐 브리핑',
       category: '일반',
       title: '실시간 브리핑 재연결 중에도 스포츠 자료 흐름은 유지됩니다',
       link: 'https://88st.cloud/odds/',
