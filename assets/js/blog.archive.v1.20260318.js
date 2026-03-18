@@ -42,18 +42,19 @@
   }
   function curationCard(cat, label, desc, hub, posts){
     const ordered = sortPopular(posts);
+    const latestOrdered = sortLatest(posts);
     const used = new Set();
     const start = pickByNeedle(ordered, ['기초','기본','입문','시작','루트','약관'], used) || pickFallback(ordered, used);
     const operation = pickByNeedle(ordered, ['운영','세션','단위','자본','손실','템포','분할','중단','수익잠금'], used) || pickFallback(ordered, used);
     const caution = pickByNeedle(ordered, ['주의','실수','착각','경고','최대베팅','틸트','오토스핀','사이드베트','노디파짓'], used) || pickFallback(ordered, used);
-    const expand = pickByNeedle(sortLatest(posts), ['확장','최신','무료회전','vip','라이브','배수','리베이트','기록'], used) || pickFallback(sortLatest(posts), used);
+    const latest = pickByNeedle(latestOrdered, ['최신','확장','무료회전','vip','라이브','배수','리베이트','기록'], used) || pickFallback(latestOrdered, used);
     const items = [
-      ['시작 글', start],
-      ['운영 글', operation],
-      ['주의 글', caution],
-      ['확장 글', expand]
-    ].filter(([, item]) => !!item);
-    return `<article class="curation-card curation-${esc(cat)}"><div class="curation-top"><span class="kicker">${esc(label)}</span><span class="curation-count">${esc(posts.length)}개 글</span></div><h3>${esc(label)} 대표글 큐레이션</h3><p>${esc(desc)}</p><ul class="curation-list">${items.map(([name, item]) => `<li><span class="curation-label">${esc(name)}</span><div><a href="${esc(item.path)}">${esc(item.title)}</a><small>${esc((item.tag || item.badge || label) + ' · ' + (item.published || ''))}</small></div></li>`).join('')}</ul><div class="card-link-row"><a class="btn btn-secondary btn-sm" href="${esc(hub)}">${esc(label)} 허브</a><a class="text-link" href="${esc(hub + 'archive/').replace('//archive/','/archive/')}">목록 보기</a></div></article>`;
+      ['시작', start],
+      ['운영', operation],
+      ['주의', caution],
+      ['최신', latest]
+    ].filter(([, item]) => !!item).slice(0, 3);
+    return `<article class="curation-card curation-card--compact curation-${esc(cat)}"><div class="curation-top"><span class="kicker">${esc(label)}</span><span class="curation-count">${esc(posts.length)}개</span></div><h3>${esc(label)} 핵심 글</h3><p>${esc(desc)}</p><ul class="curation-list">${items.map(([name, item]) => `<li><span class="curation-label">${esc(name)}</span><div><a href="${esc(item.path)}">${esc(item.title)}</a><small>${esc((item.tag || item.badge || label) + ' · ' + (item.published || ''))}</small></div></li>`).join('')}</ul><div class="card-link-row"><a class="text-link" href="${esc(hub)}">${esc(label)} 허브</a><a class="text-link" href="${esc(hub + 'archive/').replace('//archive/','/archive/')}">목록</a></div></article>`;
   }
   function slugOf(post){
     return String(post?.slug || post?.path || '').replace(/^\/+|\/+$/g,'').split('/').pop();
@@ -124,10 +125,10 @@
     const curation = qs('#editorCurationGrid');
     if (curation) {
       curation.innerHTML = [
-        curationCard('casino', '카지노', '바카라·룰렛·블랙잭·라이브에서 먼저 읽을 글과 운영·주의·확장 글을 분리했습니다.', '/casino/', byCat(posts,'casino')),
-        curationCard('slot', '슬롯', 'RTP·변동성·기능·세션 운영을 한 번에 훑기 좋게 대표글을 따로 묶었습니다.', '/slot/', byCat(posts,'slot')),
-        curationCard('bonus', '보너스', '약관·최대 베팅·출금·VIP처럼 서로 성격이 다른 보너스 글을 따로 고릅니다.', '/bonus/', byCat(posts,'bonus')),
-        curationCard('strategy', '전략', '단위 설정·손절·틸트·기록처럼 실제 운영 기준이 흔들리지 않도록 묶었습니다.', '/strategy/', byCat(posts,'strategy'))
+        curationCard('casino', '카지노', '바카라·룰렛·블랙잭 핵심 글만 짧게 묶었습니다.', '/casino/', byCat(posts,'casino')),
+        curationCard('slot', '슬롯', 'RTP·변동성·기능 글로 바로 이어지게 정리했습니다.', '/slot/', byCat(posts,'slot')),
+        curationCard('bonus', '보너스', '약관·출금·제한 체크 글만 빠르게 모았습니다.', '/bonus/', byCat(posts,'bonus')),
+        curationCard('strategy', '전략', '자본·중단·기록 기준 글만 먼저 볼 수 있게 정리했습니다.', '/strategy/', byCat(posts,'strategy'))
       ].join('');
     }
   }
