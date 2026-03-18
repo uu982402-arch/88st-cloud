@@ -8,6 +8,32 @@
 (function () {
   try {
 
+    // --- GA4 bootstrap ---
+    try {
+      if (!window.__88stGA4Initialized) {
+        var __gaMid = 'G-KWT87FBY6S';
+        var __gaSid = '13402610880';
+        window.__88stGA4Initialized = 1;
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = window.gtag || function(){ window.dataLayer.push(arguments); };
+        var __gaScript = document.createElement('script');
+        __gaScript.async = true;
+        __gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(__gaMid);
+        __gaScript.setAttribute('data-ga4', __gaMid);
+        (document.head || document.getElementsByTagName('head')[0]).appendChild(__gaScript);
+        window.gtag('js', new Date());
+        window.gtag('config', __gaMid, {
+          send_page_view: true,
+          page_title: document.title || '',
+          page_location: window.location && window.location.href || '',
+          page_path: window.location && (window.location.pathname + window.location.search) || '',
+          anonymize_ip: true,
+          allow_google_signals: true,
+          stream_id: __gaSid
+        });
+      }
+    } catch (e) {}
+
     // --- Analytics bridge (always-available track function) ---
     try {
       if (typeof window.track !== "function") {
