@@ -52,7 +52,7 @@
       code: 'KAKA',
       codeLabel: '가입코드: KAKA',
       theme: 'mint',
-      primaryHref: '/cert/',
+      primaryHref: 'https://www.trc-11.com/',
       primaryLabel: '공식 주소 바로가기',
       secondaryHref: 'https://t.me/kakacloud',
       secondaryLabel: '텔레그램 문의하기'
@@ -69,7 +69,7 @@
       code: 'KAKA',
       codeLabel: '가입코드: KAKA',
       theme: 'amber',
-      primaryHref: '/cert/',
+      primaryHref: 'https://픽스주소.com/',
       primaryLabel: '공식 주소 바로가기',
       secondaryHref: 'https://t.me/kakacloud',
       secondaryLabel: '텔레그램 문의하기'
@@ -145,6 +145,8 @@
       const article = document.createElement('article');
       article.className = `auto-promo-card theme-${offer.theme || (idx === 1 ? 'amber' : 'mint')}${idx === 1 ? ' is-safe' : ''}`;
       const listMarkup = offer.bullets.map((item) => `<li>${item}</li>`).join('');
+      const isPrimaryExternal = /^https?:\/\//i.test(offer.primaryHref || '');
+      const primaryAttrs = isPrimaryExternal ? ' target="_blank" rel="noopener noreferrer"' : '';
       article.innerHTML = `
         <h2 class="auto-promo-title"><span class="mark">✦</span><span>${offer.title}</span><span class="mark">✦</span></h2>
         <p class="auto-promo-badge">${offer.badge}</p>
@@ -155,7 +157,7 @@
           </button>
         </div>
         <div class="auto-promo-actions">
-          <a class="auto-promo-btn primary" href="${offer.primaryHref}">${offer.primaryLabel}</a>
+          <a class="auto-promo-btn primary" href="${offer.primaryHref}"${primaryAttrs}>${offer.primaryLabel}</a>
           <a class="auto-promo-btn secondary" href="${offer.secondaryHref}" target="_blank" rel="noopener">${offer.secondaryLabel}</a>
         </div>
       `;
