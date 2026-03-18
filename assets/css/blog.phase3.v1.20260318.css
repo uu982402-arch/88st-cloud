@@ -407,3 +407,20 @@
 #beginnerRoutes .route-grid{align-items:stretch}
 #beginnerRoutes .blog-route-card{display:flex;flex-direction:column;gap:12px}
 #beginnerRoutes .guide-tail-actions{margin-top:auto}
+
+
+/* phase13: home simplification + desktop quickdock */
+.blog-home-page .hero-grid-single{grid-template-columns:minmax(0,1fr);max-width:860px}
+.blog-home-page .hero-copy-clean{gap:20px;padding:34px}
+.blog-home-page .hero-copy-clean .hero-desc{max-width:760px}
+.blog-home-page .hero-actions-clean{margin-top:2px}
+.desktop-quickdock{display:none}
+@media (min-width: 1360px){
+  .desktop-quickdock{display:grid;position:fixed;right:max(18px, calc((100vw - var(--container)) / 2 - 108px));top:50%;transform:translateY(-50%);gap:10px;z-index:24;width:96px}
+  .desktop-quickdock a{display:grid;place-items:center;padding:12px 10px;border-radius:18px;background:rgba(12,22,39,.88);border:1px solid rgba(255,255,255,.08);box-shadow:0 18px 42px rgba(0,0,0,.25);text-align:center;color:#eef4ff;font-size:12px;font-weight:800;line-height:1.35;min-height:72px;backdrop-filter:blur(12px)}
+  .desktop-quickdock a:hover{background:rgba(19,34,61,.94);border-color:rgba(132,167,227,.22)}
+}
+@media (max-width: 780px){
+  .blog-home-page .hero-copy-clean{padding:22px}
+  .blog-home-page .hero-actions-clean .btn{flex:1 1 calc(50% - 6px)}
+}
