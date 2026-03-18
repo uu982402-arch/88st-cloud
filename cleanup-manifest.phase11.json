@@ -1,0 +1,582 @@
+{
+  "removed_count": 144,
+  "removed_bytes": 2011030,
+  "removed": [
+    {
+      "path": "assets/c.0b3d8a45f8c9.css",
+      "bytes": 5440
+    },
+    {
+      "path": "assets/c.40f97b2b9a20.css",
+      "bytes": 2773
+    },
+    {
+      "path": "assets/c.43df7d0713c1.css",
+      "bytes": 6433
+    },
+    {
+      "path": "assets/c.7cb2d824e0dd.css",
+      "bytes": 10269
+    },
+    {
+      "path": "assets/c.7f51930162d4.css",
+      "bytes": 5934
+    },
+    {
+      "path": "assets/c.9995eeb5cf82.css",
+      "bytes": 9315
+    },
+    {
+      "path": "assets/c.a50dd3bc5b33.css",
+      "bytes": 6911
+    },
+    {
+      "path": "assets/c.a693fe39b0c5.css",
+      "bytes": 211
+    },
+    {
+      "path": "assets/c.b1513541d435.css",
+      "bytes": 4791
+    },
+    {
+      "path": "assets/c.b9ac867a4d9b.css",
+      "bytes": 13859
+    },
+    {
+      "path": "assets/c.banner.v81.20260219.css",
+      "bytes": 5053
+    },
+    {
+      "path": "assets/c.c38159878d9d.css",
+      "bytes": 8803
+    },
+    {
+      "path": "assets/c.c603748c04b2.css",
+      "bytes": 9582
+    },
+    {
+      "path": "assets/c.casino.evo.v62.20260217.css",
+      "bytes": 9876
+    },
+    {
+      "path": "assets/c.cert.v56.20260217.css",
+      "bytes": 11292
+    },
+    {
+      "path": "assets/c.d0474bb4988d.css",
+      "bytes": 2756
+    },
+    {
+      "path": "assets/c.f75530070f14.css",
+      "bytes": 8109
+    },
+    {
+      "path": "assets/c.minigame.v55.20260217.css",
+      "bytes": 1903
+    },
+    {
+      "path": "assets/c.slot.v62.20260217.css",
+      "bytes": 7629
+    },
+    {
+      "path": "assets/css/analysis.engine.v1.20260313.css",
+      "bytes": 2623
+    },
+    {
+      "path": "assets/css/analysis.finish.v25.20260313.css",
+      "bytes": 3302
+    },
+    {
+      "path": "assets/css/analysis.result.refine.v1.20260317.css",
+      "bytes": 7463
+    },
+    {
+      "path": "assets/css/analysis.unify.home.v1.20260317.css",
+      "bytes": 7023
+    },
+    {
+      "path": "assets/css/analysis.upgrade.v11.20260313.css",
+      "bytes": 4412
+    },
+    {
+      "path": "assets/css/analysis.upgrade.v12.20260313.css",
+      "bytes": 7162
+    },
+    {
+      "path": "assets/css/analysis.upgrade.v2.20260313.css",
+      "bytes": 3057
+    },
+    {
+      "path": "assets/css/blog.rebuild.v1.20260318.css",
+      "bytes": 13400
+    },
+    {
+      "path": "assets/css/cert.landing.v1.20260223.css",
+      "bytes": 2599
+    },
+    {
+      "path": "assets/css/fortune.v62.20260217.css",
+      "bytes": 7936
+    },
+    {
+      "path": "assets/css/global.unify.v1.20260313.css",
+      "bytes": 3739
+    },
+    {
+      "path": "assets/css/global.unify.v2.20260313.css",
+      "bytes": 8100
+    },
+    {
+      "path": "assets/css/global.unify.v4.20260313.css",
+      "bytes": 10085
+    },
+    {
+      "path": "assets/css/guide.entry.v1.20260316.css",
+      "bytes": 966
+    },
+    {
+      "path": "assets/css/home.community.v2.20260316.css",
+      "bytes": 19466
+    },
+    {
+      "path": "assets/css/home.enhance.v154.css",
+      "bytes": 6803
+    },
+    {
+      "path": "assets/css/home.mobilefix.v17.20260313.css",
+      "bytes": 4853
+    },
+    {
+      "path": "assets/css/home.relayout.v1.20260313.css",
+      "bytes": 1833
+    },
+    {
+      "path": "assets/css/home.relayout.v2.20260313.css",
+      "bytes": 2003
+    },
+    {
+      "path": "assets/css/home.rhythm.v159.css",
+      "bytes": 4119
+    },
+    {
+      "path": "assets/css/home.row.v158.css",
+      "bytes": 1119
+    },
+    {
+      "path": "assets/css/home.simplify.v20.20260313.css",
+      "bytes": 7224
+    },
+    {
+      "path": "assets/css/home.why.v157.css",
+      "bytes": 4376
+    },
+    {
+      "path": "assets/css/logbook.report.v1.20260226.css",
+      "bytes": 3884
+    },
+    {
+      "path": "assets/css/open.analysis.v1.20260317.css",
+      "bytes": 1902
+    },
+    {
+      "path": "assets/css/patch.v101.contrast.20260226.css",
+      "bytes": 1696
+    },
+    {
+      "path": "assets/css/patch.v98.homedash.20260221.css",
+      "bytes": 7899
+    },
+    {
+      "path": "assets/css/patch.v99.quickstart.20260221.css",
+      "bytes": 2173
+    },
+    {
+      "path": "assets/css/popup.event.v1.css",
+      "bytes": 2763
+    },
+    {
+      "path": "assets/css/preset.bar.v1.20260226.css",
+      "bytes": 2816
+    },
+    {
+      "path": "assets/css/pro-suite.v2.css",
+      "bytes": 9155
+    },
+    {
+      "path": "assets/css/promo.slot.v1.20260223.css",
+      "bytes": 2496
+    },
+    {
+      "path": "assets/css/seo.lite.v1.css",
+      "bytes": 7057
+    },
+    {
+      "path": "assets/css/seo.tool.v1.css",
+      "bytes": 4245
+    },
+    {
+      "path": "assets/css/share.card.v1.20260226.css",
+      "bytes": 5618
+    },
+    {
+      "path": "assets/css/site.compact.v19.20260313.css",
+      "bytes": 7580
+    },
+    {
+      "path": "assets/css/site.final.v27.20260313.css",
+      "bytes": 4929
+    },
+    {
+      "path": "assets/css/site.finish.v25.20260313.css",
+      "bytes": 4771
+    },
+    {
+      "path": "assets/css/site.mode.v18.20260313.css",
+      "bytes": 6810
+    },
+    {
+      "path": "assets/css/site.sweep.v21.20260313.css",
+      "bytes": 7015
+    },
+    {
+      "path": "assets/css/theme.tokens.v3.20260313.css",
+      "bytes": 2645
+    },
+    {
+      "path": "assets/css/typography.premium.v1.css",
+      "bytes": 832
+    },
+    {
+      "path": "assets/css/x.05f40005e250.css",
+      "bytes": 3162
+    },
+    {
+      "path": "assets/css/x.0b2e79a53127.css",
+      "bytes": 47625
+    },
+    {
+      "path": "assets/css/x.11d0a10f603d.css",
+      "bytes": 7265
+    },
+    {
+      "path": "assets/css/x.379127f7099b.css",
+      "bytes": 4794
+    },
+    {
+      "path": "assets/css/x.47ddb177636d.css",
+      "bytes": 3119
+    },
+    {
+      "path": "assets/css/x.58badcbb49ee.css",
+      "bytes": 2793
+    },
+    {
+      "path": "assets/css/x.7bcc79648a48.css",
+      "bytes": 7317
+    },
+    {
+      "path": "assets/css/x.a2eb039f7adc.css",
+      "bytes": 6729
+    },
+    {
+      "path": "assets/css/x.b8b39f0ff21f.css",
+      "bytes": 7431
+    },
+    {
+      "path": "assets/css/x.ca5a4ba23b1a.css",
+      "bytes": 6713
+    },
+    {
+      "path": "assets/css/x.e28fb3ebcc4c.css",
+      "bytes": 10309
+    },
+    {
+      "path": "assets/css/x.f112c1e92dfe.css",
+      "bytes": 6721
+    },
+    {
+      "path": "assets/js/admin.shortcuts.v1.20260226.js",
+      "bytes": 1331
+    },
+    {
+      "path": "assets/js/ai.brief.v68.js",
+      "bytes": 1993
+    },
+    {
+      "path": "assets/js/analysis.engine.v1.20260313.js",
+      "bytes": 22491
+    },
+    {
+      "path": "assets/js/analysis.finish.v25.20260313.js",
+      "bytes": 4140
+    },
+    {
+      "path": "assets/js/analysis.result.refine.v1.20260317.js",
+      "bytes": 5021
+    },
+    {
+      "path": "assets/js/analysis.upgrade.v11.20260313.js",
+      "bytes": 134246
+    },
+    {
+      "path": "assets/js/analysis.upgrade.v12.20260313.js",
+      "bytes": 149641
+    },
+    {
+      "path": "assets/js/analysis.upgrade.v2.20260313.js",
+      "bytes": 22491
+    },
+    {
+      "path": "assets/js/fortune.v62.20260217.js",
+      "bytes": 27362
+    },
+    {
+      "path": "assets/js/global.unify.v1.20260313.js",
+      "bytes": 1555
+    },
+    {
+      "path": "assets/js/global.unify.v2.20260313.js",
+      "bytes": 3878
+    },
+    {
+      "path": "assets/js/global.unify.v3.20260313.js",
+      "bytes": 3880
+    },
+    {
+      "path": "assets/js/home.enhance.v154.js",
+      "bytes": 27410
+    },
+    {
+      "path": "assets/js/inline-bundles/b.7aefc0698d.js",
+      "bytes": 2075
+    },
+    {
+      "path": "assets/js/inline-bundles/b.analysis.logbook.bridge.v2.20260221.js",
+      "bytes": 17535
+    },
+    {
+      "path": "assets/js/inline-bundles/b.analysis.pro.v52.20260216.js",
+      "bytes": 41752
+    },
+    {
+      "path": "assets/js/inline-bundles/b.b96b8d09fc.js",
+      "bytes": 2078
+    },
+    {
+      "path": "assets/js/inline-bundles/b.c66a197be4.js",
+      "bytes": 1972
+    },
+    {
+      "path": "assets/js/inline-bundles/b.cba5ff41a7.js",
+      "bytes": 133
+    },
+    {
+      "path": "assets/js/inline-bundles/b.cf89e579c7.js",
+      "bytes": 1452
+    },
+    {
+      "path": "assets/js/inline-bundles/b.d8a48ddb3c.js",
+      "bytes": 1408
+    },
+    {
+      "path": "assets/js/inline-bundles/b.dff6980afd.js",
+      "bytes": 2628
+    },
+    {
+      "path": "assets/js/inline-bundles/b.e333b1edf1.js",
+      "bytes": 3383
+    },
+    {
+      "path": "assets/js/inline-bundles/b.e7db955627.js",
+      "bytes": 696
+    },
+    {
+      "path": "assets/js/inline-bundles/b.e942e1c830.js",
+      "bytes": 128163
+    },
+    {
+      "path": "assets/js/inline-bundles/b.eaed75994b.js",
+      "bytes": 557
+    },
+    {
+      "path": "assets/js/inline-bundles/b.eaed75994b05.js",
+      "bytes": 557
+    },
+    {
+      "path": "assets/js/inline-bundles/b.ed7178f765.js",
+      "bytes": 1805
+    },
+    {
+      "path": "assets/js/inline-bundles/b.f09977ad6a.js",
+      "bytes": 1805
+    },
+    {
+      "path": "assets/js/inline-bundles/b.f82bef99ab.js",
+      "bytes": 2078
+    },
+    {
+      "path": "assets/js/inline-bundles/b.fa5e828602.js",
+      "bytes": 45393
+    },
+    {
+      "path": "assets/js/inline-bundles/b.minigame.v55.20260217.js",
+      "bytes": 744
+    },
+    {
+      "path": "assets/js/inline-bundles/b.virtual.v40.luxe.9f01c2.js",
+      "bytes": 52142
+    },
+    {
+      "path": "assets/js/j.025d649c8b11.js",
+      "bytes": 8179
+    },
+    {
+      "path": "assets/js/j.71bbe4a35d81.js",
+      "bytes": 6004
+    },
+    {
+      "path": "assets/js/j.8829a3ccde44.js",
+      "bytes": 332
+    },
+    {
+      "path": "assets/js/j.9179477b9417.js",
+      "bytes": 6502
+    },
+    {
+      "path": "assets/js/j.c471c3193855.js",
+      "bytes": 18657
+    },
+    {
+      "path": "assets/js/j.casino.evo.v62.20260217.js",
+      "bytes": 25491
+    },
+    {
+      "path": "assets/js/j.cert.v56.20260217.js",
+      "bytes": 23708
+    },
+    {
+      "path": "assets/js/j.d2cf652ff950.js",
+      "bytes": 9185
+    },
+    {
+      "path": "assets/js/j.efba3509e62c.js",
+      "bytes": 7381
+    },
+    {
+      "path": "assets/js/j.minigame.v55.20260217.js",
+      "bytes": 42521
+    },
+    {
+      "path": "assets/js/j.slot.v62.20260217.js",
+      "bytes": 42802
+    },
+    {
+      "path": "assets/js/logbook.report.v1.20260226.js",
+      "bytes": 13208
+    },
+    {
+      "path": "assets/js/open.analysis.v1.20260317.js",
+      "bytes": 4212
+    },
+    {
+      "path": "assets/js/ops.sitecfg.v152.js",
+      "bytes": 7035
+    },
+    {
+      "path": "assets/js/ops.sitecfg.v153.js",
+      "bytes": 7035
+    },
+    {
+      "path": "assets/js/popup.event.v1.js",
+      "bytes": 3803
+    },
+    {
+      "path": "assets/js/presets.core.v1.20260226.js",
+      "bytes": 8554
+    },
+    {
+      "path": "assets/js/pro-suite.v2.js",
+      "bytes": 81954
+    },
+    {
+      "path": "assets/js/seo.lite.v1.js",
+      "bytes": 19758
+    },
+    {
+      "path": "assets/js/seo.tool.v1.js",
+      "bytes": 12723
+    },
+    {
+      "path": "assets/js/site.final.v27.20260313.js",
+      "bytes": 2740
+    },
+    {
+      "path": "assets/js/site.finish.v25.20260313.js",
+      "bytes": 2430
+    },
+    {
+      "path": "assets/js/site.sweep.v21.20260313.js",
+      "bytes": 4488
+    },
+    {
+      "path": "assets/js/ui.guard.v1.20260226.js",
+      "bytes": 8437
+    },
+    {
+      "path": "assets/js/usage.track.v154.js",
+      "bytes": 3668
+    },
+    {
+      "path": "assets/js/vvip-brief.v71.js",
+      "bytes": 13452
+    },
+    {
+      "path": "assets/js/vvip-pro.v71.js",
+      "bytes": 1028
+    },
+    {
+      "path": "assets/vvip-pro.v71.css",
+      "bytes": 5709
+    },
+    {
+      "path": "d1/migrations/0002_add_board.sql",
+      "bytes": 277
+    },
+    {
+      "path": "d1/schema.sql",
+      "bytes": 1097
+    },
+    {
+      "path": "img/brand88_masked.png",
+      "bytes": 430486
+    },
+    {
+      "path": "package.json",
+      "bytes": 164
+    },
+    {
+      "path": "scripts/gen-build-ver.mjs",
+      "bytes": 3514
+    },
+    {
+      "path": "serverless/README_serverless.txt",
+      "bytes": 1478
+    },
+    {
+      "path": "serverless/netlify/functions/popular.js",
+      "bytes": 1881
+    },
+    {
+      "path": "serverless/netlify/package.json",
+      "bytes": 140
+    },
+    {
+      "path": "serverless/vercel/api/popular.js",
+      "bytes": 2196
+    },
+    {
+      "path": "serverless/vercel/package.json",
+      "bytes": 140
+    }
+  ]
+}
