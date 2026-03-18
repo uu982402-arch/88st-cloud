@@ -55,15 +55,57 @@
     ].filter(([, item]) => !!item);
     return `<article class="curation-card curation-${esc(cat)}"><div class="curation-top"><span class="kicker">${esc(label)}</span><span class="curation-count">${esc(posts.length)}개 글</span></div><h3>${esc(label)} 대표글 큐레이션</h3><p>${esc(desc)}</p><ul class="curation-list">${items.map(([name, item]) => `<li><span class="curation-label">${esc(name)}</span><div><a href="${esc(item.path)}">${esc(item.title)}</a><small>${esc((item.tag || item.badge || label) + ' · ' + (item.published || ''))}</small></div></li>`).join('')}</ul><div class="card-link-row"><a class="btn btn-secondary btn-sm" href="${esc(hub)}">${esc(label)} 허브</a><a class="text-link" href="${esc(hub + 'archive/').replace('//archive/','/archive/')}">목록 보기</a></div></article>`;
   }
+  function slugOf(post){
+    return String(post?.slug || post?.path || '').replace(/^\/+|\/+$/g,'').split('/').pop();
+  }
+  function buildHomeLatest(posts){
+    const ordered = sortLatest(posts);
+    const pinned = [
+      'baccarat-loss-limit-before-start',
+      'baccarat-streak-chasing-risk',
+      'baccarat-short-session-rule',
+      'blackjack-ace-hand-reading',
+      'slot-near-miss-illusion',
+      'kyc-delay-check',
+      'daily-limit-why-needed',
+      'baccarat-roadmap-overread-warning'
+    ];
+    const used = new Set();
+    const picked = [];
+    const caps = {casino: 4, slot: 1, bonus: 1, strategy: 1};
+    const counts = {};
+    pinned.forEach(slug => {
+      const found = ordered.find(p => slugOf(p) === slug && !used.has(p.path));
+      if (found) {
+        picked.push(found);
+        used.add(found.path);
+        counts[found.category] = (counts[found.category] || 0) + 1;
+      }
+    });
+    ordered.forEach(post => {
+      if (picked.length >= 8 || used.has(post.path)) return;
+      const cap = caps[post.category];
+      if (cap && (counts[post.category] || 0) >= cap) return;
+      picked.push(post);
+      used.add(post.path);
+      counts[post.category] = (counts[post.category] || 0) + 1;
+    });
+    ordered.forEach(post => {
+      if (picked.length >= 8 || used.has(post.path)) return;
+      picked.push(post);
+      used.add(post.path);
+    });
+    return picked;
+  }
   function renderHome(posts){
     const latest = qs('#latestPostsGrid');
-    if (latest) latest.innerHTML = sortLatest(posts).slice(0, 16).map(streamCard).join('');
+    if (latest) latest.innerHTML = buildHomeLatest(posts).map(streamCard).join('');
     const popular = qs('#popularListHome');
-    if (popular) popular.innerHTML = sortPopular(posts.filter(p => p.category !== 'guide')).slice(0, 10).map(popularItem).join('');
+    if (popular) popular.innerHTML = sortPopular(posts.filter(p => p.category !== 'guide')).slice(0, 8).map(popularItem).join('');
     const updates = qs('#freshByTopicGrid');
     if (updates) {
       updates.innerHTML = [
-        updateCard('CASINO','카지노 최근 업데이트','바카라·룰렛·블랙잭·라이브 주제를 겹치지 않게 분리해 최신 글이 자동 반영됩니다.', sortLatest(byCat(posts,'casino')).slice(0,4)),
+        updateCard('CASINO','카지노 최근 업데이트','바카라 확장, 블랙잭, 룰렛, 라이브 주제를 겹치지 않게 분리해 최신 글이 자동 반영됩니다.', sortLatest(byCat(posts,'casino')).slice(0,4)),
         updateCard('SLOT','슬롯 최근 업데이트','RTP·구조·기능·세션 운영 글이 중복 없이 확장되도록 최신순으로 묶습니다.', sortLatest(byCat(posts,'slot')).slice(0,4)),
         updateCard('BONUS','보너스 최근 업데이트','약관·제한·기한·출금 체크처럼 성격이 다른 글을 분리해 연결합니다.', sortLatest(byCat(posts,'bonus')).slice(0,4)),
         updateCard('STRATEGY','전략 최근 업데이트','자본·중단·틸트·기록처럼 운영 글이 겹치지 않게 최신 글을 이어줍니다.', sortLatest(byCat(posts,'strategy')).slice(0,4))
