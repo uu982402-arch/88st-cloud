@@ -1,4 +1,4 @@
-/* 88ST PRO SUITE (v3)
+/* 레븐 PRO SUITE (v3)
  * - Sports: Risk briefing, line-move interpreter, CLV tracker, bet sizing, parlay risk check
  * - Casino/Minigame: Ruin simulator, streak illusion (run probability)
  * - Cert: Bonus terms interpreter + popup sticky action (copy+go)

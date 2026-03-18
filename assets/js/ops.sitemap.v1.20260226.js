@@ -1,5 +1,5 @@
 /* ops.sitemap.v1.20260226.js
- * 88ST OPS — sitemap.xml parser → "full-site purge list" generator
+ * 레븐 OPS — sitemap.xml parser → "full-site purge list" generator
  * - Parses /sitemap.xml (urlset or sitemapindex)
  * - Outputs: full URL list, relative path list, Cloudflare purge JSON
  */

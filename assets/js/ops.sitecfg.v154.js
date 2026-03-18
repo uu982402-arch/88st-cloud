@@ -21,7 +21,7 @@
 
     var cfg = {
       version: 'v154',
-      brand: { name: '88ST.Cloud', mark: '88', themeColor: '#0b0c10' },
+      brand: { name: '레븐', mark: '88', themeColor: '#0b0c10' },
       links: {
         home: '/',
         cert: '/cert/',

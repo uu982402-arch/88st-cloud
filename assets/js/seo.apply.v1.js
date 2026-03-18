@@ -1,4 +1,4 @@
-/* 88ST.Cloud - SEO meta auto apply (static, zero-cost)
+/* 레븐 - SEO meta auto apply (static, zero-cost)
  * Reads /assets/config/seo.meta.json and applies title/meta/og/canonical
  * Supports exact path match and wildcard keys like "/cert/*".
  * Uses sessionStorage cache to avoid repeated fetch.

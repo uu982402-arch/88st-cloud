@@ -27,7 +27,7 @@
         anonymize_ip: true,
         allow_google_signals: true,
         stream_id: GA_STREAM_ID,
-        content_group: (document.body && document.body.getAttribute('data-category')) || ''
+        content_group: (document.body && (document.body.getAttribute('data-post-category') || document.body.getAttribute('data-blog-list') || document.body.getAttribute('data-category'))) || ''
       });
     } catch (e) {}
   }

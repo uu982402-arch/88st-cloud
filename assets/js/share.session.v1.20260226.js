@@ -1,4 +1,4 @@
-/* 88ST Share Card + Session Safety (v1.20260226)
+/* 레븐 Share Card + Session Safety (v1.20260226)
  * - Adds "이미지" share button to tool bars (stx-bar)
  * - Generates premium PNG card via Canvas
  * - Session safety widget: stop-loss / take-profit / cooldown with optional button lock
@@ -104,7 +104,7 @@
 
   function extractToolSummary(){
     // Prefer toolconfig output IDs if present
-    var title = document.title || '88ST';
+    var title = document.title || '레븐';
     var lines = [];
 
     // Common KPI patterns
@@ -204,7 +204,7 @@
     ctx.stroke();
 
     // Header
-    var brand = (window.__88st_cfg && window.__88st_cfg('brand.name','88ST.Cloud')) || '88ST.Cloud';
+    var brand = (window.__88st_cfg && window.__88st_cfg('brand.name','레븐')) || '레븐';
     var stamp = todayKST();
 
     ctx.fillStyle = dark ? '#ffffff' : '#0b0c10';

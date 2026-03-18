@@ -1,4 +1,4 @@
-/* 88ST Site Runtime (v1.20260226)
+/* 레븐 Site Runtime (v1.20260226)
  * - Loads /assets/config/site.runtime.json (deploy-time config)
  * - Extends header nav without editing every HTML
  * - Provides global helpers: __88st_cfg(), __88st_ready(cb)

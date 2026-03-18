@@ -3,9 +3,9 @@
   if (!el) return;
 
   const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduce) { el.textContent = '88ST.Cloud'; return; }
+  if (reduce) { el.textContent = '레븐'; return; }
 
-  const text = '88ST.Cloud';
+  const text = '레븐';
   let i = 0;
 
   const tick = () => {
