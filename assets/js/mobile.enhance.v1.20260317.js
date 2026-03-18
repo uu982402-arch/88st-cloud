@@ -180,18 +180,38 @@
   }
 
   function hasExistingPromo(main) {
-    return !!main.querySelector('.auto-promo-zone, .promo-grid, .promo-site, .promo-card');
+    return !!main.querySelector('.auto-promo-zone,[data-auto-promo="true"]');
   }
 
   function mountInlinePromos() {
-    if (path === '/') return;
+    if (path === '/') return false;
     const main = document.getElementById('mainContent') || document.querySelector('main');
-    if (!main || hasExistingPromo(main)) return;
+    if (!main || hasExistingPromo(main)) return false;
     const anchorInfo = pickPromoAnchor(main);
-    if (!anchorInfo || !anchorInfo.target) return;
+    if (!anchorInfo || !anchorInfo.target) return false;
     injectPromoStyles();
     const section = buildPromoSection(anchorInfo.kind);
-    insertAfter(anchorInfo.target, section);
+    section.setAttribute('data-auto-promo', 'true');
+    return insertAfter(anchorInfo.target, section);
+  }
+
+  function ensureInlinePromos() {
+    let mounted = false;
+    const tryMount = () => {
+      if (mounted) return;
+      mounted = mountInlinePromos();
+    };
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', tryMount, { once: true });
+    } else {
+      tryMount();
+    }
+
+    window.addEventListener('load', tryMount, { once: true });
+    window.addEventListener('pageshow', tryMount, { once: true });
+    setTimeout(tryMount, 180);
+    setTimeout(tryMount, 700);
   }
 
   function mountMobileDock() {
@@ -255,6 +275,6 @@
     }
   }
 
-  mountInlinePromos();
+  ensureInlinePromos();
   mountMobileDock();
 })();
