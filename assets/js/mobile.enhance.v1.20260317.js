@@ -162,6 +162,12 @@
         target: articleShell.querySelector('.article-checks') || articleShell.querySelector('.article-intro') || articleShell.querySelector('.post-meta-strip') || articleShell.querySelector('h1')
       };
     }
+    if (path === '/') {
+      return {
+        kind: 'page',
+        target: main.querySelector('#categoryStart') || main.querySelector('#editorCuration') || main.querySelector('.section') || main.firstElementChild
+      };
+    }
     if (path.startsWith('/analysis/')) {
       return {
         kind: 'page',
@@ -180,38 +186,17 @@
   }
 
   function hasExistingPromo(main) {
-    return !!main.querySelector('.auto-promo-zone,[data-auto-promo="true"]');
+    return !!main.querySelector('.auto-promo-zone');
   }
 
   function mountInlinePromos() {
-    if (path === '/') return false;
     const main = document.getElementById('mainContent') || document.querySelector('main');
-    if (!main || hasExistingPromo(main)) return false;
+    if (!main || hasExistingPromo(main)) return;
     const anchorInfo = pickPromoAnchor(main);
-    if (!anchorInfo || !anchorInfo.target) return false;
+    if (!anchorInfo || !anchorInfo.target) return;
     injectPromoStyles();
     const section = buildPromoSection(anchorInfo.kind);
-    section.setAttribute('data-auto-promo', 'true');
-    return insertAfter(anchorInfo.target, section);
-  }
-
-  function ensureInlinePromos() {
-    let mounted = false;
-    const tryMount = () => {
-      if (mounted) return;
-      mounted = mountInlinePromos();
-    };
-
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', tryMount, { once: true });
-    } else {
-      tryMount();
-    }
-
-    window.addEventListener('load', tryMount, { once: true });
-    window.addEventListener('pageshow', tryMount, { once: true });
-    setTimeout(tryMount, 180);
-    setTimeout(tryMount, 700);
+    insertAfter(anchorInfo.target, section);
   }
 
   function mountMobileDock() {
@@ -275,6 +260,6 @@
     }
   }
 
-  ensureInlinePromos();
+  mountInlinePromos();
   mountMobileDock();
 })();
