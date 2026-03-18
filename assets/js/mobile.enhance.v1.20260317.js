@@ -93,15 +93,14 @@
       .auto-promo-list li{position:relative;padding-left:18px;color:#d5ddf5;line-height:1.55}
       .auto-promo-list li::before{content:'';position:absolute;left:0;top:.6em;width:8px;height:8px;border-radius:50%;background:#7cf59a;box-shadow:0 0 0 4px rgba(124,245,154,.12)}
       .auto-promo-card.is-safe .auto-promo-list li::before{background:#f3c845;box-shadow:0 0 0 4px rgba(243,200,69,.12)}
-      .auto-promo-code-row{margin-top:12px}
+      .auto-promo-code-row{margin-top:12px;display:flex;flex-wrap:wrap;gap:10px}
       .auto-promo-actions{margin-top:14px;display:flex;flex-wrap:wrap;gap:12px}
       .auto-promo-btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 18px;border-radius:16px;font-weight:800;text-decoration:none;transition:transform .16s ease, box-shadow .16s ease, background .16s ease, border-color .16s ease;color:#081225;border:1px solid transparent}
       .auto-promo-btn:hover{transform:translateY(-1px)}
-      .auto-promo-btn.code{width:100%;justify-content:space-between;gap:12px;padding:0 16px;background:rgba(255,255,255,.03);color:#ecf2ff;box-shadow:none;cursor:pointer}
-      .auto-promo-btn.code .sub{font-size:.83rem;font-weight:700;opacity:.8}
-      .auto-promo-card.theme-mint .auto-promo-btn.primary,
+      .auto-promo-btn.code{width:auto;max-width:100%;justify-content:flex-start;gap:0;padding:0 18px;background:rgba(255,255,255,.03);color:#ecf2ff;box-shadow:none;cursor:pointer;white-space:nowrap}
+      .auto-promo-btn.code .sub{display:none}
+      .auto-promo-btn.primary{background:linear-gradient(135deg,#6f97ff,#5577df 58%,#3a56b4);box-shadow:0 14px 34px rgba(93,126,223,.28);color:#f7f9ff;border-color:rgba(111,151,255,.24)}
       .auto-promo-card.theme-mint .auto-promo-btn.code{background:linear-gradient(135deg,#86efac,#bbf7d0 58%,#dcfce7);box-shadow:0 14px 34px rgba(134,239,172,.2);color:#062317;border-color:rgba(134,239,172,.28)}
-      .auto-promo-card.theme-amber .auto-promo-btn.primary,
       .auto-promo-card.theme-amber .auto-promo-btn.code{background:linear-gradient(135deg,#f8d36b,#f5c451 55%,#f2dd98);box-shadow:0 14px 34px rgba(248,211,107,.2);color:#251804;border-color:rgba(248,211,107,.28)}
       .auto-promo-btn.secondary{color:#ecf2ff;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);box-shadow:none}
       .auto-promo-zone.is-article{margin:26px 0 28px}
@@ -114,7 +113,8 @@
         .auto-promo-badge{font-size:.98rem}
         .auto-promo-actions{display:grid;grid-template-columns:1fr 1fr}
         .auto-promo-btn{width:100%;min-height:46px;padding:0 14px;text-align:center}
-        .auto-promo-btn.code{padding:0 14px}
+        .auto-promo-code-row{display:block}
+        .auto-promo-btn.code{width:auto;min-width:0;padding:0 14px}
       }
       @media (max-width: 640px){
         .auto-promo-zone{margin:20px 0 12px}
@@ -125,7 +125,8 @@
         .auto-promo-list{gap:8px}
         .auto-promo-list li{font-size:.94rem;line-height:1.48}
         .auto-promo-actions{grid-template-columns:1fr;gap:10px}
-        .auto-promo-btn.code{font-size:.95rem}
+        .auto-promo-code-row{display:block}
+        .auto-promo-btn.code{font-size:.95rem;width:auto;max-width:100%}
       }
     `;
     document.head.appendChild(style);
@@ -151,7 +152,6 @@
         <div class="auto-promo-code-row">
           <button class="auto-promo-btn code" type="button" data-copy-code="${offer.code || ''}" aria-label="${offer.codeLabel || '가입코드 복사'}">
             <span>${offer.codeLabel || ''}</span>
-            <span class="sub">클릭하여 복사</span>
           </button>
         </div>
         <div class="auto-promo-actions">
