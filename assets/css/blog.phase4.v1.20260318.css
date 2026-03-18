@@ -55,3 +55,40 @@
 .promo-side-card--fix{border:1px solid rgba(255,209,90,.22)}
 .promo-side-card--fix .promo-inline-list li::before{background:#ffd15a;box-shadow:0 0 0 4px rgba(255,209,90,.12)}
 @media (max-width:960px){.promo-pair-grid{grid-template-columns:1fr}.promo-side-card{padding:18px}}
+
+
+/* phase: mobile two-column home cards */
+@media (max-width:760px){
+  .blog-home-page #promoPartners .promo-pair-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .blog-home-page #promoPartners .promo-side-card{padding:16px;border-radius:20px}
+  .blog-home-page #promoPartners .promo-side-copy{gap:10px}
+  .blog-home-page #promoPartners .promo-side-card h2{font-size:20px;line-height:1.14}
+  .blog-home-page #promoPartners .promo-inline-sub{font-size:13px}
+  .blog-home-page #promoPartners .promo-inline-list{gap:8px}
+  .blog-home-page #promoPartners .promo-inline-list li{padding-left:14px;font-size:12px;line-height:1.42}
+  .blog-home-page #promoPartners .promo-inline-actions{display:grid;grid-template-columns:1fr;gap:8px}
+  .blog-home-page #promoPartners .promo-inline-actions .btn{width:100%;min-width:0;justify-content:center;padding:12px 10px;font-size:12px}
+
+  .blog-home-page #editorCuration .curation-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .blog-home-page #editorCuration .curation-card{padding:16px;border-radius:18px;gap:10px}
+  .blog-home-page #editorCuration .curation-card h3{font-size:18px}
+  .blog-home-page #editorCuration .curation-card p{font-size:13px}
+  .blog-home-page #editorCuration .curation-list li{grid-template-columns:1fr;gap:8px;padding:10px 0}
+  .blog-home-page #editorCuration .curation-label{justify-self:flex-start;padding:6px 9px;font-size:11px}
+  .blog-home-page #editorCuration .curation-list a{font-size:14px}
+  .blog-home-page #editorCuration .curation-list small{font-size:11px}
+
+  .blog-home-page #categoryStart .blog-category-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .blog-home-page #categoryStart .category-card{padding:16px;border-radius:18px;gap:10px}
+  .blog-home-page #categoryStart .category-card .stat{font-size:1.35rem}
+  .blog-home-page #categoryStart .category-card h3{font-size:18px;line-height:1.22;margin:0}
+  .blog-home-page #categoryStart .category-card p{font-size:13px;line-height:1.48;margin:0}
+  .blog-home-page #categoryStart .category-card .card-link-row{display:grid;grid-template-columns:1fr;gap:8px}
+  .blog-home-page #categoryStart .category-card .card-link-row .btn,
+  .blog-home-page #categoryStart .category-card .card-link-row .text-link{width:100%;justify-content:center;text-align:center}
+}
+@media (max-width:359px){
+  .blog-home-page #promoPartners .promo-pair-grid,
+  .blog-home-page #editorCuration .curation-grid,
+  .blog-home-page #categoryStart .blog-category-grid{grid-template-columns:1fr}
+}
