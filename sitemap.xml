@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://88st.cloud/</loc>
+    <loc>https://88st.cloud//</loc>
   </url>
   <url>
     <loc>https://88st.cloud/analysis/</loc>
@@ -34,6 +34,15 @@
     <loc>https://88st.cloud/bonus/cashback-vs-rebate/</loc>
   </url>
   <url>
+    <loc>https://88st.cloud/bonus/event-date-condition-check/</loc>
+  </url>
+  <url>
+    <loc>https://88st.cloud/bonus/game-contribution-misread/</loc>
+  </url>
+  <url>
+    <loc>https://88st.cloud/bonus/kyc-delay-check/</loc>
+  </url>
+  <url>
     <loc>https://88st.cloud/bonus/max-bet-limit-basics/</loc>
   </url>
   <url>
@@ -47,6 +56,9 @@
   </url>
   <url>
     <loc>https://88st.cloud/bonus/rebate-comp-guide/</loc>
+  </url>
+  <url>
+    <loc>https://88st.cloud/bonus/same-ip-device-warning/</loc>
   </url>
   <url>
     <loc>https://88st.cloud/bonus/sticky-vs-nonsticky/</loc>
@@ -73,6 +85,9 @@
     <loc>https://88st.cloud/bonus/welcome-bonus-reading-order/</loc>
   </url>
   <url>
+    <loc>https://88st.cloud/bonus/withdrawal-order-by-payment/</loc>
+  </url>
+  <url>
     <loc>https://88st.cloud/bonus/withdrawal-verification-check/</loc>
   </url>
   <url>
@@ -82,7 +97,16 @@
     <loc>https://88st.cloud/casino/archive/</loc>
   </url>
   <url>
+    <loc>https://88st.cloud/casino/baccarat-archive/</loc>
+  </url>
+  <url>
+    <loc>https://88st.cloud/casino/baccarat-banker-bias-myth/</loc>
+  </url>
+  <url>
     <loc>https://88st.cloud/casino/baccarat-bankroll-rules/</loc>
+  </url>
+  <url>
+    <loc>https://88st.cloud/casino/baccarat-bet-confirmation-time/</loc>
   </url>
   <url>
     <loc>https://88st.cloud/casino/baccarat-commission-quick-guide/</loc>
@@ -91,16 +115,91 @@
     <loc>https://88st.cloud/casino/baccarat-commission-reading/</loc>
   </url>
   <url>
+    <loc>https://88st.cloud/casino/baccarat-live-delay-warning/</loc>
+  </url>
+  <url>
+    <loc>https://88st.cloud/casino/baccarat-loss-limit-before-start/</loc>
+  </url>
+  <url>
+    <loc>https://88st.cloud/casino/baccarat-mini-vs-standard/</loc>
+  </url>
+  <url>
+    <loc>https://88st.cloud/casino/baccarat-multi-table-distraction/</loc>
+  </url>
+  <url>
+    <loc>https://88st.cloud/casino/baccarat-natural-hand-overreaction/</loc>
+  </url>
+  <url>
+    <loc>https://88st.cloud/casino/baccarat-no-commission-check/</loc>
+  </url>
+  <url>
+    <loc>https://88st.cloud/casino/baccarat-observation-entry/</loc>
+  </url>
+  <url>
+    <loc>https://88st.cloud/casino/baccarat-post-win-increase-risk/</loc>
+  </url>
+  <url>
+    <loc>https://88st.cloud/casino/baccarat-profit-lock-basics/</loc>
+  </url>
+  <url>
+    <loc>https://88st.cloud/casino/baccarat-record-exit-reasons/</loc>
+  </url>
+  <url>
+    <loc>https://88st.cloud/casino/baccarat-road-vs-record/</loc>
+  </url>
+  <url>
+    <loc>https://88st.cloud/casino/baccarat-roadmap-overread-warning/</loc>
+  </url>
+  <url>
+    <loc>https://88st.cloud/casino/baccarat-session-hand-limit/</loc>
+  </url>
+  <url>
     <loc>https://88st.cloud/casino/baccarat-shoe-management/</loc>
   </url>
   <url>
+    <loc>https://88st.cloud/casino/baccarat-shoe-mid-entry/</loc>
+  </url>
+  <url>
+    <loc>https://88st.cloud/casino/baccarat-shoe-phase-misread/</loc>
+  </url>
+  <url>
+    <loc>https://88st.cloud/casino/baccarat-short-session-rule/</loc>
+  </url>
+  <url>
     <loc>https://88st.cloud/casino/baccarat-side-bet-warning/</loc>
+  </url>
+  <url>
+    <loc>https://88st.cloud/casino/baccarat-squeeze-separation/</loc>
   </url>
   <url>
     <loc>https://88st.cloud/casino/baccarat-start/</loc>
   </url>
   <url>
     <loc>https://88st.cloud/casino/baccarat-stop-points/</loc>
+  </url>
+  <url>
+    <loc>https://88st.cloud/casino/baccarat-streak-chasing-risk/</loc>
+  </url>
+  <url>
+    <loc>https://88st.cloud/casino/baccarat-switching-sides-risk/</loc>
+  </url>
+  <url>
+    <loc>https://88st.cloud/casino/baccarat-table-change-timing/</loc>
+  </url>
+  <url>
+    <loc>https://88st.cloud/casino/baccarat-table-minimum-impact/</loc>
+  </url>
+  <url>
+    <loc>https://88st.cloud/casino/baccarat-table-speed-choice/</loc>
+  </url>
+  <url>
+    <loc>https://88st.cloud/casino/baccarat-tie-bet-risk/</loc>
+  </url>
+  <url>
+    <loc>https://88st.cloud/casino/baccarat-tie-frequency-misread/</loc>
+  </url>
+  <url>
+    <loc>https://88st.cloud/casino/blackjack-ace-hand-reading/</loc>
   </url>
   <url>
     <loc>https://88st.cloud/casino/blackjack-basic/</loc>
@@ -121,10 +220,16 @@
     <loc>https://88st.cloud/casino/blackjack-table-rule-check/</loc>
   </url>
   <url>
+    <loc>https://88st.cloud/casino/casino-min-unit-impact/</loc>
+  </url>
+  <url>
     <loc>https://88st.cloud/casino/casino-volatility-comparison/</loc>
   </url>
   <url>
     <loc>https://88st.cloud/casino/live-casino-basics/</loc>
+  </url>
+  <url>
+    <loc>https://88st.cloud/casino/live-casino-delay-check/</loc>
   </url>
   <url>
     <loc>https://88st.cloud/casino/live-casino-pace-control/</loc>
@@ -145,6 +250,9 @@
     <loc>https://88st.cloud/casino/roulette-inside-outside-choice/</loc>
   </url>
   <url>
+    <loc>https://88st.cloud/casino/roulette-neighbors-sectors-basics/</loc>
+  </url>
+  <url>
     <loc>https://88st.cloud/casino/roulette-start/</loc>
   </url>
   <url>
@@ -161,6 +269,9 @@
   </url>
   <url>
     <loc>https://88st.cloud/odds/</loc>
+  </url>
+  <url>
+    <loc>https://88st.cloud/ops/</loc>
   </url>
   <url>
     <loc>https://88st.cloud/play-guides/</loc>
@@ -253,6 +364,9 @@
     <loc>https://88st.cloud/popular/</loc>
   </url>
   <url>
+    <loc>https://88st.cloud/seo/</loc>
+  </url>
+  <url>
     <loc>https://88st.cloud/slot/</loc>
   </url>
   <url>
@@ -274,10 +388,16 @@
     <loc>https://88st.cloud/slot/cluster-cascade-guide/</loc>
   </url>
   <url>
+    <loc>https://88st.cloud/slot/cluster-pay-slot-difference/</loc>
+  </url>
+  <url>
     <loc>https://88st.cloud/slot/demo-to-real-check/</loc>
   </url>
   <url>
     <loc>https://88st.cloud/slot/feature-value-guide/</loc>
+  </url>
+  <url>
+    <loc>https://88st.cloud/slot/fixed-vs-variable-paylines/</loc>
   </url>
   <url>
     <loc>https://88st.cloud/slot/free-spin-slot-checklist/</loc>
@@ -307,6 +427,9 @@
     <loc>https://88st.cloud/slot/payline-vs-ways/</loc>
   </url>
   <url>
+    <loc>https://88st.cloud/slot/reel-count-volatility-link/</loc>
+  </url>
+  <url>
     <loc>https://88st.cloud/slot/rtp-basics/</loc>
   </url>
   <url>
@@ -316,10 +439,16 @@
     <loc>https://88st.cloud/slot/slot-loss-journal/</loc>
   </url>
   <url>
+    <loc>https://88st.cloud/slot/slot-near-miss-illusion/</loc>
+  </url>
+  <url>
     <loc>https://88st.cloud/slot/slot-rtp-vs-real-feel/</loc>
   </url>
   <url>
     <loc>https://88st.cloud/slot/slot-session-plan/</loc>
+  </url>
+  <url>
+    <loc>https://88st.cloud/slot/slot-symbol-tier-impact/</loc>
   </url>
   <url>
     <loc>https://88st.cloud/slot/slot-volatility-session-length/</loc>
@@ -349,6 +478,12 @@
     <loc>https://88st.cloud/strategy/conservative-growth-rules/</loc>
   </url>
   <url>
+    <loc>https://88st.cloud/strategy/daily-limit-why-needed/</loc>
+  </url>
+  <url>
+    <loc>https://88st.cloud/strategy/deposit-frequency-rule/</loc>
+  </url>
+  <url>
     <loc>https://88st.cloud/strategy/flat-unit-sizing/</loc>
   </url>
   <url>
@@ -358,13 +493,22 @@
     <loc>https://88st.cloud/strategy/game-switching-risk/</loc>
   </url>
   <url>
+    <loc>https://88st.cloud/strategy/how-many-games-per-session/</loc>
+  </url>
+  <url>
     <loc>https://88st.cloud/strategy/losing-streak-stop-rules/</loc>
   </url>
   <url>
     <loc>https://88st.cloud/strategy/pause-after-streaks/</loc>
   </url>
   <url>
+    <loc>https://88st.cloud/strategy/planned-vs-recovery-increase/</loc>
+  </url>
+  <url>
     <loc>https://88st.cloud/strategy/post-session-review-template/</loc>
+  </url>
+  <url>
+    <loc>https://88st.cloud/strategy/post-win-overbet-risk/</loc>
   </url>
   <url>
     <loc>https://88st.cloud/strategy/pre-session-budget-lock/</loc>
