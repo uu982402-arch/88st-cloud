@@ -225,9 +225,10 @@ button,input,select{font:inherit}
 
 .analysis-hero .container{display:block}
 .hero-copy-wide{max-width:880px}
-.analysis-grid{grid-template-columns:repeat(6,minmax(0,1fr));align-items:end}
-.analysis-grid .field.is-market,.analysis-grid .field.is-line{grid-column:span 3}
-.analysis-grid .field.is-odd{grid-column:span 2}
+.analysis-subcopy{margin:0;color:#8fb0ff;font-weight:700;letter-spacing:.01em}
+.analysis-grid{grid-template-columns:repeat(3,minmax(0,1fr));align-items:end}
+.analysis-grid .field.is-market,.analysis-grid .field.is-line{grid-column:1 / -1}
+.analysis-grid .field.is-odd{grid-column:span 1}
 .analysis-kpi-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
 .brief-box-tight{margin-top:12px}
 .brief-box-muted{margin-top:10px;background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.06)}
