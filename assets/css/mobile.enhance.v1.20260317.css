@@ -624,3 +624,78 @@ html, body{overflow-x:hidden}
 @media (max-width:390px){
   body[data-post-category] .post-meta-strip{grid-template-columns:1fr !important}
 }
+
+
+/* mobile article hero density tune · 2026-03-19 */
+@media (max-width:980px){
+  body[data-post-category] .article-shell > .breadcrumb{
+    display:flex !important;
+    align-items:center;
+    gap:6px;
+    margin:0 0 10px !important;
+    padding-bottom:0 !important;
+    font-size:12px !important;
+    line-height:1.25 !important;
+    color:rgba(226,235,255,.7);
+  }
+  body[data-post-category] .article-shell > .breadcrumb a,
+  body[data-post-category] .article-shell > .breadcrumb span{
+    flex:0 0 auto;
+  }
+  body[data-post-category] .article-shell > .breadcrumb[data-mobile-compact="true"]{
+    white-space:normal !important;
+    overflow:visible !important;
+  }
+  body[data-post-category] .article-shell > .breadcrumb .breadcrumb-sep{
+    opacity:.48;
+  }
+  body[data-post-category] .article-shell > .breadcrumb .breadcrumb-tail{
+    min-width:0;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    opacity:.84;
+  }
+  body[data-post-category] .article-shell h1{
+    margin:0 0 10px !important;
+  }
+  body[data-post-category] .post-meta-strip{
+    margin:8px 0 12px !important;
+  }
+  body[data-post-category] .article-intro{
+    margin:0 0 14px !important;
+  }
+  body[data-post-category] .article-hero-meta{
+    margin-top:10px !important;
+  }
+}
+@media (max-width:640px){
+  body[data-post-category] .article-shell > .breadcrumb{
+    gap:5px;
+    margin:0 0 8px !important;
+    font-size:11px !important;
+  }
+  body[data-post-category] .article-shell h1{
+    margin:0 0 8px !important;
+    font-size:clamp(25px,7.6vw,30px) !important;
+    line-height:1.14 !important;
+  }
+  body[data-post-category] .post-meta-strip{
+    gap:6px !important;
+    margin:6px 0 10px !important;
+  }
+  body[data-post-category] .post-meta-item{
+    padding:8px 10px !important;
+  }
+  body[data-post-category] .article-intro{
+    margin:0 0 12px !important;
+  }
+  body[data-post-category] .article-hero-meta{
+    gap:6px !important;
+    margin-top:8px !important;
+  }
+  body[data-post-category] .meta-pill{
+    min-height:30px;
+    padding:0 9px !important;
+  }
+}
