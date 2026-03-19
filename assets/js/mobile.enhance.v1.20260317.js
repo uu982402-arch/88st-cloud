@@ -402,59 +402,30 @@
 
 
 
-  const articleFlowState = {
-    promoMarker: null,
-    promoNode: null
-  };
-
-  function lastBySelector(root, selector) {
-    const items = root ? Array.from(root.querySelectorAll(selector)) : [];
-    return items.length ? items[items.length - 1] : null;
-  }
-
-  function syncMobileArticleFlow() {
-    if (!document.body?.hasAttribute('data-post-category')) return;
-    const shell = document.querySelector('.article-shell');
-    const promo = document.querySelector('.auto-promo-zone.is-article');
-    const rail = document.querySelector('.side-rail');
+  function syncMobileArticleSectionTitles() {
     const isMobileLike = window.innerWidth <= 980;
+    if (!document.body || !document.body.matches('body[data-post-category]')) return;
 
-    if (rail) {
-      rail.querySelectorAll('.rail-card').forEach((card, index) => {
-        const title = (card.querySelector('h3')?.textContent || '').trim();
-        let priority = 40 + index;
-        if (/다음\s*동선/.test(title)) priority = 1;
-        else if (/이\s*글의\s*핵심/.test(title)) priority = 2;
-        else if (/연결\s*카테고리|태그/.test(title)) priority = 3;
-        card.dataset.mobilePriority = String(priority);
-      });
-      rail.classList.toggle('is-mobile-flow', isMobileLike);
-    }
+    const titleMap = {
+      '같이 보면 좋은 글': '관련 글',
+      '이 글의 핵심': '핵심 정리',
+      '연결 카테고리': '연결 분야',
+      '다음 동선': '다음 글'
+    };
 
-    if (!shell || !promo) return;
+    const selectors = [
+      'body[data-post-category] .article-shell h2',
+      'body[data-post-category] .rail-card h3'
+    ];
 
-    if (!articleFlowState.promoMarker && promo.parentNode) {
-      const marker = document.createComment('article-promo-origin');
-      promo.parentNode.insertBefore(marker, promo);
-      articleFlowState.promoMarker = marker;
-      articleFlowState.promoNode = promo;
-    }
-
-    if (isMobileLike) {
-      const target = lastBySelector(shell, '.callout')
-        || lastBySelector(shell, '.faq-list')
-        || lastBySelector(shell, '.article-checks')
-        || lastBySelector(shell, '.article-hero-meta');
-      if (target && target !== promo && promo.previousElementSibling !== target) {
-        target.parentNode.insertBefore(promo, target.nextSibling);
-      }
-      promo.classList.add('is-mobile-flow');
-    } else if (articleFlowState.promoMarker?.parentNode) {
-      articleFlowState.promoMarker.parentNode.insertBefore(promo, articleFlowState.promoMarker.nextSibling);
-      promo.classList.remove('is-mobile-flow');
-    }
+    document.querySelectorAll(selectors.join(',')).forEach((node) => {
+      const raw = (node.textContent || '').replace(/\s+/g, ' ').trim();
+      if (!raw) return;
+      if (!node.dataset.fullText) node.dataset.fullText = raw;
+      const full = node.dataset.fullText;
+      node.textContent = isMobileLike ? (titleMap[full] || full) : full;
+    });
   }
-
 
   function mountMobileDock() {
     if (window.innerWidth > 980) return;
@@ -521,7 +492,7 @@
   mountInlinePromos();
   mountMobileDock();
   syncMobilePostMetaLabels();
-  syncMobileArticleFlow();
+  syncMobileArticleSectionTitles();
   window.addEventListener('resize', syncMobilePostMetaLabels, { passive: true });
-  window.addEventListener('resize', syncMobileArticleFlow, { passive: true });
+  window.addEventListener('resize', syncMobileArticleSectionTitles, { passive: true });
 })();
