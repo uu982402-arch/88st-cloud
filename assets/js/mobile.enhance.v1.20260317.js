@@ -427,50 +427,6 @@
     });
   }
 
-
-
-  function syncMobileArticleLinkLabels() {
-    const isMobileLike = window.innerWidth <= 980;
-    if (!document.body || !document.body.matches('body[data-post-category]')) return;
-
-    const compactLinkLabel = (value) => {
-      const raw = String(value || '').replace(/\s+/g, ' ').trim();
-      if (!raw) return raw;
-      const normalized = raw
-        .replace(/관련 주제를 이어서 읽기 좋은 연결 글/g, '연결 글')
-        .replace(/같이 보기 좋은 기본 자본 운영법/g, '기본 운영 글')
-        .replace(/세션 중단 기준을 더 구체적으로 정리한 글/g, '중단 기준 글')
-        .replace(/출금 전 확인 흐름을 묶은 글/g, '출금 확인 글')
-        .replace(/보너스 조건을 기본부터 정리한 글/g, '조건 정리 글')
-        .replace(/실전 전후 점검용으로 같이 보기 좋은 글/g, '점검 글')
-        .replace(/가장 기본이 되는 베팅 단위 접근/g, '기본 단위 글')
-        .replace(/흐름을 묶은 글/g, '흐름 글')
-        .replace(/관련 글$/g, '연결 글');
-      if (normalized.length <= 14) return normalized;
-      return normalized.slice(0, 13).trim() + '…';
-    };
-
-    document.querySelectorAll('body[data-post-category] .related-card').forEach((card) => {
-      if (isMobileLike) card.setAttribute('data-mobile-cta', '읽기');
-      else card.removeAttribute('data-mobile-cta');
-    });
-
-    document.querySelectorAll('body[data-post-category] .inline-links a').forEach((link) => {
-      const raw = (link.textContent || '').replace(/\s+/g, ' ').trim();
-      if (!raw) return;
-      if (!link.dataset.fullText) link.dataset.fullText = raw;
-      const full = link.dataset.fullText;
-      link.setAttribute('title', full);
-      if (isMobileLike) {
-        link.textContent = compactLinkLabel(full);
-        link.setAttribute('aria-label', full);
-      } else {
-        link.textContent = full;
-        link.removeAttribute('aria-label');
-      }
-    });
-  }
-
   function mountMobileDock() {
     if (window.innerWidth > 980) return;
     if (document.querySelector('.mobile-dock')) return;
@@ -537,8 +493,247 @@
   mountMobileDock();
   syncMobilePostMetaLabels();
   syncMobileArticleSectionTitles();
-  syncMobileArticleLinkLabels();
   window.addEventListener('resize', syncMobilePostMetaLabels, { passive: true });
   window.addEventListener('resize', syncMobileArticleSectionTitles, { passive: true });
-  window.addEventListener('resize', syncMobileArticleLinkLabels, { passive: true });
+})();
+
+
+(() => {
+  const MOBILE_BP = 980;
+  const body = document.body;
+  if (!body) return;
+
+  const isMobile = () => window.innerWidth <= MOBILE_BP;
+  const path = location.pathname || '/';
+  let syncRaf = 0;
+  let dockScrollBound = false;
+
+  const compactCopyMap = [
+    ['body.blog-home-page #categoryStart .section-head p', '허브를 빠르게 고를 수 있게 정리했습니다.'],
+    ['body.blog-home-page #beginnerRoutes .section-head p', '처음 읽을 순서를 짧게 묶었습니다.'],
+    ['body.blog-home-page #editorCuration .section-head p', '자주 찾는 글만 먼저 모았습니다.'],
+    ['body[data-blog-hub] .section-head p', '관련 글을 카드로 바로 볼 수 있게 정리했습니다.'],
+    ['#newsSection .section-head p', '스포츠 브리핑을 바로 확인합니다.'],
+    ['#oddsCenter .section-head p', '배당 구조를 빠르게 확인하고 텔레그램으로 이어서 볼 수 있습니다.'],
+    ['#oddsCenter [data-role="helper"]', '3개 배당을 넣으면 공정확률·마진을 바로 계산합니다.'],
+    ['#oddsCenter .widget-note', '가격 구조를 해석하는 도구입니다. 공정확률·마진·우세격차를 함께 계산합니다.'],
+    ['#oddsCenter .empty-state', '배당을 입력하면 공정확률·마진·종합 점수가 계산됩니다.']
+  ];
+
+  const cardLabelMap = {
+    '허브 보기': '허브',
+    '최신 글': '최신',
+    '글 보기': '보기',
+    '상세 보기': '보기',
+    '글 읽기': '읽기',
+    '원문 보기': '원문',
+    '새로고침': '갱신',
+    '슬롯 목록': '목록',
+    '카지노 목록': '목록',
+    '보너스 목록': '목록',
+    '전략 목록': '목록',
+    '손실 제어 보기': '손실 제어',
+    '중단 기준 보기': '중단 기준',
+    'VIP 혜택 보기': 'VIP 혜택',
+    '세션 체크리스트': '체크리스트',
+    '텔레그램 열기': '텔레그램',
+    '공식 주소 바로가기': '주소 열기',
+    '텔레그램 문의하기': '문의하기'
+  };
+
+  function storeText(node) {
+    if (!node) return '';
+    if (!node.dataset.fullText) node.dataset.fullText = (node.textContent || '').replace(/\s+/g, ' ').trim();
+    return node.dataset.fullText;
+  }
+
+  function syncTextNode(node, shortText) {
+    if (!node) return;
+    const fullText = storeText(node);
+    node.textContent = isMobile() ? shortText : fullText;
+  }
+
+  function syncSelectorMap() {
+    compactCopyMap.forEach(([selector, shortText]) => {
+      document.querySelectorAll(selector).forEach((node) => syncTextNode(node, shortText));
+    });
+  }
+
+  function syncCardLabels() {
+    const selectors = [
+      '.archive-card .btn',
+      '.archive-card .text-link',
+      '.stream-card .text-link',
+      '.latest-card .btn',
+      '.latest-card .text-link',
+      '.category-card .btn',
+      '.category-card .text-link',
+      '.guide-tail-actions .btn',
+      '.guide-tail-actions .text-link',
+      '.widget-actions .btn',
+      '.analysis-hero-cta .btn',
+      '.news-card .btn',
+      '.news-card .text-link',
+      '#newsRefreshBtn'
+    ];
+    document.querySelectorAll(selectors.join(',')).forEach((node) => {
+      if (node.children && node.children.length) return;
+      const fullText = storeText(node);
+      node.textContent = isMobile() ? (cardLabelMap[fullText] || fullText) : fullText;
+    });
+  }
+
+  function syncMenuAccentLabel() {
+    const accent = document.querySelector('.mobile-menu-links a.is-accent');
+    if (!accent) return;
+    const main = accent.querySelector('span');
+    const sub = accent.querySelector('small');
+    if (main) {
+      if (!main.dataset.fullText) main.dataset.fullText = (main.textContent || '').trim();
+      main.textContent = isMobile() ? '문의' : main.dataset.fullText;
+    }
+    if (sub) {
+      if (!sub.dataset.fullText) sub.dataset.fullText = (sub.textContent || '').trim();
+      sub.textContent = isMobile() ? '텔레그램 연결' : sub.dataset.fullText;
+    }
+  }
+
+  function syncArticleBreadcrumb() {
+    const breadcrumb = document.querySelector('body[data-post-category] .breadcrumb');
+    if (!breadcrumb) return;
+    if (!breadcrumb.dataset.fullHtml) breadcrumb.dataset.fullHtml = breadcrumb.innerHTML;
+    if (!isMobile()) {
+      breadcrumb.innerHTML = breadcrumb.dataset.fullHtml;
+      breadcrumb.classList.remove('is-mobile-compact');
+      return;
+    }
+    const links = Array.from(breadcrumb.querySelectorAll('a'));
+    if (links.length < 2) return;
+    const compact = `${links[0].outerHTML}<span class="crumb-sep">/</span>${links[1].outerHTML}`;
+    breadcrumb.innerHTML = compact;
+    breadcrumb.classList.add('is-mobile-compact');
+  }
+
+  function insertAfter(target, node) {
+    if (!target || !target.parentNode || !node) return;
+    if (target.nextSibling === node) return;
+    target.parentNode.insertBefore(node, target.nextSibling);
+  }
+
+  function syncArticlePromoFlow() {
+    const promo = document.querySelector('body[data-post-category] .auto-promo-zone.is-article');
+    const shell = document.querySelector('body[data-post-category] .article-shell');
+    if (!promo || !shell) return;
+    const mobileTarget = shell.querySelector('.faq-list') || shell.querySelector('.callout') || shell.querySelector('.article-checks');
+    const desktopTarget = shell.querySelector('.article-checks') || shell.querySelector('.article-intro');
+    const target = isMobile() ? mobileTarget : desktopTarget;
+    insertAfter(target, promo);
+  }
+
+  function syncArticleRailOrder() {
+    const rail = document.querySelector('body[data-post-category] .side-rail');
+    if (!rail) return;
+    const cards = Array.from(rail.querySelectorAll('.rail-card'));
+    if (!cards.length) return;
+    cards.forEach((card, index) => {
+      if (!card.dataset.originalIndex) card.dataset.originalIndex = String(index);
+    });
+    const orderMap = { '다음 동선': 0, '다음 글': 0, '이 글의 핵심': 1, '핵심 정리': 1, '연결 카테고리': 2, '연결 분야': 2 };
+    const sorted = [...cards].sort((a, b) => {
+      if (!isMobile()) return Number(a.dataset.originalIndex) - Number(b.dataset.originalIndex);
+      const aTitle = (a.querySelector('h3')?.textContent || '').trim();
+      const bTitle = (b.querySelector('h3')?.textContent || '').trim();
+      return (orderMap[aTitle] ?? 99) - (orderMap[bTitle] ?? 99);
+    });
+    sorted.forEach((card) => rail.appendChild(card));
+  }
+
+  function syncHeaderCompact() {
+    if (!isMobile()) {
+      body.classList.remove('is-header-compact');
+      return;
+    }
+    body.classList.toggle('is-header-compact', window.scrollY > 16);
+  }
+
+  function bindDockScroll() {
+    if (dockScrollBound) return;
+    dockScrollBound = true;
+    let lastY = window.scrollY || 0;
+    window.addEventListener('scroll', () => {
+      const dock = document.querySelector('.mobile-dock');
+      if (!dock || !isMobile()) return;
+      const currentY = window.scrollY || 0;
+      if (currentY > lastY + 8 && currentY > 96) dock.classList.add('is-hidden');
+      if (currentY < lastY - 8 || currentY < 72) dock.classList.remove('is-hidden');
+      lastY = currentY;
+      syncHeaderCompact();
+    }, { passive: true });
+  }
+
+  function syncAnalysisButtons() {
+    const cta = document.querySelector('#oddsCenter .analysis-hero-cta');
+    if (!cta) return;
+    const primary = cta.querySelector('.cta-actions .btn-primary');
+    const secondary = cta.querySelector('.cta-actions .btn-copy, .cta-actions .btn-ghost');
+    if (primary) syncTextNode(primary, '텔레그램');
+    if (secondary) syncTextNode(secondary, '아이디 복사');
+  }
+
+  function syncHomeRouteLinks() {
+    const linkMap = {
+      '손실 제어 보기': '손실 제어',
+      '중단 기준 보기': '중단 기준',
+      'VIP 혜택 보기': 'VIP 혜택',
+      '세션 체크리스트': '체크리스트'
+    };
+    document.querySelectorAll('.guide-tail-actions .text-link').forEach((node) => {
+      if (node.children && node.children.length) return;
+      const fullText = storeText(node);
+      node.textContent = isMobile() ? (linkMap[fullText] || fullText) : fullText;
+    });
+  }
+
+  function syncArticleRelatedLinkLabels() {
+    document.querySelectorAll('body[data-post-category] .related-card, body[data-post-category] .inline-links a').forEach((node) => {
+      if (node.matches('.inline-links a') && !(node.children && node.children.length)) {
+        const fullText = storeText(node);
+        if (isMobile() && fullText.length > 12) node.textContent = `${fullText.slice(0, 11).trim()}…`;
+        else node.textContent = fullText;
+      }
+    });
+  }
+
+  function runMobileSuite() {
+    syncSelectorMap();
+    syncCardLabels();
+    syncMenuAccentLabel();
+    syncArticleBreadcrumb();
+    syncArticlePromoFlow();
+    syncArticleRailOrder();
+    syncAnalysisButtons();
+    syncHomeRouteLinks();
+    syncArticleRelatedLinkLabels();
+    syncHeaderCompact();
+    bindDockScroll();
+  }
+
+  function queueRun() {
+    if (syncRaf) cancelAnimationFrame(syncRaf);
+    syncRaf = requestAnimationFrame(runMobileSuite);
+  }
+
+  queueRun();
+  window.addEventListener('resize', queueRun, { passive: true });
+  window.addEventListener('orientationchange', queueRun, { passive: true });
+
+  const observer = new MutationObserver((mutations) => {
+    for (const mutation of mutations) {
+      if (mutation.type === 'childList' && (mutation.addedNodes.length || mutation.removedNodes.length)) {
+        queueRun();
+        return;
+      }
+    }
+  });
+  observer.observe(body, { childList: true, subtree: true });
 })();
