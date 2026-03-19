@@ -356,44 +356,6 @@
   }
 
 
-
-  function syncMobileBreadcrumbCompact() {
-    const crumbs = document.querySelectorAll('body[data-post-category] .article-shell > .breadcrumb');
-    if (!crumbs.length) return;
-    const isCompact = window.innerWidth <= 640;
-
-    crumbs.forEach((crumb) => {
-      if (!crumb.dataset.fullHtml) crumb.dataset.fullHtml = crumb.innerHTML;
-      if (!isCompact) {
-        if (crumb.dataset.mobileCompact === 'true') {
-          crumb.innerHTML = crumb.dataset.fullHtml;
-          crumb.dataset.mobileCompact = 'false';
-        }
-        return;
-      }
-
-      if (crumb.dataset.mobileCompact === 'true') return;
-
-      const anchors = Array.from(crumb.querySelectorAll('a'));
-      const current = crumb.querySelector('span:last-of-type');
-      if (!anchors.length) return;
-
-      const parts = [];
-      const makeSep = () => '<span class="breadcrumb-sep" aria-hidden="true">/</span>';
-      parts.push(anchors[0].outerHTML);
-      if (anchors[1]) {
-        parts.push(makeSep());
-        parts.push(anchors[1].outerHTML);
-      }
-      if (!anchors[1] && current) {
-        parts.push(makeSep());
-        parts.push(`<span class="breadcrumb-tail">${current.textContent.trim()}</span>`);
-      }
-      crumb.innerHTML = parts.join(' ');
-      crumb.dataset.mobileCompact = 'true';
-    });
-  }
-
   function syncMobilePostMetaLabels() {
     const isMobileLike = window.innerWidth <= 980;
     const metaItems = document.querySelectorAll('body[data-post-category] .post-meta-item');
@@ -437,6 +399,62 @@
       }
     });
   }
+
+
+
+  const articleFlowState = {
+    promoMarker: null,
+    promoNode: null
+  };
+
+  function lastBySelector(root, selector) {
+    const items = root ? Array.from(root.querySelectorAll(selector)) : [];
+    return items.length ? items[items.length - 1] : null;
+  }
+
+  function syncMobileArticleFlow() {
+    if (!document.body?.hasAttribute('data-post-category')) return;
+    const shell = document.querySelector('.article-shell');
+    const promo = document.querySelector('.auto-promo-zone.is-article');
+    const rail = document.querySelector('.side-rail');
+    const isMobileLike = window.innerWidth <= 980;
+
+    if (rail) {
+      rail.querySelectorAll('.rail-card').forEach((card, index) => {
+        const title = (card.querySelector('h3')?.textContent || '').trim();
+        let priority = 40 + index;
+        if (/다음\s*동선/.test(title)) priority = 1;
+        else if (/이\s*글의\s*핵심/.test(title)) priority = 2;
+        else if (/연결\s*카테고리|태그/.test(title)) priority = 3;
+        card.dataset.mobilePriority = String(priority);
+      });
+      rail.classList.toggle('is-mobile-flow', isMobileLike);
+    }
+
+    if (!shell || !promo) return;
+
+    if (!articleFlowState.promoMarker && promo.parentNode) {
+      const marker = document.createComment('article-promo-origin');
+      promo.parentNode.insertBefore(marker, promo);
+      articleFlowState.promoMarker = marker;
+      articleFlowState.promoNode = promo;
+    }
+
+    if (isMobileLike) {
+      const target = lastBySelector(shell, '.callout')
+        || lastBySelector(shell, '.faq-list')
+        || lastBySelector(shell, '.article-checks')
+        || lastBySelector(shell, '.article-hero-meta');
+      if (target && target !== promo && promo.previousElementSibling !== target) {
+        target.parentNode.insertBefore(promo, target.nextSibling);
+      }
+      promo.classList.add('is-mobile-flow');
+    } else if (articleFlowState.promoMarker?.parentNode) {
+      articleFlowState.promoMarker.parentNode.insertBefore(promo, articleFlowState.promoMarker.nextSibling);
+      promo.classList.remove('is-mobile-flow');
+    }
+  }
+
 
   function mountMobileDock() {
     if (window.innerWidth > 980) return;
@@ -502,8 +520,8 @@
   createGlobalMobileMenu();
   mountInlinePromos();
   mountMobileDock();
-  syncMobileBreadcrumbCompact();
   syncMobilePostMetaLabels();
-  window.addEventListener('resize', syncMobileBreadcrumbCompact, { passive: true });
+  syncMobileArticleFlow();
   window.addEventListener('resize', syncMobilePostMetaLabels, { passive: true });
+  window.addEventListener('resize', syncMobileArticleFlow, { passive: true });
 })();
