@@ -360,10 +360,10 @@
     if (document.querySelector('.mobile-dock')) return;
 
     const items = [
+      { href: '/', label: '메인', icon: '⌂' },
       { href: '/analysis/', label: '분석', icon: '⌁' },
-      { href: '/', label: '홈', icon: '⌂' },
-      { href: '/play-guides/', label: '가이드', icon: '☷', accent: true },
-      { href: 'https://t.me/kakacloud', label: '문의', icon: '✦', external: true }
+      { href: '/play-guides/', label: '가이드', icon: '☷' },
+      { href: 'https://t.me/kakacloud', label: '문의', icon: '✦', external: true, accent: true }
     ];
 
     const dock = document.createElement('nav');
@@ -384,7 +384,7 @@
         a.target = '_blank';
         a.rel = 'noopener';
       }
-      a.innerHTML = `<b>${item.icon}</b><span>${item.label}</span>`;
+      a.innerHTML = `<span class="mobile-dock__icon" aria-hidden="true">${item.icon}</span><span class="mobile-dock__label">${item.label}</span>`;
       list.appendChild(a);
     });
 
