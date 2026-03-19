@@ -1,0 +1,61 @@
+{
+  "version": "2026-03-19",
+  "offers": [
+    {
+      "id": "tron-main",
+      "title": "암호화폐 전용 놀이터",
+      "badge": "TRON bet 회원 전용 이벤트 다수 진행 중",
+      "bullets": [
+        "출석 / 충전 보너스 지급 이벤트",
+        "주말 기프티콘 지급 이벤트",
+        "슬롯 잭팟 이벤트",
+        "카지노 0.8% / 슬롯 2.5% 콤프 지급 (1레벨)"
+      ],
+      "code": "KAKA",
+      "codeLabel": "가입코드: KAKA",
+      "theme": "mint",
+      "primaryHref": "https://www.trc-11.com/",
+      "primaryLabel": "공식 주소 바로가기",
+      "secondaryHref": "https://t.me/kakacloud",
+      "secondaryLabel": "텔레그램 문의하기",
+      "categories": [
+        "common"
+      ],
+      "targets": [
+        "all"
+      ],
+      "priority": 90,
+      "enabled": true,
+      "mobile": true,
+      "desktop": true
+    },
+    {
+      "id": "fix-main",
+      "title": "고액 안전 놀이터",
+      "badge": "픽스 bet 회원 전용 이벤트 다수 진행 중",
+      "bullets": [
+        "신규가입 첫 충전 30% · 첫충 15% / 매충 10% 지급",
+        "카지노 첫 충전 5% · 매충 5%",
+        "정착 / 이사 지원금 이벤트",
+        "콤프 최대 카지노 1.2% / 슬롯 4%"
+      ],
+      "code": "KAKA",
+      "codeLabel": "가입코드: KAKA",
+      "theme": "amber",
+      "primaryHref": "https://픽스주소.com/",
+      "primaryLabel": "공식 주소 바로가기",
+      "secondaryHref": "https://t.me/kakacloud",
+      "secondaryLabel": "텔레그램 문의하기",
+      "categories": [
+        "common"
+      ],
+      "targets": [
+        "all"
+      ],
+      "priority": 80,
+      "enabled": true,
+      "mobile": true,
+      "desktop": true
+    }
+  ]
+}

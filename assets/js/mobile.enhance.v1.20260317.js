@@ -39,8 +39,11 @@
   const path = location.pathname || '/';
   if (window.Telegram?.WebApp || /\/tg-match-entry\/?$/i.test(path)) return;
 
-  const PROMO_OFFERS = [
+
+  const ADS_DATA_URL = '/assets/data/ads.index.v1.20260319.json';
+  const SEED_PROMO_OFFERS = [
     {
+      id: 'tron-main',
       title: '암호화폐 전용 놀이터',
       badge: 'TRON bet 회원 전용 이벤트 다수 진행 중',
       bullets: [
@@ -55,9 +58,16 @@
       primaryHref: 'https://www.trc-11.com/',
       primaryLabel: '공식 주소 바로가기',
       secondaryHref: 'https://t.me/kakacloud',
-      secondaryLabel: '텔레그램 문의하기'
+      secondaryLabel: '텔레그램 문의하기',
+      categories: ['common'],
+      targets: ['all'],
+      priority: 90,
+      enabled: true,
+      desktop: true,
+      mobile: true
     },
     {
+      id: 'fix-main',
       title: '고액 안전 놀이터',
       badge: '픽스 bet 회원 전용 이벤트 다수 진행 중',
       bullets: [
@@ -72,9 +82,26 @@
       primaryHref: 'https://픽스주소.com/',
       primaryLabel: '공식 주소 바로가기',
       secondaryHref: 'https://t.me/kakacloud',
-      secondaryLabel: '텔레그램 문의하기'
+      secondaryLabel: '텔레그램 문의하기',
+      categories: ['common'],
+      targets: ['all'],
+      priority: 80,
+      enabled: true,
+      desktop: true,
+      mobile: true
     }
   ];
+
+  const PROMO_SLOT_LIMITS = {
+    home: { desktop: 4, mobile: 2 },
+    hub: { desktop: 4, mobile: 2 },
+    news: { desktop: 3, mobile: 2 },
+    analysis: { desktop: 2, mobile: 2 },
+    post: { desktop: 2, mobile: 2 },
+    default: { desktop: 2, mobile: 2 }
+  };
+
+  let promoOffersCache = null;
 
   function injectPromoStyles() {
     if (document.getElementById('autoPromoStyles')) return;
@@ -83,13 +110,17 @@
     style.textContent = `
       .auto-promo-zone{margin:26px 0 10px}
       .auto-promo-zone .container{padding-left:0;padding-right:0}
+      .auto-promo-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 14px;padding:0 2px}
+      .auto-promo-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.82rem;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:#93a8d8}
+      .auto-promo-eyebrow::before{content:'';width:8px;height:8px;border-radius:999px;background:#7cf59a;box-shadow:0 0 0 4px rgba(124,245,154,.12)}
+      .auto-promo-note{margin:0;color:#9fb1d8;font-size:.92rem;line-height:1.45}
       .auto-promo-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
-      .auto-promo-card{position:relative;overflow:hidden;border-radius:28px;padding:28px 28px 24px;border:1px solid rgba(144,220,158,.26);background:linear-gradient(180deg,rgba(7,21,48,.95),rgba(5,16,33,.96));box-shadow:0 22px 50px rgba(0,0,0,.22), inset 0 1px 0 rgba(255,255,255,.04)}
+      .auto-promo-card{position:relative;overflow:hidden;border-radius:28px;padding:28px 28px 24px;border:1px solid rgba(144,220,158,.26);background:linear-gradient(180deg,rgba(7,21,48,.95),rgba(5,16,33,.96));box-shadow:0 22px 50px rgba(0,0,0,.22), inset 0 1px 0 rgba(255,255,255,.04);display:flex;flex-direction:column;min-height:100%}
       .auto-promo-card::before{content:'';position:absolute;inset:auto -12% -35% auto;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(103,150,255,.16),transparent 68%);pointer-events:none}
       .auto-promo-title{display:flex;align-items:center;gap:8px;margin:0 0 18px;font-size:1.95rem;line-height:1.12;font-weight:900;color:#f5f8ff;letter-spacing:-.03em}
       .auto-promo-title .mark{font-size:1.05rem;color:#f3c845}
       .auto-promo-badge{margin:0 0 16px;font-size:1rem;font-weight:800;color:#f5f8ff}
-      .auto-promo-list{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+      .auto-promo-list{list-style:none;margin:0;padding:0;display:grid;gap:10px;flex:1}
       .auto-promo-list li{position:relative;padding-left:18px;color:#d5ddf5;line-height:1.55}
       .auto-promo-list li::before{content:'';position:absolute;left:0;top:.6em;width:8px;height:8px;border-radius:50%;background:#7cf59a;box-shadow:0 0 0 4px rgba(124,245,154,.12)}
       .auto-promo-card.is-safe .auto-promo-list li::before{background:#f3c845;box-shadow:0 0 0 4px rgba(243,200,69,.12)}
@@ -103,10 +134,12 @@
       .auto-promo-card.theme-mint .auto-promo-btn.code{background:linear-gradient(135deg,#86efac,#bbf7d0 58%,#dcfce7);box-shadow:0 14px 34px rgba(134,239,172,.2);color:#062317;border-color:rgba(134,239,172,.28)}
       .auto-promo-card.theme-amber .auto-promo-btn.code{background:linear-gradient(135deg,#f8d36b,#f5c451 55%,#f2dd98);box-shadow:0 14px 34px rgba(248,211,107,.2);color:#251804;border-color:rgba(248,211,107,.28)}
       .auto-promo-btn.secondary{color:#ecf2ff;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);box-shadow:none}
+      .auto-promo-toggle-wrap{display:none}
       .auto-promo-zone.is-article{margin:26px 0 28px}
       .auto-promo-zone.is-page{margin:18px 0 30px}
       @media (max-width: 980px){
         .auto-promo-zone .container{padding-left:16px;padding-right:16px}
+        .auto-promo-head{align-items:flex-start;flex-direction:column;gap:6px;margin-bottom:12px}
         .auto-promo-grid{grid-template-columns:1fr}
         .auto-promo-card{padding:22px 20px 20px;border-radius:22px}
         .auto-promo-title{font-size:1.55rem}
@@ -115,6 +148,9 @@
         .auto-promo-btn{width:100%;min-height:46px;padding:0 14px;text-align:center}
         .auto-promo-code-row{display:block}
         .auto-promo-btn.code{width:auto;min-width:0;padding:0 14px}
+        .auto-promo-zone[data-mobile-collapsed="true"] .auto-promo-card.is-extra{display:none}
+        .auto-promo-toggle-wrap{display:block;margin-top:12px}
+        .auto-promo-toggle{width:100%;min-height:46px;border-radius:16px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);color:#ecf2ff;font-weight:800;letter-spacing:-.01em}
       }
       @media (max-width: 640px){
         .auto-promo-zone{margin:20px 0 12px}
@@ -132,21 +168,153 @@
     document.head.appendChild(style);
   }
 
-  function buildPromoSection(kind) {
+  function normalizePromoOffer(raw, idx) {
+    if (!raw || typeof raw !== 'object') return null;
+    const offer = {
+      id: String(raw.id || `promo-${idx + 1}`),
+      title: String(raw.title || '').trim(),
+      badge: String(raw.badge || '').trim(),
+      bullets: Array.isArray(raw.bullets) ? raw.bullets.map((item) => String(item || '').trim()).filter(Boolean).slice(0, 6) : [],
+      code: String(raw.code || '').trim(),
+      codeLabel: String(raw.codeLabel || '').trim(),
+      theme: String(raw.theme || (idx % 2 ? 'amber' : 'mint')).trim(),
+      primaryHref: String(raw.primaryHref || raw.url || '').trim(),
+      primaryLabel: String(raw.primaryLabel || '공식 주소 바로가기').trim(),
+      secondaryHref: String(raw.secondaryHref || 'https://t.me/kakacloud').trim(),
+      secondaryLabel: String(raw.secondaryLabel || '텔레그램 문의하기').trim(),
+      categories: Array.isArray(raw.categories) ? raw.categories.map((item) => String(item || '').trim().toLowerCase()).filter(Boolean) : ['common'],
+      targets: Array.isArray(raw.targets) ? raw.targets.map((item) => String(item || '').trim().toLowerCase()).filter(Boolean) : ['all'],
+      priority: Number.isFinite(Number(raw.priority)) ? Number(raw.priority) : 0,
+      enabled: raw.enabled !== false,
+      mobile: raw.mobile !== false,
+      desktop: raw.desktop !== false
+    };
+    if (!offer.title || !offer.primaryHref) return null;
+    if (!offer.codeLabel && offer.code) offer.codeLabel = `가입코드: ${offer.code}`;
+    if (!offer.bullets.length && raw.description) offer.bullets = [String(raw.description).trim()];
+    return offer;
+  }
+
+  async function loadPromoOffers() {
+    if (promoOffersCache) return promoOffersCache;
+    try {
+      const response = await fetch(ADS_DATA_URL, { cache: 'no-store', credentials: 'same-origin' });
+      if (!response.ok) throw new Error(`ad-data-${response.status}`);
+      const payload = await response.json();
+      const list = Array.isArray(payload) ? payload : (Array.isArray(payload.offers) ? payload.offers : []);
+      const normalized = list.map(normalizePromoOffer).filter(Boolean);
+      if (normalized.length) {
+        promoOffersCache = normalized;
+        return promoOffersCache;
+      }
+      throw new Error('ad-data-empty');
+    } catch (error) {
+      promoOffersCache = SEED_PROMO_OFFERS.map(normalizePromoOffer).filter(Boolean);
+      return promoOffersCache;
+    }
+  }
+
+  function getPromoContext() {
+    const body = document.body;
+    const pageCategory = String(body?.getAttribute('data-post-category') || body?.getAttribute('data-category') || '').trim().toLowerCase();
+    if (body?.matches('body[data-post-category]')) {
+      return { pageType: 'post', category: pageCategory || inferCategoryFromPath(), slotKey: pageCategory ? `post-${pageCategory}` : 'post' };
+    }
+    if (path === '/') return { pageType: 'home', category: 'home', slotKey: 'home' };
+    if (/^\/analysis\//i.test(path)) return { pageType: 'analysis', category: 'analysis', slotKey: 'analysis' };
+    if (/^\/news\//i.test(path)) return { pageType: 'news', category: 'news', slotKey: 'news' };
+    const hubCategory = inferCategoryFromPath();
+    if (body?.hasAttribute('data-blog-hub') || hubCategory) {
+      return { pageType: 'hub', category: hubCategory || 'common', slotKey: hubCategory ? `hub-${hubCategory}` : 'hub' };
+    }
+    return { pageType: 'default', category: hubCategory || 'common', slotKey: 'default' };
+  }
+
+  function inferCategoryFromPath() {
+    if (/^\/casino\//i.test(path)) return 'casino';
+    if (/^\/slot\//i.test(path)) return 'slot';
+    if (/^\/bonus\//i.test(path)) return 'bonus';
+    if (/^\/strategy\//i.test(path)) return 'strategy';
+    if (/^\/analysis\//i.test(path)) return 'analysis';
+    if (/^\/news\//i.test(path)) return 'news';
+    if (/^\/play-guides\//i.test(path)) return 'guide';
+    return '';
+  }
+
+  function getPromoLimits(context) {
+    return PROMO_SLOT_LIMITS[context.pageType] || PROMO_SLOT_LIMITS.default;
+  }
+
+  function offerMatchesContext(offer, context) {
+    if (!offer || offer.enabled === false) return false;
+    if (window.innerWidth <= 980 && offer.mobile === false) return false;
+    if (window.innerWidth > 980 && offer.desktop === false) return false;
+
+    const targetPool = new Set(['all', context.pageType, context.slotKey]);
+    if (context.category) {
+      targetPool.add(context.category);
+      targetPool.add(`hub-${context.category}`);
+      targetPool.add(`post-${context.category}`);
+    }
+
+    const categoryPool = new Set(['all', 'common']);
+    if (context.category) categoryPool.add(context.category);
+
+    const targetOk = (offer.targets || []).some((item) => targetPool.has(String(item || '').toLowerCase()));
+    const categoryOk = (offer.categories || []).some((item) => categoryPool.has(String(item || '').toLowerCase()));
+    return targetOk && categoryOk;
+  }
+
+  function selectPromoOffers(offers, context) {
+    const limits = getPromoLimits(context);
+    const selected = offers
+      .filter((offer) => offerMatchesContext(offer, context))
+      .sort((a, b) => {
+        if (b.priority !== a.priority) return b.priority - a.priority;
+        return a.title.localeCompare(b.title, 'ko');
+      })
+      .slice(0, Math.max(limits.desktop, limits.mobile));
+    if (selected.length) return selected;
+    return offers
+      .filter((offer) => offer.enabled !== false && ((window.innerWidth <= 980 && offer.mobile !== false) || (window.innerWidth > 980 && offer.desktop !== false)))
+      .sort((a, b) => b.priority - a.priority)
+      .slice(0, Math.max(limits.desktop, limits.mobile));
+  }
+
+  function buildPromoSection(kind, offers, context) {
+    const limits = getPromoLimits(context);
+    const mobileInitial = Math.min(limits.mobile, offers.length);
+    const hasMoreOnMobile = offers.length > mobileInitial;
+
     const section = document.createElement('section');
     section.className = `auto-promo-zone ${kind === 'article' ? 'is-article' : 'is-page'}`;
     section.setAttribute('aria-label', '추천 놀이터 안내');
+    section.dataset.mobileCollapsed = hasMoreOnMobile ? 'true' : 'false';
+
     const container = document.createElement('div');
     container.className = 'container';
+
+    const head = document.createElement('div');
+    head.className = 'auto-promo-head';
+    head.innerHTML = `
+      <div>
+        <p class="auto-promo-eyebrow">추천 파트너</p>
+        <p class="auto-promo-note">페이지 성격에 맞는 광고만 자동으로 노출됩니다.</p>
+      </div>
+    `;
+
     const grid = document.createElement('div');
     grid.className = 'auto-promo-grid';
 
-    PROMO_OFFERS.forEach((offer, idx) => {
+    offers.forEach((offer, idx) => {
       const article = document.createElement('article');
-      article.className = `auto-promo-card theme-${offer.theme || (idx === 1 ? 'amber' : 'mint')}${idx === 1 ? ' is-safe' : ''}`;
+      const extraMobile = idx >= mobileInitial;
+      article.className = `auto-promo-card theme-${offer.theme || (idx % 2 ? 'amber' : 'mint')}${idx % 2 ? ' is-safe' : ''}${extraMobile ? ' is-extra' : ''}`;
       const listMarkup = offer.bullets.map((item) => `<li>${item}</li>`).join('');
       const isPrimaryExternal = /^https?:\/\//i.test(offer.primaryHref || '');
+      const isSecondaryExternal = /^https?:\/\//i.test(offer.secondaryHref || '');
       const primaryAttrs = isPrimaryExternal ? ' target="_blank" rel="noopener noreferrer"' : '';
+      const secondaryAttrs = isSecondaryExternal ? ' target="_blank" rel="noopener noreferrer"' : '';
       article.innerHTML = `
         <h2 class="auto-promo-title"><span class="mark">✦</span><span>${offer.title}</span><span class="mark">✦</span></h2>
         <p class="auto-promo-badge">${offer.badge}</p>
@@ -158,13 +326,22 @@
         </div>
         <div class="auto-promo-actions">
           <a class="auto-promo-btn primary" href="${offer.primaryHref}"${primaryAttrs}>${offer.primaryLabel}</a>
-          <a class="auto-promo-btn secondary" href="${offer.secondaryHref}" target="_blank" rel="noopener">${offer.secondaryLabel}</a>
+          <a class="auto-promo-btn secondary" href="${offer.secondaryHref}"${secondaryAttrs}>${offer.secondaryLabel}</a>
         </div>
       `;
       grid.appendChild(article);
     });
 
+    container.appendChild(head);
     container.appendChild(grid);
+
+    if (hasMoreOnMobile) {
+      const toggleWrap = document.createElement('div');
+      toggleWrap.className = 'auto-promo-toggle-wrap';
+      toggleWrap.innerHTML = '<button class="auto-promo-toggle" type="button" data-promo-toggle aria-expanded="false">추천 파트너 더보기</button>';
+      container.appendChild(toggleWrap);
+    }
+
     section.appendChild(container);
     return section;
   }
@@ -211,27 +388,31 @@
     return !!main.querySelector('.auto-promo-zone');
   }
 
-  function mountInlinePromos() {
+  async function mountInlinePromos() {
     const main = document.getElementById('mainContent') || document.querySelector('main');
     if (!main || hasExistingPromo(main)) return;
     const anchorInfo = pickPromoAnchor(main);
     if (!anchorInfo || !anchorInfo.target) return;
+    const context = getPromoContext();
+    const offers = selectPromoOffers(await loadPromoOffers(), context);
+    if (!offers.length) return;
     injectPromoStyles();
-    const section = buildPromoSection(anchorInfo.kind);
+    const section = buildPromoSection(anchorInfo.kind, offers, context);
     insertAfter(anchorInfo.target, section);
   }
-
 
   function copyPromoCode(code, button) {
     if (!code) return;
     const setStatus = (label) => {
       if (!button) return;
-      const sub = button.querySelector('.sub');
-      if (sub) sub.textContent = label;
+      const span = button.querySelector('span');
+      if (span) span.textContent = label;
     };
+    const original = button?.dataset.originalLabel || button?.textContent || '';
+    if (button && !button.dataset.originalLabel) button.dataset.originalLabel = original.trim();
     const finish = () => {
       setStatus('복사 완료');
-      window.setTimeout(() => setStatus('클릭하여 복사'), 1500);
+      window.setTimeout(() => setStatus(button?.dataset.originalLabel || original || '가입코드 복사'), 1500);
       try { if (typeof window.track === 'function') window.track('promo_code_copy', { code, path: location.pathname }); } catch (e) {}
     };
     if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -258,10 +439,22 @@
 
   document.addEventListener('click', (event) => {
     const button = event.target.closest('[data-copy-code]');
-    if (!button) return;
+    if (button) {
+      event.preventDefault();
+      copyPromoCode(button.getAttribute('data-copy-code') || '', button);
+      return;
+    }
+    const toggle = event.target.closest('[data-promo-toggle]');
+    if (!toggle) return;
     event.preventDefault();
-    copyPromoCode(button.getAttribute('data-copy-code') || '', button);
+    const zone = toggle.closest('.auto-promo-zone');
+    if (!zone) return;
+    const expanded = zone.dataset.mobileCollapsed !== 'true';
+    zone.dataset.mobileCollapsed = expanded ? 'true' : 'false';
+    toggle.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+    toggle.textContent = expanded ? '추천 파트너 더보기' : '추천 파트너 접기';
   });
+
 
 
   function createGlobalMobileMenu() {
@@ -427,6 +620,50 @@
     });
   }
 
+
+
+  function syncMobileArticleLinkLabels() {
+    const isMobileLike = window.innerWidth <= 980;
+    if (!document.body || !document.body.matches('body[data-post-category]')) return;
+
+    const compactLinkLabel = (value) => {
+      const raw = String(value || '').replace(/\s+/g, ' ').trim();
+      if (!raw) return raw;
+      const normalized = raw
+        .replace(/관련 주제를 이어서 읽기 좋은 연결 글/g, '연결 글')
+        .replace(/같이 보기 좋은 기본 자본 운영법/g, '기본 운영 글')
+        .replace(/세션 중단 기준을 더 구체적으로 정리한 글/g, '중단 기준 글')
+        .replace(/출금 전 확인 흐름을 묶은 글/g, '출금 확인 글')
+        .replace(/보너스 조건을 기본부터 정리한 글/g, '조건 정리 글')
+        .replace(/실전 전후 점검용으로 같이 보기 좋은 글/g, '점검 글')
+        .replace(/가장 기본이 되는 베팅 단위 접근/g, '기본 단위 글')
+        .replace(/흐름을 묶은 글/g, '흐름 글')
+        .replace(/관련 글$/g, '연결 글');
+      if (normalized.length <= 14) return normalized;
+      return normalized.slice(0, 13).trim() + '…';
+    };
+
+    document.querySelectorAll('body[data-post-category] .related-card').forEach((card) => {
+      if (isMobileLike) card.setAttribute('data-mobile-cta', '읽기');
+      else card.removeAttribute('data-mobile-cta');
+    });
+
+    document.querySelectorAll('body[data-post-category] .inline-links a').forEach((link) => {
+      const raw = (link.textContent || '').replace(/\s+/g, ' ').trim();
+      if (!raw) return;
+      if (!link.dataset.fullText) link.dataset.fullText = raw;
+      const full = link.dataset.fullText;
+      link.setAttribute('title', full);
+      if (isMobileLike) {
+        link.textContent = compactLinkLabel(full);
+        link.setAttribute('aria-label', full);
+      } else {
+        link.textContent = full;
+        link.removeAttribute('aria-label');
+      }
+    });
+  }
+
   function mountMobileDock() {
     if (window.innerWidth > 980) return;
     if (document.querySelector('.mobile-dock')) return;
@@ -493,247 +730,8 @@
   mountMobileDock();
   syncMobilePostMetaLabels();
   syncMobileArticleSectionTitles();
+  syncMobileArticleLinkLabels();
   window.addEventListener('resize', syncMobilePostMetaLabels, { passive: true });
   window.addEventListener('resize', syncMobileArticleSectionTitles, { passive: true });
-})();
-
-
-(() => {
-  const MOBILE_BP = 980;
-  const body = document.body;
-  if (!body) return;
-
-  const isMobile = () => window.innerWidth <= MOBILE_BP;
-  const path = location.pathname || '/';
-  let syncRaf = 0;
-  let dockScrollBound = false;
-
-  const compactCopyMap = [
-    ['body.blog-home-page #categoryStart .section-head p', '허브를 빠르게 고를 수 있게 정리했습니다.'],
-    ['body.blog-home-page #beginnerRoutes .section-head p', '처음 읽을 순서를 짧게 묶었습니다.'],
-    ['body.blog-home-page #editorCuration .section-head p', '자주 찾는 글만 먼저 모았습니다.'],
-    ['body[data-blog-hub] .section-head p', '관련 글을 카드로 바로 볼 수 있게 정리했습니다.'],
-    ['#newsSection .section-head p', '스포츠 브리핑을 바로 확인합니다.'],
-    ['#oddsCenter .section-head p', '배당 구조를 빠르게 확인하고 텔레그램으로 이어서 볼 수 있습니다.'],
-    ['#oddsCenter [data-role="helper"]', '3개 배당을 넣으면 공정확률·마진을 바로 계산합니다.'],
-    ['#oddsCenter .widget-note', '가격 구조를 해석하는 도구입니다. 공정확률·마진·우세격차를 함께 계산합니다.'],
-    ['#oddsCenter .empty-state', '배당을 입력하면 공정확률·마진·종합 점수가 계산됩니다.']
-  ];
-
-  const cardLabelMap = {
-    '허브 보기': '허브',
-    '최신 글': '최신',
-    '글 보기': '보기',
-    '상세 보기': '보기',
-    '글 읽기': '읽기',
-    '원문 보기': '원문',
-    '새로고침': '갱신',
-    '슬롯 목록': '목록',
-    '카지노 목록': '목록',
-    '보너스 목록': '목록',
-    '전략 목록': '목록',
-    '손실 제어 보기': '손실 제어',
-    '중단 기준 보기': '중단 기준',
-    'VIP 혜택 보기': 'VIP 혜택',
-    '세션 체크리스트': '체크리스트',
-    '텔레그램 열기': '텔레그램',
-    '공식 주소 바로가기': '주소 열기',
-    '텔레그램 문의하기': '문의하기'
-  };
-
-  function storeText(node) {
-    if (!node) return '';
-    if (!node.dataset.fullText) node.dataset.fullText = (node.textContent || '').replace(/\s+/g, ' ').trim();
-    return node.dataset.fullText;
-  }
-
-  function syncTextNode(node, shortText) {
-    if (!node) return;
-    const fullText = storeText(node);
-    node.textContent = isMobile() ? shortText : fullText;
-  }
-
-  function syncSelectorMap() {
-    compactCopyMap.forEach(([selector, shortText]) => {
-      document.querySelectorAll(selector).forEach((node) => syncTextNode(node, shortText));
-    });
-  }
-
-  function syncCardLabels() {
-    const selectors = [
-      '.archive-card .btn',
-      '.archive-card .text-link',
-      '.stream-card .text-link',
-      '.latest-card .btn',
-      '.latest-card .text-link',
-      '.category-card .btn',
-      '.category-card .text-link',
-      '.guide-tail-actions .btn',
-      '.guide-tail-actions .text-link',
-      '.widget-actions .btn',
-      '.analysis-hero-cta .btn',
-      '.news-card .btn',
-      '.news-card .text-link',
-      '#newsRefreshBtn'
-    ];
-    document.querySelectorAll(selectors.join(',')).forEach((node) => {
-      if (node.children && node.children.length) return;
-      const fullText = storeText(node);
-      node.textContent = isMobile() ? (cardLabelMap[fullText] || fullText) : fullText;
-    });
-  }
-
-  function syncMenuAccentLabel() {
-    const accent = document.querySelector('.mobile-menu-links a.is-accent');
-    if (!accent) return;
-    const main = accent.querySelector('span');
-    const sub = accent.querySelector('small');
-    if (main) {
-      if (!main.dataset.fullText) main.dataset.fullText = (main.textContent || '').trim();
-      main.textContent = isMobile() ? '문의' : main.dataset.fullText;
-    }
-    if (sub) {
-      if (!sub.dataset.fullText) sub.dataset.fullText = (sub.textContent || '').trim();
-      sub.textContent = isMobile() ? '텔레그램 연결' : sub.dataset.fullText;
-    }
-  }
-
-  function syncArticleBreadcrumb() {
-    const breadcrumb = document.querySelector('body[data-post-category] .breadcrumb');
-    if (!breadcrumb) return;
-    if (!breadcrumb.dataset.fullHtml) breadcrumb.dataset.fullHtml = breadcrumb.innerHTML;
-    if (!isMobile()) {
-      breadcrumb.innerHTML = breadcrumb.dataset.fullHtml;
-      breadcrumb.classList.remove('is-mobile-compact');
-      return;
-    }
-    const links = Array.from(breadcrumb.querySelectorAll('a'));
-    if (links.length < 2) return;
-    const compact = `${links[0].outerHTML}<span class="crumb-sep">/</span>${links[1].outerHTML}`;
-    breadcrumb.innerHTML = compact;
-    breadcrumb.classList.add('is-mobile-compact');
-  }
-
-  function insertAfter(target, node) {
-    if (!target || !target.parentNode || !node) return;
-    if (target.nextSibling === node) return;
-    target.parentNode.insertBefore(node, target.nextSibling);
-  }
-
-  function syncArticlePromoFlow() {
-    const promo = document.querySelector('body[data-post-category] .auto-promo-zone.is-article');
-    const shell = document.querySelector('body[data-post-category] .article-shell');
-    if (!promo || !shell) return;
-    const mobileTarget = shell.querySelector('.faq-list') || shell.querySelector('.callout') || shell.querySelector('.article-checks');
-    const desktopTarget = shell.querySelector('.article-checks') || shell.querySelector('.article-intro');
-    const target = isMobile() ? mobileTarget : desktopTarget;
-    insertAfter(target, promo);
-  }
-
-  function syncArticleRailOrder() {
-    const rail = document.querySelector('body[data-post-category] .side-rail');
-    if (!rail) return;
-    const cards = Array.from(rail.querySelectorAll('.rail-card'));
-    if (!cards.length) return;
-    cards.forEach((card, index) => {
-      if (!card.dataset.originalIndex) card.dataset.originalIndex = String(index);
-    });
-    const orderMap = { '다음 동선': 0, '다음 글': 0, '이 글의 핵심': 1, '핵심 정리': 1, '연결 카테고리': 2, '연결 분야': 2 };
-    const sorted = [...cards].sort((a, b) => {
-      if (!isMobile()) return Number(a.dataset.originalIndex) - Number(b.dataset.originalIndex);
-      const aTitle = (a.querySelector('h3')?.textContent || '').trim();
-      const bTitle = (b.querySelector('h3')?.textContent || '').trim();
-      return (orderMap[aTitle] ?? 99) - (orderMap[bTitle] ?? 99);
-    });
-    sorted.forEach((card) => rail.appendChild(card));
-  }
-
-  function syncHeaderCompact() {
-    if (!isMobile()) {
-      body.classList.remove('is-header-compact');
-      return;
-    }
-    body.classList.toggle('is-header-compact', window.scrollY > 16);
-  }
-
-  function bindDockScroll() {
-    if (dockScrollBound) return;
-    dockScrollBound = true;
-    let lastY = window.scrollY || 0;
-    window.addEventListener('scroll', () => {
-      const dock = document.querySelector('.mobile-dock');
-      if (!dock || !isMobile()) return;
-      const currentY = window.scrollY || 0;
-      if (currentY > lastY + 8 && currentY > 96) dock.classList.add('is-hidden');
-      if (currentY < lastY - 8 || currentY < 72) dock.classList.remove('is-hidden');
-      lastY = currentY;
-      syncHeaderCompact();
-    }, { passive: true });
-  }
-
-  function syncAnalysisButtons() {
-    const cta = document.querySelector('#oddsCenter .analysis-hero-cta');
-    if (!cta) return;
-    const primary = cta.querySelector('.cta-actions .btn-primary');
-    const secondary = cta.querySelector('.cta-actions .btn-copy, .cta-actions .btn-ghost');
-    if (primary) syncTextNode(primary, '텔레그램');
-    if (secondary) syncTextNode(secondary, '아이디 복사');
-  }
-
-  function syncHomeRouteLinks() {
-    const linkMap = {
-      '손실 제어 보기': '손실 제어',
-      '중단 기준 보기': '중단 기준',
-      'VIP 혜택 보기': 'VIP 혜택',
-      '세션 체크리스트': '체크리스트'
-    };
-    document.querySelectorAll('.guide-tail-actions .text-link').forEach((node) => {
-      if (node.children && node.children.length) return;
-      const fullText = storeText(node);
-      node.textContent = isMobile() ? (linkMap[fullText] || fullText) : fullText;
-    });
-  }
-
-  function syncArticleRelatedLinkLabels() {
-    document.querySelectorAll('body[data-post-category] .related-card, body[data-post-category] .inline-links a').forEach((node) => {
-      if (node.matches('.inline-links a') && !(node.children && node.children.length)) {
-        const fullText = storeText(node);
-        if (isMobile() && fullText.length > 12) node.textContent = `${fullText.slice(0, 11).trim()}…`;
-        else node.textContent = fullText;
-      }
-    });
-  }
-
-  function runMobileSuite() {
-    syncSelectorMap();
-    syncCardLabels();
-    syncMenuAccentLabel();
-    syncArticleBreadcrumb();
-    syncArticlePromoFlow();
-    syncArticleRailOrder();
-    syncAnalysisButtons();
-    syncHomeRouteLinks();
-    syncArticleRelatedLinkLabels();
-    syncHeaderCompact();
-    bindDockScroll();
-  }
-
-  function queueRun() {
-    if (syncRaf) cancelAnimationFrame(syncRaf);
-    syncRaf = requestAnimationFrame(runMobileSuite);
-  }
-
-  queueRun();
-  window.addEventListener('resize', queueRun, { passive: true });
-  window.addEventListener('orientationchange', queueRun, { passive: true });
-
-  const observer = new MutationObserver((mutations) => {
-    for (const mutation of mutations) {
-      if (mutation.type === 'childList' && (mutation.addedNodes.length || mutation.removedNodes.length)) {
-        queueRun();
-        return;
-      }
-    }
-  });
-  observer.observe(body, { childList: true, subtree: true });
+  window.addEventListener('resize', syncMobileArticleLinkLabels, { passive: true });
 })();
