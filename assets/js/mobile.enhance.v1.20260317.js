@@ -355,6 +355,51 @@
     }, { passive: true });
   }
 
+
+  function syncMobilePostMetaLabels() {
+    const isMobileLike = window.innerWidth <= 980;
+    const metaItems = document.querySelectorAll('body[data-post-category] .post-meta-item');
+    if (!metaItems.length) return;
+
+    const labelMap = {
+      '카테고리': '분야',
+      '발행일': '발행',
+      '업데이트': '수정',
+      '읽기': '소요',
+      '핵심 태그': '태그'
+    };
+
+    const compactDate = (value) => {
+      const raw = String(value || '').trim();
+      const m = raw.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+      if (!m) return raw;
+      return `${m[2]}.${m[3]}`;
+    };
+
+    metaItems.forEach((item) => {
+      const label = item.querySelector('b');
+      const value = item.querySelector('span');
+      if (!label || !value) return;
+      if (!label.dataset.fullText) label.dataset.fullText = (label.textContent || '').trim();
+      if (!value.dataset.fullText) value.dataset.fullText = (value.textContent || '').trim();
+
+      const originalLabel = label.dataset.fullText;
+      const originalValue = value.dataset.fullText;
+
+      if (isMobileLike) {
+        label.textContent = labelMap[originalLabel] || originalLabel;
+        if (originalLabel === '발행일' || originalLabel === '업데이트') {
+          value.textContent = compactDate(originalValue);
+        } else {
+          value.textContent = originalValue;
+        }
+      } else {
+        label.textContent = originalLabel;
+        value.textContent = originalValue;
+      }
+    });
+  }
+
   function mountMobileDock() {
     if (window.innerWidth > 980) return;
     if (document.querySelector('.mobile-dock')) return;
@@ -419,4 +464,6 @@
   createGlobalMobileMenu();
   mountInlinePromos();
   mountMobileDock();
+  syncMobilePostMetaLabels();
+  window.addEventListener('resize', syncMobilePostMetaLabels, { passive: true });
 })();
