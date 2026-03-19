@@ -520,3 +520,112 @@ html, body{overflow-x:hidden}
   .mobile-dock__item{min-height:52px;padding:6px 2px;font-size:10px;border-radius:14px}
   .mobile-dock__item b{font-size:16px}
 }
+
+
+/* phase2 mobile tuning: home / hub / analysis */
+@media (max-width: 900px){
+  .blog-home-page .section-head p,
+  [data-blog-hub] .section-head p,
+  #oddsCenter .section-head p{max-width:32em}
+
+  .blog-home-page .category-card,
+  .blog-home-page .blog-route-card,
+  .blog-home-page .curation-card,
+  [data-blog-hub] .archive-card{display:flex;flex-direction:column;gap:10px;min-height:0}
+
+  .blog-home-page .category-card h3,
+  .blog-home-page .blog-route-card h3,
+  .blog-home-page .curation-card h3,
+  [data-blog-hub] .archive-card h3{
+    display:-webkit-box;
+    -webkit-box-orient:vertical;
+    -webkit-line-clamp:2;
+    overflow:hidden;
+    min-height:2.5em;
+  }
+
+  .blog-home-page .category-card p,
+  .blog-home-page .blog-route-card p,
+  .blog-home-page .curation-card p,
+  [data-blog-hub] .archive-card > p{
+    display:-webkit-box;
+    -webkit-box-orient:vertical;
+    -webkit-line-clamp:2;
+    overflow:hidden;
+    margin-bottom:0;
+  }
+
+  .blog-home-page .category-card .stat{margin-bottom:2px}
+  .blog-home-page .route-tags{gap:6px}
+  .blog-home-page .route-tag,
+  .blog-home-page .kicker,
+  [data-blog-hub] .archive-card .kicker{font-size:11px}
+  .blog-home-page .route-bullets{padding-left:16px;gap:6px}
+  .blog-home-page .route-bullets li{line-height:1.4}
+  .blog-home-page .guide-tail-actions{margin-top:auto}
+  .blog-home-page .guide-tail-actions .text-link,
+  [data-blog-hub] .archive-card .card-actions .btn{font-size:14px}
+
+  [data-blog-hub] .archive-card .meta-line{gap:6px;margin-top:0}
+  [data-blog-hub] .archive-card .meta-pill{padding:5px 8px;font-size:11px}
+  [data-blog-hub] .archive-card .card-actions{margin-top:auto}
+
+  #oddsCenter .section-head.analysis-head{margin-bottom:12px !important}
+  #oddsCenter .analysis-hero-cta h2{max-width:11em}
+  #oddsCenter .analysis-hero-cta p{margin-bottom:10px !important}
+  #oddsCenter .widget-grid{gap:12px !important}
+  #oddsCenter .widget-panel p[data-role="helper"],
+  #oddsCenter .widget-note,
+  #calcGuide .summary-card p,
+  .analysis-strip .metric-box span{font-size:13px !important;line-height:1.5 !important}
+}
+
+@media (max-width: 640px){
+  .blog-home-page .section-head{margin-bottom:12px !important}
+  .blog-home-page .section-head h2,
+  [data-blog-hub] .section-head h2{font-size:clamp(22px,6vw,28px) !important}
+  .blog-home-page .blog-category-grid,
+  .blog-home-page .route-grid,
+  .blog-home-page .curation-grid,
+  [data-blog-hub] .archive-grid{gap:12px !important}
+  .blog-home-page .category-card,
+  .blog-home-page .blog-route-card,
+  .blog-home-page .curation-card,
+  [data-blog-hub] .archive-card,
+  #oddsCenter .widget-panel,
+  #calcGuide .summary-card,
+  .analysis-strip .metric-box{padding:15px !important;border-radius:17px !important}
+
+  .blog-home-page .category-card h3,
+  .blog-home-page .blog-route-card h3,
+  .blog-home-page .curation-card h3,
+  [data-blog-hub] .archive-card h3{font-size:18px !important;min-height:auto}
+
+  .blog-home-page .category-card .card-link-row,
+  .blog-home-page .guide-tail-actions,
+  .blog-home-page .curation-card .card-link-row,
+  [data-blog-hub] .archive-card .card-actions{display:grid !important;grid-template-columns:1fr !important;gap:8px !important}
+
+  .blog-home-page .category-card .text-link,
+  .blog-home-page .guide-tail-actions .text-link,
+  .blog-home-page .curation-card .text-link{min-height:44px;padding:0 12px;font-size:14px}
+
+  #oddsCenter .section-head.analysis-head h1{font-size:clamp(28px,8.8vw,38px) !important}
+  #oddsCenter .section-head.analysis-head > div > p{font-size:14px !important;line-height:1.55 !important}
+  #oddsCenter .analysis-hero-cta{padding:15px 14px !important}
+  #oddsCenter .analysis-hero-cta h2{font-size:clamp(22px,6.8vw,28px) !important;max-width:none}
+  #oddsCenter .analysis-hero-cta .cta-actions{grid-template-columns:1fr !important}
+  #oddsCenter .analysis-hero-cta .cta-actions .btn{min-height:48px !important;font-size:14px !important}
+  #oddsCenter .analysis-hero-cta .cta-id{padding:10px 12px !important}
+  #oddsCenter .widget-panel h3,
+  #calcGuide .summary-card h3{font-size:20px !important}
+  #calcGuide .summary-card .kicker,
+  .analysis-strip .metric-box b{font-size:11px !important}
+  .analysis-strip .metric-box strong{font-size:17px !important}
+}
+
+@media (max-width: 390px){
+  .blog-home-page .route-bullets{padding-left:15px}
+  [data-blog-hub] .archive-card .meta-line{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+  [data-blog-hub] .archive-card .meta-pill:last-child{grid-column:1 / -1;justify-content:center}
+}

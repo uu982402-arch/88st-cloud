@@ -116,19 +116,19 @@
     if (stats) {
       const latestByCat = cat => sortLatest(byCat(posts, cat))[0]?.path || '#';
       stats.innerHTML = [
-        statCard('CASINO', byCat(posts,'casino').length, '카지노 글 모음', '바카라·룰렛·블랙잭·라이브 글을 겹치지 않는 주제로 더 촘촘히 확장했습니다.', '/casino/', latestByCat('casino')),
-        statCard('SLOT', byCat(posts,'slot').length, '슬롯 글 모음', 'RTP, 구조, 기능, 오토스핀, 세션 운영 글을 블로그 아카이브형으로 늘렸습니다.', '/slot/', latestByCat('slot')),
-        statCard('BONUS', byCat(posts,'bonus').length, '보너스 체크', '약관, 최대 베팅, 만료, 출금 체크 등 서로 다른 보너스 포인트를 분리했습니다.', '/bonus/', latestByCat('bonus')),
-        statCard('STRATEGY', byCat(posts,'strategy').length, '전략·운영', '단위 설정, 틸트, 중단 루틴, 예산 잠금, 기록 글까지 운영 기준을 넓혔습니다.', '/strategy/', latestByCat('strategy'))
+        statCard('CASINO', byCat(posts,'casino').length, '카지노 글 모음', '바카라·룰렛·블랙잭·라이브 글을 한 번에 볼 수 있게 묶었습니다.', '/casino/', latestByCat('casino')),
+        statCard('SLOT', byCat(posts,'slot').length, '슬롯 글 모음', 'RTP·구조·기능·세션 운영 글을 빠르게 이어 볼 수 있게 묶었습니다.', '/slot/', latestByCat('slot')),
+        statCard('BONUS', byCat(posts,'bonus').length, '보너스 체크', '약관·최대 베팅·만료·출금 체크 글을 빠르게 찾게 정리했습니다.', '/bonus/', latestByCat('bonus')),
+        statCard('STRATEGY', byCat(posts,'strategy').length, '전략·운영', '자본·중단·기록 글을 먼저 읽기 좋게 묶었습니다.', '/strategy/', latestByCat('strategy'))
       ].join('');
     }
     const curation = qs('#editorCurationGrid');
     if (curation) {
       curation.innerHTML = [
-        curationCard('casino', '카지노', '바카라·룰렛·블랙잭 핵심 글만 짧게 묶었습니다.', '/casino/', byCat(posts,'casino')),
-        curationCard('slot', '슬롯', 'RTP·변동성·기능 글로 바로 이어지게 정리했습니다.', '/slot/', byCat(posts,'slot')),
-        curationCard('bonus', '보너스', '약관·출금·제한 체크 글만 빠르게 모았습니다.', '/bonus/', byCat(posts,'bonus')),
-        curationCard('strategy', '전략', '자본·중단·기록 기준 글만 먼저 볼 수 있게 정리했습니다.', '/strategy/', byCat(posts,'strategy'))
+        curationCard('casino', '카지노', '바카라·룰렛·블랙잭 글만 짧게 묶었습니다.', '/casino/', byCat(posts,'casino')),
+        curationCard('slot', '슬롯', 'RTP·변동성·기능 글로 바로 이어집니다.', '/slot/', byCat(posts,'slot')),
+        curationCard('bonus', '보너스', '약관·출금·제한 체크 글만 모았습니다.', '/bonus/', byCat(posts,'bonus')),
+        curationCard('strategy', '전략', '자본·중단·기록 글만 먼저 볼 수 있게 묶었습니다.', '/strategy/', byCat(posts,'strategy'))
       ].join('');
     }
   }
