@@ -263,6 +263,98 @@
     copyPromoCode(button.getAttribute('data-copy-code') || '', button);
   });
 
+
+  function createGlobalMobileMenu() {
+    const header = document.querySelector('.site-header');
+    const inner = header?.querySelector('.header-inner');
+    const nav = header?.querySelector('.main-nav');
+    if (!header || !inner || !nav || document.querySelector('.mobile-menu-btn')) return;
+
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'mobile-menu-btn';
+    button.setAttribute('aria-label', '모바일 메뉴 열기');
+    button.setAttribute('aria-expanded', 'false');
+    button.innerHTML = '<span class="mobile-menu-btn__lines"></span>';
+    inner.appendChild(button);
+
+    const overlay = document.createElement('div');
+    overlay.className = 'mobile-menu-overlay';
+    overlay.innerHTML = '<div class="mobile-menu-overlay__bg"></div><div class="mobile-menu-panel" role="dialog" aria-modal="true" aria-label="모바일 메뉴"><div class="mobile-menu-head"><div><strong>레븐 빠른 이동</strong><small>모바일에서는 필요한 메뉴만 짧고 선명하게 묶었습니다.</small></div><button class="mobile-menu-close" type="button" aria-label="닫기">✕</button></div><div class="mobile-menu-links"></div></div>';
+    document.body.appendChild(overlay);
+
+    const labels = {
+      '메인': '메인 허브',
+      '배당분석': '빠른 배당 체크',
+      '카지노': '바카라·룰렛·블랙잭',
+      '슬롯': '슬롯 구조·RTP·변동성',
+      '보너스': '보너스 조건 확인',
+      '뉴스': '한글 요약 뉴스',
+      '가이드': '기법·미니게임 구조',
+      '전략': '운영 기준·기록·손절'
+    };
+
+    const currentPath = location.pathname.replace(/index\.html$/, '').replace(/\/$/, '') || '/';
+    const isCurrent = (href) => {
+      try {
+        const url = new URL(href, location.origin);
+        if (url.origin !== location.origin) return false;
+        const target = url.pathname.replace(/index\.html$/, '').replace(/\/$/, '') || '/';
+        return currentPath === target || (target !== '/' && currentPath.startsWith(target));
+      } catch (e) {
+        return false;
+      }
+    };
+
+    const host = overlay.querySelector('.mobile-menu-links');
+    Array.from(nav.querySelectorAll('a')).forEach((link) => {
+      const label = (link.textContent || '').trim();
+      if (!label) return;
+      const a = document.createElement('a');
+      a.href = link.getAttribute('href') || link.href;
+      if (isCurrent(a.href)) a.classList.add('is-current');
+      a.innerHTML = `<span>${label}</span><small>${labels[label] || '바로 이동'}</small>`;
+      host.appendChild(a);
+    });
+
+    const action = header.querySelector('.header-actions a');
+    if (action) {
+      const a = document.createElement('a');
+      a.href = action.getAttribute('href') || action.href;
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+      a.className = 'is-accent';
+      a.innerHTML = `<span>${(action.textContent || '').trim() || '텔레그램 문의'}</span><small>텔레그램 바로 연결</small>`;
+      host.appendChild(a);
+    }
+
+    const close = () => {
+      document.body.classList.remove('open-menu');
+      button.setAttribute('aria-expanded', 'false');
+    };
+    const open = () => {
+      document.body.classList.add('open-menu');
+      button.setAttribute('aria-expanded', 'true');
+    };
+
+    button.addEventListener('click', () => {
+      if (document.body.classList.contains('open-menu')) close();
+      else open();
+    });
+    overlay.querySelector('.mobile-menu-close')?.addEventListener('click', close);
+    overlay.querySelector('.mobile-menu-overlay__bg')?.addEventListener('click', close);
+    host.addEventListener('click', (event) => {
+      const anchor = event.target.closest('a');
+      if (anchor && !anchor.target) close();
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && document.body.classList.contains('open-menu')) close();
+    });
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 980) close();
+    }, { passive: true });
+  }
+
   function mountMobileDock() {
     if (window.innerWidth > 980) return;
     if (document.querySelector('.mobile-dock')) return;
@@ -324,6 +416,7 @@
     }
   }
 
+  createGlobalMobileMenu();
   mountInlinePromos();
   mountMobileDock();
 })();
