@@ -522,110 +522,101 @@ html, body{overflow-x:hidden}
 }
 
 
-/* phase2 mobile tuning: home / hub / analysis */
-@media (max-width: 900px){
-  .blog-home-page .section-head p,
-  [data-blog-hub] .section-head p,
-  #oddsCenter .section-head p{max-width:32em}
+@media (max-width:820px){
+  body[data-blog-hub="bonus"] .section,
+  body[data-blog-hub="strategy"] .section,
+  #newsSection.section{padding-top:24px;padding-bottom:28px}
 
-  .blog-home-page .category-card,
-  .blog-home-page .blog-route-card,
-  .blog-home-page .curation-card,
-  [data-blog-hub] .archive-card{display:flex;flex-direction:column;gap:10px;min-height:0}
+  body[data-blog-hub="bonus"] .section-head p,
+  body[data-blog-hub="strategy"] .section-head p,
+  #newsSection .section-head p{font-size:13px;line-height:1.55;max-width:34rem}
 
-  .blog-home-page .category-card h3,
-  .blog-home-page .blog-route-card h3,
-  .blog-home-page .curation-card h3,
-  [data-blog-hub] .archive-card h3{
+  body[data-blog-hub="bonus"] .archive-grid,
+  body[data-blog-hub="bonus"] .archive-grid--dense,
+  body[data-blog-hub="strategy"] .archive-grid,
+  body[data-blog-hub="strategy"] .archive-grid--dense{grid-template-columns:1fr !important;gap:12px !important}
+
+  body[data-blog-hub="bonus"] .archive-card,
+  body[data-blog-hub="strategy"] .archive-card{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    padding:16px !important;
+    min-height:0;
+  }
+
+  body[data-blog-hub="bonus"] .archive-card .kicker,
+  body[data-blog-hub="strategy"] .archive-card .kicker{font-size:11px;line-height:1.4}
+
+  body[data-blog-hub="bonus"] .archive-card h3,
+  body[data-blog-hub="strategy"] .archive-card h3{
+    margin:0;
+    font-size:18px;
+    line-height:1.24;
     display:-webkit-box;
     -webkit-box-orient:vertical;
     -webkit-line-clamp:2;
     overflow:hidden;
-    min-height:2.5em;
   }
 
-  .blog-home-page .category-card p,
-  .blog-home-page .blog-route-card p,
-  .blog-home-page .curation-card p,
-  [data-blog-hub] .archive-card > p{
+  body[data-blog-hub="bonus"] .archive-card p,
+  body[data-blog-hub="strategy"] .archive-card p{
+    margin:0;
+    font-size:13px;
+    line-height:1.55;
     display:-webkit-box;
     -webkit-box-orient:vertical;
     -webkit-line-clamp:2;
     overflow:hidden;
-    margin-bottom:0;
   }
 
-  .blog-home-page .category-card .stat{margin-bottom:2px}
-  .blog-home-page .route-tags{gap:6px}
-  .blog-home-page .route-tag,
-  .blog-home-page .kicker,
-  [data-blog-hub] .archive-card .kicker{font-size:11px}
-  .blog-home-page .route-bullets{padding-left:16px;gap:6px}
-  .blog-home-page .route-bullets li{line-height:1.4}
-  .blog-home-page .guide-tail-actions{margin-top:auto}
-  .blog-home-page .guide-tail-actions .text-link,
-  [data-blog-hub] .archive-card .card-actions .btn{font-size:14px}
+  body[data-blog-hub="bonus"] .archive-card .meta-line,
+  body[data-blog-hub="strategy"] .archive-card .meta-line{gap:6px;margin-top:0}
 
-  [data-blog-hub] .archive-card .meta-line{gap:6px;margin-top:0}
-  [data-blog-hub] .archive-card .meta-pill{padding:5px 8px;font-size:11px}
-  [data-blog-hub] .archive-card .card-actions{margin-top:auto}
+  body[data-blog-hub="bonus"] .archive-card .meta-pill,
+  body[data-blog-hub="strategy"] .archive-card .meta-pill{padding:5px 8px;font-size:11px}
 
-  #oddsCenter .section-head.analysis-head{margin-bottom:12px !important}
-  #oddsCenter .analysis-hero-cta h2{max-width:11em}
-  #oddsCenter .analysis-hero-cta p{margin-bottom:10px !important}
-  #oddsCenter .widget-grid{gap:12px !important}
-  #oddsCenter .widget-panel p[data-role="helper"],
-  #oddsCenter .widget-note,
-  #calcGuide .summary-card p,
-  .analysis-strip .metric-box span{font-size:13px !important;line-height:1.5 !important}
+  body[data-blog-hub="bonus"] .archive-card .card-actions,
+  body[data-blog-hub="strategy"] .archive-card .card-actions{margin-top:auto;grid-template-columns:1fr !important}
+
+  #newsSection .toolbar{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+  #newsSection .filter-chip{width:100%;padding:0 10px;font-size:13px}
+  #newsSection .meta-line{gap:8px}
+  #newsSection .meta-pill{font-size:11px;padding:5px 8px}
+
+  #newsSection .news-card{
+    padding:16px !important;
+    gap:10px;
+    min-height:0;
+    border-radius:18px !important;
+  }
+
+  #newsSection .news-card h3{
+    margin:0;
+    font-size:18px;
+    line-height:1.28;
+    display:-webkit-box;
+    -webkit-box-orient:vertical;
+    -webkit-line-clamp:2;
+    overflow:hidden;
+  }
+
+  #newsSection .news-summary,
+  #newsSection .news-why span{
+    font-size:13px;
+    line-height:1.58;
+    display:-webkit-box;
+    -webkit-box-orient:vertical;
+    -webkit-line-clamp:3;
+    overflow:hidden;
+  }
+
+  #newsSection .news-meta{gap:6px;font-size:11px}
+  #newsSection .news-actions{margin-top:auto}
+  #newsSection .news-actions .btn{width:100%;justify-content:center}
 }
 
-@media (max-width: 640px){
-  .blog-home-page .section-head{margin-bottom:12px !important}
-  .blog-home-page .section-head h2,
-  [data-blog-hub] .section-head h2{font-size:clamp(22px,6vw,28px) !important}
-  .blog-home-page .blog-category-grid,
-  .blog-home-page .route-grid,
-  .blog-home-page .curation-grid,
-  [data-blog-hub] .archive-grid{gap:12px !important}
-  .blog-home-page .category-card,
-  .blog-home-page .blog-route-card,
-  .blog-home-page .curation-card,
-  [data-blog-hub] .archive-card,
-  #oddsCenter .widget-panel,
-  #calcGuide .summary-card,
-  .analysis-strip .metric-box{padding:15px !important;border-radius:17px !important}
-
-  .blog-home-page .category-card h3,
-  .blog-home-page .blog-route-card h3,
-  .blog-home-page .curation-card h3,
-  [data-blog-hub] .archive-card h3{font-size:18px !important;min-height:auto}
-
-  .blog-home-page .category-card .card-link-row,
-  .blog-home-page .guide-tail-actions,
-  .blog-home-page .curation-card .card-link-row,
-  [data-blog-hub] .archive-card .card-actions{display:grid !important;grid-template-columns:1fr !important;gap:8px !important}
-
-  .blog-home-page .category-card .text-link,
-  .blog-home-page .guide-tail-actions .text-link,
-  .blog-home-page .curation-card .text-link{min-height:44px;padding:0 12px;font-size:14px}
-
-  #oddsCenter .section-head.analysis-head h1{font-size:clamp(28px,8.8vw,38px) !important}
-  #oddsCenter .section-head.analysis-head > div > p{font-size:14px !important;line-height:1.55 !important}
-  #oddsCenter .analysis-hero-cta{padding:15px 14px !important}
-  #oddsCenter .analysis-hero-cta h2{font-size:clamp(22px,6.8vw,28px) !important;max-width:none}
-  #oddsCenter .analysis-hero-cta .cta-actions{grid-template-columns:1fr !important}
-  #oddsCenter .analysis-hero-cta .cta-actions .btn{min-height:48px !important;font-size:14px !important}
-  #oddsCenter .analysis-hero-cta .cta-id{padding:10px 12px !important}
-  #oddsCenter .widget-panel h3,
-  #calcGuide .summary-card h3{font-size:20px !important}
-  #calcGuide .summary-card .kicker,
-  .analysis-strip .metric-box b{font-size:11px !important}
-  .analysis-strip .metric-box strong{font-size:17px !important}
-}
-
-@media (max-width: 390px){
-  .blog-home-page .route-bullets{padding-left:15px}
-  [data-blog-hub] .archive-card .meta-line{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
-  [data-blog-hub] .archive-card .meta-pill:last-child{grid-column:1 / -1;justify-content:center}
+@media (max-width:480px){
+  #newsSection .toolbar{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #newsSection .filter-chip[data-filter="all"]{grid-column:1 / -1}
 }
