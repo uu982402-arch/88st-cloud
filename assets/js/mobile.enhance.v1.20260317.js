@@ -427,6 +427,50 @@
     });
   }
 
+
+
+  function syncMobileArticleLinkLabels() {
+    const isMobileLike = window.innerWidth <= 980;
+    if (!document.body || !document.body.matches('body[data-post-category]')) return;
+
+    const compactLinkLabel = (value) => {
+      const raw = String(value || '').replace(/\s+/g, ' ').trim();
+      if (!raw) return raw;
+      const normalized = raw
+        .replace(/관련 주제를 이어서 읽기 좋은 연결 글/g, '연결 글')
+        .replace(/같이 보기 좋은 기본 자본 운영법/g, '기본 운영 글')
+        .replace(/세션 중단 기준을 더 구체적으로 정리한 글/g, '중단 기준 글')
+        .replace(/출금 전 확인 흐름을 묶은 글/g, '출금 확인 글')
+        .replace(/보너스 조건을 기본부터 정리한 글/g, '조건 정리 글')
+        .replace(/실전 전후 점검용으로 같이 보기 좋은 글/g, '점검 글')
+        .replace(/가장 기본이 되는 베팅 단위 접근/g, '기본 단위 글')
+        .replace(/흐름을 묶은 글/g, '흐름 글')
+        .replace(/관련 글$/g, '연결 글');
+      if (normalized.length <= 14) return normalized;
+      return normalized.slice(0, 13).trim() + '…';
+    };
+
+    document.querySelectorAll('body[data-post-category] .related-card').forEach((card) => {
+      if (isMobileLike) card.setAttribute('data-mobile-cta', '읽기');
+      else card.removeAttribute('data-mobile-cta');
+    });
+
+    document.querySelectorAll('body[data-post-category] .inline-links a').forEach((link) => {
+      const raw = (link.textContent || '').replace(/\s+/g, ' ').trim();
+      if (!raw) return;
+      if (!link.dataset.fullText) link.dataset.fullText = raw;
+      const full = link.dataset.fullText;
+      link.setAttribute('title', full);
+      if (isMobileLike) {
+        link.textContent = compactLinkLabel(full);
+        link.setAttribute('aria-label', full);
+      } else {
+        link.textContent = full;
+        link.removeAttribute('aria-label');
+      }
+    });
+  }
+
   function mountMobileDock() {
     if (window.innerWidth > 980) return;
     if (document.querySelector('.mobile-dock')) return;
@@ -493,6 +537,8 @@
   mountMobileDock();
   syncMobilePostMetaLabels();
   syncMobileArticleSectionTitles();
+  syncMobileArticleLinkLabels();
   window.addEventListener('resize', syncMobilePostMetaLabels, { passive: true });
   window.addEventListener('resize', syncMobileArticleSectionTitles, { passive: true });
+  window.addEventListener('resize', syncMobileArticleLinkLabels, { passive: true });
 })();
