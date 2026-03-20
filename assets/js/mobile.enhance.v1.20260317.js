@@ -43,78 +43,118 @@
   const ADS_DATA_URL = '/assets/data/ads.index.v1.20260319.json';
   const SEED_PROMO_OFFERS = [
     {
-      id: 'fix-main',
-      title: '고액 안전 놀이터',
-      badge: '픽스 bet 회원 전용 이벤트 다수 진행 중',
-      bullets: [
-        '신규가입 첫 충전 30% · 첫충 15% / 매충 10% 지급',
-        '카지노 첫 충전 5% · 매충 5%',
-        '정착 / 이사 지원금 이벤트',
-        '콤프 최대 카지노 1.2% / 슬롯 4%'
-      ],
-      code: 'KAKA',
-      codeLabel: '가입코드: KAKA',
-      theme: 'amber',
-      primaryHref: 'https://픽스주소.com/',
-      primaryLabel: '공식 주소 바로가기',
-      secondaryHref: 'https://t.me/kakacloud',
-      secondaryLabel: '텔레그램 문의하기',
-      categories: ['common'],
-      targets: ['all'],
-      priority: 100,
-      enabled: true,
-      desktop: true,
-      mobile: true
+        "id": "fix-main",
+        "title": "신사답게 화답하는 메이저 놀이터",
+        "badge": "픽스 bet 회원 전용 이벤트 다수 진행 중",
+        "bullets": [
+            "신규가입 첫 충전 30% · 첫충 15% / 매충 10% 지급",
+            "카지노 첫 충전 5% · 매충 5%",
+            "정착 / 이사 지원금 이벤트",
+            "콤프 최대 카지노 1.2% / 슬롯 4%"
+        ],
+        "code": "KAKA",
+        "codeLabel": "가입코드: KAKA",
+        "theme": "amber",
+        "primaryHref": "https://픽스주소.com/",
+        "primaryLabel": "공식 주소 바로가기",
+        "secondaryHref": "https://t.me/kakacloud",
+        "secondaryLabel": "텔레그램 문의하기",
+        "categories": [
+            "common"
+        ],
+        "targets": [
+            "all"
+        ],
+        "priority": 100,
+        "enabled": true,
+        "mobile": true,
+        "desktop": true
     },
     {
-      id: 'chilbet-main',
-      title: '오래된 메이저 놀이터',
-      badge: '칠벳 회원 전용 이벤트 다수 진행 중',
-      bullets: [
-        '카지노/스포츠/슬롯/미겜 입금플러스 이벤트',
-        '가입 후 환전없을시 무제한 20%',
-        '돌발 20% 돌발 카지노10%',
-        '페이백 5%'
-      ],
-      code: '6767',
-      codeLabel: '가입코드: 6767',
-      theme: 'mint',
-      primaryHref: 'https://82clf.com/',
-      primaryLabel: '공식 주소 바로가기',
-      secondaryHref: 'https://t.me/kakacloud',
-      secondaryLabel: '텔레그램 문의하기',
-      categories: ['common'],
-      targets: ['all'],
-      priority: 90,
-      enabled: true,
-      desktop: true,
-      mobile: true
+        "id": "seven-main",
+        "title": "칠땡잡이 승부사이트!!",
+        "badge": "칠벳 회원 전용 이벤트 다수 진행 중",
+        "bullets": [
+            "카지노/스포츠/슬롯/미겜 입금플러스 이벤트",
+            "가입 후 환전없을시 무제한 20%",
+            "돌발 20% 돌발 카지노10%",
+            "페이백 5%"
+        ],
+        "code": "6767",
+        "codeLabel": "가입코드: 6767",
+        "theme": "mint",
+        "primaryHref": "https://82clf.com/",
+        "primaryLabel": "공식 주소 바로가기",
+        "secondaryHref": "https://t.me/kakacloud",
+        "secondaryLabel": "텔레그램 문의하기",
+        "categories": [
+            "common"
+        ],
+        "targets": [
+            "all"
+        ],
+        "priority": 90,
+        "enabled": true,
+        "mobile": true,
+        "desktop": true
     },
     {
-      id: 'vegas-main',
-      title: '전통 메이저 놀이터',
-      badge: '베가스 회원 전용 이벤트 다수 진행 중',
-      bullets: [
-        '카지노/스포츠/슬롯/미겜 입금플러스 이벤트',
-        '가입 후 환전없을시 무제한 20%',
-        '돌발 20% 돌발 카지노10%',
-        '페이백 5%'
-      ],
-      code: '6789',
-      codeLabel: '가입코드: 6789',
-      theme: 'red',
-      primaryHref: 'https://las302.com/',
-      primaryLabel: '공식 주소 바로가기',
-      secondaryHref: 'https://t.me/kakacloud',
-      secondaryLabel: '텔레그램 문의하기',
-      categories: ['common'],
-      targets: ['all'],
-      priority: 80,
-      enabled: true,
-      desktop: true,
-      mobile: true
+        "id": "vegas-main",
+        "title": "라스베가스의 진정한 승부사!!",
+        "badge": "베가스 회원 전용 이벤트 다수 진행 중",
+        "bullets": [
+            "카지노/스포츠/슬롯/미겜 입금플러스 이벤트",
+            "가입 후 환전없을시 무제한 20%",
+            "돌발 20% 돌발 카지노10%",
+            "페이백 5%"
+        ],
+        "code": "6789",
+        "codeLabel": "가입코드: 6789",
+        "theme": "red",
+        "primaryHref": "https://las302.com/",
+        "primaryLabel": "공식 주소 바로가기",
+        "secondaryHref": "https://t.me/kakacloud",
+        "secondaryLabel": "텔레그램 문의하기",
+        "categories": [
+            "common"
+        ],
+        "targets": [
+            "all"
+        ],
+        "priority": 80,
+        "enabled": true,
+        "mobile": true,
+        "desktop": true
+    },
+    {
+        "id": "topgun-main",
+        "title": "오늘 탑건과 함께 날아보아요.",
+        "badge": "탑건벳 회원 전용 이벤트",
+        "bullets": [
+            "신규 첫 40% 충전 보너스 지급",
+            "매충 10% 돌발20%",
+            "출석, 생일, 공지방 페이백 이벤트",
+            "카지노 0.8% / 슬롯 3% 콤프 지급"
+        ],
+        "code": "GAS7",
+        "codeLabel": "가입코드: GAS7",
+        "theme": "silver",
+        "primaryHref": "https://topgun-88.com",
+        "primaryLabel": "공식 주소 바로가기",
+        "secondaryHref": "https://t.me/kakacloud",
+        "secondaryLabel": "텔레그램 문의하기",
+        "categories": [
+            "common"
+        ],
+        "targets": [
+            "all"
+        ],
+        "priority": 70,
+        "enabled": true,
+        "mobile": true,
+        "desktop": true
     }
-  ];
+];
 
   const PROMO_SLOT_LIMITS = {
     home: { desktop: 4, mobile: 2 },
@@ -157,13 +197,13 @@
       .auto-promo-btn.primary{background:linear-gradient(135deg,#6f97ff,#5577df 58%,#3a56b4);box-shadow:0 14px 34px rgba(93,126,223,.28);color:#f7f9ff;border-color:rgba(111,151,255,.24)}
       .auto-promo-card.theme-mint .auto-promo-btn.code{background:linear-gradient(135deg,#86efac,#bbf7d0 58%,#dcfce7);box-shadow:0 14px 34px rgba(134,239,172,.2);color:#062317;border-color:rgba(134,239,172,.28)}
       .auto-promo-card.theme-amber .auto-promo-btn.code{background:linear-gradient(135deg,#f8d36b,#f5c451 55%,#f2dd98);box-shadow:0 14px 34px rgba(248,211,107,.2);color:#251804;border-color:rgba(248,211,107,.28)}
-      .auto-promo-card.theme-red .auto-promo-btn.code{background:linear-gradient(135deg,#ff8f8f,#ff6565 58%,#ffd0d0);box-shadow:0 14px 34px rgba(255,101,101,.22);color:#2b0808;border-color:rgba(255,101,101,.28)}
-      .auto-promo-card.theme-red .auto-promo-list li::before{background:#ff7a7a;box-shadow:0 0 0 4px rgba(255,122,122,.12)}
-      .auto-promo-card.theme-red{border-color:rgba(255,122,122,.26)}
+      .auto-promo-card.theme-red .auto-promo-btn.code{background:linear-gradient(135deg,#fb7185,#f43f5e 55%,#fecdd3);box-shadow:0 14px 34px rgba(244,63,94,.2);color:#320610;border-color:rgba(244,63,94,.28)}
+      .auto-promo-card.theme-silver .auto-promo-btn.code{background:linear-gradient(135deg,#e2e8f0,#cbd5e1 55%,#f8fafc);box-shadow:0 14px 34px rgba(148,163,184,.18);color:#0f172a;border-color:rgba(203,213,225,.36)}
       .auto-promo-btn.secondary{color:#ecf2ff;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);box-shadow:none}
       .auto-promo-toggle-wrap{display:none}
       .auto-promo-zone.is-article{margin:26px 0 28px}
       .auto-promo-zone.is-page{margin:18px 0 30px}
+      .auto-promo-zone.is-bottom{margin:34px 0 8px}
       @media (max-width: 980px){
         .auto-promo-zone .container{padding-left:16px;padding-right:16px}
         .auto-promo-head{align-items:flex-start;flex-direction:column;gap:6px;margin-bottom:12px}
@@ -294,28 +334,57 @@
 
   function selectPromoOffers(offers, context) {
     const limits = getPromoLimits(context);
-    const selected = offers
-      .filter((offer) => offerMatchesContext(offer, context))
+    const maxSlots = Math.max(4, limits.desktop, limits.mobile);
+    const matching = offers.filter((offer) => offerMatchesContext(offer, context));
+    const fallback = offers.filter((offer) => offer.enabled !== false && ((window.innerWidth <= 980 && offer.mobile !== false) || (window.innerWidth > 980 && offer.desktop !== false)));
+    const source = (matching.length ? matching : fallback)
+      .slice()
       .sort((a, b) => {
         if (b.priority !== a.priority) return b.priority - a.priority;
         return a.title.localeCompare(b.title, 'ko');
-      })
-      .slice(0, Math.max(limits.desktop, limits.mobile));
-    if (selected.length) return selected;
-    return offers
-      .filter((offer) => offer.enabled !== false && ((window.innerWidth <= 980 && offer.mobile !== false) || (window.innerWidth > 980 && offer.desktop !== false)))
-      .sort((a, b) => b.priority - a.priority)
-      .slice(0, Math.max(limits.desktop, limits.mobile));
+      });
+    return shufflePromoOffers(source).slice(0, Math.min(maxSlots, source.length));
   }
 
-  function buildPromoSection(kind, offers, context) {
+  function shufflePromoOffers(source) {
+    const list = source.slice();
+    const random = createPromoRandom();
+    for (let idx = list.length - 1; idx > 0; idx -= 1) {
+      const swapIdx = Math.floor(random() * (idx + 1));
+      [list[idx], list[swapIdx]] = [list[swapIdx], list[idx]];
+    }
+    return list;
+  }
+
+  function createPromoRandom() {
+    try {
+      if (window.crypto?.getRandomValues) {
+        const seed = new Uint32Array(1);
+        window.crypto.getRandomValues(seed);
+        let state = seed[0] || Date.now();
+        return () => {
+          state = (state * 1664525 + 1013904223) >>> 0;
+          return state / 4294967296;
+        };
+      }
+    } catch (e) {}
+    let fallback = (Date.now() ^ Math.floor(Math.random() * 1e9)) >>> 0;
+    return () => {
+      fallback = (fallback * 1664525 + 1013904223) >>> 0;
+      return fallback / 4294967296;
+    };
+  }
+
+  function buildPromoSection(kind, offers, context, options = {}) {
     const limits = getPromoLimits(context);
     const mobileInitial = Math.min(limits.mobile, offers.length);
-    const hasMoreOnMobile = offers.length > mobileInitial;
+    const hasMoreOnMobile = options.mobileCollapse !== false && offers.length > mobileInitial;
+    const title = String(options.title || '추천 파트너').trim();
+    const note = String(options.note || '페이지 성격에 맞는 광고만 자동으로 노출됩니다.').trim();
 
     const section = document.createElement('section');
-    section.className = `auto-promo-zone ${kind === 'article' ? 'is-article' : 'is-page'}`;
-    section.setAttribute('aria-label', '추천 놀이터 안내');
+    section.className = `auto-promo-zone ${kind === 'article' ? 'is-article' : 'is-page'}${options.position === 'bottom' ? ' is-bottom' : ' is-top'}`;
+    section.setAttribute('aria-label', title || '추천 놀이터 안내');
     section.dataset.mobileCollapsed = hasMoreOnMobile ? 'true' : 'false';
 
     const container = document.createElement('div');
@@ -325,8 +394,8 @@
     head.className = 'auto-promo-head';
     head.innerHTML = `
       <div>
-        <p class="auto-promo-eyebrow">추천 파트너</p>
-        <p class="auto-promo-note">페이지 성격에 맞는 광고만 자동으로 노출됩니다.</p>
+        <p class="auto-promo-eyebrow">${title}</p>
+        <p class="auto-promo-note">${note}</p>
       </div>
     `;
 
@@ -379,6 +448,12 @@
     return true;
   }
 
+  function insertBefore(target, node) {
+    if (!target || !target.parentNode) return false;
+    target.parentNode.insertBefore(node, target);
+    return true;
+  }
+
   function pickPromoAnchor(main) {
     if (!main) return null;
     const articleShell = main.querySelector('.article-shell');
@@ -412,7 +487,18 @@
   }
 
   function hasExistingPromo(main) {
-    return !!main.querySelector('.auto-promo-zone');
+    return !!main.querySelector('.auto-promo-zone[data-promo-position="top"], .auto-promo-zone[data-promo-position="bottom"]');
+  }
+
+  function pickPromoBottomAnchor(main) {
+    if (!main) return null;
+    const articleShell = main.querySelector('.article-shell');
+    if (articleShell) {
+      return articleShell.querySelector('.article-related') || articleShell.querySelector('.article-faq') || articleShell.querySelector('.article-body') || articleShell.lastElementChild;
+    }
+    const sections = Array.from(main.querySelectorAll(':scope > .section, :scope > section'));
+    if (sections.length) return sections[sections.length - 1];
+    return main.lastElementChild || main.firstElementChild;
   }
 
   async function mountInlinePromos() {
@@ -424,8 +510,34 @@
     const offers = selectPromoOffers(await loadPromoOffers(), context);
     if (!offers.length) return;
     injectPromoStyles();
-    const section = buildPromoSection(anchorInfo.kind, offers, context);
-    insertAfter(anchorInfo.target, section);
+
+    const topOffers = offers.slice(0, 2);
+    const bottomOffers = offers.slice(2, 4);
+
+    if (topOffers.length) {
+      const topSection = buildPromoSection(anchorInfo.kind, topOffers, context, {
+        title: '추천 파트너',
+        note: '새로고침하거나 다시 접속하면 다른 광고 조합으로 바뀔 수 있습니다.',
+        position: 'top',
+        mobileCollapse: false
+      });
+      topSection.dataset.promoPosition = 'top';
+      insertAfter(anchorInfo.target, topSection);
+    }
+
+    if (bottomOffers.length) {
+      const bottomTarget = pickPromoBottomAnchor(main) || main.lastElementChild || anchorInfo.target;
+      const bottomSection = buildPromoSection('page', bottomOffers, context, {
+        title: '추가 추천 파트너',
+        note: '페이지 하단에서 한 번 더 확인할 수 있도록 다른 광고 2건을 배치했습니다.',
+        position: 'bottom',
+        mobileCollapse: false
+      });
+      bottomSection.dataset.promoPosition = 'bottom';
+      if (!insertAfter(bottomTarget, bottomSection)) {
+        main.appendChild(bottomSection);
+      }
+    }
   }
 
   function copyPromoCode(code, button) {

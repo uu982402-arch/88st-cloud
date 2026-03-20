@@ -1,9 +1,9 @@
 {
-  "version": "2026-03-19",
+  "version": "2026-03-20",
   "offers": [
     {
       "id": "fix-main",
-      "title": "고액 안전 놀이터",
+      "title": "신사답게 화답하는 메이저 놀이터",
       "badge": "픽스 bet 회원 전용 이벤트 다수 진행 중",
       "bullets": [
         "신규가입 첫 충전 30% · 첫충 15% / 매충 10% 지급",
@@ -30,8 +30,8 @@
       "desktop": true
     },
     {
-      "id": "chilbet-main",
-      "title": "오래된 메이저 놀이터",
+      "id": "seven-main",
+      "title": "칠땡잡이 승부사이트!!",
       "badge": "칠벳 회원 전용 이벤트 다수 진행 중",
       "bullets": [
         "카지노/스포츠/슬롯/미겜 입금플러스 이벤트",
@@ -59,7 +59,7 @@
     },
     {
       "id": "vegas-main",
-      "title": "전통 메이저 놀이터",
+      "title": "라스베가스의 진정한 승부사!!",
       "badge": "베가스 회원 전용 이벤트 다수 진행 중",
       "bullets": [
         "카지노/스포츠/슬롯/미겜 입금플러스 이벤트",
@@ -81,6 +81,34 @@
         "all"
       ],
       "priority": 80,
+      "enabled": true,
+      "mobile": true,
+      "desktop": true
+    },
+    {
+      "id": "topgun-main",
+      "title": "오늘 탑건과 함께 날아보아요.",
+      "badge": "탑건벳 회원 전용 이벤트",
+      "bullets": [
+        "신규 첫 40% 충전 보너스 지급",
+        "매충 10% 돌발20%",
+        "출석, 생일, 공지방 페이백 이벤트",
+        "카지노 0.8% / 슬롯 3% 콤프 지급"
+      ],
+      "code": "GAS7",
+      "codeLabel": "가입코드: GAS7",
+      "theme": "silver",
+      "primaryHref": "https://topgun-88.com",
+      "primaryLabel": "공식 주소 바로가기",
+      "secondaryHref": "https://t.me/kakacloud",
+      "secondaryLabel": "텔레그램 문의하기",
+      "categories": [
+        "common"
+      ],
+      "targets": [
+        "all"
+      ],
+      "priority": 70,
       "enabled": true,
       "mobile": true,
       "desktop": true
