@@ -43,30 +43,6 @@
   const ADS_DATA_URL = '/assets/data/ads.index.v1.20260319.json';
   const SEED_PROMO_OFFERS = [
     {
-      id: 'tron-main',
-      title: '암호화폐 전용 놀이터',
-      badge: 'TRON bet 회원 전용 이벤트 다수 진행 중',
-      bullets: [
-        '출석 / 충전 보너스 지급 이벤트',
-        '주말 기프티콘 지급 이벤트',
-        '슬롯 잭팟 이벤트',
-        '카지노 0.8% / 슬롯 2.5% 콤프 지급 (1레벨)'
-      ],
-      code: 'KAKA',
-      codeLabel: '가입코드: KAKA',
-      theme: 'mint',
-      primaryHref: 'https://www.trc-11.com/',
-      primaryLabel: '공식 주소 바로가기',
-      secondaryHref: 'https://t.me/kakacloud',
-      secondaryLabel: '텔레그램 문의하기',
-      categories: ['common'],
-      targets: ['all'],
-      priority: 90,
-      enabled: true,
-      desktop: true,
-      mobile: true
-    },
-    {
       id: 'fix-main',
       title: '고액 안전 놀이터',
       badge: '픽스 bet 회원 전용 이벤트 다수 진행 중',
@@ -80,6 +56,54 @@
       codeLabel: '가입코드: KAKA',
       theme: 'amber',
       primaryHref: 'https://픽스주소.com/',
+      primaryLabel: '공식 주소 바로가기',
+      secondaryHref: 'https://t.me/kakacloud',
+      secondaryLabel: '텔레그램 문의하기',
+      categories: ['common'],
+      targets: ['all'],
+      priority: 100,
+      enabled: true,
+      desktop: true,
+      mobile: true
+    },
+    {
+      id: 'chilbet-main',
+      title: '오래된 메이저 놀이터',
+      badge: '칠벳 회원 전용 이벤트 다수 진행 중',
+      bullets: [
+        '카지노/스포츠/슬롯/미겜 입금플러스 이벤트',
+        '가입 후 환전없을시 무제한 20%',
+        '돌발 20% 돌발 카지노10%',
+        '페이백 5%'
+      ],
+      code: '6767',
+      codeLabel: '가입코드: 6767',
+      theme: 'mint',
+      primaryHref: 'https://82clf.com/',
+      primaryLabel: '공식 주소 바로가기',
+      secondaryHref: 'https://t.me/kakacloud',
+      secondaryLabel: '텔레그램 문의하기',
+      categories: ['common'],
+      targets: ['all'],
+      priority: 90,
+      enabled: true,
+      desktop: true,
+      mobile: true
+    },
+    {
+      id: 'vegas-main',
+      title: '전통 메이저 놀이터',
+      badge: '베가스 회원 전용 이벤트 다수 진행 중',
+      bullets: [
+        '카지노/스포츠/슬롯/미겜 입금플러스 이벤트',
+        '가입 후 환전없을시 무제한 20%',
+        '돌발 20% 돌발 카지노10%',
+        '페이백 5%'
+      ],
+      code: '6789',
+      codeLabel: '가입코드: 6789',
+      theme: 'red',
+      primaryHref: 'https://las302.com/',
       primaryLabel: '공식 주소 바로가기',
       secondaryHref: 'https://t.me/kakacloud',
       secondaryLabel: '텔레그램 문의하기',
@@ -133,6 +157,9 @@
       .auto-promo-btn.primary{background:linear-gradient(135deg,#6f97ff,#5577df 58%,#3a56b4);box-shadow:0 14px 34px rgba(93,126,223,.28);color:#f7f9ff;border-color:rgba(111,151,255,.24)}
       .auto-promo-card.theme-mint .auto-promo-btn.code{background:linear-gradient(135deg,#86efac,#bbf7d0 58%,#dcfce7);box-shadow:0 14px 34px rgba(134,239,172,.2);color:#062317;border-color:rgba(134,239,172,.28)}
       .auto-promo-card.theme-amber .auto-promo-btn.code{background:linear-gradient(135deg,#f8d36b,#f5c451 55%,#f2dd98);box-shadow:0 14px 34px rgba(248,211,107,.2);color:#251804;border-color:rgba(248,211,107,.28)}
+      .auto-promo-card.theme-red .auto-promo-btn.code{background:linear-gradient(135deg,#ff8f8f,#ff6565 58%,#ffd0d0);box-shadow:0 14px 34px rgba(255,101,101,.22);color:#2b0808;border-color:rgba(255,101,101,.28)}
+      .auto-promo-card.theme-red .auto-promo-list li::before{background:#ff7a7a;box-shadow:0 0 0 4px rgba(255,122,122,.12)}
+      .auto-promo-card.theme-red{border-color:rgba(255,122,122,.26)}
       .auto-promo-btn.secondary{color:#ecf2ff;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);box-shadow:none}
       .auto-promo-toggle-wrap{display:none}
       .auto-promo-zone.is-article{margin:26px 0 28px}
