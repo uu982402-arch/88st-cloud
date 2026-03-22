@@ -1,36 +1,65 @@
-
 <!DOCTYPE html>
-<html lang="ko" data-theme="light">
+<html data-theme="light" lang="ko">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
-  <title>SEO Console → OPS | 레븐</title>
-  <meta name="robots" content="noindex,nofollow,noarchive,nosnippet"/>
-  <link rel="canonical" href="https://88st.cloud/seo/"/>
-  <link rel="icon" href="/favicon.ico" type="image/x-icon"/>
-  <link rel="stylesheet" href="/assets/css/x.9d7841e705c5.css"/>
-  <style>
-    body{margin:0;min-height:100vh;display:grid;place-items:center;padding:20px}
-    .card{max-width:720px;width:100%;padding:22px;border-radius:20px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.78);box-shadow:0 18px 50px rgba(0,0,0,.12)}
-    .ttl{font-size:24px;font-weight:900;letter-spacing:-.03em}
-    .sub{margin-top:10px;line-height:1.6;opacity:.82}
-    .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
-    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 16px;border-radius:14px;font-weight:800;text-decoration:none;border:1px solid rgba(0,0,0,.12);background:rgba(0,0,0,.04);color:inherit}
-    .btn.primary{background:rgba(121,83,255,.16);border-color:rgba(121,83,255,.38)}
-    code{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;font-size:12px}
-  </style>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<title>운영 안내 | 88ST.Cloud</title>
+<meta name="robots" content="noindex,nofollow,noarchive,nosnippet"/>
+<link rel="canonical" href="https://88st.cloud/seo/"/>
+<link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"/>
+<link rel="stylesheet" href="/assets/css/x.9d7841e705c5.css"/>
+<link rel="stylesheet" href="/assets/css/hdr.shell.v1.20260221.css?v=119"/>
+<link rel="stylesheet" href="/assets/css/open.final.v1.20260317.css"/>
+<script defer src="/assets/js/build.ver.js"></script>
+<script defer src="/assets/js/build.loader.js"></script>
+<style>
+  :root{ --max: 980px; }
+  body{ margin:0; min-height:100vh; }
+  .wrap{ width:100%; max-width:var(--max); margin:0 auto; padding:28px 16px 64px; }
+  .card{ border-radius:22px; border:1px solid rgba(255,255,255,.08); background: rgba(20,20,24,.55); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); box-shadow: 0 18px 50px rgba(0,0,0,.35); padding:20px; }
+  [data-theme="light"] .card{ background: rgba(255,255,255,.78); border-color: rgba(0,0,0,.08); box-shadow: 0 18px 50px rgba(0,0,0,.12); }
+  .ttl{ font-size:22px; font-weight:900; letter-spacing:-.03em; }
+  .sub{ margin-top:10px; opacity:.82; line-height:1.6; font-size:14px; }
+  .grid{ margin-top:16px; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; }
+  @media (max-width: 760px){ .grid{ grid-template-columns:1fr; } }
+  .link{ display:block; text-decoration:none; color:inherit; border-radius:18px; border:1px solid rgba(255,255,255,.12); background: rgba(0,0,0,.10); padding:16px; }
+  [data-theme="light"] .link{ background: rgba(255,255,255,.64); border-color: rgba(0,0,0,.10); }
+  .name{ font-weight:900; }
+  .desc{ margin-top:6px; font-size:13px; opacity:.8; line-height:1.55; }
+  .path{ margin-top:10px; font-size:12px; opacity:.72; word-break:break-all; }
+  .note{ margin-top:18px; font-size:12px; opacity:.72; line-height:1.55; }
+</style>
 </head>
 <body>
-  <main class="card">
-    <div class="ttl">SEO Console은 OPS에 통합되었습니다.</div>
-    <div class="sub">
-      운영 동선을 단순화하기 위해 Search Console / GA 운영판은 이제 <b>/ops/</b> 안에서 같이 사용합니다.<br/>
-      기존 <code>/api/seo/*</code> 엔드포인트는 유지되며, 화면만 OPS 내부 섹션으로 옮겼습니다.
-    </div>
-    <div class="row">
-      <a class="btn primary" href="/ops/#ops-analytics">OPS 운영판 열기</a>
-      <a class="btn" href="/ops/">OPS 홈으로 이동</a>
-    </div>
+  <main class="wrap">
+    <section class="card">
+      <div class="ttl">운영 안내</div>
+      <div class="sub">
+        이 경로는 별도 SEO/GA 콘솔을 두지 않고 <b>운영 동선 안내용</b>으로만 유지합니다.
+        검색 성과는 <b>Search Console</b>, 방문/이벤트는 <b>Google Analytics</b>에서 직접 확인하고,
+        사이트 설정/배포용 JSON/사이트맵 유틸은 <b>OPS 페이지</b>에서 관리하는 구조로 정리했습니다.
+      </div>
+      <div class="grid">
+        <a class="link" href="/ops/" rel="noopener" target="_blank">
+          <div class="name">OPS 관리자 페이지</div>
+          <div class="desc">패치 룰, 인증 랜딩, 이벤트 팝업, 사이트 런타임, 사이트맵 유틸을 한곳에서 관리합니다.</div>
+          <div class="path">/ops/</div>
+        </a>
+        <a class="link" href="https://analytics.google.com/" rel="noopener noreferrer" target="_blank">
+          <div class="name">Google Analytics</div>
+          <div class="desc">세션, 페이지뷰, 이벤트, 유입 채널은 애널리틱스에서 직접 확인하는 기준으로 유지합니다.</div>
+          <div class="path">analytics.google.com</div>
+        </a>
+        <a class="link" href="https://search.google.com/search-console" rel="noopener noreferrer" target="_blank">
+          <div class="name">Search Console</div>
+          <div class="desc">색인 상태, 검색 노출, 클릭, 색인 생성 요청 우선순위 확인용입니다.</div>
+          <div class="path">search.google.com/search-console</div>
+        </a>
+      </div>
+      <div class="note">이 페이지는 <code>noindex</code> 상태로 유지되며, 운영용 참고 링크만 제공합니다.</div>
+    </section>
   </main>
+  <script defer src="/assets/js/open.final.v1.20260317.js"></script>
 </body>
 </html>
