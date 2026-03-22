@@ -1,73 +1,88 @@
 import fs from 'fs/promises';
-import path from 'path';
 import {
   ROOT,
-  SITE_ORIGIN,
   loadPosts,
-  listHtmlFiles,
-  normalizePathname,
-  fileToPathname,
+  listHtmlRoutes,
+  normalizePath,
+  toFilePath,
   urlFor,
   escapeHtml,
   escapeRegExp,
-  keywordSeed,
-  pickOgImage,
-  buildArticleJsonLd,
-  buildBreadcrumbJsonLd,
-  buildCollectionJsonLd,
-  buildWebsiteJsonLd,
-  isPrivatePath,
-  isIgnoredPath,
-  humanCategory,
-  baseMetaSpec,
-  writeTextIfChanged,
-  TODAY
+  stripHtml,
+  ogImageFor,
+  titleForCorePath,
+  descriptionForCorePath,
+  buildKeywords,
+  breadcrumbJson,
+  articleJson,
+  collectionJson,
+  inferCategoryFromPath,
+  isNoindexPath,
+  uniq,
+  fileExists
 } from './lib/site-automation.mjs';
 
-function upsertHeadMeta(html, spec) {
+const { posts } = await loadPosts();
+const postMap = new Map(posts.map((post) => [normalizePath(post.path), post]));
+const routes = await listHtmlRoutes();
+
+function removeMeta(headInner, attr, value) {
+  const re = new RegExp(`<meta\\b[^>]*\\b${attr}=["']${escapeRegExp(value)}["'][^>]*>\\s*`, 'ig');
+  return headInner.replace(re, '');
+}
+
+function removeLinkRel(headInner, rel) {
+  const re = new RegExp(`<link\\b[^>]*\\brel=["']${escapeRegExp(rel)}["'][^>]*>\\s*`, 'ig');
+  return headInner.replace(re, '');
+}
+
+function removeJsonLdByType(headInner, typeName) {
+  const re = new RegExp(`<script[^>]*type=["']application/ld\\+json["'][^>]*>\\s*([\\s\\S]*?)<\\/script>`, 'ig');
+  return headInner.replace(re, (full, jsonText) => {
+    try {
+      const payload = JSON.parse(jsonText.trim());
+      const types = Array.isArray(payload?.['@type']) ? payload['@type'] : [payload?.['@type']].filter(Boolean);
+      if (types.includes(typeName)) return '';
+    } catch {}
+    return full;
+  });
+}
+
+function upsertHead(html, spec) {
   const headMatch = html.match(/<head[^>]*>([\s\S]*?)<\/head>/i);
   if (!headMatch) return html;
   let headInner = headMatch[1];
 
-  const stripMetaByName = (name) => {
-    const re = new RegExp(`<meta\\b[^>]*\\bname=["']${escapeRegExp(name)}["'][^>]*>\\s*`, 'ig');
-    headInner = headInner.replace(re, '');
-  };
-  const stripMetaByProp = (prop) => {
-    const re = new RegExp(`<meta\\b[^>]*\\bproperty=["']${escapeRegExp(prop)}["'][^>]*>\\s*`, 'ig');
-    headInner = headInner.replace(re, '');
-  };
-  const stripLinkRel = (rel) => {
-    const re = new RegExp(`<link\\b[^>]*\\brel=["']${escapeRegExp(rel)}["'][^>]*>\\s*`, 'ig');
-    headInner = headInner.replace(re, '');
-  };
-
   headInner = headInner.replace(/<title>[\s\S]*?<\/title>\s*/i, '');
-  stripLinkRel('canonical');
-  ['viewport','description','keywords','robots','author','twitter:card','twitter:title','twitter:description','twitter:image'].forEach(stripMetaByName);
-  ['og:type','og:site_name','og:title','og:description','og:url','og:image','og:image:alt','og:locale','article:section','article:published_time','article:modified_time'].forEach(stripMetaByProp);
-  headInner = headInner.replace(/<meta\b[^>]*\bproperty=["']article:tag["'][^>]*>\s*/ig, '');
-  headInner = headInner.replace(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*data-auto-seo=["']1["'][^>]*>[\s\S]*?<\/script>\s*/ig, '');
-
-  // make non-critical local scripts defer to reduce blocking
-  headInner = headInner.replace(/<script((?=[^>]*\bsrc=)[^>]*?)><\/script>/ig, (full, attrs) => {
-    if (/\btype=["']application\/ld\+json["']/i.test(attrs) || /\bdefer\b/i.test(attrs) || /\basync\b/i.test(attrs)) return full;
-    if (/\bsrc=["']https?:/i.test(attrs)) return full;
-    return `<script${attrs} defer=""></script>`;
+  headInner = removeLinkRel(headInner, 'canonical');
+  headInner = removeMeta(headInner, 'name', 'description');
+  headInner = removeMeta(headInner, 'name', 'keywords');
+  headInner = removeMeta(headInner, 'name', 'robots');
+  headInner = removeMeta(headInner, 'name', 'twitter:card');
+  headInner = removeMeta(headInner, 'name', 'twitter:title');
+  headInner = removeMeta(headInner, 'name', 'twitter:description');
+  headInner = removeMeta(headInner, 'name', 'twitter:image');
+  headInner = removeMeta(headInner, 'name', 'twitter:image:alt');
+  ['og:type','og:site_name','og:title','og:description','og:url','og:image','og:image:alt','og:locale','article:section','article:published_time','article:modified_time'].forEach((name) => {
+    headInner = removeMeta(headInner, 'property', name);
   });
+  headInner = headInner.replace(/<meta\b[^>]*\bproperty=["']article:tag["'][^>]*>\s*/ig, '');
+  headInner = removeJsonLdByType(headInner, 'BreadcrumbList');
+  headInner = removeJsonLdByType(headInner, 'Article');
+  headInner = removeJsonLdByType(headInner, 'CollectionPage');
+  headInner = removeJsonLdByType(headInner, 'WebSite');
 
-  const lines = [
+  const headLines = [
     `<title>${escapeHtml(spec.title)}</title>`,
     `<link href="${escapeHtml(spec.canonical)}" rel="canonical"/>`,
-    `<meta content="width=device-width, initial-scale=1" name="viewport"/>`,
     `<meta content="${escapeHtml(spec.description)}" name="description"/>`,
     `<meta content="${escapeHtml(spec.keywords)}" name="keywords"/>`,
     `<meta content="${escapeHtml(spec.robots)}" name="robots"/>`,
-    `<meta content="레븐" name="author"/>`,
     `<meta content="summary_large_image" name="twitter:card"/>`,
     `<meta content="${escapeHtml(spec.title)}" name="twitter:title"/>`,
     `<meta content="${escapeHtml(spec.description)}" name="twitter:description"/>`,
     `<meta content="${escapeHtml(spec.ogImage)}" name="twitter:image"/>`,
+    `<meta content="${escapeHtml(spec.title)} 대표 이미지" name="twitter:image:alt"/>`,
     `<meta content="${escapeHtml(spec.ogType)}" property="og:type"/>`,
     `<meta content="레븐" property="og:site_name"/>`,
     `<meta content="ko_KR" property="og:locale"/>`,
@@ -78,110 +93,75 @@ function upsertHeadMeta(html, spec) {
     `<meta content="${escapeHtml(spec.title)} 대표 이미지" property="og:image:alt"/>`
   ];
 
-  if (spec.articleSection) lines.push(`<meta content="${escapeHtml(spec.articleSection)}" property="article:section"/>`);
-  if (spec.published) lines.push(`<meta content="${escapeHtml(spec.published)}" property="article:published_time"/>`);
-  if (spec.updated) lines.push(`<meta content="${escapeHtml(spec.updated)}" property="article:modified_time"/>`);
+  if (spec.articleSection) headLines.push(`<meta content="${escapeHtml(spec.articleSection)}" property="article:section"/>`);
+  if (spec.published) headLines.push(`<meta content="${escapeHtml(spec.published)}" property="article:published_time"/>`);
+  if (spec.updated) headLines.push(`<meta content="${escapeHtml(spec.updated)}" property="article:modified_time"/>`);
   for (const tag of spec.articleTags || []) {
-    lines.push(`<meta content="${escapeHtml(tag)}" property="article:tag"/>`);
+    headLines.push(`<meta content="${escapeHtml(tag)}" property="article:tag"/>`);
   }
-  for (const json of spec.jsonLd || []) {
-    lines.push(`<script data-auto-seo="1" type="application/ld+json">${JSON.stringify(json)}</script>`);
+  for (const schema of spec.schemas || []) {
+    headLines.push(`<script type="application/ld+json">${JSON.stringify(schema)}</script>`);
   }
 
-  headInner = `${lines.join('')}${headInner.trim() ? `\n${headInner.trim()}` : ''}`;
+  headInner = `${headLines.join('')}\n${headInner.trim()}`;
   return html.replace(headMatch[0], `<head>${headInner}</head>`);
 }
 
-function buildPostSpec(post, pathname) {
-  const canonical = urlFor(pathname);
-  const keywords = keywordSeed(post);
-  const title = String(post.seoTitle || `${post.title} | ${post.section || post.label || humanCategory(post.category)} | 레븐`).trim();
-  const description = String(post.seoDescription || post.excerpt || post.title).trim();
-  const ogImage = pickOgImage(post);
-  const section = String(post.section || post.label || humanCategory(post.category)).trim();
-  const published = String(post.published || post.updated || TODAY).trim();
-  const updated = String(post.updated || post.published || TODAY).trim();
-  const articleTags = keywords.filter((item) => !['레븐', section].includes(item)).slice(0, 6);
-  const breadcrumb = [
-    { name: '메인', item: `${SITE_ORIGIN}/` },
-    { name: `${humanCategory(post.category)} 허브`, item: urlFor(`/${post.category}/`) },
-    { name: post.title, item: canonical }
-  ];
+function buildSpec(pathname, post, html) {
+  const clean = normalizePath(pathname);
+  const isPost = !!post;
+  const category = post?.category || inferCategoryFromPath(clean);
+  const title = isPost
+    ? String(post.seoTitle || `${post.title} | ${post.section || post.label || '블로그'} | 레븐`).trim()
+    : (titleForCorePath(clean) || stripHtml(html.match(/<title>([\s\S]*?)<\/title>/i)?.[1] || '레븐 | 콘텐츠 허브'));
+  const description = isPost
+    ? String(post.seoDescription || post.excerpt || post.title).trim()
+    : (descriptionForCorePath(clean) || stripHtml(html.match(/<meta[^>]*name=["']description["'][^>]*content=["']([^"']*)["']/i)?.[1] || title));
+  const keywords = isPost
+    ? buildKeywords(post)
+    : uniq([category, title.replace(/\|.*$/, '').trim(), '레븐', '카지노', '슬롯', '보너스']).join(', ');
+  const canonical = urlFor(clean);
+  const ogImage = ogImageFor(clean, post);
+  const robots = isNoindexPath(clean) ? 'noindex,nofollow,noarchive,nosnippet' : 'index,follow';
+  const schemas = [];
+  if (isPost) {
+    schemas.push(breadcrumbJson(clean, post));
+    schemas.push(articleJson({ ...post, updated: post.updated || post.published }));
+  } else if (!isNoindexPath(clean)) {
+    schemas.push(collectionJson(clean));
+    const crumb = breadcrumbJson(clean, null);
+    if (crumb.itemListElement.length > 1) schemas.push(crumb);
+  }
   return {
     title,
     description,
+    keywords: Array.isArray(keywords) ? keywords.join(', ') : keywords,
     canonical,
-    keywords: keywords.join(', '),
-    robots: 'index,follow,max-image-preview:large',
     ogImage,
-    ogType: 'article',
-    articleSection: section,
-    published,
-    updated,
-    articleTags,
-    jsonLd: [
-      buildBreadcrumbJsonLd(breadcrumb),
-      buildArticleJsonLd(post, canonical, ogImage)
-    ]
+    ogType: isPost ? 'article' : 'website',
+    robots,
+    articleSection: isPost ? (post.section || post.label || category) : '',
+    published: isPost ? (post.published || post.updated || '') : '',
+    updated: isPost ? (post.updated || post.published || '') : '',
+    articleTags: isPost ? buildKeywords(post).filter((item) => !['레븐', post.section, post.label].includes(item)).slice(0, 6) : [],
+    schemas
   };
 }
 
-
-function optimizeMarkup(html) {
-  let next = html.replace(/<script((?=[^>]*\bsrc=)[^>]*?)><\/script>/ig, (full, attrs) => {
-    if (/\btype=["']application\/ld\+json["']/i.test(attrs) || /\bdefer\b/i.test(attrs) || /\basync\b/i.test(attrs)) return full;
-    if (/\bsrc=["']https?:/i.test(attrs)) return full;
-    return `<script${attrs} defer=""></script>`;
-  });
-  next = next.replace(/<img([^>]*class=["'][^"']*brand-logo[^"']*["'][^>]*)>/ig, (full, attrs) => {
-    let out = attrs;
-    if (!/\bwidth=/i.test(out)) out += ' width="40"';
-    if (!/\bheight=/i.test(out)) out += ' height="40"';
-    if (!/\bdecoding=/i.test(out)) out += ' decoding="async"';
-    if (!/\bfetchpriority=/i.test(out)) out += ' fetchpriority="high"';
-    return `<img${out}>`;
-  });
-  return next;
-}
-
-function buildPageSpec(pathname, html) {
-  const meta = baseMetaSpec(pathname, html);
-  const canonical = urlFor(pathname);
-  const keywords = Array.isArray(meta.keywords) ? meta.keywords.join(', ') : String(meta.keywords || '레븐');
-  const jsonLd = [];
-  if (pathname === '/') jsonLd.push(buildWebsiteJsonLd(canonical, meta));
-  jsonLd.push(buildCollectionJsonLd(meta, canonical));
-  return {
-    title: meta.title,
-    description: meta.description,
-    canonical,
-    keywords,
-    robots: isPrivatePath(pathname) ? 'noindex,nofollow,noarchive,nosnippet' : 'index,follow,max-image-preview:large',
-    ogImage: pickOgImage(meta),
-    ogType: meta.pageType === 'website' ? 'website' : 'website',
-    articleSection: null,
-    published: '',
-    updated: TODAY,
-    articleTags: [],
-    jsonLd
-  };
-}
-
-const { posts } = await loadPosts();
-const postMap = new Map(posts.map((post) => [normalizePathname(post.path), post]));
-const htmlFiles = await listHtmlFiles();
 let changed = 0;
 let processed = 0;
-
-for (const filePath of htmlFiles) {
-  const pathname = fileToPathname(filePath);
-  if (isIgnoredPath(pathname) || pathname.includes('index.orig.html')) continue;
+for (const pathname of routes) {
+  const filePath = toFilePath(pathname);
+  if (!(await fileExists(filePath))) continue;
   const original = await fs.readFile(filePath, 'utf8');
-  const post = postMap.get(pathname);
-  const spec = post ? buildPostSpec(post, pathname) : buildPageSpec(pathname, original);
-  const next = optimizeMarkup(upsertHeadMeta(original, spec));
-  if (await writeTextIfChanged(filePath, next)) changed += 1;
+  const post = postMap.get(normalizePath(pathname)) || null;
+  const spec = buildSpec(pathname, post, original);
+  const next = upsertHead(original, spec);
   processed += 1;
+  if (next !== original) {
+    await fs.writeFile(filePath, next, 'utf8');
+    changed += 1;
+  }
 }
 
-console.log(`SEO/OG + structured data refreshed for ${changed} / ${processed} HTML files.`);
+console.log(`SEO/OG refreshed for ${processed} HTML routes (${changed} changed).`);

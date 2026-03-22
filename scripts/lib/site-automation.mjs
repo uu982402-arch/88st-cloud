@@ -4,154 +4,96 @@ import path from 'path';
 export const ROOT = process.cwd();
 export const SITE_ORIGIN = 'https://88st.cloud';
 export const POSTS_FILE = path.join(ROOT, 'assets/data/posts.index.v1.20260318.json');
-export const TODAY = '2026-03-22';
-export const DEFAULT_OG_IMAGE = `${SITE_ORIGIN}/img/logo.png`;
+export const NOINDEX_PREFIXES = ['/admin/', '/ops/', '/seo/'];
 
-export const PRIVATE_PATH_PREFIXES = ['/admin/', '/ops/', '/seo/'];
-export const IGNORED_PATH_PREFIXES = ['/serverless/'];
-
-export const CATEGORY_OG_IMAGE_MAP = {
-  casino: `${SITE_ORIGIN}/img/img1.webp`,
-  slot: `${SITE_ORIGIN}/img/img2.webp`,
-  bonus: `${SITE_ORIGIN}/img/img1.jpg`,
-  strategy: `${SITE_ORIGIN}/img/img2.jpg`,
+export const CATEGORY_OG_IMAGES = {
+  home: `${SITE_ORIGIN}/img/logo.png`,
+  casino: `${SITE_ORIGIN}/img/landing/vegas-landing.webp`,
+  slot: `${SITE_ORIGIN}/img/promotions/tronbet-card.webp`,
+  bonus: `${SITE_ORIGIN}/img/img1.webp`,
+  strategy: `${SITE_ORIGIN}/img/img2.webp`,
   news: `${SITE_ORIGIN}/img/img2.webp`,
-  analysis: `${SITE_ORIGIN}/img/img1.webp`,
-  guide: `${SITE_ORIGIN}/img/img2.jpg`,
+  analysis: `${SITE_ORIGIN}/img/logo.png`,
   archive: `${SITE_ORIGIN}/img/logo.png`,
-  home: `${SITE_ORIGIN}/img/logo.png`
+  guide: `${SITE_ORIGIN}/img/logo.png`,
+  odds: `${SITE_ORIGIN}/img/logo.png`,
+  default: `${SITE_ORIGIN}/img/logo.png`
 };
 
-export const PUBLIC_PAGE_CONFIG = {
-  '/': {
-    pageType: 'website',
-    title: '레븐 | 카지노 · 슬롯 · 파워볼 콘텐츠',
-    description: '카지노 · 슬롯 · 파워볼 콘텐츠 허브 레븐. 카테고리, 추천 묶음, 초보 추천 루트를 메인에서 바로 확인할 수 있습니다.',
-    keywords: ['레븐','카지노','슬롯','파워볼','카지노 허브','슬롯 허브','보너스','전략','뉴스'],
-    ogImage: CATEGORY_OG_IMAGE_MAP.home,
-    collectionName: '레븐 | 카지노·슬롯 블로그 허브'
-  },
-  '/analysis/': {
-    pageType: 'collection',
-    title: '스포츠 배당 체크 센터 | 승무패·승패·오버언더·핸디캡 | 레븐',
-    description: '스포츠 전종목에 공통으로 쓸 수 있는 간단 배당 체크 UI. 승무패, 승패, 오버·언더, 핸디캡 시장을 하나의 구조로 묶어 마진과 공정배당을 확인합니다.',
-    keywords: ['배당분석','스포츠 배당','오버언더','핸디캡','승무패','승패','배당 계산'],
-    ogImage: CATEGORY_OG_IMAGE_MAP.analysis,
-    collectionName: '스포츠 배당 분석 | 레븐'
-  },
-  '/casino/': {
-    pageType: 'collection',
-    title: '카지노 허브 | 바카라·룰렛·블랙잭·라이브 카지노 아카이브 | 레븐',
-    description: '바카라, 룰렛, 블랙잭, 라이브 카지노, 배팅기법, 자본 운영 글을 블로그 아카이브처럼 읽을 수 있게 재정리한 레븐 카지노 허브.',
-    keywords: ['카지노','바카라','룰렛','블랙잭','라이브 카지노','카지노 글 모음','카지노 허브'],
-    ogImage: CATEGORY_OG_IMAGE_MAP.casino,
-    collectionName: '카지노 허브 | 바카라·룰렛·블랙잭·라이브 카지노 아카이브 | 레븐'
-  },
-  '/slot/': {
-    pageType: 'collection',
-    title: '슬롯 허브 | RTP·변동성·무료회전·구조 아카이브 | 레븐',
-    description: 'RTP, 변동성, 무료회전, 멀티플라이어, 구조 읽기, 세션 운영 글을 블로그 아카이브처럼 묶은 레븐 슬롯 허브.',
-    keywords: ['슬롯','RTP','변동성','무료회전','슬롯 허브','슬롯 글 모음'],
-    ogImage: CATEGORY_OG_IMAGE_MAP.slot,
-    collectionName: '슬롯 허브 | RTP·변동성·무료회전·구조 아카이브 | 레븐'
-  },
-  '/bonus/': {
-    pageType: 'collection',
-    title: '보너스 허브 | 가입 보너스·롤링 조건·VIP 혜택 아카이브 | 레븐',
-    description: '가입 보너스, 롤링 조건, 제외 게임, VIP 혜택, 프로모션 캘린더까지 블로그 아카이브처럼 읽을 수 있게 재정리한 레븐 보너스 허브.',
-    keywords: ['보너스','가입 보너스','롤링 조건','VIP 혜택','보너스 허브'],
-    ogImage: CATEGORY_OG_IMAGE_MAP.bonus,
-    collectionName: '보너스 허브 | 가입 보너스·롤링 조건·VIP 혜택 아카이브 | 레븐'
-  },
-  '/strategy/': {
-    pageType: 'collection',
-    title: '전략 허브 | 자본 운영·손절·세션 체크리스트 아카이브 | 레븐',
-    description: '자본 운영, 손절 규칙, 세션 체크리스트, 회복 착각, 기록 습관까지 블로그 아카이브처럼 읽을 수 있게 재정리한 레븐 전략 허브.',
-    keywords: ['전략','자본 운영','손절','세션 체크리스트','전략 허브'],
-    ogImage: CATEGORY_OG_IMAGE_MAP.strategy,
-    collectionName: '전략 허브 | 자본 운영·손절·세션 체크리스트 아카이브 | 레븐'
-  },
-  '/news/': {
-    pageType: 'collection',
-    title: '스포츠 뉴스 허브 | 해외 매체 · 한국 뉴스 요약 | 레븐',
-    description: '해외 스포츠 매체 뉴스와 한국 뉴스 흐름을 한글 중심으로 정리한 레븐 뉴스 허브. 메인과 같은 피드를 별도 허브에서도 확인합니다.',
-    keywords: ['스포츠 뉴스','해외 스포츠 뉴스','국내 스포츠 뉴스','뉴스 허브'],
-    ogImage: CATEGORY_OG_IMAGE_MAP.news,
-    collectionName: '스포츠 뉴스 허브 | 해외 매체 · 한국 뉴스 요약 | 레븐'
-  },
-  '/archive/': {
-    pageType: 'collection',
-    title: '전체 글 아카이브 | 카지노·슬롯·보너스·전략 글 모음 | 레븐',
-    description: '카테고리별로 쌓인 게시글을 한 번에 확인하는 전체 아카이브 페이지.',
-    keywords: ['전체 글','아카이브','카지노 글 모음','슬롯 글 모음','보너스 글 모음','전략 글 모음'],
-    ogImage: CATEGORY_OG_IMAGE_MAP.archive,
-    collectionName: '전체 글 아카이브 | 레븐'
-  },
-  '/latest/': {
-    pageType: 'collection',
-    title: '최신 글 | 최근 업데이트된 핵심 글 모음 | 레븐',
-    description: '최근 업데이트된 핵심 글을 카테고리별로 빠르게 확인하는 최신 글 페이지.',
-    keywords: ['최신 글','최근 업데이트','카지노 최신 글','슬롯 최신 글'],
-    ogImage: CATEGORY_OG_IMAGE_MAP.archive,
-    collectionName: '최신 글 | 레븐'
-  },
-  '/popular/': {
-    pageType: 'collection',
-    title: '인기 글 | 많이 읽는 핵심 글 모음 | 레븐',
-    description: '많이 읽는 핵심 글을 카테고리별로 정리한 인기 글 페이지.',
-    keywords: ['인기 글','많이 보는 글','카지노 인기 글','슬롯 인기 글'],
-    ogImage: CATEGORY_OG_IMAGE_MAP.archive,
-    collectionName: '인기 글 | 레븐'
-  },
-  '/play-guides/': {
-    pageType: 'collection',
-    title: '가이드 라이브러리 | 카지노 배팅기법·미니게임 가이드 | 레븐',
-    description: '카지노 배팅기법과 미니게임 운영 가이드를 한 번에 모아 본 라이브러리 페이지.',
-    keywords: ['가이드','카지노 배팅기법','미니게임 가이드','가이드 라이브러리'],
-    ogImage: CATEGORY_OG_IMAGE_MAP.guide,
-    collectionName: '가이드 라이브러리 | 레븐'
-  },
-  '/odds/': {
-    pageType: 'webpage',
-    title: '오즈 체크 | 확률·공정배당 계산 보조 페이지 | 레븐',
-    description: '배당률과 확률을 빠르게 계산하는 오즈 체크 보조 페이지.',
-    keywords: ['오즈 체크','공정배당','확률 계산','배당 계산'],
-    ogImage: CATEGORY_OG_IMAGE_MAP.analysis,
-    collectionName: '오즈 체크 | 레븐'
-  }
-};
+export async function loadPosts() {
+  const payload = JSON.parse(await fs.readFile(POSTS_FILE, 'utf8'));
+  const posts = Array.isArray(payload?.posts) ? payload.posts : [];
+  return { payload, posts };
+}
 
-export function normalizePathname(pathname) {
+export function normalizePath(pathname) {
   if (!pathname) return '/';
   let next = String(pathname).trim();
-  next = next.replace(/\\/g, '/');
   if (!next.startsWith('/')) next = `/${next}`;
-  if (next.endsWith('/index.html')) next = next.slice(0, -'index.html'.length);
-  return next.endsWith('/') ? next : `${next}/`;
+  if (!next.endsWith('/')) next += '/';
+  return next.replace(/\/+/g, '/');
 }
 
-export function pathnameToFile(pathname) {
-  return path.join(ROOT, pathname.replace(/^\//, ''), 'index.html');
+export function isNoindexPath(pathname) {
+  const clean = normalizePath(pathname);
+  return NOINDEX_PREFIXES.some((prefix) => clean === prefix || clean.startsWith(prefix));
 }
 
-export function fileToPathname(filePath) {
-  const rel = path.relative(ROOT, filePath).replace(/\\/g, '/');
-  if (rel === 'index.html') return '/';
-  return normalizePathname(rel.replace(/\/index\.html$/i, '/'));
+export function toFilePath(pathname) {
+  const clean = normalizePath(pathname);
+  if (clean === '/') return path.join(ROOT, 'index.html');
+  return path.join(ROOT, clean.replace(/^\//, ''), 'index.html');
 }
 
 export function urlFor(pathname) {
-  return `${SITE_ORIGIN}${normalizePathname(pathname)}`;
+  return `${SITE_ORIGIN}${normalizePath(pathname)}`;
 }
 
-export async function readJson(file) {
-  return JSON.parse(await fs.readFile(file, 'utf8'));
+export async function fileExists(filePath) {
+  try {
+    await fs.access(filePath);
+    return true;
+  } catch {
+    return false;
+  }
 }
 
-export async function loadPosts() {
-  const payload = await readJson(POSTS_FILE);
-  const posts = Array.isArray(payload?.posts) ? payload.posts : [];
-  return { payload, posts };
+export async function readFileSafe(filePath) {
+  try {
+    return await fs.readFile(filePath, 'utf8');
+  } catch {
+    return null;
+  }
+}
+
+export async function listHtmlRoutes() {
+  const routes = [];
+  async function walk(dir) {
+    const entries = await fs.readdir(dir, { withFileTypes: true });
+    for (const entry of entries) {
+      const full = path.join(dir, entry.name);
+      const rel = path.relative(ROOT, full).replace(/\\/g, '/');
+      if (entry.isDirectory()) {
+        if (['assets', 'config', 'docs', 'img', 'scripts', 'serverless', '.git', 'node_modules'].includes(entry.name)) continue;
+        await walk(full);
+        continue;
+      }
+      if (entry.name !== 'index.html') continue;
+      let pathname = `/${path.dirname(rel)}/`.replace(/\/+/g, '/');
+      if (pathname === '/./') pathname = '/';
+      pathname = pathname.replace(/\/+/g, '/');
+      if (pathname === '/index.html/') pathname = '/';
+      if (pathname.endsWith('/./')) pathname = pathname.slice(0, -2);
+      if (pathname === '//') pathname = '/';
+      routes.push(normalizePath(pathname));
+    }
+  }
+  await walk(ROOT);
+  return [...new Set(routes)].sort((a, b) => (a === '/' ? -1 : b === '/' ? 1 : a.localeCompare(b, 'ko')));
+}
+
+export function stripHtml(value) {
+  return String(value ?? '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
 }
 
 export function escapeHtml(value) {
@@ -166,115 +108,152 @@ export function escapeRegExp(value) {
   return String(value).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
-export function stripHtml(value) {
-  return String(value ?? '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
-}
-
-export function shortText(value, max = 150) {
-  const clean = stripHtml(value);
-  return clean.length > max ? `${clean.slice(0, max - 1).trim()}…` : clean;
-}
-
-export function tokenize(value) {
+export function slugTokens(value) {
   return String(value || '')
     .toLowerCase()
-    .replace(/[^0-9a-z가-힣]+/gi, ' ')
+    .replace(/[-_/]+/g, ' ')
+    .replace(/[^0-9a-z가-힣 ]+/g, ' ')
     .split(/\s+/)
     .map((item) => item.trim())
-    .filter(Boolean);
+    .filter((item) => item.length >= 2);
 }
 
-export function dedupeList(list) {
+export function uniq(items) {
   const seen = new Set();
-  const out = [];
-  for (const item of list) {
-    const value = String(item ?? '').trim();
-    if (!value) continue;
-    const key = value.toLowerCase();
+  const result = [];
+  for (const item of items) {
+    const clean = String(item ?? '').trim();
+    if (!clean) continue;
+    const key = clean.toLowerCase();
     if (seen.has(key)) continue;
     seen.add(key);
-    out.push(value);
+    result.push(clean);
   }
-  return out;
+  return result;
 }
 
-export function keywordSeed(post) {
-  return dedupeList([
+export function inferCategoryFromPath(pathname) {
+  const clean = normalizePath(pathname);
+  if (clean === '/') return 'home';
+  if (clean.startsWith('/casino/')) return 'casino';
+  if (clean.startsWith('/slot/')) return 'slot';
+  if (clean.startsWith('/bonus/')) return 'bonus';
+  if (clean.startsWith('/strategy/')) return 'strategy';
+  if (clean.startsWith('/news/')) return 'news';
+  if (clean.startsWith('/analysis/')) return 'analysis';
+  if (clean.startsWith('/archive/') || clean.endsWith('/archive/')) return 'archive';
+  if (clean.startsWith('/play-guides/')) return 'guide';
+  if (clean.startsWith('/odds/')) return 'odds';
+  return 'default';
+}
+
+export function ogImageFor(pathname, post = null) {
+  const category = post?.category || inferCategoryFromPath(pathname);
+  return CATEGORY_OG_IMAGES[category] || CATEGORY_OG_IMAGES.default;
+}
+
+export function titleForCorePath(pathname) {
+  const map = {
+    '/': '레븐 | 카지노 · 슬롯 · 파워볼 콘텐츠',
+    '/analysis/': '배당분석 | 레븐',
+    '/casino/': '카지노 허브 | 레븐',
+    '/slot/': '슬롯 허브 | 레븐',
+    '/bonus/': '보너스 허브 | 레븐',
+    '/strategy/': '전략 허브 | 레븐',
+    '/news/': '뉴스 허브 | 레븐',
+    '/play-guides/': '가이드 허브 | 레븐',
+    '/latest/': '최신 글 | 레븐',
+    '/popular/': '인기 글 | 레븐',
+    '/archive/': '전체 글 아카이브 | 레븐',
+    '/casino/archive/': '카지노 전체 글 | 레븐',
+    '/slot/archive/': '슬롯 전체 글 | 레븐',
+    '/bonus/archive/': '보너스 전체 글 | 레븐',
+    '/strategy/archive/': '전략 전체 글 | 레븐'
+  };
+  return map[normalizePath(pathname)] || null;
+}
+
+export function descriptionForCorePath(pathname) {
+  const map = {
+    '/': '카지노 · 슬롯 · 파워볼 콘텐츠 허브 레븐. 카테고리와 추천 루트, 핵심 글을 빠르게 확인할 수 있습니다.',
+    '/analysis/': '배당 체크와 스포츠 분석 흐름을 빠르게 확인하는 레븐 분석기 페이지입니다.',
+    '/casino/': '바카라·블랙잭·룰렛과 카지노 운영 글을 한곳에 모은 허브입니다.',
+    '/slot/': 'RTP·변동성·무료회전·운영 팁을 모은 슬롯 허브입니다.',
+    '/bonus/': '첫충·매충·롤링·출금 조건을 확인하는 보너스 허브입니다.',
+    '/strategy/': '자본 관리·손절·세션 체크를 다루는 전략 허브입니다.',
+    '/news/': '스포츠 뉴스와 영향도 요약을 빠르게 확인하는 뉴스 허브입니다.',
+    '/play-guides/': '처음 읽기 좋은 루트와 실전형 안내 글을 모은 가이드 허브입니다.',
+    '/latest/': '최근 추가된 글을 빠르게 확인할 수 있는 최신 글 모음입니다.',
+    '/popular/': '자주 보는 글을 묶어둔 인기 글 모음입니다.',
+    '/archive/': '카테고리 전체 글을 한 번에 탐색할 수 있는 아카이브입니다.'
+  };
+  return map[normalizePath(pathname)] || null;
+}
+
+export function buildKeywords(post) {
+  const keywords = uniq([
     ...(Array.isArray(post?.keywords) ? post.keywords : []),
     post?.label,
     post?.section,
     post?.tag,
     post?.badge,
-    post?.category,
+    post?.category === 'casino' ? '바카라 가이드' : '',
+    post?.category === 'slot' ? '슬롯 가이드' : '',
+    post?.category === 'bonus' ? '보너스 조건' : '',
+    post?.category === 'strategy' ? '운영 전략' : '',
+    post?.category === 'news' ? '스포츠 뉴스' : '',
     '레븐'
   ]);
+  return keywords;
 }
 
-export function pickOgImage(postOrConfig) {
-  const direct = postOrConfig?.heroImage || postOrConfig?.image || postOrConfig?.ogImage || postOrConfig?.coverImage;
-  if (direct) {
-    if (String(direct).startsWith('http')) return direct;
-    return `${SITE_ORIGIN}${String(direct).startsWith('/') ? direct : `/${direct}`}`;
-  }
-  const category = String(postOrConfig?.category || postOrConfig?.pageType || '').toLowerCase();
-  return CATEGORY_OG_IMAGE_MAP[category] || DEFAULT_OG_IMAGE;
-}
-
-export function isPrivatePath(pathname) {
-  return PRIVATE_PATH_PREFIXES.some((prefix) => normalizePathname(pathname).startsWith(prefix));
-}
-
-export function isIgnoredPath(pathname) {
-  return IGNORED_PATH_PREFIXES.some((prefix) => normalizePathname(pathname).startsWith(prefix));
-}
-
-export async function listHtmlFiles(dir = ROOT) {
-  const files = [];
-  async function walk(current) {
-    const entries = await fs.readdir(current, { withFileTypes: true });
-    for (const entry of entries) {
-      const full = path.join(current, entry.name);
-      if (entry.isDirectory()) {
-        if (['node_modules', '.git'].includes(entry.name)) continue;
-        await walk(full);
-      } else if (entry.isFile() && entry.name.endsWith('.html')) {
-        files.push(full);
-      }
+export function breadcrumbJson(pathname, post = null) {
+  const clean = normalizePath(pathname);
+  const items = [{ '@type': 'ListItem', position: 1, name: '메인', item: `${SITE_ORIGIN}/` }];
+  const category = post?.category || inferCategoryFromPath(clean);
+  const categoryMap = {
+    casino: ['카지노 허브', '/casino/'],
+    slot: ['슬롯 허브', '/slot/'],
+    bonus: ['보너스 허브', '/bonus/'],
+    strategy: ['전략 허브', '/strategy/'],
+    news: ['뉴스 허브', '/news/'],
+    analysis: ['배당분석', '/analysis/'],
+    guide: ['가이드 허브', '/play-guides/'],
+    archive: ['아카이브', '/archive/']
+  };
+  if (post) {
+    const categoryInfo = categoryMap[category];
+    if (categoryInfo) items.push({ '@type': 'ListItem', position: items.length + 1, name: categoryInfo[0], item: urlFor(categoryInfo[1]) });
+    items.push({ '@type': 'ListItem', position: items.length + 1, name: post.title, item: urlFor(post.path) });
+  } else {
+    const title = titleForCorePath(clean);
+    const categoryInfo = categoryMap[category];
+    if (clean !== '/' && categoryInfo) {
+      items.push({ '@type': 'ListItem', position: items.length + 1, name: categoryInfo[0], item: urlFor(categoryInfo[1]) });
+    }
+    if (clean !== '/' && title) {
+      items[items.length - 1] = { '@type': 'ListItem', position: items.length, name: title.replace(' | 레븐', ''), item: urlFor(clean) };
     }
   }
-  await walk(dir);
-  return files.sort();
+  return { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: items };
 }
 
-export function buildBreadcrumbJsonLd(items) {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: items.map((item, index) => ({
-      '@type': 'ListItem',
-      position: index + 1,
-      name: item.name,
-      item: item.item
-    }))
-  };
-}
-
-export function buildArticleJsonLd(post, canonical, ogImage) {
+export function articleJson(post) {
   return {
     '@context': 'https://schema.org',
     '@type': 'Article',
     headline: post.title,
     name: post.title,
-    description: String(post.seoDescription || post.excerpt || post.title).trim(),
+    description: post.seoDescription || post.excerpt || post.title,
     inLanguage: 'ko-KR',
-    url: canonical,
-    image: [ogImage],
-    datePublished: String(post.published || post.updated || TODAY).trim(),
-    dateModified: String(post.updated || post.published || TODAY).trim(),
-    articleSection: String(post.section || post.label || post.category || '블로그').trim(),
-    keywords: keywordSeed(post),
-    timeRequired: `PT${Math.max(1, Number(post.readingMins || 2))}M`,
-    mainEntityOfPage: canonical,
+    url: urlFor(post.path),
+    datePublished: post.published || post.updated || '',
+    dateModified: post.updated || post.published || '',
+    articleSection: post.section || post.label || post.category || '블로그',
+    keywords: buildKeywords(post),
+    timeRequired: post.readingMins ? `PT${post.readingMins}M` : undefined,
+    mainEntityOfPage: urlFor(post.path),
+    image: [ogImageFor(post.path, post)],
     author: { '@type': 'Organization', name: '레븐' },
     publisher: {
       '@type': 'Organization',
@@ -285,74 +264,21 @@ export function buildArticleJsonLd(post, canonical, ogImage) {
   };
 }
 
-export function buildCollectionJsonLd(config, canonical) {
+export function collectionJson(pathname) {
+  const title = titleForCorePath(pathname) || '레븐 | 콘텐츠 허브';
+  const description = descriptionForCorePath(pathname) || '카테고리 허브와 아카이브를 제공하는 레븐';
   return {
     '@context': 'https://schema.org',
-    '@type': config.pageType === 'website' ? 'CollectionPage' : (config.pageType === 'webpage' ? 'WebPage' : 'CollectionPage'),
-    name: config.collectionName || config.title,
-    headline: config.collectionName || config.title,
-    description: config.description,
+    '@type': normalizePath(pathname) === '/' ? 'WebSite' : 'CollectionPage',
+    name: title,
+    url: urlFor(pathname),
     inLanguage: 'ko-KR',
-    url: canonical,
-    image: [pickOgImage(config)],
-    dateModified: TODAY
+    description
   };
 }
 
-export function buildWebsiteJsonLd(canonical, config) {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'WebSite',
-    name: '레븐',
-    url: canonical,
-    inLanguage: 'ko-KR',
-    description: config.description,
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: `${SITE_ORIGIN}/archive/?q={search_term_string}`,
-      'query-input': 'required name=search_term_string'
-    }
-  };
-}
-
-export function humanCategory(category) {
-  const map = {
-    casino: '카지노',
-    slot: '슬롯',
-    bonus: '보너스',
-    strategy: '전략',
-    news: '뉴스',
-    guide: '가이드',
-    analysis: '배당분석'
-  };
-  return map[String(category || '').toLowerCase()] || String(category || '콘텐츠');
-}
-
-export function baseMetaSpec(pathname, html) {
-  const normalized = normalizePathname(pathname);
-  const config = PUBLIC_PAGE_CONFIG[normalized];
-  if (config) return config;
-  const titleMatch = html.match(/<title>([\s\S]*?)<\/title>/i);
-  const title = stripHtml(titleMatch?.[1] || '레븐 콘텐츠');
-  const descMatch = html.match(/<meta\b[^>]*name=["']description["'][^>]*content=["']([^"']*)["'][^>]*>/i);
-  const description = stripHtml(descMatch?.[1] || `${title} 페이지`);
-  const pageType = normalized.includes('/archive/') ? 'collection' : 'webpage';
-  return {
-    pageType,
-    title,
-    description,
-    keywords: dedupeList([title, '레븐']),
-    ogImage: pickOgImage({ pageType })
-  };
-}
-
-export async function writeTextIfChanged(filePath, next) {
-  let prev = null;
-  try {
-    prev = await fs.readFile(filePath, 'utf8');
-  } catch {}
-  if (prev === next) return false;
-  await fs.mkdir(path.dirname(filePath), { recursive: true });
-  await fs.writeFile(filePath, next, 'utf8');
-  return true;
+export function formatDateDot(value) {
+  const m = String(value || '').match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (!m) return value || '';
+  return `${m[2]}.${m[3]}`;
 }

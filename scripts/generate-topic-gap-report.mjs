@@ -1,94 +1,101 @@
+import fs from 'fs/promises';
 import path from 'path';
-import { loadPosts, tokenize, dedupeList, writeTextIfChanged, ROOT, TODAY } from './lib/site-automation.mjs';
+import { loadPosts, slugTokens } from './lib/site-automation.mjs';
 
-const OUTPUT_MD = path.join(ROOT, 'docs/content-gap-roadmap-20260322.md');
-const OUTPUT_JSON = path.join(ROOT, 'assets/data/content.gaps.v1.20260322.json');
+const { posts } = await loadPosts();
+const existing = posts.map((post) => ({
+  title: post.title,
+  slug: post.slug,
+  category: post.category,
+  tokens: new Set([...slugTokens(post.slug || ''), ...slugTokens(post.title || ''), ...slugTokens(post.tag || ''), ...(Array.isArray(post.keywords) ? post.keywords.flatMap((k) => slugTokens(k)) : [])])
+}));
 
-const CANDIDATES = [
-  { category:'casino', keyword:'블랙잭 보험 베팅', title:'블랙잭 보험 베팅이 불리한 이유', intent:'초보 실수 방지' },
-  { category:'casino', keyword:'블랙잭 서렌더 뜻', title:'블랙잭 서렌더 뜻과 써야 하는 순간', intent:'룰 이해' },
-  { category:'casino', keyword:'블랙잭 6대5 3대2 차이', title:'블랙잭 6:5와 3:2 차이를 먼저 봐야 하는 이유', intent:'테이블 선택' },
-  { category:'casino', keyword:'용호 타이 위험', title:'용호 타이 베팅이 흔들림을 키우는 이유', intent:'실수 방지' },
-  { category:'casino', keyword:'용호 입문 기준', title:'용호 입문 전 먼저 정할 기준', intent:'입문' },
-  { category:'slot', keyword:'메가웨이 슬롯 뜻', title:'메가웨이 슬롯 뜻과 일반 슬롯 차이', intent:'구조 이해' },
-  { category:'slot', keyword:'홀드앤스핀 구조', title:'홀드앤스핀 구조와 변동성 읽는 법', intent:'기능 이해' },
-  { category:'slot', keyword:'슬롯 보너스바이 위험', title:'슬롯 보너스 바이 전에 체크할 것', intent:'실수 방지' },
-  { category:'slot', keyword:'슬롯 데모와 실전 차이', title:'슬롯 데모와 실전이 다르게 느껴지는 이유', intent:'입문' },
-  { category:'slot', keyword:'슬롯 잭팟 조건', title:'슬롯 잭팟 조건을 오해하면 안 되는 이유', intent:'문제 해결' },
-  { category:'bonus', keyword:'보너스 악용 사례', title:'보너스 악용으로 판단되는 대표 사례', intent:'약관 이해' },
-  { category:'bonus', keyword:'첫충 매충 차이', title:'첫충과 매충 차이 그리고 더 먼저 볼 조건', intent:'비교형' },
-  { category:'bonus', keyword:'입금플러스 뜻', title:'입금플러스 이벤트 뜻과 실제 혜택 보는 법', intent:'용어 정리' },
-  { category:'bonus', keyword:'복수계정 위험', title:'복수계정으로 오해받는 대표 상황', intent:'문제 해결' },
-  { category:'bonus', keyword:'보너스 취소 이유', title:'보너스 취소가 걸리는 흔한 이유', intent:'문제 해결' },
-  { category:'strategy', keyword:'세션 종료 체크리스트', title:'세션 종료 전에 꼭 보는 체크리스트', intent:'체크리스트' },
-  { category:'strategy', keyword:'승리 후 과배팅', title:'수익 후 과배팅이 다시 흔들리는 이유', intent:'실수 방지' },
-  { category:'strategy', keyword:'게임 변경 타이밍', title:'게임 변경 타이밍을 미리 정해야 하는 이유', intent:'운영' },
-  { category:'strategy', keyword:'하루 진입 횟수 제한', title:'하루 진입 횟수를 정해야 하는 이유', intent:'운영' },
-  { category:'strategy', keyword:'기록표 항목', title:'기록표에 꼭 남겨야 하는 항목 7가지', intent:'운영' },
-  { category:'analysis', keyword:'승무패 배당 보는 법', title:'승무패 배당 보는 법 초보용 정리', intent:'입문' },
-  { category:'analysis', keyword:'오버언더 뜻', title:'오버언더 뜻과 진입 전 체크 포인트', intent:'입문' },
-  { category:'analysis', keyword:'핸디캡 숫자 해석', title:'핸디캡 숫자를 먼저 읽는 법', intent:'입문' },
-  { category:'analysis', keyword:'파워볼 기록표', title:'파워볼 기록표를 남길 때 꼭 적어야 할 항목', intent:'운영' },
-  { category:'analysis', keyword:'미니게임 추격 배팅', title:'미니게임 추격 배팅이 손실을 키우는 이유', intent:'실수 방지' }
-];
+const candidates = {
+  casino: [
+    ['블랙잭 6대5 3대2 차이', '블랙잭 6대5와 3대2 테이블 차이가 큰 이유'],
+    ['블랙잭 서렌더 기준', '블랙잭 서렌더를 언제 써야 하는지 정리'],
+    ['용호 타이 베팅 위험', '용호 타이 베팅을 과신하면 안 되는 이유'],
+    ['용호 세션 종료 기준', '용호는 왜 세션 종료 기준이 더 중요한가'],
+    ['바카라 타이 기대값', '바카라 타이 베팅 기대값을 체감보다 불리하게 보는 이유'],
+    ['라이브 카지노 테이블 선택', '라이브 카지노 테이블을 고를 때 먼저 보는 기준']
+  ],
+  slot: [
+    ['메가웨이 슬롯 뜻', '메가웨이 슬롯 구조를 처음 이해하는 법'],
+    ['홀드앤스핀 특징', '홀드앤스핀 슬롯의 특징과 착시 포인트'],
+    ['보너스 바이 위험', '슬롯 보너스 바이 기능이 위험한 이유'],
+    ['슬롯 세션 길이', '슬롯 세션 길이를 짧게 잡아야 하는 이유'],
+    ['슬롯 잔고 분리', '슬롯 잔고를 단계별로 나누는 방법'],
+    ['슬롯 스캐터 해석', '스캐터 심볼을 과신하면 안 되는 이유']
+  ],
+  bonus: [
+    ['첫충 매충 우선순위', '첫충과 매충 중 무엇을 먼저 봐야 하는가'],
+    ['입금플러스 해석', '입금플러스 이벤트를 해석하는 기준'],
+    ['보너스 악용 사례', '보너스 악용으로 판단되는 대표 사례'],
+    ['출금 거절 확인 순서', '출금 거절 시 약관에서 먼저 보는 항목'],
+    ['VIP 혜택 비교', 'VIP 혜택은 어떤 기준으로 비교해야 하는가'],
+    ['보너스 취소 방지', '보너스 취소를 피하려면 먼저 확인할 조건']
+  ],
+  strategy: [
+    ['연패 복구심리 제어', '연패 뒤 복구 심리를 끊는 체크리스트'],
+    ['수익 잠금 규칙', '짧은 수익 뒤 수익 잠금을 거는 기준'],
+    ['세션 종료 타이밍', '세션 종료 타이밍을 미리 정해야 하는 이유'],
+    ['운영 기록표 항목', '운영 기록표에 꼭 넣어야 할 항목'],
+    ['분산 진입 기준', '한 경기 몰빵보다 분산 진입이 필요한 이유'],
+    ['손실 복구 금지 문장', '손실 복구 심리에서 자주 나오는 위험한 문장']
+  ],
+  analysis: [
+    ['오버언더 기준점', '오버언더 기준점을 처음 읽는 법'],
+    ['핸디캡 숫자 해석', '핸디캡 숫자를 읽을 때 먼저 보는 포인트'],
+    ['배당 급변 체크', '경기 직전 배당 급변을 보는 기본법'],
+    ['전반 후반 분리 분석', '전반 후반을 분리해 보는 분석 기준']
+  ],
+  news: [
+    ['뉴스 영향도 읽기', '뉴스 카드의 영향도 문구를 해석하는 기준'],
+    ['부상 뉴스 배당 반응', '부상 뉴스가 배당에 반영되는 순서'],
+    ['라인업 확정 체크', '라인업 확정 전후로 봐야 하는 변화']
+  ]
+};
 
-function tokenSet(text) {
-  return new Set(tokenize(text).filter((item) => item.length >= 2));
-}
-function similarity(a, b) {
-  const A = tokenSet(a);
-  const B = tokenSet(b);
-  const union = new Set([...A, ...B]);
+function jaccard(a, b) {
+  const union = new Set([...a, ...b]);
   if (!union.size) return 0;
   let inter = 0;
-  for (const item of A) if (B.has(item)) inter += 1;
+  for (const item of a) if (b.has(item)) inter += 1;
   return inter / union.size;
 }
 
-const { posts } = await loadPosts();
-const accepted = [];
-const skipped = [];
-for (const candidate of CANDIDATES) {
-  const best = posts
-    .filter((post) => !candidate.category || post.category === candidate.category || (candidate.category === 'analysis' && post.category === 'guide'))
-    .map((post) => ({ post, score: Math.max(similarity(candidate.keyword, post.title), similarity(candidate.title, post.title), similarity(candidate.keyword, post.slug || '')) }))
-    .sort((a, b) => b.score - a.score)[0];
-  if (best && best.score >= 0.45) {
-    skipped.push({ ...candidate, duplicateOf: best.post.title, score: Number(best.score.toFixed(2)) });
-  } else {
-    accepted.push(candidate);
+function candidateExists(category, keyword, title) {
+  const tokens = new Set([...slugTokens(keyword), ...slugTokens(title)]);
+  return existing.some((post) => {
+    if (post.category !== category) return false;
+    const sim = jaccard(tokens, post.tokens);
+    return sim >= 0.6;
+  });
+}
+
+const gaps = [];
+for (const [category, items] of Object.entries(candidates)) {
+  for (const [keyword, title] of items) {
+    if (candidateExists(category, keyword, title)) continue;
+    gaps.push({ category, keyword, title });
   }
 }
 
-const bucketed = accepted.reduce((acc, item) => {
+const grouped = gaps.reduce((acc, item) => {
   (acc[item.category] ||= []).push(item);
   return acc;
 }, {});
-const payload = { generatedAt: TODAY, accepted, skipped };
-await writeTextIfChanged(OUTPUT_JSON, JSON.stringify(payload, null, 2));
 
-const lines = [
-  '# 중복 제외 신규 글 로드맵',
-  '',
-  `- 생성일: ${TODAY}`,
-  `- 추천 주제 수: ${accepted.length}`,
-  `- 기존 글과 유사해 제외한 후보 수: ${skipped.length}`,
-  '',
-  '## 카테고리별 신규 추천',
-  ''
-];
-for (const [category, items] of Object.entries(bucketed)) {
-  lines.push(`### ${category}`,'');
+await fs.mkdir(path.join(process.cwd(), 'assets/data'), { recursive: true });
+await fs.writeFile(path.join(process.cwd(), 'assets/data/content.gaps.v1.20260322.json'), JSON.stringify({ generatedAt: new Date().toISOString(), gaps }, null, 2), 'utf8');
+await fs.mkdir(path.join(process.cwd(), 'docs'), { recursive: true });
+const md = ['# 중복 제외 신규 글 로드맵', '', `- 생성 시각: ${new Date().toISOString()}`, '- 기존 글과 유사도가 높은 주제는 제외했습니다.', ''];
+for (const [category, items] of Object.entries(grouped)) {
+  md.push(`## ${category}`, '');
   items.forEach((item, idx) => {
-    lines.push(`${idx + 1}. ${item.title}  `, `   - 핵심 키워드: ${item.keyword}  `, `   - 의도: ${item.intent}`);
+    md.push(`${idx + 1}. ${item.title} — 키워드: ${item.keyword}`);
   });
-  lines.push('');
+  md.push('');
 }
-if (skipped.length) {
-  lines.push('## 제외된 후보', '');
-  skipped.forEach((item) => {
-    lines.push(`- ${item.title} → 기존 글 유사: ${item.duplicateOf} (유사도 ${item.score})`);
-  });
-}
-await writeTextIfChanged(OUTPUT_MD, `${lines.join('\n')}\n`);
-console.log(`Content gap report generated. Accepted ${accepted.length}, skipped ${skipped.length}.`);
+await fs.writeFile(path.join(process.cwd(), 'docs/content-gap-roadmap-20260322.md'), `${md.join('\n')}\n`, 'utf8');
+console.log(`Content gap report generated (${gaps.length} topic ideas).`);

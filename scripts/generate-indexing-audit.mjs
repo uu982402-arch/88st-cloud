@@ -1,201 +1,126 @@
 import fs from 'fs/promises';
 import path from 'path';
 import {
-  ROOT,
-  POSTS_FILE,
   loadPosts,
-  listHtmlFiles,
-  fileToPathname,
-  normalizePathname,
-  isPrivatePath,
-  isIgnoredPath,
-  writeTextIfChanged,
-  TODAY
+  listHtmlRoutes,
+  normalizePath,
+  toFilePath,
+  isNoindexPath,
+  readFileSafe,
+  urlFor,
+  fileExists
 } from './lib/site-automation.mjs';
 
-const SITEMAP_FILE = path.join(ROOT, 'sitemap.xml');
-const REPORT_JSON = path.join(ROOT, 'assets/data/indexing.audit.v1.20260322.json');
-const REPORT_MD = path.join(ROOT, 'docs/indexing-audit-20260322.md');
-const REPORT_MOBILE_MD = path.join(ROOT, 'docs/mobile-speed-audit-20260322.md');
+const { posts } = await loadPosts();
+const postMap = new Map(posts.map((post) => [normalizePath(post.path), post]));
+const routes = await listHtmlRoutes();
+const sitemapText = await readFileSafe(path.join(process.cwd(), 'sitemap.txt'));
+const sitemapUrls = new Set(String(sitemapText || '').split(/\r?\n/).map((line) => line.trim()).filter(Boolean));
 
-function has(html, regex) { return regex.test(html); }
-function extractMany(html, regex) {
-  const out = [];
-  let m;
-  while ((m = regex.exec(html))) out.push(m[1]);
-  return out;
+function extractAttr(tag, attr) {
+  const match = String(tag).match(new RegExp(`${attr}=["']([^"']*)["']`, 'i'));
+  return match?.[1]?.trim() || '';
 }
 
-const { posts } = await loadPosts();
-const postMap = new Map(posts.map((post) => [normalizePathname(post.path), post]));
-const htmlFiles = await listHtmlFiles();
-const sitemapXml = await fs.readFile(SITEMAP_FILE, 'utf8').catch(() => '');
-const sitemapUrls = new Set(extractMany(sitemapXml, /<loc>([^<]+)<\/loc>/g));
+function findMeta(html, key, value) {
+  const tags = [...String(html).matchAll(/<meta\b[^>]*>/ig)].map((m) => m[0]);
+  return tags.find((tag) => new RegExp(`${key}=["']${value}["']`, 'i').test(tag)) || '';
+}
+
+function findLink(html, rel) {
+  const tags = [...String(html).matchAll(/<link\b[^>]*>/ig)].map((m) => m[0]);
+  return tags.find((tag) => new RegExp(`rel=["']${rel}["']`, 'i').test(tag)) || '';
+}
 
 const issues = [];
+const warnings = [];
+let postMissingFiles = 0;
+let postNoStructuredData = 0;
+let publicRoutes = 0;
+
+for (const post of posts) {
+  const filePath = toFilePath(post.path);
+  if (!(await fileExists(filePath))) {
+    issues.push({ type: 'missing-post-file', path: normalizePath(post.path), message: 'posts.index에 있으나 실제 파일이 없습니다.' });
+    postMissingFiles += 1;
+  }
+}
+
+for (const pathname of routes) {
+  const filePath = toFilePath(pathname);
+  const html = await readFileSafe(filePath);
+  if (!html) continue;
+  const robotsTag = findMeta(html, 'name', 'robots');
+  const descTag = findMeta(html, 'name', 'description');
+  const canonicalTag = findLink(html, 'canonical');
+  const noindex = /noindex/i.test(extractAttr(robotsTag, 'content'));
+  const title = html.match(/<title>([\s\S]*?)<\/title>/i)?.[1]?.trim() || '';
+  const desc = extractAttr(descTag, 'content');
+  const canonical = extractAttr(canonicalTag, 'href');
+  const hasBreadcrumb = /"@type":"BreadcrumbList"/.test(html);
+  const hasArticle = /"@type":"Article"/.test(html);
+  const hasCollection = /"@type":"CollectionPage"/.test(html) || /"@type":"WebSite"/.test(html);
+  const url = urlFor(pathname);
+  const isNoindex = isNoindexPath(pathname) || noindex;
+
+  if (!isNoindex) publicRoutes += 1;
+  if (!title) issues.push({ type: 'missing-title', path: pathname, message: 'title 태그가 비어 있습니다.' });
+  if (!desc) issues.push({ type: 'missing-description', path: pathname, message: 'description 메타가 비어 있습니다.' });
+  if (!canonical) issues.push({ type: 'missing-canonical', path: pathname, message: 'canonical 링크가 없습니다.' });
+  if (canonical && canonical !== url) warnings.push({ type: 'canonical-mismatch', path: pathname, message: `canonical이 ${canonical} 로 설정되어 있습니다.` });
+
+  if (!isNoindex && !sitemapUrls.has(url)) {
+    warnings.push({ type: 'not-in-sitemap', path: pathname, message: '공개 페이지인데 sitemap.txt에 없습니다.' });
+  }
+  if (isNoindex && sitemapUrls.has(url)) {
+    issues.push({ type: 'noindex-in-sitemap', path: pathname, message: 'noindex 페이지가 사이트맵에 포함되어 있습니다.' });
+  }
+  const post = postMap.get(normalizePath(pathname));
+  if (post && (!hasArticle || !hasBreadcrumb)) {
+    warnings.push({ type: 'post-structured-data-missing', path: pathname, message: '게시글 구조화데이터가 일부 누락됐습니다.' });
+    postNoStructuredData += 1;
+  }
+  if (!post && !isNoindex && !hasCollection) {
+    warnings.push({ type: 'page-structured-data-missing', path: pathname, message: '허브/페이지 구조화데이터가 없습니다.' });
+  }
+}
+
 const summary = {
-  generatedAt: TODAY,
-  scannedHtml: 0,
-  publicHtml: 0,
-  privateHtml: 0,
-  missingTitle: 0,
-  missingDescription: 0,
-  missingCanonical: 0,
-  missingOgImage: 0,
-  missingJsonLd: 0,
-  missingViewport: 0,
-  blockingScripts: 0,
-  genericInternalAnchors: 0,
-  missingSitemapUrls: 0,
-  privateInSitemap: 0,
-  missingLazyImages: 0,
-  missingImageAlt: 0,
-  missingImageDimensions: 0
+  generatedAt: new Date().toISOString(),
+  publicRoutes,
+  indexedCandidatePosts: posts.length,
+  missingPostFiles: postMissingFiles,
+  postsWithStructuredDataWarnings: postNoStructuredData,
+  issueCount: issues.length,
+  warningCount: warnings.length
 };
 
-const genericAnchorRegex = /<a\b[^>]*href=["'](\/[^"']*)["'][^>]*>(?:\s|<[^>]+>)*(글 보기|허브 보기|상세 보기|글 읽기|보기|읽기)(?:\s|<[^>]+>)*<\/a>/ig;
+await fs.mkdir(path.join(process.cwd(), 'assets/data'), { recursive: true });
+await fs.writeFile(path.join(process.cwd(), 'assets/data/indexing.audit.v1.20260322.json'), JSON.stringify({ summary, issues, warnings }, null, 2), 'utf8');
+await fs.mkdir(path.join(process.cwd(), 'docs'), { recursive: true });
+const md = [
+  '# 색인 점검 리포트',
+  '',
+  `- 생성 시각: ${summary.generatedAt}`,
+  `- 공개 후보 URL: ${summary.publicRoutes}`,
+  `- posts.index 게시글 수: ${summary.indexedCandidatePosts}`,
+  `- 누락 게시글 파일: ${summary.missingPostFiles}`,
+  `- 이슈: ${summary.issueCount}`,
+  `- 경고: ${summary.warningCount}`,
+  '',
+  '## 핵심 결과',
+  '',
+  summary.issueCount === 0 ? '- 치명적 색인 이슈 없음' : `- 치명적 색인 이슈 ${summary.issueCount}건`,
+  summary.warningCount === 0 ? '- 경고 없음' : `- 경고 ${summary.warningCount}건`,
+  '',
+  '## 주요 이슈',
+  '',
+  ...(issues.length ? issues.map((item) => `- ${item.path} · ${item.message}`) : ['- 없음']),
+  '',
+  '## 주요 경고',
+  '',
+  ...(warnings.slice(0, 30).length ? warnings.slice(0, 30).map((item) => `- ${item.path} · ${item.message}`) : ['- 없음'])
+].join('\n');
+await fs.writeFile(path.join(process.cwd(), 'docs/indexing-audit-20260322.md'), `${md}\n`, 'utf8');
 
-for (const filePath of htmlFiles) {
-  const pathname = fileToPathname(filePath);
-  if (isIgnoredPath(pathname) || pathname.includes('index.orig.html')) continue;
-  const html = await fs.readFile(filePath, 'utf8');
-  summary.scannedHtml += 1;
-  const isPrivate = isPrivatePath(pathname);
-  if (isPrivate) summary.privateHtml += 1; else summary.publicHtml += 1;
-
-  const pageIssues = [];
-  if (!has(html, /<title>[\s\S]*?<\/title>/i)) { summary.missingTitle += 1; pageIssues.push('title 누락'); }
-  if (!has(html, /<meta\b[^>]*name=["']description["']/i)) { summary.missingDescription += 1; pageIssues.push('description 누락'); }
-  if (!has(html, /<link\b[^>]*rel=["']canonical["']/i)) { summary.missingCanonical += 1; pageIssues.push('canonical 누락'); }
-  if (!has(html, /<meta\b[^>]*property=["']og:image["']/i)) { summary.missingOgImage += 1; pageIssues.push('og:image 누락'); }
-  if (!has(html, /<script\b[^>]*type=["']application\/ld\+json["']/i)) { summary.missingJsonLd += 1; pageIssues.push('JSON-LD 누락'); }
-  if (!has(html, /<meta\b[^>]*name=["']viewport["']/i)) { summary.missingViewport += 1; pageIssues.push('viewport 누락'); }
-
-  const blockingScripts = extractMany(html, /<script\b((?=[^>]*\bsrc=)[^>]*src=["'][^"']+["'][^>]*)><\/script>/ig)
-    .filter((attrs) => !/\bdefer\b|\basync\b|application\/ld\+json/i.test(attrs));
-  if (blockingScripts.length) {
-    summary.blockingScripts += blockingScripts.length;
-    pageIssues.push(`defer/async 없는 script ${blockingScripts.length}개`);
-  }
-
-  const genericAnchors = [...html.matchAll(genericAnchorRegex)].length;
-  if (genericAnchors) {
-    summary.genericInternalAnchors += genericAnchors;
-    pageIssues.push(`일반 링크 문구 ${genericAnchors}개`);
-  }
-
-  const imgTags = [...html.matchAll(/<img\b([^>]*?)>/ig)].map((m) => m[1]);
-  const nonSvgImages = imgTags.filter((attrs) => !/\.svg(["']|\s|$)/i.test(attrs));
-  const missingLazy = nonSvgImages.filter((attrs) => !/\bloading=["'](?:lazy|eager)["']/i.test(attrs) && !/brand-logo/i.test(attrs));
-  const missingAlt = imgTags.filter((attrs) => !/\balt=["'][^"']*["']/i.test(attrs));
-  const missingDims = nonSvgImages.filter((attrs) => !/\bwidth=["'][^"']+["']/i.test(attrs) || !/\bheight=["'][^"']+["']/i.test(attrs));
-  if (missingLazy.length) { summary.missingLazyImages += missingLazy.length; pageIssues.push(`loading 속성 없는 이미지 ${missingLazy.length}개`); }
-  if (missingAlt.length) { summary.missingImageAlt += missingAlt.length; pageIssues.push(`alt 없는 이미지 ${missingAlt.length}개`); }
-  if (missingDims.length) { summary.missingImageDimensions += missingDims.length; pageIssues.push(`width/height 없는 이미지 ${missingDims.length}개`); }
-
-  if (!isPrivate) {
-    const expected = `https://88st.cloud${pathname === '/' ? '/' : pathname}`;
-    if (!sitemapUrls.has(expected)) {
-      summary.missingSitemapUrls += 1;
-      pageIssues.push('사이트맵 누락');
-    }
-  } else {
-    const privateUrl = `https://88st.cloud${pathname === '/' ? '/' : pathname}`;
-    if (sitemapUrls.has(privateUrl)) {
-      summary.privateInSitemap += 1;
-      pageIssues.push('비공개 페이지가 사이트맵에 포함됨');
-    }
-  }
-
-  if (pageIssues.length) {
-    issues.push({ pathname, private: isPrivate, issues: pageIssues });
-  }
-}
-
-// posts index coverage
-const missingPostFiles = [];
-for (const post of posts) {
-  const filePath = path.join(ROOT, post.path.replace(/^\//, ''), 'index.html');
-  try { await fs.access(filePath); } catch { missingPostFiles.push(post.path); }
-}
-
-const payload = { summary, issues, missingPostFiles };
-await writeTextIfChanged(REPORT_JSON, JSON.stringify(payload, null, 2));
-
-const lines = [
-  '# 색인/SEO 자동 점검 리포트',
-  '',
-  `- 생성일: ${TODAY}`,
-  `- 스캔 HTML: ${summary.scannedHtml}`,
-  `- 공개 HTML: ${summary.publicHtml}`,
-  `- 비공개 HTML: ${summary.privateHtml}`,
-  '',
-  '## 핵심 수치',
-  '',
-  `- title 누락: ${summary.missingTitle}`,
-  `- description 누락: ${summary.missingDescription}`,
-  `- canonical 누락: ${summary.missingCanonical}`,
-  `- og:image 누락: ${summary.missingOgImage}`,
-  `- JSON-LD 누락: ${summary.missingJsonLd}`,
-  `- viewport 누락: ${summary.missingViewport}`,
-  `- defer/async 없는 script: ${summary.blockingScripts}`,
-  `- 일반 내부링크 문구: ${summary.genericInternalAnchors}`,
-  `- 사이트맵 누락 공개 URL: ${summary.missingSitemapUrls}`,
-  `- 사이트맵에 들어간 비공개 URL: ${summary.privateInSitemap}`,
-  `- loading 속성 없는 이미지: ${summary.missingLazyImages}`,
-  `- alt 없는 이미지: ${summary.missingImageAlt}`,
-  `- width/height 없는 이미지: ${summary.missingImageDimensions}`,
-  `- posts.index 기준 누락 파일: ${missingPostFiles.length}`,
-  '',
-  '## 우선 조치',
-  '',
-  '1. defer/async 없는 스크립트 정리',
-  '2. 사이트맵 누락 URL 보완',
-  '3. 일반적인 내부 링크 문구를 제목형 링크로 치환',
-  '4. loading/alt/width/height 없는 이미지 보강',
-  '',
-  '## 이슈 상세',
-  ''
-];
-for (const issue of issues.slice(0, 120)) {
-  lines.push(`- ${issue.pathname} :: ${issue.issues.join(' / ')}`);
-}
-if (missingPostFiles.length) {
-  lines.push('', '## posts.index 누락 파일', '');
-  for (const item of missingPostFiles) lines.push(`- ${item}`);
-}
-await writeTextIfChanged(REPORT_MD, `${lines.join('\n')}\n`);
-
-const perfLines = [
-  '# 모바일·속도 점검 리포트',
-  '',
-  `- 생성일: ${TODAY}`,
-  '',
-  '## 자동 점검 기준',
-  '',
-  '- viewport 존재 여부',
-  '- defer/async 없는 스크립트',
-  '- loading 속성 없는 이미지',
-  '- alt 누락 이미지',
-  '- width/height 누락 이미지',
-  '- 일반적인 내부 링크 문구',
-  '',
-  '## 요약',
-  '',
-  `- viewport 누락: ${summary.missingViewport}`,
-  `- defer/async 없는 script: ${summary.blockingScripts}`,
-  `- loading 속성 없는 이미지: ${summary.missingLazyImages}`,
-  `- alt 없는 이미지: ${summary.missingImageAlt}`,
-  `- width/height 없는 이미지: ${summary.missingImageDimensions}`,
-  `- 일반 내부링크 문구: ${summary.genericInternalAnchors}`,
-  '',
-  '## 권장 순서',
-  '',
-  '1. 이미지 width/height 고정',
-  '2. 본문 아래 이미지 lazy 로드 정리',
-  '3. 일반 버튼 문구를 주제형 링크로 치환',
-  '4. render-blocking script 제거 또는 defer 처리'
-];
-await writeTextIfChanged(REPORT_MOBILE_MD, `${perfLines.join('\n')}\n`);
-
-console.log(`Indexing audit generated. Issues: ${issues.length}, missing post files: ${missingPostFiles.length}.`);
+console.log(`Indexing audit generated (${issues.length} issues, ${warnings.length} warnings).`);
