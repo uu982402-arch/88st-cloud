@@ -1,43 +1,26 @@
 import fs from 'fs/promises';
 import path from 'path';
-import { listHtmlRoutes, normalizePath, isNoindexPath, toFilePath, urlFor, loadPosts, fileExists, readFileSafe } from './lib/site-automation.mjs';
+import { ROOT, SITE_ORIGIN, loadPosts, listIndexFiles, routeFromFile, isPublicRoute, normalizePath, writeText } from './lib/site-automation.mjs';
 
-const { posts } = await loadPosts();
+const posts = await loadPosts();
 const postMap = new Map(posts.map((post) => [normalizePath(post.path), post]));
-const routes = await listHtmlRoutes();
+const files = await listIndexFiles(ROOT);
+const urls = files
+  .map((file) => routeFromFile(file))
+  .filter((route) => isPublicRoute(route));
 
-function hasNoindex(html) {
-  return /<meta[^>]+name=["']robots["'][^>]+content=["'][^"']*noindex/i.test(html || '');
-}
+const uniqueUrls = [...new Set(urls)].sort((a, b) => (a === '/' ? -1 : b === '/' ? 1 : a.localeCompare(b)));
 
-const publicRoutes = [];
-for (const pathname of routes) {
-  if (isNoindexPath(pathname)) continue;
-  const filePath = toFilePath(pathname);
-  if (!(await fileExists(filePath))) continue;
-  const html = await readFileSafe(filePath);
-  if (hasNoindex(html)) continue;
-  publicRoutes.push(pathname);
-}
+const xmlItems = uniqueUrls.map((route) => {
+  const post = postMap.get(route);
+  const lastmod = post?.updated || post?.published || new Date().toISOString().slice(0, 10);
+  return `  <url><loc>${SITE_ORIGIN}${route}</loc><lastmod>${lastmod}</lastmod></url>`;
+}).join('\n');
 
-const uniqueRoutes = [...new Set(publicRoutes)].sort((a, b) => (a === '/' ? -1 : b === '/' ? 1 : a.localeCompare(b, 'ko')));
+const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${xmlItems}\n</urlset>\n`;
+const txt = uniqueUrls.map((route) => `${SITE_ORIGIN}${route}`).join('\n') + '\n';
 
-const xmlLines = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'];
-for (const pathname of uniqueRoutes) {
-  const post = postMap.get(normalizePath(pathname));
-  xmlLines.push('  <url>');
-  xmlLines.push(`    <loc>${urlFor(pathname)}</loc>`);
-  const lastmod = post?.updated || post?.published || '';
-  if (lastmod) xmlLines.push(`    <lastmod>${lastmod}</lastmod>`);
-  xmlLines.push('  </url>');
-}
-xmlLines.push('</urlset>');
-
-const textLines = uniqueRoutes.map((pathname) => urlFor(pathname));
-
-await fs.writeFile(path.join(process.cwd(), 'sitemap.xml'), `${xmlLines.join('\n')}\n`, 'utf8');
-await fs.writeFile(path.join(process.cwd(), 'sitemap.txt'), `${textLines.join('\n')}\n`, 'utf8');
-await fs.mkdir(path.join(process.cwd(), 'serverless'), { recursive: true });
-await fs.writeFile(path.join(process.cwd(), 'serverless/sitemap.xml'), `${xmlLines.join('\n')}\n`, 'utf8');
-
-console.log(`Sitemap regenerated for ${uniqueRoutes.length} public routes.`);
+await writeText(path.join(ROOT, 'sitemap.xml'), xml);
+await writeText(path.join(ROOT, 'sitemap.txt'), txt);
+await writeText(path.join(ROOT, 'serverless', 'sitemap.xml'), xml);
+console.log(`Sitemap refreshed for ${uniqueUrls.length} public URLs.`);
