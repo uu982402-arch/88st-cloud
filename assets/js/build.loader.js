@@ -10,10 +10,23 @@
 
     // --- GA4 bootstrap ---
     try {
-      if (!window.__88stGA4Initialized) {
-        var __gaMid = 'G-KWT87FBY6S';
-        var __gaSid = '13402610880';
+      var __gaMid = 'G-KWT87FBY6S';
+      var __gaSid = '13402610880';
+      var __gaPath = (window.location && window.location.pathname) ? String(window.location.pathname) : '/';
+      var __gaHost = (window.location && window.location.hostname) ? String(window.location.hostname) : '';
+      var __gaSkip = /^\/(?:admin|ops|seo)(?:\/|$)/i.test(__gaPath) || /^(localhost|127\.0\.0\.1)$/i.test(__gaHost);
+      window.__88stGA4Status = window.__88stGA4Status || {};
+      window.__88stGA4Status.measurementId = __gaMid;
+      window.__88stGA4Status.streamId = __gaSid;
+      window.__88stGA4Status.sources = window.__88stGA4Status.sources || [];
+      if (__gaSkip) {
+        window.__88stGA4Status.enabled = false;
+        window.__88stGA4Status.reason = 'operator_or_local';
+      } else if (!window.__88stGA4Initialized) {
         window.__88stGA4Initialized = 1;
+        window.__88stGA4Status.enabled = true;
+        window.__88stGA4Status.reason = 'public_page';
+        window.__88stGA4Status.sources.push('build.loader');
         window.dataLayer = window.dataLayer || [];
         window.gtag = window.gtag || function(){ window.dataLayer.push(arguments); };
         var __gaScript = document.createElement('script');

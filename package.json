@@ -5,13 +5,6 @@
   "description": "Static build shim for Cloudflare Pages",
   "scripts": {
     "build": "node scripts/gen-build-ver.mjs",
-    "seo:static": "node scripts/generate-static-seo-og.mjs",
-    "related:static": "node scripts/generate-related-posts.mjs",
-    "seo:refresh": "node scripts/generate-static-seo-og.mjs && node scripts/generate-related-posts.mjs && node scripts/generate-sitemap.mjs && node scripts/generate-indexing-audit.mjs && node scripts/generate-indexing-priority.mjs && node scripts/generate-topic-gap-report.mjs && node scripts/generate-mobile-speed-audit.mjs",
-    "sitemap:static": "node scripts/generate-sitemap.mjs",
-    "audit:index": "node scripts/generate-indexing-audit.mjs",
-    "indexing:priority": "node scripts/generate-indexing-priority.mjs",
-    "topics:report": "node scripts/generate-topic-gap-report.mjs",
-    "audit:mobile": "node scripts/generate-mobile-speed-audit.mjs"
+    "audit:ops": "node scripts/generate-ops-dashboard.mjs"
   }
 }
