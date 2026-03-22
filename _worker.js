@@ -94,6 +94,11 @@ export default {
         return json({ ok: false, error: 'method_not_allowed' }, 405, corsHeaders(request));
       }
 
+      if (path === '/api/ops/ga/summary') {
+        if (method === 'GET') return handleOpsGaSummary(request, env);
+        return json({ ok: false, error: 'method_not_allowed' }, 405, corsHeaders(request));
+      }
+
       if (path.startsWith('/api/')) {
         return json({ ok: false, error: 'not_found' }, 404, corsHeaders(request));
       }
@@ -879,6 +884,332 @@ async function gscAccessToken(env){
   return tok;
 }
 
+
+
+async function handleOpsGaSummary(request, env){
+  const denied = requireAuth(request, env);
+  if(denied) return denied;
+
+  try{
+    const propertyId = String(env.GA_PROPERTY_ID || '').trim();
+    if(!propertyId) return json({ ok:false, error:'ga_not_configured', message:'Missing env: GA_PROPERTY_ID' }, 200, corsHeaders(request));
+
+    const authMode = detectGaAuthMode(env);
+    if(authMode === 'none'){
+      return json({
+        ok:false,
+        error:'ga_auth_not_configured',
+        message:'Missing GA credentials. Set GA service account or GA OAuth refresh token envs.',
+        property_id: propertyId,
+        auth_mode: 'none'
+      }, 200, corsHeaders(request));
+    }
+
+    const batch = await gaBatchRunReports(env, propertyId, [
+      {
+        dateRanges:[{startDate:'28daysAgo', endDate:'yesterday'}],
+        metrics:[
+          {name:'activeUsers'},
+          {name:'sessions'},
+          {name:'screenPageViews'},
+          {name:'eventCount'},
+          {name:'engagementRate'},
+          {name:'averageSessionDuration'}
+        ]
+      },
+      {
+        dateRanges:[{startDate:'28daysAgo', endDate:'yesterday'}],
+        dimensions:[{name:'sessionDefaultChannelGroup'}],
+        metrics:[{name:'sessions'},{name:'activeUsers'}],
+        orderBys:[{metric:{metricName:'sessions'}, desc:true}],
+        limit:8
+      },
+      {
+        dateRanges:[{startDate:'28daysAgo', endDate:'yesterday'}],
+        dimensions:[{name:'pagePath'}],
+        metrics:[{name:'screenPageViews'},{name:'sessions'},{name:'activeUsers'},{name:'averageSessionDuration'}],
+        dimensionFilter:{
+          filter:{
+            fieldName:'pagePath',
+            stringFilter:{matchType:'BEGINS_WITH', value:'/'}
+          }
+        },
+        orderBys:[{metric:{metricName:'screenPageViews'}, desc:true}],
+        limit:10
+      },
+      {
+        dateRanges:[{startDate:'28daysAgo', endDate:'yesterday'}],
+        dimensions:[{name:'eventName'}],
+        metrics:[{name:'eventCount'}],
+        orderBys:[{metric:{metricName:'eventCount'}, desc:true}],
+        limit:8
+      },
+      {
+        dateRanges:[{startDate:'28daysAgo', endDate:'yesterday'}],
+        dimensions:[{name:'deviceCategory'}],
+        metrics:[{name:'sessions'}],
+        orderBys:[{metric:{metricName:'sessions'}, desc:true}],
+        limit:3
+      }
+    ]);
+
+    const realtime = await gaRunRealtimeReport(env, propertyId, {
+      metrics:[{name:'activeUsers'}]
+    }).catch(function(err){
+      return { error: String(err && err.message || err) };
+    });
+
+    const reports = Array.isArray(batch && batch.reports) ? batch.reports : [];
+    const summaryReport = reports[0] || {};
+    const channelsReport = reports[1] || {};
+    const pagesReport = reports[2] || {};
+    const eventsReport = reports[3] || {};
+    const devicesReport = reports[4] || {};
+
+    const summary = extractGaSummary(summaryReport);
+    const channels = extractGaRows(channelsReport, ['sessionDefaultChannelGroup'], ['sessions','activeUsers']).map(function(r){
+      return { channel: r.sessionDefaultChannelGroup || '(direct)', sessions: Number(r.sessions||0), activeUsers: Number(r.activeUsers||0) };
+    });
+    const pages = extractGaRows(pagesReport, ['pagePath'], ['screenPageViews','sessions','activeUsers','averageSessionDuration']).map(function(r){
+      return {
+        pagePath: r.pagePath || '/',
+        screenPageViews: Number(r.screenPageViews||0),
+        sessions: Number(r.sessions||0),
+        activeUsers: Number(r.activeUsers||0),
+        averageSessionDuration: Number(r.averageSessionDuration||0)
+      };
+    });
+    const events = extractGaRows(eventsReport, ['eventName'], ['eventCount']).map(function(r){
+      return { eventName: r.eventName || '(unknown)', eventCount: Number(r.eventCount||0) };
+    });
+    const devices = extractGaRows(devicesReport, ['deviceCategory'], ['sessions']).map(function(r){
+      return { deviceCategory: r.deviceCategory || '(unknown)', sessions: Number(r.sessions||0) };
+    });
+
+    let realtimeActiveUsers = 0;
+    if(realtime && !realtime.error){
+      realtimeActiveUsers = extractGaRealtimeTotal(realtime, 'activeUsers');
+    }
+
+    return json({
+      ok:true,
+      property_id: propertyId,
+      auth_mode: authMode,
+      range: '28daysAgo → yesterday',
+      summary: summary,
+      acquisition: channels,
+      top_pages: pages,
+      top_events: events,
+      devices: devices,
+      realtime: {
+        activeUsers: realtimeActiveUsers,
+        window: '30m',
+        error: realtime && realtime.error ? realtime.error : null
+      },
+      config: {
+        property_id_set: !!propertyId,
+        service_account_set: !!(String(env.GA_SERVICE_ACCOUNT_EMAIL || '').trim() && String(env.GA_SERVICE_ACCOUNT_PRIVATE_KEY || '').trim()),
+        oauth_refresh_set: !!((String(env.GA_CLIENT_ID || '').trim() && String(env.GA_CLIENT_SECRET || '').trim() && String(env.GA_REFRESH_TOKEN || '').trim()) || (String(env.GA_USE_GSC_OAUTH || '').trim()==='1' && String(env.GSC_CLIENT_ID || '').trim() && String(env.GSC_CLIENT_SECRET || '').trim() && String(env.GSC_REFRESH_TOKEN || '').trim()))
+      }
+    }, 200, corsHeaders(request));
+  }catch(e){
+    return json({ ok:false, error:'ga_summary_failed', message: String(e && e.message || e) }, 500, corsHeaders(request));
+  }
+}
+
+function detectGaAuthMode(env){
+  const saEmail = String(env.GA_SERVICE_ACCOUNT_EMAIL || '').trim();
+  const saKey = String(env.GA_SERVICE_ACCOUNT_PRIVATE_KEY || '').trim();
+  if(saEmail && saKey) return 'service_account';
+  const gaCid = String(env.GA_CLIENT_ID || '').trim();
+  const gaSec = String(env.GA_CLIENT_SECRET || '').trim();
+  const gaRef = String(env.GA_REFRESH_TOKEN || '').trim();
+  if(gaCid && gaSec && gaRef) return 'oauth_refresh';
+  if(String(env.GA_USE_GSC_OAUTH || '').trim() === '1'){
+    const cid = String(env.GSC_CLIENT_ID || '').trim();
+    const sec = String(env.GSC_CLIENT_SECRET || '').trim();
+    const ref = String(env.GSC_REFRESH_TOKEN || '').trim();
+    if(cid && sec && ref) return 'gsc_oauth_refresh';
+  }
+  return 'none';
+}
+
+async function gaAccessToken(env){
+  const authMode = detectGaAuthMode(env);
+  const scope = 'https://www.googleapis.com/auth/analytics.readonly';
+  if(authMode === 'service_account'){
+    return googleServiceAccountToken(String(env.GA_SERVICE_ACCOUNT_EMAIL || '').trim(), String(env.GA_SERVICE_ACCOUNT_PRIVATE_KEY || '').trim(), scope);
+  }
+  if(authMode === 'oauth_refresh'){
+    return googleRefreshTokenToken(String(env.GA_CLIENT_ID || '').trim(), String(env.GA_CLIENT_SECRET || '').trim(), String(env.GA_REFRESH_TOKEN || '').trim());
+  }
+  if(authMode === 'gsc_oauth_refresh'){
+    return googleRefreshTokenToken(String(env.GSC_CLIENT_ID || '').trim(), String(env.GSC_CLIENT_SECRET || '').trim(), String(env.GSC_REFRESH_TOKEN || '').trim());
+  }
+  throw new Error('GA auth env not configured');
+}
+
+async function gaBatchRunReports(env, propertyId, requests){
+  const token = await gaAccessToken(env);
+  const api = 'https://analyticsdata.googleapis.com/v1beta/properties/' + encodeURIComponent(propertyId) + ':batchRunReports';
+  const res = await fetch(api, {
+    method: 'POST',
+    headers: { 'content-type': 'application/json', 'authorization': 'Bearer ' + token },
+    body: JSON.stringify({ requests: requests })
+  });
+  const j = await res.json().catch(function(){ return null; });
+  if(!res.ok){
+    const msg = (j && (j.error && (j.error.message || JSON.stringify(j.error)))) || ('HTTP_' + res.status);
+    throw new Error('GA Data API batchRunReports error: ' + msg);
+  }
+  return j || {};
+}
+
+async function gaRunRealtimeReport(env, propertyId, body){
+  const token = await gaAccessToken(env);
+  const api = 'https://analyticsdata.googleapis.com/v1beta/properties/' + encodeURIComponent(propertyId) + ':runRealtimeReport';
+  const res = await fetch(api, {
+    method: 'POST',
+    headers: { 'content-type': 'application/json', 'authorization': 'Bearer ' + token },
+    body: JSON.stringify(body || { metrics:[{name:'activeUsers'}] })
+  });
+  const j = await res.json().catch(function(){ return null; });
+  if(!res.ok){
+    const msg = (j && (j.error && (j.error.message || JSON.stringify(j.error)))) || ('HTTP_' + res.status);
+    throw new Error('GA Data API runRealtimeReport error: ' + msg);
+  }
+  return j || {};
+}
+
+function extractGaSummary(report){
+  const metrics = Array.isArray(report && report.metricHeaders) ? report.metricHeaders : [];
+  const rows = Array.isArray(report && report.rows) ? report.rows : [];
+  const first = rows[0] || {};
+  const vals = Array.isArray(first && first.metricValues) ? first.metricValues : [];
+  const out = {};
+  for(let i=0; i<metrics.length; i++){
+    const name = String(metrics[i] && metrics[i].name || 'metric_' + i);
+    const raw = String(vals[i] && vals[i].value || '0');
+    out[name] = Number(raw || 0);
+  }
+  return out;
+}
+
+function extractGaRows(report, dimensionNames, metricNames){
+  const rows = Array.isArray(report && report.rows) ? report.rows : [];
+  const out = [];
+  for(const row of rows){
+    const item = {};
+    const dvals = Array.isArray(row && row.dimensionValues) ? row.dimensionValues : [];
+    const mvals = Array.isArray(row && row.metricValues) ? row.metricValues : [];
+    for(let i=0; i<dimensionNames.length; i++) item[dimensionNames[i]] = String(dvals[i] && dvals[i].value || '');
+    for(let j=0; j<metricNames.length; j++) item[metricNames[j]] = String(mvals[j] && mvals[j].value || '0');
+    out.push(item);
+  }
+  return out;
+}
+
+function extractGaRealtimeTotal(report, metricName){
+  try{
+    const headers = Array.isArray(report && report.metricHeaders) ? report.metricHeaders : [];
+    const rows = Array.isArray(report && report.rows) ? report.rows : [];
+    if(rows.length){
+      const idx = headers.findIndex(function(h){ return String(h && h.name || '') === metricName; });
+      if(idx >= 0){
+        let total = 0;
+        for(const row of rows){
+          const mvals = Array.isArray(row && row.metricValues) ? row.metricValues : [];
+          total += Number(mvals[idx] && mvals[idx].value || 0);
+        }
+        return total;
+      }
+    }
+    const totals = Array.isArray(report && report.totals) ? report.totals : [];
+    if(totals.length){
+      const idx = headers.findIndex(function(h){ return String(h && h.name || '') === metricName; });
+      const totalVals = Array.isArray(totals[0] && totals[0].metricValues) ? totals[0].metricValues : [];
+      return Number(totalVals[idx] && totalVals[idx].value || 0);
+    }
+  }catch(e){}
+  return 0;
+}
+
+function base64UrlEncode(input){
+  let bytes;
+  if(typeof input === 'string') bytes = new TextEncoder().encode(input);
+  else if(input instanceof ArrayBuffer) bytes = new Uint8Array(input);
+  else if(ArrayBuffer.isView(input)) bytes = new Uint8Array(input.buffer, input.byteOffset, input.byteLength);
+  else bytes = new Uint8Array([]);
+  let binary = '';
+  for(let i=0; i<bytes.length; i++) binary += String.fromCharCode(bytes[i]);
+  return btoa(binary).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/g, '');
+}
+
+function pemToArrayBuffer(pem){
+  const clean = String(pem || '').replace(/\\n/g, '\n').replace(/-----BEGIN PRIVATE KEY-----/g, '').replace(/-----END PRIVATE KEY-----/g, '').replace(/\s+/g, '');
+  const binary = atob(clean);
+  const bytes = new Uint8Array(binary.length);
+  for(let i=0; i<binary.length; i++) bytes[i] = binary.charCodeAt(i);
+  return bytes.buffer;
+}
+
+async function googleServiceAccountToken(email, privateKeyPem, scope){
+  const now = Math.floor(Date.now()/1000);
+  const header = { alg:'RS256', typ:'JWT' };
+  const claim = {
+    iss: email,
+    scope: scope,
+    aud: 'https://oauth2.googleapis.com/token',
+    exp: now + 3600,
+    iat: now
+  };
+  const encodedHeader = base64UrlEncode(JSON.stringify(header));
+  const encodedClaim = base64UrlEncode(JSON.stringify(claim));
+  const unsigned = encodedHeader + '.' + encodedClaim;
+  const key = await crypto.subtle.importKey('pkcs8', pemToArrayBuffer(privateKeyPem), { name:'RSASSA-PKCS1-v1_5', hash:'SHA-256' }, false, ['sign']);
+  const sig = await crypto.subtle.sign('RSASSA-PKCS1-v1_5', key, new TextEncoder().encode(unsigned));
+  const assertion = unsigned + '.' + base64UrlEncode(sig);
+
+  const form = new URLSearchParams();
+  form.set('grant_type', 'urn:ietf:params:oauth:grant-type:jwt-bearer');
+  form.set('assertion', assertion);
+
+  const res = await fetch('https://oauth2.googleapis.com/token', {
+    method:'POST',
+    headers:{ 'content-type':'application/x-www-form-urlencoded' },
+    body: form.toString()
+  });
+  const j = await res.json().catch(function(){ return null; });
+  if(!res.ok){
+    const msg = (j && (j.error_description || j.error || (j.error && j.error.message))) || ('HTTP_' + res.status);
+    throw new Error('GA service account token error: ' + msg);
+  }
+  const tok = String(j && j.access_token || '').trim();
+  if(!tok) throw new Error('GA service account token missing access_token');
+  return tok;
+}
+
+async function googleRefreshTokenToken(clientId, clientSecret, refreshToken){
+  const form = new URLSearchParams();
+  form.set('client_id', clientId);
+  form.set('client_secret', clientSecret);
+  form.set('refresh_token', refreshToken);
+  form.set('grant_type', 'refresh_token');
+
+  const res = await fetch('https://oauth2.googleapis.com/token', {
+    method:'POST',
+    headers:{ 'content-type':'application/x-www-form-urlencoded' },
+    body: form.toString()
+  });
+  const j = await res.json().catch(function(){ return null; });
+  if(!res.ok){
+    const msg = (j && (j.error_description || j.error || (j.error && j.error.message))) || ('HTTP_' + res.status);
+    throw new Error('GA OAuth token error: ' + msg);
+  }
+  const tok = String(j && j.access_token || '').trim();
+  if(!tok) throw new Error('GA OAuth token missing access_token');
+  return tok;
+}
 
 
 async function handleSportsNews(request, env, ctx) {

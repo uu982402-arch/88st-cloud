@@ -4,23 +4,10 @@
 
   function initGA4() {
     try {
-      const path = String(location.pathname || '/');
-      const host = String(location.hostname || '');
-      const skip = /^(?:\/admin|\/ops|\/seo)(?:\/|$)/i.test(path) || /^(localhost|127\.0\.0\.1)$/i.test(host);
-      window.__88stGA4Status = window.__88stGA4Status || {};
-      window.__88stGA4Status.measurementId = GA_MEASUREMENT_ID;
-      window.__88stGA4Status.streamId = GA_STREAM_ID;
-      window.__88stGA4Status.sources = window.__88stGA4Status.sources || [];
-      if (skip) {
-        window.__88stGA4Status.enabled = false;
-        window.__88stGA4Status.reason = 'operator_or_local';
-        return;
-      }
+      const gaPath = (location && location.pathname) ? (location.pathname + '') : '/';
+      if (/^\/(ops|seo|admin)(\/|$)/i.test(gaPath)) return;
       if (window.__88stGA4Initialized) return;
       window.__88stGA4Initialized = true;
-      window.__88stGA4Status.enabled = true;
-      window.__88stGA4Status.reason = 'public_page';
-      window.__88stGA4Status.sources.push('mobile.enhance');
       window.dataLayer = window.dataLayer || [];
       window.gtag = window.gtag || function(){ window.dataLayer.push(arguments); };
       if (typeof window.track !== 'function') {

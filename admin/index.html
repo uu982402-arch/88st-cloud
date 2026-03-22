@@ -15,11 +15,27 @@
 </link></link></link><script>
 (function(){
   try {
-    window.__88stGA4Status = window.__88stGA4Status || {};
-    window.__88stGA4Status.measurementId = 'G-KWT87FBY6S';
-    window.__88stGA4Status.streamId = '13402610880';
-    window.__88stGA4Status.enabled = false;
-    window.__88stGA4Status.reason = 'admin_excluded';
+    var __gaAdminPath = (window.location && window.location.pathname) ? (window.location.pathname + '') : '/admin/';
+    if (__gaAdminPath.indexOf('/admin') === 0) return;
+    if (window.__88stGA4Initialized) return;
+    window.__88stGA4Initialized = 1;
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = window.gtag || function(){ window.dataLayer.push(arguments); };
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-KWT87FBY6S';
+    s.setAttribute('data-ga4','G-KWT87FBY6S');
+    document.head.appendChild(s);
+    window.gtag('js', new Date());
+    window.gtag('config', 'G-KWT87FBY6S', {
+      send_page_view: true,
+      page_title: document.title || '',
+      page_location: location.href,
+      page_path: location.pathname + location.search,
+      anonymize_ip: true,
+      allow_google_signals: true,
+      stream_id: '13402610880'
+    });
   } catch (e) {}
 })();
 </script>

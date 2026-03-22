@@ -5,6 +5,6 @@
   "description": "Static build shim for Cloudflare Pages",
   "scripts": {
     "build": "node scripts/gen-build-ver.mjs",
-    "audit:ops": "node scripts/generate-ops-dashboard.mjs"
+    "ops:guide": "echo \"See docs/ops-ga-dashboard-setup-20260323.md\""
   }
 }
