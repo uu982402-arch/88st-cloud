@@ -1,13 +1,23 @@
 {
   "summary": {
-    "generatedAt": "2026-03-22T07:26:28.512Z",
-    "publicRoutes": 179,
-    "indexedCandidatePosts": 136,
-    "missingPostFiles": 0,
-    "postsWithStructuredDataWarnings": 0,
-    "issueCount": 0,
-    "warningCount": 0
+    "generatedAt": "2026-03-22",
+    "scannedHtml": 182,
+    "publicHtml": 179,
+    "privateHtml": 3,
+    "missingTitle": 0,
+    "missingDescription": 0,
+    "missingCanonical": 0,
+    "missingOgImage": 0,
+    "missingJsonLd": 0,
+    "missingViewport": 0,
+    "blockingScripts": 0,
+    "genericInternalAnchors": 0,
+    "missingSitemapUrls": 0,
+    "privateInSitemap": 0,
+    "missingLazyImages": 0,
+    "missingImageAlt": 0,
+    "missingImageDimensions": 0
   },
   "issues": [],
-  "warnings": []
+  "missingPostFiles": []
 }

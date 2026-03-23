@@ -1,41 +1,4 @@
 (() => {
-  const GA_MEASUREMENT_ID = 'G-KWT87FBY6S';
-  const GA_STREAM_ID = '13402610880';
-
-  function initGA4() {
-    try {
-      if (window.__88stGA4Initialized) return;
-      window.__88stGA4Initialized = true;
-      window.dataLayer = window.dataLayer || [];
-      window.gtag = window.gtag || function(){ window.dataLayer.push(arguments); };
-      if (typeof window.track !== 'function') {
-        window.track = function(name, params){
-          try { window.gtag('event', name, params || {}); } catch (e) {}
-        };
-      }
-      const script = document.createElement('script');
-      script.async = true;
-      script.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(GA_MEASUREMENT_ID);
-      script.setAttribute('data-ga4', GA_MEASUREMENT_ID);
-      document.head.appendChild(script);
-      window.gtag('js', new Date());
-      window.gtag('config', GA_MEASUREMENT_ID, {
-        send_page_view: true,
-        page_title: document.title || '',
-        page_location: location.href,
-        page_path: location.pathname + location.search,
-        anonymize_ip: true,
-        allow_google_signals: true,
-        stream_id: GA_STREAM_ID,
-        content_group: (document.body && (document.body.getAttribute('data-post-category') || document.body.getAttribute('data-blog-list') || document.body.getAttribute('data-category'))) || ''
-      });
-    } catch (e) {}
-  }
-
-  initGA4();
-})();
-
-(() => {
   const path = location.pathname || '/';
   if (window.Telegram?.WebApp || /\/tg-match-entry\/?$/i.test(path)) return;
 
