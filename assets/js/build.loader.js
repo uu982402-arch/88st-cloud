@@ -8,11 +8,9 @@
 (function () {
   try {
 
-    // --- GA4 bootstrap (public pages only) ---
+    // --- GA4 bootstrap ---
     try {
-      var __gaPath = (window.location && window.location.pathname ? String(window.location.pathname) : '/');
-      var __gaBlocked = (__gaPath.indexOf('/admin') === 0 || __gaPath.indexOf('/ops') === 0 || __gaPath.indexOf('/seo') === 0);
-      if (!__gaBlocked && !window.__88stGA4Initialized) {
+      if (!window.__88stGA4Initialized) {
         var __gaMid = 'G-KWT87FBY6S';
         var __gaSid = '13402610880';
         window.__88stGA4Initialized = 1;

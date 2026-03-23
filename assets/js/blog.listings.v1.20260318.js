@@ -10,8 +10,6 @@
     slot: {label:'슬롯', hub:'/slot/', archive:'/slot/archive/'},
     bonus: {label:'보너스', hub:'/bonus/', archive:'/bonus/archive/'},
     strategy: {label:'전략', hub:'/strategy/', archive:'/strategy/archive/'},
-    analysis: {label:'분석', hub:'/analysis/', archive:'/analysis/'},
-    news: {label:'뉴스', hub:'/news/', archive:'/news/'},
     guide: {label:'가이드', hub:'/play-guides/', archive:'/play-guides/'}
   };
   function dateValue(p){ return Date.parse(p.published || 0) || 0; }
@@ -26,7 +24,7 @@
   function buildControls(root, fixedCategory, initialOrder){
     const host = document.createElement('section');
     host.className = 'listing-toolbox';
-    host.innerHTML = `<div class="listing-toolbox-head"><div><span class="kicker">빠른 스캔 도구</span><h2>제목·키워드 검색과 한 줄 스캔</h2><p>썸네일 없는 목록을 더 빨리 훑을 수 있도록 검색창, 빠른 정렬, 카테고리 점프를 한 번에 모았습니다.</p></div></div><div class="listing-toolbar"><label class="listing-search"><span>검색</span><input class="js-list-search" type="search" placeholder="제목·요약·태그 검색" autocomplete="off" inputmode="search"></label><div class="listing-order-row"><button class="listing-pill js-order-btn${initialOrder==='latest' ? ' is-active' : ''}" data-order="latest" type="button">최신순</button><button class="listing-pill js-order-btn${initialOrder==='popular' ? ' is-active' : ''}" data-order="popular" type="button">인기순</button></div></div><div class="listing-jumps">${['all','casino','slot','bonus','strategy','analysis','news','guide'].map(cat => {
+    host.innerHTML = `<div class="listing-toolbox-head"><div><span class="kicker">빠른 스캔 도구</span><h2>제목·키워드 검색과 한 줄 스캔</h2><p>썸네일 없는 목록을 더 빨리 훑을 수 있도록 검색창, 빠른 정렬, 카테고리 점프를 한 번에 모았습니다.</p></div></div><div class="listing-toolbar"><label class="listing-search"><span>검색</span><input class="js-list-search" type="search" placeholder="제목·요약·태그 검색" autocomplete="off" inputmode="search"></label><div class="listing-order-row"><button class="listing-pill js-order-btn${initialOrder==='latest' ? ' is-active' : ''}" data-order="latest" type="button">최신순</button><button class="listing-pill js-order-btn${initialOrder==='popular' ? ' is-active' : ''}" data-order="popular" type="button">인기순</button></div></div><div class="listing-jumps">${['all','casino','slot','bonus','strategy','guide'].map(cat => {
       const info = categoryMap[cat];
       const href = fixedCategory && fixedCategory !== 'all' && cat === fixedCategory ? (info.archive || info.hub) : (info.archive || info.hub);
       const active = cat === (fixedCategory || 'all') ? ' is-active' : '';
