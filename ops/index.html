@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
-<title>OPS Console | 레븐</title>
+<title>OPS Center | 88ST.Cloud</title>
 <meta content="noindex,nofollow,noarchive,nosnippet" name="robots"/>
 <link href="https://88st.cloud/ops/" rel="canonical"/>
 <link href="/favicon.ico" rel="icon" type="image/x-icon"/>
@@ -83,6 +83,23 @@
 
     .opsFooter{ margin-top:14px; opacity:.7; font-size:12px; }
     .opsFooter code{ opacity:1; }
+  
+    .opsPulse{ margin-top:14px; display:grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap:10px; }
+    @media (max-width: 860px){ .opsPulse{ grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 520px){ .opsPulse{ grid-template-columns: 1fr; } }
+    .opsStat{ padding:14px; border-radius:16px; border:1px solid rgba(255,255,255,.12); background: rgba(0,0,0,.10); }
+    [data-theme="light"] .opsStat{ background: rgba(255,255,255,.65); border-color: rgba(0,0,0,.10); }
+    .opsStat .k{ font-size:12px; opacity:.72; font-weight:800; }
+    .opsStat .v{ margin-top:6px; font-size:18px; font-weight:1000; letter-spacing:-.02em; }
+    .opsStat .m{ margin-top:6px; font-size:12px; opacity:.76; line-height:1.45; }
+    .opsGuide{ margin-top:14px; padding:14px; }
+    .opsGuideGrid{ margin-top:10px; display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:10px; }
+    @media (max-width: 860px){ .opsGuideGrid{ grid-template-columns:1fr; } }
+    .opsGuideItem{ border-radius:16px; border:1px solid rgba(255,255,255,.12); background: rgba(0,0,0,.10); padding:14px; }
+    [data-theme="light"] .opsGuideItem{ background: rgba(255,255,255,.65); border-color: rgba(0,0,0,.10); }
+    .opsGuideItem h3{ margin:0; font-size:14px; letter-spacing:-.02em; }
+    .opsGuideItem p{ margin:8px 0 0; font-size:12px; opacity:.78; line-height:1.55; }
+
   </style>
 <script src="/assets/js/seo.apply.v1.js?v=v20260224-2330"></script>
 <link href="/assets/css/open.final.v1.20260317.css" rel="stylesheet"/>
@@ -93,11 +110,11 @@
 <section aria-label="OPS Console 잠금 화면" class="opsCard opsLock" id="opsLock">
 <div class="opsTitle">
 <span aria-hidden="true">🔒</span>
-<span>레븐 OPS Console</span>
+<span>88ST.Cloud OPS Center</span>
 <span class="opsBadge">PRIVATE</span>
 </div>
 <div class="opsSub">
-        접근 제한 영역입니다. 비밀번호가 올바르지 않으면 콘솔이 표시되지 않습니다.
+        운영용 비공개 영역입니다. 배포 설정과 유틸은 이 페이지에서 관리하고, 검색/방문 성과는 외부 콘솔에서 직접 확인하는 기준으로 정리했습니다.
       </div>
 <div class="opsRow">
 <input autocapitalize="off" autocomplete="off" id="opsPw" inputmode="text" placeholder="비밀번호" spellcheck="false" type="password"/>
@@ -110,7 +127,7 @@
 <div class="opsTop">
 <div class="left">
 <div>
-<div class="ttl">운영 콘솔</div>
+<div class="ttl">운영 센터</div>
 <div class="meta" id="opsMeta">세션 인증됨</div>
 </div>
 </div>
@@ -121,6 +138,21 @@
 </div>
 <!-- QUICK LINKS -->
 <div class="opsGrid" id="opsLinks"></div>
+<section class="opsCard opsGuide">
+<h2 style="margin:0;font-size:15px;letter-spacing:-.02em;">운영 바로보기</h2>
+<div class="hint" style="margin-top:6px;">OPS에서는 배포형 설정과 사이트 유틸만 관리하고, 검색/방문 성과는 외부 콘솔에서 직접 확인하는 구조로 정리했습니다.</div>
+<div class="opsPulse">
+  <div class="opsStat"><div class="k">운영 기준</div><div class="v">설정 · 배포 분리</div><div class="m">패치 룰, 인증 랜딩, 팝업, 사이트 런타임을 파일 기반으로 관리합니다.</div></div>
+  <div class="opsStat"><div class="k">방문/이벤트</div><div class="v">GA 직접 확인</div><div class="m">운영자 경로는 수집에서 제외하고, 공개 페이지 위주로 애널리틱스를 확인합니다.</div></div>
+  <div class="opsStat"><div class="k">검색/색인</div><div class="v">GSC 직접 확인</div><div class="m">색인 상태, 클릭, 노출, URL 검사 요청은 Search Console 기준으로 관리합니다.</div></div>
+  <div class="opsStat"><div class="k">배포 체크</div><div class="v">사이트맵 · 스모크</div><div class="m">사이트맵 퍼지 리스트와 CTA 스모크 체크로 배포 전 점검 흐름을 유지합니다.</div></div>
+</div>
+<div class="opsGuideGrid">
+  <a class="opsLink" href="https://analytics.google.com/" target="_blank" rel="noopener noreferrer"><div><div class="name">Google Analytics</div><div class="path">방문 / 채널 / 이벤트 직접 확인</div></div><div class="go">↗</div></a>
+  <a class="opsLink" href="https://search.google.com/search-console" target="_blank" rel="noopener noreferrer"><div><div class="name">Search Console</div><div class="path">색인 / 노출 / 클릭 / URL 검사</div></div><div class="go">↗</div></a>
+  <a class="opsLink" href="https://dash.cloudflare.com/" target="_blank" rel="noopener noreferrer"><div><div class="name">Cloudflare</div><div class="path">배포 / 캐시 / Worker / Secret 관리</div></div><div class="go">↗</div></a>
+</div>
+</section>
 <!-- PATCH RULES -->
 <section class="opsCard opsSection" style="margin-top:14px;">
 <h2>전역 패치 룰(선택)</h2>
@@ -282,7 +314,7 @@
 <button class="opsMiniBtn" id="opsClearPersist" type="button">최근 입력 초기화</button>
 <button class="opsMiniBtn" id="opsHardReload" type="button">강력 새로고침</button>
 <button class="opsMiniBtn" id="opsClearPreset" type="button">추천 설정 초기화</button>
-<a class="opsMiniBtn" href="/seo/" rel="noopener" target="_blank">SEO 키워드/카피 생성기</a>
+<a class="opsMiniBtn" href="/seo/" rel="noopener" target="_blank">운영 안내 페이지</a>
 </div>
 <div class="opsFooter">
           적용 키: <code>vvip_ops_dom_patch_v1</code> · 세션 키: <code>vvip_ops_authed_v1</code>
@@ -490,7 +522,7 @@
       function showConsole(){
         lock.hidden = true;
         consoleEl.hidden = false;
-        try{ $('opsMeta').textContent = '세션 인증됨 · ' + new Date().toLocaleString(); }catch(e){}
+        try{ $('opsMeta').textContent = '세션 인증됨 · 배포 설정 / 사이트맵 / 인증 / 팝업 관리 · ' + new Date().toLocaleString(); }catch(e){}
         initConsole();
       }
 
@@ -541,27 +573,15 @@
 
       // --- Console features ---
       const linkItems = [
-        {name:'홈', path:'/'},
-        {name:'분석 대시보드', path:'/analysis/'},
-        {name:'인증사이트', path:'/cert/'},
-        {name:'EV 계산기', path:'/tool-ev/'},
-        {name:'마진 계산기', path:'/tool-margin/'},
-        {name:'배당 비교', path:'/tool-odds/'},
-        {name:'슬롯 분석기', path:'/tool-slot/'},
-        {name:'미니게임 분석기', path:'/tool-minigame/'},
-        {name:'카지노 전략', path:'/casino-strategy/'},
-        {name:'카지노', path:'/casino/'},
-        {name:'미니게임', path:'/minigame/'},
-        {name:'슬롯', path:'/slot/'},
-        {name:'가이드', path:'/guide/'},
-        {name:'계산기 허브', path:'/calc/'},
-        {name:'운세 브리핑', path:'/fortune/'},
-        {name:'랜딩 A', path:'/landing-a/'},
-        {name:'랜딩 B', path:'/landing-b/'},
-        {name:'랜딩 C', path:'/landing-c/'},
-        {name:'랜딩 D', path:'/landing-d/'},
-        {name:'랜딩 E', path:'/landing-e/'},
-        {name:'랜딩 F', path:'/landing-f/'}
+        {name:'메인 홈', path:'/'},
+        {name:'배당분석', path:'/analysis/'},
+        {name:'카지노 허브', path:'/casino/'},
+        {name:'슬롯 허브', path:'/slot/'},
+        {name:'보너스 허브', path:'/bonus/'},
+        {name:'전략 허브', path:'/strategy/'},
+        {name:'뉴스', path:'/news/'},
+        {name:'운영 안내', path:'/seo/'},
+        {name:'관리자', path:'/admin/'}
       ];
 
       function esc(s){
