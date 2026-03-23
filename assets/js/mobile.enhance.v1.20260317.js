@@ -4,25 +4,10 @@
 
   const PROMO_OFFERS = [
     {
-      title: '암호화폐 전용 놀이터',
-      badge: 'TRON bet 회원 전용 이벤트 다수 진행 중',
-      bullets: [
-        '출석 / 충전 보너스 지급 이벤트',
-        '주말 기프티콘 지급 이벤트',
-        '슬롯 잭팟 이벤트',
-        '카지노 0.8% / 슬롯 2.5% 콤프 지급 (1레벨)'
-      ],
-      code: 'KAKA',
-      codeLabel: '가입코드: KAKA',
-      theme: 'mint',
-      primaryHref: '/bonus/',
-      primaryLabel: '보너스 허브 보기',
-      secondaryHref: 'https://t.me/kakacloud',
-      secondaryLabel: '텔레그램 문의하기'
-    },
-    {
-      title: '고액 안전 놀이터',
-      badge: '픽스 bet 회원 전용 이벤트 다수 진행 중',
+      id: 'fix-main',
+      title: '신사답게 화답하는 메이저 놀이터',
+      badgeBrand: '픽스벳',
+      badgeSuffix: ' 회원 전용 이벤트 다수 진행 중',
       bullets: [
         '신규가입 첫 충전 30% · 첫충 15% / 매충 10% 지급',
         '카지노 첫 충전 5% · 매충 5%',
@@ -32,12 +17,83 @@
       code: 'KAKA',
       codeLabel: '가입코드: KAKA',
       theme: 'amber',
-      primaryHref: '/bonus/',
-      primaryLabel: '보너스 허브 보기',
+      primaryHref: 'https://픽스주소.com/',
+      primaryLabel: '공식 주소 바로가기',
+      secondaryHref: 'https://t.me/kakacloud',
+      secondaryLabel: '텔레그램 문의하기'
+    },
+    {
+      id: 'seven-main',
+      title: '칠땡잡이 승부사이트!!',
+      badgeBrand: '칠벳',
+      badgeSuffix: ' 회원 전용 이벤트 다수 진행 중',
+      bullets: [
+        '카지노/스포츠/슬롯/미겜 입금플러스 이벤트',
+        '가입 후 환전없을시 무제한 20%',
+        '돌발 20% 돌발 카지노10%',
+        '페이백 5%'
+      ],
+      code: '6767',
+      codeLabel: '가입코드: 6767',
+      theme: 'mint',
+      primaryHref: 'https://82clf.com/',
+      primaryLabel: '공식 주소 바로가기',
+      secondaryHref: 'https://t.me/kakacloud',
+      secondaryLabel: '텔레그램 문의하기'
+    },
+    {
+      id: 'vegas-main',
+      title: '라스베가스의 진정한 승부사!!',
+      badgeBrand: '베가스',
+      badgeSuffix: ' 회원 전용 이벤트 다수 진행 중',
+      bullets: [
+        '카지노/스포츠/슬롯/미겜 입금플러스 이벤트',
+        '가입 후 환전없을시 무제한 20%',
+        '돌발 20% 돌발 카지노10%',
+        '페이백 5%'
+      ],
+      code: '6789',
+      codeLabel: '가입코드: 6789',
+      theme: 'red',
+      primaryHref: 'https://las302.com/',
+      primaryLabel: '공식 주소 바로가기',
+      secondaryHref: 'https://t.me/kakacloud',
+      secondaryLabel: '텔레그램 문의하기'
+    },
+    {
+      id: 'topgun-main',
+      title: '오늘 탑건과 함께 날아보아요.',
+      badgeBrand: '탑건벳',
+      badgeSuffix: ' 회원 전용 이벤트',
+      bullets: [
+        '신규 첫 40% 충전 보너스 지급',
+        '매충 10% 돌발20%',
+        '출석, 생일, 공지방 페이백 이벤트',
+        '카지노 0.8% / 슬롯 3% 콤프 지급'
+      ],
+      code: 'GAS7',
+      codeLabel: '가입코드: GAS7',
+      theme: 'silver',
+      primaryHref: 'https://topgun-88.com/',
+      primaryLabel: '공식 주소 바로가기',
       secondaryHref: 'https://t.me/kakacloud',
       secondaryLabel: '텔레그램 문의하기'
     }
   ];
+
+  function shuffleOffers(items) {
+    const copy = Array.isArray(items) ? items.slice() : [];
+    for (let i = copy.length - 1; i > 0; i -= 1) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [copy[i], copy[j]] = [copy[j], copy[i]];
+    }
+    return copy;
+  }
+
+  function getRandomPromoOffers(limit = 2) {
+    const offers = shuffleOffers(PROMO_OFFERS).filter(Boolean);
+    return offers.slice(0, Math.max(1, Math.min(limit, offers.length)));
+  }
 
   function injectPromoStyles() {
     if (document.getElementById('autoPromoStyles')) return;
@@ -47,25 +103,32 @@
       .auto-promo-zone{margin:26px 0 10px}
       .auto-promo-zone .container{padding-left:0;padding-right:0}
       .auto-promo-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
-      .auto-promo-card{position:relative;overflow:hidden;border-radius:28px;padding:28px 28px 24px;border:1px solid rgba(144,220,158,.26);background:linear-gradient(180deg,rgba(7,21,48,.95),rgba(5,16,33,.96));box-shadow:0 22px 50px rgba(0,0,0,.22), inset 0 1px 0 rgba(255,255,255,.04)}
+      .auto-promo-card{position:relative;overflow:hidden;border-radius:28px;padding:28px 28px 24px;border:1px solid rgba(116,145,196,.24);background:linear-gradient(180deg,rgba(7,21,48,.95),rgba(5,16,33,.96));box-shadow:0 22px 50px rgba(0,0,0,.22), inset 0 1px 0 rgba(255,255,255,.04)}
       .auto-promo-card::before{content:'';position:absolute;inset:auto -12% -35% auto;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(103,150,255,.16),transparent 68%);pointer-events:none}
+      .auto-promo-card::after{content:'';position:absolute;inset:0;border-radius:inherit;border:1px solid rgba(255,255,255,.05);pointer-events:none}
       .auto-promo-title{display:flex;align-items:center;gap:8px;margin:0 0 18px;font-size:1.95rem;line-height:1.12;font-weight:900;color:#f5f8ff;letter-spacing:-.03em}
-      .auto-promo-title .mark{font-size:1.05rem;color:#f3c845}
-      .auto-promo-badge{margin:0 0 16px;font-size:1rem;font-weight:800;color:#f5f8ff}
+      .auto-promo-title .mark{font-size:1.05rem;color:var(--promo-accent,#7cf59a)}
+      .auto-promo-badge{margin:0 0 16px;font-size:1rem;font-weight:800;color:#f5f8ff;line-height:1.4}
+      .auto-promo-badge-brand{display:inline-block;margin-right:6px;font-size:1.2em;font-weight:950;letter-spacing:-.03em;color:var(--promo-accent,#7cf59a);text-shadow:0 8px 18px rgba(0,0,0,.18)}
       .auto-promo-list{list-style:none;margin:0;padding:0;display:grid;gap:10px}
       .auto-promo-list li{position:relative;padding-left:18px;color:#d5ddf5;line-height:1.55}
-      .auto-promo-list li::before{content:'';position:absolute;left:0;top:.6em;width:8px;height:8px;border-radius:50%;background:#7cf59a;box-shadow:0 0 0 4px rgba(124,245,154,.12)}
-      .auto-promo-card.is-safe .auto-promo-list li::before{background:#f3c845;box-shadow:0 0 0 4px rgba(243,200,69,.12)}
+      .auto-promo-list li::before{content:'';position:absolute;left:0;top:.6em;width:8px;height:8px;border-radius:50%;background:var(--promo-accent,#7cf59a);box-shadow:0 0 0 4px var(--promo-accent-soft,rgba(124,245,154,.12))}
       .auto-promo-code-row{margin-top:12px;display:flex;flex-wrap:wrap;gap:10px}
       .auto-promo-actions{margin-top:14px;display:flex;flex-wrap:wrap;gap:12px}
       .auto-promo-btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 18px;border-radius:16px;font-weight:800;text-decoration:none;transition:transform .16s ease, box-shadow .16s ease, background .16s ease, border-color .16s ease;color:#081225;border:1px solid transparent}
       .auto-promo-btn:hover{transform:translateY(-1px)}
-      .auto-promo-btn.code{width:auto;max-width:100%;justify-content:flex-start;gap:0;padding:0 18px;background:rgba(255,255,255,.03);color:#ecf2ff;box-shadow:none;cursor:pointer;white-space:nowrap}
+      .auto-promo-btn.code{width:auto;max-width:100%;justify-content:flex-start;gap:0;padding:0 18px;background:var(--promo-accent-grad,linear-gradient(135deg,#86efac,#bbf7d0 58%,#dcfce7));color:var(--promo-accent-ink,#062317);box-shadow:0 14px 34px var(--promo-accent-shadow,rgba(134,239,172,.2));cursor:pointer;white-space:nowrap;border-color:var(--promo-accent-border,rgba(134,239,172,.28))}
       .auto-promo-btn.code .sub{display:none}
-      .auto-promo-btn.primary{background:linear-gradient(135deg,#6f97ff,#5577df 58%,#3a56b4);box-shadow:0 14px 34px rgba(93,126,223,.28);color:#f7f9ff;border-color:rgba(111,151,255,.24)}
-      .auto-promo-card.theme-mint .auto-promo-btn.code{background:linear-gradient(135deg,#86efac,#bbf7d0 58%,#dcfce7);box-shadow:0 14px 34px rgba(134,239,172,.2);color:#062317;border-color:rgba(134,239,172,.28)}
-      .auto-promo-card.theme-amber .auto-promo-btn.code{background:linear-gradient(135deg,#f8d36b,#f5c451 55%,#f2dd98);box-shadow:0 14px 34px rgba(248,211,107,.2);color:#251804;border-color:rgba(248,211,107,.28)}
+      .auto-promo-btn.primary{background:var(--promo-primary-grad,linear-gradient(135deg,#6f97ff,#5577df 58%,#3a56b4));box-shadow:0 14px 34px var(--promo-primary-shadow,rgba(93,126,223,.28));color:#f7f9ff;border-color:var(--promo-primary-border,rgba(111,151,255,.24))}
       .auto-promo-btn.secondary{color:#ecf2ff;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);box-shadow:none}
+      .auto-promo-card.theme-amber{--promo-accent:#f5cf68;--promo-accent-soft:rgba(245,207,104,.14);--promo-accent-grad:linear-gradient(135deg,#f8d36b,#f5c451 55%,#f2dd98);--promo-accent-ink:#251804;--promo-accent-shadow:rgba(248,211,107,.2);--promo-accent-border:rgba(248,211,107,.28);--promo-primary-grad:linear-gradient(135deg,#f0b83f,#dc8f17 58%,#a55a06);--promo-primary-shadow:rgba(240,184,63,.26);--promo-primary-border:rgba(240,184,63,.22);border-color:rgba(245,207,104,.24)}
+      .auto-promo-card.theme-amber::before{background:radial-gradient(circle,rgba(245,207,104,.2),transparent 68%)}
+      .auto-promo-card.theme-mint{--promo-accent:#86efac;--promo-accent-soft:rgba(134,239,172,.14);--promo-accent-grad:linear-gradient(135deg,#86efac,#bbf7d0 58%,#dcfce7);--promo-accent-ink:#062317;--promo-accent-shadow:rgba(134,239,172,.2);--promo-accent-border:rgba(134,239,172,.28);--promo-primary-grad:linear-gradient(135deg,#34d399,#10b981 58%,#0f766e);--promo-primary-shadow:rgba(16,185,129,.24);--promo-primary-border:rgba(52,211,153,.22);border-color:rgba(134,239,172,.24)}
+      .auto-promo-card.theme-mint::before{background:radial-gradient(circle,rgba(52,211,153,.2),transparent 68%)}
+      .auto-promo-card.theme-red{--promo-accent:#fca5a5;--promo-accent-soft:rgba(252,165,165,.14);--promo-accent-grad:linear-gradient(135deg,#fca5a5,#fb7185 58%,#fecaca);--promo-accent-ink:#32090e;--promo-accent-shadow:rgba(251,113,133,.2);--promo-accent-border:rgba(252,165,165,.28);--promo-primary-grad:linear-gradient(135deg,#ef4444,#dc2626 58%,#7f1d1d);--promo-primary-shadow:rgba(239,68,68,.24);--promo-primary-border:rgba(248,113,113,.22);border-color:rgba(252,165,165,.24)}
+      .auto-promo-card.theme-red::before{background:radial-gradient(circle,rgba(239,68,68,.2),transparent 68%)}
+      .auto-promo-card.theme-silver{--promo-accent:#d5deef;--promo-accent-soft:rgba(213,222,239,.14);--promo-accent-grad:linear-gradient(135deg,#d9e3f5,#bac8df 58%,#eef3fb);--promo-accent-ink:#132135;--promo-accent-shadow:rgba(186,200,223,.2);--promo-accent-border:rgba(213,222,239,.28);--promo-primary-grad:linear-gradient(135deg,#c7d2e5,#94a3b8 58%,#64748b);--promo-primary-shadow:rgba(148,163,184,.26);--promo-primary-border:rgba(199,210,229,.24);border-color:rgba(213,222,239,.24)}
+      .auto-promo-card.theme-silver::before{background:radial-gradient(circle,rgba(186,200,223,.22),transparent 68%)}
       .auto-promo-zone.is-article{margin:26px 0 28px}
       .auto-promo-zone.is-page{margin:18px 0 30px}
       @media (max-width: 980px){
@@ -104,13 +167,18 @@
     const grid = document.createElement('div');
     grid.className = 'auto-promo-grid';
 
-    PROMO_OFFERS.forEach((offer, idx) => {
+    const selectedOffers = getRandomPromoOffers(2);
+
+    selectedOffers.forEach((offer) => {
       const article = document.createElement('article');
-      article.className = `auto-promo-card theme-${offer.theme || (idx === 1 ? 'amber' : 'mint')}${idx === 1 ? ' is-safe' : ''}`;
-      const listMarkup = offer.bullets.map((item) => `<li>${item}</li>`).join('');
+      article.className = `auto-promo-card theme-${offer.theme || 'mint'}`;
+      const listMarkup = (offer.bullets || []).map((item) => `<li>${item}</li>`).join('');
+      const badgeMarkup = offer.badgeBrand
+        ? `<span class="auto-promo-badge-brand">${offer.badgeBrand}</span><span class="auto-promo-badge-rest">${offer.badgeSuffix || ''}</span>`
+        : `${offer.badge || ''}`;
       article.innerHTML = `
         <h2 class="auto-promo-title"><span class="mark">✦</span><span>${offer.title}</span><span class="mark">✦</span></h2>
-        <p class="auto-promo-badge">${offer.badge}</p>
+        <p class="auto-promo-badge">${badgeMarkup}</p>
         <ul class="auto-promo-list">${listMarkup}</ul>
         <div class="auto-promo-code-row">
           <button class="auto-promo-btn code" type="button" data-copy-code="${offer.code || ''}" aria-label="${offer.codeLabel || '가입코드 복사'}">
@@ -118,8 +186,8 @@
           </button>
         </div>
         <div class="auto-promo-actions">
-          <a class="auto-promo-btn primary" href="${offer.primaryHref}">${offer.primaryLabel}</a>
-          <a class="auto-promo-btn secondary" href="${offer.secondaryHref}" target="_blank" rel="noopener">${offer.secondaryLabel}</a>
+          <a class="auto-promo-btn primary" href="${offer.primaryHref}" target="_blank" rel="noopener noreferrer">${offer.primaryLabel}</a>
+          <a class="auto-promo-btn secondary" href="${offer.secondaryHref}" target="_blank" rel="noopener noreferrer">${offer.secondaryLabel}</a>
         </div>
       `;
       grid.appendChild(article);

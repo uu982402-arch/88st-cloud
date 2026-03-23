@@ -1,10 +1,10 @@
 {
-  "version": "2026-03-20",
+  "version": "2026-03-24",
   "offers": [
     {
       "id": "fix-main",
       "title": "신사답게 화답하는 메이저 놀이터",
-      "badge": "픽스 bet 회원 전용 이벤트 다수 진행 중",
+      "badge": "픽스벳 회원 전용 이벤트 다수 진행 중",
       "bullets": [
         "신규가입 첫 충전 30% · 첫충 15% / 매충 10% 지급",
         "카지노 첫 충전 5% · 매충 5%",
@@ -27,7 +27,9 @@
       "priority": 100,
       "enabled": true,
       "mobile": true,
-      "desktop": true
+      "desktop": true,
+      "badgeBrand": "픽스벳",
+      "badgeSuffix": " 회원 전용 이벤트 다수 진행 중"
     },
     {
       "id": "seven-main",
@@ -55,7 +57,9 @@
       "priority": 90,
       "enabled": true,
       "mobile": true,
-      "desktop": true
+      "desktop": true,
+      "badgeBrand": "칠벳",
+      "badgeSuffix": " 회원 전용 이벤트 다수 진행 중"
     },
     {
       "id": "vegas-main",
@@ -83,7 +87,9 @@
       "priority": 80,
       "enabled": true,
       "mobile": true,
-      "desktop": true
+      "desktop": true,
+      "badgeBrand": "베가스",
+      "badgeSuffix": " 회원 전용 이벤트 다수 진행 중"
     },
     {
       "id": "topgun-main",
@@ -98,7 +104,7 @@
       "code": "GAS7",
       "codeLabel": "가입코드: GAS7",
       "theme": "silver",
-      "primaryHref": "https://topgun-88.com",
+      "primaryHref": "https://topgun-88.com/",
       "primaryLabel": "공식 주소 바로가기",
       "secondaryHref": "https://t.me/kakacloud",
       "secondaryLabel": "텔레그램 문의하기",
@@ -111,7 +117,9 @@
       "priority": 70,
       "enabled": true,
       "mobile": true,
-      "desktop": true
+      "desktop": true,
+      "badgeBrand": "탑건벳",
+      "badgeSuffix": " 회원 전용 이벤트"
     }
   ]
 }
