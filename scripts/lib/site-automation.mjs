@@ -7,6 +7,7 @@ export const POSTS_FILE = path.join(ROOT, 'assets/data/posts.index.v1.20260318.j
 export const BRAND = '레븐';
 
 export const PRIVATE_PATH_PREFIXES = ['/admin/', '/ops/', '/seo/'];
+export const NOINDEX_ROUTE_PREFIXES = ['/analysis/'];
 export const CATEGORY_LABELS = {
   casino: '카지노',
   slot: '슬롯',
@@ -70,8 +71,13 @@ export function isPrivateRoute(route) {
   return PRIVATE_PATH_PREFIXES.some((prefix) => normalizePath(route).startsWith(prefix));
 }
 
+export function isNoindexRoute(route) {
+  const normalized = normalizePath(route);
+  return NOINDEX_ROUTE_PREFIXES.some((prefix) => normalized.startsWith(normalizePath(prefix)));
+}
+
 export function isPublicRoute(route) {
-  return !isPrivateRoute(route);
+  return !isPrivateRoute(route) && !isNoindexRoute(route);
 }
 
 export async function loadPosts() {
@@ -184,7 +190,9 @@ export function ogAltText(title, category) {
 }
 
 export function getRobots(route) {
-  return isPrivateRoute(route) ? 'noindex,nofollow,noarchive,nosnippet' : 'index,follow,max-image-preview:large';
+  if (isPrivateRoute(route)) return 'noindex,nofollow,noarchive,nosnippet';
+  if (isNoindexRoute(route)) return 'noindex,follow,max-image-preview:large';
+  return 'index,follow,max-image-preview:large';
 }
 
 export function classifyPage(route, postsByPath) {

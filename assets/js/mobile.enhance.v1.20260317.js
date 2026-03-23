@@ -15,8 +15,8 @@
       code: 'KAKA',
       codeLabel: '가입코드: KAKA',
       theme: 'mint',
-      primaryHref: '/cert/',
-      primaryLabel: '공식 주소 바로가기',
+      primaryHref: '/bonus/',
+      primaryLabel: '보너스 허브 보기',
       secondaryHref: 'https://t.me/kakacloud',
       secondaryLabel: '텔레그램 문의하기'
     },
@@ -32,8 +32,8 @@
       code: 'KAKA',
       codeLabel: '가입코드: KAKA',
       theme: 'amber',
-      primaryHref: '/cert/',
-      primaryLabel: '공식 주소 바로가기',
+      primaryHref: '/bonus/',
+      primaryLabel: '보너스 허브 보기',
       secondaryHref: 'https://t.me/kakacloud',
       secondaryLabel: '텔레그램 문의하기'
     }

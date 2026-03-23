@@ -4,8 +4,5 @@
   "image": "/img/popup/event-popup.jpg",
   "ctaText": "@uzu59",
   "ctaUrl": "https://t.me/UZU59",
-  "excludePaths": [
-    "/cert",
-    "/cert/"
-  ]
+  "excludePaths": []
 }

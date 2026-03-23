@@ -24,7 +24,7 @@
       brand: { name: '레븐', mark: '88', themeColor: '#0b0c10' },
       links: {
         home: '/',
-        cert: '/cert/',
+        cert: '/bonus/',
         telegram: String(($('siteTelegram') && $('siteTelegram').value) || 'https://t.me/UZU59').trim()
       },
       features: {
@@ -49,9 +49,9 @@
       },
       promo: {
         cert: {
-          enabled: true,
-          label: '인증사이트',
-          cta: '원클릭 복사+이동',
+          enabled: false,
+          label: '보너스 허브',
+          cta: '허브 바로가기',
           hideAfterHours: Number(($('sitePromoHide') && $('sitePromoHide').value) || 24)
         }
       },

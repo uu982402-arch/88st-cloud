@@ -7,20 +7,20 @@
   },
   "links": {
     "home": "/",
-    "cert": "/cert/",
+    "cert": "/bonus/",
     "telegram": "https://t.me/UZU59"
   },
   "features": {
     "shareCard": true,
     "sessionSafety": false,
-    "certCrossPromo": true,
+    "certCrossPromo": false,
     "guideCourses": true,
     "proSuite": true,
     "presetBar": true,
     "logbookReport": false,
     "logbookCategoryChips": false,
     "homeActionBar": true,
-    "homeCertCards": true,
+    "homeCertCards": false,
     "homeMirrorHelper": true,
     "homeRecentUsed": true,
     "homeTodayStatus": false,
@@ -37,9 +37,9 @@
   },
   "promo": {
     "cert": {
-      "enabled": true,
-      "label": "인증사이트",
-      "cta": "원클릭 복사+이동",
+      "enabled": false,
+      "label": "보너스 허브",
+      "cta": "허브 바로가기",
       "hideAfterHours": 24
     }
   },

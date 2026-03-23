@@ -275,11 +275,11 @@
     });
 
     // Footer badge
-    var footer = window.__88st_cfg ? (window.__88st_cfg('links.cert','/cert/')||'/cert/') : '/cert/';
+    var footer = window.__88st_cfg ? (window.__88st_cfg('links.cert','/bonus/')||'/bonus/') : '/bonus/';
     var footY = y0 + h0 - 86;
 
     // footer pill
-    var pill = '인증사이트 · '+footer;
+    var pill = '보너스 허브 · '+footer;
     ctx.font = '800 22px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto';
     var tw = ctx.measureText(pill).width;
     var px = x0+44;
