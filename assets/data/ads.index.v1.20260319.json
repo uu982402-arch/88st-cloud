@@ -4,7 +4,7 @@
     {
       "id": "fix-main",
       "title": "신사답게 화답하는 메이저 놀이터",
-      "badge": "픽스벳 회원 전용 이벤트 다수 진행 중",
+      "badge": "픽스 bet 회원 전용 이벤트 다수 진행 중",
       "bullets": [
         "신규가입 첫 충전 30% · 첫충 15% / 매충 10% 지급",
         "카지노 첫 충전 5% · 매충 5%",
@@ -28,7 +28,7 @@
       "enabled": true,
       "mobile": true,
       "desktop": true,
-      "badgeBrand": "픽스벳",
+      "badgeBrand": "픽스 bet",
       "badgeSuffix": " 회원 전용 이벤트 다수 진행 중"
     },
     {
@@ -92,19 +92,19 @@
       "badgeSuffix": " 회원 전용 이벤트 다수 진행 중"
     },
     {
-      "id": "topgun-main",
-      "title": "오늘 탑건과 함께 날아보아요.",
-      "badge": "탑건벳 회원 전용 이벤트",
+      "id": "avengers-main",
+      "title": "믿고 이용하는 어벤저스",
+      "badge": "어벤저스벳 회원 전용 이벤트",
       "bullets": [
-        "신규 첫 40% 충전 보너스 지급",
-        "매충 10% 돌발20%",
-        "출석, 생일, 공지방 페이백 이벤트",
-        "카지노 0.8% / 슬롯 3% 콤프 지급"
+        "신규 첫충전,카지노 충전 이벤트",
+        "신규 정착이벤트",
+        "USTD 입금/가입,원화 입금 가능",
+        "심야충전,콤프,페이백 이벤트"
       ],
-      "code": "GAS7",
-      "codeLabel": "가입코드: GAS7",
-      "theme": "silver",
-      "primaryHref": "https://topgun-88.com/",
+      "code": "6789",
+      "codeLabel": "가입코드: 6789",
+      "theme": "jaju",
+      "primaryHref": "https://av-bet.com/",
       "primaryLabel": "공식 주소 바로가기",
       "secondaryHref": "https://t.me/kakacloud",
       "secondaryLabel": "텔레그램 문의하기",
@@ -118,7 +118,7 @@
       "enabled": true,
       "mobile": true,
       "desktop": true,
-      "badgeBrand": "탑건벳",
+      "badgeBrand": "어벤저스벳",
       "badgeSuffix": " 회원 전용 이벤트"
     }
   ]
