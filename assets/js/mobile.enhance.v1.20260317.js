@@ -3,25 +3,7 @@
   if (window.Telegram?.WebApp || /\/tg-match-entry\/?$/i.test(path)) return;
 
   const PROMO_OFFERS = [
-    {
-      id: 'fix-main',
-      title: '신사답게 화답하는 메이저 놀이터',
-      badgeBrand: '픽스 bet',
-      badgeSuffix: ' 회원 전용 이벤트 다수 진행 중',
-      bullets: [
-        '신규가입 첫 충전 30% · 첫충 15% / 매충 10% 지급',
-        '카지노 첫 충전 5% · 매충 5%',
-        '정착 / 이사 지원금 이벤트',
-        '콤프 최대 카지노 1.2% / 슬롯 4%'
-      ],
-      code: 'KAKA',
-      codeLabel: '가입코드: KAKA',
-      theme: 'amber',
-      primaryHref: 'https://픽스주소.com/',
-      primaryLabel: '공식 주소 바로가기',
-      secondaryHref: 'https://t.me/kakacloud',
-      secondaryLabel: '텔레그램 문의하기'
-    },
+
     {
       id: 'seven-main',
       title: '칠땡잡이 승부사이트!!',
