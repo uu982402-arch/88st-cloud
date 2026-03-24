@@ -6,7 +6,7 @@
     {
       id: 'fix-main',
       title: '신사답게 화답하는 메이저 놀이터',
-      badgeBrand: '픽스벳',
+      badgeBrand: '픽스 bet',
       badgeSuffix: ' 회원 전용 이벤트 다수 진행 중',
       bullets: [
         '신규가입 첫 충전 30% · 첫충 15% / 매충 10% 지급',
@@ -61,20 +61,20 @@
       secondaryLabel: '텔레그램 문의하기'
     },
     {
-      id: 'topgun-main',
-      title: '오늘 탑건과 함께 날아보아요.',
-      badgeBrand: '탑건벳',
+      id: 'avengers-main',
+      title: '믿고 이용하는 어벤저스',
+      badgeBrand: '어벤저스벳',
       badgeSuffix: ' 회원 전용 이벤트',
       bullets: [
-        '신규 첫 40% 충전 보너스 지급',
-        '매충 10% 돌발20%',
-        '출석, 생일, 공지방 페이백 이벤트',
-        '카지노 0.8% / 슬롯 3% 콤프 지급'
+        '신규 첫충전,카지노 충전 이벤트',
+        '신규 정착이벤트',
+        'USTD 입금/가입,원화 입금 가능',
+        '심야충전,콤프,페이백 이벤트'
       ],
-      code: 'GAS7',
-      codeLabel: '가입코드: GAS7',
-      theme: 'silver',
-      primaryHref: 'https://topgun-88.com/',
+      code: '6789',
+      codeLabel: '가입코드: 6789',
+      theme: 'jaju',
+      primaryHref: 'https://av-bet.com/',
       primaryLabel: '공식 주소 바로가기',
       secondaryHref: 'https://t.me/kakacloud',
       secondaryLabel: '텔레그램 문의하기'
@@ -129,6 +129,8 @@
       .auto-promo-card.theme-red::before{background:radial-gradient(circle,rgba(239,68,68,.2),transparent 68%)}
       .auto-promo-card.theme-silver{--promo-accent:#d5deef;--promo-accent-soft:rgba(213,222,239,.14);--promo-accent-grad:linear-gradient(135deg,#d9e3f5,#bac8df 58%,#eef3fb);--promo-accent-ink:#132135;--promo-accent-shadow:rgba(186,200,223,.2);--promo-accent-border:rgba(213,222,239,.28);--promo-primary-grad:linear-gradient(135deg,#c7d2e5,#94a3b8 58%,#64748b);--promo-primary-shadow:rgba(148,163,184,.26);--promo-primary-border:rgba(199,210,229,.24);border-color:rgba(213,222,239,.24)}
       .auto-promo-card.theme-silver::before{background:radial-gradient(circle,rgba(186,200,223,.22),transparent 68%)}
+      .auto-promo-card.theme-jaju{--promo-accent:#f0abcf;--promo-accent-soft:rgba(240,171,207,.15);--promo-accent-grad:linear-gradient(135deg,#f5bfdc,#e879b5 58%,#fbcfe8);--promo-accent-ink:#330a20;--promo-accent-shadow:rgba(232,121,181,.22);--promo-accent-border:rgba(240,171,207,.28);--promo-primary-grad:linear-gradient(135deg,#c2185b,#a21caf 58%,#5b1033);--promo-primary-shadow:rgba(194,24,91,.26);--promo-primary-border:rgba(232,121,181,.22);border-color:rgba(240,171,207,.24)}
+      .auto-promo-card.theme-jaju::before{background:radial-gradient(circle,rgba(194,24,91,.2),transparent 68%)}
       .auto-promo-zone.is-article{margin:26px 0 28px}
       .auto-promo-zone.is-page{margin:18px 0 30px}
       @media (max-width: 980px){
