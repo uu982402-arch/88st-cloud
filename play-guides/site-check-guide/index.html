@@ -28,7 +28,7 @@
 .brand-card::after{content:"";position:absolute;inset:auto -40px -70px auto;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle, rgba(var(--brand-rgb),.16) 0%, rgba(var(--brand-rgb),0) 68%);pointer-events:none}.brand-card h2{margin:0 0 8px;color:var(--brand)}.brand-card p{margin:0 0 12px;color:var(--muted)}.brand-kicker{display:inline-flex;align-items:center;padding:7px 13px;border-radius:999px;font-size:12px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;background:rgba(var(--brand-rgb),.14);border:1px solid rgba(var(--brand-rgb),.28);color:var(--brand);margin-bottom:12px;box-shadow:inset 0 1px 0 rgba(255,255,255,.05)}
 .benefit-list{display:grid;gap:10px;margin:14px 0 0;padding:0;list-style:none}.benefit-list li{padding:12px 14px 12px 38px;border-radius:14px;background:linear-gradient(180deg, rgba(var(--brand-rgb),.09), rgba(255,255,255,.035));border:1px solid rgba(var(--brand-rgb),.20);position:relative;color:var(--text);box-shadow:inset 0 1px 0 rgba(255,255,255,.03)}.benefit-list li::before{content:"✓";position:absolute;left:14px;top:11px;font-weight:900;color:var(--brand)}
 .code-callout{margin-top:14px;padding:14px 16px;border-radius:16px;background:linear-gradient(180deg, rgba(var(--brand-rgb),.13), rgba(255,255,255,.04));border:1px solid rgba(var(--brand-rgb),.24);box-shadow:inset 0 1px 0 rgba(255,255,255,.04)}.code-callout b{display:block;font-size:14px;color:var(--brand);margin-bottom:8px}.code-chip{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 14px;border-radius:999px;background:linear-gradient(180deg, rgba(0,0,0,.18), rgba(255,255,255,.04));border:1px solid rgba(var(--brand-rgb),.30);font-size:14px;font-weight:900;letter-spacing:.04em;color:var(--text);cursor:pointer;transition:transform .16s ease, box-shadow .16s ease, border-color .16s ease;background-clip:padding-box;box-shadow:0 10px 22px rgba(0,0,0,.14), inset 0 1px 0 rgba(255,255,255,.06)}.code-chip:hover{transform:translateY(-1px);box-shadow:0 14px 28px rgba(0,0,0,.18), inset 0 1px 0 rgba(255,255,255,.08)}.code-chip:focus-visible{outline:2px solid rgba(var(--brand-rgb),.65);outline-offset:2px}.code-chip small{font-size:12px;font-weight:800;letter-spacing:.02em;color:var(--brand)}.code-chip strong{font-size:15px;letter-spacing:.1em}.code-chip.is-copied{border-color:rgba(var(--brand-rgb),.6);box-shadow:0 14px 30px rgba(var(--brand-rgb),.16), inset 0 1px 0 rgba(255,255,255,.08)}
-.brand-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.brand-link{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 16px;border-radius:14px;text-decoration:none;font-weight:900;letter-spacing:.01em;background:linear-gradient(180deg, rgba(var(--brand-rgb),.92), rgba(var(--brand-rgb),.72));border:1px solid rgba(var(--brand-rgb),.45);box-shadow:0 10px 24px rgba(var(--brand-rgb),.18), inset 0 1px 0 rgba(255,255,255,.22);color:#08111f}.brand-link:hover{transform:translateY(-1px);box-shadow:0 14px 28px rgba(var(--brand-rgb),.22), inset 0 1px 0 rgba(255,255,255,.22)}.brand-card.theme-amber{--brand:#f5c86a;--brand-rgb:245,200,106}.brand-card.theme-mint{--brand:#7fe1c2;--brand-rgb:127,225,194}.brand-card.theme-red{--brand:#ff7c86;--brand-rgb:255,124,134}.brand-card.theme-jaju{--brand:#c889c4;--brand-rgb:200,137,196}
+.brand-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.brand-link{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 16px;border-radius:14px;text-decoration:none;font-weight:900;letter-spacing:.01em;background:linear-gradient(180deg, rgba(var(--brand-rgb),.92), rgba(var(--brand-rgb),.72));border:1px solid rgba(var(--brand-rgb),.45);box-shadow:0 10px 24px rgba(var(--brand-rgb),.18), inset 0 1px 0 rgba(255,255,255,.22);color:#08111f}.brand-link:hover{transform:translateY(-1px);box-shadow:0 14px 28px rgba(var(--brand-rgb),.22), inset 0 1px 0 rgba(255,255,255,.22)}.copy-toast{position:fixed;left:50%;bottom:max(22px,env(safe-area-inset-bottom) + 16px);transform:translate(-50%,18px) scale(.98);display:inline-flex;align-items:center;gap:8px;padding:12px 16px;border-radius:999px;background:linear-gradient(180deg, rgba(10,16,29,.96), rgba(10,16,29,.88));border:1px solid rgba(255,255,255,.10);box-shadow:0 18px 44px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.06);color:#f5f7fb;font-size:13px;font-weight:800;letter-spacing:.01em;opacity:0;pointer-events:none;transition:opacity .18s ease, transform .18s ease;z-index:9999;backdrop-filter:blur(10px)}.copy-toast.is-show{opacity:1;transform:translate(-50%,0) scale(1)}.copy-toast__icon{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:999px;background:rgba(127,225,194,.14);border:1px solid rgba(127,225,194,.28);color:#7fe1c2;font-size:12px;line-height:1}.brand-card.theme-amber{--brand:#f5c86a;--brand-rgb:245,200,106}.brand-card.theme-mint{--brand:#7fe1c2;--brand-rgb:127,225,194}.brand-card.theme-red{--brand:#ff7c86;--brand-rgb:255,124,134}.brand-card.theme-jaju{--brand:#c889c4;--brand-rgb:200,137,196}
 .caution-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.caution-card{padding:16px;border-radius:18px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06)}
 @media (max-width: 900px){.brand-grid,.caution-grid,.mini-meta{grid-template-columns:1fr}}
 </style>
@@ -65,6 +65,23 @@
 <script>
 document.addEventListener("DOMContentLoaded",()=>{
   const chips=document.querySelectorAll(".code-chip[data-copy-code]");
+  const toast=document.createElement("div");
+  toast.className="copy-toast";
+  toast.setAttribute("role","status");
+  toast.setAttribute("aria-live","polite");
+  toast.innerHTML='<span class="copy-toast__icon">✓</span><span class="copy-toast__text">가입코드가 복사되었습니다.</span>';
+  document.body.appendChild(toast);
+
+  const toastText=toast.querySelector(".copy-toast__text");
+  const showToast=(message)=>{
+    if(toastText) toastText.textContent=message;
+    toast.classList.add("is-show");
+    window.clearTimeout(toast._hideTimer);
+    toast._hideTimer=window.setTimeout(()=>{
+      toast.classList.remove("is-show");
+    },1500);
+  };
+
   chips.forEach((chip)=>{
     const strong=chip.querySelector("strong");
     const original=strong?strong.textContent.trim():chip.dataset.copyCode||"";
@@ -88,6 +105,7 @@ document.addEventListener("DOMContentLoaded",()=>{
         chip.classList.add("is-copied");
         if(small) small.textContent="복사완료";
         if(strong) strong.textContent=code;
+        showToast(`가입코드 ${code} 복사완료`);
         window.clearTimeout(chip._copyTimer);
         chip._copyTimer=window.setTimeout(()=>{
           chip.classList.remove("is-copied");
@@ -96,6 +114,7 @@ document.addEventListener("DOMContentLoaded",()=>{
         },1200);
       }catch(err){
         if(small) small.textContent="복사실패";
+        showToast("복사에 실패했습니다. 다시 시도해주세요.");
         window.clearTimeout(chip._copyTimer);
         chip._copyTimer=window.setTimeout(()=>{
           if(small) small.textContent="가입코드";
