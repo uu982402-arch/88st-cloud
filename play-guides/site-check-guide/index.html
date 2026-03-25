@@ -27,7 +27,7 @@
 .brand-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.brand-card{--brand:#9dd0ff;--brand-rgb:157,208,255;position:relative;overflow:hidden;padding:22px;border-radius:22px;background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));border:1px solid rgba(var(--brand-rgb),.24);box-shadow:0 16px 40px rgba(0,0,0,.18), inset 0 1px 0 rgba(255,255,255,.04)}
 .brand-card::after{content:"";position:absolute;inset:auto -40px -70px auto;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle, rgba(var(--brand-rgb),.16) 0%, rgba(var(--brand-rgb),0) 68%);pointer-events:none}.brand-card h2{margin:0 0 8px;color:var(--brand)}.brand-card p{margin:0 0 12px;color:var(--muted)}.brand-kicker{display:inline-flex;align-items:center;padding:7px 13px;border-radius:999px;font-size:12px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;background:rgba(var(--brand-rgb),.14);border:1px solid rgba(var(--brand-rgb),.28);color:var(--brand);margin-bottom:12px;box-shadow:inset 0 1px 0 rgba(255,255,255,.05)}
 .benefit-list{display:grid;gap:10px;margin:14px 0 0;padding:0;list-style:none}.benefit-list li{padding:12px 14px 12px 38px;border-radius:14px;background:linear-gradient(180deg, rgba(var(--brand-rgb),.09), rgba(255,255,255,.035));border:1px solid rgba(var(--brand-rgb),.20);position:relative;color:var(--text);box-shadow:inset 0 1px 0 rgba(255,255,255,.03)}.benefit-list li::before{content:"✓";position:absolute;left:14px;top:11px;font-weight:900;color:var(--brand)}
-.code-callout{margin-top:14px;padding:14px 16px;border-radius:16px;background:linear-gradient(180deg, rgba(var(--brand-rgb),.13), rgba(255,255,255,.04));border:1px solid rgba(var(--brand-rgb),.24);box-shadow:inset 0 1px 0 rgba(255,255,255,.04)}.code-callout b{display:block;font-size:14px;color:var(--brand);margin-bottom:6px}.code-callout span{display:inline-flex;align-items:center;min-height:34px;padding:0 12px;border-radius:999px;background:rgba(0,0,0,.16);border:1px solid rgba(var(--brand-rgb),.28);font-size:14px;font-weight:900;letter-spacing:.08em;color:var(--text)}
+.code-callout{margin-top:14px;padding:14px 16px;border-radius:16px;background:linear-gradient(180deg, rgba(var(--brand-rgb),.13), rgba(255,255,255,.04));border:1px solid rgba(var(--brand-rgb),.24);box-shadow:inset 0 1px 0 rgba(255,255,255,.04)}.code-callout b{display:block;font-size:14px;color:var(--brand);margin-bottom:8px}.code-chip{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 14px;border-radius:999px;background:linear-gradient(180deg, rgba(0,0,0,.18), rgba(255,255,255,.04));border:1px solid rgba(var(--brand-rgb),.30);font-size:14px;font-weight:900;letter-spacing:.04em;color:var(--text);cursor:pointer;transition:transform .16s ease, box-shadow .16s ease, border-color .16s ease;background-clip:padding-box;box-shadow:0 10px 22px rgba(0,0,0,.14), inset 0 1px 0 rgba(255,255,255,.06)}.code-chip:hover{transform:translateY(-1px);box-shadow:0 14px 28px rgba(0,0,0,.18), inset 0 1px 0 rgba(255,255,255,.08)}.code-chip:focus-visible{outline:2px solid rgba(var(--brand-rgb),.65);outline-offset:2px}.code-chip small{font-size:12px;font-weight:800;letter-spacing:.02em;color:var(--brand)}.code-chip strong{font-size:15px;letter-spacing:.1em}.code-chip.is-copied{border-color:rgba(var(--brand-rgb),.6);box-shadow:0 14px 30px rgba(var(--brand-rgb),.16), inset 0 1px 0 rgba(255,255,255,.08)}
 .brand-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.brand-link{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 16px;border-radius:14px;text-decoration:none;font-weight:900;letter-spacing:.01em;background:linear-gradient(180deg, rgba(var(--brand-rgb),.92), rgba(var(--brand-rgb),.72));border:1px solid rgba(var(--brand-rgb),.45);box-shadow:0 10px 24px rgba(var(--brand-rgb),.18), inset 0 1px 0 rgba(255,255,255,.22);color:#08111f}.brand-link:hover{transform:translateY(-1px);box-shadow:0 14px 28px rgba(var(--brand-rgb),.22), inset 0 1px 0 rgba(255,255,255,.22)}.brand-card.theme-amber{--brand:#f5c86a;--brand-rgb:245,200,106}.brand-card.theme-mint{--brand:#7fe1c2;--brand-rgb:127,225,194}.brand-card.theme-red{--brand:#ff7c86;--brand-rgb:255,124,134}.brand-card.theme-jaju{--brand:#c889c4;--brand-rgb:200,137,196}
 .caution-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.caution-card{padding:16px;border-radius:18px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06)}
 @media (max-width: 900px){.brand-grid,.caution-grid,.mini-meta{grid-template-columns:1fr}}
@@ -51,10 +51,10 @@
 <h2>브랜드별 혜택 요약</h2>
 <p>아래 섹션은 각 브랜드의 핵심 혜택 문구만 빠르게 볼 수 있도록 정리한 요약본입니다. 필요한 경우 카드 하단의 공식 사이트 바로가기 버튼으로 이동할 수 있도록 구성했습니다.</p>
 <div class="brand-grid">
-<section class="brand-card theme-amber" id="brand-yangsim"><span class="brand-kicker">양심 회원 전용 이벤트</span><h2>양심</h2><p>핵심 혜택만 빠르게 확인할 수 있도록 정리한 요약 섹션입니다.</p><ul class="benefit-list"><li>스포츠/슬롯 첫충 · 매충 10%</li><li>카지노 · 미겜 첫충 · 매충전 5%</li><li>출첵 · 룰렛 · 이사 지원금 이벤트</li><li>콤프 최대 카지노 1.2% · 슬롯 4%</li></ul><div class="code-callout"><b>지금 혜택 받으러 가실래요?</b><span>가입코드 : KAKA</span></div><div class="brand-actions"><a class="brand-link" href="https://평생양심.com/" rel="noopener noreferrer" target="_blank">공식 사이트 바로가기</a></div></section>
-<section class="brand-card theme-mint" id="brand-chilbet"><span class="brand-kicker">칠벳 회원 전용 이벤트</span><h2>칠벳</h2><p>핵심 혜택만 빠르게 확인할 수 있도록 정리한 요약 섹션입니다.</p><ul class="benefit-list"><li>카지노 · 스포츠 · 슬롯 · 미겜 입금플러스 이벤트</li><li>가입 후 환전 없을 시 무제한 20%</li><li>돌발 20% · 돌발 카지노 10%</li><li>페이백 5%</li></ul><div class="code-callout"><b>지금 혜택 받으러 가실래요?</b><span>가입코드 : 6767</span></div><div class="brand-actions"><a class="brand-link" href="https://82clf.com/" rel="noopener noreferrer" target="_blank">공식 사이트 바로가기</a></div></section>
-<section class="brand-card theme-red" id="brand-vegas"><span class="brand-kicker">베가스 회원 전용 이벤트</span><h2>베가스</h2><p>핵심 혜택만 빠르게 확인할 수 있도록 정리한 요약 섹션입니다.</p><ul class="benefit-list"><li>카지노 · 스포츠 · 슬롯 · 미겜 입금플러스 이벤트</li><li>가입 후 환전 없을 시 무제한 20%</li><li>돌발 20% · 돌발 카지노 10%</li><li>페이백 5%</li></ul><div class="code-callout"><b>지금 혜택 받으러 가실래요?</b><span>가입코드 : 6789</span></div><div class="brand-actions"><a class="brand-link" href="https://las302.com/" rel="noopener noreferrer" target="_blank">공식 사이트 바로가기</a></div></section>
-<section class="brand-card theme-jaju" id="brand-avengers"><span class="brand-kicker">어벤저스 회원 전용 이벤트</span><h2>어벤저스</h2><p>핵심 혜택만 빠르게 확인할 수 있도록 정리한 요약 섹션입니다.</p><ul class="benefit-list"><li>신규 첫충전 · 카지노 충전 이벤트</li><li>신규 정착 이벤트</li><li>USDT 입금/가입 · 원화 입금 가능</li><li>심야충전 · 콤프 · 페이백 이벤트</li></ul><div class="code-callout"><b>지금 혜택 받으러 가실래요?</b><span>가입코드 : 6789</span></div><div class="brand-actions"><a class="brand-link" href="https://av-bet.com/" rel="noopener noreferrer" target="_blank">공식 사이트 바로가기</a></div></section>
+<section class="brand-card theme-amber" id="brand-yangsim"><span class="brand-kicker">양심 회원 전용 이벤트</span><h2>양심</h2><p>핵심 혜택만 빠르게 확인할 수 있도록 정리한 요약 섹션입니다.</p><ul class="benefit-list"><li>스포츠/슬롯 첫충 · 매충 10%</li><li>카지노 · 미겜 첫충 · 매충전 5%</li><li>출첵 · 룰렛 · 이사 지원금 이벤트</li><li>콤프 최대 카지노 1.2% · 슬롯 4%</li></ul><div class="code-callout"><b>지금 혜택 받으러 가실래요?</b><button class="code-chip" type="button" data-copy-code="KAKA" aria-label="양심 가입코드 복사"><small>가입코드</small><strong>KAKA</strong></button></div><div class="brand-actions"><a class="brand-link" href="https://평생양심.com/" rel="noopener noreferrer" target="_blank">공식 사이트 바로가기</a></div></section>
+<section class="brand-card theme-mint" id="brand-chilbet"><span class="brand-kicker">칠벳 회원 전용 이벤트</span><h2>칠벳</h2><p>핵심 혜택만 빠르게 확인할 수 있도록 정리한 요약 섹션입니다.</p><ul class="benefit-list"><li>카지노 · 스포츠 · 슬롯 · 미겜 입금플러스 이벤트</li><li>가입 후 환전 없을 시 무제한 20%</li><li>돌발 20% · 돌발 카지노 10%</li><li>페이백 5%</li></ul><div class="code-callout"><b>지금 혜택 받으러 가실래요?</b><button class="code-chip" type="button" data-copy-code="6767" aria-label="칠벳 가입코드 복사"><small>가입코드</small><strong>6767</strong></button></div><div class="brand-actions"><a class="brand-link" href="https://82clf.com/" rel="noopener noreferrer" target="_blank">공식 사이트 바로가기</a></div></section>
+<section class="brand-card theme-red" id="brand-vegas"><span class="brand-kicker">베가스 회원 전용 이벤트</span><h2>베가스</h2><p>핵심 혜택만 빠르게 확인할 수 있도록 정리한 요약 섹션입니다.</p><ul class="benefit-list"><li>카지노 · 스포츠 · 슬롯 · 미겜 입금플러스 이벤트</li><li>가입 후 환전 없을 시 무제한 20%</li><li>돌발 20% · 돌발 카지노 10%</li><li>페이백 5%</li></ul><div class="code-callout"><b>지금 혜택 받으러 가실래요?</b><button class="code-chip" type="button" data-copy-code="6789" aria-label="베가스 가입코드 복사"><small>가입코드</small><strong>6789</strong></button></div><div class="brand-actions"><a class="brand-link" href="https://las302.com/" rel="noopener noreferrer" target="_blank">공식 사이트 바로가기</a></div></section>
+<section class="brand-card theme-jaju" id="brand-avengers"><span class="brand-kicker">어벤저스 회원 전용 이벤트</span><h2>어벤저스</h2><p>핵심 혜택만 빠르게 확인할 수 있도록 정리한 요약 섹션입니다.</p><ul class="benefit-list"><li>신규 첫충전 · 카지노 충전 이벤트</li><li>신규 정착 이벤트</li><li>USDT 입금/가입 · 원화 입금 가능</li><li>심야충전 · 콤프 · 페이백 이벤트</li></ul><div class="code-callout"><b>지금 혜택 받으러 가실래요?</b><button class="code-chip" type="button" data-copy-code="6789" aria-label="어벤저스 가입코드 복사"><small>가입코드</small><strong>6789</strong></button></div><div class="brand-actions"><a class="brand-link" href="https://av-bet.com/" rel="noopener noreferrer" target="_blank">공식 사이트 바로가기</a></div></section>
 </div>
 <h2>기록해두면 좋은 메모</h2>
 <div class="mini-meta"><div class="resource-box"><b>주소 확인 메모</b><ul><li>처음 확인한 날짜</li><li>브라우저 표시 주소</li><li>공지된 주소와 차이 여부</li></ul></div><div class="resource-box"><b>문의 전 준비</b><ul><li>문의 채널 캡처</li><li>조건 캡처</li><li>문의 내용 요약 메모</li></ul></div></div>
@@ -62,4 +62,47 @@
 <h2>책임 있는 이용 안내</h2><p>무리한 이용은 피하고, 금액과 시간을 스스로 제한한 뒤 판단하는 편이 좋습니다. 불확실하거나 과도한 유도가 느껴질 경우에는 즉시 이용을 중단하고 정보를 다시 확인하세요.</p>
 <div class="related-grid"><a class="related-card" href="/bonus/withdrawal-precheck/"><strong>출금 전 확인 체크리스트</strong><p style="margin:8px 0 0;color:var(--muted)">주소 확인 다음 단계에서 출금·조건 항목을 정리할 때 보기 좋은 체크리스트입니다.</p></a><a class="related-card" href="/bonus/bonus-terms-glossary/"><strong>보너스 조건 용어사전</strong><p style="margin:8px 0 0;color:var(--muted)">이벤트 조건 문구를 해석할 때 자주 보는 표현을 정리한 글입니다.</p></a></div>
 </div><aside class="side-rail"><div class="rail-card"><h3>이 페이지 핵심</h3><ul class="rail-list"><li><b>핵심 1</b><span>브랜드별 혜택 문구를 한 화면에서 빠르게 비교할 수 있습니다.</span></li><li><b>핵심 2</b><span>각 섹션 하단 CTA로 공식 사이트에 바로 이동할 수 있습니다.</span></li><li><b>핵심 3</b><span>무리한 이용은 피하고 스스로 한도를 정해 관리합니다.</span></li></ul></div><div class="rail-card"><h3>바로 가기</h3><div class="inline-links"><a href="#brand-yangsim">양심 섹션</a><a href="#brand-chilbet">칠벳 섹션</a><a href="#brand-vegas">베가스 섹션</a><a href="#brand-avengers">어벤저스 섹션</a></div></div><div class="rail-card"><h3>같이 보면 좋은 글</h3><div class="inline-links"><a href="/bonus/withdrawal-precheck/">출금 전 확인 체크리스트</a><a href="/bonus/bonus-terms-glossary/">보너스 조건 용어사전</a></div></div></aside></div></div></section></main>
+<script>
+document.addEventListener("DOMContentLoaded",()=>{
+  const chips=document.querySelectorAll(".code-chip[data-copy-code]");
+  chips.forEach((chip)=>{
+    const strong=chip.querySelector("strong");
+    const original=strong?strong.textContent.trim():chip.dataset.copyCode||"";
+    const small=chip.querySelector("small");
+    chip.addEventListener("click", async ()=>{
+      const code=chip.dataset.copyCode||original;
+      try{
+        if(navigator.clipboard&&navigator.clipboard.writeText){
+          await navigator.clipboard.writeText(code);
+        }else{
+          const area=document.createElement("textarea");
+          area.value=code;
+          area.setAttribute("readonly","");
+          area.style.position="absolute";
+          area.style.left="-9999px";
+          document.body.appendChild(area);
+          area.select();
+          document.execCommand("copy");
+          document.body.removeChild(area);
+        }
+        chip.classList.add("is-copied");
+        if(small) small.textContent="복사완료";
+        if(strong) strong.textContent=code;
+        window.clearTimeout(chip._copyTimer);
+        chip._copyTimer=window.setTimeout(()=>{
+          chip.classList.remove("is-copied");
+          if(small) small.textContent="가입코드";
+          if(strong) strong.textContent=original;
+        },1200);
+      }catch(err){
+        if(small) small.textContent="복사실패";
+        window.clearTimeout(chip._copyTimer);
+        chip._copyTimer=window.setTimeout(()=>{
+          if(small) small.textContent="가입코드";
+        },1200);
+      }
+    });
+  });
+});
+</script>
 <footer class="footer"><div class="container footer-inner"><div><strong>레븐</strong><p style="margin:8px 0 0">스포츠 · 카지노 · 슬롯 · 파워볼</p></div><div class="footer-links"><a href="/">메인</a><a href="/analysis/">배당분석</a><a href="/casino/">카지노</a><a href="/slot/">슬롯</a><a href="/bonus/">보너스</a><a href="/news/">뉴스</a><a href="/strategy/">전략</a><a href="/play-guides/">가이드</a></div></div></footer><script defer src="/assets/js/mobile.enhance.v1.20260317.js"></script><script defer src="/assets/js/resource.tools.v1.20260324.js"></script></body></html>
