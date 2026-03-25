@@ -3,7 +3,25 @@
   if (window.Telegram?.WebApp || /\/tg-match-entry\/?$/i.test(path)) return;
 
   const PROMO_OFFERS = [
-
+    {
+      id: 'yangsim-main',
+      title: '안전한토토사이트 ” 양심 “',
+      badgeBrand: '양심벳',
+      badgeSuffix: ' 회원 전용 이벤트 다수 진행 중',
+      bullets: [
+        '스포츠/슬롯 첫충/매충 10%',
+        '카지노,미겜 첫충,매 충전 5%',
+        '출첵 / 룰렛 / 이사 지원금 이벤트',
+        '콤프 최대 카지노 1.2% / 슬롯 4%'
+      ],
+      code: 'KAKA',
+      codeLabel: '가입코드: KAKA',
+      theme: 'amber',
+      primaryHref: 'https://평생양심.com/',
+      primaryLabel: '공식 주소 바로가기',
+      secondaryHref: 'https://t.me/TRK7878',
+      secondaryLabel: '텔레그램 문의하기'
+    },
     {
       id: 'seven-main',
       title: '칠땡잡이 승부사이트!!',
@@ -20,7 +38,7 @@
       theme: 'mint',
       primaryHref: 'https://82clf.com/',
       primaryLabel: '공식 주소 바로가기',
-      secondaryHref: 'https://t.me/kakacloud',
+      secondaryHref: 'https://t.me/TRK7878',
       secondaryLabel: '텔레그램 문의하기'
     },
     {
@@ -39,7 +57,7 @@
       theme: 'red',
       primaryHref: 'https://las302.com/',
       primaryLabel: '공식 주소 바로가기',
-      secondaryHref: 'https://t.me/kakacloud',
+      secondaryHref: 'https://t.me/TRK7878',
       secondaryLabel: '텔레그램 문의하기'
     },
     {
@@ -58,7 +76,7 @@
       theme: 'jaju',
       primaryHref: 'https://av-bet.com/',
       primaryLabel: '공식 주소 바로가기',
-      secondaryHref: 'https://t.me/kakacloud',
+      secondaryHref: 'https://t.me/TRK7878',
       secondaryLabel: '텔레그램 문의하기'
     }
   ];
@@ -284,7 +302,7 @@
       { href: '/analysis/', label: '분석', icon: '⌁' },
       { href: '/', label: '홈', icon: '⌂' },
       { href: '/play-guides/', label: '가이드', icon: '☷', accent: true },
-      { href: 'https://t.me/kakacloud', label: '문의', icon: '✦', external: true }
+      { href: 'https://t.me/TRK7878', label: '문의', icon: '✦', external: true }
     ];
 
     const dock = document.createElement('nav');

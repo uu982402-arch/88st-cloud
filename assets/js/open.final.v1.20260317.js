@@ -16,7 +16,7 @@
       { href:'/analysis/', label:'분석기', sub:'배당·상태 해석' },
       { href:'/play-guides/', label:'가이드', sub:'카지노·미니게임' },
       { href:'/bonus/', label:'보너스', sub:'조건·체크' },
-      { href:'https://t.me/kakacloud', label:'문의', sub:'바로 연결', external:true, accent:true }
+      { href:'https://t.me/TRK7878', label:'문의', sub:'바로 연결', external:true, accent:true }
     ];
     overlay.innerHTML = '<div class="mobile-menu-overlay__bg"></div><div class="mobile-menu-panel" role="dialog" aria-modal="true" aria-label="모바일 메뉴"><div class="mobile-menu-head"><div><strong>레븐 빠른 이동</strong><small>모바일에서 필요한 구간을 바로 고를 수 있게 묶었습니다.</small></div><button class="mobile-menu-close" type="button" aria-label="닫기">✕</button></div><div class="mobile-menu-links"></div></div>';
     document.body.appendChild(overlay);
