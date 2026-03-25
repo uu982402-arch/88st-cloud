@@ -1,6 +1,6 @@
 (() => {
   const path = location.pathname || '/';
-  if (window.Telegram?.WebApp || /\/tg-match-entry\/?$/i.test(path)) return;
+  if (window.Telegram?.WebApp || /\/tg-match-entry\/?$/i.test(path) || /\/play-guides\/site-check-guide\/?$/i.test(path)) return;
 
   const PROMO_OFFERS = [
     {
