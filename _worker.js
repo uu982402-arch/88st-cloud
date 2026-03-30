@@ -1526,9 +1526,9 @@ function buildSafetyIpSearches(ip) {
     { label: 'IP 먹튀 검색', query: `${ip} 먹튀` },
     { label: 'IP 후기 검색', query: `${ip} 후기` },
     { label: 'IP 도메인 검색', query: `${ip} 도메인` },
-    { label: '먹튀폴리스 검색', query: `site:mt-police07.com ${ip}` },
-    { label: '먹튀스팟 검색', query: `site:mt-spot.com ${ip}` },
-    { label: '먹튀레벨 검색', query: `site:mtlevel.com ${ip}` }
+    { label: '공개 페이지 검색 1', query: `(site:mt-police07.com OR site:mt-spot.com) ${ip}` },
+    { label: '공개 페이지 검색 2', query: `(site:mtlevel.com OR site:mtgal.com) ${ip}` },
+    { label: '공개 페이지 검색 3', query: `site:daumd08.net ${ip}` }
   ];
   return terms.map((item) => ({ ...item, href: `https://www.google.com/search?q=${encodeURIComponent(item.query)}` }));
 }

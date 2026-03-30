@@ -1,12 +1,9 @@
 
 (() => {
   const PROVIDERS_URL = '/assets/data/guaranteed.providers.v1.20260330.json';
-  const COMMUNITY_SOURCES = [
-    { key: 'mt-police', name: '먹튀폴리스', domain: 'mt-police07.com', note: '공개 검색 기준으로 사이트명을 다시 확인합니다.' },
-    { key: 'mt-spot', name: '먹튀스팟', domain: 'mt-spot.com', note: 'Q&A/게시판 흔적을 찾을 때 같이 봅니다.' },
-    { key: 'daumd', name: '다음드', domain: 'daumd08.net', note: '주소 공유와 검증 요청 흔적을 같이 봅니다.' },
-    { key: 'mtlevel', name: '먹튀레벨', domain: 'mtlevel.com', note: '커뮤니티 글과 공지 흐름을 같이 검색합니다.' },
-    { key: 'mtgal', name: '먹튀갤', domain: 'mtgal.com', note: '실시간 글 흐름을 공개 검색으로 다시 확인합니다.' }
+  const COMMUNITY_SOURCE_GROUPS = [
+    ['mt-police07.com', 'mt-spot.com', 'daumd08.net'],
+    ['mtlevel.com', 'mtgal.com']
   ];
   const $ = (sel, el = document) => el.querySelector(sel);
   const $$ = (sel, el = document) => Array.from(el.querySelectorAll(sel));
@@ -111,14 +108,28 @@
     });
   }
 
-  function renderCommunitySourceGrid() {
-    $$('[data-community-source-grid]').forEach((grid) => {
-      grid.innerHTML = COMMUNITY_SOURCES.map((source) => `
+  function buildPublicEvidenceQuery(keyword, suffix, groupIndex = 0) {
+    const domains = COMMUNITY_SOURCE_GROUPS[groupIndex] || [];
+    const scope = domains.map((domain) => `site:${domain}`).join(' OR ');
+    return `${scope} ${buildQuery(keyword, suffix)}`.trim();
+  }
+
+  function renderPublicEvidenceGrid() {
+    $$('[data-public-evidence-grid]').forEach((grid) => {
+      grid.innerHTML = `
         <article class="community-source-card">
-          <h3>${escapeHtml(source.name)}</h3>
-          <p>${escapeHtml(source.note)}</p>
-          <div class="card-actions"><button class="safety-link-btn ghost" type="button" data-community-source="${escapeHtml(source.domain)}">이 사이트 기준 검색</button></div>
-        </article>`).join('');
+          <h3>가져올 수 있는 항목</h3>
+          <p>공개 페이지라면 제목, 게시 날짜, URL, 카테고리/태그, 본문에 언급된 도메인·IP 같은 근거성 항목을 추출하는 구조로 붙일 수 있습니다.</p>
+        </article>
+        <article class="community-source-card">
+          <h3>권장 방식</h3>
+          <p>본문을 통째로 복사하지 않고, 공개 페이지에서 찾은 근거만 메타데이터로 저장하고 원문 링크를 함께 남기는 쪽이 안전합니다.</p>
+        </article>
+        <article class="community-source-card">
+          <h3>바로 열어보는 공개 검색</h3>
+          <p>입력한 사이트명과 도메인을 기준으로 허용된 공개 페이지 묶음에서 흔적을 다시 찾는 검색 조합을 바로 열 수 있게 구성했습니다.</p>
+          <div class="card-actions"><button class="safety-link-btn ghost" type="button" data-public-evidence-open>공개 검색 열기</button></div>
+        </article>`;
     });
   }
 
@@ -135,26 +146,25 @@
         }
         return;
       }
-      const communityBtn = event.target.closest('[data-community-source]');
-      if (communityBtn) {
+      const evidenceBtn = event.target.closest('[data-public-evidence-open]');
+      if (evidenceBtn) {
         const input = $('#siteKeywordInput') || $('[data-google-form] input[name="q"]');
         const select = $('#siteSearchType') || $('[data-google-form] select[name="type"]');
         const keyword = input?.value?.trim() || '';
         const suffix = select?.value || '먹튀';
-        const domain = communityBtn.getAttribute('data-community-source');
         if (!keyword) {
           showToast('먼저 사이트명이나 도메인을 입력해 주세요.');
           return;
         }
-        window.open(googleUrl(buildSiteQuery(keyword, domain, suffix)), '_blank', 'noopener');
+        window.open(googleUrl(buildPublicEvidenceQuery(keyword, suffix, 0)), '_blank', 'noopener');
       }
     });
   }
 
-  function buildCommunityCards(keyword, suffix) {
-    return COMMUNITY_SOURCES.map((source) => {
-      const query = buildSiteQuery(keyword, source.domain, suffix);
-      return `<article class="lookup-link-card"><a href="${googleUrl(query)}" target="_blank" rel="noopener noreferrer">${escapeHtml(source.name)} ↗</a><p>${escapeHtml(query)}</p></article>`;
+  function buildPublicEvidenceCards(keyword, suffix) {
+    return COMMUNITY_SOURCE_GROUPS.map((_, index) => {
+      const query = buildPublicEvidenceQuery(keyword, suffix, index);
+      return `<article class="lookup-link-card"><a href="${googleUrl(query)}" target="_blank" rel="noopener noreferrer">공개 페이지 검색 ${index + 1} ↗</a><p>허용된 공개 페이지 묶음에서 ${escapeHtml(buildQuery(keyword, suffix))} 흔적을 다시 확인합니다.</p></article>`;
     }).join('');
   }
 
@@ -169,7 +179,7 @@
         <div class="section-head"><div><h2>빠른 실행</h2><p>입력한 키워드로 바로 검색하고, 도메인·IP 조회로 이어갈 수 있습니다.</p></div></div>
         <div class="lookup-links">
           <article class="lookup-link-card"><a href="${googleUrl(query)}" target="_blank" rel="noopener noreferrer">구글에서 보기 ↗</a><p>${escapeHtml(query)}</p></article>
-          <article class="lookup-link-card"><a href="/muktu-police/search/?q=${encodeURIComponent(clean)}&type=${encodeURIComponent(suffix || '먹튀')}">구글링 페이지 ↗</a><p>검색 조합과 커뮤니티 교차검색을 이어서 봅니다.</p></article>
+          <article class="lookup-link-card"><a href="/muktu-police/search/?q=${encodeURIComponent(clean)}&type=${encodeURIComponent(suffix || '먹튀')}">구글링 페이지 ↗</a><p>검색 조합과 공개 페이지 근거 확인으로 이어서 봅니다.</p></article>
           <article class="lookup-link-card"><a href="/muktu-police/check/${clean.includes('.') ? `?domain=${encodeURIComponent(clean)}` : ''}">도메인·IP 조회 ↗</a><p>기술적 기본값을 같이 확인합니다.</p></article>
         </div>
       </div>`;
@@ -211,7 +221,7 @@
         <div class="section-head"><div><h2>${escapeHtml(buildQuery(clean, suffix))}</h2><p>입력한 키워드로 구글 검색과 교차검색을 바로 열 수 있게 묶었습니다.</p></div><div class="section-head-actions"><a class="safety-link-btn" href="${googleUrl(buildQuery(clean, suffix))}" target="_blank" rel="noopener noreferrer">구글에서 검색</a><button class="safety-copy-btn ghost" type="button" data-copy-text="${escapeHtml(buildQuery(clean, suffix))}"><span data-copy-label data-default-label="검색어 복사">검색어 복사</span></button></div></div>
         <div class="lookup-links">${cards}</div>
       </div>
-      <div class="glass-card helper-box"><div class="section-head"><div><h2>커뮤니티 교차검색</h2><p>공개 검색이 가능한 커뮤니티 도메인을 기준으로 같은 키워드를 바로 확인합니다.</p></div></div><div class="lookup-community-links">${buildCommunityCards(clean, suffix)}</div></div>
+      <div class="glass-card helper-box"><div class="section-head"><div><h2>공개 페이지 교차확인</h2><p>허용된 공개 페이지 묶음을 대상으로 같은 키워드를 다시 검색해 흔적을 교차확인합니다.</p></div></div><div class="lookup-community-links">${buildPublicEvidenceCards(clean, suffix)}</div></div>
       <div class="glass-card helper-box"><div class="section-head"><div><h2>다음 단계</h2><p>검색 결과만으로 부족하면 도메인과 IP를 다시 확인합니다.</p></div></div><div class="lookup-links"><article class="lookup-link-card"><a href="/muktu-police/check/${domainTarget && domainTarget.includes('.') ? `?domain=${encodeURIComponent(domainTarget)}` : ''}">도메인·IP 조회 ↗</a><p>${domainTarget ? `${escapeHtml(domainTarget)} 기준으로 바로 조회할 수 있습니다.` : '도메인이 있으면 바로 조회로 넘어갑니다.'}</p></article><article class="lookup-link-card"><a href="/blog/google-muktu-search-guide/">검색 가이드 ↗</a><p>검색어를 왜 나눠 보는지 블로그에서 먼저 확인할 수 있습니다.</p></article><article class="lookup-link-card"><a href="/guaranteed/">보증업체 ↗</a><p>검색과 조회를 끝낸 뒤 마지막에만 참고하는 페이지입니다.</p></article></div></div>`;
   }
 
@@ -320,7 +330,7 @@
         </div>
       </div>
       <div class="glass-card helper-box">
-        <div class="section-head"><div><h2>연결 검색</h2><p>IP 기준 공개 검색과 커뮤니티 교차검색을 함께 엽니다.</p></div></div>
+        <div class="section-head"><div><h2>연결 검색</h2><p>IP 기준 공개 검색과 공개 페이지 확인을 함께 엽니다.</p></div></div>
         <div class="lookup-community-links">
           ${(payload.googleSearches || []).map((item) => `<article class="lookup-link-card"><a href="${escapeHtml(item.href || item.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(item.label)} ↗</a><p>${escapeHtml(item.query)}</p></article>`).join('')}
         </div>
@@ -390,7 +400,7 @@
   async function init() {
     wireCopyButtons();
     wireQuickGoogleForms();
-    renderCommunitySourceGrid();
+    renderPublicEvidenceGrid();
     renderHomePreview('', '먹튀');
     wireSearchPage();
     wireCheckPage();

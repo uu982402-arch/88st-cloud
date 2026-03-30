@@ -81,9 +81,9 @@ body{background-image:radial-gradient(circle at 10% 0,rgba(61,89,159,.16),transp
 .safety-link-btn,.safety-copy-btn,.btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 18px;border-radius:16px;font-weight:850;letter-spacing:-.01em;border:1px solid rgba(255,255,255,.12);cursor:pointer;text-decoration:none}
 .safety-link-btn,.btn-primary{background:linear-gradient(135deg,#88adff,#6387eb 54%,#314ea7);box-shadow:0 16px 40px rgba(69,102,196,.28);color:#fff}
 .safety-link-btn.ghost,.safety-copy-btn.ghost,.btn-ghost{background:rgba(255,255,255,.035);color:#edf3ff}
-.safety-link-btn.mint,.safety-copy-btn.mint{background:linear-gradient(135deg,#56d6b0,#27b490 56%,#0d6b5c);box-shadow:0 16px 40px rgba(26,149,118,.22);color:#06261e}
+.safety-link-btn.mint,.safety-copy-btn.mint{background:linear-gradient(135deg,#56d6b0,#27b490 56%,#0d6b5c);box-shadow:0 16px 40px rgba(26,149,118,.22);color:#f7fbff}
 .safety-link-btn:hover,.safety-copy-btn:hover,.btn:hover{transform:translateY(-2px)}
-.safety-copy-btn.is-copied{background:linear-gradient(135deg,#8ef2c9,#43c59d 58%,#177864)!important;border-color:rgba(142,242,201,.32)!important;color:#08261d!important}
+.safety-copy-btn.is-copied{background:linear-gradient(135deg,#8ef2c9,#43c59d 58%,#177864)!important;border-color:rgba(142,242,201,.32)!important;color:#f7fbff!important}
 .safety-copy-btn.is-copied::after{content:"복사 완료";margin-left:6px;font-size:12px;font-weight:900}
 .search-panel,.result-panel{display:grid;gap:14px}
 .search-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px}
@@ -141,3 +141,5 @@ body{background-image:radial-gradient(circle at 10% 0,rgba(61,89,159,.16),transp
   .main-nav{overflow:auto;gap:14px;padding-bottom:2px}
   .main-nav a{white-space:nowrap}
 }
+
+.safety-link-btn *, .safety-copy-btn *{color:inherit}

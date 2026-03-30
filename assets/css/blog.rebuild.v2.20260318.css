@@ -44,7 +44,7 @@ button,input,select{font:inherit}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 16px;border-radius:14px;border:1px solid transparent;font-weight:800;transition:.18s ease;cursor:pointer;min-height:46px}
 .btn:hover{transform:translateY(-1px)}
 .btn-sm{min-height:40px;padding:10px 13px;font-size:13px}
-.btn-primary{background:linear-gradient(135deg,#4f82ff,#7fb1ff);color:#031427;box-shadow:0 16px 34px rgba(78,129,255,.26)}
+.btn-primary{background:linear-gradient(135deg,#4f82ff,#7fb1ff);color:#f8fbff;box-shadow:0 16px 34px rgba(78,129,255,.26)}
 .btn-secondary{background:rgba(110,168,255,.14);border-color:rgba(110,168,255,.24);color:var(--text)}
 .btn-ghost{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.09);color:var(--text)}
 .btn-full{width:100%}
@@ -247,3 +247,5 @@ button,input,select{font:inherit}
 @media (max-width: 560px){
   .analysis-kpi-grid{grid-template-columns:1fr}
 }
+
+.btn-primary *{color:inherit}
