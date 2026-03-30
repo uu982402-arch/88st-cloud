@@ -1,0 +1,22 @@
+[실제 삭제 완료 파일]
+- tmp/adswork/_CHANGES_ads_20260324.txt
+- README_PATCH_20260330_INDEPENDENT_MODE.txt
+- README_PATCH_20260330_BRAND_RESULT_MODE.txt
+- DELETE_LIST_20260330.txt
+- PATCH_NOTES_20260330_LUXE_REFRESH.txt
+- PATCH_NOTES_20260330_MUKTU_FOCUS.txt
+- assets/css/luxury.refresh.v1.20260330.css
+- assets/css/luxury.refresh.v2.20260330.css
+- assets/js/luxury.refresh.v1.20260330.js
+- assets/js/luxury.refresh.v2.20260330.js
+- assets/js/safety.center.v1.20260330.js
+- assets/js/safety.center.v2.20260330.js
+- assets/js/safety.center.v3.20260330.js
+- assets/data/brand.results.v1.20260330.json
+
+[함께 수정된 참조 파일]
+- analysis/index.html
+- odds/index.html
+- seo/index.html
+- ops/index.html
+- assets/js/build.ver.js

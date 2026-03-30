@@ -1,0 +1,62 @@
+[2026-03-30] COMMUNITY REFRAME / GOOGLE SEARCH + DOMAIN/IP + GUARANTEED PAGE
+
+핵심 변경
+- 헤더 메뉴 재구성: 메인 / 블로그 / 도구 / 구글링 / 도메인조회 / 보증업체
+- 비교 페이지 제거
+- 결과생성 페이지 제거
+- 브랜드 결과 페이지 제거
+- 광고카드 노출 위치를 /guaranteed/ 1개 페이지로 한정
+- 메인/도구/검색/조회 페이지에서 세일즈성 문구 대폭 축소
+- 구글링 페이지를 사용자 직접입력형 검색 도구로 정리
+- 커뮤니티 교차검색 버튼 추가
+- 도메인조회 페이지에 IP 조회 기능 추가
+- 블로그 허브 + 3개 글 추가
+- FAQ를 브랜드형에서 일반형으로 재구성
+
+실제 삭제/정리
+- muktu-police/brand/ 전체 제거
+- muktu-police/compare/ 전체 제거
+- muktu-police/report/ 전체 제거
+- muktu-police/query/ 전체 제거
+- muktu-police/faq/* 브랜드별 하위 페이지 제거
+
+새 경로
+- /blog/
+- /blog/safe-toto-site-selection/
+- /blog/domain-ip-check-basics/
+- /blog/google-muktu-search-guide/
+- /tools/
+- /guaranteed/
+
+수정 파일
+- index.html
+- tools/index.html
+- blog/*
+- guaranteed/index.html
+- muktu-police/index.html
+- muktu-police/search/index.html
+- muktu-police/check/index.html
+- muktu-police/faq/index.html
+- _worker.js
+- _redirects
+- package.json
+- scripts/generate-brand-pages.mjs
+- assets/css/community.refresh.v1.20260330.css
+- assets/js/community.tools.v1.20260330.js
+- assets/js/build.ver.js
+- assets/data/guaranteed.providers.v1.20260330.json
+- assets/data/generated.routes.v1.20260330.json
+- assets/config/seo.meta.json
+- assets/data/posts.index.v1.20260318.json
+- analysis/index.html
+- odds/index.html
+- ops/index.html
+- seo/index.html
+
+검증
+- node --check _worker.js 통과
+- node --check assets/js/community.tools.v1.20260330.js 통과
+- node --check assets/js/build.ver.js 통과
+- node scripts/generate-brand-pages.mjs 통과
+- node scripts/generate-sitemap.mjs 통과
+- 로컬 정적 서버로 /, /blog/, /tools/, /muktu-police/search/, /muktu-police/check/, /guaranteed/ 응답 확인

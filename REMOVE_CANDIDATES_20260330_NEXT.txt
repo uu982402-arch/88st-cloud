@@ -1,0 +1,22 @@
+[제거 후보 - 실제 삭제하지 않음]
+- tmp/adswork/_CHANGES_ads_20260324.txt
+- README_PATCH_20260330_INDEPENDENT_MODE.txt
+- README_PATCH_20260330_BRAND_RESULT_MODE.txt
+- DELETE_LIST_20260330.txt
+- PATCH_NOTES_20260330_LUXE_REFRESH.txt
+- PATCH_NOTES_20260330_MUKTU_FOCUS.txt
+
+[구버전 자산 후보]
+- assets/css/luxury.refresh.v1.20260330.css
+- assets/css/luxury.refresh.v2.20260330.css
+- assets/js/luxury.refresh.v1.20260330.js
+- assets/js/luxury.refresh.v2.20260330.js
+- assets/js/safety.center.v1.20260330.js
+- assets/js/safety.center.v2.20260330.js
+- assets/js/safety.center.v3.20260330.js
+- assets/data/brand.results.v1.20260330.json
+
+[보수적 유지 권장]
+- analysis/, odds/, admin/, ops/, seo/
+- 기존 assets/config/*
+- _worker.js 기존 API 라우팅

@@ -115,8 +115,17 @@ export default {
         return json({ ok: false, error: 'method_not_allowed' }, 405, corsHeaders(request));
       }
 
+      if (path === '/api/safety/evidence') {
+        if (method === 'GET') return handleSafetyEvidenceExtract(request, env);
+        return json({ ok: false, error: 'method_not_allowed' }, 405, corsHeaders(request));
+      }
+
       if (path.startsWith('/api/')) {
         return json({ ok: false, error: 'not_found' }, 404, corsHeaders(request));
+      }
+
+      if (isDeprecatedSearchCleanupPath(path)) {
+        return gone({ ok: false, error: 'gone', path, message: '정리된 예전 구조 경로입니다.' }, request);
       }
 
 // TEMP: Community routes disabled (redirect to home)
@@ -232,6 +241,19 @@ function json(body, status = 200, extraHeaders = {}) {
     ...extraHeaders
   });
   return new Response(JSON.stringify(body), { status, headers });
+}
+
+function gone(body, request) {
+  const headers = new Headers({
+    'content-type': 'application/json; charset=utf-8',
+    'cache-control': 'no-store',
+    'x-robots-tag': 'noindex, nofollow'
+  });
+  const accept = String(request.headers.get('accept') || '').toLowerCase();
+  if (accept.includes('text/html')) {
+    return new Response(`<!DOCTYPE html><html lang="ko"><meta charset="utf-8"><meta name="robots" content="noindex,nofollow"><title>410 Gone</title><body style="background:#07111f;color:#eef4ff;font-family:system-ui;padding:32px"><h1>정리된 경로입니다.</h1><p>이 페이지는 더 이상 사용하지 않습니다.</p><p><a href="/" style="color:#8fb6ff">메인으로 이동</a></p></body></html>`, { status: 410, headers: { 'content-type': 'text/html; charset=utf-8', 'cache-control': 'no-store', 'x-robots-tag': 'noindex, nofollow' } });
+  }
+  return new Response(JSON.stringify(body), { status: 410, headers });
 }
 
 function getDB(env) {
@@ -1361,30 +1383,24 @@ async function handleSafetyDomainLookup(request, env) {
   const ipProfiles = ipProfilesRaw.filter((item) => item && item.success !== false).map((item) => normalizeIpProfile(item));
   const rdapSummary = normalizeRdapSummary(rdap, now);
   const cluster = buildClusterSummary(ipProfiles, nsRecords);
-  const summary = buildSafetySummary(rdapSummary, { aRecords, nsRecords, mxRecords }, cluster);
-  const signals = buildSafetySignals(rdapSummary, { aRecords, nsRecords, mxRecords }, cluster);
+  const risk = buildDomainRiskV1(rdapSummary, { aRecords, nsRecords, mxRecords }, cluster);
+  const interpretation = buildDomainInterpretation(rdapSummary, { aRecords, nsRecords, mxRecords }, cluster, risk);
   const googleSearches = buildSafetyGoogleSearches(domain);
 
   return json({
     ok: true,
     domain,
     checkedAt: new Date(now).toISOString(),
-    summary,
+    summary: { score: risk.score, verdict: risk.verdict, commentary: risk.commentary },
+    risk,
+    interpretation,
     rdap: rdapSummary,
-    dns: {
-      aRecords,
-      aaaaRecords,
-      nameServers: nsRecords,
-      mxRecords
-    },
+    dns: { aRecords, aaaaRecords, nameServers: nsRecords, mxRecords },
     networks: ipProfiles,
     cluster,
-    signals,
     googleSearches
   }, 200, corsHeaders(request));
 }
-
-
 
 async function handleSafetyIpLookup(request, env) {
   const url = new URL(request.url);
@@ -1402,17 +1418,47 @@ async function handleSafetyIpLookup(request, env) {
   }
   const profile = normalizeIpDetail(profileRaw);
   const ptr = dedupeDnsAnswers(ptrPayload);
+  const cluster = buildClusterSummary([{ ip: profile.ip, asn: profile.asn, org: profile.org }], []);
+  const risk = buildIpRiskV1(profile, ptr, cluster);
+  const interpretation = buildIpInterpretation(profile, ptr, cluster, risk);
   const googleSearches = buildSafetyIpSearches(ip);
   return json({
     ok: true,
     checkedAt: new Date().toISOString(),
     ip: profile,
     ptr,
-    summary: {
-      commentary: 'IP 기준 ASN, 조직, PTR, 공개 검색 조합을 같이 보는 흐름으로 정리했습니다.'
-    },
+    cluster,
+    risk,
+    interpretation,
+    summary: { commentary: risk.commentary },
     googleSearches
   }, 200, corsHeaders(request));
+}
+
+async function handleSafetyEvidenceExtract(request, env) {
+  const url = new URL(request.url);
+  const target = normalizeEvidenceUrl(url.searchParams.get('url') || '');
+  if (!target) {
+    return json({ ok: false, error: 'invalid_url', message: '공개 글 URL 형식이 올바르지 않습니다.' }, 400, corsHeaders(request));
+  }
+  const host = new URL(target).hostname.toLowerCase();
+  if (!isAllowedEvidenceHost(host)) {
+    return json({ ok: false, error: 'host_not_allowed', message: '허용된 공개 페이지 호스트만 추출할 수 있습니다.' }, 400, corsHeaders(request));
+  }
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort('timeout'), 9000);
+  let html = '';
+  try {
+    const res = await fetch(target, { signal: controller.signal, redirect: 'follow', headers: { 'accept': 'text/html,application/xhtml+xml' } });
+    if (!res.ok) return json({ ok: false, error: 'fetch_failed', message: '공개 글 응답을 가져오지 못했습니다.' }, 502, corsHeaders(request));
+    html = await res.text();
+  } catch (error) {
+    return json({ ok: false, error: 'fetch_failed', message: '공개 글 응답을 가져오지 못했습니다.' }, 502, corsHeaders(request));
+  } finally {
+    clearTimeout(timer);
+  }
+  const extracted = extractEvidenceFromHtml(target, html);
+  return json({ ok: true, source: extracted.source, evidence: extracted.evidence, interpretation: extracted.interpretation }, 200, corsHeaders(request));
 }
 
 async function handleSafetyBrandDirectory(request, env) {
@@ -1704,4 +1750,133 @@ function buildSafetyGoogleSearches(domain) {
     ...item,
     href: `https://www.google.com/search?q=${encodeURIComponent(item.query)}`
   }));
+}
+
+
+function isDeprecatedSearchCleanupPath(path = '') {
+  return /^\/muktu-police\/(brand|compare|report|query)(\/|$)/.test(path) || /^\/muktu-police\/faq\/(yangsim|chilbet|vegas|avengers)(\/|$)/.test(path);
+}
+
+function buildDomainRiskV1(rdap, dns, cluster) {
+  const drivers = [];
+  let score = 100;
+  const apply = (points, label, detail) => { score -= points; drivers.push({ points, label, detail }); };
+  if (rdap?.ageDays == null) apply(8, '등록일 응답 부족', 'RDAP 등록일 응답이 없어 도메인 연차 판단 신뢰도가 낮습니다.');
+  else if (rdap.ageDays < 30) apply(34, '생성 30일 미만', `도메인 생성 후 ${rdap.ageDays}일입니다.`);
+  else if (rdap.ageDays < 90) apply(24, '생성 90일 미만', `도메인 생성 후 ${rdap.ageDays}일입니다.`);
+  else if (rdap.ageDays < 365) apply(12, '생성 1년 미만', `도메인 생성 후 ${rdap.ageDays}일입니다.`);
+  if (rdap?.expiresInDays != null && rdap.expiresInDays < 30) apply(16, '만료 임박', `도메인 만료까지 ${rdap.expiresInDays}일입니다.`);
+  else if (rdap?.expiresInDays != null && rdap.expiresInDays < 90) apply(8, '만료 90일 이내', `도메인 만료까지 ${rdap.expiresInDays}일입니다.`);
+  if (!(dns?.aRecords || []).length) apply(26, 'A 레코드 부재', '현재 확인된 A 레코드가 없습니다.');
+  if (!(dns?.nameServers || []).length) apply(10, '네임서버 응답 부족', '네임서버 응답이 비어 있습니다.');
+  if ((cluster?.sharedAsns || []).length > 1) apply(6, '복수 ASN', '복수 ASN이 보여 인프라 분산 또는 변경 가능성을 같이 봐야 합니다.');
+  if ((cluster?.subnets || []).length > 1) apply(6, '복수 대역', '복수 /24 대역이 보여 공개 검색과 함께 확인하는 편이 좋습니다.');
+  score = Math.max(10, Math.min(100, score));
+  const confidence = rdap?.createdAt && (dns?.nameServers || []).length ? '중간 이상' : '중간';
+  const band = score >= 80 ? '낮음' : score >= 60 ? '중간' : score >= 40 ? '주의' : '높음';
+  const verdict = score >= 80 ? '기본 점검 통과' : score >= 60 ? '추가 확인' : score >= 40 ? '주의 필요' : '고위험 신호';
+  const commentary = score >= 80 ? '기초 지표상 큰 경고는 적지만, 공개 검색과 실제 이용 전 소액 확인은 계속 필요합니다.' : score >= 60 ? '기초 지표 중 몇 가지는 추가 확인이 필요합니다. 검색 흔적과 공지 일관성을 같이 보세요.' : score >= 40 ? '신규 도메인 또는 인프라 신호가 보여 보수적으로 보는 편이 좋습니다.' : '기술 신호 기준으로 바로 이용하기엔 위험 신호가 많은 편입니다.';
+  return { score, band, verdict, confidence, commentary, drivers };
+}
+
+function buildIpRiskV1(profile, ptr, cluster) {
+  const drivers = [];
+  let score = 100;
+  const apply = (points, label, detail) => { score -= points; drivers.push({ points, label, detail }); };
+  if (!profile?.asn) apply(18, 'ASN 정보 부족', 'ASN 응답이 없어 네트워크 조직 판단이 제한됩니다.');
+  if (!profile?.org && !profile?.isp) apply(14, '조직 정보 부족', '조직 또는 ISP 정보가 비어 있습니다.');
+  if (!(ptr || []).length) apply(10, 'PTR 없음', '역방향 PTR 응답이 없습니다.');
+  if ((profile?.type || '').toLowerCase().includes('hosting') || (profile?.type || '').toLowerCase().includes('business')) apply(8, '호스팅형 IP', '호스팅 또는 비즈니스 성격 IP일 수 있어 공개 검색과 같이 보는 편이 좋습니다.');
+  if ((cluster?.sharedAsns || []).length > 1) apply(6, '복수 ASN 힌트', '복수 ASN 힌트가 보여 같은 운영군 추적 시 메모가 필요합니다.');
+  score = Math.max(15, Math.min(100, score));
+  const band = score >= 80 ? '낮음' : score >= 60 ? '중간' : score >= 40 ? '주의' : '높음';
+  const commentary = score >= 80 ? 'IP 기준 큰 경고는 적지만, 도메인과 같이 확인하는 편이 좋습니다.' : score >= 60 ? 'IP 기준 몇 가지 해석 포인트가 있어 공개 검색과 같이 보는 편이 좋습니다.' : 'IP 기준으로 추가 확인이 필요한 신호가 있어 도메인 정보와 함께 다시 보는 편이 좋습니다.';
+  return { score, band, confidence: profile?.asn ? '중간' : '낮음', commentary, drivers };
+}
+
+function buildDomainInterpretation(rdap, dns, cluster, risk) {
+  const items = [];
+  items.push({ level: risk.band, title: '도메인 연차', detail: rdap?.ageDays != null ? `도메인 생성 후 ${rdap.ageDays}일입니다.` : '등록일 응답이 없어 도메인 연차 해석 신뢰도가 낮습니다.' });
+  items.push({ level: (dns?.aRecords || []).length ? '기본' : '주의', title: 'DNS 연결', detail: (dns?.aRecords || []).length ? `${dns.aRecords.length}개 A 레코드를 확인했습니다.` : 'A 레코드가 없어 현재 연결 상태를 먼저 확인해야 합니다.' });
+  items.push({ level: (cluster?.sharedAsns || []).length > 1 || (cluster?.subnets || []).length > 1 ? '주의' : '기본', title: '클러스터 힌트', detail: cluster?.summary || '뚜렷한 클러스터 힌트가 많지 않습니다.' });
+  if (rdap?.expiresInDays != null) items.push({ level: rdap.expiresInDays < 90 ? '확인' : '기본', title: '만료 시점', detail: `도메인 만료까지 ${rdap.expiresInDays}일입니다.` });
+  return items.slice(0, 4);
+}
+
+function buildIpInterpretation(profile, ptr, cluster, risk) {
+  return [
+    { level: risk.band, title: '네트워크 조직', detail: [profile?.asn, profile?.org || profile?.isp, profile?.network].filter(Boolean).join(' · ') || 'ASN/조직 응답이 제한적입니다.' },
+    { level: (ptr || []).length ? '기본' : '확인', title: 'PTR 응답', detail: (ptr || []).length ? ptr.join(', ') : 'PTR 응답이 없습니다.' },
+    { level: (cluster?.subnets || []).length > 1 ? '주의' : '기본', title: '클러스터 힌트', detail: cluster?.summary || '동일 IP 기준 추가 클러스터 힌트가 많지 않습니다.' }
+  ];
+}
+
+function normalizeEvidenceUrl(value = '') {
+  try {
+    const url = new URL(String(value || '').trim());
+    if (!/^https?:$/.test(url.protocol)) return '';
+    return url.toString();
+  } catch (error) {
+    return '';
+  }
+}
+
+function isAllowedEvidenceHost(host = '') {
+  const value = String(host || '').toLowerCase();
+  const allow = ['mt-police07.com', 'www.mt-police07.com', 'mt-spot.com', 'www.mt-spot.com', 'daumd08.net', 'www.daumd08.net', 'mtlevel.com', 'www.mtlevel.com', 'mtgal.com', 'www.mtgal.com'];
+  return allow.includes(value);
+}
+
+function extractEvidenceFromHtml(url, html = '') {
+  const sourceUrl = new URL(url);
+  const title = firstMatch(html, [/<meta[^>]+property=["']og:title["'][^>]+content=["']([^"']+)["']/i, /<title[^>]*>([^<]+)<\/title>/i]);
+  const publishedAt = firstMatch(html, [/<meta[^>]+property=["']article:published_time["'][^>]+content=["']([^"']+)["']/i, /<meta[^>]+name=["']date["'][^>]+content=["']([^"']+)["']/i, /<time[^>]+datetime=["']([^"']+)["']/i]);
+  const canonical = firstMatch(html, [/<link[^>]+rel=["']canonical["'][^>]+href=["']([^"']+)["']/i]);
+  const text = stripHtml(html).replace(/\s+/g, ' ').trim();
+  const domains = collectUniqueMatches(text, /(?:[a-z0-9-]+\.)+[a-z]{2,}/gi).filter((item) => !item.endsWith('.png') && !item.endsWith('.jpg')).slice(0, 12);
+  const ips = collectUniqueMatches(text, /(?:\d{1,3}\.){3}\d{1,3}/g).slice(0, 12);
+  const telegrams = collectUniqueMatches(text, /(?:t\.me\/[A-Za-z0-9_]+|@[A-Za-z0-9_]{4,})/g).slice(0, 8);
+  const kakaos = collectUniqueMatches(html, /open\.kakao\.com\/[A-Za-z0-9_\-\/]+/gi).slice(0, 8);
+  const interpretation = [];
+  interpretation.push({ title: '기본 기록 항목', detail: '제목, 날짜, URL, 도메인·IP 언급만 기록해도 재확인 속도가 빨라집니다.' });
+  if (domains.length) interpretation.push({ title: '도메인 흔적', detail: `${domains.length}개의 도메인 언급을 찾았습니다.` });
+  if (ips.length) interpretation.push({ title: 'IP 흔적', detail: `${ips.length}개의 IP 언급을 찾았습니다.` });
+  if (!domains.length && !ips.length) interpretation.push({ title: '도메인·IP 직접 언급 없음', detail: '본문에는 직접적인 도메인·IP 표현이 많지 않을 수 있어 제목과 URL 위주로 먼저 기록하는 편이 좋습니다.' });
+  return {
+    source: { url, host: sourceUrl.hostname, title: title || sourceUrl.hostname, publishedAt: publishedAt || '', canonical: canonical || url },
+    evidence: { excerpt: trimText(text, 220), domains, ips, telegrams, kakaos },
+    interpretation
+  };
+}
+
+function firstMatch(text = '', patterns = []) {
+  for (const re of patterns) {
+    const match = String(text || '').match(re);
+    if (match && match[1]) return decodeHtmlEntities(match[1].trim());
+  }
+  return '';
+}
+
+function stripHtml(value = '') {
+  return decodeHtmlEntities(String(value || '').replace(/<script[\s\S]*?<\/script>/gi, ' ').replace(/<style[\s\S]*?<\/style>/gi, ' ').replace(/<[^>]+>/g, ' '));
+}
+
+function decodeHtmlEntities(value = '') {
+  return String(value || '').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&#x27;/g, "'").replace(/\s+/g, ' ').trim();
+}
+
+function collectUniqueMatches(text = '', regex) {
+  const values = new Set();
+  for (const match of String(text || '').matchAll(regex)) {
+    const item = String(match[0] || '').trim().replace(/[),.;]+$/, '');
+    if (!item) continue;
+    values.add(item);
+  }
+  return [...values];
+}
+
+function trimText(value = '', max = 220) {
+  const text = String(value || '').trim();
+  if (text.length <= max) return text;
+  return text.slice(0, max - 1).trimEnd() + '…';
 }

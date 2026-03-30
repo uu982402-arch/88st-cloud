@@ -1,0 +1,9 @@
+삭제 적용 목록
+- muktu-police/brand/
+- muktu-police/compare/
+- muktu-police/report/
+- muktu-police/query/
+- muktu-police/faq/yangsim/
+- muktu-police/faq/chilbet/
+- muktu-police/faq/vegas/
+- muktu-police/faq/avengers/

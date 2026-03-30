@@ -12,6 +12,7 @@
     "audit:index": "node scripts/generate-indexing-audit.mjs",
     "audit:ctr": "node scripts/generate-ctr-report.mjs",
     "traffic:roadmap": "node scripts/generate-traffic-roadmap.mjs",
-    "brands:static": "node scripts/generate-brand-pages.mjs"
+    "brands:static": "node scripts/generate-brand-pages.mjs",
+    "community:manifest": "node scripts/generate-community-manifest.mjs"
   }
 }
