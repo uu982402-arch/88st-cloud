@@ -258,13 +258,15 @@ body{background:radial-gradient(circle at top,rgba(91,126,214,.06),transparent 2
 }
 
 
-/* hub/header refinement - 2026-03-31 */
-.hub-hero-minimal{padding:18px 20px;border-radius:24px;}
-.hub-hero-minimal .community-hero-grid{grid-template-columns:1fr;gap:0;}
-.hub-hero-minimal .hero-side-stack,.hub-hero-minimal .safety-kicker,.hub-hero-minimal h1,.hub-hero-minimal > .community-hero-grid > div > p,.hub-hero-minimal .hero-mininote{display:none!important;}
-.hub-hero-minimal .hero-action-grid,.hub-hero-minimal .toolkit-hero-shortcuts,.hub-hero-minimal .quick-check-row{margin-top:0;}
-.main-nav{gap:8px;} .main-nav a{min-height:38px;padding:0 12px;}
-.footer-links{display:flex;flex-wrap:wrap;gap:10px 14px;}
-.guaranteed-card p{font-size:.95rem;line-height:1.58;} .guaranteed-benefit{padding:10px 12px;} .guaranteed-benefit span{display:none;} .guaranteed-benefit strong{font-size:.93rem;}
-.quick-check-card span{display:none;} .quick-check-card strong{font-size:1rem;} .quick-check-card p{margin-top:6px;font-size:.9rem;line-height:1.5;}
-@media (max-width:780px){.hub-hero-minimal{padding:14px 14px;border-radius:20px}.main-nav a{padding:0 10px;min-height:34px;font-size:.84rem}.quick-check-row{gap:8px}.quick-check-card{padding:12px}.guaranteed-card{padding:14px;border-radius:18px}.guaranteed-actions .safety-link-btn,.guaranteed-actions .safety-copy-btn{min-height:42px}}
+/* realdomain tune pass - 2026-03-31 */
+.section-topless{padding-top:8px}
+.section-topless + .section{padding-top:18px}
+.quick-check-row--compact{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:0}
+[data-community-page="guaranteed"] .guaranteed-grid{margin-top:4px}
+[data-community-page="guaranteed"] .guaranteed-card h3{font-size:1.28rem}
+[data-community-page="guaranteed"] .guaranteed-card p{font-size:.95rem;line-height:1.56}
+[data-community-page="guaranteed"] .guaranteed-benefit{padding:12px 13px;border-radius:16px}
+[data-community-page="guaranteed"] .guaranteed-actions{gap:8px}
+[data-community-page="guaranteed"] .guaranteed-actions .safety-link-btn,[data-community-page="guaranteed"] .guaranteed-actions .safety-copy-btn{min-height:42px}
+[data-community-page="tools"] .section:first-child .section-head, [data-community-page="blog"] .section:first-child .section-head, [data-community-page="muktu-police"] .section:first-child .section-head, [data-community-page="guaranteed"] .section:first-child .section-head{margin-top:0}
+@media (max-width:780px){.section-topless{padding-top:4px}.section-topless + .section{padding-top:14px}.quick-check-row--compact{grid-template-columns:1fr;gap:8px}.quick-check-row--compact .quick-check-card{padding:12px;border-radius:16px}.quick-check-row--compact .quick-check-card p{font-size:.84rem;line-height:1.46}}
