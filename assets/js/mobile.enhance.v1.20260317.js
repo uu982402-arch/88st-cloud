@@ -355,6 +355,6 @@
     }
   }
 
-  mountInlinePromos();
+  // 광고 카드는 보증업체 페이지에서만 노출되도록 자동 삽입을 비활성화합니다.
   mountMobileDock();
 })();
