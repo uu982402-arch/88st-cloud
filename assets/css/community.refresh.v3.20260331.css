@@ -164,3 +164,34 @@ body,body p,body li,body dd,body dt,body label,body a,body span{color:inherit}
   .home-review-section .section-head h2,
   .home-blog-section .section-head h2{margin-bottom:0}
 }
+
+
+/* mobile compression pass 4 - 2026-03-31 */
+@media (max-width:780px){
+  .home-flow-section .section-head p{display:none}
+  .home-flow-section .section-head{margin-bottom:6px}
+  .home-flow-section .section-head > div:first-child{width:100%}
+  .home-flow-section .section-head h2{margin-bottom:0}
+  .home-flow-section .tool-card,
+  .home-review-section .review-log-card,
+  .home-blog-section .article-card{padding:12px 12px 13px;border-radius:16px}
+  .home-flow-section .tool-card h3,
+  .home-review-section .review-log-card h3,
+  .home-blog-section .article-card h3{font-size:1rem;line-height:1.3;margin-bottom:4px}
+  .home-flow-section .tool-card p,
+  .home-review-section .review-log-card p,
+  .home-blog-section .article-card p{
+    margin-top:4px;
+    font-size:.86rem;
+    line-height:1.45;
+    display:-webkit-box;
+    -webkit-line-clamp:1;
+    -webkit-box-orient:vertical;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+  .home-review-section .review-log-card small,
+  .home-blog-section .article-kicker{display:none}
+  .home-review-section .review-log-signals{margin-top:8px;gap:6px}
+  .home-review-section .signal-chip{padding:5px 8px;font-size:.72rem}
+}
