@@ -100,6 +100,16 @@ export default {
         return json({ ok: false, error: 'method_not_allowed' }, 405, corsHeaders(request));
       }
 
+      if (path === '/api/safety/brands') {
+        if (method === 'GET') return handleSafetyBrandDirectory(request, env);
+        return json({ ok: false, error: 'method_not_allowed' }, 405, corsHeaders(request));
+      }
+
+      if (path === '/api/safety/compare') {
+        if (method === 'GET') return handleSafetyCompare(request, env);
+        return json({ ok: false, error: 'method_not_allowed' }, 405, corsHeaders(request));
+      }
+
       if (path.startsWith('/api/')) {
         return json({ ok: false, error: 'not_found' }, 404, corsHeaders(request));
       }
@@ -1367,6 +1377,68 @@ async function handleSafetyDomainLookup(request, env) {
     signals,
     googleSearches
   }, 200, corsHeaders(request));
+}
+
+
+async function handleSafetyBrandDirectory(request, env) {
+  const url = new URL(request.url);
+  const slug = String(url.searchParams.get('slug') || '').trim().toLowerCase();
+  const payload = await loadStaticJsonAsset(env, '/assets/data/brand.results.v2.20260330.json');
+  if (!payload || !Array.isArray(payload.brands)) {
+    return json({ ok: false, error: 'brand_payload_unavailable' }, 500, corsHeaders(request));
+  }
+  const brands = payload.brands.map((brand) => ({
+    slug: brand.slug,
+    name: brand.name,
+    displayTitle: brand.displayTitle,
+    officialDomain: brand.officialDomain,
+    code: brand.code,
+    oneLine: brand.oneLine,
+    status: brand.status,
+    tags: brand.badgeTags || brand.tags || []
+  }));
+  const item = slug ? brands.find((brand) => brand.slug === slug) : null;
+  return json({ ok: true, updated: payload.updated, brands: item ? [item] : brands }, 200, corsHeaders(request));
+}
+
+async function handleSafetyCompare(request, env) {
+  const url = new URL(request.url);
+  const left = String(url.searchParams.get('left') || '').trim().toLowerCase();
+  const right = String(url.searchParams.get('right') || '').trim().toLowerCase();
+  const payload = await loadStaticJsonAsset(env, '/assets/data/brand.results.v2.20260330.json');
+  if (!payload || !Array.isArray(payload.brands)) {
+    return json({ ok: false, error: 'brand_payload_unavailable' }, 500, corsHeaders(request));
+  }
+  const brands = payload.brands;
+  const leftBrand = brands.find((brand) => brand.slug === left);
+  const rightBrand = brands.find((brand) => brand.slug === right);
+  if (!leftBrand || !rightBrand) {
+    return json({ ok: false, error: 'brand_not_found', message: '비교할 브랜드를 찾지 못했습니다.' }, 404, corsHeaders(request));
+  }
+  const rows = [
+    { label: '혜택 요약', left: leftBrand.rewardSummary, right: rightBrand.rewardSummary },
+    { label: '검색 흐름', left: leftBrand.oneLine, right: rightBrand.oneLine },
+    { label: '도메인 점검', left: leftBrand.headline, right: rightBrand.headline },
+    { label: '진입 문구', left: leftBrand.conversionVariants?.[0]?.title || '', right: rightBrand.conversionVariants?.[0]?.title || '' }
+  ];
+  return json({
+    ok: true,
+    updated: payload.updated,
+    left: { slug: leftBrand.slug, name: leftBrand.name, score: leftBrand.status?.score || leftBrand.benefitRank || 0 },
+    right: { slug: rightBrand.slug, name: rightBrand.name, score: rightBrand.status?.score || rightBrand.benefitRank || 0 },
+    rows
+  }, 200, corsHeaders(request));
+}
+
+async function loadStaticJsonAsset(env, pathname) {
+  try {
+    const req = new Request('https://88st.cloud' + pathname, { method: 'GET' });
+    const res = await env.ASSETS.fetch(req);
+    if (!res.ok) return null;
+    return await res.json();
+  } catch (error) {
+    return null;
+  }
 }
 
 function normalizeLookupDomain(value = '') {

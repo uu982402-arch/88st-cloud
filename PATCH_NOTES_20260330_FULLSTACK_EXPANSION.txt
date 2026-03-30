@@ -1,0 +1,43 @@
+[이번 패치 핵심]
+- 메인 퍼스트뷰 추가 압축
+- 브랜드 쇼케이스 고급 필터 모듈
+- 브랜드 결과 자동생성 엔진 v2
+- 브랜드 FAQ 자동생성 팩
+- 도메인 검사 결과 랜딩 확장
+- 비교 페이지 자동생성 모듈
+- 롱테일 SEO 페이지 팩
+- 내부링크/사이트맵 자동 확장
+- 공유형 결과 URL 빌더
+- 브랜드 상태 배지 시스템
+
+[신규/변경 주요 파일]
+- index.html
+- muktu-police/index.html
+- muktu-police/search/index.html
+- muktu-police/check/index.html
+- muktu-police/report/index.html
+- muktu-police/brand/*
+- muktu-police/faq/*
+- muktu-police/compare/*
+- muktu-police/query/*
+- assets/data/brand.results.v2.20260330.json
+- assets/data/generated.routes.v1.20260330.json
+- assets/css/luxury.refresh.v3.20260330.css
+- assets/js/luxury.refresh.v3.20260330.js
+- assets/js/safety.center.v4.20260330.js
+- scripts/generate-brand-pages.mjs
+- _worker.js
+- sitemap.xml / sitemap.txt / serverless/sitemap.xml
+
+[자동 생성 결과]
+- 브랜드 결과 4개
+- FAQ 페이지 4개 + 허브
+- 비교 페이지 6개 + 허브
+- 롱테일 검색 페이지 24개 + 허브
+- 생성 라우트 매니페스트 JSON 1개
+
+[점검]
+- safety.center.v4.20260330.js 문법 체크
+- luxury.refresh.v3.20260330.js 문법 체크
+- generate-brand-pages.mjs 실행 확인
+- sitemap 재생성 완료
