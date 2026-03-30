@@ -184,32 +184,59 @@
     });
   }
 
-  function renderSearchResults(brands, keyword) {
+  function buildGoogleQuery(keyword, suffix) {
+    const clean = String(keyword || '').trim();
+    const tail = String(suffix || '').trim();
+    return [clean, tail].filter(Boolean).join(' ').trim();
+  }
+
+  function googleSearchUrl(query) {
+    return `https://www.google.com/search?q=${encodeURIComponent(String(query || '').trim())}`;
+  }
+
+  function renderSearchResults(brands, keyword, selectedSuffix = '먹튀') {
     const target = $('#googleQueryResults');
     if (!target) return;
     const clean = String(keyword || '').trim();
     if (!clean) {
-      target.innerHTML = '<div class="empty-state"><strong>검색할 브랜드명 또는 도메인을 입력해 주세요.</strong>예: 양심, 베가스, 82clf.com</div>';
+      target.innerHTML = '<div class="empty-state"><strong>검색할 사이트명 또는 도메인을 입력해 주세요.</strong>예: 사이트명, example.com</div>';
       return;
     }
     const queries = [
-      { label: '먹튀 사례 조회', suffix: '먹튀' },
-      { label: '먹튀검증 검색', suffix: '먹튀검증' },
+      { label: '먹튀 검색', suffix: '먹튀' },
       { label: '후기 검색', suffix: '후기' },
-      { label: '메이저 여부', suffix: '메이저' },
+      { label: '주소 확인', suffix: '주소' },
       { label: '도메인 변경', suffix: '도메인 변경' },
-      { label: '가입코드 확인', suffix: '가입코드' }
+      { label: '가입코드 확인', suffix: '가입코드' },
+      { label: '메이저 여부', suffix: '메이저' }
     ];
-    const matchedBrands = matchBrandByKeyword(brands, clean);
+    const primary = buildGoogleQuery(clean, selectedSuffix);
+    const isDomain = /\.[a-z]{2,}$/i.test(clean);
     target.innerHTML = `
+      <div class="result-panel">
+        <div class="result-head">
+          <div>
+            <div class="risk-chip watch">입력형 구글 검색</div>
+            <h2>${escapeHtml(primary)}</h2>
+            <p>입력한 키워드로 바로 구글 검색을 실행하고, 필요한 조합은 아래에서 이어서 확인할 수 있습니다.</p>
+          </div>
+          <div class="query-actions">
+            <a class="safety-link-btn" href="${googleSearchUrl(primary)}" target="_blank" rel="noopener noreferrer">구글에서 검색</a>
+            <button class="safety-copy-btn ghost" type="button" data-copy-text="${escapeHtml(primary)}"><span data-copy-label data-default-label="검색어 복사">검색어 복사</span></button>
+          </div>
+        </div>
+      </div>
       <div class="search-result-grid">${queries.map((item) => {
-        const query = `${clean} ${item.suffix}`;
-        return `<article class="search-result-card"><h3>${escapeHtml(item.label)}</h3><p>${escapeHtml(query)} 로 구글 검색을 바로 실행합니다.</p><div class="query-actions"><a class="safety-link-btn" href="https://www.google.com/search?q=${encodeURIComponent(query)}" target="_blank" rel="noopener noreferrer">구글에서 보기</a><button class="safety-copy-btn ghost" type="button" data-copy-text="${escapeHtml(query)}"><span data-copy-label data-default-label="검색어 복사">검색어 복사</span></button></div></article>`;
+        const query = buildGoogleQuery(clean, item.suffix);
+        return `<article class="search-result-card"><h3>${escapeHtml(item.label)}</h3><p>${escapeHtml(query)} 조합으로 바로 검색합니다.</p><div class="query-actions"><a class="safety-link-btn" href="${googleSearchUrl(query)}" target="_blank" rel="noopener noreferrer">구글에서 보기</a><button class="safety-copy-btn ghost" type="button" data-copy-text="${escapeHtml(query)}"><span data-copy-label data-default-label="검색어 복사">검색어 복사</span></button></div></article>`;
       }).join('')}</div>
       <div class="search-result-meta">
-        <h2>같이 보면 좋은 결과 페이지</h2>
-        <div class="link-grid">${matchedBrands.length ? matchedBrands.map((brand) => `
-          <article class="quick-link-card"><a href="/muktu-police/brand/${escapeHtml(brand.slug)}/">${escapeHtml(brand.displayTitle)} ↗</a><p>${escapeHtml(brand.oneLine)}</p></article>`).join('') : `<article class="quick-link-card"><a href="/muktu-police/brand/">브랜드 결과 허브 ↗</a><p>입력어와 일치하는 브랜드가 없으면 전체 허브에서 브랜드별 결과를 다시 비교할 수 있습니다.</p></article>`}</div>
+        <h2>다음 단계</h2>
+        <div class="link-grid">
+          ${isDomain ? `<article class="quick-link-card"><a href="/muktu-police/check/?domain=${encodeURIComponent(clean)}">도메인 검사 ↗</a><p>입력한 도메인의 등록일, 만료일, DNS, IP 힌트를 바로 확인합니다.</p></article>` : `<article class="quick-link-card"><a href="/muktu-police/check/">도메인 검사 ↗</a><p>도메인을 확인할 수 있으면 등록일과 DNS 이력까지 같이 보는 편이 더 안전합니다.</p></article>`}
+          <article class="quick-link-card"><a href="/muktu-police/report/?domain=${encodeURIComponent(clean)}">결과 링크 만들기 ↗</a><p>검색 후 필요한 메모나 공유용 결과 링크를 따로 정리할 수 있습니다.</p></article>
+          <article class="quick-link-card"><a href="/muktu-police/">안전센터 허브 ↗</a><p>검색, 도메인 점검, FAQ, 비교 흐름을 한곳에서 이어서 확인합니다.</p></article>
+        </div>
       </div>`;
   }
 
@@ -422,23 +449,48 @@
     });
   }
 
+  function wireGoogleQuickForms() {
+    $$('[data-google-search-form]').forEach((form) => {
+      if (form.id === 'googleQueryForm') return;
+      const input = $('input', form);
+      const select = $('[data-google-suffix]', form);
+      if (!input) return;
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const query = buildGoogleQuery(input.value, select?.value || '먹튀');
+        if (!query) return;
+        window.open(googleSearchUrl(query), '_blank', 'noopener');
+      });
+    });
+  }
+
   function wireSearchPage(brands) {
     const form = $('#googleQueryForm');
     const input = $('#siteKeywordInput');
+    const select = $('#siteSearchType');
+    const preview = $('#googlePreviewBtn');
     if (!form || !input) return;
+    const runPreview = () => renderSearchResults(brands, input.value, select?.value || '먹튀');
     form.addEventListener('submit', (event) => {
       event.preventDefault();
-      renderSearchResults(brands, input.value);
+      const query = buildGoogleQuery(input.value, select?.value || '먹튀');
+      if (!query) return;
+      window.open(googleSearchUrl(query), '_blank', 'noopener');
+      runPreview();
     });
-    $$('[data-search-keyword]').forEach((chip) => {
+    preview?.addEventListener('click', runPreview);
+    $$('[data-search-suffix]').forEach((chip) => {
       chip.addEventListener('click', () => {
-        input.value = chip.getAttribute('data-search-keyword') || '';
-        renderSearchResults(brands, input.value);
+        if (select) select.value = chip.getAttribute('data-search-suffix') || '먹튀';
+        runPreview();
       });
     });
-    const urlKeyword = new URL(location.href).searchParams.get('q');
-    renderSearchResults(brands, urlKeyword || input.value);
+    const url = new URL(location.href);
+    const urlKeyword = url.searchParams.get('q');
+    const urlSuffix = url.searchParams.get('type');
     if (urlKeyword) input.value = urlKeyword;
+    if (urlSuffix && select) select.value = urlSuffix;
+    renderSearchResults(brands, input.value || urlKeyword || '', select?.value || '먹튀');
   }
 
   function updateShowcaseSummary(grid) {
@@ -530,6 +582,7 @@
     renderQueryPackLinks(brands);
     wireCopyButtons();
     wireDomainPresetButtons();
+    wireGoogleQuickForms();
     wireSearchPage(brands);
     wireCheckPage(brands);
     wireReportPage(brands);

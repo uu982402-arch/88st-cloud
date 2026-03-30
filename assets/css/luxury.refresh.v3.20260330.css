@@ -127,12 +127,13 @@ body{background-image:radial-gradient(circle at 10% 0,rgba(61,89,159,.16),transp
   .section{padding:28px 0}
   .section:first-of-type{padding-top:16px}
   .hero-tight{padding:18px 16px}
-  .compact-actions,.search-row,.showcase-head,.showcase-toolbar,.promo-showcase-foot,.result-head,.promo-actions,.ab-copy-actions{grid-template-columns:1fr;display:grid}
+  .compact-actions,.search-row,.search-row-advanced,.showcase-head,.showcase-toolbar,.promo-showcase-foot,.result-head,.promo-actions,.ab-copy-actions{grid-template-columns:1fr;display:grid}
   .promo-showcase-grid,.brand-directory-grid,.link-grid,.tool-grid,.search-result-grid,.metric-grid,.signal-grid,.safety-list-grid,.promo-grid,.ab-copy-grid,.faq-list,.showcase-summary,.promo-showcase-perks,.promo-showcase-meta,.brand-stats,.promo-meta-grid,.domain-insight-grid,.builder-grid,.seo-module-grid{grid-template-columns:1fr}
   .hero-micro-list span{flex:1 1 calc(50% - 5px);justify-content:center;min-height:40px}
   .showcase-sort,.showcase-search-field{width:100%}
   .showcase-toolbar{justify-content:stretch}
   .showcase-filters{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:100%}
+  .google-search-note{display:grid;justify-content:flex-start}
   .showcase-filter{width:100%}
   .safety-link-btn,.safety-copy-btn,.btn{min-height:54px;width:100%}
   .search-actions .safety-link-btn,.search-actions .safety-copy-btn{width:100%}
