@@ -110,6 +110,11 @@ export default {
         return json({ ok: false, error: 'method_not_allowed' }, 405, corsHeaders(request));
       }
 
+      if (path === '/api/safety/ip') {
+        if (method === 'GET') return handleSafetyIpLookup(request, env);
+        return json({ ok: false, error: 'method_not_allowed' }, 405, corsHeaders(request));
+      }
+
       if (path.startsWith('/api/')) {
         return json({ ok: false, error: 'not_found' }, 404, corsHeaders(request));
       }
@@ -1380,6 +1385,36 @@ async function handleSafetyDomainLookup(request, env) {
 }
 
 
+
+async function handleSafetyIpLookup(request, env) {
+  const url = new URL(request.url);
+  const raw = url.searchParams.get('ip') || '';
+  const ip = normalizeLookupIp(raw);
+  if (!ip) {
+    return json({ ok: false, error: 'invalid_ip', message: 'IP 형식이 올바르지 않습니다.' }, 400, corsHeaders(request));
+  }
+  const [profileRaw, ptrPayload] = await Promise.all([
+    fetchJsonWithTimeout(`https://ipwho.is/${encodeURIComponent(ip)}`),
+    lookupPtrRecord(ip)
+  ]);
+  if (!profileRaw || profileRaw.success === false) {
+    return json({ ok: false, error: 'ip_lookup_failed', message: 'IP 조회 응답을 불러오지 못했습니다.' }, 502, corsHeaders(request));
+  }
+  const profile = normalizeIpDetail(profileRaw);
+  const ptr = dedupeDnsAnswers(ptrPayload);
+  const googleSearches = buildSafetyIpSearches(ip);
+  return json({
+    ok: true,
+    checkedAt: new Date().toISOString(),
+    ip: profile,
+    ptr,
+    summary: {
+      commentary: 'IP 기준 ASN, 조직, PTR, 공개 검색 조합을 같이 보는 흐름으로 정리했습니다.'
+    },
+    googleSearches
+  }, 200, corsHeaders(request));
+}
+
 async function handleSafetyBrandDirectory(request, env) {
   const url = new URL(request.url);
   const slug = String(url.searchParams.get('slug') || '').trim().toLowerCase();
@@ -1439,6 +1474,63 @@ async function loadStaticJsonAsset(env, pathname) {
   } catch (error) {
     return null;
   }
+}
+
+
+function normalizeLookupIp(value = '') {
+  const raw = String(value || '').trim();
+  if (!raw) return '';
+  if (raw.includes(':')) {
+    return /^[0-9a-f:]+$/i.test(raw) ? raw.toLowerCase() : '';
+  }
+  const parts = raw.split('.');
+  if (parts.length !== 4) return '';
+  for (const part of parts) {
+    if (!/^\d+$/.test(part)) return '';
+    const num = Number(part);
+    if (num < 0 || num > 255) return '';
+  }
+  return parts.join('.');
+}
+
+function reversePtrName(ip = '') {
+  if (/^\d+\.\d+\.\d+\.\d+$/.test(ip)) {
+    return ip.split('.').reverse().join('.') + '.in-addr.arpa';
+  }
+  return '';
+}
+
+async function lookupPtrRecord(ip = '') {
+  const ptrName = reversePtrName(ip);
+  if (!ptrName) return null;
+  return dnsJsonLookup(ptrName, 'PTR');
+}
+
+function normalizeIpDetail(payload) {
+  const connection = payload?.connection || {};
+  return {
+    ip: String(payload?.ip || ''),
+    country: String(payload?.country || ''),
+    city: String(payload?.city || ''),
+    region: String(payload?.region || ''),
+    org: String(connection?.org || payload?.org || ''),
+    isp: String(connection?.isp || payload?.isp || ''),
+    asn: connection?.asn ? `AS${connection.asn}` : '',
+    network: String(connection?.domain || connection?.isp || payload?.isp || ''),
+    type: String(connection?.type || payload?.type || '')
+  };
+}
+
+function buildSafetyIpSearches(ip) {
+  const terms = [
+    { label: 'IP 먹튀 검색', query: `${ip} 먹튀` },
+    { label: 'IP 후기 검색', query: `${ip} 후기` },
+    { label: 'IP 도메인 검색', query: `${ip} 도메인` },
+    { label: '먹튀폴리스 검색', query: `site:mt-police07.com ${ip}` },
+    { label: '먹튀스팟 검색', query: `site:mt-spot.com ${ip}` },
+    { label: '먹튀레벨 검색', query: `site:mtlevel.com ${ip}` }
+  ];
+  return terms.map((item) => ({ ...item, href: `https://www.google.com/search?q=${encodeURIComponent(item.query)}` }));
 }
 
 function normalizeLookupDomain(value = '') {
@@ -1610,6 +1702,6 @@ function buildSafetyGoogleSearches(domain) {
   ];
   return terms.map((item) => ({
     ...item,
-    url: `https://www.google.com/search?q=${encodeURIComponent(item.query)}`
+    href: `https://www.google.com/search?q=${encodeURIComponent(item.query)}`
   }));
 }

@@ -1,49 +1,16 @@
 {
   "updated": "2026-03-30",
-  "brands": [
-    "/muktu-police/brand/yangsim/",
-    "/muktu-police/brand/chilbet/",
-    "/muktu-police/brand/vegas/",
-    "/muktu-police/brand/avengers/"
-  ],
-  "faqRoutes": [
-    "/muktu-police/faq/yangsim/",
-    "/muktu-police/faq/chilbet/",
-    "/muktu-police/faq/vegas/",
-    "/muktu-police/faq/avengers/"
-  ],
-  "compareRoutes": [
-    "/muktu-police/compare/yangsim-vs-chilbet/",
-    "/muktu-police/compare/yangsim-vs-vegas/",
-    "/muktu-police/compare/yangsim-vs-avengers/",
-    "/muktu-police/compare/chilbet-vs-vegas/",
-    "/muktu-police/compare/chilbet-vs-avengers/",
-    "/muktu-police/compare/vegas-vs-avengers/"
-  ],
-  "queryRoutes": [
-    "/muktu-police/query/yangsim-muktu/",
-    "/muktu-police/query/yangsim-review/",
-    "/muktu-police/query/yangsim-major/",
-    "/muktu-police/query/yangsim-domain/",
-    "/muktu-police/query/yangsim-address/",
-    "/muktu-police/query/yangsim-code/",
-    "/muktu-police/query/chilbet-muktu/",
-    "/muktu-police/query/chilbet-review/",
-    "/muktu-police/query/chilbet-major/",
-    "/muktu-police/query/chilbet-domain/",
-    "/muktu-police/query/chilbet-address/",
-    "/muktu-police/query/chilbet-code/",
-    "/muktu-police/query/vegas-muktu/",
-    "/muktu-police/query/vegas-review/",
-    "/muktu-police/query/vegas-major/",
-    "/muktu-police/query/vegas-domain/",
-    "/muktu-police/query/vegas-address/",
-    "/muktu-police/query/vegas-code/",
-    "/muktu-police/query/avengers-muktu/",
-    "/muktu-police/query/avengers-review/",
-    "/muktu-police/query/avengers-major/",
-    "/muktu-police/query/avengers-domain/",
-    "/muktu-police/query/avengers-address/",
-    "/muktu-police/query/avengers-code/"
+  "routes": [
+    "/",
+    "/blog/",
+    "/blog/safe-toto-site-selection/",
+    "/blog/domain-ip-check-basics/",
+    "/blog/google-muktu-search-guide/",
+    "/tools/",
+    "/muktu-police/",
+    "/muktu-police/search/",
+    "/muktu-police/check/",
+    "/muktu-police/faq/",
+    "/guaranteed/"
   ]
 }

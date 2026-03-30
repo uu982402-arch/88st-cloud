@@ -99,7 +99,7 @@
   </style>
 <script src="/assets/js/seo.apply.v1.js?v=v20260224-2330"></script>
 <link href="/assets/css/open.final.v1.20260317.css" rel="stylesheet"/>
-<link href="/assets/css/luxury.refresh.v3.20260330.css" rel="stylesheet"/></head>
+<link href="/assets/css/luxury.refresh.v3.20260330.css" rel="stylesheet"/><link href="/assets/css/community.refresh.v1.20260330.css" rel="stylesheet"/></head>
 <body>
 <main class="opsWrap">
 <!-- LOCK SCREEN -->
@@ -138,15 +138,15 @@
 <h2 style="margin:0;font-size:15px;letter-spacing:-.02em;">운영 바로보기</h2>
 <div class="hint" style="margin-top:6px;">OPS에서는 배포형 설정과 사이트 유틸만 관리하고, 검색/방문 성과는 외부 콘솔에서 직접 확인하는 구조로 정리했습니다.</div>
 <div class="opsPulse">
-  <div class="opsStat"><div class="k">운영 기준</div><div class="v">설정 · 배포 분리</div><div class="m">패치 룰, 인증 랜딩, 팝업, 사이트 런타임을 파일 기반으로 관리합니다.</div></div>
-  <div class="opsStat"><div class="k">방문/이벤트</div><div class="v">GA 직접 확인</div><div class="m">운영자 경로는 수집에서 제외하고, 공개 페이지 위주로 애널리틱스를 확인합니다.</div></div>
-  <div class="opsStat"><div class="k">검색/색인</div><div class="v">GSC 직접 확인</div><div class="m">색인 상태, 클릭, 노출, URL 검사 요청은 Search Console 기준으로 관리합니다.</div></div>
-  <div class="opsStat"><div class="k">배포 체크</div><div class="v">사이트맵 · 스모크</div><div class="m">사이트맵 퍼지 리스트와 CTA 스모크 체크로 배포 전 점검 흐름을 유지합니다.</div></div>
+<div class="opsStat"><div class="k">운영 기준</div><div class="v">설정 · 배포 분리</div><div class="m">패치 룰, 인증 랜딩, 팝업, 사이트 런타임을 파일 기반으로 관리합니다.</div></div>
+<div class="opsStat"><div class="k">방문/이벤트</div><div class="v">GA 직접 확인</div><div class="m">운영자 경로는 수집에서 제외하고, 공개 페이지 위주로 애널리틱스를 확인합니다.</div></div>
+<div class="opsStat"><div class="k">검색/색인</div><div class="v">GSC 직접 확인</div><div class="m">색인 상태, 클릭, 노출, URL 검사 요청은 Search Console 기준으로 관리합니다.</div></div>
+<div class="opsStat"><div class="k">배포 체크</div><div class="v">사이트맵 · 스모크</div><div class="m">사이트맵 퍼지 리스트와 CTA 스모크 체크로 배포 전 점검 흐름을 유지합니다.</div></div>
 </div>
 <div class="opsGuideGrid">
-  <a class="opsLink" href="https://analytics.google.com/" target="_blank" rel="noopener noreferrer"><div><div class="name">Google Analytics</div><div class="path">방문 / 채널 / 이벤트 직접 확인</div></div><div class="go">↗</div></a>
-  <a class="opsLink" href="https://search.google.com/search-console" target="_blank" rel="noopener noreferrer"><div><div class="name">Search Console</div><div class="path">색인 / 노출 / 클릭 / URL 검사</div></div><div class="go">↗</div></a>
-  <a class="opsLink" href="https://dash.cloudflare.com/" target="_blank" rel="noopener noreferrer"><div><div class="name">Cloudflare</div><div class="path">배포 / 캐시 / Worker / Secret 관리</div></div><div class="go">↗</div></a>
+<a class="opsLink" href="https://analytics.google.com/" rel="noopener noreferrer" target="_blank"><div><div class="name">Google Analytics</div><div class="path">방문 / 채널 / 이벤트 직접 확인</div></div><div class="go">↗</div></a>
+<a class="opsLink" href="https://search.google.com/search-console" rel="noopener noreferrer" target="_blank"><div><div class="name">Search Console</div><div class="path">색인 / 노출 / 클릭 / URL 검사</div></div><div class="go">↗</div></a>
+<a class="opsLink" href="https://dash.cloudflare.com/" rel="noopener noreferrer" target="_blank"><div><div class="name">Cloudflare</div><div class="path">배포 / 캐시 / Worker / Secret 관리</div></div><div class="go">↗</div></a>
 </div>
 </section>
 <!-- PATCH RULES -->
@@ -570,10 +570,10 @@
       // --- Console features ---
       const linkItems = [
         {name:'메인 홈', path:'/'},
-        {name:'안전센터', path:'/muktu-police/'},
+        {name:'도구', path:'/tools/'},
         {name:'사례 조회', path:'/muktu-police/search/'},
         {name:'도메인 검사', path:'/muktu-police/check/'},
-        {name:'결과 페이지', path:'/muktu-police/report/'},
+        {name:'구글링', path:'/muktu-police/search/'},
         {name:'배당분석', path:'/analysis/'},
         {name:'운영 안내', path:'/seo/'},
         {name:'관리자', path:'/admin/'}
@@ -1415,5 +1415,5 @@
     })();
   </script>
 <script defer="" src="/assets/js/open.final.v1.20260317.js"></script>
-</body>
+<script defer="True" src="/assets/js/community.tools.v1.20260330.js"></script></body>
 </html>
