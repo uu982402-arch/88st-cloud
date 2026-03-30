@@ -151,3 +151,16 @@ body,body p,body li,body dd,body dt,body label,body a,body span{color:inherit}
   .home-blog-section .article-card p{font-size:.9rem;line-height:1.55}
   .home-main-compact .helper-preview{margin-top:4px}
 }
+
+
+/* mobile compression pass 3 - 2026-03-31 */
+@media (max-width:780px){
+  .home-review-section .section-head p,
+  .home-blog-section .section-head p{display:none}
+  .home-review-section .section-head,
+  .home-blog-section .section-head{margin-bottom:6px}
+  .home-review-section .section-head > div:first-child,
+  .home-blog-section .section-head > div:first-child{width:100%}
+  .home-review-section .section-head h2,
+  .home-blog-section .section-head h2{margin-bottom:0}
+}
