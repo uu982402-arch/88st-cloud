@@ -1,0 +1,156 @@
+{
+  "generatedAt": "2026-03-22",
+  "accepted": [
+    {
+      "category": "casino",
+      "keyword": "블랙잭 보험 베팅",
+      "title": "블랙잭 보험 베팅이 불리한 이유",
+      "intent": "초보 실수 방지"
+    },
+    {
+      "category": "casino",
+      "keyword": "블랙잭 서렌더 뜻",
+      "title": "블랙잭 서렌더 뜻과 써야 하는 순간",
+      "intent": "룰 이해"
+    },
+    {
+      "category": "casino",
+      "keyword": "블랙잭 6대5 3대2 차이",
+      "title": "블랙잭 6:5와 3:2 차이를 먼저 봐야 하는 이유",
+      "intent": "테이블 선택"
+    },
+    {
+      "category": "casino",
+      "keyword": "용호 타이 위험",
+      "title": "용호 타이 베팅이 흔들림을 키우는 이유",
+      "intent": "실수 방지"
+    },
+    {
+      "category": "casino",
+      "keyword": "용호 입문 기준",
+      "title": "용호 입문 전 먼저 정할 기준",
+      "intent": "입문"
+    },
+    {
+      "category": "slot",
+      "keyword": "메가웨이 슬롯 뜻",
+      "title": "메가웨이 슬롯 뜻과 일반 슬롯 차이",
+      "intent": "구조 이해"
+    },
+    {
+      "category": "slot",
+      "keyword": "홀드앤스핀 구조",
+      "title": "홀드앤스핀 구조와 변동성 읽는 법",
+      "intent": "기능 이해"
+    },
+    {
+      "category": "slot",
+      "keyword": "슬롯 보너스바이 위험",
+      "title": "슬롯 보너스 바이 전에 체크할 것",
+      "intent": "실수 방지"
+    },
+    {
+      "category": "slot",
+      "keyword": "슬롯 데모와 실전 차이",
+      "title": "슬롯 데모와 실전이 다르게 느껴지는 이유",
+      "intent": "입문"
+    },
+    {
+      "category": "slot",
+      "keyword": "슬롯 잭팟 조건",
+      "title": "슬롯 잭팟 조건을 오해하면 안 되는 이유",
+      "intent": "문제 해결"
+    },
+    {
+      "category": "bonus",
+      "keyword": "보너스 악용 사례",
+      "title": "보너스 악용으로 판단되는 대표 사례",
+      "intent": "약관 이해"
+    },
+    {
+      "category": "bonus",
+      "keyword": "첫충 매충 차이",
+      "title": "첫충과 매충 차이 그리고 더 먼저 볼 조건",
+      "intent": "비교형"
+    },
+    {
+      "category": "bonus",
+      "keyword": "입금플러스 뜻",
+      "title": "입금플러스 이벤트 뜻과 실제 혜택 보는 법",
+      "intent": "용어 정리"
+    },
+    {
+      "category": "bonus",
+      "keyword": "복수계정 위험",
+      "title": "복수계정으로 오해받는 대표 상황",
+      "intent": "문제 해결"
+    },
+    {
+      "category": "bonus",
+      "keyword": "보너스 취소 이유",
+      "title": "보너스 취소가 걸리는 흔한 이유",
+      "intent": "문제 해결"
+    },
+    {
+      "category": "strategy",
+      "keyword": "세션 종료 체크리스트",
+      "title": "세션 종료 전에 꼭 보는 체크리스트",
+      "intent": "체크리스트"
+    },
+    {
+      "category": "strategy",
+      "keyword": "승리 후 과배팅",
+      "title": "수익 후 과배팅이 다시 흔들리는 이유",
+      "intent": "실수 방지"
+    },
+    {
+      "category": "strategy",
+      "keyword": "게임 변경 타이밍",
+      "title": "게임 변경 타이밍을 미리 정해야 하는 이유",
+      "intent": "운영"
+    },
+    {
+      "category": "strategy",
+      "keyword": "하루 진입 횟수 제한",
+      "title": "하루 진입 횟수를 정해야 하는 이유",
+      "intent": "운영"
+    },
+    {
+      "category": "strategy",
+      "keyword": "기록표 항목",
+      "title": "기록표에 꼭 남겨야 하는 항목 7가지",
+      "intent": "운영"
+    },
+    {
+      "category": "analysis",
+      "keyword": "승무패 배당 보는 법",
+      "title": "승무패 배당 보는 법 초보용 정리",
+      "intent": "입문"
+    },
+    {
+      "category": "analysis",
+      "keyword": "오버언더 뜻",
+      "title": "오버언더 뜻과 진입 전 체크 포인트",
+      "intent": "입문"
+    },
+    {
+      "category": "analysis",
+      "keyword": "핸디캡 숫자 해석",
+      "title": "핸디캡 숫자를 먼저 읽는 법",
+      "intent": "입문"
+    },
+    {
+      "category": "analysis",
+      "keyword": "파워볼 기록표",
+      "title": "파워볼 기록표를 남길 때 꼭 적어야 할 항목",
+      "intent": "운영"
+    },
+    {
+      "category": "analysis",
+      "keyword": "미니게임 추격 배팅",
+      "title": "미니게임 추격 배팅이 손실을 키우는 이유",
+      "intent": "실수 방지"
+    }
+  ],
+  "skipped": []
+}

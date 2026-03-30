@@ -1,0 +1,123 @@
+{
+  "updatedAt": "2026-03-29",
+  "posts": [
+    {
+      "category": "safety",
+      "label": "먹튀폴리스",
+      "path": "/muktu-police/",
+      "title": "먹튀폴리스 허브",
+      "excerpt": "먹튀 사례 조회, 도메인 검사, 결과 페이지 공유, 광고카드 운영을 하나로 묶은 허브입니다.",
+      "published": "2026-03-30",
+      "popular": 98,
+      "badge": "허브",
+      "tag": "안전센터",
+      "updated": "2026-03-30",
+      "section": "먹튀폴리스",
+      "seoTitle": "먹튀폴리스 허브 | 사례 조회·도메인 검사·결과 공유 | 레븐",
+      "seoDescription": "먹튀 사례 조회, 도메인 검사, 결과 링크 생성, 광고카드 운영을 하나로 묶은 레븐 안전센터 허브입니다.",
+      "keywords": [
+        "먹튀폴리스",
+        "안전센터",
+        "도메인 검사",
+        "사례 조회",
+        "레븐"
+      ],
+      "slug": "muktu-police",
+      "readingMins": 3
+    },
+    {
+      "category": "safety",
+      "label": "먹튀폴리스",
+      "path": "/muktu-police/search/",
+      "title": "먹튀 사례 조회",
+      "excerpt": "브랜드명이나 도메인을 넣으면 먹튀, 후기, 메이저 관련 검색어를 자동 생성해 구글에서 바로 열 수 있습니다.",
+      "published": "2026-03-30",
+      "popular": 95,
+      "badge": "도구",
+      "tag": "구글링",
+      "updated": "2026-03-30",
+      "section": "먹튀폴리스",
+      "seoTitle": "먹튀 사례 조회 | 구글링 검색어 자동 생성 | 레븐",
+      "seoDescription": "브랜드명이나 도메인을 넣으면 먹튀, 후기, 메이저 관련 검색어를 자동 생성해 구글에서 바로 열 수 있습니다.",
+      "keywords": [
+        "먹튀 사례 조회",
+        "먹튀 검색",
+        "구글링",
+        "레븐"
+      ],
+      "slug": "muktu-search",
+      "readingMins": 2
+    },
+    {
+      "category": "safety",
+      "label": "먹튀폴리스",
+      "path": "/muktu-police/check/",
+      "title": "도메인 검사",
+      "excerpt": "도메인 생성일, 만료일, 네임서버, A 레코드, ASN, 국가 정보를 한 번에 확인하는 기초 점검 도구입니다.",
+      "published": "2026-03-30",
+      "popular": 94,
+      "badge": "도구",
+      "tag": "도메인 인텔",
+      "updated": "2026-03-30",
+      "section": "먹튀폴리스",
+      "seoTitle": "도메인 검사 | RDAP·DNS·IP 기초 점검 | 레븐",
+      "seoDescription": "도메인 생성일, 만료일, 네임서버, A 레코드, ASN, 국가 정보를 한 번에 확인하는 기초 점검 도구입니다.",
+      "keywords": [
+        "도메인 검사",
+        "RDAP",
+        "DNS",
+        "ASN",
+        "레븐"
+      ],
+      "slug": "domain-check",
+      "readingMins": 2
+    },
+    {
+      "category": "safety",
+      "label": "먹튀폴리스",
+      "path": "/muktu-police/report/",
+      "title": "결과 페이지 생성",
+      "excerpt": "도메인 검사 결과를 공유 가능한 링크형 페이지로 만드는 운영 보조 페이지입니다.",
+      "published": "2026-03-30",
+      "popular": 88,
+      "badge": "도구",
+      "tag": "결과 링크",
+      "updated": "2026-03-30",
+      "section": "먹튀폴리스",
+      "seoTitle": "결과 페이지 생성 | 도메인 검사 링크 공유 | 레븐",
+      "seoDescription": "도메인 검사 결과를 공유 가능한 링크형 페이지로 만드는 운영 보조 페이지입니다.",
+      "keywords": [
+        "결과 페이지",
+        "링크 공유",
+        "도메인 검사 결과",
+        "레븐"
+      ],
+      "slug": "result-report",
+      "readingMins": 2
+    },
+    {
+      "category": "analysis",
+      "label": "배당분석",
+      "path": "/analysis/",
+      "title": "스포츠 배당 체크 센터",
+      "excerpt": "승무패, 승패, 오버·언더, 핸디캡 시장을 한 구조로 묶어 공정확률과 마진을 확인하는 분석 센터입니다.",
+      "published": "2026-03-30",
+      "popular": 92,
+      "badge": "핵심 기능",
+      "tag": "오즈 체크",
+      "updated": "2026-03-30",
+      "section": "배당분석",
+      "seoTitle": "스포츠 배당 체크 센터 | 승무패·승패·오버언더·핸디캡 | 레븐",
+      "seoDescription": "스포츠 전종목에 공통으로 쓸 수 있는 간단 배당 체크 UI. 승무패, 승패, 오버·언더, 핸디캡 시장을 하나의 구조로 묶어 마진과 공정배당을 확인합니다.",
+      "keywords": [
+        "배당분석",
+        "오즈 체크",
+        "공정확률",
+        "마진 계산",
+        "레븐"
+      ],
+      "slug": "analysis-center",
+      "readingMins": 3
+    }
+  ]
+}
