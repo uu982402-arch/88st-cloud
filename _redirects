@@ -7,6 +7,7 @@
 /muktu-police/check /muktu-police/check/ 301
 /muktu-police/search /muktu-police/search/ 301
 /muktu-police/report /muktu-police/report/ 301
+/muktu-police/brand /muktu-police/brand/ 301
 /tg-match-entry    /analysis/ 301
 
 /tool/*           /analysis/ 301
