@@ -122,3 +122,5 @@ body,body p,body li,body dd,body dt,body label,body a,body span{color:inherit}
   .hero-order-card{padding:14px 14px 12px}
   .hero-action-grid--compact{display:none}
 }
+
+.hero-single-column .community-hero-grid{grid-template-columns:1fr;gap:0}.hero-single-column .mini-search-panel{max-width:720px}.hero-single-column .hero-action-grid--compact{max-width:720px}.home-main-compact .section + .section{margin-top:0}.home-main-compact .section-head h2{margin-bottom:6px}.home-main-compact .section-head p{max-width:660px}@media (max-width:780px){.home-main-compact .section{padding:14px 0}.home-main-compact .section-head{margin-bottom:12px}.home-main-compact .tool-card,.home-main-compact .article-card,.home-main-compact .review-log-card{padding:14px 14px 15px}.home-main-compact .section-head h2{font-size:1.22rem}.home-main-compact .section-head p{font-size:.92rem;line-height:1.58}.home-main-compact .review-log-grid,.home-main-compact .article-grid{gap:10px}.home-main-compact .footer{padding-bottom:84px}}
