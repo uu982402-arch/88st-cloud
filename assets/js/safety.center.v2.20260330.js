@@ -4,71 +4,47 @@
 
   const OFFERS = [
     {
-      id: 'yangsim-main',
-      slug: 'yangsim',
-      shortName: '양심',
-      title: '안전한토토사이트 양심',
-      kicker: '양심 회원 전용 이벤트',
-      bullets: ['스포츠/슬롯 첫충·매충 10%', '카지노·미겜 첫충 및 매충전 5%', '출첵 · 룰렛 · 이사 지원금 이벤트', '콤프 최대 카지노 1.2% · 슬롯 4%'],
-      code: 'KAKA',
-      theme: 'amber',
-      href: 'https://평생양심.com/',
-      domain: '평생양심.com',
-      lookupDomain: 'xn--9g4bs1b95c7tw.com',
-      rewardSummary: '스포츠/슬롯 첫충·매충 10%, 카지노·미겜 첫충 및 매충전 5%',
-      statusLabel: '정적 결과 지원',
-      verdict: '운영 정보 우선 확인',
+      id: 'yangsim-main', slug: 'yangsim', shortName: '양심', title: '양심', displayTitle: '안전한토토사이트 양심',
+      kicker: 'Yangsim signature', oneLine: '공식 주소 확인 전, 검색 흔적과 도메인 이력을 먼저 체크하기 좋게 정리한 결과 페이지입니다.',
+      perks: ['스포츠·슬롯 첫충·매충 10%', '카지노·미니게임 충전 5%', '출첵·룰렛·이사 지원금'],
+      tags: ['검색 우선', '도메인 체크', '정적 결과'], categories: ['search','bonus','result'], benefitRank: 93,
+      bullets: ['스포츠/슬롯 첫충·매충 10%', '카지노·미겜 첫충 및 매충전 5%', '출첵 · 룰렛 · 이사 지원금 이벤트'],
+      code: 'KAKA', theme: 'amber', href: 'https://평생양심.com/', domain: '평생양심.com', lookupDomain: 'xn--9g4bs1b95c7tw.com',
+      rewardSummary: '스포츠·슬롯 10% / 카지노·미니게임 5% / 출첵·룰렛',
+      statusLabel: '정적 결과 지원', verdict: '운영 정보 우선 확인',
       summary: '검색 흔적과 도메인 이력을 먼저 보고 코드 복사와 공식 주소 진입까지 이어지게 만든 브랜드별 결과 동선입니다.'
     },
     {
-      id: 'seven-main',
-      slug: 'chilbet',
-      shortName: '칠벳',
-      title: '칠땡잡이 승부사이트 칠벳',
-      kicker: '칠벳 회원 전용 이벤트',
-      bullets: ['카지노/스포츠/슬롯/미겜 입금플러스 이벤트', '가입 후 환전 없을 시 무제한 20%', '돌발 20% · 돌발 카지노 10%', '페이백 5%'],
-      code: '6767',
-      theme: 'mint',
-      href: 'https://82clf.com/',
-      domain: '82clf.com',
-      lookupDomain: '82clf.com',
-      rewardSummary: '입금플러스, 환전 없을 시 무제한 20%, 돌발 20%, 페이백 5%',
-      statusLabel: '검색어 5종 지원',
-      verdict: '검색 흔적 우선 확인',
+      id: 'seven-main', slug: 'chilbet', shortName: '칠벳', title: '칠벳', displayTitle: '칠땡잡이 승부사이트 칠벳',
+      kicker: 'Chilbet curated', oneLine: '검색어, 도메인, 결과 링크를 한 화면에 모아 빠르게 판단할 수 있게 정리한 카드형 랜딩입니다.',
+      perks: ['입금플러스 이벤트', '환전 없을 시 무제한 20%', '돌발 20%·페이백 5%'],
+      tags: ['후기 비교', '충전 혜택', '검색 5종'], categories: ['search','bonus','featured'], benefitRank: 91,
+      bullets: ['카지노/스포츠/슬롯/미겜 입금플러스 이벤트', '가입 후 환전 없을 시 무제한 20%', '돌발 20% · 돌발 카지노 10%'],
+      code: '6767', theme: 'mint', href: 'https://82clf.com/', domain: '82clf.com', lookupDomain: '82clf.com',
+      rewardSummary: '입금플러스 / 무제한 20% / 돌발 20% / 페이백 5%',
+      statusLabel: '검색어 5종 지원', verdict: '검색 흔적 우선 확인',
       summary: '광고카드에서 바로 공식 주소로 가지 않고, 먼저 검색 흔적과 기본 도메인 이력을 확인하게 연결한 구조입니다.'
     },
     {
-      id: 'vegas-main',
-      slug: 'vegas',
-      shortName: '베가스',
-      title: '라스베가스의 진정한 승부사 베가스',
-      kicker: '베가스 회원 전용 이벤트',
-      bullets: ['카지노/스포츠/슬롯/미겜 입금플러스 이벤트', '가입 후 환전 없을 시 무제한 20%', '돌발 20% · 돌발 카지노 10%', '페이백 5%'],
-      code: '6789',
-      theme: 'red',
-      href: 'https://las302.com/',
-      domain: 'las302.com',
-      lookupDomain: 'las302.com',
-      rewardSummary: '입금플러스, 무제한 20%, 돌발 20%, 페이백 5%',
-      statusLabel: '공유 링크 대응',
-      verdict: '이력·후기 병행 점검',
+      id: 'vegas-main', slug: 'vegas', shortName: '베가스', title: '베가스', displayTitle: '라스베가스의 진정한 승부사 베가스',
+      kicker: 'Vegas premium', oneLine: '후기 패턴과 도메인 이력을 함께 보려는 사용자에게 맞춘 프리미엄 결과 랜딩입니다.',
+      perks: ['입금플러스 + 무제한 20%', '돌발 20%·카지노 10%', '페이백 5%'],
+      tags: ['이력 병행', '공유 링크', '결과 중심'], categories: ['search','featured','result'], benefitRank: 89,
+      bullets: ['카지노/스포츠/슬롯/미겜 입금플러스 이벤트', '가입 후 환전 없을 시 무제한 20%', '돌발 20% · 돌발 카지노 10%'],
+      code: '6789', theme: 'red', href: 'https://las302.com/', domain: 'las302.com', lookupDomain: 'las302.com',
+      rewardSummary: '입금플러스 / 무제한 20% / 돌발 20% / 페이백 5%',
+      statusLabel: '공유 링크 대응', verdict: '이력·후기 병행 점검',
       summary: '브랜드명 검색과 도메인 검사, 결과 공유 링크 생성을 하나로 묶어 상담과 전환 흐름을 매끄럽게 만든 페이지입니다.'
     },
     {
-      id: 'avengers-main',
-      slug: 'avengers',
-      shortName: '어벤저스벳',
-      title: '믿고 이용하는 어벤저스벳',
-      kicker: '어벤저스벳 회원 전용 이벤트',
-      bullets: ['신규 첫충전 · 카지노 충전 이벤트', '신규 정착 이벤트', 'USDT 입금/가입 및 원화 입금 가능', '심야충전 · 콤프 · 페이백 이벤트'],
-      code: '6789',
-      theme: 'jaju',
-      href: 'https://av-bet.com/',
-      domain: 'av-bet.com',
-      lookupDomain: 'av-bet.com',
-      rewardSummary: '신규 첫충전, 정착 이벤트, USDT/원화 입금, 심야충전·콤프',
-      statusLabel: '코드 복사 최적화',
-      verdict: '상담·입출금 병행 확인',
+      id: 'avengers-main', slug: 'avengers', shortName: '어벤저스벳', title: '어벤저스벳', displayTitle: '믿고 이용하는 어벤저스벳',
+      kicker: 'Avengers bet focus', oneLine: '상담 연결과 실사용 점검 포인트를 함께 남겨두는 브랜드 전용 결과판입니다.',
+      perks: ['신규 첫충·정착 이벤트', 'USDT·원화 입금 가능', '심야충전·콤프·페이백'],
+      tags: ['상담 연동', '입출금 체크', '복사 최적화'], categories: ['bonus','featured','result'], benefitRank: 90,
+      bullets: ['신규 첫충전 · 카지노 충전 이벤트', '신규 정착 이벤트', 'USDT 입금/가입 및 원화 입금 가능'],
+      code: '6789', theme: 'jaju', href: 'https://av-bet.com/', domain: 'av-bet.com', lookupDomain: 'av-bet.com',
+      rewardSummary: '신규 첫충전 / 정착 이벤트 / USDT·원화 입금 / 심야충전',
+      statusLabel: '코드 복사 최적화', verdict: '상담·입출금 병행 확인',
       summary: '운영자 상담과 연결되더라도 같은 결과판을 바로 다시 열 수 있게 코드, 공식 주소, 검사 링크를 함께 배치했습니다.'
     }
   ];
@@ -189,26 +165,35 @@
 
   function renderPromoGrid() {
     document.querySelectorAll('[data-safety-promos]').forEach((grid) => {
-      grid.innerHTML = OFFERS.map((offer) => `
-        <article class="promo-card" data-theme="${escapeHtml(offer.theme)}">
-          <div class="promo-topline">
-            <span class="promo-kicker">${escapeHtml(offer.kicker)}</span>
-            <span class="promo-status">${escapeHtml(offer.statusLabel)}</span>
+      grid.innerHTML = OFFERS.map((offer, index) => `
+        <article class="promo-showcase-card" data-theme="${escapeHtml(offer.theme)}" data-order="${index + 1}" data-brand="${escapeHtml(offer.shortName)}" data-code="${escapeHtml(offer.code)}" data-benefit-rank="${escapeHtml(offer.benefitRank || 0)}" data-categories="${escapeHtml((offer.categories || []).join('|'))}">
+          <div class="promo-showcase-head">
+            <div class="promo-showcase-brand">
+              <span class="promo-showcase-kicker">${escapeHtml(offer.kicker)}</span>
+              <div class="promo-showcase-title">
+                <div><h3><a href="${escapeHtml(brandPagePath(offer))}">${escapeHtml(offer.title)}</a></h3></div>
+                <span class="promo-showcase-badge is-brand">${escapeHtml(offer.statusLabel)}</span>
+              </div>
+              <p class="promo-showcase-oneline">${escapeHtml(offer.oneLine || offer.summary)}</p>
+            </div>
           </div>
-          <div>
-            <h3>${escapeHtml(offer.title)}</h3>
-            <p class="promo-summary">${escapeHtml(offer.summary)}</p>
+          <div class="promo-showcase-badges">
+            ${(offer.tags || []).slice(0, 3).map((tag) => `<span class="promo-showcase-badge">${escapeHtml(tag)}</span>`).join('')}
           </div>
-          <div class="promo-meta-grid">
-            <div class="promo-meta"><span>공식 도메인</span><strong>${escapeHtml(offer.domain)}</strong></div>
-            <div class="promo-meta"><span>가입코드</span><strong>${escapeHtml(offer.code)}</strong></div>
-            <div class="promo-meta"><span>운영 메모</span><strong>${escapeHtml(offer.verdict)}</strong></div>
+          <div class="promo-showcase-meta">
+            <span class="meta-pill">도메인 · ${escapeHtml(offer.domain)}</span>
+            <span class="meta-pill">가입코드 · ${escapeHtml(offer.code)}</span>
+            <span class="meta-pill">상세 결과 · ${escapeHtml(offer.shortName)}</span>
           </div>
-          <ul>${offer.bullets.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul>
-          <div class="promo-actions">
-            <a class="safety-link-btn" href="${escapeHtml(brandPagePath(offer))}">브랜드 결과</a>
-            <button class="safety-copy-btn mint" type="button" data-copy-code="${escapeHtml(offer.code)}">코드 복사</button>
-            <a class="safety-link-btn ghost" href="${escapeHtml(offer.href)}" target="_blank" rel="noopener noreferrer">공식 주소</a>
+          <div class="promo-showcase-perks">
+            ${(offer.perks || offer.bullets || []).slice(0, 3).map((item, perkIndex) => `<div class="promo-showcase-perk"><span>혜택 ${perkIndex + 1}</span><strong>${escapeHtml(item)}</strong></div>`).join('')}
+          </div>
+          <div class="promo-showcase-foot">
+            <a class="promo-showcase-link" href="${escapeHtml(brandPagePath(offer))}">상세 결과 보기 →</a>
+            <div class="promo-showcase-actions">
+              <button class="safety-copy-btn mint luxury-copy" type="button" data-copy-code="${escapeHtml(offer.code)}"><span data-copy-label data-default-label="가입코드 복사">가입코드 복사</span></button>
+              <a class="safety-link-btn ghost" href="${escapeHtml(offer.href)}" target="_blank" rel="noopener noreferrer">공식주소 바로가기</a>
+            </div>
           </div>
         </article>
       `).join('');
