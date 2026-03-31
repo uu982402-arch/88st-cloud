@@ -301,7 +301,7 @@
     const items = [
       { href: '/muktu-police/search/', label: '검색', icon: '⌕' },
       { href: '/', label: '홈', icon: '⌂' },
-      { href: '/analysis/', label: '분석', icon: '⌁', accent: true },
+      { href: '/odds/', label: '오즈', icon: '⌁', accent: true },
       { href: 'https://t.me/TRK7878', label: '문의', icon: '✦', external: true }
     ];
 
