@@ -16,7 +16,8 @@
 /muktu-police/faq/vegas /muktu-police/faq/ 301
 /muktu-police/faq/avengers /muktu-police/faq/ 301
 /odds              /odds/ 301
-/analysis          /analysis/ 301
+/analysis          /odds/ 302
+/analysis/*        /odds/ 302
 /admin             /admin/ 301
 /seo               /seo/ 301
 /ops               /ops/ 301
@@ -80,5 +81,5 @@
 /minigame/*       /tools/ 301
 /community        /tools/ 301
 /community/*      /tools/ 301
-/analysis/analysis-page-fast-order /analysis/ 301
-/analysis/analysis-page-fast-order/* /analysis/ 301
+/odds/analysis-page-fast-order /odds/ 301
+/odds/analysis-page-fast-order/* /odds/ 301
