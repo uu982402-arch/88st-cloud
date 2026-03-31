@@ -1,1 +1,1 @@
-window.__BUILD_VER='20260331-main-sports-v3';
+window.__BUILD_VER__="20260331-sports-v4";
