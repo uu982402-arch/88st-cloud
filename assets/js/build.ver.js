@@ -1,1 +1,1 @@
-window.__BUILD={buildVersion:'COLORFIX-20260331-2'};
+window.__BUILD_VER__='2026-03-31-global-colorfix-v2';
