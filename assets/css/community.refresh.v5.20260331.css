@@ -308,3 +308,14 @@ body{background:radial-gradient(circle at top,rgba(91,126,214,.06),transparent 2
   .guaranteed-card--panel .guaranteed-toggle,
   .guaranteed-card--panel .guaranteed-link{min-height:40px;font-size:.95rem}
 }
+
+
+/* Defensive ad suppression: guaranteed cards must appear only on /guaranteed/ */
+body:not([data-community-page="guaranteed"]) .auto-promo-zone,
+body:not([data-community-page="guaranteed"]) [data-guaranteed-grid],
+body:not([data-community-page="guaranteed"]) .guaranteed-inline-ad,
+body:not([data-community-page="guaranteed"]) .guaranteed-card--injected,
+body:not([data-community-page="guaranteed"]) .promo-insert,
+body:not([data-community-page="guaranteed"]) .promo-inline-slot {
+  display: none !important;
+}
