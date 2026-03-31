@@ -1,0 +1,47 @@
+
+:root{
+  --fix-bg:#eef2f6;
+  --fix-panel:#ffffff;
+  --fix-panel-soft:#f7f9fc;
+  --fix-ink:#121722;
+  --fix-ink-2:#1a2332;
+  --fix-muted:#5d6877;
+  --fix-line:#d9e0e8;
+  --fix-brand:#2563eb;
+}
+html,body{background:var(--fix-bg)!important;color:var(--fix-ink)!important;}
+body, input, select, textarea, button{font-family:inherit;}
+a,button,label,strong,span,p,li,small,dd,dt,td,th,input,select,textarea,option{color:inherit;}
+.site-header,.footer{background:rgba(255,255,255,.88)!important;color:var(--fix-ink)!important;border-color:var(--fix-line)!important;backdrop-filter:saturate(130%) blur(14px);}
+.brand-copy span,.lead,.sports-note,.guaranteed-summary-text,.guaranteed-detail-line,.article-card p,.lookup-link-card,.tool-card p,.toolkit-card p,.faq-item p,.editorial-article p,.footer,.footer a,.section-head-actions a,.community-actions a,.inline-links a,.safety-kicker,.tool-badge,.tag-chip,.guaranteed-status{color:var(--fix-muted)!important;}
+.brand strong,.main-nav a,.header-actions .btn,.section-head h2,.article-card h3,.tool-card h3,.toolkit-card h3,.lookup-link-card a,.guaranteed-value,.guaranteed-link,.main-sports-head strong,.home-panel-head strong,.sports-score-top strong,.sports-metric strong,.editorial-article h1,.editorial-article h2,.editorial-article h3,.editorial-article h4,.editorial-article strong,.faq-item strong,.process-steps strong{color:var(--fix-ink)!important;}
+.safety-shell,.home-panel,.article-card,.lookup-link-card,.tool-card,.toolkit-card,.guaranteed-card,.guaranteed-card--panel,.editorial-article,.review-log-grid > *, .faq-item,.process-steps li,.result-panel,.sports-score-shell,.search-clean,.lookup-clean,.review-clean .section,.glass-card,.community-hero{background:var(--fix-panel)!important;border:1px solid var(--fix-line)!important;box-shadow:0 10px 30px rgba(15,23,42,.05)!important;color:var(--fix-ink)!important;}
+.home-panel-head span,.sports-score-top span,.article-kicker,.tool-badge,.safety-kicker,.guaranteed-label,.guaranteed-label--code{color:var(--fix-muted)!important;}
+.article-kicker,.tool-badge,.tag-chip,.guaranteed-status{background:var(--fix-panel-soft)!important;border:1px solid var(--fix-line)!important;}
+.safety-input,.safety-select,.main-sports-form input,.lookup-form input,.lookup-form textarea,.lookup-form select{background:#fff!important;color:var(--fix-ink)!important;border:1px solid var(--fix-line)!important;box-shadow:none!important;}
+.safety-input::placeholder,.main-sports-form input::placeholder,.lookup-form input::placeholder,.lookup-form textarea::placeholder{color:#8a93a3!important;}
+.safety-select option{background:#fff!important;color:var(--fix-ink)!important;}
+.btn,.safety-link-btn,.guaranteed-toggle,.guaranteed-link,button{color:var(--fix-ink)!important;border-color:var(--fix-line)!important;}
+.btn-primary,.safety-link-btn:not(.ghost){background:var(--fix-brand)!important;color:#fff!important;border-color:var(--fix-brand)!important;}
+.safety-link-btn.ghost,.guaranteed-toggle{background:#fff!important;color:var(--fix-ink)!important;}
+.sports-mini-links a{color:var(--fix-brand)!important;}
+.guaranteed-code,.guaranteed-code--static,.guaranteed-value,.guaranteed-link,.guaranteed-detail-line strong,.guaranteed-detail-line span{word-break:keep-all;overflow-wrap:anywhere;}
+.guaranteed-row,.guaranteed-detail-line,.quick-check-row{grid-template-columns:96px minmax(0,1fr)!important;}
+.guaranteed-label,.guaranteed-label--code{white-space:nowrap!important;}
+.guaranteed-actions{gap:8px!important;}
+.guaranteed-toggle,.guaranteed-link{min-height:38px!important;padding:10px 12px!important;white-space:nowrap!important;}
+.quick-check-card,.community-slim-checks > *{background:var(--fix-panel-soft)!important;border:1px solid var(--fix-line)!important;}
+.home-main-compact .section,.page-tight-hero .section,.reading-grid-compact .section{color:var(--fix-ink)!important;}
+.home-blog-section .article-card p,.article-grid .article-card p{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.main-sports-market-btn{background:#fff!important;color:var(--fix-ink)!important;border:1px solid var(--fix-line)!important;}
+.main-sports-market-btn.is-active{background:#eff6ff!important;color:#1d4ed8!important;border-color:#bfdbfe!important;}
+.review-clean .process-steps span,.review-log-grid p,.lookup-clean p,.search-clean p,.tool-top,.card-actions,.community-actions,.compact-actions{color:var(--fix-muted)!important;}
+.mini-search-panel--solo .community-actions.compact-actions{margin-top:10px!important;}
+.footer-links a,.main-nav a{opacity:1!important;}
+.footer-links a:hover,.main-nav a:hover,.lookup-link-card a:hover,.article-card:hover h3,.tool-card:hover h3,.toolkit-card:hover h3,.guaranteed-link:hover{color:var(--fix-brand)!important;}
+@media (max-width: 768px){
+  .guaranteed-toggle,.guaranteed-link{min-height:36px!important;padding:9px 10px!important;font-size:13px!important;}
+  .guaranteed-row,.guaranteed-detail-line,.quick-check-row{grid-template-columns:84px minmax(0,1fr)!important;}
+  .section{padding-block:22px!important;}
+  .home-panel,.article-card,.tool-card,.toolkit-card,.lookup-link-card,.guaranteed-card{border-radius:18px!important;}
+}
