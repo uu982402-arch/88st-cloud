@@ -415,3 +415,35 @@ body[data-community-page="guaranteed"] .quick-check-row{grid-template-columns:re
   body[data-community-page="muktu-police"] .lookup-link-card,
   body[data-community-page="guaranteed"] .quick-check-card{padding:14px 14px!important}
 }
+
+
+/* 2026-03-31 guaranteed button-line compact tuning */
+[data-community-page="guaranteed"] .guaranteed-grid{gap:12px}
+[data-community-page="guaranteed"] .quick-check-row{gap:10px}
+[data-community-page="guaranteed"] .quick-check-card{padding:11px 12px; min-height:72px}
+.guaranteed-card--panel{border-radius:14px}
+.guaranteed-card--panel .guaranteed-summary{padding:8px 12px 6px;font-size:.9rem;line-height:1.34}
+.guaranteed-card--panel .guaranteed-table{padding:0 12px 6px}
+.guaranteed-card--panel .guaranteed-row{grid-template-columns:86px 1fr;min-height:40px}
+.guaranteed-card--panel .guaranteed-label{font-size:.92rem;white-space:nowrap}
+.guaranteed-card--panel .guaranteed-value{padding:6px 4px;font-size:1.03rem}
+.guaranteed-card--panel .guaranteed-code{padding:6px 4px;font-size:1.14rem;white-space:nowrap}
+.guaranteed-card--panel .guaranteed-detail{padding:10px 12px 0}
+.guaranteed-card--panel .guaranteed-detail-line{grid-template-columns:82px 1fr;gap:8px;margin-bottom:8px}
+.guaranteed-card--panel .guaranteed-actions{gap:6px;padding:8px 8px 9px}
+.guaranteed-card--panel .guaranteed-toggle,
+.guaranteed-card--panel .guaranteed-link{min-height:36px;padding:0 10px;border-radius:7px;font-size:.92rem;line-height:1;white-space:nowrap}
+.guaranteed-card--panel .guaranteed-toggle span{white-space:nowrap}
+@media (max-width:780px){
+  [data-community-page="guaranteed"] .quick-check-row{grid-template-columns:1fr 1fr 1fr}
+  [data-community-page="guaranteed"] .quick-check-card{min-height:64px;padding:10px 10px}
+  .guaranteed-card--panel .guaranteed-summary{font-size:.84rem;padding:8px 10px 6px}
+  .guaranteed-card--panel .guaranteed-table{padding:0 10px 6px}
+  .guaranteed-card--panel .guaranteed-row{grid-template-columns:78px 1fr;min-height:38px}
+  .guaranteed-card--panel .guaranteed-label{font-size:.87rem}
+  .guaranteed-card--panel .guaranteed-value{font-size:.97rem}
+  .guaranteed-card--panel .guaranteed-code{font-size:1.06rem}
+  .guaranteed-card--panel .guaranteed-actions{gap:6px;padding:8px}
+  .guaranteed-card--panel .guaranteed-toggle,
+  .guaranteed-card--panel .guaranteed-link{min-height:34px;font-size:.86rem;padding:0 8px}
+}
