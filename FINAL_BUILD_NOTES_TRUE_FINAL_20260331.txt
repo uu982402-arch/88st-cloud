@@ -1,0 +1,6 @@
+최종 재패치 빌드
+- 메인 간격/스포츠/블로그 프리뷰 정리
+- tools/search/check/review/community 허브 설명형 구조 축소
+- guaranteed 8카드 정적 fallback 추가
+- analysis 색인 제외 유지
+- 전체 밝은 톤 보정
