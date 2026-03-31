@@ -76,6 +76,86 @@
         "주소확인",
         "터치최적화"
       ]
+    },
+    {
+      "slug": "coming-soon-1",
+      "name": "추가 예정 1",
+      "theme": "slate",
+      "officialUrl": "#",
+      "officialDomain": "준비중",
+      "code": "준비중",
+      "oneLine": "광고 승인 후 정보가 들어갈 자리입니다.",
+      "benefits": [
+        "자리 확보",
+        "정보 대기",
+        "승인 후 노출"
+      ],
+      "tags": [
+        "준비중",
+        "대기",
+        "추가예정"
+      ],
+      "pending": true
+    },
+    {
+      "slug": "coming-soon-2",
+      "name": "추가 예정 2",
+      "theme": "indigo",
+      "officialUrl": "#",
+      "officialDomain": "준비중",
+      "code": "준비중",
+      "oneLine": "광고 승인 후 공식 주소와 코드가 들어갑니다.",
+      "benefits": [
+        "카드 준비",
+        "주소 대기",
+        "코드 대기"
+      ],
+      "tags": [
+        "준비중",
+        "대기",
+        "추가예정"
+      ],
+      "pending": true
+    },
+    {
+      "slug": "coming-soon-3",
+      "name": "추가 예정 3",
+      "theme": "cyan",
+      "officialUrl": "#",
+      "officialDomain": "준비중",
+      "code": "준비중",
+      "oneLine": "승인 전이라 상세 정보는 비워 둔 상태입니다.",
+      "benefits": [
+        "승인 대기",
+        "상세 대기",
+        "추가 카드"
+      ],
+      "tags": [
+        "준비중",
+        "승인대기",
+        "추가예정"
+      ],
+      "pending": true
+    },
+    {
+      "slug": "coming-soon-4",
+      "name": "추가 예정 4",
+      "theme": "orange",
+      "officialUrl": "#",
+      "officialDomain": "준비중",
+      "code": "준비중",
+      "oneLine": "다음 광고 슬롯용 카드 자리입니다.",
+      "benefits": [
+        "슬롯 확보",
+        "정보 대기",
+        "추후 교체"
+      ],
+      "tags": [
+        "준비중",
+        "슬롯",
+        "추가예정"
+      ],
+      "pending": true
     }
   ]
 }

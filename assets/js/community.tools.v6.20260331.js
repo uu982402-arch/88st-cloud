@@ -9,6 +9,7 @@
   const HISTORY_KEY = 'raven_lookup_history_v1';
   const $ = (s, el = document) => el.querySelector(s);
   const $$ = (s, el = document) => Array.from(el.querySelectorAll(s));
+  const qsa = $$;
 
   function esc(v) {
     return String(v ?? '').replace(/[&<>"']/g, (ch) => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[ch]));

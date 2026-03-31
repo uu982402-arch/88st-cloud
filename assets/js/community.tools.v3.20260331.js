@@ -9,6 +9,7 @@
   const HISTORY_KEY = 'raven_lookup_history_v1';
   const $ = (s, el = document) => el.querySelector(s);
   const $$ = (s, el = document) => Array.from(el.querySelectorAll(s));
+  const qsa = $$;
 
   function esc(v) {
     return String(v ?? '').replace(/[&<>"']/g, (ch) => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[ch]));
@@ -38,7 +39,78 @@
 
   function renderBlogPreviews(posts){ $$('[data-blog-preview-grid]').forEach((grid)=>{ const limit=Number(grid.getAttribute('data-limit')||'3'); const rows=posts.slice(0,limit).map((p)=>`<a class="article-card" href="/blog/${esc(p.slug)}/"><span class="article-kicker">${esc(p.kicker||'글')}</span><h3>${esc(p.title)}</h3><p>${esc(p.excerpt)}</p></a>`).join(''); grid.innerHTML = rows; }); }
   function renderReviewLogs(logs){ $$('[data-review-log-grid]').forEach((grid)=>{ const limit=Number(grid.getAttribute('data-limit')||logs.length); grid.innerHTML = logs.slice(0,limit).map((item)=>`<article class="review-log-card"><div class="review-log-head"><span class="status-chip" data-status="${esc(item.status)}">${esc(item.status)}</span><span class="risk-chip">${esc(item.risk)}</span></div><h3>${esc(item.title)}</h3><small>${esc(item.target)} · ${esc(item.type)} · ${esc(formatDate(item.updated))}</small><p>${esc(item.summary)}</p><div class="review-log-signals">${(item.signals||[]).map((s)=>`<span class="signal-chip">${esc(s)}</span>`).join('')}</div></article>`).join(''); }); }
-  function renderGuaranteedCards(providers){ $$('[data-guaranteed-grid]').forEach((grid)=>{ grid.innerHTML = providers.map((item)=>`<article class="guaranteed-card" data-theme="${esc(item.theme)}"><div class="guaranteed-top"><span class="guaranteed-kicker">${esc(item.name)}</span><span class="tag-chip">${esc(item.officialDomain)}</span></div><h3>${esc(item.name)}</h3><p>${esc(item.oneLine)}</p><div class="guaranteed-benefits">${(item.benefits||[]).slice(0,3).map((b,i)=>`<div class="guaranteed-benefit"><span>혜택 ${i+1}</span><strong>${esc(b)}</strong></div>`).join('')}</div><div class="tag-row">${(item.tags||[]).slice(0,3).map((t)=>`<span class="tag-chip">${esc(t)}</span>`).join('')}</div><div class="guaranteed-actions"><button class="safety-copy-btn mint" type="button" data-copy-text="${esc(item.code)}"><span data-copy-label data-default-label="가입코드 복사">가입코드 복사</span></button><a class="safety-link-btn ghost" href="${esc(item.officialUrl)}" target="_blank" rel="noopener noreferrer">공식주소 바로가기</a></div></article>`).join(''); }); }
+
+function renderGuaranteedCards(providers){
+  $$('[data-guaranteed-grid]').forEach((grid)=>{
+    grid.innerHTML = providers.map((item)=>{
+      const pending = !!item.pending;
+      const statusLabel = pending ? '준비중' : '운영중';
+      const detailSummary = pending
+        ? '광고 준비중 · 승인 후 노출'
+        : ((item.benefits||[]).slice(0,2).join(' · ') || '공식 주소와 가입코드 확인');
+      const officialValue = pending ? '준비중' : esc(item.officialDomain || item.officialUrl || '-');
+      const actionLink = pending
+        ? `<span class="guaranteed-link is-disabled" aria-disabled="true">바로가기</span>`
+        : `<a class="guaranteed-link" href="${esc(item.officialUrl)}" target="_blank" rel="noopener noreferrer">바로가기</a>`;
+      const codeCell = pending
+        ? `<span class="guaranteed-code guaranteed-code--static">${esc(item.code || '준비중')}</span>`
+        : `<button class="guaranteed-code" type="button" data-copy-text="${esc(item.code)}"><span data-copy-label data-default-label="${esc(item.code)}">${esc(item.code)}</span></button>`;
+      return `<article class="guaranteed-card guaranteed-card--panel${pending ? ' is-pending' : ''}" data-theme="${esc(item.theme)}">
+        <div class="guaranteed-summary">
+          <span class="guaranteed-summary-text">${esc(item.oneLine || '공식 주소와 가입코드만 확인')}</span>
+          <span class="guaranteed-status">${statusLabel}</span>
+        </div>
+        <div class="guaranteed-table">
+          <div class="guaranteed-row"><span class="guaranteed-label">이름</span><strong class="guaranteed-value">${esc(item.name)}</strong></div>
+          <div class="guaranteed-row"><span class="guaranteed-label guaranteed-label--code">가입코드</span>${codeCell}</div>
+        </div>
+        <div class="guaranteed-detail" hidden>
+          <div class="guaranteed-detail-grid">
+            <div class="guaranteed-detail-line"><span>공식주소</span><strong>${officialValue}</strong></div>
+            <div class="guaranteed-detail-line"><span>확인기준</span><strong>${esc(detailSummary)}</strong></div>
+          </div>
+          ${(item.tags||[]).length ? `<div class="tag-row">${(item.tags||[]).slice(0,3).map((t)=>`<span class="tag-chip">${esc(t)}</span>`).join('')}</div>` : ''}
+        </div>
+        <div class="guaranteed-actions">
+          <button class="guaranteed-toggle" type="button" data-guaranteed-toggle aria-expanded="false"><span>상세보기</span></button>
+          ${actionLink}
+        </div>
+      </article>`;
+    }).join('');
+  });
+}
+
+function wireGuaranteedToggles(){
+  document.addEventListener('click', (e)=>{
+    const btn = e.target.closest('[data-guaranteed-toggle]');
+    if (!btn) return;
+    const card = btn.closest('.guaranteed-card');
+    const detail = card?.querySelector('.guaranteed-detail');
+    if (!card || !detail) return;
+    const willOpen = detail.hasAttribute('hidden');
+    qsa('.guaranteed-card .guaranteed-detail').forEach((panel)=>{
+      if (panel !== detail) panel.setAttribute('hidden','');
+    });
+    qsa('[data-guaranteed-toggle]').forEach((other)=>{
+      if (other !== btn) {
+        other.setAttribute('aria-expanded','false');
+        const label = other.querySelector('span');
+        if (label) label.textContent = '상세보기';
+      }
+    });
+    if (willOpen) {
+      detail.removeAttribute('hidden');
+      btn.setAttribute('aria-expanded','true');
+      const label = btn.querySelector('span');
+      if (label) label.textContent = '접기';
+    } else {
+      detail.setAttribute('hidden','');
+      btn.setAttribute('aria-expanded','false');
+      const label = btn.querySelector('span');
+      if (label) label.textContent = '상세보기';
+    }
+  });
+}
 
   function saveLookupHistory(entry){
     try {
@@ -157,7 +229,7 @@
   function wireCopyButtons(){ document.addEventListener('click', async (e)=>{ const btn=e.target.closest('[data-copy-text]'); if(!btn) return; const label=$('[data-copy-label]', btn); const defaultLabel=label?.getAttribute('data-default-label') || label?.textContent || '복사'; await copyText(btn.getAttribute('data-copy-text') || '', '복사되었습니다.'); if(label){ label.textContent='복사 완료'; setTimeout(()=>{ label.textContent=defaultLabel; }, 1400); } }); }
 
   async function init(){
-    wireCopyButtons(); wireQuickGoogleForms(); renderPublicEvidenceGrid(); renderHomePreview('', '먹튀'); wireSearchPage(); wireCheckPage(); wireEvidenceExtractor();
+    wireCopyButtons(); wireGuaranteedToggles(); wireQuickGoogleForms(); renderPublicEvidenceGrid(); renderHomePreview('', '먹튀'); wireSearchPage(); wireCheckPage(); wireEvidenceExtractor();
     const [providers, posts, logs] = await Promise.all([loadProviders(), loadBlogPosts(), loadReviewLogs()]);
     renderGuaranteedCards(providers); renderBlogPreviews(posts); renderReviewLogs(logs);
   }

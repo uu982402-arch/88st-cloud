@@ -355,6 +355,7 @@
     }
   }
 
-  mountInlinePromos();
+  // Promo cards are intentionally disabled outside the dedicated guaranteed page.
+  // Keep the mobile dock only.
   mountMobileDock();
 })();
