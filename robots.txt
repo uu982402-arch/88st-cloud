@@ -3,4 +3,5 @@ Allow: /
 Disallow: /admin/
 Disallow: /ops/
 Disallow: /seo/
+Disallow: /analysis/
 Sitemap: https://88st.cloud/sitemap.xml

@@ -34,3 +34,6 @@
 
 /seo/*
   X-Robots-Tag: noindex, nofollow, nosnippet, noarchive
+
+/analysis*
+  X-Robots-Tag: noindex, nofollow, noarchive

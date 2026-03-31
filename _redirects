@@ -24,23 +24,23 @@
 /muktu-police      /muktu-police/ 301
 /muktu-police/check /muktu-police/check/ 301
 /muktu-police/search /muktu-police/search/ 301
-/tg-match-entry    /analysis/ 301
+/tg-match-entry    /odds/ 301
 
 /tool/*           /analysis/ 301
 /tool             /analysis/ 301
-/tool-margin/*    /analysis/ 301
+/tool-margin/*    /odds/ 301
 /tool-margin      /analysis/ 301
 /tool-ev/*        /analysis/ 301
-/tool-ev          /analysis/ 301
+/tool-ev          /odds/ 301
 /tool-odds/*      /analysis/ 301
 /tool-odds        /analysis/ 301
 /tool-slot/*      /analysis/ 301
 /tool-slot        /analysis/ 301
 /tool-minigame/*  /analysis/ 301
-/tool-minigame    /analysis/ 301
+/tool-minigame    /odds/ 301
 /tool-virtual/*   /analysis/ 301
 /tool-virtual     /analysis/ 301
-/tool-casino/*    /analysis/ 301
+/tool-casino/*    /odds/ 301
 /tool-casino      /analysis/ 301
 /calc/*           /analysis/ 301
 /calc             /analysis/ 301
@@ -75,7 +75,7 @@
 /guide/*          /blog/ 301
 /ipl              /analysis/ 301
 /ipl/*            /analysis/ 301
-/logbook          /analysis/ 301
+/logbook          /odds/ 301
 /logbook/*        /analysis/ 301
 /minigame         /tools/ 301
 /minigame/*       /tools/ 301
