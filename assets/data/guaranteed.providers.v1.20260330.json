@@ -76,6 +76,86 @@
         "주소확인",
         "터치최적화"
       ]
+    },
+    {
+      "slug": "coming-01",
+      "name": "추가예정",
+      "theme": "slate",
+      "officialUrl": "#",
+      "officialDomain": "준비중",
+      "code": "준비중",
+      "oneLine": "광고 슬롯 준비중",
+      "benefits": [
+        "광고 준비중",
+        "상세 정보 준비중",
+        "승인 후 노출"
+      ],
+      "tags": [
+        "준비중",
+        "대기",
+        "예정"
+      ],
+      "pending": true
+    },
+    {
+      "slug": "coming-02",
+      "name": "추가예정",
+      "theme": "indigo",
+      "officialUrl": "#",
+      "officialDomain": "준비중",
+      "code": "준비중",
+      "oneLine": "광고 슬롯 준비중",
+      "benefits": [
+        "광고 준비중",
+        "상세 정보 준비중",
+        "승인 후 노출"
+      ],
+      "tags": [
+        "준비중",
+        "대기",
+        "예정"
+      ],
+      "pending": true
+    },
+    {
+      "slug": "coming-03",
+      "name": "추가예정",
+      "theme": "cyan",
+      "officialUrl": "#",
+      "officialDomain": "준비중",
+      "code": "준비중",
+      "oneLine": "광고 슬롯 준비중",
+      "benefits": [
+        "광고 준비중",
+        "상세 정보 준비중",
+        "승인 후 노출"
+      ],
+      "tags": [
+        "준비중",
+        "대기",
+        "예정"
+      ],
+      "pending": true
+    },
+    {
+      "slug": "coming-04",
+      "name": "추가예정",
+      "theme": "orange",
+      "officialUrl": "#",
+      "officialDomain": "준비중",
+      "code": "준비중",
+      "oneLine": "광고 슬롯 준비중",
+      "benefits": [
+        "광고 준비중",
+        "상세 정보 준비중",
+        "승인 후 노출"
+      ],
+      "tags": [
+        "준비중",
+        "대기",
+        "예정"
+      ],
+      "pending": true
     }
   ]
 }
