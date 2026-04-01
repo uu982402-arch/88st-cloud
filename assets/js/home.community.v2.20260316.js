@@ -225,7 +225,7 @@
       return { href: item.actionHref, label: item.actionLabel || '관련 페이지 보기', external: /^https?:/i.test(item.actionHref) };
     }
     const cat = item?.category || '일반';
-    if (cat === '축구' || cat === '농구' || cat === '야구') return { href: '/', label: '메인에서 이어보기', external: false };
+    if (cat === '축구' || cat === '농구' || cat === '야구') return { href: '/tools/', label: '분석기로 이어보기', external: false };
     return { href: '/blog/', label: '뉴스 허브 보기', external: false };
   }
 
@@ -303,9 +303,9 @@
       updatedAt.textContent = `최신 브리핑 ${stamp}${sourceLine}`;
     } catch (err) {
       items = normalizeItems([
-        { category: '축구', source: '레븐 브리핑', title: '축구 핵심 변수 우선 점검', summary: '라인업 변화, 부상·결장, 원정 일정 간격을 먼저 정리하면 실시간 브리핑이 지연돼도 기본 흐름을 읽을 수 있습니다.', link: '/' },
-        { category: '농구', source: '레븐 브리핑', title: '농구 일정 밀도와 출전 변수 확인', summary: '백투백 일정, 핵심 자원 출전 여부, 최근 페이스를 함께 보면 경기 전 구조를 훨씬 선명하게 잡을 수 있습니다.', link: '/' },
-        { category: '야구', source: '레븐 브리핑', title: '선발·불펜 흐름 체크', summary: '야구는 선발 매치업과 불펜 소모, 타선 흐름을 같이 확인해야 당일 리듬을 안정적으로 볼 수 있습니다.', link: '/' },
+        { category: '축구', source: '레븐 브리핑', title: '축구 핵심 변수 우선 점검', summary: '라인업 변화, 부상·결장, 원정 일정 간격을 먼저 정리하면 실시간 브리핑이 지연돼도 기본 흐름을 읽을 수 있습니다.', link: '/tools/' },
+        { category: '농구', source: '레븐 브리핑', title: '농구 일정 밀도와 출전 변수 확인', summary: '백투백 일정, 핵심 자원 출전 여부, 최근 페이스를 함께 보면 경기 전 구조를 훨씬 선명하게 잡을 수 있습니다.', link: '/tools/' },
+        { category: '야구', source: '레븐 브리핑', title: '선발·불펜 흐름 체크', summary: '야구는 선발 매치업과 불펜 소모, 타선 흐름을 같이 확인해야 당일 리듬을 안정적으로 볼 수 있습니다.', link: '/tools/' },
         { category: '일반', source: '레븐 브리핑', title: '스포츠 브리핑 재연결 진행 중', summary: '외부 피드 재연결 중에도 메인 허브에서는 스포츠 중심 카드와 핵심 연결 동선을 유지합니다.', link: '/blog/' }
       ]);
       updateFocusCards(items);

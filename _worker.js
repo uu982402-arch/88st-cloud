@@ -1052,19 +1052,19 @@ function buildNewsGuidance(category = '일반', title = '', summary = '') {
     const why = /injury|결장|부상|lineup|선발/.test(hay)
       ? '선발 구성과 결장 변수는 축구 경기 흐름과 라인 해석에 직접 연결됩니다.'
       : '축구 뉴스는 라인업·일정 간격·동기부여 변수를 빠르게 정리할 때 가장 가치가 큽니다.';
-    return { whyImportant: why, impact: '라인업과 일정 변수 확인 후 분석기에서 공정·마진 구간까지 함께 확인하는 흐름이 좋습니다.', actionLabel: '메인에서 확인하기', actionHref: '/' };
+    return { whyImportant: why, impact: '라인업과 일정 변수 확인 후 분석기에서 공정·마진 구간까지 함께 확인하는 흐름이 좋습니다.', actionLabel: '축구 변수 확인하기', actionHref: '/tools/' };
   }
   if (category === '농구') {
     const why = /back-to-back|rotation|rest|출전|결장/.test(hay)
       ? '농구는 백투백 일정, 로테이션, 핵심 자원 출전 여부가 시장 반응을 크게 움직입니다.'
       : '농구 뉴스는 일정 밀도와 로테이션 변화를 같이 볼 때 해석 가치가 높아집니다.';
-    return { whyImportant: why, impact: '백투백·주전 변수 확인 후 분석기에서 상태 해설까지 같이 보는 편이 안전합니다.', actionLabel: '메인에서 확인하기', actionHref: '/' };
+    return { whyImportant: why, impact: '백투백·주전 변수 확인 후 분석기에서 상태 해설까지 같이 보는 편이 안전합니다.', actionLabel: '농구 분석 이어보기', actionHref: '/tools/' };
   }
   if (category === '야구') {
     const why = /starter|pitcher|bullpen|선발|불펜/.test(hay)
       ? '야구는 선발 매치업과 불펜 소모 정보가 당일 흐름 해석에 핵심입니다.'
       : '야구 뉴스는 선발·불펜·타선 흐름을 함께 읽을 때 체감 가치가 커집니다.';
-    return { whyImportant: why, impact: '선발과 불펜 소모 확인 뒤 경기별 비교 구간을 잡는 흐름이 좋습니다.', actionLabel: '메인에서 확인하기', actionHref: '/' };
+    return { whyImportant: why, impact: '선발과 불펜 소모 확인 뒤 경기별 비교 구간을 잡는 흐름이 좋습니다.', actionLabel: '야구 분석 이어보기', actionHref: '/tools/' };
   }
   return { whyImportant: '핵심 이슈를 먼저 짧게 파악한 뒤 상세 맥락은 원문으로 확인하는 구조가 가장 효율적입니다.', impact: '브리핑 확인 후 관심 종목에 맞는 가이드나 분석기로 바로 이동할 수 있습니다.', actionLabel: '안전센터 이동', actionHref: '/muktu-police/' };
 }
@@ -1184,7 +1184,7 @@ function buildCuratedSportsFallback(generatedAt = new Date().toISOString()) {
       source: '레븐 브리핑',
       category: '축구',
       title: '축구 브리핑 연결 지연 시 먼저 확인할 포인트',
-      link: 'https://88st.cloud/',
+      link: 'https://88st.cloud/tools/',
       summary: '선발 라인업, 핵심 결장, 일정 간격, 최근 홈·원정 흐름을 우선 정리하면 경기 판단이 훨씬 선명해집니다.',
       publishedAt: generatedAt
     },
@@ -1192,7 +1192,7 @@ function buildCuratedSportsFallback(generatedAt = new Date().toISOString()) {
       source: '레븐 브리핑',
       category: '농구',
       title: '농구 브리핑 연결 지연 시 체크할 핵심 변수',
-      link: 'https://88st.cloud/',
+      link: 'https://88st.cloud/tools/',
       summary: '백투백 일정, 주전 출전 여부, 로테이션 변화, 최근 공격·수비 페이스를 먼저 보면 기본 판단 구조를 빠르게 세울 수 있습니다.',
       publishedAt: generatedAt
     },
@@ -1200,7 +1200,7 @@ function buildCuratedSportsFallback(generatedAt = new Date().toISOString()) {
       source: '레븐 브리핑',
       category: '야구',
       title: '야구 브리핑 연결 지연 시 확인할 기본 흐름',
-      link: 'https://88st.cloud/',
+      link: 'https://88st.cloud/tools/',
       summary: '선발 매치업, 불펜 소모, 타선 흐름, 구장 변수까지 같이 보면 당일 경기 리듬을 읽는 데 도움이 됩니다.',
       publishedAt: generatedAt
     },
@@ -1208,7 +1208,7 @@ function buildCuratedSportsFallback(generatedAt = new Date().toISOString()) {
       source: '레븐 브리핑',
       category: '일반',
       title: '실시간 브리핑 재연결 중에도 스포츠 자료 흐름은 유지됩니다',
-      link: 'https://88st.cloud/',
+      link: 'https://88st.cloud/tools/',
       summary: '실시간 외부 피드가 잠시 지연될 경우에도 메인 허브에서는 스포츠 중심 카드와 연결 동선을 유지하도록 구성했습니다.',
       publishedAt: generatedAt
     }

@@ -16,10 +16,10 @@ const DEFAULT_STATE = {
   texts: [
     { id: 'txt_1', key: 'playground.notice', group: 'playground', value: '인증 사이트 선택 → 코드 확인 → 텔레그램 분석\n\n인증 사이트 입장과 코드 확인은\n이 화면에서 빠르게 진행할 수 있습니다.\n\n배당 분석은 텔레그램에서\n이어서 이용하실 수 있습니다.', original: '인증 사이트 선택 → 코드 확인 → 텔레그램 분석\n\n인증 사이트 입장과 코드 확인은\n이 화면에서 빠르게 진행할 수 있습니다.\n\n배당 분석은 텔레그램에서\n이어서 이용하실 수 있습니다.' },
     { id: 'txt_2', key: 'tg_match_entry.intro', group: 'webapp', value: '분석할 경기를 선택해주세요. 배당 입력은 텔레그램에서 이어집니다.', original: '분석할 경기를 선택해주세요. 배당 입력은 텔레그램에서 이어집니다.' },
-    { id: 'txt_3', key: 'home.hero.subtitle', group: 'landing', value: '메인 화면에서 검색과 스포츠 확인을 빠르게 시작하세요.', original: '메인 화면에서 검색과 스포츠 확인을 빠르게 시작하세요.' }
+    { id: 'txt_3', key: 'odds.hero.subtitle', group: 'landing', value: '배당 분석 흐름으로 빠르게 이동하세요.', original: '배당 분석 흐름으로 빠르게 이동하세요.' }
   ],
   features: [
-    { key: 'sports.quickcheck.enabled', label: '메인 스포츠 확인 사용', desc: '메인 스포츠 결과 확인 섹션 노출을 켜고 끕니다.', enabled: true },
+    { key: 'analysis.webapp.enabled', label: '경기 정보 웹앱 사용', desc: '스포츠 오즈 체크 연결을 켜고 끕니다.', enabled: true },
     { key: 'results.quick_input_enabled', label: '결과 빠른 입력', desc: '적중 / 미적중 버튼과 빠른 입력 흐름을 사용합니다.', enabled: true },
     { key: 'history.capture_enabled', label: '기록 저장', desc: '분석 이력과 결과 회수를 기록합니다.', enabled: true },
     { key: 'promo.dm.enabled', label: 'DM 프로모 노출', desc: '개인 DM 대상 프로모 노출 기능입니다.', enabled: true },
@@ -32,11 +32,11 @@ const DEFAULT_STATE = {
     { key: 'admin_note', label: '운영 메모', type: 'text', value: '내부 엔진 용어는 관리자 UI에서도 직접 노출하지 않습니다.' }
   ],
   landing: {
-    tgMatchEntryUrl: 'https://88st.cloud/',
-    oddsUrl: 'https://88st.cloud/',
+    tgMatchEntryUrl: 'https://88st.cloud/tools/',
+    oddsUrl: 'https://88st.cloud/tools/',
     playgroundUrl: 'https://88st.cloud/tg-odds/app',
     supportUrl: 'https://t.me/TRK7878',
-    oddsButtonLabel: '메인 바로가기',
+    oddsButtonLabel: '배당분석 바로가기',
     supportButtonLabel: '텔레그램 문의',
     landingIntro: '스포츠 이용자에게 필요시 스포츠 분석 봇 지원 해드립니다. 문의 주세요.'
   },
@@ -72,8 +72,8 @@ const panelMeta = {
   promos: { title: '프로모 / 인증놀이터 관리', subtitle: '광고 업체 추가, 수정, 순서 변경, 숨김 처리를 한 화면에서 관리합니다.' },
   groups: { title: '그룹 관리', subtitle: '허용 그룹, 차단 그룹, 최근 활동, 메모를 빠르게 확인합니다.' },
   texts: { title: '키워드 / 문구 관리', subtitle: '상태 메시지, 안내 문구, 버튼 라벨, 키워드를 운영자 화면에서 관리합니다.' },
-  analysis: { title: '스포츠 표시 설정', subtitle: '메인 스포츠 확인 영역과 표시 옵션을 운영자 화면에서 조정합니다.' },
-  landing: { title: '웹앱 / 랜딩 관리', subtitle: '메인, 플레이그라운드 링크와 버튼 문구를 관리합니다.' },
+  analysis: { title: '배당 분석 설정', subtitle: '내부 엔진 수치 노출 없이 운영 옵션만 켜고 끄는 구조를 권장합니다.' },
+  landing: { title: '웹앱 / 랜딩 관리', subtitle: 'analysis, odds, playground 링크와 버튼 문구를 관리합니다.' },
   schedules: { title: '스케줄 / 뉴스 관리', subtitle: '뉴스 발송, TOP3, 드립, 테스트 실행 상태를 정리합니다.' },
   logs: { title: '로그 / 이력', subtitle: '오류, 관리자 액션, 결과 회수 로그를 빠르게 살펴봅니다.' },
   security: { title: '권한 / 보안', subtitle: 'Cloudflare Access, 관리자 세션, 감사 로그 연동 구조를 정리합니다.' }
@@ -478,11 +478,11 @@ function renderLanding() {
   if (!form) return;
   const landing = state.landing;
   form.innerHTML = `
-    <label><span>메인 URL</span><input id="landing-tg-match" type="text" value="${escapeHtml(landing.tgMatchEntryUrl)}"></label>
-    <label><span>보조 URL</span><input id="landing-odds" type="text" value="${escapeHtml(landing.oddsUrl)}"></label>
+    <label><span>analysis URL</span><input id="landing-tg-match" type="text" value="${escapeHtml(landing.tgMatchEntryUrl)}"></label>
+    <label><span>odds URL</span><input id="landing-odds" type="text" value="${escapeHtml(landing.oddsUrl)}"></label>
     <label><span>playground URL</span><input id="landing-playground" type="text" value="${escapeHtml(landing.playgroundUrl)}"></label>
     <label><span>텔레그램 문의 URL</span><input id="landing-support" type="text" value="${escapeHtml(landing.supportUrl)}"></label>
-    <label><span>메인 버튼 문구</span><input id="landing-odds-label" type="text" value="${escapeHtml(landing.oddsButtonLabel)}"></label>
+    <label><span>배당분석 버튼 문구</span><input id="landing-odds-label" type="text" value="${escapeHtml(landing.oddsButtonLabel)}"></label>
     <label><span>문의 버튼 문구</span><input id="landing-support-label" type="text" value="${escapeHtml(landing.supportButtonLabel)}"></label>
     <label class="full"><span>운영 안내 문구</span><textarea id="landing-intro">${escapeHtml(landing.landingIntro)}</textarea></label>
   `;
