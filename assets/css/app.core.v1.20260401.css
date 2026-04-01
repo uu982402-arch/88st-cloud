@@ -98,6 +98,8 @@ textarea{min-height:120px;padding:14px;resize:vertical}
 .kpi-card span{color:var(--muted);font-size:13px}
 .helper-strip{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
 .helper-strip a{padding:9px 12px;border-radius:999px;background:#fff;border:1px solid var(--line);font-size:13px;color:var(--muted)}
+.helper-inline-copy{margin-top:12px;padding:10px 12px;border-radius:14px;background:#fff;border:1px solid var(--line);font-size:13px;line-height:1.6;color:var(--muted)}
+
 .lookup-links .lookup-link-card a,.lookup-community-links .lookup-link-card a{display:inline-flex;font-weight:800;margin-bottom:6px}
 .lookup-community-links{grid-template-columns:repeat(2,minmax(0,1fr))}
 .empty-state{padding:18px;border-radius:18px;background:var(--surface-2);border:1px dashed var(--line-strong)}

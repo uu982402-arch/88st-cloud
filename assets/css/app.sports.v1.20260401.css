@@ -2,28 +2,25 @@
 .main-sports-head strong{font-size:18px}
 .main-sports-market-scroll{display:flex;gap:8px;overflow:auto;padding-bottom:2px;scrollbar-width:none}
 .main-sports-market-scroll::-webkit-scrollbar{display:none}
-.main-sports-grid{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(300px,.88fr);gap:14px;align-items:start}
+.main-sports-grid{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(320px,.98fr);gap:16px;align-items:start}
 .sports-odds-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
 .sports-field{display:grid;gap:6px}
 .sports-field label{font-size:13px;color:var(--muted);font-weight:700}
 .main-sports-form input{min-height:44px}
-.sports-score-shell{padding:18px;border-radius:22px;background:linear-gradient(180deg,#ffffff 0%,#f8fafc 100%);border:1px solid var(--line);display:grid;gap:12px;box-shadow:var(--shadow-sm)}
+.sports-score-shell{padding:20px;border-radius:22px;background:linear-gradient(180deg,#ffffff 0%,#f8fafc 100%);border:1px solid var(--line);display:grid;gap:14px;box-shadow:var(--shadow-sm);min-height:100%}
 .sports-score-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
 .sports-score-top strong{font-size:16px}
 .sports-score-top span{font-size:13px;color:var(--muted);font-weight:700}
-.sports-summary-card{padding:14px 16px;border-radius:18px;background:#eff5ff;border:1px solid #d6e4ff;display:grid;gap:6px}
+.sports-summary-card{padding:15px 16px;border-radius:18px;background:#eff5ff;border:1px solid #d6e4ff;display:grid;gap:6px}
 .sports-summary-kicker{font-size:12px;font-weight:800;color:#355d9a;letter-spacing:.02em}
 .sports-summary-card strong{font-size:15px;line-height:1.5;color:#17304f}
 .sports-metric-list{display:grid;gap:10px}
-.sports-metric--row{display:grid;gap:10px;padding:14px 14px 12px;border-radius:18px;background:var(--surface-2);border:1px solid var(--line)}
-.sports-metric-copy{display:flex;align-items:center;justify-content:space-between;gap:12px}
-.sports-metric-copy span{display:block;color:var(--muted);font-size:13px;font-weight:700}
-.sports-metric-copy strong{display:block;font-size:18px;color:var(--text)}
-.sports-metric-track{height:9px;border-radius:999px;background:#e7edf5;overflow:hidden}
+.sports-metric--row{display:grid;grid-template-columns:minmax(72px,88px) minmax(0,1fr);align-items:center;gap:12px;padding:12px 14px;border-radius:18px;background:var(--surface-2);border:1px solid var(--line)}
+.sports-metric-copy{display:grid;gap:3px;align-items:center}
+.sports-metric-copy span{display:block;color:var(--muted);font-size:12px;font-weight:700}
+.sports-metric-copy strong{display:block;font-size:16px;color:var(--text);line-height:1.1}
+.sports-metric-track{height:10px;border-radius:999px;background:#e7edf5;overflow:hidden}
 .sports-metric-track i{display:block;height:100%;width:0;border-radius:999px;background:linear-gradient(90deg,#3f6fba 0%,#82a8eb 100%);transition:width .18s ease}
 .sports-metric--row.is-empty{display:none}
-.sports-note{color:var(--muted);font-size:14px;line-height:1.6}
-.sports-mini-links{margin-top:2px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.sports-mini-links a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 14px;border-radius:14px;border:1px solid #cfd8e3;background:#fff;color:#21426f;font-weight:800}
-.sports-mini-links a:first-child{background:#214d90;border-color:#214d90;color:#fff}
-@media (max-width:760px){.main-sports-grid{grid-template-columns:1fr}.sports-odds-grid{grid-template-columns:1fr 1fr}.main-sports-head{align-items:flex-start}.sports-mini-links{grid-template-columns:1fr}.sports-score-shell{padding:16px}}
+.sports-note{color:var(--muted);font-size:13px;line-height:1.6}
+@media (max-width:760px){.main-sports-grid{grid-template-columns:1fr}.sports-odds-grid{grid-template-columns:1fr 1fr}.main-sports-head{align-items:flex-start}.sports-score-shell{padding:16px}.sports-metric--row{grid-template-columns:1fr;gap:8px}}
