@@ -128,6 +128,21 @@ export default {
         return gone({ ok: false, error: 'gone', path, message: '정리된 예전 구조 경로입니다.' }, request);
       }
 
+      if (method === 'GET') {
+        if (path === '/analysis' || path.startsWith('/analysis/')) {
+          return Response.redirect(url.origin + '/odds/', 301);
+        }
+        if (path === '/ipl' || path.startsWith('/ipl/')) {
+          return Response.redirect(url.origin + '/odds/', 301);
+        }
+        if (path === '/casino' || path.startsWith('/casino/')) {
+          return Response.redirect(url.origin + '/tools/', 301);
+        }
+        if (path === '/minigame' || path.startsWith('/minigame/')) {
+          return Response.redirect(url.origin + '/tools/', 301);
+        }
+      }
+
 // TEMP: Community routes disabled (redirect to home)
 if (path === '/community' || path.startsWith('/community/')) {
   const target = url.origin + '/';

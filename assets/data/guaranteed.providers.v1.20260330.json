@@ -1,5 +1,5 @@
 {
-  "updated": "2026-03-30",
+  "updated": "2026-04-01",
   "providers": [
     {
       "slug": "yangsim",
@@ -78,81 +78,78 @@
       ]
     },
     {
-      "slug": "coming-soon-1",
-      "name": "추가 예정 1",
+      "slug": "ddk",
+      "name": "땅콩",
+      "theme": "orange",
+      "officialUrl": "https://ddk-2024.com/",
+      "officialDomain": "ddk-2024.com",
+      "code": "DDK888",
+      "oneLine": "코드 복사 후 빠르게 공식 주소로 이동하는 흐름에 맞춘 카드입니다.",
+      "benefits": [
+        "공식 주소 확인",
+        "코드 즉시 복사",
+        "간단 진입"
+      ],
+      "tags": [
+        "코드복사",
+        "빠른이동",
+        "모바일"
+      ]
+    },
+    {
+      "slug": "taepyeongyang",
+      "name": "태평양",
+      "theme": "cyan",
+      "officialUrl": "https://tpy-777.com/",
+      "officialDomain": "tpy-777.com",
+      "code": "KAKA",
+      "oneLine": "마지막 확인 단계에서 주소와 코드를 짧게 보는 용도의 카드입니다.",
+      "benefits": [
+        "주소 최종 확인",
+        "코드 즉시 복사",
+        "모바일 바로가기"
+      ],
+      "tags": [
+        "주소확인",
+        "코드복사",
+        "직접이동"
+      ]
+    },
+    {
+      "slug": "tronbet",
+      "name": "트론벳",
+      "theme": "indigo",
+      "officialUrl": "https://trc-11.com/",
+      "officialDomain": "trc-11.com",
+      "code": "KAKA",
+      "oneLine": "점검이 끝난 뒤 바로 열 수 있게 구성한 실사용형 카드입니다.",
+      "benefits": [
+        "공식 주소 확인",
+        "코드 즉시 복사",
+        "모바일 진입"
+      ],
+      "tags": [
+        "실사용",
+        "모바일",
+        "코드복사"
+      ]
+    },
+    {
+      "slug": "more-partners",
+      "name": "추가 제휴 준비중",
       "theme": "slate",
       "officialUrl": "#",
       "officialDomain": "준비중",
       "code": "준비중",
-      "oneLine": "광고 승인 후 정보가 들어갈 자리입니다.",
+      "oneLine": "추가 광고 승인 후 공식 주소와 가입코드가 순차적으로 들어갑니다.",
       "benefits": [
-        "자리 확보",
+        "추가 슬롯 확보",
         "정보 대기",
         "승인 후 노출"
       ],
       "tags": [
         "준비중",
         "대기",
-        "추가예정"
-      ],
-      "pending": true
-    },
-    {
-      "slug": "coming-soon-2",
-      "name": "추가 예정 2",
-      "theme": "indigo",
-      "officialUrl": "#",
-      "officialDomain": "준비중",
-      "code": "준비중",
-      "oneLine": "광고 승인 후 공식 주소와 코드가 들어갑니다.",
-      "benefits": [
-        "카드 준비",
-        "주소 대기",
-        "코드 대기"
-      ],
-      "tags": [
-        "준비중",
-        "대기",
-        "추가예정"
-      ],
-      "pending": true
-    },
-    {
-      "slug": "coming-soon-3",
-      "name": "추가 예정 3",
-      "theme": "cyan",
-      "officialUrl": "#",
-      "officialDomain": "준비중",
-      "code": "준비중",
-      "oneLine": "승인 전이라 상세 정보는 비워 둔 상태입니다.",
-      "benefits": [
-        "승인 대기",
-        "상세 대기",
-        "추가 카드"
-      ],
-      "tags": [
-        "준비중",
-        "승인대기",
-        "추가예정"
-      ],
-      "pending": true
-    },
-    {
-      "slug": "coming-soon-4",
-      "name": "추가 예정 4",
-      "theme": "orange",
-      "officialUrl": "#",
-      "officialDomain": "준비중",
-      "code": "준비중",
-      "oneLine": "다음 광고 슬롯용 카드 자리입니다.",
-      "benefits": [
-        "슬롯 확보",
-        "정보 대기",
-        "추후 교체"
-      ],
-      "tags": [
-        "준비중",
-        "슬롯",
         "추가예정"
       ],
       "pending": true
