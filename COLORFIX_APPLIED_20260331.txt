@@ -1,1 +1,0 @@
-Applied global color/text contrast override across public pages and linked site.colorfix.v2.20260331.css to public HTML files.
