@@ -99,11 +99,7 @@
   // ---------- Recent usage tracking ----------
   function isToolLikePath(pathname){
     const p = pathname || '/';
-    if(/^\/odds\/?$/.test(p)) return true;
-    return (
-      /^\/(analysis|tool-|tool\/|tool-casino|tool-minigame|tool-slot|tool-virtual|tool-ev|tool-margin|tool-odds|casino-strategy)\//.test(p)
-      || p==='/odds/'
-    );
+    return p === '/tools/' || p.startsWith('/tools/');
   }
 
   function shouldTrackRecent(pathname){
@@ -111,7 +107,7 @@
     if(p.startsWith('/cert')) return false;
     if(p.startsWith('/guide')) return false;
     if(p.startsWith('/calc')) return false;
-    return /^\/(analysis|tool-|tool\/|tool-casino|tool-minigame|tool-slot|tool-virtual|tool-ev|tool-margin|tool-odds|casino-strategy)\//.test(p) || p==='/odds/';
+    return p === '/tools/' || p.startsWith('/tools/');
   }
 
   function trackRecent(){
@@ -195,7 +191,7 @@
     if(p.startsWith('/cert')) return false;
     if(p.startsWith('/guide')) return false;
     if(p.startsWith('/calc')) return false;
-    return /^\/(analysis|tool-|tool\/|tool-casino|tool-minigame|tool-slot|tool-virtual|tool-ev|tool-margin|tool-odds)\//.test(p) || p==='/odds/';
+    return p === '/tools/' || p.startsWith('/tools/');
   }
 
   function persistKey(){

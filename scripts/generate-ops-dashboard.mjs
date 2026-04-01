@@ -28,7 +28,7 @@ const files = walk(ROOT);
 const htmlFiles = files.filter(f => f.endsWith('index.html'));
 const normalize = (f) => rel(f);
 const postHtml = htmlFiles.filter(f => /^(casino|slot|bonus|strategy)\/.+\/index\.html$/.test(normalize(f)));
-const publicPages = htmlFiles.filter(f => !/^(admin|ops|seo)\//.test(normalize(f)));
+const publicPages = htmlFiles.filter(f => !/^(admin|ops)\//.test(normalize(f))); 
 const sitemapUrls = (readMaybe('sitemap.txt').match(/^https?:\/\/[^\n]+/gm) || []);
 const postsIndexRawText = readMaybe('assets/data/posts.index.v1.20260318.json');
 const postsIndexRaw = postsIndexRawText ? JSON.parse(postsIndexRawText) : [];
@@ -67,18 +67,18 @@ const dashboard = {
     sendPageViewTrue: /send_page_view\s*:\s*true/.test(buildLoader) || /send_page_view\s*:\s*true/.test(mobileEnhance),
     operatorExcluded: /operator_or_local/.test(buildLoader) && /operator_or_local/.test(mobileEnhance) && /admin_excluded/.test(adminIndex),
     trackedPublicAreas: ['메인', '배당분석', '카지노', '슬롯', '보너스', '뉴스', '가이드', '전략', '상세글'],
-    excludedAreas: ['/admin/', '/ops/', '/seo/']
+    excludedAreas: ['/admin/', '/ops/']
   },
   indexing: {
     topPriority: [
       '/', '/slot/', '/bonus/', '/strategy/', '/news/', '/play-guides/', '/latest/', '/popular/',
-      '/casino/baccarat-start/', '/slot/rtp-basics/', '/bonus/wagering-requirements/', '/strategy/bankroll-basics/'
+      '/blog/', '/tools/', '/guaranteed/', '/muktu-police/'
     ]
   },
   notes: [
     '공개 페이지는 page_view가 자동 수집됩니다.',
-    '운영자 페이지(/admin/, /ops/, /seo/)는 이번 패치로 수집 제외됩니다.',
-    'GSC 실시간 요약/기회 목록은 /seo/에서 ADMIN_TOKEN으로 확인합니다.'
+    '운영자 페이지(/admin/, /ops/)는 이번 패치로 수집 제외됩니다.',
+    '운영 요약은 /ops/에서 확인합니다.'
   ]
 };
 
@@ -100,7 +100,7 @@ fs.writeFileSync(DOC, [
   '',
   '- 공개 페이지는 mobile.enhance 스크립트에서 GA4를 초기화합니다.',
   '- gtag config에서 send_page_view=true라 공개 페이지 진입 시 page_view가 자동 수집됩니다.',
-  '- 운영자 페이지(/admin/, /ops/, /seo/)는 이번 패치로 수집 제외됩니다.'
+  '- 운영자 페이지(/admin/, /ops/)는 이번 패치로 수집 제외됩니다.'
 ].join('\n'));
 
 console.log('generated', rel(OUT));

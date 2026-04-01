@@ -71,7 +71,6 @@
           ${labels.map((label) => `<div class="sports-metric"><span>${label}</span><strong>-</strong></div>`).join('')}
         </div>
         <div class="sports-note">${config.empty}</div>
-        <div class="sports-mini-links"><a href="/odds/">분석기 전체 열기</a><a href="/guaranteed/">보증업체 보기</a></div>
       </div>`;
   }
 
@@ -155,7 +154,6 @@
             ${labels.map((label, idx) => `<div class="sports-metric"><span>${label}</span><strong>${fmtPct(probs[idx])}</strong></div>`).join('')}
           </div>
           <div class="sports-note">마진 ${((overround + 1) * 100).toFixed(1)}% · ${note}</div>
-          <div class="sports-mini-links"><a href="/odds/">분석기 전체 열기</a><a href="/guaranteed/">보증업체 보기</a></div>
         </div>`;
     }
 
