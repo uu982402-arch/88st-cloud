@@ -73,7 +73,7 @@ button{cursor:pointer}
 .article-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 .review-log-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 .guaranteed-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
-.hero-panels{display:grid;grid-template-columns:1.1fr .95fr;gap:18px}
+.hero-panels{display:grid;grid-template-columns:1.02fr 1.18fr;gap:18px;align-items:start}
 .panel{padding:20px;border-radius:22px;background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow)}
 .panel-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}
 .panel-head strong,.card-title,.tool-card h3,.article-card h3,.review-log-card h3,.lookup-link-card h3,.history-card h3,.evidence-source-card h3,.faq-item summary,.guaranteed-name{margin:0;color:var(--text)}

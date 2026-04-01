@@ -4,7 +4,6 @@
   const qsa = (s, el=document) => Array.from(el.querySelectorAll(s));
   const clamp = (n) => Number.isFinite(n) ? Math.max(0, Math.min(100, n)) : 0;
   const pct = (n) => `${clamp(n).toFixed(1)}%`;
-  const marginPct = (total) => ((Number(total) - 1) * 100);
 
   const MARKETS = {
     '1x2': {
@@ -83,7 +82,6 @@
       over: qs('[data-wrap="over"]', form),
       under: qs('[data-wrap="under"]', form)
     };
-    const oddsGrid = qs('.sports-odds-grid--dynamic', form);
     const inputs = {
       line: qs('[data-field="line"]', form),
       home: qs('[data-field="home"]', form),
@@ -103,11 +101,9 @@
       });
     }
 
-    function setSummary(text, subText) {
+    function setSummary(text) {
       const summaryNode = qs('[data-sports-summary]', result);
-      const subNode = qs('[data-sports-summary-sub]', result);
-      if (summaryNode) summaryNode.textContent = text || '배당을 넣으면 가장 높은 확률과 마진을 먼저 정리합니다.';
-      if (subNode) subNode.textContent = subText || '입력값을 기준으로 확률 분포를 넓게 보여줍니다.';
+      if (summaryNode) summaryNode.textContent = text || '배당 2~3개를 넣으면 우세 쪽과 마진을 먼저 보여줍니다.';
     }
 
     function resetResult(note, marketLabel) {
@@ -115,23 +111,17 @@
       const bars = qsa('.sports-metric-track i', result);
       vals.forEach((n) => { n.textContent = '-'; });
       bars.forEach((bar) => { bar.style.width = '0%'; });
-      const marketChip = qs('.sports-score-top span', result);
-      const headTitle = qs('.sports-score-top strong', result);
+      const head = qs('.sports-score-top span', result);
       const noteNode = qs('.sports-note', result);
-      if (marketChip) marketChip.textContent = marketLabel || '승·무·패';
-      if (headTitle) headTitle.textContent = '입력 후 바로 확인';
+      if (head) head.textContent = marketLabel || '승·무·패';
       if (noteNode) noteNode.textContent = note || '값을 입력하면 결과가 자동으로 계산됩니다.';
-      setSummary('배당을 넣으면 가장 높은 확률과 마진을 먼저 정리합니다.', '입력값을 기준으로 확률 분포를 넓게 보여줍니다.');
+      setSummary('배당 2~3개를 넣으면 우세 쪽과 마진을 먼저 보여줍니다.');
     }
 
     function applyMarket(market) {
       const cfg = MARKETS[market] || MARKETS['1x2'];
       hiddenMarket.value = market;
       qsa('[data-market]', tabWrap).forEach(btn => btn.classList.toggle('is-active', btn.dataset.market === market));
-      if (oddsGrid) {
-        oddsGrid.setAttribute('data-field-count', String(cfg.fields.length));
-        oddsGrid.setAttribute('data-market', market);
-      }
       Object.entries(fieldMap).forEach(([key, wrap]) => {
         if (!wrap) return;
         const active = cfg.fields.includes(key);
@@ -155,11 +145,10 @@
       const market = hiddenMarket.value || '1x2';
       const cfg = MARKETS[market] || MARKETS['1x2'];
       const activeOdds = cfg.fields.filter(k => k !== 'line').map(k => Number(inputs[k]?.value || ''));
-      const marketChip = qs('.sports-score-top span', result);
-      const headTitle = qs('.sports-score-top strong', result);
+      const head = qs('.sports-score-top span', result);
       const noteNode = qs('.sports-note', result);
       const vals = qsa('.sports-metric strong', result);
-      if (marketChip) marketChip.textContent = cfg.label;
+      if (head) head.textContent = cfg.label;
       if (!validOdds(activeOdds)) {
         resetResult(cfg.note, cfg.label);
         return;
@@ -171,12 +160,10 @@
       const visible = cfg.resultLabels.map((label, idx) => ({ label, prob: probs[idx] })).filter((item) => item.label && item.label !== '-' && Number.isFinite(item.prob));
       if (visible.length) {
         const leader = visible.slice().sort((a, b) => b.prob - a.prob)[0];
-        const margin = marginPct(total);
-        if (headTitle) headTitle.textContent = `${leader.label} 우세`;
-        setSummary(`${leader.label} ${pct(leader.prob)} · 마진 ${margin.toFixed(1)}%`, `현재 시장 ${cfg.label} 기준으로 가장 높은 쪽이 먼저 보이도록 정리했습니다.`);
+        const margin = (total - 1) * 100;
+        setSummary(`${leader.label} 우세 ${pct(leader.prob)} · 마진 ${margin.toFixed(1)}%`);
       } else {
-        if (headTitle) headTitle.textContent = '입력 후 바로 확인';
-        setSummary('배당을 넣으면 가장 높은 확률과 마진을 먼저 정리합니다.', '입력값을 기준으로 확률 분포를 넓게 보여줍니다.');
+        setSummary('배당 2~3개를 넣으면 우세 쪽과 마진을 먼저 보여줍니다.');
       }
       if (noteNode) noteNode.textContent = interpret(market, probs, total);
     }
