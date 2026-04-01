@@ -15,8 +15,6 @@
 /muktu-police/query /blog/ 301
 /muktu-police/query/* /blog/ 301
 /odds              /odds/ 301
-/analysis          /odds/ 301
-/analysis/*        /odds/ 301
 /admin             /admin/ 301
 /seo               /seo/ 301
 /ops               /ops/ 301
@@ -39,8 +37,6 @@
 /tool-casino       /odds/ 301
 /calc/*            /odds/ 301
 /calc              /odds/ 301
-/casino            /tools/ 301
-/casino/*          /tools/ 301
 /slot              /tools/ 301
 /slot/*            /tools/ 301
 /bonus             /tools/ 301
@@ -59,19 +55,13 @@
 /news/*            /blog/ 301
 /bonus-checklist   /tools/ 301
 /bonus-checklist/* /tools/ 301
-/casino-strategy   /blog/ 301
-/casino-strategy/* /blog/ 301
 /cert              /guaranteed/ 301
 /cert/*            /guaranteed/ 301
 /fortune           /tools/ 301
 /fortune/*         /tools/ 301
 /guide             /blog/ 301
 /guide/*           /blog/ 301
-/ipl               /odds/ 301
-/ipl/*             /odds/ 301
 /logbook           /odds/ 301
 /logbook/*         /odds/ 301
-/minigame          /tools/ 301
-/minigame/*        /tools/ 301
 /community         /muktu-police/ 301
 /community/*       /muktu-police/ 301

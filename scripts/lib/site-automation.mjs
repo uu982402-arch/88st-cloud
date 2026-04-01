@@ -131,12 +131,10 @@ export function extractFirstParagraph(html) {
 
 export function inferCategoryFromRoute(route) {
   const normalized = normalizePath(route);
-  if (normalized.startsWith('/casino/')) return 'casino';
   if (normalized.startsWith('/slot/')) return 'slot';
   if (normalized.startsWith('/bonus/')) return 'bonus';
   if (normalized.startsWith('/strategy/')) return 'strategy';
   if (normalized.startsWith('/news/')) return 'news';
-  if (normalized.startsWith('/odds/')) return 'analysis';
   if (normalized.startsWith('/play-guides/')) return 'guide';
   if (normalized.startsWith('/muktu-police/')) return 'safety';
   if (normalized.startsWith('/archive/') || normalized.startsWith('/latest/') || normalized.startsWith('/popular/')) return 'archive';
@@ -178,7 +176,6 @@ export function keywordVariants(post, route, pageTitle, category) {
     post?.keywords || [],
     [section, `${section} 가이드`, `${section} 블로그`, tag, pageTitle, BRAND, '88ST.Cloud'],
     route.includes('archive') ? [`${section} 목록`, `${section} 아카이브`] : [],
-    route === '/odds/' ? ['배당분석', '배당 계산', '오즈체크'] : []
   );
 }
 
@@ -203,7 +200,7 @@ export function classifyPage(route, postsByPath) {
   if (postsByPath.has(normalized)) return 'post';
   if (normalized === '/') return 'home';
   if (normalized.endsWith('/archive/') || normalized === '/archive/' || normalized === '/latest/' || normalized === '/popular/') return 'archive';
-  if (['/casino/','/slot/','/bonus/','/strategy/','/news/','/odds/','/play-guides/','/muktu-police/'].includes(normalized)) return 'hub';
+  if (['/slot/','/bonus/','/strategy/','/news/','/play-guides/','/muktu-police/'].includes(normalized)) return 'hub';
   return 'page';
 }
 
@@ -215,7 +212,6 @@ export function buildBreadcrumb(route, pageTitle, category) {
     if (category && ['casino','slot','bonus','strategy','news'].includes(category) && normalized !== `/${category}/`) {
       items.push({ name: `${sectionLabel} 허브`, item: `${SITE_ORIGIN}/${category}/` });
     } else if (category === 'analysis') {
-      items.push({ name: '배당분석', item: `${SITE_ORIGIN}/odds/` });
     } else if (category === 'guide') {
       items.push({ name: '가이드', item: `${SITE_ORIGIN}/play-guides/` });
     } else if (category === 'safety') {

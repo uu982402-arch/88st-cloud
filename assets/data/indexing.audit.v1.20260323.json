@@ -2,12 +2,6 @@
   "generatedAt": "2026-03-22T16:46:13.806Z",
   "pages": [
     {
-      "route": "/odds/",
-      "titleLength": 29,
-      "descriptionLength": 44,
-      "issues": []
-    },
-    {
       "route": "/archive/",
       "titleLength": 35,
       "descriptionLength": 60,
@@ -437,12 +431,6 @@
       "route": "/casino/casino-volatility-comparison/",
       "titleLength": 48,
       "descriptionLength": 41,
-      "issues": []
-    },
-    {
-      "route": "/casino/",
-      "titleLength": 31,
-      "descriptionLength": 66,
       "issues": []
     },
     {
