@@ -1,0 +1,18 @@
+
+.tool-page-shell{display:grid;gap:18px}
+.tool-form-card{display:grid;gap:14px}
+.tool-result-card{display:grid;gap:12px}
+.tool-page-meta{display:flex;flex-wrap:wrap;gap:10px}
+.tool-page-meta .mini-badge{background:#eef4ff}
+.tool-help-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.tool-help-card{padding:16px;border-radius:18px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow-sm)}
+.tool-help-card h3{margin:0 0 6px;font-size:16px}
+.toolkit-table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.toolkit-table th,.toolkit-table td{padding:12px 14px;border-bottom:1px solid var(--line);text-align:left;font-size:14px;color:var(--text)}
+.toolkit-table th{background:var(--surface-2);font-weight:800}
+.toolkit-note{padding:14px;border-radius:16px;background:var(--surface-2);border:1px solid var(--line);color:var(--muted)}
+.example-evidence-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:14px}
+.example-evidence-card{padding:16px;border-radius:18px;background:var(--surface-2);border:1px solid var(--line)}
+.example-evidence-card span{display:block;color:var(--muted);font-size:12px;margin-bottom:6px}
+.example-evidence-card strong{display:block;font-size:16px;margin-bottom:4px}
+@media (max-width:760px){.tool-help-list,.example-evidence-grid{grid-template-columns:1fr}}
