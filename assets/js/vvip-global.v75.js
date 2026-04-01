@@ -101,7 +101,7 @@
     const p = pathname || '/';
     if(/^\/odds\/?$/.test(p)) return true;
     return (
-      /^\/(odds|tool-|tool\/|tool-casino|tool-minigame|tool-slot|tool-virtual|tool-ev|tool-margin|tool-odds|casino-strategy)\//.test(p)
+      /^\/(analysis|tool-|tool\/|tool-casino|tool-minigame|tool-slot|tool-virtual|tool-ev|tool-margin|tool-odds|casino-strategy)\//.test(p)
       || p==='/odds/'
     );
   }
@@ -111,7 +111,7 @@
     if(p.startsWith('/cert')) return false;
     if(p.startsWith('/guide')) return false;
     if(p.startsWith('/calc')) return false;
-    return /^\/(odds|tool-|tool\/|tool-casino|tool-minigame|tool-slot|tool-virtual|tool-ev|tool-margin|tool-odds|casino-strategy)\//.test(p) || p==='/odds/';
+    return /^\/(analysis|tool-|tool\/|tool-casino|tool-minigame|tool-slot|tool-virtual|tool-ev|tool-margin|tool-odds|casino-strategy)\//.test(p) || p==='/odds/';
   }
 
   function trackRecent(){
@@ -195,7 +195,7 @@
     if(p.startsWith('/cert')) return false;
     if(p.startsWith('/guide')) return false;
     if(p.startsWith('/calc')) return false;
-    return /^\/(odds|tool-|tool\/|tool-casino|tool-minigame|tool-slot|tool-virtual|tool-ev|tool-margin|tool-odds)\//.test(p) || p==='/odds/';
+    return /^\/(analysis|tool-|tool\/|tool-casino|tool-minigame|tool-slot|tool-virtual|tool-ev|tool-margin|tool-odds)\//.test(p) || p==='/odds/';
   }
 
   function persistKey(){
@@ -307,7 +307,7 @@
         host = pick('.cs-next') || pick('.cs-actions') || pick('.cs-kpi');
       }else if(path.indexOf('/tool-slot')===0 || path.indexOf('/slot')===0){
         host = pick('.slot-actions') || pick('.slot-head-actions') || pick('.slot-kpi-actions') || pick('.tool-actions');
-      }else if(path.indexOf('/odds')===0){
+      }else if(path.indexOf('/analysis')===0){
         host = pick('.a-actions') || pick('.a-kpi-actions') || pick('.tool-actions');
       }else{
         host = pick('.kpi-actions, .tool-actions, .mg-copy-row, .cs-actions, .stx-actions, .hub-actions');

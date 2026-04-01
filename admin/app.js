@@ -73,7 +73,7 @@ const panelMeta = {
   groups: { title: '그룹 관리', subtitle: '허용 그룹, 차단 그룹, 최근 활동, 메모를 빠르게 확인합니다.' },
   texts: { title: '키워드 / 문구 관리', subtitle: '상태 메시지, 안내 문구, 버튼 라벨, 키워드를 운영자 화면에서 관리합니다.' },
   analysis: { title: '배당 분석 설정', subtitle: '내부 엔진 수치 노출 없이 운영 옵션만 켜고 끄는 구조를 권장합니다.' },
-  landing: { title: '웹앱 / 랜딩 관리', subtitle: 'odds, playground 링크와 버튼 문구를 관리합니다.' },
+  landing: { title: '웹앱 / 랜딩 관리', subtitle: 'analysis, odds, playground 링크와 버튼 문구를 관리합니다.' },
   schedules: { title: '스케줄 / 뉴스 관리', subtitle: '뉴스 발송, TOP3, 드립, 테스트 실행 상태를 정리합니다.' },
   logs: { title: '로그 / 이력', subtitle: '오류, 관리자 액션, 결과 회수 로그를 빠르게 살펴봅니다.' },
   security: { title: '권한 / 보안', subtitle: 'Cloudflare Access, 관리자 세션, 감사 로그 연동 구조를 정리합니다.' }
@@ -478,7 +478,7 @@ function renderLanding() {
   if (!form) return;
   const landing = state.landing;
   form.innerHTML = `
-    <label><span>분석기 URL</span><input id="landing-tg-match" type="text" value="${escapeHtml(landing.tgMatchEntryUrl)}"></label>
+    <label><span>analysis URL</span><input id="landing-tg-match" type="text" value="${escapeHtml(landing.tgMatchEntryUrl)}"></label>
     <label><span>odds URL</span><input id="landing-odds" type="text" value="${escapeHtml(landing.oddsUrl)}"></label>
     <label><span>playground URL</span><input id="landing-playground" type="text" value="${escapeHtml(landing.playgroundUrl)}"></label>
     <label><span>텔레그램 문의 URL</span><input id="landing-support" type="text" value="${escapeHtml(landing.supportUrl)}"></label>

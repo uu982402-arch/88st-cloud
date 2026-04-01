@@ -14,8 +14,8 @@
     const links = [
       { href:'/', label:'메인', sub:'전체 허브' },
       { href:'/odds/', label:'분석기', sub:'배당·상태 해석' },
-      { href:'/play-guides/', label:'가이드', sub:'카지노·미니게임' },
-      { href:'/bonus/', label:'보너스', sub:'조건·체크' },
+      { href:'/blog/', label:'블로그', sub:'검증 가이드 모음' },
+      { href:'/tools/', label:'도구', sub:'검색·조회·체크' },
       { href:'https://t.me/TRK7878', label:'문의', sub:'바로 연결', external:true, accent:true }
     ];
     overlay.innerHTML = '<div class="mobile-menu-overlay__bg"></div><div class="mobile-menu-panel" role="dialog" aria-modal="true" aria-label="모바일 메뉴"><div class="mobile-menu-head"><div><strong>레븐 빠른 이동</strong><small>모바일에서 필요한 구간을 바로 고를 수 있게 묶었습니다.</small></div><button class="mobile-menu-close" type="button" aria-label="닫기">✕</button></div><div class="mobile-menu-links"></div></div>';
@@ -41,7 +41,7 @@
     if (!(location.pathname === '/' || location.pathname === '/index.html')) return;
     const heroCopy = document.querySelector('.hero-copy'); if (!heroCopy || heroCopy.querySelector('.open-home-strip')) return;
     const wrap = document.createElement('div'); wrap.className = 'open-home-strip';
-    wrap.innerHTML = '<a class="open-home-strip__item" href="/odds/"><span class="open-home-strip__eyebrow">FAST START</span><strong>바로 분석</strong><span>배당·상태 해석부터 빠르게 확인</span></a><a class="open-home-strip__item" href="/play-guides/casino-betting/"><span class="open-home-strip__eyebrow">CASINO</span><strong>배팅기법 보기</strong><span>기법 구조·예시·테스트를 한 번에 확인</span></a><a class="open-home-strip__item" href="/play-guides/minigame/"><span class="open-home-strip__eyebrow">MINIGAME</span><strong>미니게임 읽는 법</strong><span>룰·판정 기준·운용 실수 먼저 정리</span></a><a class="open-home-strip__item" href="/bonus/"><span class="open-home-strip__eyebrow">BONUS</span><strong>보너스 보기</strong><span>가입 보너스·롤링 조건을 빠르게 확인</span></a>';
+    wrap.innerHTML = '<a class="open-home-strip__item" href="/odds/"><span class="open-home-strip__eyebrow">FAST START</span><strong>바로 분석</strong><span>배당·상태 해석부터 빠르게 확인</span></a><a class="open-home-strip__item" href="/blog/"><span class="open-home-strip__eyebrow">CASINO</span><strong>배팅기법 보기</strong><span>기법 구조·예시·테스트를 한 번에 확인</span></a><a class="open-home-strip__item" href="/tools/"><span class="open-home-strip__eyebrow">MINIGAME</span><strong>미니게임 읽는 법</strong><span>룰·판정 기준·운용 실수 먼저 정리</span></a><a class="open-home-strip__item" href="/tools/"><span class="open-home-strip__eyebrow">BONUS</span><strong>보너스 보기</strong><span>가입 보너스·롤링 조건을 빠르게 확인</span></a>';
     const actions = heroCopy.querySelector('.hero-actions'); actions?.insertAdjacentElement('afterend', wrap);
     const note = document.createElement('div'); note.className = 'open-cta-note'; note.textContent = '처음 방문이면 뉴스 → 분석기 → 가이드 순서, 운영 기준을 먼저 잡고 싶다면 가이드 → 테스트 → 분석기 순서가 가장 안정적입니다.'; wrap.insertAdjacentElement('afterend', note);
   }

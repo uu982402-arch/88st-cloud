@@ -111,10 +111,14 @@ textarea{min-height:120px;padding:14px;resize:vertical}
 .score-meta p{margin:0;color:var(--muted)}
 .score-bar{height:10px;border-radius:999px;background:#e7edf5;margin:14px 0;overflow:hidden}
 .score-bar span{display:block;height:100%;background:linear-gradient(90deg,var(--brand),#4c7dd7);border-radius:999px}
-.score-grid,.sports-metric-grid,.guaranteed-detail-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.score-grid,.sports-metric-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.guaranteed-detail-grid{display:grid;grid-template-columns:1fr;gap:10px}
 .score-metric,.sports-metric,.guaranteed-detail-line{padding:12px;border-radius:16px;background:var(--surface-2);border:1px solid var(--line)}
+.guaranteed-detail-line{display:grid;grid-template-columns:86px minmax(0,1fr);align-items:start;gap:12px;padding:13px 14px}
 .score-metric span,.sports-metric span,.guaranteed-detail-line span{display:block;color:var(--muted);font-size:12px;margin-bottom:4px}
+.guaranteed-detail-line span{margin-bottom:0;font-weight:700}
 .score-metric strong,.sports-metric strong,.guaranteed-detail-line strong{display:block;font-size:15px;color:var(--text)}
+.guaranteed-detail-line strong{line-height:1.55;word-break:break-word}
 .penalty-list,.compact-checklist,.history-list{margin:0;padding-left:18px;color:var(--muted)}
 .penalty-list li,.compact-checklist li,.history-list li{margin:6px 0}
 .interpretation-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
@@ -202,6 +206,7 @@ body[data-community-page="tools"] .tool-card .safety-link-btn{width:100%;justify
 body[data-community-page="guaranteed"] .guaranteed-card{align-self:start;}
 body[data-community-page="guaranteed"] .guaranteed-actions{margin-top:0;}
 body[data-community-page="guaranteed"] .guaranteed-card.is-open{box-shadow:var(--shadow);}
+body[data-community-page="guaranteed"] .guaranteed-card.is-open .guaranteed-summary{border-bottom-color:transparent;}
 
 @media (max-width: 1080px){
   .hero-panels,.grid-4,.tool-grid,.lookup-links,.guaranteed-grid,.grid-3,.grid-2,.score-grid,.sports-metric-grid,.guaranteed-checklist,.process-steps,.review-log-grid,.article-grid,.hero-action-grid,.home-tool-grid,.interpretation-grid,.lookup-community-links,.article-grid--featured,.article-grid--dense,.tool-grid--feature,.tool-grid--dense{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -224,5 +229,6 @@ body[data-community-page="guaranteed"] .guaranteed-card.is-open{box-shadow:var(-
   .guaranteed-summary,.guaranteed-table,.guaranteed-detail,.guaranteed-actions{padding-left:14px;padding-right:14px}
   .guaranteed-row{grid-template-columns:72px minmax(0,1fr)}
   .guaranteed-actions{grid-template-columns:1fr 1fr}
+  .guaranteed-detail-line{grid-template-columns:1fr;gap:6px}
   .footer-inner{flex-direction:column;align-items:flex-start}
 }

@@ -93,16 +93,29 @@
 
     function setMetricLabels(labels) {
       const metricLabels = qsa('.sports-metric span', result);
-      metricLabels.forEach((node, idx) => { node.textContent = labels[idx] || '-'; });
+      const metricRows = qsa('[data-metric-slot]', result);
+      metricLabels.forEach((node, idx) => {
+        const label = labels[idx] || '-';
+        node.textContent = label;
+        if (metricRows[idx]) metricRows[idx].classList.toggle('is-empty', label === '-');
+      });
+    }
+
+    function setSummary(text) {
+      const summaryNode = qs('[data-sports-summary]', result);
+      if (summaryNode) summaryNode.textContent = text || '배당을 넣으면 상위 확률과 마진을 함께 정리합니다.';
     }
 
     function resetResult(note, marketLabel) {
       const vals = qsa('.sports-metric strong', result);
+      const bars = qsa('.sports-metric-track i', result);
       vals.forEach((n) => { n.textContent = '-'; });
+      bars.forEach((bar) => { bar.style.width = '0%'; });
       const head = qs('.sports-score-top span', result);
       const noteNode = qs('.sports-note', result);
       if (head) head.textContent = marketLabel || '승·무·패';
       if (noteNode) noteNode.textContent = note || '값을 입력하면 결과가 자동으로 계산됩니다.';
+      setSummary('배당을 넣으면 상위 확률과 마진을 함께 정리합니다.');
     }
 
     function applyMarket(market) {
@@ -141,7 +154,17 @@
         return;
       }
       const { total, probs } = normalizeProbabilities(activeOdds);
+      const bars = qsa('.sports-metric-track i', result);
       vals.forEach((node, idx) => { node.textContent = probs[idx] != null ? pct(probs[idx]) : '-'; });
+      bars.forEach((bar, idx) => { bar.style.width = probs[idx] != null ? `${Math.max(4, Math.min(100, probs[idx]))}%` : '0%'; });
+      const visible = cfg.resultLabels.map((label, idx) => ({ label, prob: probs[idx] })).filter((item) => item.label && item.label !== '-' && Number.isFinite(item.prob));
+      if (visible.length) {
+        const leader = visible.slice().sort((a, b) => b.prob - a.prob)[0];
+        const margin = (total - 1) * 100;
+        setSummary(`${leader.label} 우세 ${pct(leader.prob)} · 마진 ${margin.toFixed(1)}%`);
+      } else {
+        setSummary('배당을 넣으면 상위 확률과 마진을 함께 정리합니다.');
+      }
       if (noteNode) noteNode.textContent = interpret(market, probs, total);
     }
 
