@@ -97,6 +97,62 @@
       form.addEventListener('submit', (e)=>{ e.preventDefault(); const clean = String(input.value||'').trim(); if(!clean){ toast('먼저 사이트명이나 도메인을 입력해 주세요.'); return; } const suffix = select?.value || '먹튀'; window.open(googleUrl(`${clean} ${suffix}`),'_blank','noopener'); if(helper){ const domain = normalizeDomain(clean); helper.innerHTML = `<div class="card helper-note">${esc(clean)} · ${esc(suffix)} 검색을 새 탭으로 열었습니다.${domain ? ` <a href="/muktu-police/check/?domain=${encodeURIComponent(domain)}">도메인 조회 ↗</a>` : ''}</div>`; } });
     });
   }
+
+  function aiToneLabel(tone){
+    if(tone === 'good') return '일치';
+    if(tone === 'watch') return '주의';
+    return '확인';
+  }
+  function buildAiCard(title, value, body, extra=''){
+    return `<article class="desktop-ai-card"><span>${esc(title)}</span><strong>${esc(value)}</strong><p>${esc(body)}</p>${extra}</article>`;
+  }
+  function renderHomeAiPlaceholder(target){
+    if(!target) return;
+    target.innerHTML = `<section class="desktop-ai-panel" aria-label="AI 조회 결과"><div class="desktop-ai-shell desktop-ai-shell--placeholder"><div class="desktop-ai-head"><div><span class="desktop-ai-kicker">AI 조회 결과</span><strong>사이트명 또는 도메인을 넣으면 핵심 결과가 바로 정리됩니다.</strong></div><span class="mini-badge">변경 이력 · 리뉴얼 · 유사도</span></div><div class="desktop-ai-summary">검색 전 단계에서 주소 흐름, 리뉴얼 흔적, 유사 운영 패턴을 짧게 먼저 봅니다.</div><div class="desktop-ai-grid">${buildAiCard('주소 변경 이력','입력 후 확인','공식 도메인 일치 여부와 교체형 주소 패턴을 먼저 봅니다.')}${buildAiCard('리뉴얼 흔적','입력 후 확인','브랜드명, 조회용 도메인, 공지문구 흐름을 같이 정리합니다.')}${buildAiCard('계열사 유사도','입력 후 확인','같은 계열 추정은 확정이 아니라 유사 신호 중심으로 보여줍니다.')}${buildAiCard('다음 확인 순서','입력 후 확인','공식주소 체크 → 주소 변경 추적기 → 보증업체 기준 대조', '<div class="desktop-ai-inline-list"><span>공식주소 체크</span><span>주소 변경 추적기</span><span>보증업체 기준 대조</span></div>')}</div></div></section>`;
+  }
+  function renderHomeAiResult(target, payload){
+    if(!target || !payload) return;
+    const verdict = payload.verdict || {};
+    const cards = payload.cards || {};
+    const cautions = Array.isArray(payload.cautions) ? payload.cautions : [];
+    const nextSteps = Array.isArray(payload.nextSteps) ? payload.nextSteps : [];
+    const query = payload.query || '';
+    const googleHref = googleUrl(query);
+    target.innerHTML = `<section class="desktop-ai-panel" aria-label="AI 조회 결과"><div class="desktop-ai-shell" data-tone="${esc(verdict.tone || 'neutral')}"><div class="desktop-ai-head"><div><span class="desktop-ai-kicker">AI 조회 결과</span><strong>${esc(verdict.label || '추가 확인 필요')}</strong></div><div class="desktop-ai-head-actions"><span class="desktop-ai-tone">${esc(aiToneLabel(verdict.tone || 'neutral'))}</span><a class="safety-link-btn ghost" href="${googleHref}" target="_blank" rel="noopener noreferrer">원문 검색</a></div></div><div class="desktop-ai-summary">${esc(verdict.summary || '입력값 기준으로 먼저 볼 항목만 짧게 정리했습니다.')}</div><div class="desktop-ai-grid">${buildAiCard('주소 변경 이력', cards.history?.value || '-', cards.history?.body || '-')}${buildAiCard('리뉴얼 흔적', cards.renewal?.value || '-', cards.renewal?.body || '-')}${buildAiCard('계열사 유사도', cards.affinity?.value || '-', cards.affinity?.body || '-')}<article class="desktop-ai-card desktop-ai-card--list"><span>주의 포인트</span><strong>${esc(cautions.length ? `${cautions.length}개` : '기본 체크')}</strong><ul>${(cautions.length ? cautions : ['검색 결과와 공지 채널을 같이 보세요.']).slice(0,3).map((item)=>`<li>${esc(item)}</li>`).join('')}</ul></article></div><div class="desktop-ai-next"><div class="desktop-ai-next-head"><strong>다음 확인 순서</strong><span>${esc(query)}</span></div><div class="desktop-ai-step-grid">${nextSteps.map((step)=>`<a class="desktop-ai-step" href="${esc(step.href || '/tools/')}" ${step.external ? 'target="_blank" rel="noopener noreferrer"' : ''}><strong>${esc(step.label || '다음 단계')}</strong><p>${esc(step.copy || '')}</p></a>`).join('')}</div></div></div></section>`;
+  }
+  function isDesktopLookupMode(){
+    return typeof window !== 'undefined' && window.matchMedia('(min-width: 981px)').matches;
+  }
+  function wireHomeAiLookup(){
+    const form = $('[data-ai-form]');
+    if(!form) return;
+    const input = $('input[name="q"]', form);
+    const select = $('select[name="mode"]', form);
+    const target = document.querySelector(form.getAttribute('data-preview-target') || '#homeSearchPreview');
+    if(target) renderHomeAiPlaceholder(target);
+    form.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      const clean = String(input?.value || '').trim();
+      if(!clean){ toast('먼저 사이트명, 도메인 또는 공지문구를 입력해 주세요.'); return; }
+      const mode = select?.value || 'site';
+      if(!isDesktopLookupMode()){
+        const suffix = mode === 'domain' ? '도메인 변경' : mode === 'notice' ? '공지' : '먹튀';
+        window.open(googleUrl(`${clean} ${suffix}`),'_blank','noopener');
+        return;
+      }
+      if(target){
+        target.innerHTML = `<section class="desktop-ai-panel" aria-label="AI 조회 결과"><div class="desktop-ai-shell"><div class="desktop-ai-head"><div><span class="desktop-ai-kicker">AI 조회 결과</span><strong>조회 중입니다.</strong></div><span class="mini-badge">${esc(clean)}</span></div><div class="desktop-ai-summary">입력값을 기준으로 주소 흐름과 리뉴얼 흔적을 정리하고 있습니다.</div></div></section>`;
+      }
+      try{
+        const payload = await fetchJson(`/api/ai/lookup?q=${encodeURIComponent(clean)}&mode=${encodeURIComponent(mode)}`);
+        renderHomeAiResult(target, payload);
+      }catch(err){
+        if(target){
+          target.innerHTML = `<section class="desktop-ai-panel" aria-label="AI 조회 결과"><div class="desktop-ai-shell"><div class="desktop-ai-head"><div><span class="desktop-ai-kicker">AI 조회 결과</span><strong>조회에 실패했습니다.</strong></div></div><div class="desktop-ai-summary">${esc(err.message || '잠시 후 다시 시도해 주세요.')}</div></div></section>`;
+        }
+      }
+    });
+  }
   function wireSearchPage(){
     const form = $('#googleSearchForm'); const input = $('#siteKeywordInput'); const select = $('#siteSearchType'); const preview = $('#googlePreviewBtn'); const result = $('#googleQueryResults');
     if(!form || !input || !result) return;
@@ -146,122 +202,14 @@
     result.innerHTML = `<div class="card"><div class="section-head"><div><h2>${esc(src.title || '공개 근거 추출 결과')}</h2><p>${esc(src.url || '')}</p></div><div class="section-head-actions"><a class="safety-link-btn ghost" href="${esc(src.url || '#')}" target="_blank" rel="noopener noreferrer">원문 열기</a></div></div><div class="score-grid"><div class="score-metric"><span>호스트</span><strong>${esc(src.host || '-')}</strong></div><div class="score-metric"><span>게시일</span><strong>${esc(fmtDate(src.publishedAt))}</strong></div><div class="score-metric"><span>도메인 언급</span><strong>${esc((ev.domains||[]).length)}</strong></div><div class="score-metric"><span>IP 언급</span><strong>${esc((ev.ips||[]).length)}</strong></div></div>${ev.excerpt ? `<p class="helper-note">${esc(ev.excerpt)}</p>` : ''}</div><div class="card"><div class="section-head"><div><h2>추출된 항목</h2><p>원문을 길게 복사하지 않고 메타 항목만 정리합니다.</p></div></div><div class="evidence-grid"><article class="evidence-source-card"><h3>도메인</h3><p>${esc((ev.domains||[]).join(', ') || '-')}</p></article><article class="evidence-source-card"><h3>IP</h3><p>${esc((ev.ips||[]).join(', ') || '-')}</p></article><article class="evidence-source-card"><h3>텔레그램</h3><p>${esc((ev.telegrams||[]).join(', ') || '-')}</p></article><article class="evidence-source-card"><h3>오픈카카오</h3><p>${esc((ev.kakaos||[]).join(', ') || '-')}</p></article></div></div>`;
   }
   function wireEvidence(){ const form=$('#publicEvidenceForm'); const input=$('#publicEvidenceInput'); const result=$('#publicEvidenceResult'); if(!form || !input || !result) return; form.addEventListener('submit', async (e)=>{ e.preventDefault(); const url=String(input.value||'').trim(); if(!/^https?:\/\//i.test(url)){ result.className='empty-state'; result.innerHTML='<strong>공개 글 URL 형식을 다시 확인해 주세요.</strong>예: https://example.com/post'; return; } result.className='empty-state'; result.innerHTML='<strong>근거 추출 중입니다.</strong>제목, 날짜, URL, 도메인·IP 언급을 정리하고 있습니다.'; try{ const payload=await fetchJson(`/api/safety/evidence?url=${encodeURIComponent(url)}`); renderEvidenceResult(payload); }catch(err){ result.className='empty-state'; result.innerHTML=`<strong>근거 추출에 실패했습니다.</strong>${esc(err.message || '허용된 공개 페이지 URL인지 다시 확인해 주세요.')}`; } }); }
-  const won = (n) => new Intl.NumberFormat('ko-KR').format(Math.round(Number(n || 0)));
-  const decimal = (n) => Number(n || 0).toFixed(2);
-  function benefitKpi(label, value){ return `<article class="desktop-calc-kpi"><span>${esc(label)}</span><strong>${esc(value)}</strong></article>`; }
-  function setBenefitResult(type, metrics, summary){
-    const result = $(`[data-benefit-result="${type}"]`);
-    if(!result) return;
-    const kpis = $('.desktop-calc-kpis', result);
-    const note = $('.desktop-calc-summary', result);
-    if(kpis) kpis.innerHTML = metrics.map((item)=>benefitKpi(item.label, item.value)).join('');
-    if(note) note.textContent = summary;
-  }
-  function renderCombo(form){
-    const odds = ['odd1','odd2','odd3','odd4'].map((key)=>Number(form[key]?.value || '')).filter((v)=>Number.isFinite(v) && v >= 1.01);
-    const stake = Number(form.stake?.value || '0');
-    const fee = Number(form.fee?.value || '0');
-    if(odds.length < 2 || !Number.isFinite(stake) || stake <= 0){
-      setBenefitResult('combo', [
-        { label:'총 배당', value:'-' },
-        { label:'예상 반환금', value:'-' },
-        { label:'공제 반영', value:'-' }
-      ], '배당 2개 이상과 배팅금을 넣으면 총 배당과 실수령 기준을 바로 계산합니다.');
-      return;
-    }
-    const totalOdds = odds.reduce((acc, cur)=>acc * cur, 1);
-    const payout = stake * totalOdds;
-    const payoutAfterFee = payout * (1 - fee / 100);
-    const net = payoutAfterFee - stake;
-    let summary = `총 ${odds.length}폴 기준으로 공제 반영 실수령은 ${won(payoutAfterFee)}원입니다.`;
-    if(totalOdds >= 6) summary = `고배당 구간입니다. 공제 반영 실수령은 ${won(payoutAfterFee)}원입니다.`;
-    else if(totalOdds <= 3) summary = `낮은 배당 구간입니다. 순수익은 ${won(net)}원 기준입니다.`;
-    setBenefitResult('combo', [
-      { label:'총 배당', value:`${decimal(totalOdds)}배` },
-      { label:'예상 반환금', value:`${won(payout)}원` },
-      { label:'공제 반영', value:`${won(payoutAfterFee)}원` }
-    ], summary);
-  }
-  function renderBonusCompare(form){
-    const deposit = Number(form.deposit?.value || '0');
-    const firstPct = Number(form.firstPct?.value || '0');
-    const firstMax = Number(form.firstMax?.value || '0');
-    const firstRoll = Number(form.firstRoll?.value || '0');
-    const firstLimit = Number(form.firstLimit?.value || '0');
-    const repeatPct = Number(form.repeatPct?.value || '0');
-    const repeatMax = Number(form.repeatMax?.value || '0');
-    const repeatRoll = Number(form.repeatRoll?.value || '0');
-    const repeatLimit = Number(form.repeatLimit?.value || '0');
-    if(!Number.isFinite(deposit) || deposit <= 0){
-      setBenefitResult('bonusCompare', [
-        { label:'첫충 실수령', value:'-' },
-        { label:'매충 실수령', value:'-' },
-        { label:'첫충 롤링', value:'-' },
-        { label:'판정', value:'-' }
-      ], '충전금과 조건을 넣으면 이번 금액에서 실수령 기준으로 더 유리한 쪽을 바로 비교합니다.');
-      return;
-    }
-    const firstBonus = Math.min(deposit * (firstPct / 100), firstMax || Infinity);
-    const repeatBonus = Math.min(deposit * (repeatPct / 100), repeatMax || Infinity);
-    const firstTotal = deposit + firstBonus;
-    const repeatTotal = deposit + repeatBonus;
-    const firstNeed = firstTotal * firstRoll;
-    const repeatNeed = repeatTotal * repeatRoll;
-    const firstReceipt = firstLimit > 0 ? Math.min(firstTotal, firstLimit) : firstTotal;
-    const repeatReceipt = repeatLimit > 0 ? Math.min(repeatTotal, repeatLimit) : repeatTotal;
-    const firstScore = firstReceipt / Math.max(firstNeed || firstReceipt || 1, 1);
-    const repeatScore = repeatReceipt / Math.max(repeatNeed || repeatReceipt || 1, 1);
-    let leader = '조건 비슷';
-    if (Math.abs(firstScore - repeatScore) < 0.0001) leader = firstReceipt >= repeatReceipt ? '첫충 근소 우세' : '매충 근소 우세';
-    else leader = firstScore > repeatScore ? '첫충 우세' : '매충 우세';
-    const summary = leader.includes('첫충')
-      ? `첫충은 보너스 ${won(firstBonus)}원, 실수령 기준 ${won(firstReceipt)}원으로 더 유리합니다.`
-      : leader.includes('매충')
-        ? `매충은 보너스 ${won(repeatBonus)}원, 실수령 기준 ${won(repeatReceipt)}원으로 더 유리합니다.`
-        : `실수령 비중은 비슷합니다. 첫충 보너스 ${won(firstBonus)}원, 매충 보너스 ${won(repeatBonus)}원입니다.`;
-    setBenefitResult('bonusCompare', [
-      { label:'첫충 실수령', value:`${won(firstReceipt)}원` },
-      { label:'매충 실수령', value:`${won(repeatReceipt)}원` },
-      { label:'첫충 롤링', value:`${won(firstNeed)}원` },
-      { label:'판정', value:leader }
-    ], summary);
-  }
-  function wireBenefitCalculator(){
-    const wrap = $('[data-benefit-calculator]');
-    const tabs = $$('[data-benefit-tab]');
-    if(!wrap || !tabs.length) return;
-    const activate = (name) => {
-      tabs.forEach((tab)=>tab.classList.toggle('is-active', tab.getAttribute('data-benefit-tab') === name));
-      $$('[data-benefit-pane]').forEach((pane)=>{
-        const on = pane.getAttribute('data-benefit-pane') === name;
-        pane.classList.toggle('is-active', on);
-        pane.hidden = !on;
-      });
-    };
-    tabs.forEach((tab)=>tab.addEventListener('click', ()=>activate(tab.getAttribute('data-benefit-tab') || 'combo')));
-    $$('[data-benefit-form]').forEach((formEl)=>{
-      const type = formEl.getAttribute('data-benefit-form');
-      const render = () => {
-        const form = formEl.elements;
-        if(type === 'combo') renderCombo(form);
-        if(type === 'bonusCompare') renderBonusCompare(form);
-      };
-      formEl.addEventListener('submit', (e)=>{ e.preventDefault(); render(); });
-      formEl.addEventListener('reset', ()=>setTimeout(render, 0));
-      formEl.addEventListener('input', render);
-      formEl.addEventListener('change', render);
-      render();
-    });
-    activate('combo');
-  }
   async function init(){
-    wireGuaranteed(); wireGoogleForms(); wireSearchPage(); wireCheckPage(); wireEvidence(); wireBenefitCalculator();
+    wireGuaranteed(); wireGoogleForms(); wireSearchPage(); wireCheckPage(); wireEvidence();
     const [providers, posts, logs] = await Promise.all([
       fetchJson(PROVIDERS_URL).then((d)=>d.providers || []).catch(()=>[]),
       fetchJson(BLOG_URL).then((d)=>d.posts || []).catch(()=>[]),
       fetchJson(REVIEW_LOG_URL).then((d)=>d.entries || []).catch(()=>[])
     ]);
-    renderGuaranteedCards(providers); renderBlogPreviews(posts); renderReviewLogs(logs);
+    renderGuaranteedCards(providers); renderBlogPreviews(posts); renderReviewLogs(logs); wireHomeAiLookup();
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 })();

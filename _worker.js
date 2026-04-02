@@ -27,6 +27,11 @@ if (path === '/community' || path.startsWith('/community/')) {
 }
 
 
+
+      if (path === '/api/ai/lookup' && method === 'GET') {
+        return handleAiLookup(url, env);
+      }
+
       // OPS deploy patch config: always no-store (fast operations)
       if (path === '/assets/config/ops.dom.patch.json') {
         const res = await env.ASSETS.fetch(request);
@@ -1052,19 +1057,19 @@ function buildNewsGuidance(category = '일반', title = '', summary = '') {
     const why = /injury|결장|부상|lineup|선발/.test(hay)
       ? '선발 구성과 결장 변수는 축구 경기 흐름과 라인 해석에 직접 연결됩니다.'
       : '축구 뉴스는 라인업·일정 간격·동기부여 변수를 빠르게 정리할 때 가장 가치가 큽니다.';
-    return { whyImportant: why, impact: '라인업과 일정 변수 확인 후 분석기에서 공정·마진 구간까지 함께 확인하는 흐름이 좋습니다.', actionLabel: '축구 변수 확인하기', actionHref: '/tools/' };
+    return { whyImportant: why, impact: '라인업과 일정 변수 확인 후 분석기에서 공정·마진 구간까지 함께 확인하는 흐름이 좋습니다.', actionLabel: '축구 변수 확인하기', actionHref: '/odds/' };
   }
   if (category === '농구') {
     const why = /back-to-back|rotation|rest|출전|결장/.test(hay)
       ? '농구는 백투백 일정, 로테이션, 핵심 자원 출전 여부가 시장 반응을 크게 움직입니다.'
       : '농구 뉴스는 일정 밀도와 로테이션 변화를 같이 볼 때 해석 가치가 높아집니다.';
-    return { whyImportant: why, impact: '백투백·주전 변수 확인 후 분석기에서 상태 해설까지 같이 보는 편이 안전합니다.', actionLabel: '농구 분석 이어보기', actionHref: '/tools/' };
+    return { whyImportant: why, impact: '백투백·주전 변수 확인 후 분석기에서 상태 해설까지 같이 보는 편이 안전합니다.', actionLabel: '농구 분석 이어보기', actionHref: '/odds/' };
   }
   if (category === '야구') {
     const why = /starter|pitcher|bullpen|선발|불펜/.test(hay)
       ? '야구는 선발 매치업과 불펜 소모 정보가 당일 흐름 해석에 핵심입니다.'
       : '야구 뉴스는 선발·불펜·타선 흐름을 함께 읽을 때 체감 가치가 커집니다.';
-    return { whyImportant: why, impact: '선발과 불펜 소모 확인 뒤 경기별 비교 구간을 잡는 흐름이 좋습니다.', actionLabel: '야구 분석 이어보기', actionHref: '/tools/' };
+    return { whyImportant: why, impact: '선발과 불펜 소모 확인 뒤 경기별 비교 구간을 잡는 흐름이 좋습니다.', actionLabel: '야구 분석 이어보기', actionHref: '/odds/' };
   }
   return { whyImportant: '핵심 이슈를 먼저 짧게 파악한 뒤 상세 맥락은 원문으로 확인하는 구조가 가장 효율적입니다.', impact: '브리핑 확인 후 관심 종목에 맞는 가이드나 분석기로 바로 이동할 수 있습니다.', actionLabel: '안전센터 이동', actionHref: '/muktu-police/' };
 }
@@ -1184,7 +1189,7 @@ function buildCuratedSportsFallback(generatedAt = new Date().toISOString()) {
       source: '레븐 브리핑',
       category: '축구',
       title: '축구 브리핑 연결 지연 시 먼저 확인할 포인트',
-      link: 'https://88st.cloud/tools/',
+      link: 'https://88st.cloud/odds/',
       summary: '선발 라인업, 핵심 결장, 일정 간격, 최근 홈·원정 흐름을 우선 정리하면 경기 판단이 훨씬 선명해집니다.',
       publishedAt: generatedAt
     },
@@ -1192,7 +1197,7 @@ function buildCuratedSportsFallback(generatedAt = new Date().toISOString()) {
       source: '레븐 브리핑',
       category: '농구',
       title: '농구 브리핑 연결 지연 시 체크할 핵심 변수',
-      link: 'https://88st.cloud/tools/',
+      link: 'https://88st.cloud/odds/',
       summary: '백투백 일정, 주전 출전 여부, 로테이션 변화, 최근 공격·수비 페이스를 먼저 보면 기본 판단 구조를 빠르게 세울 수 있습니다.',
       publishedAt: generatedAt
     },
@@ -1200,7 +1205,7 @@ function buildCuratedSportsFallback(generatedAt = new Date().toISOString()) {
       source: '레븐 브리핑',
       category: '야구',
       title: '야구 브리핑 연결 지연 시 확인할 기본 흐름',
-      link: 'https://88st.cloud/tools/',
+      link: 'https://88st.cloud/odds/',
       summary: '선발 매치업, 불펜 소모, 타선 흐름, 구장 변수까지 같이 보면 당일 경기 리듬을 읽는 데 도움이 됩니다.',
       publishedAt: generatedAt
     },
@@ -1208,7 +1213,7 @@ function buildCuratedSportsFallback(generatedAt = new Date().toISOString()) {
       source: '레븐 브리핑',
       category: '일반',
       title: '실시간 브리핑 재연결 중에도 스포츠 자료 흐름은 유지됩니다',
-      link: 'https://88st.cloud/tools/',
+      link: 'https://88st.cloud/odds/',
       summary: '실시간 외부 피드가 잠시 지연될 경우에도 메인 허브에서는 스포츠 중심 카드와 연결 동선을 유지하도록 구성했습니다.',
       publishedAt: generatedAt
     }
@@ -1771,4 +1776,181 @@ function trimText(value = '', max = 220) {
   const text = String(value || '').trim();
   if (text.length <= max) return text;
   return text.slice(0, max - 1).trimEnd() + '…';
+}
+
+
+async function handleAiLookup(url, env) {
+  const q = String(url.searchParams.get('q') || '').trim();
+  const mode = String(url.searchParams.get('mode') || 'site').trim().toLowerCase();
+  if (!q) return json({ ok:false, error:'missing_query', message:'검색어를 먼저 입력해 주세요.' }, 400);
+
+  const providers = await readAssetJson(env, url, '/assets/data/guaranteed.providers.v1.20260330.json', 'providers');
+  const payload = buildAiLookupPayload({ query: q, mode, providers });
+  return json({ ok:true, ...payload });
+}
+
+async function readAssetJson(env, url, pathname, key) {
+  try {
+    const assetUrl = new URL(pathname, url.origin).toString();
+    const res = await env.ASSETS.fetch(new Request(assetUrl, { method:'GET' }));
+    const data = await res.json();
+    return key ? (data?.[key] || []) : data;
+  } catch (_) {
+    return key ? [] : {};
+  }
+}
+
+function normalizeLookupDomain(value='') {
+  let v = String(value || '').trim();
+  if (!v) return '';
+  try {
+    const u = new URL(/^[a-z][a-z0-9+.-]*:\/\//i.test(v) ? v : `https://${v}`);
+    v = u.hostname || '';
+  } catch (_) {}
+  return String(v).toLowerCase().replace(/^www\./,'').replace(/\.$/,'').replace(/:\d+$/,'');
+}
+
+function looksRotatingDomain(domain='') {
+  const d = String(domain || '').toLowerCase();
+  return /(?:\d{2,4}|-\d+|-bet|-vip|-new|-re|-kr|-site|-now)/.test(d);
+}
+
+function looksRenewalPattern(value='') {
+  const t = String(value || '').toLowerCase();
+  return /(renew|reopen|new|v2|v3|202\d|리뉴얼|변경|교체)/.test(t);
+}
+
+function compactTokens(value='') {
+  return String(value || '').toLowerCase().replace(/https?:\/\//g,' ').replace(/[^a-z0-9가-힣]+/g,' ').split(/\s+/).filter(Boolean);
+}
+
+function matchProvider(query, mode, providers=[]) {
+  const domain = normalizeLookupDomain(query);
+  const q = String(query || '').trim().toLowerCase();
+  const tokens = compactTokens(query);
+  return providers.find((item)=>{
+    const name = String(item?.name || '').toLowerCase();
+    const searchName = String(item?.searchName || '').toLowerCase();
+    const official = normalizeLookupDomain(item?.officialDomain || item?.officialUrl || '');
+    const lookup = normalizeLookupDomain(item?.lookupDomain || '');
+    if (domain && [official, lookup].filter(Boolean).includes(domain)) return true;
+    if (q && (q === name || q === searchName)) return true;
+    if (!domain && tokens.some((token)=> token.length >= 2 && (name.includes(token) || searchName.includes(token)))) return true;
+    return false;
+  }) || null;
+}
+
+function buildAiLookupPayload({ query, mode, providers=[] }) {
+  const domain = normalizeLookupDomain(query);
+  const matched = matchProvider(query, mode, providers);
+  const officialDomain = normalizeLookupDomain(matched?.officialDomain || matched?.officialUrl || '');
+  const lookupDomain = normalizeLookupDomain(matched?.lookupDomain || '');
+  const sameCodeCount = matched?.code ? providers.filter((item)=> !item?.pending && String(item?.code || '') === String(matched.code)).length : 0;
+  const hasDirectOfficialMatch = !!(matched && domain && officialDomain && domain === officialDomain);
+  const hasLookupMatch = !!(matched && domain && lookupDomain && domain === lookupDomain);
+  const rotating = domain ? looksRotatingDomain(domain) : false;
+  const renewalSignal = looksRenewalPattern(query) || rotating || (matched && lookupDomain && officialDomain && lookupDomain !== officialDomain);
+
+  let verdictLabel = '추가 확인 필요';
+  let verdictTone = 'neutral';
+  let verdictSummary = '검색 결과와 공지 문구를 같이 보는 보수적 흐름이 안전합니다.';
+
+  if (hasDirectOfficialMatch) {
+    verdictLabel = '공식 도메인 일치';
+    verdictTone = 'good';
+    verdictSummary = `${matched.name} 기준 공식 도메인과 입력값이 일치합니다. 그래도 공지 채널과 가입코드는 마지막으로 같이 보세요.`;
+  } else if (hasLookupMatch) {
+    verdictLabel = '조회용 도메인 일치';
+    verdictTone = 'watch';
+    verdictSummary = `조회용으로 잡히는 주소와 일치합니다. 공식 주소와 같은지 다시 대조하는 편이 안전합니다.`;
+  } else if (matched) {
+    verdictLabel = '브랜드 일치, 주소 추가 확인';
+    verdictTone = 'watch';
+    verdictSummary = `${matched.name} 브랜드로 보이지만 주소나 공지 채널이 같은지는 한 번 더 확인해야 합니다.`;
+  } else if (rotating) {
+    verdictLabel = '주소 변경형 패턴 주의';
+    verdictTone = 'watch';
+    verdictSummary = '숫자·하이픈형 도메인은 교체형 주소인지 먼저 보는 편이 안전합니다.';
+  } else if (mode === 'notice') {
+    verdictLabel = '공지 문구 비교 필요';
+    verdictTone = 'neutral';
+    verdictSummary = '공지문구만으로는 공식 주소를 확정하기 어렵습니다. 주소와 가입코드가 같이 반복되는지 보세요.';
+  }
+
+  const historyValue = hasDirectOfficialMatch
+    ? '공식 주소 일치'
+    : hasLookupMatch
+      ? '조회용 주소 일치'
+      : domain
+        ? (rotating ? '교체형 패턴 주의' : '추가 자료 필요')
+        : '도메인 미입력';
+  const historyBody = hasDirectOfficialMatch
+    ? `${officialDomain} 기준으로 바로 맞는 입력입니다.`
+    : hasLookupMatch
+      ? `${lookupDomain} 표기가 보여 조회용·대체 주소 여부를 같이 확인하는 편이 좋습니다.`
+      : domain
+        ? (rotating ? `${domain} 은 숫자나 하이픈 패턴이 보여 이전 주소 공지 비교가 필요합니다.` : `${domain} 단독으로는 이전 주소 연결 흔적을 확정하기 어렵습니다.`)
+        : '사이트명만 넣은 상태라 주소 변경 흐름은 보류합니다.';
+
+  const renewalValue = renewalSignal ? '흔적 있음' : '뚜렷하지 않음';
+  const renewalBody = renewalSignal
+    ? (matched && lookupDomain && officialDomain && lookupDomain !== officialDomain
+      ? `공식 주소 ${officialDomain} 와 조회용 표기 ${lookupDomain} 가 같이 보여 리뉴얼형 운영 여부를 공지와 같이 봐야 합니다.`
+      : '입력값 안에 변경·리뉴얼형 패턴이 있어 이전 공지와 새 주소를 함께 비교하는 편이 좋습니다.')
+    : '현재 입력만으로는 리뉴얼형 흔적이 뚜렷하지 않습니다.';
+
+  let affinityValue = '판단 보류';
+  let affinityBody = '같은 계열 추정은 확정이 아니라 유사 신호를 여러 개 같이 볼 때만 의미가 있습니다.';
+  if (matched && sameCodeCount >= 2) {
+    affinityValue = '유사도 보통';
+    affinityBody = `같은 가입코드를 쓰는 안내가 ${sameCodeCount}건 있어 공지 채널과 도메인까지 함께 비교하는 편이 안전합니다.`;
+  } else if (matched) {
+    affinityValue = '유사도 낮음';
+    affinityBody = '현재 입력만으로는 같은 운영군으로 단정할 강한 신호가 부족합니다.';
+  } else if (rotating) {
+    affinityValue = '유사 패턴 있음';
+    affinityBody = '도메인 형식은 교체형 패턴과 비슷하지만, 같은 운영군으로 단정할 단계는 아닙니다.';
+  }
+
+  const cautions = [];
+  if (matched && domain && officialDomain && domain !== officialDomain && domain !== lookupDomain) {
+    cautions.push('브랜드명과 입력 도메인이 다르면 공식 공지 주소를 먼저 다시 확인하세요.');
+  }
+  if (rotating) cautions.push('숫자·하이픈형 주소는 대체 도메인인지 먼저 보는 편이 안전합니다.');
+  if (sameCodeCount >= 2) cautions.push('같은 가입코드가 여러 안내에 보이면 채널 일관성을 같이 비교하세요.');
+  if (mode === 'notice') cautions.push('공지문구 안에 주소와 코드가 함께 반복되는지 확인하세요.');
+  if (!domain) cautions.push('도메인이 없으면 주소 변경 흐름은 브랜드명 검색과 같이 보는 편이 좋습니다.');
+  if (!cautions.length) cautions.push('검색 결과와 공식 공지 주소를 마지막으로 같이 보는 보수적 흐름을 권장합니다.');
+
+  const nextSteps = [
+    { label:'공식주소 체크', href:'/tools/official-check/', copy:'현재 입력 주소와 공지 주소를 한 번 더 대조합니다.' },
+    { label:'주소 변경 추적기', href:'/tools/address-tracker/', copy:'이전 주소·대체 주소 흐름을 정리합니다.' },
+    { label:'보증업체 기준 보기', href:'/guaranteed/', copy:'운영중 카드 기준으로 마지막 판단 순서를 다시 봅니다.' }
+  ];
+  if (domain) {
+    nextSteps[0] = { label:'유사 도메인 감지기', href:'/tools/similar-domain/', copy:`${domain} 기준으로 헷갈리기 쉬운 주소 패턴을 먼저 봅니다.` };
+  }
+
+  return {
+    query,
+    mode,
+    matched: matched ? {
+      name: matched.name,
+      officialDomain: matched.officialDomain || '',
+      lookupDomain: matched.lookupDomain || '',
+      code: matched.code || ''
+    } : null,
+    verdict: {
+      label: verdictLabel,
+      tone: verdictTone,
+      summary: verdictSummary
+    },
+    cards: {
+      history: { value: historyValue, body: historyBody },
+      renewal: { value: renewalValue, body: renewalBody },
+      affinity: { value: affinityValue, body: affinityBody }
+    },
+    cautions: cautions.slice(0, 3),
+    nextSteps
+  };
 }
