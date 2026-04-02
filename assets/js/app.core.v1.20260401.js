@@ -69,6 +69,52 @@
   function renderGuaranteedCards(providers){
     $$('[data-guaranteed-grid]').forEach((grid)=>{ if (grid.children.length) return; grid.innerHTML = providers.map(providerCard).join(''); });
   }
+  function homeProviderMiniCard(item){
+    return `<article class="home-provider-mini" data-theme="${esc(item.theme || 'amber')}"><div class="home-provider-mini-head"><div class="home-provider-mini-title"><strong>${esc(item.name)}</strong><span class="home-provider-mini-domain">${esc(item.officialDomain || item.officialUrl || '-')}</span></div><span class="home-provider-mini-status">운영중</span></div><div class="home-provider-mini-copy"><span>가입코드</span><strong>${esc(item.code || '-')}</strong></div><p>${esc(item.oneLine || '공식 주소와 가입코드를 먼저 확인합니다.')}</p><div class="home-provider-mini-tags">${(item.tags||[]).slice(0,3).map((tag)=>`<span>${esc(tag)}</span>`).join('')}</div><div class="home-provider-mini-actions"><button class="guaranteed-code" type="button" data-copy-text="${esc(item.code || '')}"><span data-copy-label data-default-label="${esc(item.code || '복사')}">${esc(item.code || '복사')}</span></button><a class="safety-link-btn" href="${esc(item.officialUrl || '#')}" target="_blank" rel="noopener noreferrer">바로가기</a></div></article>`;
+  }
+  function renderHomeProviderRotator(providers){
+    const root = $('[data-home-provider-rotator]');
+    if (!root) return;
+    const items = (providers || []).filter((item)=>!item.pending && item.officialUrl && item.officialUrl !== '#');
+    const track = $('[data-home-provider-track]', root);
+    const count = $('[data-home-provider-count]', root);
+    const prev = $('[data-home-provider-prev]', root);
+    const next = $('[data-home-provider-next]', root);
+    if (!track || !items.length) { root.setAttribute('hidden',''); return; }
+    let index = 0;
+    let visible = window.innerWidth >= 1420 ? 2 : 1;
+    let timer = null;
+    const render = () => {
+      if (!items.length) return;
+      track.setAttribute('data-cards', String(visible));
+      const cards = [];
+      for (let i = 0; i < Math.min(visible, items.length); i += 1) cards.push(items[(index + i) % items.length]);
+      track.innerHTML = cards.map(homeProviderMiniCard).join('');
+      if (count) count.textContent = `${index + 1} / ${items.length}`;
+    };
+    const step = (dir = 1) => {
+      index = (index + dir + items.length) % items.length;
+      render();
+    };
+    const restart = () => {
+      if (timer) clearInterval(timer);
+      if (items.length <= visible) return;
+      timer = setInterval(() => step(1), 4200);
+    };
+    prev?.addEventListener('click', () => { step(-1); restart(); });
+    next?.addEventListener('click', () => { step(1); restart(); });
+    root.addEventListener('mouseenter', () => { if (timer) clearInterval(timer); });
+    root.addEventListener('mouseleave', restart);
+    window.addEventListener('resize', () => {
+      const nextVisible = window.innerWidth >= 1420 ? 2 : 1;
+      if (nextVisible === visible) return;
+      visible = nextVisible;
+      render();
+      restart();
+    });
+    render();
+    restart();
+  }
   function wireGuaranteed(){
     document.addEventListener('click', async (e)=>{
       const copyBtn = e.target.closest('[data-copy-text]');
@@ -153,7 +199,7 @@
       fetchJson(BLOG_URL).then((d)=>d.posts || []).catch(()=>[]),
       fetchJson(REVIEW_LOG_URL).then((d)=>d.entries || []).catch(()=>[])
     ]);
-    renderGuaranteedCards(providers); renderBlogPreviews(posts); renderReviewLogs(logs);
+    renderGuaranteedCards(providers); renderHomeProviderRotator(providers); renderBlogPreviews(posts); renderReviewLogs(logs);
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 })();
