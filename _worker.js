@@ -1785,7 +1785,7 @@ async function handleAiLookup(url, env) {
   if (!q) return json({ ok:false, error:'missing_query', message:'검색어를 먼저 입력해 주세요.' }, 400);
 
   const providers = await readAssetJson(env, url, '/assets/data/guaranteed.providers.v1.20260330.json', 'providers');
-  const payload = buildAiLookupPayload({ query: q, mode, providers });
+  const payload = await buildAiLookupPayload({ query: q, mode, providers });
   return json({ ok:true, ...payload });
 }
 
@@ -1808,6 +1808,148 @@ function normalizeLookupDomain(value='') {
     v = u.hostname || '';
   } catch (_) {}
   return String(v).toLowerCase().replace(/^www\./,'').replace(/\.$/,'').replace(/:\d+$/,'');
+}
+
+
+function extractLookupDomainCandidate(value='') {
+  const text = String(value || '');
+  const match = text.match(/(?:xn--[a-z0-9-]+|[a-z0-9-]+)(?:\.(?:xn--[a-z0-9-]+|[a-z0-9-]+))+/i);
+  return normalizeLookupDomain(match ? match[0] : '');
+}
+
+function normalizeLookupLabel(value='') {
+  return String(value || '').trim().toLowerCase().replace(/\s+/g, ' ');
+}
+
+function isRecentDays(days, maxDays) {
+  const n = Number(days);
+  return Number.isFinite(n) && n >= 0 && n <= maxDays;
+}
+
+async function fetchJsonWithTimeout(url, init = {}, timeoutMs = 3200) {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort('timeout'), timeoutMs);
+  try {
+    const response = await fetch(url, { ...init, signal: controller.signal, headers: { 'accept': 'application/json', ...(init.headers || {}) } });
+    if (!response.ok) throw new Error(`http_${response.status}`);
+    return await response.json();
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+async function fetchTextWithTimeout(url, init = {}, timeoutMs = 3200) {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort('timeout'), timeoutMs);
+  try {
+    const response = await fetch(url, { ...init, signal: controller.signal, headers: { 'accept': 'text/html,application/xhtml+xml;q=0.9,*/*;q=0.8', 'user-agent': 'Mozilla/5.0 RavenLookup/1.0', ...(init.headers || {}) }, redirect: 'follow' });
+    if (!response.ok) throw new Error(`http_${response.status}`);
+    return { url: response.url, status: response.status, contentType: response.headers.get('content-type') || '', text: await response.text() };
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+function parseRdapDates(events = []) {
+  const out = { createdAt: '', expiresAt: '', updatedAt: '' };
+  for (const event of events || []) {
+    const action = String(event?.eventAction || '').toLowerCase();
+    const date = String(event?.eventDate || '').trim();
+    if (!date) continue;
+    if (!out.createdAt && (action.includes('registration') || action === 'registration')) out.createdAt = date;
+    if (!out.expiresAt && (action.includes('expiration') || action.includes('expiry'))) out.expiresAt = date;
+    if (!out.updatedAt && action.includes('last changed')) out.updatedAt = date;
+  }
+  return out;
+}
+
+function diffDaysFromNow(value = '') {
+  const t = new Date(value).getTime();
+  if (!Number.isFinite(t)) return null;
+  const diff = Math.round((Date.now() - t) / 86400000);
+  return Number.isFinite(diff) ? diff : null;
+}
+
+function daysUntil(value = '') {
+  const t = new Date(value).getTime();
+  if (!Number.isFinite(t)) return null;
+  const diff = Math.round((t - Date.now()) / 86400000);
+  return Number.isFinite(diff) ? diff : null;
+}
+
+async function fetchAiRdap(domain = '') {
+  if (!domain) return null;
+  try {
+    const data = await fetchJsonWithTimeout(`https://rdap.org/domain/${encodeURIComponent(domain)}`);
+    const dates = parseRdapDates(data?.events || []);
+    const registrarEntity = (data?.entities || []).find((entity) => (entity?.roles || []).includes('registrar')) || null;
+    return {
+      registrar: registrarEntity?.vcardArray?.[1]?.find?.((row) => row?.[0] === 'fn')?.[3] || data?.port43 || '',
+      createdAt: dates.createdAt,
+      updatedAt: dates.updatedAt,
+      expiresAt: dates.expiresAt,
+      ageDays: diffDaysFromNow(dates.createdAt),
+      expiresInDays: daysUntil(dates.expiresAt)
+    };
+  } catch (_) {
+    return null;
+  }
+}
+
+async function fetchAiDns(domain = '') {
+  if (!domain) return null;
+  const queryType = async (type) => {
+    try {
+      const data = await fetchJsonWithTimeout(`https://cloudflare-dns.com/dns-query?name=${encodeURIComponent(domain)}&type=${encodeURIComponent(type)}`, {
+        headers: { 'accept': 'application/dns-json' }
+      });
+      return (data?.Answer || []).map((item) => String(item?.data || '').trim()).filter(Boolean);
+    } catch (_) {
+      return [];
+    }
+  };
+  const [aRecords, nameServers, cNames] = await Promise.all([queryType('A'), queryType('NS'), queryType('CNAME')]);
+  return { aRecords, nameServers, cNames };
+}
+
+async function fetchAiHomepage(domain = '') {
+  if (!domain) return null;
+  const targets = [`https://${domain}/`, `http://${domain}/`];
+  for (const target of targets) {
+    try {
+      const response = await fetchTextWithTimeout(target, {}, 3800);
+      const html = String(response?.text || '').slice(0, 40000);
+      const finalDomain = normalizeLookupDomain(response?.url || target);
+      return {
+        url: response?.url || target,
+        finalDomain,
+        status: response?.status || 0,
+        title: firstMatch(html, [/<meta[^>]+property=["']og:title["'][^>]+content=["']([^"']+)["']/i, /<title[^>]*>([^<]+)<\/title>/i]),
+        description: firstMatch(html, [/<meta[^>]+name=["']description["'][^>]+content=["']([^"']+)["']/i, /<meta[^>]+property=["']og:description["'][^>]+content=["']([^"']+)["']/i])
+      };
+    } catch (_) {}
+  }
+  return null;
+}
+
+async function fetchAiLiveSignals(domain = '') {
+  if (!domain) return null;
+  const [rdap, dns, page] = await Promise.all([
+    fetchAiRdap(domain),
+    fetchAiDns(domain),
+    fetchAiHomepage(domain)
+  ]);
+  return {
+    domain,
+    rdap,
+    dns,
+    page,
+    sourceFlags: {
+      rdap: !!rdap,
+      dns: !!dns && (!!(dns?.aRecords || []).length || !!(dns?.nameServers || []).length || !!(dns?.cNames || []).length),
+      page: !!page
+    }
+  };
 }
 
 function looksRotatingDomain(domain='') {
@@ -1840,16 +1982,28 @@ function matchProvider(query, mode, providers=[]) {
   }) || null;
 }
 
-function buildAiLookupPayload({ query, mode, providers=[] }) {
-  const domain = normalizeLookupDomain(query);
+async function buildAiLookupPayload({ query, mode, providers=[] }) {
+  const extractedDomain = extractLookupDomainCandidate(query);
+  const domain = normalizeLookupDomain(query) || extractedDomain;
   const matched = matchProvider(query, mode, providers);
   const officialDomain = normalizeLookupDomain(matched?.officialDomain || matched?.officialUrl || '');
   const lookupDomain = normalizeLookupDomain(matched?.lookupDomain || '');
+  const effectiveDomain = domain || officialDomain || lookupDomain || '';
   const sameCodeCount = matched?.code ? providers.filter((item)=> !item?.pending && String(item?.code || '') === String(matched.code)).length : 0;
   const hasDirectOfficialMatch = !!(matched && domain && officialDomain && domain === officialDomain);
   const hasLookupMatch = !!(matched && domain && lookupDomain && domain === lookupDomain);
-  const rotating = domain ? looksRotatingDomain(domain) : false;
-  const renewalSignal = looksRenewalPattern(query) || rotating || (matched && lookupDomain && officialDomain && lookupDomain !== officialDomain);
+  const rotating = effectiveDomain ? looksRotatingDomain(effectiveDomain) : false;
+  const live = effectiveDomain ? await fetchAiLiveSignals(effectiveDomain) : null;
+  const pageTitle = normalizeLookupLabel(live?.page?.title || '');
+  const titleMatches = providers.filter((item) => {
+    const label = normalizeLookupLabel(item?.name || '');
+    const searchName = normalizeLookupLabel(item?.searchName || '');
+    return !!pageTitle && ((label && pageTitle.includes(label)) || (searchName && pageTitle.includes(searchName)));
+  });
+  const relatedTitleMatch = titleMatches.find((item) => item?.slug !== matched?.slug) || null;
+  const redirectDomain = normalizeLookupDomain(live?.page?.finalDomain || '');
+  const recentRegistration = isRecentDays(live?.rdap?.ageDays, 180);
+  const renewalSignal = looksRenewalPattern(query) || rotating || (matched && lookupDomain && officialDomain && lookupDomain !== officialDomain) || (redirectDomain && redirectDomain !== effectiveDomain) || (recentRegistration && !!matched);
 
   let verdictLabel = '추가 확인 필요';
   let verdictTone = 'neutral';
@@ -1863,6 +2017,10 @@ function buildAiLookupPayload({ query, mode, providers=[] }) {
     verdictLabel = '조회용 도메인 일치';
     verdictTone = 'watch';
     verdictSummary = `조회용으로 잡히는 주소와 일치합니다. 공식 주소와 같은지 다시 대조하는 편이 안전합니다.`;
+  } else if (redirectDomain && redirectDomain !== effectiveDomain) {
+    verdictLabel = '연결 주소 변경 감지';
+    verdictTone = 'watch';
+    verdictSummary = `${effectiveDomain} 접속 결과 ${redirectDomain} 로 연결되어 주소 흐름을 추가 확인하는 편이 좋습니다.`;
   } else if (matched) {
     verdictLabel = '브랜드 일치, 주소 추가 확인';
     verdictTone = 'watch';
@@ -1877,31 +2035,42 @@ function buildAiLookupPayload({ query, mode, providers=[] }) {
     verdictSummary = '공지문구만으로는 공식 주소를 확정하기 어렵습니다. 주소와 가입코드가 같이 반복되는지 보세요.';
   }
 
-  const historyValue = hasDirectOfficialMatch
-    ? '공식 주소 일치'
-    : hasLookupMatch
-      ? '조회용 주소 일치'
-      : domain
-        ? (rotating ? '교체형 패턴 주의' : '추가 자료 필요')
-        : '도메인 미입력';
-  const historyBody = hasDirectOfficialMatch
-    ? `${officialDomain} 기준으로 바로 맞는 입력입니다.`
-    : hasLookupMatch
-      ? `${lookupDomain} 표기가 보여 조회용·대체 주소 여부를 같이 확인하는 편이 좋습니다.`
-      : domain
-        ? (rotating ? `${domain} 은 숫자나 하이픈 패턴이 보여 이전 주소 공지 비교가 필요합니다.` : `${domain} 단독으로는 이전 주소 연결 흔적을 확정하기 어렵습니다.`)
-        : '사이트명만 넣은 상태라 주소 변경 흐름은 보류합니다.';
+  const historyValue = redirectDomain && redirectDomain !== effectiveDomain
+    ? '연결 주소 변경'
+    : hasDirectOfficialMatch
+      ? '공식 주소 일치'
+      : hasLookupMatch
+        ? '조회용 주소 일치'
+        : effectiveDomain
+          ? (rotating ? '교체형 패턴 주의' : '추가 자료 필요')
+          : '도메인 미입력';
+  const historyBody = redirectDomain && redirectDomain !== effectiveDomain
+    ? `${effectiveDomain} 입력 후 ${redirectDomain} 로 연결되었습니다. 이전 공지 주소와 함께 보는 편이 좋습니다.`
+    : hasDirectOfficialMatch
+      ? `${officialDomain} 기준으로 바로 맞는 입력입니다.`
+      : hasLookupMatch
+        ? `${lookupDomain} 표기가 보여 조회용·대체 주소 여부를 같이 확인하는 편이 좋습니다.`
+        : effectiveDomain
+          ? (rotating ? `${effectiveDomain} 은 숫자나 하이픈 패턴이 보여 이전 주소 공지 비교가 필요합니다.` : `${effectiveDomain} 단독으로는 이전 주소 연결 흔적을 확정하기 어렵습니다.`)
+          : '사이트명만 넣은 상태라 주소 변경 흐름은 보류합니다.';
 
   const renewalValue = renewalSignal ? '흔적 있음' : '뚜렷하지 않음';
   const renewalBody = renewalSignal
-    ? (matched && lookupDomain && officialDomain && lookupDomain !== officialDomain
-      ? `공식 주소 ${officialDomain} 와 조회용 표기 ${lookupDomain} 가 같이 보여 리뉴얼형 운영 여부를 공지와 같이 봐야 합니다.`
-      : '입력값 안에 변경·리뉴얼형 패턴이 있어 이전 공지와 새 주소를 함께 비교하는 편이 좋습니다.')
+    ? (recentRegistration && matched
+      ? `등록 후 ${live?.rdap?.ageDays}일 정도인 새 도메인인데 기존 브랜드와 연결돼 보여 리뉴얼·이전 가능성을 같이 볼 수 있습니다.`
+      : matched && lookupDomain && officialDomain && lookupDomain !== officialDomain
+        ? `공식 주소 ${officialDomain} 와 조회용 표기 ${lookupDomain} 가 같이 보여 리뉴얼형 운영 여부를 공지와 같이 봐야 합니다.`
+        : redirectDomain && redirectDomain !== effectiveDomain
+          ? `접속 후 다른 주소 ${redirectDomain} 로 연결되어 이전·신규 주소 흐름을 같이 보는 편이 좋습니다.`
+          : '입력값 안에 변경·리뉴얼형 패턴이 있어 이전 공지와 새 주소를 함께 비교하는 편이 좋습니다.')
     : '현재 입력만으로는 리뉴얼형 흔적이 뚜렷하지 않습니다.';
 
   let affinityValue = '판단 보류';
   let affinityBody = '같은 계열 추정은 확정이 아니라 유사 신호를 여러 개 같이 볼 때만 의미가 있습니다.';
-  if (matched && sameCodeCount >= 2) {
+  if (relatedTitleMatch) {
+    affinityValue = '유사도 보통';
+    affinityBody = `페이지 제목에 ${relatedTitleMatch.name} 와 비슷한 표기가 보여 같은 운영군인지 공지 채널까지 함께 비교하는 편이 좋습니다.`;
+  } else if (matched && sameCodeCount >= 2) {
     affinityValue = '유사도 보통';
     affinityBody = `같은 가입코드를 쓰는 안내가 ${sameCodeCount}건 있어 공지 채널과 도메인까지 함께 비교하는 편이 안전합니다.`;
   } else if (matched) {
@@ -1916,10 +2085,12 @@ function buildAiLookupPayload({ query, mode, providers=[] }) {
   if (matched && domain && officialDomain && domain !== officialDomain && domain !== lookupDomain) {
     cautions.push('브랜드명과 입력 도메인이 다르면 공식 공지 주소를 먼저 다시 확인하세요.');
   }
+  if (redirectDomain && redirectDomain !== effectiveDomain) cautions.push(`입력 주소가 ${redirectDomain} 로 연결되면 이전 공지와 새 주소를 같이 보세요.`);
   if (rotating) cautions.push('숫자·하이픈형 주소는 대체 도메인인지 먼저 보는 편이 안전합니다.');
   if (sameCodeCount >= 2) cautions.push('같은 가입코드가 여러 안내에 보이면 채널 일관성을 같이 비교하세요.');
+  if (recentRegistration) cautions.push('등록일이 비교적 최근이면 기존 브랜드 리뉴얼인지 함께 확인하세요.');
   if (mode === 'notice') cautions.push('공지문구 안에 주소와 코드가 함께 반복되는지 확인하세요.');
-  if (!domain) cautions.push('도메인이 없으면 주소 변경 흐름은 브랜드명 검색과 같이 보는 편이 좋습니다.');
+  if (!effectiveDomain) cautions.push('도메인이 없으면 주소 변경 흐름은 브랜드명 검색과 같이 보는 편이 좋습니다.');
   if (!cautions.length) cautions.push('검색 결과와 공식 공지 주소를 마지막으로 같이 보는 보수적 흐름을 권장합니다.');
 
   const nextSteps = [
@@ -1927,8 +2098,8 @@ function buildAiLookupPayload({ query, mode, providers=[] }) {
     { label:'주소 변경 추적기', href:'/tools/address-tracker/', copy:'이전 주소·대체 주소 흐름을 정리합니다.' },
     { label:'보증업체 기준 보기', href:'/guaranteed/', copy:'운영중 카드 기준으로 마지막 판단 순서를 다시 봅니다.' }
   ];
-  if (domain) {
-    nextSteps[0] = { label:'유사 도메인 감지기', href:'/tools/similar-domain/', copy:`${domain} 기준으로 헷갈리기 쉬운 주소 패턴을 먼저 봅니다.` };
+  if (effectiveDomain) {
+    nextSteps[0] = { label:'유사 도메인 감지기', href:'/tools/similar-domain/', copy:`${effectiveDomain} 기준으로 헷갈리기 쉬운 주소 패턴을 먼저 봅니다.` };
   }
 
   return {
@@ -1951,6 +2122,21 @@ function buildAiLookupPayload({ query, mode, providers=[] }) {
       affinity: { value: affinityValue, body: affinityBody }
     },
     cautions: cautions.slice(0, 3),
-    nextSteps
+    nextSteps,
+    live: effectiveDomain ? {
+      domain: effectiveDomain,
+      createdAt: live?.rdap?.createdAt || '',
+      expiresAt: live?.rdap?.expiresAt || '',
+      ageDays: live?.rdap?.ageDays,
+      registrar: live?.rdap?.registrar || '',
+      finalDomain: redirectDomain || effectiveDomain,
+      finalUrl: live?.page?.url || '',
+      title: live?.page?.title || '',
+      description: trimText(live?.page?.description || '', 140),
+      nameServers: live?.dns?.nameServers || [],
+      aRecords: live?.dns?.aRecords || [],
+      cNames: live?.dns?.cNames || [],
+      sourceFlags: live?.sourceFlags || { rdap:false, dns:false, page:false }
+    } : null
   };
 }
