@@ -69,52 +69,6 @@
   function renderGuaranteedCards(providers){
     $$('[data-guaranteed-grid]').forEach((grid)=>{ if (grid.children.length) return; grid.innerHTML = providers.map(providerCard).join(''); });
   }
-  function homeProviderMiniCard(item){
-    return `<article class="home-provider-mini" data-theme="${esc(item.theme || 'amber')}"><div class="home-provider-mini-head"><div class="home-provider-mini-title"><strong>${esc(item.name)}</strong><span class="home-provider-mini-domain">${esc(item.officialDomain || item.officialUrl || '-')}</span></div><span class="home-provider-mini-status">운영중</span></div><div class="home-provider-mini-copy"><span>가입코드</span><strong>${esc(item.code || '-')}</strong></div><p>${esc(item.oneLine || '공식 주소와 가입코드를 먼저 확인합니다.')}</p><div class="home-provider-mini-tags">${(item.tags||[]).slice(0,3).map((tag)=>`<span>${esc(tag)}</span>`).join('')}</div><div class="home-provider-mini-actions"><button class="guaranteed-code" type="button" data-copy-text="${esc(item.code || '')}"><span data-copy-label data-default-label="${esc(item.code || '복사')}">${esc(item.code || '복사')}</span></button><a class="safety-link-btn" href="${esc(item.officialUrl || '#')}" target="_blank" rel="noopener noreferrer">바로가기</a></div></article>`;
-  }
-  function renderHomeProviderRotator(providers){
-    const root = $('[data-home-provider-rotator]');
-    if (!root) return;
-    const items = (providers || []).filter((item)=>!item.pending && item.officialUrl && item.officialUrl !== '#');
-    const track = $('[data-home-provider-track]', root);
-    const count = $('[data-home-provider-count]', root);
-    const prev = $('[data-home-provider-prev]', root);
-    const next = $('[data-home-provider-next]', root);
-    if (!track || !items.length) { root.setAttribute('hidden',''); return; }
-    let index = 0;
-    let visible = window.innerWidth >= 1420 ? 2 : 1;
-    let timer = null;
-    const render = () => {
-      if (!items.length) return;
-      track.setAttribute('data-cards', String(visible));
-      const cards = [];
-      for (let i = 0; i < Math.min(visible, items.length); i += 1) cards.push(items[(index + i) % items.length]);
-      track.innerHTML = cards.map(homeProviderMiniCard).join('');
-      if (count) count.textContent = `${index + 1} / ${items.length}`;
-    };
-    const step = (dir = 1) => {
-      index = (index + dir + items.length) % items.length;
-      render();
-    };
-    const restart = () => {
-      if (timer) clearInterval(timer);
-      if (items.length <= visible) return;
-      timer = setInterval(() => step(1), 4200);
-    };
-    prev?.addEventListener('click', () => { step(-1); restart(); });
-    next?.addEventListener('click', () => { step(1); restart(); });
-    root.addEventListener('mouseenter', () => { if (timer) clearInterval(timer); });
-    root.addEventListener('mouseleave', restart);
-    window.addEventListener('resize', () => {
-      const nextVisible = window.innerWidth >= 1420 ? 2 : 1;
-      if (nextVisible === visible) return;
-      visible = nextVisible;
-      render();
-      restart();
-    });
-    render();
-    restart();
-  }
   function wireGuaranteed(){
     document.addEventListener('click', async (e)=>{
       const copyBtn = e.target.closest('[data-copy-text]');
@@ -192,14 +146,140 @@
     result.innerHTML = `<div class="card"><div class="section-head"><div><h2>${esc(src.title || '공개 근거 추출 결과')}</h2><p>${esc(src.url || '')}</p></div><div class="section-head-actions"><a class="safety-link-btn ghost" href="${esc(src.url || '#')}" target="_blank" rel="noopener noreferrer">원문 열기</a></div></div><div class="score-grid"><div class="score-metric"><span>호스트</span><strong>${esc(src.host || '-')}</strong></div><div class="score-metric"><span>게시일</span><strong>${esc(fmtDate(src.publishedAt))}</strong></div><div class="score-metric"><span>도메인 언급</span><strong>${esc((ev.domains||[]).length)}</strong></div><div class="score-metric"><span>IP 언급</span><strong>${esc((ev.ips||[]).length)}</strong></div></div>${ev.excerpt ? `<p class="helper-note">${esc(ev.excerpt)}</p>` : ''}</div><div class="card"><div class="section-head"><div><h2>추출된 항목</h2><p>원문을 길게 복사하지 않고 메타 항목만 정리합니다.</p></div></div><div class="evidence-grid"><article class="evidence-source-card"><h3>도메인</h3><p>${esc((ev.domains||[]).join(', ') || '-')}</p></article><article class="evidence-source-card"><h3>IP</h3><p>${esc((ev.ips||[]).join(', ') || '-')}</p></article><article class="evidence-source-card"><h3>텔레그램</h3><p>${esc((ev.telegrams||[]).join(', ') || '-')}</p></article><article class="evidence-source-card"><h3>오픈카카오</h3><p>${esc((ev.kakaos||[]).join(', ') || '-')}</p></article></div></div>`;
   }
   function wireEvidence(){ const form=$('#publicEvidenceForm'); const input=$('#publicEvidenceInput'); const result=$('#publicEvidenceResult'); if(!form || !input || !result) return; form.addEventListener('submit', async (e)=>{ e.preventDefault(); const url=String(input.value||'').trim(); if(!/^https?:\/\//i.test(url)){ result.className='empty-state'; result.innerHTML='<strong>공개 글 URL 형식을 다시 확인해 주세요.</strong>예: https://example.com/post'; return; } result.className='empty-state'; result.innerHTML='<strong>근거 추출 중입니다.</strong>제목, 날짜, URL, 도메인·IP 언급을 정리하고 있습니다.'; try{ const payload=await fetchJson(`/api/safety/evidence?url=${encodeURIComponent(url)}`); renderEvidenceResult(payload); }catch(err){ result.className='empty-state'; result.innerHTML=`<strong>근거 추출에 실패했습니다.</strong>${esc(err.message || '허용된 공개 페이지 URL인지 다시 확인해 주세요.')}`; } }); }
+  const won = (n) => new Intl.NumberFormat('ko-KR').format(Math.round(Number(n || 0)));
+  const decimal = (n) => Number(n || 0).toFixed(2);
+  function benefitKpi(label, value){ return `<article class="desktop-calc-kpi"><span>${esc(label)}</span><strong>${esc(value)}</strong></article>`; }
+  function setBenefitResult(type, metrics, summary){
+    const result = $(`[data-benefit-result="${type}"]`);
+    if(!result) return;
+    const kpis = $('.desktop-calc-kpis', result);
+    const note = $('.desktop-calc-summary', result);
+    if(kpis) kpis.innerHTML = metrics.map((item)=>benefitKpi(item.label, item.value)).join('');
+    if(note) note.textContent = summary;
+  }
+  function renderCombo(form){
+    const odds = ['odd1','odd2','odd3','odd4'].map((key)=>Number(form[key]?.value || '')).filter((v)=>Number.isFinite(v) && v >= 1.01);
+    const stake = Number(form.stake?.value || '0');
+    const fee = Number(form.fee?.value || '0');
+    if(odds.length < 2 || !Number.isFinite(stake) || stake <= 0){
+      setBenefitResult('combo', [
+        { label:'총 배당', value:'-' },
+        { label:'예상 반환금', value:'-' },
+        { label:'공제 반영', value:'-' }
+      ], '배당 2개 이상과 배팅금을 넣으면 총 배당과 실수령 기준을 바로 계산합니다.');
+      return;
+    }
+    const totalOdds = odds.reduce((acc, cur)=>acc * cur, 1);
+    const payout = stake * totalOdds;
+    const payoutAfterFee = payout * (1 - fee / 100);
+    const net = payoutAfterFee - stake;
+    let summary = `총 ${odds.length}폴 기준으로 공제 반영 실수령은 ${won(payoutAfterFee)}원입니다.`;
+    if(totalOdds >= 6) summary = `고배당 구간입니다. 공제 반영 실수령은 ${won(payoutAfterFee)}원입니다.`;
+    else if(totalOdds <= 3) summary = `낮은 배당 구간입니다. 순수익은 ${won(net)}원 기준입니다.`;
+    setBenefitResult('combo', [
+      { label:'총 배당', value:`${decimal(totalOdds)}배` },
+      { label:'예상 반환금', value:`${won(payout)}원` },
+      { label:'공제 반영', value:`${won(payoutAfterFee)}원` }
+    ], summary);
+  }
+  function renderBonusCompare(form){
+    const deposit = Number(form.deposit?.value || '0');
+    const firstPct = Number(form.firstPct?.value || '0');
+    const firstMax = Number(form.firstMax?.value || '0');
+    const firstRoll = Number(form.firstRoll?.value || '0');
+    const repeatPct = Number(form.repeatPct?.value || '0');
+    const repeatMax = Number(form.repeatMax?.value || '0');
+    const repeatRoll = Number(form.repeatRoll?.value || '0');
+    if(!Number.isFinite(deposit) || deposit <= 0){
+      setBenefitResult('bonusCompare', [
+        { label:'첫충 보너스', value:'-' },
+        { label:'매충 보너스', value:'-' },
+        { label:'유리한 쪽', value:'-' }
+      ], '충전금과 조건을 넣으면 이번 금액에서 더 유리한 쪽을 바로 비교합니다.');
+      return;
+    }
+    const firstBonus = Math.min(deposit * (firstPct / 100), firstMax || Infinity);
+    const repeatBonus = Math.min(deposit * (repeatPct / 100), repeatMax || Infinity);
+    const firstNeed = (deposit + firstBonus) * firstRoll;
+    const repeatNeed = (deposit + repeatBonus) * repeatRoll;
+    const firstScore = firstNeed > 0 ? firstBonus / firstNeed : 0;
+    const repeatScore = repeatNeed > 0 ? repeatBonus / repeatNeed : 0;
+    const leader = firstScore === repeatScore ? (firstBonus >= repeatBonus ? '첫충 근소 우세' : '매충 근소 우세') : (firstScore > repeatScore ? '첫충 우세' : '매충 우세');
+    const summary = leader.includes('첫충')
+      ? `이번 금액 기준은 첫충이 더 유리합니다. 필요 롤링은 ${won(firstNeed)}원입니다.`
+      : `이번 금액 기준은 매충이 더 유리합니다. 필요 롤링은 ${won(repeatNeed)}원입니다.`;
+    setBenefitResult('bonusCompare', [
+      { label:'첫충 보너스', value:`${won(firstBonus)}원` },
+      { label:'매충 보너스', value:`${won(repeatBonus)}원` },
+      { label:'유리한 쪽', value:leader }
+    ], summary);
+  }
+  function renderBonusReceipt(form){
+    const deposit = Number(form.deposit?.value || '0');
+    const pctVal = Number(form.pct?.value || '0');
+    const max = Number(form.max?.value || '0');
+    const roll = Number(form.roll?.value || '0');
+    const limit = Number(form.limit?.value || '0');
+    if(!Number.isFinite(deposit) || deposit <= 0){
+      setBenefitResult('bonusReceipt', [
+        { label:'지급 보너스', value:'-' },
+        { label:'필요 롤링', value:'-' },
+        { label:'기준 수령액', value:'-' }
+      ], '보너스와 롤링을 넣으면 수령 전 기준 금액을 같이 정리합니다.');
+      return;
+    }
+    const bonus = Math.min(deposit * (pctVal / 100), max || Infinity);
+    const total = deposit + bonus;
+    const need = total * roll;
+    const receipt = limit > 0 ? Math.min(total, limit) : total;
+    let difficulty = '낮음';
+    if(roll >= 5) difficulty = '부담 큼';
+    else if(roll >= 3) difficulty = '높음';
+    else if(roll >= 2) difficulty = '보통';
+    const summary = `기준 수령액은 ${won(receipt)}원이며, 체감 난이도는 ${difficulty}입니다.`;
+    setBenefitResult('bonusReceipt', [
+      { label:'지급 보너스', value:`${won(bonus)}원` },
+      { label:'필요 롤링', value:`${won(need)}원` },
+      { label:'기준 수령액', value:`${won(receipt)}원` }
+    ], summary);
+  }
+  function wireBenefitCalculator(){
+    const wrap = $('[data-benefit-calculator]');
+    const tabs = $$('[data-benefit-tab]');
+    if(!wrap || !tabs.length) return;
+    const activate = (name) => {
+      tabs.forEach((tab)=>tab.classList.toggle('is-active', tab.getAttribute('data-benefit-tab') === name));
+      $$('[data-benefit-pane]').forEach((pane)=>{
+        const on = pane.getAttribute('data-benefit-pane') === name;
+        pane.classList.toggle('is-active', on);
+        pane.hidden = !on;
+      });
+    };
+    tabs.forEach((tab)=>tab.addEventListener('click', ()=>activate(tab.getAttribute('data-benefit-tab') || 'combo')));
+    $$('[data-benefit-form]').forEach((formEl)=>{
+      const type = formEl.getAttribute('data-benefit-form');
+      const render = () => {
+        const form = formEl.elements;
+        if(type === 'combo') renderCombo(form);
+        if(type === 'bonusCompare') renderBonusCompare(form);
+        if(type === 'bonusReceipt') renderBonusReceipt(form);
+      };
+      formEl.addEventListener('submit', (e)=>{ e.preventDefault(); render(); });
+      formEl.addEventListener('reset', ()=>setTimeout(render, 0));
+      formEl.addEventListener('input', render);
+      formEl.addEventListener('change', render);
+      render();
+    });
+    activate('combo');
+  }
   async function init(){
-    wireGuaranteed(); wireGoogleForms(); wireSearchPage(); wireCheckPage(); wireEvidence();
+    wireGuaranteed(); wireGoogleForms(); wireSearchPage(); wireCheckPage(); wireEvidence(); wireBenefitCalculator();
     const [providers, posts, logs] = await Promise.all([
       fetchJson(PROVIDERS_URL).then((d)=>d.providers || []).catch(()=>[]),
       fetchJson(BLOG_URL).then((d)=>d.posts || []).catch(()=>[]),
       fetchJson(REVIEW_LOG_URL).then((d)=>d.entries || []).catch(()=>[])
     ]);
-    renderGuaranteedCards(providers); renderHomeProviderRotator(providers); renderBlogPreviews(posts); renderReviewLogs(logs);
+    renderGuaranteedCards(providers); renderBlogPreviews(posts); renderReviewLogs(logs);
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 })();
