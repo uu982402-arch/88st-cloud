@@ -1800,17 +1800,6 @@ async function readAssetJson(env, url, pathname, key) {
   }
 }
 
-function normalizeLookupDomain(value='') {
-  let v = String(value || '').trim();
-  if (!v) return '';
-  try {
-    const u = new URL(/^[a-z][a-z0-9+.-]*:\/\//i.test(v) ? v : `https://${v}`);
-    v = u.hostname || '';
-  } catch (_) {}
-  return String(v).toLowerCase().replace(/^www\./,'').replace(/\.$/,'').replace(/:\d+$/,'');
-}
-
-
 function extractLookupDomainCandidate(value='') {
   const text = String(value || '');
   const match = text.match(/(?:xn--[a-z0-9-]+|[a-z0-9-]+)(?:\.(?:xn--[a-z0-9-]+|[a-z0-9-]+))+/i);
@@ -1825,19 +1814,6 @@ function isRecentDays(days, maxDays) {
   const n = Number(days);
   return Number.isFinite(n) && n >= 0 && n <= maxDays;
 }
-
-async function fetchJsonWithTimeout(url, init = {}, timeoutMs = 3200) {
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort('timeout'), timeoutMs);
-  try {
-    const response = await fetch(url, { ...init, signal: controller.signal, headers: { 'accept': 'application/json', ...(init.headers || {}) } });
-    if (!response.ok) throw new Error(`http_${response.status}`);
-    return await response.json();
-  } finally {
-    clearTimeout(timer);
-  }
-}
-
 async function fetchTextWithTimeout(url, init = {}, timeoutMs = 3200) {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort('timeout'), timeoutMs);
