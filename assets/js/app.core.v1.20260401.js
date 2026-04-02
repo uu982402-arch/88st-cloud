@@ -187,60 +187,43 @@
     const firstPct = Number(form.firstPct?.value || '0');
     const firstMax = Number(form.firstMax?.value || '0');
     const firstRoll = Number(form.firstRoll?.value || '0');
+    const firstLimit = Number(form.firstLimit?.value || '0');
     const repeatPct = Number(form.repeatPct?.value || '0');
     const repeatMax = Number(form.repeatMax?.value || '0');
     const repeatRoll = Number(form.repeatRoll?.value || '0');
+    const repeatLimit = Number(form.repeatLimit?.value || '0');
     if(!Number.isFinite(deposit) || deposit <= 0){
       setBenefitResult('bonusCompare', [
-        { label:'첫충 보너스', value:'-' },
-        { label:'매충 보너스', value:'-' },
-        { label:'유리한 쪽', value:'-' }
-      ], '충전금과 조건을 넣으면 이번 금액에서 더 유리한 쪽을 바로 비교합니다.');
+        { label:'첫충 실수령', value:'-' },
+        { label:'매충 실수령', value:'-' },
+        { label:'첫충 롤링', value:'-' },
+        { label:'판정', value:'-' }
+      ], '충전금과 조건을 넣으면 이번 금액에서 실수령 기준으로 더 유리한 쪽을 바로 비교합니다.');
       return;
     }
     const firstBonus = Math.min(deposit * (firstPct / 100), firstMax || Infinity);
     const repeatBonus = Math.min(deposit * (repeatPct / 100), repeatMax || Infinity);
-    const firstNeed = (deposit + firstBonus) * firstRoll;
-    const repeatNeed = (deposit + repeatBonus) * repeatRoll;
-    const firstScore = firstNeed > 0 ? firstBonus / firstNeed : 0;
-    const repeatScore = repeatNeed > 0 ? repeatBonus / repeatNeed : 0;
-    const leader = firstScore === repeatScore ? (firstBonus >= repeatBonus ? '첫충 근소 우세' : '매충 근소 우세') : (firstScore > repeatScore ? '첫충 우세' : '매충 우세');
+    const firstTotal = deposit + firstBonus;
+    const repeatTotal = deposit + repeatBonus;
+    const firstNeed = firstTotal * firstRoll;
+    const repeatNeed = repeatTotal * repeatRoll;
+    const firstReceipt = firstLimit > 0 ? Math.min(firstTotal, firstLimit) : firstTotal;
+    const repeatReceipt = repeatLimit > 0 ? Math.min(repeatTotal, repeatLimit) : repeatTotal;
+    const firstScore = firstReceipt / Math.max(firstNeed || firstReceipt || 1, 1);
+    const repeatScore = repeatReceipt / Math.max(repeatNeed || repeatReceipt || 1, 1);
+    let leader = '조건 비슷';
+    if (Math.abs(firstScore - repeatScore) < 0.0001) leader = firstReceipt >= repeatReceipt ? '첫충 근소 우세' : '매충 근소 우세';
+    else leader = firstScore > repeatScore ? '첫충 우세' : '매충 우세';
     const summary = leader.includes('첫충')
-      ? `이번 금액 기준은 첫충이 더 유리합니다. 필요 롤링은 ${won(firstNeed)}원입니다.`
-      : `이번 금액 기준은 매충이 더 유리합니다. 필요 롤링은 ${won(repeatNeed)}원입니다.`;
+      ? `첫충은 보너스 ${won(firstBonus)}원, 실수령 기준 ${won(firstReceipt)}원으로 더 유리합니다.`
+      : leader.includes('매충')
+        ? `매충은 보너스 ${won(repeatBonus)}원, 실수령 기준 ${won(repeatReceipt)}원으로 더 유리합니다.`
+        : `실수령 비중은 비슷합니다. 첫충 보너스 ${won(firstBonus)}원, 매충 보너스 ${won(repeatBonus)}원입니다.`;
     setBenefitResult('bonusCompare', [
-      { label:'첫충 보너스', value:`${won(firstBonus)}원` },
-      { label:'매충 보너스', value:`${won(repeatBonus)}원` },
-      { label:'유리한 쪽', value:leader }
-    ], summary);
-  }
-  function renderBonusReceipt(form){
-    const deposit = Number(form.deposit?.value || '0');
-    const pctVal = Number(form.pct?.value || '0');
-    const max = Number(form.max?.value || '0');
-    const roll = Number(form.roll?.value || '0');
-    const limit = Number(form.limit?.value || '0');
-    if(!Number.isFinite(deposit) || deposit <= 0){
-      setBenefitResult('bonusReceipt', [
-        { label:'지급 보너스', value:'-' },
-        { label:'필요 롤링', value:'-' },
-        { label:'기준 수령액', value:'-' }
-      ], '보너스와 롤링을 넣으면 수령 전 기준 금액을 같이 정리합니다.');
-      return;
-    }
-    const bonus = Math.min(deposit * (pctVal / 100), max || Infinity);
-    const total = deposit + bonus;
-    const need = total * roll;
-    const receipt = limit > 0 ? Math.min(total, limit) : total;
-    let difficulty = '낮음';
-    if(roll >= 5) difficulty = '부담 큼';
-    else if(roll >= 3) difficulty = '높음';
-    else if(roll >= 2) difficulty = '보통';
-    const summary = `기준 수령액은 ${won(receipt)}원이며, 체감 난이도는 ${difficulty}입니다.`;
-    setBenefitResult('bonusReceipt', [
-      { label:'지급 보너스', value:`${won(bonus)}원` },
-      { label:'필요 롤링', value:`${won(need)}원` },
-      { label:'기준 수령액', value:`${won(receipt)}원` }
+      { label:'첫충 실수령', value:`${won(firstReceipt)}원` },
+      { label:'매충 실수령', value:`${won(repeatReceipt)}원` },
+      { label:'첫충 롤링', value:`${won(firstNeed)}원` },
+      { label:'판정', value:leader }
     ], summary);
   }
   function wireBenefitCalculator(){
@@ -262,7 +245,6 @@
         const form = formEl.elements;
         if(type === 'combo') renderCombo(form);
         if(type === 'bonusCompare') renderBonusCompare(form);
-        if(type === 'bonusReceipt') renderBonusReceipt(form);
       };
       formEl.addEventListener('submit', (e)=>{ e.preventDefault(); render(); });
       formEl.addEventListener('reset', ()=>setTimeout(render, 0));

@@ -9,7 +9,6 @@
       <div class="desktop-calc-tabs" data-benefit-tabs>
         <button class="desktop-calc-tab is-active" type="button" data-benefit-tab="combo">조합 배당</button>
         <button class="desktop-calc-tab" type="button" data-benefit-tab="bonusCompare">첫충 vs 매충</button>
-        <button class="desktop-calc-tab" type="button" data-benefit-tab="bonusReceipt">보너스 실수령</button>
       </div>
       <div class="desktop-calc-body" data-benefit-calculator>
         <section class="desktop-calc-pane is-active" data-benefit-pane="combo">
@@ -33,45 +32,30 @@
         </section>
         <section class="desktop-calc-pane" data-benefit-pane="bonusCompare" hidden>
           <form class="desktop-calc-form" data-benefit-form="bonusCompare">
-            <div class="desktop-calc-grid desktop-calc-grid--pair">
+            <div class="desktop-calc-grid desktop-calc-grid--single">
               <label class="desktop-calc-field"><span>충전금</span><input type="number" name="deposit" min="0" step="1000" inputmode="numeric" placeholder="100000"></label>
-              <div class="desktop-calc-pair-label">첫충</div>
             </div>
+            <div class="desktop-calc-section-label">첫충 조건</div>
             <div class="desktop-calc-grid desktop-calc-grid--triple">
               <label class="desktop-calc-field"><span>퍼센트</span><input type="number" name="firstPct" min="0" step="1" inputmode="numeric" placeholder="40"></label>
               <label class="desktop-calc-field"><span>최대 지급</span><input type="number" name="firstMax" min="0" step="1000" inputmode="numeric" placeholder="40000"></label>
               <label class="desktop-calc-field"><span>롤링 배수</span><input type="number" name="firstRoll" min="0" step="1" inputmode="numeric" placeholder="3"></label>
             </div>
-            <div class="desktop-calc-pair-label desktop-calc-pair-label--sub">매충</div>
+            <div class="desktop-calc-section-label desktop-calc-section-label--sub">매충 조건</div>
             <div class="desktop-calc-grid desktop-calc-grid--triple desktop-calc-grid--compact">
               <label class="desktop-calc-field"><span>퍼센트</span><input type="number" name="repeatPct" min="0" step="1" inputmode="numeric" placeholder="15"></label>
               <label class="desktop-calc-field"><span>최대 지급</span><input type="number" name="repeatMax" min="0" step="1000" inputmode="numeric" placeholder="15000"></label>
               <label class="desktop-calc-field"><span>롤링 배수</span><input type="number" name="repeatRoll" min="0" step="1" inputmode="numeric" placeholder="2"></label>
             </div>
+            <div class="desktop-calc-grid desktop-calc-grid--double desktop-calc-grid--compact">
+              <label class="desktop-calc-field"><span>첫충 최대 출금</span><input type="number" name="firstLimit" min="0" step="1000" inputmode="numeric" placeholder="비우면 제한 없음"></label>
+              <label class="desktop-calc-field"><span>매충 최대 출금</span><input type="number" name="repeatLimit" min="0" step="1000" inputmode="numeric" placeholder="비우면 제한 없음"></label>
+            </div>
             <div class="desktop-calc-actions"><button class="safety-link-btn" type="submit">혜택 비교</button><button class="safety-link-btn ghost" type="reset">다시 입력</button></div>
           </form>
           <div class="desktop-calc-result" data-benefit-result="bonusCompare">
-            <div class="desktop-calc-kpis"><article class="desktop-calc-kpi"><span>첫충 보너스</span><strong>-</strong></article><article class="desktop-calc-kpi"><span>매충 보너스</span><strong>-</strong></article><article class="desktop-calc-kpi"><span>유리한 쪽</span><strong>-</strong></article></div>
-            <div class="desktop-calc-summary">충전금과 조건을 넣으면 이번 금액에서 더 유리한 쪽을 바로 비교합니다.</div>
-          </div>
-        </section>
-        <section class="desktop-calc-pane" data-benefit-pane="bonusReceipt" hidden>
-          <form class="desktop-calc-form" data-benefit-form="bonusReceipt">
-            <div class="desktop-calc-grid desktop-calc-grid--triple">
-              <label class="desktop-calc-field"><span>충전금</span><input type="number" name="deposit" min="0" step="1000" inputmode="numeric" placeholder="100000"></label>
-              <label class="desktop-calc-field"><span>보너스 퍼센트</span><input type="number" name="pct" min="0" step="1" inputmode="numeric" placeholder="20"></label>
-              <label class="desktop-calc-field"><span>최대 지급</span><input type="number" name="max" min="0" step="1000" inputmode="numeric" placeholder="20000"></label>
-            </div>
-            <div class="desktop-calc-grid desktop-calc-grid--triple desktop-calc-grid--compact">
-              <label class="desktop-calc-field"><span>롤링 배수</span><input type="number" name="roll" min="0" step="1" inputmode="numeric" placeholder="3"></label>
-              <label class="desktop-calc-field"><span>최대 출금</span><input type="number" name="limit" min="0" step="1000" inputmode="numeric" placeholder="없음이면 비움"></label>
-              <div class="desktop-calc-field desktop-calc-field--hint"><span>기준</span><div class="desktop-calc-hint">최대 출금이 있으면 기준 수령액에 반영</div></div>
-            </div>
-            <div class="desktop-calc-actions"><button class="safety-link-btn" type="submit">실수령 계산</button><button class="safety-link-btn ghost" type="reset">조건 다시 보기</button></div>
-          </form>
-          <div class="desktop-calc-result" data-benefit-result="bonusReceipt">
-            <div class="desktop-calc-kpis"><article class="desktop-calc-kpi"><span>지급 보너스</span><strong>-</strong></article><article class="desktop-calc-kpi"><span>필요 롤링</span><strong>-</strong></article><article class="desktop-calc-kpi"><span>기준 수령액</span><strong>-</strong></article></div>
-            <div class="desktop-calc-summary">보너스와 롤링을 넣으면 수령 전 기준 금액을 같이 정리합니다.</div>
+            <div class="desktop-calc-kpis desktop-calc-kpis--wide"><article class="desktop-calc-kpi"><span>첫충 실수령</span><strong>-</strong></article><article class="desktop-calc-kpi"><span>매충 실수령</span><strong>-</strong></article><article class="desktop-calc-kpi"><span>첫충 롤링</span><strong>-</strong></article><article class="desktop-calc-kpi"><span>판정</span><strong>-</strong></article></div>
+            <div class="desktop-calc-summary">충전금과 조건을 넣으면 이번 금액에서 실수령 기준으로 더 유리한 쪽을 바로 비교합니다.</div>
           </div>
         </section>
       </div>
