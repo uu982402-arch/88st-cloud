@@ -69,6 +69,45 @@
   function renderGuaranteedCards(providers){
     $$('[data-guaranteed-grid]').forEach((grid)=>{ if (grid.children.length) return; grid.innerHTML = providers.map(providerCard).join(''); });
   }
+  function providerRotatorCard(item){
+    const action = `<a class="home-provider-link" href="${esc(item.officialUrl)}" target="_blank" rel="noopener noreferrer">바로가기</a>`;
+    const code = `<button class="home-provider-code" type="button" data-copy-text="${esc(item.code)}"><span data-copy-label data-default-label="${esc(item.code)}">${esc(item.code)}</span></button>`;
+    const tags = (item.tags || []).slice(0,2).map((tag)=>`<span>${esc(tag)}</span>`).join('');
+    return `<article class="home-provider-card" data-theme="${esc(item.theme || 'slate')}"><div class="home-provider-card-top"><strong>${esc(item.name)}</strong><span class="home-provider-status">운영중</span></div><p class="home-provider-copy">${esc(item.oneLine || '공식 주소와 가입코드 확인')}</p><div class="home-provider-tags">${tags || '<span>주소 확인</span><span>가입코드</span>'}</div><div class="home-provider-card-actions">${code}${action}</div></article>`;
+  }
+  function renderHomeProviderRotator(providers){
+    const section = $('[data-home-provider-rotator-section]');
+    if (!section) return;
+    const grid = $('[data-home-provider-rotator]', section);
+    const prev = $('[data-home-rotator-prev]', section);
+    const next = $('[data-home-rotator-next]', section);
+    const pageMeta = $('[data-home-rotator-page]', section);
+    const active = (providers || []).filter((item)=>!item.pending && item.officialUrl && item.code);
+    if (!grid || !active.length){ section.hidden = true; return; }
+    const pageSize = Math.min(4, active.length);
+    const pageCount = Math.max(1, Math.ceil(active.length / pageSize));
+    let page = 0;
+    let timer = null;
+    const windowItems = (pageIndex) => {
+      const start = (pageIndex * pageSize) % active.length;
+      return Array.from({ length: pageSize }, (_, idx) => active[(start + idx) % active.length]);
+    };
+    const render = () => {
+      grid.innerHTML = windowItems(page).map(providerRotatorCard).join('');
+      if (pageMeta) pageMeta.textContent = `${page + 1} / ${pageCount}`;
+      if (prev) prev.disabled = pageCount <= 1;
+      if (next) next.disabled = pageCount <= 1;
+    };
+    const go = (dir = 1) => { page = (page + dir + pageCount) % pageCount; render(); };
+    const stop = () => { if (timer) { clearInterval(timer); timer = null; } };
+    const start = () => { stop(); if (pageCount > 1) timer = setInterval(()=>go(1), 5600); };
+    prev?.addEventListener('click', ()=>{ go(-1); start(); });
+    next?.addEventListener('click', ()=>{ go(1); start(); });
+    section.addEventListener('mouseenter', stop);
+    section.addEventListener('mouseleave', start);
+    render();
+    start();
+  }
   function wireGuaranteed(){
     document.addEventListener('click', async (e)=>{
       const copyBtn = e.target.closest('[data-copy-text]');
@@ -220,7 +259,7 @@
       fetchJson(BLOG_URL).then((d)=>d.posts || []).catch(()=>[]),
       fetchJson(REVIEW_LOG_URL).then((d)=>d.entries || []).catch(()=>[])
     ]);
-    renderGuaranteedCards(providers); renderBlogPreviews(posts); renderReviewLogs(logs); wireHomeAiLookup();
+    renderGuaranteedCards(providers); renderHomeProviderRotator(providers); renderBlogPreviews(posts); renderReviewLogs(logs); wireHomeAiLookup();
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 })();
