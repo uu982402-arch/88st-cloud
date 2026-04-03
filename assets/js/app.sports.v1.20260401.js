@@ -11,28 +11,28 @@
       fields: ['home','draw','away'],
       labels: { home:'홈 배당', draw:'무 배당', away:'원정 배당' },
       resultLabels: ['홈','무','원정'],
-      note: '배당 3개를 넣으면 상단 확률부터 바로 정리합니다.'
+      note: '승·무·패 배당 3개를 넣으면 정규화 확률을 바로 보여줍니다.'
     },
     moneyline: {
       label: '승·패',
       fields: ['home','away'],
       labels: { home:'홈 배당', away:'원정 배당' },
       resultLabels: ['홈','원정'],
-      note: '배당 2개를 넣으면 양쪽 확률을 바로 정리합니다.'
+      note: '승·패 배당 2개를 넣으면 양쪽 확률을 바로 보여줍니다.'
     },
     ou: {
       label: '언더·오버',
       fields: ['line','over','under'],
       labels: { line:'기준점', over:'오버 배당', under:'언더 배당' },
       resultLabels: ['오버','언더'],
-      note: '기준점과 배당 2개를 넣으면 양쪽 확률을 정리합니다.'
+      note: '기준점과 오버·언더 배당을 넣으면 양쪽 확률을 정리합니다.'
     },
     hcp: {
       label: '핸디캡',
       fields: ['line','home','away'],
       labels: { line:'기준점', home:'홈 배당', away:'원정 배당' },
       resultLabels: ['홈','원정'],
-      note: '기준점과 양쪽 배당을 넣으면 확률을 정리합니다.'
+      note: '핸디 기준점과 양쪽 배당을 넣으면 확률을 정리합니다.'
     }
   };
 
@@ -44,7 +44,7 @@
 
   function interpret(market, probs, total) {
     const margin = (total - 1) * 100;
-    if (!probs.length) return '값을 입력하면 결과가 자동으로 계산됩니다.';
+    if (!probs.length) return '입력 후 확인';
     const [a,b,c] = probs;
     if (market === '1x2') {
       if (a >= 46) return `마진 ${margin.toFixed(1)}% · 홈 우세가 비교적 선명합니다.`;
@@ -103,7 +103,7 @@
 
     function setSummary(text) {
       const summaryNode = qs('[data-sports-summary]', result);
-      if (summaryNode) summaryNode.textContent = text || '배당을 넣으면 상위 확률과 마진을 함께 정리합니다.';
+      if (summaryNode) summaryNode.textContent = text || '입력 대기';
     }
 
     function resetResult(note, marketLabel) {
@@ -112,17 +112,13 @@
       vals.forEach((n) => { n.textContent = '-'; });
       bars.forEach((bar) => { bar.style.width = '0%'; });
       const head = qs('.sports-score-top span', result);
-      const noteNode = qs('.sports-note', result);
       if (head) head.textContent = marketLabel || '승·무·패';
-      if (noteNode) noteNode.textContent = note || '값을 입력하면 결과가 자동으로 계산됩니다.';
-      setSummary('배당을 넣으면 가장 높은 확률과 마진을 먼저 보여줍니다.');
+      setSummary('입력 대기');
     }
 
     function applyMarket(market) {
       const cfg = MARKETS[market] || MARKETS['1x2'];
       hiddenMarket.value = market;
-      form.dataset.activeMarket = market;
-      result.dataset.activeMarket = market;
       qsa('[data-market]', tabWrap).forEach(btn => btn.classList.toggle('is-active', btn.dataset.market === market));
       Object.entries(fieldMap).forEach(([key, wrap]) => {
         if (!wrap) return;
@@ -148,7 +144,6 @@
       const cfg = MARKETS[market] || MARKETS['1x2'];
       const activeOdds = cfg.fields.filter(k => k !== 'line').map(k => Number(inputs[k]?.value || ''));
       const head = qs('.sports-score-top span', result);
-      const noteNode = qs('.sports-note', result);
       const vals = qsa('.sports-metric strong', result);
       if (head) head.textContent = cfg.label;
       if (!validOdds(activeOdds)) {
@@ -165,9 +160,8 @@
         const margin = (total - 1) * 100;
         setSummary(`${leader.label} 우세 ${pct(leader.prob)} · 마진 ${margin.toFixed(1)}%`);
       } else {
-        setSummary('배당을 넣으면 가장 높은 확률과 마진을 먼저 보여줍니다.');
+        setSummary('입력 대기');
       }
-      if (noteNode) noteNode.textContent = interpret(market, probs, total);
     }
 
     qsa('[data-market]', tabWrap).forEach(btn => btn.addEventListener('click', () => applyMarket(btn.dataset.market || '1x2')));
