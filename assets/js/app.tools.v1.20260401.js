@@ -265,54 +265,211 @@ ${story}
   }
 
 
-  function fmtWon(value){ const n=Number(value||0); return `${Math.round(n).toLocaleString()}원`; }
-  function verdictBand(score){ if(score>=75) return '양호'; if(score>=45) return '주의'; return '경계'; }
-  function classifyReviewLine(line=''){ const t=String(line||'').trim(); if(!t) return '정황부족'; const promo=/(메이저|안전|검증완료|추천|최고|무조건|절대|이벤트|보장)/i.test(t); const evidence=/(입금|출금|환전|캡처|증거|시간|날짜|금액|계좌|문의)/i.test(t); const duplicate=/(ㅋㅋ|ㅎㅎ|!!!|굿|짱|추천합니다)/.test(t) || t.length < 10; if(evidence && !promo) return '실사용형'; if(promo && duplicate) return '복붙형'; if(promo) return '홍보형'; return '정황부족'; }
-  function calcProfit(stake, odds){ const s=Number(stake||0), o=Number(odds||0); if(!s||!o) return { payout:0, profit:0 }; const payout=s*o; return { payout, profit:payout-s }; }
+  function engineSet(result, title, cards, notes = []) {
+    const metrics = `<div class="score-grid">${cards.map((item)=>`<div class="score-metric"><span>${esc(item.label)}</span><strong>${esc(item.value)}</strong><small>${esc(item.note||'')}</small></div>`).join('')}</div>`;
+    const noteHtml = notes.length ? `<ul class="toolkit-points">${notes.map((item)=>`<li>${esc(item)}</li>`).join('')}</ul>` : '';
+    setResult(result, `<div class="toolkit-result-stack">${section(title,'',metrics)}${noteHtml}</div>`, 'toolkit-result-stack');
+  }
 
-  function initAiNoticeCheck(){ const form=$('#ainoticecheckForm'); const result=$('#aiNoticeResult'); const official=$('#aiNoticeOfficial'); const channel=$('#aiNoticeChannel'); if(!form||!result||!official||!channel) return; form.addEventListener('submit',(e)=>{ e.preventDefault(); const a=String(official.value||'').trim(); const b=String(channel.value||'').trim(); if(!a||!b) return empty(result,'입력값이 비어 있습니다.','두 공지를 모두 넣어 주세요.'); const aDomains=extractDomainsFromText(a), bDomains=extractDomainsFromText(b); const aCodes=extractCodes(a), bCodes=extractCodes(b); const domainMatch=aDomains.some((v)=>bDomains.includes(v)); const codeMatch=!aCodes.length||!bCodes.length?true:aCodes.some((v)=>bCodes.includes(v)); let score=70; if(domainMatch) score+=15; else score-=20; if(codeMatch) score+=10; else score-=15; if(/긴급|즉시|오늘만|마감임박/.test(a+b)) score-=10; if(/리뉴얼|변경|신규주소/.test(a+b)) score-=5; const warnings=[]; if(!domainMatch) warnings.push('주소 표기가 일치하지 않습니다.'); if(!codeMatch) warnings.push('가입코드가 다르게 보입니다.'); if(/긴급|즉시|오늘만|마감임박/.test(a+b)) warnings.push('긴급 유도 문구가 있습니다.'); if(warnings.length===0) warnings.push('큰 불일치는 적습니다.'); const html=section('핵심 판정','공지 두 장을 한 번에 봅니다.', `<div class="score-shell"><div class="score-top"><div><div class="score-big">${esc(score)}</div><span class="score-band">${esc(verdictBand(score))}</span></div><div class="score-meta"><h2 class="score-title">AI 공지 검토</h2><p>주소와 코드, 긴급 유도 문구를 먼저 봤습니다.</p></div></div><div class="score-bar"><span style="width:${Math.max(0,Math.min(100,score))}%"></span></div></div>`) + section('주의 포인트','짧게만 남깁니다.', `<ul class="toolkit-list">${warnings.map((w)=>`<li><div><strong>${esc(w)}</strong></div></li>`).join('')}</ul><div class="toolkit-note">사이트 공지: ${esc(aDomains.join(', ')||'-')} / 채널 공지: ${esc(bDomains.join(', ')||'-')}</div>`); setResult(result, html, 'toolkit-result-stack'); }); }
-  function initAiReviewClassifier(){ const form=$('#aireviewclassifierForm'); const result=$('#aiReviewResult'); const input=$('#aiReviewInput'); if(!form||!result||!input) return; form.addEventListener('submit',(e)=>{ e.preventDefault(); const lines=normalizeLines(input.value); if(!lines.length) return empty(result,'입력값이 비어 있습니다.','후기 문장을 한 줄에 하나씩 넣어 주세요.'); const counts={복붙형:0, 홍보형:0, 실사용형:0, 정황부족:0}; lines.forEach((line)=>{ counts[classifyReviewLine(line)] += 1; }); const detail=lines.slice(0,8).map((line)=>({title: classifyReviewLine(line), detail: line})); const html=section('분류 결과','많이 보이는 패턴만 모았습니다.', `<div class="score-grid"><div class="score-metric"><span>복붙형</span><strong>${counts['복붙형']}개</strong></div><div class="score-metric"><span>홍보형</span><strong>${counts['홍보형']}개</strong></div><div class="score-metric"><span>실사용형</span><strong>${counts['실사용형']}개</strong></div><div class="score-metric"><span>정황부족</span><strong>${counts['정황부족']}개</strong></div></div>`) + section('예시','일부만 보여줍니다.', listCard(detail)); setResult(result, html, 'toolkit-result-stack'); }); }
-  function initAiReportDraft(){ const form=$('#aireportdraftForm'); const result=$('#aiDraftResult'); if(!form||!result) return; form.addEventListener('submit',(e)=>{ e.preventDefault(); const site=$('#aiDraftSite')?.value?.trim()||'-'; const domain=$('#aiDraftDomain')?.value?.trim()||'-'; const code=$('#aiDraftCode')?.value?.trim()||'-'; const issue=$('#aiDraftIssue')?.value?.trim()||'-'; const story=$('#aiDraftStory')?.value?.trim()||'-'; const evidence=$('#aiDraftEvidence')?.value?.trim()||'-'; if(site==='-'&&story==='-') return empty(result,'입력값이 비어 있습니다.','사이트명과 상황 설명을 넣어 주세요.'); const draft=`안녕하세요. ${site} 관련 문의드립니다.
+  function toolRiskLabel(score){ if(score >= 75) return '매우 높음'; if(score >= 55) return '높음'; if(score >= 30) return '보통'; return '낮음'; }
 
-- 주소: ${domain}
-- 가입코드: ${code}
-- 문제 유형: ${issue}
+  function engineSportsStudy({ market='moneyline', odds=[], capital=0, mode='neutral', line=0, labels=[] }={}) {
+    const engines = window.RavenEngines || {};
+    if(!engines.fairProbability) return null;
+    const fair = engines.fairProbability({ odds, market });
+    const outcomes = fair.fairProbabilities.map((prob, idx) => {
+      const ev = engines.expectedValue({ probability: prob, odds: odds[idx], stake: capital || 100000 });
+      const vol = engines.volatilityRisk({ probability: prob, odds: odds[idx], stake: Math.max(1000, (capital || 100000) * 0.01), plays: market === '1x2' ? 3 : 2 });
+      return { label: labels[idx] || `선택 ${idx+1}`, prob, probPct: prob * 100, odds: odds[idx], ev, vol, fairOdds: fair.fairOdds[idx] };
+    });
+    const bestProb = outcomes.slice().sort((a,b)=>b.prob-a.prob)[0];
+    const bestEdge = outcomes.slice().sort((a,b)=>b.ev.evRate-a.ev.evRate)[0];
+    const score = outcomes.reduce((sum,item)=>sum+item.vol.volatilityScore,0) / Math.max(1,outcomes.length);
+    const bankroll = engines.bankrollPlan({ capital, probability: bestEdge.prob, odds: bestEdge.odds, mode, volatilityScore: score });
+    return { fair, outcomes, bestProb, bestEdge, volatilityScore: score, volatilityLabel: toolRiskLabel(score), bankroll, line };
+  }
 
-[상황 요약]
-${story}
+  function initBonusPolicy(){
+    const form=$('#bonuspolicyForm'); const result=$('#bonusPolicyResult'); if(!form||!result) return;
+    form.addEventListener('submit',(e)=>{
+      e.preventDefault();
+      const engines = window.RavenEngines || {};
+      const deposit=Number($('#bonusDeposit')?.value||0); const percent=Number($('#bonusPercent')?.value||0); const cap=Number($('#bonusCap')?.value||0); const rolling=Number($('#bonusRolling')?.value||0); const maxWithdraw=Number($('#bonusMaxWithdraw')?.value||0);
+      if(!deposit||!percent) return empty(result,'입력값이 비어 있습니다.','충전금과 퍼센트를 먼저 입력해 주세요.');
+      const bonus=Math.min(deposit*(percent/100), cap||Infinity); const total=deposit+bonus; const needRolling=total*Math.max(0,rolling); const effective=maxWithdraw?Math.min(total,maxWithdraw):total;
+      const efficiency = effective > 0 ? effective / Math.max(total, 1) : 0;
+      const burdenScore = clamp((needRolling / Math.max(total,1)) * 5, 0, 100);
+      const bankroll = engines.bankrollPlan ? engines.bankrollPlan({ capital: total, probability: Math.max(0.35, efficiency * 0.65), odds: 1.9, mode:'safe', volatilityScore: burdenScore }) : { amount:0, ratio:0, label:'보수' };
+      engineSet(result,'조건 결과',[
+        { label:'보너스', value:`${Math.round(bonus).toLocaleString()}원`, note:`총 사용금 ${Math.round(total).toLocaleString()}원` },
+        { label:'필요 롤링', value:`${Math.round(needRolling).toLocaleString()}원`, note:`배수 ${rolling || 0}배` },
+        { label:'실수령 기준', value:`${Math.round(effective).toLocaleString()}원`, note:maxWithdraw?'최대 출금 반영':'제한 없음' },
+        { label:'추천 비중', value: bankroll.amount ? `${Math.round(bankroll.amount).toLocaleString()}원` : `${(bankroll.ratio*100).toFixed(1)}%`, note:`부담도 ${toolRiskLabel(burdenScore)}` },
+      ], [
+        efficiency < 0.75 ? '최대 출금 제한이 체감 실익을 크게 줄입니다.' : '최대 출금 제한은 상대적으로 약한 편입니다.',
+        needRolling > total * 10 ? '롤링 부담이 높아 보수적으로 접근하는 편이 안전합니다.' : '롤링 부담은 과도한 편은 아닙니다.',
+      ]);
+    });
+  }
 
-[증거 요약]
-${evidence}
+  function initSlipCompare(){
+    const form=$('#slipcompareForm'); const result=$('#slipCompareResult'); if(!form||!result) return;
+    form.addEventListener('submit',(e)=>{
+      e.preventDefault();
+      const engines = window.RavenEngines || {};
+      const stake=Number($('#slipStake')?.value||0);
+      const odds=[Number($('#slipOddsA')?.value||0),Number($('#slipOddsB')?.value||0),Number($('#slipOddsC')?.value||0)].filter(Boolean);
+      if(!stake||odds.length<2) return empty(result,'입력값이 비어 있습니다.','금액과 배당 두 개 이상을 입력해 주세요.');
+      const singlesStudy = engineSportsStudy({ market:'moneyline', odds: odds.slice(0,2), capital: stake, mode:'neutral', labels:['선택1','선택2'] });
+      const parlayOdds = odds.reduce((m,o)=>m*o,1);
+      const fairProb = odds.map((o)=>1/o).reduce((m,v)=>m*v,1);
+      const parlayEv = engines.expectedValue ? engines.expectedValue({ probability: fairProb * 0.98, odds: parlayOdds, stake }) : { evRate: 0 };
+      const parlayVol = engines.volatilityRisk ? engines.volatilityRisk({ probability: fairProb * 0.98, odds: parlayOdds, stake, plays: odds.length }) : { volatilityScore: 0, grade:'낮음' };
+      const singleAvgEv = singlesStudy ? singlesStudy.outcomes.reduce((sum,item)=>sum+item.ev.evRate,0)/Math.max(1,singlesStudy.outcomes.length) : 0;
+      engineSet(result,'비교 결과',[
+        { label:'단폴 평균 EV', value:`${(singleAvgEv*100).toFixed(1)}%`, note:'분산형' },
+        { label:'조합 EV', value:`${(parlayEv.evRate*100).toFixed(1)}%`, note:`총 배당 ${parlayOdds.toFixed(2)}` },
+        { label:'단폴 변동성', value: singlesStudy ? singlesStudy.volatilityLabel : '-', note:'평균 기준' },
+        { label:'조합 변동성', value: parlayVol.grade, note:'폴더 수가 늘수록 상승' },
+      ], [
+        parlayVol.volatilityScore > (singlesStudy?.volatilityScore||0) ? '조합은 수익이 몰리지만 흔들림도 같이 커집니다.' : '분산형 단폴이 상대적으로 안정적입니다.',
+        parlayEv.evRate > singleAvgEv ? '조합 쪽 기대값이 더 높아 보여도 손실 구간은 더 길 수 있습니다.' : '단폴 여러 번이 운영 난도는 더 낮습니다.',
+      ]);
+    });
+  }
 
-확인 부탁드립니다.`; const html=section('정리 결과','바로 전달할 수 있습니다.', `<div class="toolkit-copy-box"><pre>${esc(draft)}</pre><div class="toolkit-actions"><button class="safety-copy-btn mint" type="button" data-inline-copy="${esc(draft)}">텍스트 복사</button></div></div>`); setResult(result, html, 'toolkit-result-stack'); }); }
-  function initAiRulesInterpreter(){ const form=$('#airulesinterpreterForm'); const result=$('#aiRulesResult'); const input=$('#aiRulesInput'); if(!form||!result||!input) return; form.addEventListener('submit',(e)=>{ e.preventDefault(); const raw=String(input.value||'').trim(); if(!raw) return empty(result,'입력값이 비어 있습니다.','규정 문구를 붙여 넣어 주세요.'); const percent=(raw.match(/(\d+(?:\.\d+)?)\s*%/)||[])[1]||'-'; const rolling=(raw.match(/롤링[^0-9]{0,6}(\d+(?:\.\d+)?)/)||[])[1]||'-'; const flags=[]; ['양방','계정공유','규정변경','최대출금','롤링','졸업','보유중'].forEach((word)=>{ if(raw.includes(word)) flags.push(word); }); const html=section('핵심 항목','긴 문장을 먼저 압축합니다.', `<div class="score-grid"><div class="score-metric"><span>퍼센트</span><strong>${esc(percent==='-'?'-':percent+'%')}</strong></div><div class="score-metric"><span>롤링</span><strong>${esc(rolling==='-'?'-':rolling+'배')}</strong></div><div class="score-metric"><span>핵심 단어</span><strong>${esc(flags.slice(0,3).join(' · ')||'-')}</strong></div><div class="score-metric"><span>문장 수</span><strong>${normalizeLines(raw).length}줄</strong></div></div>`) + section('주의 포인트','짧게만 남깁니다.', `<div class="toolkit-note">규정 변경, 양방 금지, 최대 출금 제한이 같이 보이면 실제 수령액이 줄 수 있습니다.</div>`); setResult(result, html, 'toolkit-result-stack'); }); }
+  function initBankrollPlanner(){
+    const form=$('#bankrollplannerForm'); const result=$('#bankrollPlannerResult'); if(!form||!result) return;
+    form.addEventListener('submit',(e)=>{
+      e.preventDefault();
+      const engines = window.RavenEngines || {};
+      const total=Number($('#bankrollTotal')?.value||0); const unit=Number($('#bankrollUnit')?.value||0); const sessions=Number($('#bankrollSessions')?.value||0); const stop=Number($('#bankrollStop')?.value||0);
+      if(!total||!unit||!sessions) return empty(result,'입력값이 비어 있습니다.','총 자금, 기준금, 회차 수를 입력해 주세요.');
+      const usable=Math.max(0,total-stop); const per=Math.floor(usable/Math.max(1,sessions)); const ratio=unit?Math.round((unit/Math.max(1,total))*100):0;
+      const bankroll = engines.bankrollPlan ? engines.bankrollPlan({ capital: total, probability: 0.52, odds: 1.95, mode: ratio > 4 ? 'aggressive' : ratio > 2 ? 'neutral' : 'safe', volatilityScore: ratio > 4 ? 70 : ratio > 2 ? 45 : 25 }) : { amount:0, ratio:0, label:'보수', targetGain:0 };
+      engineSet(result,'분배 결과',[
+        { label:'사용 가능', value:`${Math.round(usable).toLocaleString()}원`, note:`손절선 ${Math.round(stop).toLocaleString()}원` },
+        { label:'회차당 예산', value:`${Math.round(per).toLocaleString()}원`, note:`목표 회차 ${sessions}` },
+        { label:'기준금 비율', value:`${ratio}%`, note:`현재 설정 ${bankroll.label}` },
+        { label:'권장 비중', value: bankroll.amount ? `${Math.round(bankroll.amount).toLocaleString()}원` : `${(bankroll.ratio*100).toFixed(1)}%`, note:`목표선 ${Math.round(bankroll.targetGain).toLocaleString()}원` },
+      ], [
+        ratio > 5 ? '1회 기준금 비중이 높아 붕괴 속도가 빨라질 수 있습니다.' : '1회 기준금은 상대적으로 무난한 편입니다.',
+        stop <= 0 ? '손절선을 함께 정하면 회차 운영이 훨씬 안정적입니다.' : '손절선이 있어 운영 통제가 쉬운 편입니다.',
+      ]);
+    });
+  }
 
-  function initOuPayout(){ const form=$('#oupayoutForm'); const result=$('#ouPayoutResult'); if(!form||!result) return; form.addEventListener('submit',(e)=>{ e.preventDefault(); const line=Number($('#ouLine')?.value||0); const odds=Number($('#ouOdds')?.value||0); const stake=Number($('#ouStake')?.value||0); const total=Number($('#ouTotal')?.value||0); const side=$('#ouSide')?.value||'over'; if(!odds||!stake) return empty(result,'입력값이 비어 있습니다.','배당과 금액을 먼저 입력해 주세요.'); const diff=total-line; const status=diff===0?'적특':((side==='over'&&diff>0)||(side==='under'&&diff<0)?'적중':'미적중'); const calc=status==='적중'?calcProfit(stake,odds):{ payout: status==='적특'?stake:0, profit: status==='적특'?0:-stake }; const html=section('결과','기준점 대비로 계산합니다.', `<div class="score-grid"><div class="score-metric"><span>판정</span><strong>${esc(status)}</strong></div><div class="score-metric"><span>반환금</span><strong>${fmtWon(calc.payout)}</strong></div><div class="score-metric"><span>손익</span><strong>${fmtWon(calc.profit)}</strong></div><div class="score-metric"><span>차이</span><strong>${esc(diff.toFixed(2))}</strong></div></div>`); setResult(result, html, 'toolkit-result-stack'); }); }
-  function initHandicapPayout(){ const form=$('#handicappayoutForm'); const result=$('#handicapResult'); if(!form||!result) return; form.addEventListener('submit',(e)=>{ e.preventDefault(); const side=$('#hdpSide')?.value||'home'; const line=Number($('#hdpLine')?.value||0); const odds=Number($('#hdpOdds')?.value||0); const stake=Number($('#hdpStake')?.value||0); const home=Number($('#hdpHome')?.value||0); const away=Number($('#hdpAway')?.value||0); if(!odds||!stake) return empty(result,'입력값이 비어 있습니다.','배당과 금액을 먼저 입력해 주세요.'); const base=side==='home'?home-away:away-home; const adjusted=base+line; const status=adjusted===0?'적특':(adjusted>0?'적중':'미적중'); const calc=status==='적중'?calcProfit(stake,odds):{ payout: status==='적특'?stake:0, profit: status==='적특'?0:-stake }; const html=section('결과','선택 팀 기준으로 계산합니다.', `<div class="score-grid"><div class="score-metric"><span>판정</span><strong>${esc(status)}</strong></div><div class="score-metric"><span>조정 점수차</span><strong>${esc(adjusted.toFixed(2))}</strong></div><div class="score-metric"><span>반환금</span><strong>${fmtWon(calc.payout)}</strong></div><div class="score-metric"><span>손익</span><strong>${fmtWon(calc.profit)}</strong></div></div>`); setResult(result, html, 'toolkit-result-stack'); }); }
-  function initLinePayout(){ const form=$('#linepayoutForm'); const result=$('#lineResult'); if(!form||!result) return; form.addEventListener('submit',(e)=>{ e.preventDefault(); const value=Number($('#lineValue')?.value||0); const point=Number($('#linePoint')?.value||0); const side=$('#lineSide')?.value||'over'; const odds=Number($('#lineOdds')?.value||0); const stake=Number($('#lineStake')?.value||0); if(!odds||!stake) return empty(result,'입력값이 비어 있습니다.','배당과 금액을 먼저 입력해 주세요.'); const diff=value-point; const status=diff===0?'기준값 일치':((side==='over'&&diff>0)||(side==='under'&&diff<0)?'적중':'미적중'); const calc=status==='적중'?calcProfit(stake,odds):{ payout: status==='기준값 일치'?stake:0, profit: status==='기준값 일치'?0:-stake }; const html=section('결과','임의 기준값 기준입니다.', `<div class="score-grid"><div class="score-metric"><span>판정</span><strong>${esc(status)}</strong></div><div class="score-metric"><span>차이</span><strong>${esc(diff.toFixed(2))}</strong></div><div class="score-metric"><span>반환금</span><strong>${fmtWon(calc.payout)}</strong></div><div class="score-metric"><span>손익</span><strong>${fmtWon(calc.profit)}</strong></div></div>`); setResult(result, html, 'toolkit-result-stack'); }); }
-  function initOddsBand(){ const form=$('#oddsbandForm'); const result=$('#oddsBandResult'); if(!form||!result) return; form.addEventListener('submit',(e)=>{ e.preventDefault(); const odds=Number($('#oddsBandValue')?.value||0); const stake=Number($('#oddsBandStake')?.value||0); if(!odds) return empty(result,'입력값이 비어 있습니다.','배당을 먼저 입력해 주세요.'); let band='고배당', note='변동성이 큽니다.'; if(odds<1.4){ band='저배당'; note='적중 기대는 높지만 수익 폭은 작습니다.'; } else if(odds<1.8){ band='중저배당'; note='보수형 접근에 자주 쓰이는 구간입니다.'; } else if(odds<2.3){ band='중배당'; note='위험과 수익이 같이 올라갑니다.'; } const calc=stake?calcProfit(stake,odds):{payout:0,profit:0}; const html=section('구간 해석','배당대 성격을 먼저 봅니다.', `<div class="score-grid"><div class="score-metric"><span>구간</span><strong>${esc(band)}</strong></div><div class="score-metric"><span>예상 반환금</span><strong>${stake?fmtWon(calc.payout):'-'}</strong></div><div class="score-metric"><span>예상 수익</span><strong>${stake?fmtWon(calc.profit):'-'}</strong></div><div class="score-metric"><span>메모</span><strong>${esc(note)}</strong></div></div>`); setResult(result, html, 'toolkit-result-stack'); }); }
+  function initAiGameLab(){
+    const form=$('#aigamelabForm'); const result=$('#aiGameLabResult'); if(!form||!result) return;
+    const mode=$('#aiGameMode'); const market=$('#aiGameMarket');
+    const wraps={ sportsType:$('[data-ai-wrap="sportsType"]', form), line:$('[data-ai-wrap="line"]', form), oddsA:$('[data-ai-wrap="oddsA"]', form), oddsB:$('[data-ai-wrap="oddsB"]', form), oddsC:$('[data-ai-wrap="oddsC"]', form), rtp:$('[data-ai-wrap="rtp"]', form), variance:$('[data-ai-wrap="variance"]', form), capital:$('[data-ai-wrap="capital"]', form), unit:$('[data-ai-wrap="unit"]', form), rounds:$('[data-ai-wrap="rounds"]', form), risk:$('[data-ai-wrap="risk"]', form) };
+    function syncMode(){
+      const v=mode.value;
+      const showSports=v==='sports'; const showCasino=v==='casino'; const showMini=v==='mini';
+      wraps.sportsType.hidden=!showSports; wraps.line.hidden=!(showSports && ['ou','hcp'].includes(market.value)); wraps.oddsA.hidden=!showSports; wraps.oddsB.hidden=!showSports; wraps.oddsC.hidden=!(showSports && market.value==='1x2');
+      wraps.rtp.hidden=!showCasino; wraps.variance.hidden=!showCasino; wraps.capital.hidden=false; wraps.unit.hidden=showSports; wraps.rounds.hidden=showSports; wraps.risk.hidden=false;
+    }
+    mode.addEventListener('change', syncMode); market.addEventListener('change', syncMode); syncMode();
+    form.addEventListener('submit',(e)=>{
+      e.preventDefault();
+      const engines = window.RavenEngines || {};
+      const m=mode.value; const risk=$('#aiGameRisk')?.value||'neutral';
+      if(m==='sports'){
+        const marketType=market.value; const odds=[Number($('#aiGameOddsA')?.value||0),Number($('#aiGameOddsB')?.value||0),Number($('#aiGameOddsC')?.value||0)].filter(Boolean); const capital=Number($('#aiGameCapital')?.value||0); const labels=marketType==='1x2'?['홈','무','원정']:marketType==='ou'?['오버','언더']:['홈','원정'];
+        if(odds.length < (marketType==='1x2'?3:2)) return empty(result,'입력값이 비어 있습니다.','해석할 배당을 입력해 주세요.');
+        const study=engineSportsStudy({ market: marketType, odds, capital, mode:risk, labels });
+        engineSet(result,'AI 게임 해석',[
+          { label:'공정확률', value:`${study.bestProb.label} ${(study.bestProb.prob*100).toFixed(1)}%`, note:`공정 오즈 ${study.bestProb.fairOdds.toFixed(2)}` },
+          { label:'기대값', value:`${(study.bestEdge.ev.evRate*100).toFixed(1)}%`, note:`${study.bestEdge.label} ${study.bestEdge.ev.label}` },
+          { label:'변동성', value:study.volatilityLabel, note:`북마진 ${(study.fair.margin*100).toFixed(1)}%` },
+          { label:'추천 비중', value:study.bankroll.amount?`${Math.round(study.bankroll.amount).toLocaleString()}원`:`${(study.bankroll.ratio*100).toFixed(1)}%`, note:`${study.bankroll.label}` },
+        ], [
+          `${study.bestProb.label} 쪽이 공정확률 기준 가장 앞섭니다.`,
+          `${study.bestEdge.label} 쪽 보정 EV는 ${engines.formatSignedPercent(study.bestEdge.ev.evRate*100)} 입니다.`,
+          `${study.volatilityLabel} 변동성이므로 ${risk==='safe'?'비중을 줄여':'비중을 관리하며'} 접근하는 편이 좋습니다.`,
+        ]);
+        return;
+      }
+      if(m==='casino'){
+        const rtp=Number($('#aiGameRtp')?.value||0); const variance=$('#aiGameVariance')?.value||'mid'; const capital=Number($('#aiGameCapital')?.value||0); const unit=Number($('#aiGameUnit')?.value||0); const rounds=Number($('#aiGameRounds')?.value||0);
+        if(!rtp||!capital||!unit) return empty(result,'입력값이 비어 있습니다.','RTP, 자본, 1회 금액을 입력해 주세요.');
+        const p=Math.min(0.98, Math.max(0.35, rtp/100)); const odds=1 + (rtp/100); const volScore = variance==='high'?78:variance==='mid'?48:25;
+        const ev=engines.expectedValue({ probability:p, odds, stake:unit }); const vol=engines.volatilityRisk({ probability:p, odds: variance==='high'?1.2:variance==='mid'?1.08:1.03, stake:unit, plays:Math.max(1,rounds||10) }); const bank=engines.bankrollPlan({ capital, probability:p, odds:1.9, mode:risk, volatilityScore:Math.max(volScore, vol.volatilityScore) });
+        engineSet(result,'AI 게임 해석',[
+          { label:'기대값', value:`${(ev.evRate*100).toFixed(1)}%`, note:`RTP ${rtp.toFixed(1)}% 기준` },
+          { label:'변동성', value:toolRiskLabel(Math.max(volScore, vol.volatilityScore)), note:`세션 ${rounds||10}회 기준` },
+          { label:'추천 비중', value: bank.amount?`${Math.round(bank.amount).toLocaleString()}원`:`${(bank.ratio*100).toFixed(1)}%`, note:`${bank.label}` },
+          { label:'소모 속도', value:`약 ${Math.max(1, Math.floor(capital/Math.max(1,unit)))}회`, note:'이론상 버티는 횟수' },
+        ], [
+          variance==='high' ? '고변동 구조는 짧은 시간에도 체감 손실이 크게 흔들릴 수 있습니다.' : '변동성이 과한 편은 아닙니다.',
+          unit > capital * 0.05 ? '1회 금액 비중이 높아 세션 붕괴가 빨라질 수 있습니다.' : '1회 금액 비중은 상대적으로 무난합니다.',
+        ]);
+        return;
+      }
+      const capital=Number($('#aiGameCapital')?.value||0); const unit=Number($('#aiGameUnit')?.value||0); const rounds=Number($('#aiGameRounds')?.value||0); const stage=$('#aiGameVariance')?.value||'mid';
+      if(!capital||!unit||!rounds) return empty(result,'입력값이 비어 있습니다.','자본, 1회 금액, 회차를 입력해 주세요.');
+      const stageRisk = stage==='high'?82:stage==='mid'?52:30;
+      const bank=engines.bankrollPlan({ capital, probability:0.5, odds:1.9, mode:risk, volatilityScore:stageRisk });
+      const collapse = Math.min(99, (unit * rounds / Math.max(1,capital)) * 100);
+      engineSet(result,'AI 게임 해석',[
+        { label:'권장 분배', value: bank.amount?`${Math.round(bank.amount).toLocaleString()}원`:`${(bank.ratio*100).toFixed(1)}%`, note:`${bank.label}` },
+        { label:'회차 예산', value:`${Math.round((capital-bank.stopLoss)/Math.max(1,rounds)).toLocaleString()}원`, note:`목표 ${rounds}회` },
+        { label:'붕괴 위험', value:toolRiskLabel(collapse), note:`자금 소진 압력 ${collapse.toFixed(0)}%` },
+        { label:'손절선', value:`${Math.round(bank.stopLoss).toLocaleString()}원`, note:'자동 제안' },
+      ], [
+        collapse > 70 ? '현재 회차 설정은 자본 대비 부담이 큽니다.' : '회차 분배는 상대적으로 무난합니다.',
+        '단계 배팅은 기대값보다 변동성을 먼저 키우는 구조로 봐야 합니다.',
+      ]);
+    });
+  }
 
-  function initSlotRtp(){ const form=$('#slotrtpForm'); const result=$('#slotRtpResult'); if(!form||!result) return; form.addEventListener('submit',(e)=>{ e.preventDefault(); const rtp=Number($('#slotRtp')?.value||0); const vol=$('#slotVol')?.value||'mid'; const bankroll=Number($('#slotBankroll')?.value||0); const minutes=Number($('#slotMinutes')?.value||0); if(!rtp||!bankroll) return empty(result,'입력값이 비어 있습니다.','RTP와 자금을 먼저 입력해 주세요.'); let band='보통', note='무난한 구간입니다.'; if(rtp>=97 && vol==='low'){ band='안정'; note='긴 시간 분산형에 더 맞습니다.'; } else if(vol==='high' || rtp<95){ band='변동 큼'; note='짧게 써도 흔들림이 클 수 있습니다.'; } const burn=bankroll/Math.max(1, minutes||30); const html=section('해석 결과','RTP와 변동성을 같이 봅니다.', `<div class="score-grid"><div class="score-metric"><span>판정</span><strong>${esc(band)}</strong></div><div class="score-metric"><span>예산 소모</span><strong>${Math.round(burn).toLocaleString()}원/분</strong></div><div class="score-metric"><span>RTP</span><strong>${esc(rtp.toFixed(2))}%</strong></div><div class="score-metric"><span>변동성</span><strong>${esc(vol==='low'?'낮음':vol==='mid'?'중간':'높음')}</strong></div></div><div class="toolkit-note">${esc(note)}</div>`); setResult(result, html, 'toolkit-result-stack'); }); }
-  function initBaccaratBankroll(){ const form=$('#baccaratbankrollForm'); const result=$('#baccaratResult'); if(!form||!result) return; form.addEventListener('submit',(e)=>{ e.preventDefault(); const total=Number($('#baccaratTotal')?.value||0); const unit=Number($('#baccaratUnit')?.value||0); const stop=Number($('#baccaratStop')?.value||0); const target=Number($('#baccaratTarget')?.value||0); const rounds=Number($('#baccaratRounds')?.value||0); if(!total||!unit) return empty(result,'입력값이 비어 있습니다.','총 자금과 기준 베팅금을 넣어 주세요.'); const usable=Math.max(0,total-stop); const possible=Math.floor(usable/Math.max(1,unit)); const per=Math.floor(usable/Math.max(1,rounds||10)); const html=section('운영 결과','손절선 먼저 고정합니다.', `<div class="score-grid"><div class="score-metric"><span>사용 가능</span><strong>${fmtWon(usable)}</strong></div><div class="score-metric"><span>가능 횟수</span><strong>${possible}회</strong></div><div class="score-metric"><span>회차 예산</span><strong>${fmtWon(per)}</strong></div><div class="score-metric"><span>목표금</span><strong>${fmtWon(target)}</strong></div></div>`); setResult(result, html, 'toolkit-result-stack'); }); }
-  function initMinigameRoundPlanner(){ const form=$('#minigameroundplannerForm'); const result=$('#minigamePlannerResult'); if(!form||!result) return; form.addEventListener('submit',(e)=>{ e.preventDefault(); const total=Number($('#miniTotal')?.value||0); const unit=Number($('#miniUnit')?.value||0); const rounds=Number($('#miniRounds')?.value||0); const stop=Number($('#miniStop')?.value||0); const style=$('#miniStyle')?.value||'flat'; if(!total||!unit||!rounds) return empty(result,'입력값이 비어 있습니다.','총 자금, 기준금, 회차 수를 넣어 주세요.'); const usable=Math.max(0,total-stop); const per=Math.floor(usable/Math.max(1,rounds)); const recommend = style==='step' ? [1,1,1.5,1.5,2].map((m,i)=>`${i+1}회 ${fmtWon(unit*m)}`).join(' · ') : style==='split' ? [1,0.8,0.8,1.2,1.2].map((m,i)=>`${i+1}회 ${fmtWon(unit*m)}`).join(' · ') : [1,1,1,1,1].map((m,i)=>`${i+1}회 ${fmtWon(unit*m)}`).join(' · '); const html=section('회차 계획','초반 과열을 줄이는 기준입니다.', `<div class="score-grid"><div class="score-metric"><span>사용 가능</span><strong>${fmtWon(usable)}</strong></div><div class="score-metric"><span>회차당 예산</span><strong>${fmtWon(per)}</strong></div><div class="score-metric"><span>기준금 비율</span><strong>${Math.round((unit/Math.max(1,total))*100)}%</strong></div><div class="score-metric"><span>운영 방식</span><strong>${esc(style==='flat'?'고정':style==='step'?'단계':'분산')}</strong></div></div>`) + section('초기 5회 예시','짧게만 봅니다.', `<div class="toolkit-note">${esc(recommend)}</div>`); setResult(result, html, 'toolkit-result-stack'); }); }
-  function initStageRisk(){ const form=$('#stageriskForm'); const result=$('#stageRiskResult'); if(!form||!result) return; form.addEventListener('submit',(e)=>{ e.preventDefault(); const base=Number($('#stageBase')?.value||0); const mult=Number($('#stageMult')?.value||0); const count=Number($('#stageCount')?.value||0); const bankroll=Number($('#stageBankroll')?.value||0); if(!base||!mult||!count||!bankroll) return empty(result,'입력값이 비어 있습니다.','시작 금액, 배수, 단계 수, 자금을 넣어 주세요.'); let need=0; let current=base; for(let i=0;i<count;i++){ need+=current; current*=mult; } const ratio=Math.round((need/Math.max(1,bankroll))*100); const band=ratio>80?'매우 높음':ratio>50?'높음':ratio>25?'보통':'낮음'; const html=section('위험도 결과','단계 누적 자금을 먼저 봅니다.', `<div class="score-grid"><div class="score-metric"><span>필요 총액</span><strong>${fmtWon(need)}</strong></div><div class="score-metric"><span>자금 대비</span><strong>${ratio}%</strong></div><div class="score-metric"><span>판정</span><strong>${esc(band)}</strong></div><div class="score-metric"><span>마지막 단계</span><strong>${fmtWon(current/mult)}</strong></div></div>`); setResult(result, html, 'toolkit-result-stack'); }); }
+  function initAiConditionLab(){
+    const form=$('#aiconditionlabForm'); const result=$('#aiConditionLabResult'); if(!form||!result) return;
+    form.addEventListener('submit',(e)=>{
+      e.preventDefault();
+      const engines = window.RavenEngines || {};
+      const deposit=Number($('#aiCondDeposit')?.value||0); const percent=Number($('#aiCondPercent')?.value||0); const cap=Number($('#aiCondCap')?.value||0); const rolling=Number($('#aiCondRolling')?.value||0); const maxWithdraw=Number($('#aiCondMaxWithdraw')?.value||0); const capital=Number($('#aiCondCapital')?.value||0); const rules=String($('#aiCondRules')?.value||'').trim();
+      if(!deposit||!percent) return empty(result,'입력값이 비어 있습니다.','충전금과 보너스 퍼센트를 입력해 주세요.');
+      const bonus=Math.min(deposit*(percent/100), cap||Infinity); const total=deposit+bonus; const needRolling=total*Math.max(0,rolling); const effective=maxWithdraw?Math.min(total,maxWithdraw):total;
+      const rulePenalty = (/양방|제한|최대베팅|제외|불가/.test(rules)?12:0) + (/취소|몰수|회수/.test(rules)?18:0);
+      const burden = clamp(((needRolling/Math.max(total,1))*4.8) + rulePenalty, 0, 100);
+      const p = Math.max(0.32, Math.min(0.78, (effective/Math.max(total,1))*0.7));
+      const ev = engines.expectedValue({ probability:p, odds:1.9, stake:deposit });
+      const bank = engines.bankrollPlan({ capital: capital || total, probability:p, odds:1.9, mode: burden > 60 ? 'safe' : 'neutral', volatilityScore: burden });
+      engineSet(result,'AI 조건 해석',[
+        { label:'보너스', value:`${Math.round(bonus).toLocaleString()}원`, note:`총 사용금 ${Math.round(total).toLocaleString()}원` },
+        { label:'필요 롤링', value:`${Math.round(needRolling).toLocaleString()}원`, note:`배수 ${rolling || 0}배` },
+        { label:'실수령 기준', value:`${Math.round(effective).toLocaleString()}원`, note:maxWithdraw?'최대 출금 반영':'출금 제한 없음' },
+        { label:'조건 판정', value:toolRiskLabel(burden), note:`보정 EV ${engines.formatSignedPercent(ev.evRate*100)}` },
+      ], [
+        burden > 60 ? '조건 부담이 높아 보수적으로 해석하는 편이 낫습니다.' : '조건 부담이 과도한 편은 아닙니다.',
+        maxWithdraw && maxWithdraw < total ? '최대 출금 제한이 실제 실익을 줄이고 있습니다.' : '최대 출금 제한 영향은 크지 않습니다.',
+        rules ? '규정 문구에서 제한/몰수성 표현이 있는지 같이 확인했습니다.' : '추가 규정 문구가 없으면 기본 조건 위주로 해석합니다.',
+        bank.amount ? `권장 접근 금액은 ${Math.round(bank.amount).toLocaleString()}원 수준입니다.` : '권장 접근 금액은 비중 위주로 보세요.',
+      ]);
+    });
+  }
 
-  function initRollingCalculator(){ const form=$('#rollingcalculatorForm'); const result=$('#rollingCalcResult'); if(!form||!result) return; form.addEventListener('submit',(e)=>{ e.preventDefault(); const deposit=Number($('#rollDeposit')?.value||0); const bonus=Number($('#rollBonus')?.value||0); const mult=Number($('#rollMultiplier')?.value||0); if(!deposit||!mult) return empty(result,'입력값이 비어 있습니다.','충전금과 롤링 배수를 넣어 주세요.'); const total=deposit+bonus; const need=total*mult; const html=section('계산 결과','총 사용금 기준입니다.', `<div class="score-grid"><div class="score-metric"><span>총 사용금</span><strong>${fmtWon(total)}</strong></div><div class="score-metric"><span>필요 롤링</span><strong>${fmtWon(need)}</strong></div><div class="score-metric"><span>배수</span><strong>${esc(mult)}배</strong></div><div class="score-metric"><span>보너스</span><strong>${fmtWon(bonus)}</strong></div></div>`); setResult(result, html, 'toolkit-result-stack'); }); }
-  function initWithdrawLimit(){ const form=$('#withdrawlimitForm'); const result=$('#withdrawLimitResult'); if(!form||!result) return; form.addEventListener('submit',(e)=>{ e.preventDefault(); const deposit=Number($('#limitDeposit')?.value||0); const bonus=Number($('#limitBonus')?.value||0); const current=Number($('#limitCurrent')?.value||0); const limit=Number($('#limitMax')?.value||0); if(!current||!limit) return empty(result,'입력값이 비어 있습니다.','현재 잔액과 최대 출금 값을 넣어 주세요.'); const totalBase=deposit+bonus; const effective=Math.min(current,limit); const blocked=Math.max(0,current-effective); const html=section('제한 반영','실제 가져갈 수 있는 값만 봅니다.', `<div class="score-grid"><div class="score-metric"><span>현재 잔액</span><strong>${fmtWon(current)}</strong></div><div class="score-metric"><span>최대 출금</span><strong>${fmtWon(limit)}</strong></div><div class="score-metric"><span>실수령 기준</span><strong>${fmtWon(effective)}</strong></div><div class="score-metric"><span>제한분</span><strong>${fmtWon(blocked)}</strong></div></div><div class="toolkit-note">기준 원금+보너스 ${fmtWon(totalBase)} / 최대 출금 제한이 붙으면 실제 체감 수익이 줄 수 있습니다.</div>`); setResult(result, html, 'toolkit-result-stack'); }); }
-  function initFirstBonus(){ const form=$('#firstbonusForm'); const result=$('#firstBonusResult'); if(!form||!result) return; form.addEventListener('submit',(e)=>{ e.preventDefault(); const deposit=Number($('#firstDeposit')?.value||0); const percent=Number($('#firstPercent')?.value||0); const cap=Number($('#firstCap')?.value||0); const rolling=Number($('#firstRolling')?.value||0); const max=Number($('#firstMax')?.value||0); if(!deposit||!percent) return empty(result,'입력값이 비어 있습니다.','충전금과 퍼센트를 넣어 주세요.'); const bonus=Math.min(deposit*(percent/100), cap||Infinity); const total=deposit+bonus; const need=total*rolling; const effective=max?Math.min(total,max):total; const html=section('첫충 계산','조건 숫자만 먼저 봅니다.', `<div class="score-grid"><div class="score-metric"><span>보너스</span><strong>${fmtWon(bonus)}</strong></div><div class="score-metric"><span>총 사용금</span><strong>${fmtWon(total)}</strong></div><div class="score-metric"><span>필요 롤링</span><strong>${fmtWon(need)}</strong></div><div class="score-metric"><span>최대 수령</span><strong>${fmtWon(effective)}</strong></div></div>`); setResult(result, html, 'toolkit-result-stack'); }); }
-  function initRecurringBonus(){ const form=$('#recurringbonusForm'); const result=$('#recurringBonusResult'); if(!form||!result) return; form.addEventListener('submit',(e)=>{ e.preventDefault(); const deposit=Number($('#repeatDeposit')?.value||0); const percent=Number($('#repeatPercent')?.value||0); const cap=Number($('#repeatCap')?.value||0); const rolling=Number($('#repeatRolling')?.value||0); const max=Number($('#repeatMax')?.value||0); if(!deposit||!percent) return empty(result,'입력값이 비어 있습니다.','충전금과 퍼센트를 넣어 주세요.'); const bonus=Math.min(deposit*(percent/100), cap||Infinity); const total=deposit+bonus; const need=total*rolling; const effective=max?Math.min(total,max):total; const html=section('매충 계산','조건 숫자만 먼저 봅니다.', `<div class="score-grid"><div class="score-metric"><span>보너스</span><strong>${fmtWon(bonus)}</strong></div><div class="score-metric"><span>총 사용금</span><strong>${fmtWon(total)}</strong></div><div class="score-metric"><span>필요 롤링</span><strong>${fmtWon(need)}</strong></div><div class="score-metric"><span>최대 수령</span><strong>${fmtWon(effective)}</strong></div></div>`); setResult(result, html, 'toolkit-result-stack'); }); }
+  function initOuCalculator(){
+    const form=$('#oucalculatorForm'); const result=$('#ouCalculatorResult'); if(!form||!result) return;
+    form.addEventListener('submit',(e)=>{ e.preventDefault(); const odds=[Number($('#ouOverOdds')?.value||0), Number($('#ouUnderOdds')?.value||0)]; const capital=Number($('#ouCapital')?.value||0); const risk=$('#ouRisk')?.value||'neutral'; if(odds.some(v=>!v||v<1.02)) return empty(result,'입력값이 비어 있습니다.','오버와 언더 배당을 입력해 주세요.'); const study=engineSportsStudy({ market:'ou', odds, capital, mode:risk, labels:['오버','언더'] }); engineSet(result,'언더·오버 결과',[{label:'공정확률',value:`${study.bestProb.label} ${(study.bestProb.prob*100).toFixed(1)}%`,note:`기준점 ${$('#ouLine')?.value||'-'}`},{label:'기대값',value:`${(study.bestEdge.ev.evRate*100).toFixed(1)}%`,note:`${study.bestEdge.label}`},{label:'변동성',value:study.volatilityLabel,note:`북마진 ${(study.fair.margin*100).toFixed(1)}%`},{label:'추천 비중',value:study.bankroll.amount?`${Math.round(study.bankroll.amount).toLocaleString()}원`:`${(study.bankroll.ratio*100).toFixed(1)}%`,note:study.bankroll.label}], [`${study.bestProb.label} 쪽 공정확률이 조금 더 높습니다.`, `${study.volatilityLabel} 변동성이라 기준점 해석과 비중 관리가 같이 필요합니다.`]); });
+  }
 
-  function initReviewPattern(){ const form=$('#reviewpatternForm'); const result=$('#reviewPatternResult'); const input=$('#reviewPatternInput'); if(!form||!result||!input) return; form.addEventListener('submit',(e)=>{ e.preventDefault(); const lines=normalizeLines(input.value); if(!lines.length) return empty(result,'입력값이 비어 있습니다.','후기 문장을 한 줄에 하나씩 넣어 주세요.'); const groups={복붙형:[], 홍보형:[], 실사용형:[], 정황부족:[]}; lines.forEach((line)=>groups[classifyReviewLine(line)].push(line)); const html=section('분류 결과','많이 보이는 패턴만 봅니다.', `<div class="score-grid">${Object.entries(groups).map(([k,v])=>`<div class="score-metric"><span>${esc(k)}</span><strong>${v.length}개</strong></div>`).join('')}</div>`) + section('대표 예시','일부만 보여줍니다.', listCard(Object.entries(groups).filter(([,v])=>v.length).map(([k,v])=>({title:k, detail:v[0]})))); setResult(result, html, 'toolkit-result-stack'); }); }
-  function initCommunitySummary(){ const form=$('#communitysummaryForm'); const result=$('#communitySummaryResult'); const input=$('#communitySummaryInput'); if(!form||!result||!input) return; form.addEventListener('submit',(e)=>{ e.preventDefault(); const lines=normalizeLines(input.value); if(!lines.length) return empty(result,'입력값이 비어 있습니다.','게시물 제목이나 댓글을 붙여 넣어 주세요.'); const counts={경고:0, 문의:0, 후기:0, 홍보:0}; lines.forEach((line)=>{ if(/먹튀|지연|거절|추가입금|차단|주의/.test(line)) counts['경고'] += 1; else if(/문의|주소|어디|알려/.test(line)) counts['문의'] += 1; else if(/후기|출금|이용/.test(line)) counts['후기'] += 1; else counts['홍보'] += 1; }); const summary=Object.entries(counts).sort((a,b)=>b[1]-a[1])[0]?.[0] || '중립'; const html=section('반응 요약','핵심 흐름만 남깁니다.', `<div class="score-grid">${Object.entries(counts).map(([k,v])=>`<div class="score-metric"><span>${esc(k)}</span><strong>${v}개</strong></div>`).join('')}</div><div class="toolkit-note">현재 입력 기준으로는 ${esc(summary)} 성격이 가장 많이 보입니다.</div>`); setResult(result, html, 'toolkit-result-stack'); }); }
+  function initHandicapProfit(){
+    const form=$('#handicapprofitForm'); const result=$('#handicapProfitResult'); if(!form||!result) return;
+    form.addEventListener('submit',(e)=>{ e.preventDefault(); const odds=[Number($('#hcpHomeOdds')?.value||0), Number($('#hcpAwayOdds')?.value||0)]; const capital=Number($('#hcpCapital')?.value||0); const risk=$('#hcpRisk')?.value||'neutral'; if(odds.some(v=>!v||v<1.02)) return empty(result,'입력값이 비어 있습니다.','양쪽 배당을 입력해 주세요.'); const study=engineSportsStudy({ market:'hcp', odds, capital, mode:risk, labels:['홈','원정'], line:Number($('#hcpLine')?.value||0) }); engineSet(result,'핸디캡 결과',[{label:'공정확률',value:`${study.bestProb.label} ${(study.bestProb.prob*100).toFixed(1)}%`,note:`핸디 ${$('#hcpLine')?.value||'-'}`},{label:'기대값',value:`${(study.bestEdge.ev.evRate*100).toFixed(1)}%`,note:`${study.bestEdge.label}`},{label:'변동성',value:study.volatilityLabel,note:'라인 포함 해석'},{label:'추천 비중',value:study.bankroll.amount?`${Math.round(study.bankroll.amount).toLocaleString()}원`:`${(study.bankroll.ratio*100).toFixed(1)}%`,note:study.bankroll.label}], [`핸디 라인은 적중/미적중보다 라인 적합성이 먼저입니다.`, `${study.bestEdge.label} 쪽이 보정 EV 기준으로 조금 더 앞섭니다.`]); });
+  }
 
-  function initBrandChangeTracker(){ const form=$('#brandchangetrackerForm'); const result=$('#brandChangeResult'); if(!form||!result) return; form.addEventListener('submit',(e)=>{ e.preventDefault(); const oldName=$('#brandOld')?.value?.trim()||''; const newName=$('#brandNew')?.value?.trim()||''; const raw=$('#brandTimelineInput')?.value?.trim()||''; if(!oldName||!newName||!raw) return empty(result,'입력값이 비어 있습니다.','이전 이름, 현재 이름, 기록을 넣어 주세요.'); const lines=normalizeLines(raw); const score=similarity(oldName.toLowerCase(), newName.toLowerCase()); const domains=extractDomainsFromText(raw); const html=section('변경 흐름','기록을 시간순으로 봅니다.', `<div class="timeline-list">${lines.map((line, idx)=>`<article class="timeline-entry"><span class="mini-badge">기록 ${idx+1}</span><strong>${esc(/변경|리뉴얼/.test(line)?'변경':'참고')}</strong><p>${esc(line)}</p></article>`).join('')}</div>`) + section('핵심 메모','이름과 주소를 같이 봅니다.', `<div class="score-grid"><div class="score-metric"><span>이름 유사도</span><strong>${score}</strong></div><div class="score-metric"><span>주소 수</span><strong>${domains.length}개</strong></div><div class="score-metric"><span>이전 이름</span><strong>${esc(oldName)}</strong></div><div class="score-metric"><span>현재 이름</span><strong>${esc(newName)}</strong></div></div>`); setResult(result, html, 'toolkit-result-stack'); }); }
-  function initPriorBrandDetector(){ const form=$('#priorbranddetectorForm'); const result=$('#priorBrandResult'); if(!form||!result) return; form.addEventListener('submit',(e)=>{ e.preventDefault(); const current=$('#priorCurrent')?.value?.trim()||''; const hints=$('#priorHints')?.value?.trim()||''; if(!current||!hints) return empty(result,'입력값이 비어 있습니다.','현재 값과 과거 흔적을 같이 넣어 주세요.'); const hintDomains=extractDomainsFromText(hints); const codes=extractCodes(hints); let score=hintDomains.length*18 + codes.length*10 + (/이전|리뉴얼|같은|유사|변경/.test(hints)?18:0); score=Math.min(100,score); const html=section('탐지 결과','확정이 아니라 흔적 위주입니다.', `<div class="score-shell"><div class="score-top"><div><div class="score-big">${score}</div><span class="score-band">흔적 ${esc(badgeBand(score))}</span></div><div class="score-meta"><h2 class="score-title">${esc(current)}</h2><p>과거 흔적에서 도메인·코드·변경 문구를 먼저 봤습니다.</p></div></div><div class="score-bar"><span style="width:${score}%"></span></div></div><div class="toolkit-note">도메인: ${esc(hintDomains.join(', ')||'-')} / 코드: ${esc(codes.join(', ')||'-')}</div>`); setResult(result, html, 'toolkit-result-stack'); }); }
-  function initAddressHistoryCard(){ const form=$('#addresshistorycardForm'); const result=$('#addressHistoryCardResult'); if(!form||!result) return; form.addEventListener('submit',(e)=>{ e.preventDefault(); const site=$('#historySite')?.value?.trim()||'-'; const current=$('#historyCurrent')?.value?.trim()||'-'; const prev=normalizeLines($('#historyPrevious')?.value||''); const notes=$('#historyNotes')?.value?.trim()||'-'; if(site==='-'||current==='-') return empty(result,'입력값이 비어 있습니다.','사이트명과 현재 주소를 먼저 넣어 주세요.'); const card=`[주소 이력]
-사이트명: ${site}
-현재 주소: ${current}
-이전 주소:
-${prev.map((line)=>`- ${line}`).join('\n') || '- 없음'}
-메모: ${notes}`; const html=section('이력 카드','복사해서 바로 쓸 수 있습니다.', `<div class="toolkit-copy-box"><pre>${esc(card)}</pre><div class="toolkit-actions"><button class="safety-copy-btn mint" type="button" data-inline-copy="${esc(card)}">텍스트 복사</button></div></div>`); setResult(result, html, 'toolkit-result-stack'); }); }
+  function initSlotSession(){
+    const form=$('#slotsessionForm'); const result=$('#slotSessionResult'); if(!form||!result) return;
+    form.addEventListener('submit',(e)=>{ e.preventDefault(); const engines=window.RavenEngines||{}; const rtp=Number($('#slotRtp')?.value||0); const variance=$('#slotVariance')?.value||'mid'; const capital=Number($('#slotCapital')?.value||0); const unit=Number($('#slotUnit')?.value||0); const rounds=Number($('#slotRounds')?.value||0); const risk=$('#slotRisk')?.value||'neutral'; if(!rtp||!capital||!unit) return empty(result,'입력값이 비어 있습니다.','RTP, 자본, 1회 금액을 입력해 주세요.'); const p=Math.max(0.35, Math.min(0.98, rtp/100)); const ev=engines.expectedValue({ probability:p, odds:1.0 + (rtp/100), stake:unit }); const volScore=variance==='high'?78:variance==='mid'?48:25; const bank=engines.bankrollPlan({ capital, probability:p, odds:1.85, mode:risk, volatilityScore:volScore }); engineSet(result,'슬롯 세션 결과',[{label:'기대값',value:`${(ev.evRate*100).toFixed(1)}%`,note:`RTP ${rtp.toFixed(1)}%`},{label:'변동성',value:toolRiskLabel(volScore),note:`${variance==='high'?'고변동':'일반'} 세션`},{label:'권장 비중',value:bank.amount?`${Math.round(bank.amount).toLocaleString()}원`:`${(bank.ratio*100).toFixed(1)}%`,note:bank.label},{label:'예상 회차',value:`${Math.max(1,Math.floor(capital/Math.max(1,unit)))}회`,note:`입력 회차 ${rounds||'-'}`}],[variance==='high' ? '고변동 슬롯은 짧은 시간에도 체감 손실 폭이 큽니다.' : '과도한 변동성은 아닙니다.', unit > capital*0.05 ? '1회 금액 비중이 커 세션 지속성이 약해질 수 있습니다.' : '1회 금액 비중은 무난한 편입니다.']); });
+  }
+
+  function initMinigameRounds(){
+    const form=$('#minigameroundsForm'); const result=$('#minigameRoundsResult'); if(!form||!result) return;
+    form.addEventListener('submit',(e)=>{ e.preventDefault(); const engines=window.RavenEngines||{}; const capital=Number($('#miniCapital')?.value||0); const unit=Number($('#miniUnit')?.value||0); const rounds=Number($('#miniRounds')?.value||0); const stop=Number($('#miniStop')?.value||0); const stage=$('#miniStage')?.value||'flat'; const risk=$('#miniRisk')?.value||'neutral'; if(!capital||!unit||!rounds) return empty(result,'입력값이 비어 있습니다.','자본, 1회 금액, 회차를 입력해 주세요.'); const volatilityScore=stage==='step'?82:38; const bank=engines.bankrollPlan({ capital, probability:0.5, odds:1.9, mode:risk, volatilityScore }); const usable=Math.max(0, capital-stop); const per=Math.floor(usable/Math.max(1,rounds)); const collapse=Math.min(99, (unit * rounds / Math.max(1, capital)) * (stage==='step'?1.35:1) * 100);
+      engineSet(result,'미니게임 결과',[{label:'회차 예산',value:`${Math.round(per).toLocaleString()}원`,note:`사용 가능 ${Math.round(usable).toLocaleString()}원`},{label:'붕괴 위험',value:toolRiskLabel(collapse),note:`자금 압박 ${collapse.toFixed(0)}%`},{label:'권장 비중',value:bank.amount?`${Math.round(bank.amount).toLocaleString()}원`:`${(bank.ratio*100).toFixed(1)}%`,note:bank.label},{label:'손절선',value:`${Math.round(bank.stopLoss || stop).toLocaleString()}원`,note:stage==='step'?'단계 배팅 반영':'고정금 기준'}], [stage==='step' ? '단계 배팅은 회차가 늘수록 붕괴 위험이 빠르게 커집니다.' : '고정금 운영이 훨씬 안정적입니다.', collapse > 70 ? '현재 입력값은 자본 대비 부담이 큰 편입니다.' : '현재 입력값은 과도한 편은 아닙니다.']); });
+  }
 
   function init(){
     initInlineCopy();
@@ -332,27 +489,12 @@ ${prev.map((line)=>`- ${line}`).join('\n') || '- 없음'}
     initBonusPolicy();
     initSlipCompare();
     initBankrollPlanner();
-    initAiNoticeCheck();
-    initAiReviewClassifier();
-    initAiReportDraft();
-    initAiRulesInterpreter();
-    initOuPayout();
-    initHandicapPayout();
-    initLinePayout();
-    initOddsBand();
-    initSlotRtp();
-    initBaccaratBankroll();
-    initMinigameRoundPlanner();
-    initStageRisk();
-    initRollingCalculator();
-    initWithdrawLimit();
-    initFirstBonus();
-    initRecurringBonus();
-    initReviewPattern();
-    initCommunitySummary();
-    initBrandChangeTracker();
-    initPriorBrandDetector();
-    initAddressHistoryCard();
+    initAiGameLab();
+    initAiConditionLab();
+    initOuCalculator();
+    initHandicapProfit();
+    initSlotSession();
+    initMinigameRounds();
     initToolsHubShortcuts();
     initMainShortcuts();
   }

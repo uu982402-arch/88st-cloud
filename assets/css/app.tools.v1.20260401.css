@@ -25,3 +25,17 @@
 .toolkit-copy-box{display:grid;gap:12px}
 .toolkit-copy-box pre{margin:0;white-space:pre-wrap;word-break:break-word;padding:14px 16px;border-radius:16px;background:var(--surface-2);border:1px solid var(--line);font:13px/1.6 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--text)}
 @media (max-width:760px){.safety-textarea{min-height:110px}.timeline-entry{padding:13px 14px}}
+
+
+.score-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.score-metric{padding:14px 16px;border-radius:18px;background:#fff;border:1px solid var(--line);display:grid;gap:4px;box-shadow:var(--shadow-sm)}
+.score-metric span{font-size:12px;font-weight:800;color:var(--muted)}
+.score-metric strong{font-size:18px;line-height:1.2;color:var(--text)}
+.score-metric small{font-size:12px;color:var(--muted)}
+.toolkit-result-stack{display:grid;gap:12px}
+.toolkit-result-stack .section-head p{display:none}
+.toolkit-points{display:grid;gap:8px;margin:0;padding-left:18px;color:var(--text)}
+.toolkit-points li{line-height:1.55}
+.sports-field--select select{width:100%;min-height:58px;padding:0 16px;font-size:15px;font-weight:700;border-radius:16px;border:1px solid #c9d6e4;background:#fff;color:var(--text)}
+@media (max-width:1100px){.score-grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
+@media (max-width:760px){.score-grid{grid-template-columns:1fr}.sports-field--select select{min-height:54px;font-size:14px}}

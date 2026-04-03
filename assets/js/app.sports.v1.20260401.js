@@ -1,99 +1,59 @@
-
 (() => {
   const qs = (s, el=document) => el.querySelector(s);
   const qsa = (s, el=document) => Array.from(el.querySelectorAll(s));
-  const clamp = (n) => Number.isFinite(n) ? Math.max(0, Math.min(100, n)) : 0;
-  const pct = (n) => `${clamp(n).toFixed(1)}%`;
+  const E = () => window.RavenEngines || {};
+  const money = (n) => `${Math.round(Number(n)||0).toLocaleString()}원`;
+  const pct100 = (n) => `${(Number(n)||0).toFixed(1)}%`;
 
   const MARKETS = {
-    '1x2': {
-      label: '승·무·패',
-      fields: ['home','draw','away'],
-      labels: { home:'홈 배당', draw:'무 배당', away:'원정 배당' },
-      resultLabels: ['홈','무','원정'],
-      note: '승·무·패 배당 3개를 넣으면 정규화 확률을 바로 보여줍니다.'
-    },
-    moneyline: {
-      label: '승·패',
-      fields: ['home','away'],
-      labels: { home:'홈 배당', away:'원정 배당' },
-      resultLabels: ['홈','원정'],
-      note: '승·패 배당 2개를 넣으면 양쪽 확률을 바로 보여줍니다.'
-    },
-    ou: {
-      label: '언더·오버',
-      fields: ['line','over','under'],
-      labels: { line:'기준점', over:'오버 배당', under:'언더 배당' },
-      resultLabels: ['오버','언더'],
-      note: '기준점과 오버·언더 배당을 넣으면 양쪽 확률을 정리합니다.'
-    },
-    hcp: {
-      label: '핸디캡',
-      fields: ['line','home','away'],
-      labels: { line:'기준점', home:'홈 배당', away:'원정 배당' },
-      resultLabels: ['홈','원정'],
-      note: '핸디 기준점과 양쪽 배당을 넣으면 확률을 정리합니다.'
-    }
+    '1x2': { label:'승·무·패', fields:['home','draw','away'], labels:{ home:'홈 배당', draw:'무 배당', away:'원정 배당' }, resultLabels:['홈','무','원정'] },
+    moneyline: { label:'승·패', fields:['home','away'], labels:{ home:'홈 배당', away:'원정 배당' }, resultLabels:['홈','원정'] },
+    ou: { label:'언더·오버', fields:['line','over','under'], labels:{ line:'기준점', over:'오버 배당', under:'언더 배당' }, resultLabels:['오버','언더'] },
+    hcp: { label:'핸디캡', fields:['line','home','away'], labels:{ line:'기준점', home:'홈 배당', away:'원정 배당' }, resultLabels:['홈','원정'] },
   };
 
-  function normalizeProbabilities(odds) {
-    const implied = odds.map(v => 1 / v);
-    const total = implied.reduce((a,b)=>a+b,0);
-    return { total, probs: implied.map(v => (v / total) * 100) };
+  function validOdds(vals) {
+    return vals.every((v) => Number.isFinite(v) && v >= 1.02);
   }
 
-  function interpret(market, probs, total) {
-    const margin = (total - 1) * 100;
-    if (!probs.length) return '입력 후 확인';
-    const [a,b,c] = probs;
-    if (market === '1x2') {
-      if (a >= 46) return `마진 ${margin.toFixed(1)}% · 홈 우세가 비교적 선명합니다.`;
-      if (c >= 46) return `마진 ${margin.toFixed(1)}% · 원정 우세가 비교적 선명합니다.`;
-      if (b >= 30) return `마진 ${margin.toFixed(1)}% · 무승부 비중이 다소 높습니다.`;
-      return `마진 ${margin.toFixed(1)}% · 한쪽으로 크게 기울지 않은 구간입니다.`;
-    }
-    if (market === 'moneyline' || market === 'hcp') {
-      const high = Math.max(a,b);
-      const side = a >= b ? '홈' : '원정';
-      if (high >= 58) return `마진 ${margin.toFixed(1)}% · ${side} 쪽 확률이 높게 잡힙니다.`;
-      return `마진 ${margin.toFixed(1)}% · 양쪽이 크게 벌어지지 않은 구간입니다.`;
-    }
-    if (market === 'ou') {
-      const side = a >= b ? '오버' : '언더';
-      const high = Math.max(a,b);
-      if (high >= 55) return `마진 ${margin.toFixed(1)}% · ${side} 쪽이 조금 더 우세합니다.`;
-      return `마진 ${margin.toFixed(1)}% · 오버·언더가 비교적 비슷합니다.`;
-    }
-    return `마진 ${margin.toFixed(1)}% · 입력값을 기준으로 자동 계산했습니다.`;
+  function riskText(mode) {
+    return mode === 'safe' ? '보수' : mode === 'aggressive' ? '공격' : '중립';
+  }
+
+  function sportsComment({ market, bestProb, bestEdge, volatility, bankroll, line }) {
+    const comments = [];
+    if (bestEdge.ev.evRate > 0.015) comments.push(`${bestEdge.label} 쪽 보정 EV가 상대적으로 좋습니다.`);
+    else comments.push(`${bestProb.label} 쪽 공정확률이 가장 높습니다.`);
+    if (market === 'ou' && line) comments.push(`기준점 ${line} 기준으로 균형이 크게 벌어지지 않는지 같이 보세요.`);
+    if (market === 'hcp' && line) comments.push(`핸디 ${line}는 라인 자체보다 변동성까지 같이 봐야 합니다.`);
+    comments.push(`현재 구조의 변동성은 ${volatility.grade.toLowerCase()}입니다.`);
+    if (bankroll.ratio > 0) comments.push(`${riskText(bankroll.mode)} 기준 추천 비중은 ${(bankroll.ratio*100).toFixed(1)}%입니다.`);
+    return comments.slice(0,3);
   }
 
   function initSports() {
+    const engines = E();
     const form = qs('[data-sports-mini-form]');
     const result = qs('[data-sports-mini-result]');
     const tabWrap = qs('[data-sports-tabs]');
-    if (!form || !result || !tabWrap) return;
+    if (!form || !result || !tabWrap || !engines.fairProbability) return;
 
     const hiddenMarket = qs('input[name="market"]', form);
-    const fieldMap = {
-      line: qs('[data-wrap="line"]', form),
-      home: qs('[data-wrap="home"]', form),
-      draw: qs('[data-wrap="draw"]', form),
-      away: qs('[data-wrap="away"]', form),
-      over: qs('[data-wrap="over"]', form),
-      under: qs('[data-wrap="under"]', form)
-    };
-    const inputs = {
-      line: qs('[data-field="line"]', form),
-      home: qs('[data-field="home"]', form),
-      draw: qs('[data-field="draw"]', form),
-      away: qs('[data-field="away"]', form),
-      over: qs('[data-field="over"]', form),
-      under: qs('[data-field="under"]', form)
-    };
+    const fieldMap = Object.fromEntries(['line','home','draw','away','over','under'].map((k)=>[k, qs(`[data-wrap="${k}"]`, form)]));
+    const inputs = Object.fromEntries(['line','home','draw','away','over','under','capital','risk'].map((k)=>[k, qs(`[data-field="${k}"]`, form)]));
+    const metricLabels = qsa('.sports-metric span', result);
+    const metricRows = qsa('[data-metric-slot]', result);
+    const metricValues = qsa('.sports-metric strong', result);
+    const metricBars = qsa('.sports-metric-track i', result);
+    const summary = qs('[data-sports-summary]', result);
+    const subsummary = qs('[data-sports-subsummary]', result);
+    const marginNode = qs('[data-sports-margin]', result);
+    const marketLabelNode = qs('[data-sports-market-label]', result);
+    const notesNode = qs('[data-sports-notes]', result);
+    const insightValue = (key) => qs(`[data-sports-insight="${key}"]`, result);
+    const insightNote = (key) => qs(`[data-sports-insight-note="${key}"]`, result);
 
     function setMetricLabels(labels) {
-      const metricLabels = qsa('.sports-metric span', result);
-      const metricRows = qsa('[data-metric-slot]', result);
       metricLabels.forEach((node, idx) => {
         const label = labels[idx] || '-';
         node.textContent = label;
@@ -101,19 +61,18 @@
       });
     }
 
-    function setSummary(text) {
-      const summaryNode = qs('[data-sports-summary]', result);
-      if (summaryNode) summaryNode.textContent = text || '입력 대기';
-    }
-
-    function resetResult(note, marketLabel) {
-      const vals = qsa('.sports-metric strong', result);
-      const bars = qsa('.sports-metric-track i', result);
-      vals.forEach((n) => { n.textContent = '-'; });
-      bars.forEach((bar) => { bar.style.width = '0%'; });
-      const head = qs('.sports-score-top span', result);
-      if (head) head.textContent = marketLabel || '승·무·패';
-      setSummary('입력 대기');
+    function setIdle(label) {
+      if (marketLabelNode) marketLabelNode.textContent = label;
+      if (summary) summary.textContent = '입력 대기';
+      if (subsummary) subsummary.textContent = '공정확률 · 기대값 · 변동성 · 추천 비중';
+      if (marginNode) marginNode.textContent = '북마진 -';
+      ['fair','ev','vol','bank'].forEach((key) => {
+        if (insightValue(key)) insightValue(key).textContent = '-';
+        if (insightNote(key)) insightNote(key).textContent = '-';
+      });
+      metricValues.forEach((node) => node.textContent = '-');
+      metricBars.forEach((bar) => { bar.style.width = '0%'; });
+      if (notesNode) notesNode.innerHTML = '<li>배당 입력 전 대기</li>';
     }
 
     function applyMarket(market) {
@@ -128,44 +87,59 @@
         if (label && cfg.labels[key]) label.textContent = cfg.labels[key];
         if (!active && inputs[key]) inputs[key].value = '';
       });
-      if (market === '1x2') setMetricLabels(['홈','무','원정']);
-      if (market === 'moneyline' || market === 'hcp') setMetricLabels(['홈','원정','-']);
-      if (market === 'ou') setMetricLabels(['오버','언더','-']);
-      resetResult(cfg.note, cfg.label);
+      setMetricLabels(market === '1x2' ? ['홈','무','원정'] : market === 'ou' ? ['오버','언더','-'] : ['홈','원정','-']);
+      setIdle(cfg.label);
       compute();
-    }
-
-    function validOdds(vals) {
-      return vals.every(v => Number.isFinite(v) && v >= 1.02);
     }
 
     function compute() {
       const market = hiddenMarket.value || '1x2';
       const cfg = MARKETS[market] || MARKETS['1x2'];
-      const activeOdds = cfg.fields.filter(k => k !== 'line').map(k => Number(inputs[k]?.value || ''));
-      const head = qs('.sports-score-top span', result);
-      const vals = qsa('.sports-metric strong', result);
-      if (head) head.textContent = cfg.label;
-      if (!validOdds(activeOdds)) {
-        resetResult(cfg.note, cfg.label);
+      const odds = cfg.fields.filter((k) => k !== 'line').map((k) => Number(inputs[k]?.value || ''));
+      const line = Number(inputs.line?.value || '');
+      const capital = Number(inputs.capital?.value || 0);
+      const riskMode = inputs.risk?.value || 'neutral';
+      if (marketLabelNode) marketLabelNode.textContent = cfg.label;
+      if (!validOdds(odds)) {
+        setIdle(cfg.label);
         return;
       }
-      const { total, probs } = normalizeProbabilities(activeOdds);
-      const bars = qsa('.sports-metric-track i', result);
-      vals.forEach((node, idx) => { node.textContent = probs[idx] != null ? pct(probs[idx]) : '-'; });
-      bars.forEach((bar, idx) => { bar.style.width = probs[idx] != null ? `${Math.max(4, Math.min(100, probs[idx]))}%` : '0%'; });
-      const visible = cfg.resultLabels.map((label, idx) => ({ label, prob: probs[idx] })).filter((item) => item.label && item.label !== '-' && Number.isFinite(item.prob));
-      if (visible.length) {
-        const leader = visible.slice().sort((a, b) => b.prob - a.prob)[0];
-        const margin = (total - 1) * 100;
-        setSummary(`${leader.label} 우세 ${pct(leader.prob)} · 마진 ${margin.toFixed(1)}%`);
-      } else {
-        setSummary('입력 대기');
+      const fair = engines.fairProbability({ odds, market });
+      const labels = cfg.resultLabels;
+      const outcomes = fair.fairProbabilities.map((prob, idx) => {
+        const ev = engines.expectedValue({ probability: prob, odds: odds[idx], stake: capital || 100000 });
+        const vol = engines.volatilityRisk({ probability: prob, odds: odds[idx], stake: Math.max(1000, (capital || 100000) * 0.01), plays: market === '1x2' ? 3 : 2 });
+        return { idx, label: labels[idx], prob, probPct: prob * 100, odds: odds[idx], ev, vol };
+      }).filter((item) => item.label && item.label !== '-');
+      const bestProb = outcomes.slice().sort((a,b)=>b.prob-a.prob)[0];
+      const bestEdge = outcomes.slice().sort((a,b)=>b.ev.evRate-a.ev.evRate)[0];
+      const marketVolScore = outcomes.reduce((sum,item)=>sum+item.vol.volatilityScore,0) / Math.max(1,outcomes.length);
+      const marketVol = { score: marketVolScore, grade: marketVolScore >= 75 ? '매우 높음' : marketVolScore >= 55 ? '높음' : marketVolScore >= 30 ? '보통' : '낮음' };
+      const bankroll = engines.bankrollPlan({ capital, probability: bestEdge.prob, odds: bestEdge.odds, mode: riskMode, volatilityScore: marketVol.score });
+      bankroll.mode = riskMode;
+
+      metricValues.forEach((node, idx) => { node.textContent = outcomes[idx] ? pct100(outcomes[idx].probPct) : '-'; });
+      metricBars.forEach((bar, idx) => { bar.style.width = outcomes[idx] ? `${Math.max(6, Math.min(100, outcomes[idx].probPct))}%` : '0%'; });
+
+      if (summary) summary.textContent = `${bestProb.label} 공정확률 ${pct100(bestProb.probPct)} · ${engines.describeEdge(bestEdge.ev.evRate)}`;
+      if (subsummary) subsummary.textContent = `${bestEdge.label} 보정 EV ${engines.formatSignedPercent(bestEdge.ev.evRate * 100)} · ${marketVol.grade} 변동성`;
+      if (marginNode) marginNode.textContent = `북마진 ${(fair.margin * 100).toFixed(1)}%`;
+      if (insightValue('fair')) insightValue('fair').textContent = `${bestProb.label} ${pct100(bestProb.probPct)}`;
+      if (insightNote('fair')) insightNote('fair').textContent = `공정 오즈 ${fair.fairOdds[bestProb.idx].toFixed(2)}`;
+      if (insightValue('ev')) insightValue('ev').textContent = `${bestEdge.label} ${engines.formatSignedPercent(bestEdge.ev.evRate * 100)}`;
+      if (insightNote('ev')) insightNote('ev').textContent = `${bestEdge.ev.label} · 보정 EV 기준`;
+      if (insightValue('vol')) insightValue('vol').textContent = marketVol.grade;
+      if (insightNote('vol')) insightNote('vol').textContent = `5연속 미적중 ${pct100(bestProb.vol.streakLossProb * 100).replace('%%','%')}`;
+      if (insightValue('bank')) insightValue('bank').textContent = capital ? money(bankroll.amount) : `${(bankroll.ratio * 100).toFixed(1)}%`;
+      if (insightNote('bank')) insightNote('bank').textContent = `${riskText(riskMode)} · ${bankroll.label}`;
+      if (notesNode) {
+        const notes = sportsComment({ market, bestProb, bestEdge, volatility: marketVol, bankroll, line: Number.isFinite(line) && line !== 0 ? line : '' });
+        notesNode.innerHTML = notes.map((item) => `<li>${item}</li>`).join('');
       }
     }
 
-    qsa('[data-market]', tabWrap).forEach(btn => btn.addEventListener('click', () => applyMarket(btn.dataset.market || '1x2')));
-    Object.values(inputs).forEach(input => { if (input) input.addEventListener('input', compute); });
+    qsa('[data-market]', tabWrap).forEach((btn) => btn.addEventListener('click', () => applyMarket(btn.dataset.market || '1x2')));
+    Object.values(inputs).forEach((input) => { if (input) input.addEventListener('input', compute); if (input && input.tagName === 'SELECT') input.addEventListener('change', compute); });
     form.addEventListener('submit', (e) => { e.preventDefault(); compute(); });
     applyMarket(hiddenMarket.value || '1x2');
   }
