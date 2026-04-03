@@ -329,3 +329,6 @@ body[data-community-page="guaranteed"] .guaranteed-card.is-open .guaranteed-summ
 }
 
 .section-head>div>p:empty{display:none}.desktop-ai-head .desktop-ai-kicker:last-child{margin-bottom:0}.desktop-ai-shell--placeholder{gap:10px}.desktop-ai-panel .desktop-ai-facts:first-child{margin-top:0}@media (max-width:980px){.home-provider-rotator-section{display:none}.desktop-ai-shell,.desktop-ai-card,.desktop-ai-fact{border-radius:16px}}
+
+
+.page-intro.page-intro-compact{padding-bottom:10px}.page-intro.page-intro-compact .eyebrow,.page-intro.page-intro-compact p{display:none}.article-single{overflow:hidden}.article-single .article-copy{max-width:860px}.article-single p{margin:0 0 16px;line-height:1.82;color:#334155;font-size:1rem}.article-single ul{margin:4px 0 16px 1.1rem;padding:0;color:#334155}.article-single li{line-height:1.72}.article-single li+li{margin-top:8px}.article-single p:last-child{margin-bottom:0}@media (max-width: 768px){.article-single .article-copy{max-width:none}.article-single p{font-size:.98rem;line-height:1.78}.article-single ul{margin-left:1rem}}
