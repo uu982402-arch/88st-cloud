@@ -69,45 +69,6 @@
   function renderGuaranteedCards(providers){
     $$('[data-guaranteed-grid]').forEach((grid)=>{ if (grid.children.length) return; grid.innerHTML = providers.map(providerCard).join(''); });
   }
-  function providerRotatorCard(item){
-    const action = `<a class="home-provider-link" href="${esc(item.officialUrl)}" target="_blank" rel="noopener noreferrer">바로가기</a>`;
-    const code = `<button class="home-provider-code" type="button" data-copy-text="${esc(item.code)}"><span data-copy-label data-default-label="${esc(item.code)}">${esc(item.code)}</span></button>`;
-    const tags = (item.tags || []).slice(0,2).map((tag)=>`<span>${esc(tag)}</span>`).join('');
-    return `<article class="home-provider-card" data-theme="${esc(item.theme || 'slate')}"><div class="home-provider-card-top"><strong>${esc(item.name)}</strong><span class="home-provider-status">운영중</span></div><p class="home-provider-copy">${esc(item.oneLine || '공식 주소와 가입코드 확인')}</p><div class="home-provider-tags">${tags || '<span>주소 확인</span><span>가입코드</span>'}</div><div class="home-provider-card-actions">${code}${action}</div></article>`;
-  }
-  function renderHomeProviderRotator(providers){
-    const section = $('[data-home-provider-rotator-section]');
-    if (!section) return;
-    const grid = $('[data-home-provider-rotator]', section);
-    const prev = $('[data-home-rotator-prev]', section);
-    const next = $('[data-home-rotator-next]', section);
-    const pageMeta = $('[data-home-rotator-page]', section);
-    const active = (providers || []).filter((item)=>!item.pending && item.officialUrl && item.code);
-    if (!grid || !active.length){ section.hidden = true; return; }
-    const pageSize = Math.min(4, active.length);
-    const pageCount = Math.max(1, Math.ceil(active.length / pageSize));
-    let page = 0;
-    let timer = null;
-    const windowItems = (pageIndex) => {
-      const start = (pageIndex * pageSize) % active.length;
-      return Array.from({ length: pageSize }, (_, idx) => active[(start + idx) % active.length]);
-    };
-    const render = () => {
-      grid.innerHTML = windowItems(page).map(providerRotatorCard).join('');
-      if (pageMeta) pageMeta.textContent = `${page + 1} / ${pageCount}`;
-      if (prev) prev.disabled = pageCount <= 1;
-      if (next) next.disabled = pageCount <= 1;
-    };
-    const go = (dir = 1) => { page = (page + dir + pageCount) % pageCount; render(); };
-    const stop = () => { if (timer) { clearInterval(timer); timer = null; } };
-    const start = () => { stop(); if (pageCount > 1) timer = setInterval(()=>go(1), 5600); };
-    prev?.addEventListener('click', ()=>{ go(-1); start(); });
-    next?.addEventListener('click', ()=>{ go(1); start(); });
-    section.addEventListener('mouseenter', stop);
-    section.addEventListener('mouseleave', start);
-    render();
-    start();
-  }
   function wireGuaranteed(){
     document.addEventListener('click', async (e)=>{
       const copyBtn = e.target.closest('[data-copy-text]');
@@ -170,9 +131,6 @@
     const sourceChips = [sourceFlags.rdap && 'RDAP', sourceFlags.dns && 'DNS', sourceFlags.page && '페이지'].filter(Boolean);
     target.innerHTML = `<section class="desktop-ai-panel" aria-label="AI 조회 결과"><div class="desktop-ai-shell" data-tone="${esc(verdict.tone || 'neutral')}"><div class="desktop-ai-head"><div><span class="desktop-ai-kicker">AI 조회 결과</span><strong>${esc(verdict.label || '추가 확인 필요')}</strong></div><div class="desktop-ai-head-actions"><span class="desktop-ai-tone">${esc(aiToneLabel(verdict.tone || 'neutral'))}</span><a class="safety-link-btn ghost" href="${googleHref}" target="_blank" rel="noopener noreferrer">원문 검색</a></div></div><div class="desktop-ai-summary">${esc(verdict.summary || '입력값 기준으로 먼저 볼 항목만 짧게 정리했습니다.')}</div>${sourceChips.length ? `<div class="desktop-ai-inline-list">${sourceChips.map((chip)=>`<span>${esc(chip)}</span>`).join('')}</div>` : ''}<div class="desktop-ai-facts">${factItems}</div><div class="desktop-ai-grid">${buildAiCard('주소 변경 이력', cards.history?.value || '-', cards.history?.body || '-')}${buildAiCard('리뉴얼 흔적', cards.renewal?.value || '-', cards.renewal?.body || '-')}${buildAiCard('계열사 유사도', cards.affinity?.value || '-', cards.affinity?.body || '-')}<article class="desktop-ai-card desktop-ai-card--list"><span>주의 포인트</span><strong>${esc(cautions.length ? `${cautions.length}개` : '기본 체크')}</strong><ul>${(cautions.length ? cautions : ['검색 결과와 공지 채널을 같이 보세요.']).slice(0,3).map((item)=>`<li>${esc(item)}</li>`).join('')}</ul></article></div><div class="desktop-ai-next"><div class="desktop-ai-next-head"><strong>다음 확인 순서</strong><span>${esc(query)}</span></div><div class="desktop-ai-step-grid">${nextSteps.map((step)=>`<a class="desktop-ai-step" href="${esc(step.href || '/tools/')}" ${step.external ? 'target="_blank" rel="noopener noreferrer"' : ''}><strong>${esc(step.label || '다음 단계')}</strong><p>${esc(step.copy || '')}</p></a>`).join('')}</div></div></div></section>`;
   }
-  function isDesktopLookupMode(){
-    return typeof window !== 'undefined' && window.matchMedia('(min-width: 981px)').matches;
-  }
   function wireHomeAiLookup(){
     const form = $('[data-ai-form]');
     if(!form) return;
@@ -185,11 +143,6 @@
       const clean = String(input?.value || '').trim();
       if(!clean){ toast('먼저 사이트명, 도메인 또는 공지문구를 입력해 주세요.'); return; }
       const mode = select?.value || 'site';
-      if(!isDesktopLookupMode()){
-        const suffix = mode === 'domain' ? '도메인 변경' : mode === 'notice' ? '공지' : '먹튀';
-        window.open(googleUrl(`${clean} ${suffix}`),'_blank','noopener');
-        return;
-      }
       if(target){
         target.innerHTML = `<section class="desktop-ai-panel" aria-label="AI 조회 결과"><div class="desktop-ai-shell"><div class="desktop-ai-head"><div><span class="desktop-ai-kicker">AI 조회 결과</span><strong>조회 중입니다.</strong></div><span class="mini-badge">${esc(clean)}</span></div><div class="desktop-ai-summary">입력값을 기준으로 주소 흐름과 리뉴얼 흔적을 정리하고 있습니다.</div></div></section>`;
       }
@@ -259,7 +212,7 @@
       fetchJson(BLOG_URL).then((d)=>d.posts || []).catch(()=>[]),
       fetchJson(REVIEW_LOG_URL).then((d)=>d.entries || []).catch(()=>[])
     ]);
-    renderGuaranteedCards(providers); renderHomeProviderRotator(providers); renderBlogPreviews(posts); renderReviewLogs(logs); wireHomeAiLookup();
+    renderGuaranteedCards(providers); renderBlogPreviews(posts); renderReviewLogs(logs); wireHomeAiLookup();
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 })();
