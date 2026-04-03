@@ -148,7 +148,7 @@
   }
   function renderHomeAiPlaceholder(target){
     if(!target) return;
-    target.innerHTML = `<section class="desktop-ai-panel" aria-label="AI 조회 결과"><div class="desktop-ai-shell desktop-ai-shell--placeholder"><div class="desktop-ai-head"><div><span class="desktop-ai-kicker">AI 조회 결과</span><strong>사이트명 또는 도메인을 넣으면 핵심 결과가 바로 정리됩니다.</strong></div><span class="mini-badge">변경 이력 · 리뉴얼 · 유사도</span></div><div class="desktop-ai-summary">검색 전 단계에서 주소 흐름, 리뉴얼 흔적, 유사 운영 패턴을 짧게 먼저 봅니다.</div><div class="desktop-ai-facts"><article class="desktop-ai-fact"><span>등록일</span><strong>입력 후 확인</strong></article><article class="desktop-ai-fact"><span>최종 연결</span><strong>입력 후 확인</strong></article><article class="desktop-ai-fact"><span>페이지 제목</span><strong>입력 후 확인</strong></article></div><div class="desktop-ai-grid">${buildAiCard('주소 변경 이력','입력 후 확인','공식 도메인 일치 여부와 교체형 주소 패턴을 먼저 봅니다.')}${buildAiCard('리뉴얼 흔적','입력 후 확인','브랜드명, 조회용 도메인, 공지문구 흐름을 같이 정리합니다.')}${buildAiCard('계열사 유사도','입력 후 확인','같은 계열 추정은 확정이 아니라 유사 신호 중심으로 보여줍니다.')}${buildAiCard('다음 확인 순서','입력 후 확인','공식주소 체크 → 주소 변경 추적기 → 보증업체 기준 대조', '<div class="desktop-ai-inline-list"><span>공식주소 체크</span><span>주소 변경 추적기</span><span>보증업체 기준 대조</span></div>')}</div></div></section>`;
+    target.innerHTML = `<section class="desktop-ai-panel" aria-label="AI 조회 결과"><div class="desktop-ai-shell desktop-ai-shell--placeholder"><div class="desktop-ai-head"><div><span class="desktop-ai-kicker">AI 조회 결과</span></div></div><div class="desktop-ai-facts"><article class="desktop-ai-fact"><span>등록일</span><strong>입력 후 확인</strong></article><article class="desktop-ai-fact"><span>최종 연결</span><strong>입력 후 확인</strong></article><article class="desktop-ai-fact"><span>페이지 제목</span><strong>입력 후 확인</strong></article></div><div class="desktop-ai-grid">${buildAiCard('주소 변경 이력','입력 후 확인','공식 도메인 일치 여부와 교체형 주소 패턴을 먼저 봅니다.')}${buildAiCard('리뉴얼 흔적','입력 후 확인','브랜드명, 조회용 도메인, 공지문구 흐름을 같이 정리합니다.')}${buildAiCard('계열사 유사도','입력 후 확인','같은 계열 추정은 확정이 아니라 유사 신호 중심으로 보여줍니다.')}${buildAiCard('다음 확인 순서','입력 후 확인','공식주소 체크 → 주소 변경 추적기 → 보증업체 기준 대조', '<div class="desktop-ai-inline-list"><span>공식주소 체크</span><span>주소 변경 추적기</span><span>보증업체 기준 대조</span></div>')}</div></div></section>`;
   }
   function buildAiFact(label, value){
     return `<article class="desktop-ai-fact"><span>${esc(label)}</span><strong>${esc(value || '-')}</strong></article>`;
@@ -184,14 +184,14 @@
       if(!clean){ toast('먼저 사이트명, 도메인 또는 공지문구를 입력해 주세요.'); return; }
       const mode = select?.value || 'site';
       if(target){
-        target.innerHTML = `<section class="desktop-ai-panel" aria-label="AI 조회 결과"><div class="desktop-ai-shell"><div class="desktop-ai-head"><div><span class="desktop-ai-kicker">AI 조회 결과</span><strong>조회 중입니다.</strong></div><span class="mini-badge">${esc(clean)}</span></div></div></section>`;
+        target.innerHTML = `<section class="desktop-ai-panel" aria-label="AI 조회 결과"><div class="desktop-ai-shell"><div class="desktop-ai-head"><div><span class="desktop-ai-kicker">AI 조회 결과</span><strong>조회 중입니다.</strong></div></div></div></section>`;
       }
       try{
         const payload = await fetchJson(`/api/ai/lookup?q=${encodeURIComponent(clean)}&mode=${encodeURIComponent(mode)}`);
         renderHomeAiResult(target, payload);
       }catch(err){
         if(target){
-          target.innerHTML = `<section class="desktop-ai-panel" aria-label="AI 조회 결과"><div class="desktop-ai-shell"><div class="desktop-ai-head"><div><span class="desktop-ai-kicker">AI 조회 결과</span><strong>조회에 실패했습니다.</strong></div></div><div class="desktop-ai-summary desktop-ai-summary--error">${esc(err.message || '잠시 후 다시 시도해 주세요.')}</div></div></section>`;
+          target.innerHTML = `<section class="desktop-ai-panel" aria-label="AI 조회 결과"><div class="desktop-ai-shell"><div class="desktop-ai-head"><div><span class="desktop-ai-kicker">AI 조회 결과</span><strong>조회에 실패했습니다.</strong></div></div><div class="desktop-ai-summary">${esc(err.message || '잠시 후 다시 시도해 주세요.')}</div></div></section>`;
         }
       }
     });
