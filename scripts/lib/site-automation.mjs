@@ -14,6 +14,7 @@ export const CATEGORY_LABELS = {
   bonus: '보너스',
   strategy: '전략',
   news: '뉴스',
+  analysis: '배당분석',
   guide: '가이드',
   archive: '아카이브',
   safety: '먹튀폴리스'
@@ -25,6 +26,7 @@ export const CATEGORY_OG_MAP = {
   bonus: '/img/og/88st-bonus-guide-og.webp',
   strategy: '/img/og/88st-strategy-guide-og.webp',
   news: '/img/og/88st-news-guide-og.webp',
+  analysis: '/img/og/88st-analysis-guide-og.webp',
   guide: '/img/og/88st-default-guide-og.png',
   archive: '/img/logo.png',
   safety: '/img/logo.png',
@@ -209,6 +211,7 @@ export function buildBreadcrumb(route, pageTitle, category) {
   if (normalized !== '/') {
     if (category && ['casino','slot','bonus','strategy','news'].includes(category) && normalized !== `/${category}/`) {
       items.push({ name: `${sectionLabel} 허브`, item: `${SITE_ORIGIN}/${category}/` });
+    } else if (category === 'analysis') {
     } else if (category === 'guide') {
       items.push({ name: '가이드', item: `${SITE_ORIGIN}/play-guides/` });
     } else if (category === 'safety') {

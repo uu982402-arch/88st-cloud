@@ -28,7 +28,7 @@ const files = walk(ROOT);
 const htmlFiles = files.filter(f => f.endsWith('index.html'));
 const normalize = (f) => rel(f);
 const postHtml = htmlFiles.filter(f => /^(casino|slot|bonus|strategy)\/.+\/index\.html$/.test(normalize(f)));
-const publicPages = htmlFiles.filter(f => !/^(admin|ops)\//.test(normalize(f))); 
+const publicPages = htmlFiles.filter(f => !/^(admin|ops|seo)\//.test(normalize(f)));
 const sitemapUrls = (readMaybe('sitemap.txt').match(/^https?:\/\/[^\n]+/gm) || []);
 const postsIndexRawText = readMaybe('assets/data/posts.index.v1.20260318.json');
 const postsIndexRaw = postsIndexRawText ? JSON.parse(postsIndexRawText) : [];
@@ -72,13 +72,13 @@ const dashboard = {
   indexing: {
     topPriority: [
       '/', '/slot/', '/bonus/', '/strategy/', '/news/', '/play-guides/', '/latest/', '/popular/',
-      '/blog/', '/tools/', '/guaranteed/', '/muktu-police/'
+      '/casino/baccarat-start/', '/slot/rtp-basics/', '/bonus/wagering-requirements/', '/strategy/bankroll-basics/'
     ]
   },
   notes: [
     '공개 페이지는 page_view가 자동 수집됩니다.',
-    '운영자 페이지(/admin/, /ops/)는 이번 패치로 수집 제외됩니다.',
-    '운영 요약은 /ops/에서 확인합니다.'
+    '운영자 페이지(/admin/, /ops/, /ops/)는 이번 패치로 수집 제외됩니다.',
+    'GSC 실시간 요약/기회 목록은 /ops/에서 ADMIN_TOKEN으로 확인합니다.'
   ]
 };
 
@@ -100,7 +100,7 @@ fs.writeFileSync(DOC, [
   '',
   '- 공개 페이지는 mobile.enhance 스크립트에서 GA4를 초기화합니다.',
   '- gtag config에서 send_page_view=true라 공개 페이지 진입 시 page_view가 자동 수집됩니다.',
-  '- 운영자 페이지(/admin/, /ops/)는 이번 패치로 수집 제외됩니다.'
+  '- 운영자 페이지(/admin/, /ops/, /ops/)는 이번 패치로 수집 제외됩니다.'
 ].join('\n'));
 
 console.log('generated', rel(OUT));

@@ -28,7 +28,7 @@
         </div>
         <div class="sports-note">홈 · 무 · 원정 배당 3개를 입력하면 즉시 정규화 확률과 한 줄 해석이 표시됩니다.</div>
         <div class="sports-mini-links">
-          <a href="/tools/">분석기 전체 열기</a>
+          <a href="/">분석기 전체 열기</a>
           <a href="/guaranteed/">보증업체 보기</a>
         </div>
       </div>`;
@@ -40,7 +40,7 @@
         <div class="sports-score-top"><strong>입력을 다시 확인해 주세요.</strong><span>배당은 1.02 이상</span></div>
         <div class="sports-note">세 칸 모두 숫자로 입력하면 결과가 자동 계산됩니다.</div>
         <div class="sports-mini-links">
-          <a href="/tools/">분석기 전체 열기</a>
+          <a href="/">분석기 전체 열기</a>
           <a href="/guaranteed/">보증업체 보기</a>
         </div>
       </div>`;
@@ -65,7 +65,7 @@
         </div>
         <div class="sports-note">마진 ${(overround * 100).toFixed(1)}% · ${note}</div>
         <div class="sports-mini-links">
-          <a href="/tools/">분석기 전체 열기</a>
+          <a href="/">분석기 전체 열기</a>
           <a href="/guaranteed/">보증업체 보기</a>
         </div>
       </div>`;

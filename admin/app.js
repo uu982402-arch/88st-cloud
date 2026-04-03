@@ -32,8 +32,8 @@ const DEFAULT_STATE = {
     { key: 'admin_note', label: '운영 메모', type: 'text', value: '내부 엔진 용어는 관리자 UI에서도 직접 노출하지 않습니다.' }
   ],
   landing: {
-    tgMatchEntryUrl: 'https://88st.cloud/tools/',
-    oddsUrl: 'https://88st.cloud/tools/',
+    tgMatchEntryUrl: 'https://88st.cloud/',
+    oddsUrl: 'https://88st.cloud/',
     playgroundUrl: 'https://88st.cloud/tg-odds/app',
     supportUrl: 'https://t.me/TRK7878',
     oddsButtonLabel: '배당분석 바로가기',

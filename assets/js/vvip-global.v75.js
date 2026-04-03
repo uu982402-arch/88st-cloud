@@ -99,10 +99,10 @@
   // ---------- Recent usage tracking ----------
   function isToolLikePath(pathname){
     const p = pathname || '/';
-    if(/^\/odds\/?$/.test(p)) return true;
+    if(/^\/$/.test(p)) return true;
     return (
-      /^\/(tool-|tool\/|tool-casino|tool-minigame|tool-slot|tool-virtual|tool-ev|tool-margin|tool-odds|casino-strategy)\//.test(p)
-      || p==='/tools/'
+      /^\/(analysis|tool-|tool\/|tool-casino|tool-minigame|tool-slot|tool-virtual|tool-ev|tool-margin|tool-odds|casino-strategy)\//.test(p)
+      || p==='/'
     );
   }
 
@@ -111,7 +111,7 @@
     if(p.startsWith('/cert')) return false;
     if(p.startsWith('/guide')) return false;
     if(p.startsWith('/calc')) return false;
-    return /^\/(tool-|tool\/|tool-casino|tool-minigame|tool-slot|tool-virtual|tool-ev|tool-margin|tool-odds|casino-strategy)\//.test(p) || p==='/tools/';
+    return /^\/(analysis|tool-|tool\/|tool-casino|tool-minigame|tool-slot|tool-virtual|tool-ev|tool-margin|tool-odds|casino-strategy)\//.test(p) || p==='/';
   }
 
   function trackRecent(){
@@ -195,7 +195,7 @@
     if(p.startsWith('/cert')) return false;
     if(p.startsWith('/guide')) return false;
     if(p.startsWith('/calc')) return false;
-    return /^\/(tool-|tool\/|tool-casino|tool-minigame|tool-slot|tool-virtual|tool-ev|tool-margin|tool-odds)\//.test(p) || p==='/tools/';
+    return /^\/(analysis|tool-|tool\/|tool-casino|tool-minigame|tool-slot|tool-virtual|tool-ev|tool-margin|tool-odds)\//.test(p) || p==='/';
   }
 
   function persistKey(){

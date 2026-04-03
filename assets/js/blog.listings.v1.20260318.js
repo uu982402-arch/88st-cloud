@@ -10,7 +10,7 @@
     slot: {label:'슬롯', hub:'/blog/', archive:'/blog/'},
     bonus: {label:'보너스', hub:'/tools/', archive:'/tools/'},
     strategy: {label:'전략', hub:'/blog/', archive:'/blog/'},
-    analysis: {label:'분석', hub:'/tools/', archive:'/tools/'},
+    analysis: {label:'분석', hub:'/', archive:'/blog/'},
     news: {label:'뉴스', hub:'/blog/', archive:'/blog/'},
     guide: {label:'가이드', hub:'/blog/', archive:'/blog/'}
   };

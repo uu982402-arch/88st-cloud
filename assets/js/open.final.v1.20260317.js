@@ -13,7 +13,7 @@
     const path = location.pathname.replace(/index\.html$/, '');
     const links = [
       { href:'/', label:'메인', sub:'전체 허브' },
-      { href:'/tools/', label:'분석기', sub:'배당·상태 해석' },
+      { href:'/', label:'메인', sub:'검색·스포츠 한 화면 정리' },
       { href:'/blog/', label:'블로그', sub:'검증 가이드 모음' },
       { href:'/tools/', label:'도구', sub:'검색·조회·체크' },
       { href:'https://t.me/TRK7878', label:'문의', sub:'바로 연결', external:true, accent:true }
@@ -41,7 +41,7 @@
     if (!(location.pathname === '/' || location.pathname === '/index.html')) return;
     const heroCopy = document.querySelector('.hero-copy'); if (!heroCopy || heroCopy.querySelector('.open-home-strip')) return;
     const wrap = document.createElement('div'); wrap.className = 'open-home-strip';
-    wrap.innerHTML = '<a class="open-home-strip__item" href="/tools/"><span class="open-home-strip__eyebrow">FAST START</span><strong>바로 분석</strong><span>배당·상태 해석부터 빠르게 확인</span></a><a class="open-home-strip__item" href="/blog/"><span class="open-home-strip__eyebrow">CASINO</span><strong>배팅기법 보기</strong><span>기법 구조·예시·테스트를 한 번에 확인</span></a><a class="open-home-strip__item" href="/tools/"><span class="open-home-strip__eyebrow">MINIGAME</span><strong>미니게임 읽는 법</strong><span>룰·판정 기준·운용 실수 먼저 정리</span></a><a class="open-home-strip__item" href="/tools/"><span class="open-home-strip__eyebrow">BONUS</span><strong>보너스 보기</strong><span>가입 보너스·롤링 조건을 빠르게 확인</span></a>';
+    wrap.innerHTML = '<a class="open-home-strip__item" href="/"><span class="open-home-strip__eyebrow">FAST START</span><strong>바로 분석</strong><span>배당·상태 해석부터 빠르게 확인</span></a><a class="open-home-strip__item" href="/blog/"><span class="open-home-strip__eyebrow">CASINO</span><strong>배팅기법 보기</strong><span>기법 구조·예시·테스트를 한 번에 확인</span></a><a class="open-home-strip__item" href="/tools/"><span class="open-home-strip__eyebrow">MINIGAME</span><strong>미니게임 읽는 법</strong><span>룰·판정 기준·운용 실수 먼저 정리</span></a><a class="open-home-strip__item" href="/tools/"><span class="open-home-strip__eyebrow">BONUS</span><strong>보너스 보기</strong><span>가입 보너스·롤링 조건을 빠르게 확인</span></a>';
     const actions = heroCopy.querySelector('.hero-actions'); actions?.insertAdjacentElement('afterend', wrap);
     const note = document.createElement('div'); note.className = 'open-cta-note'; note.textContent = '처음 방문이면 뉴스 → 분석기 → 가이드 순서, 운영 기준을 먼저 잡고 싶다면 가이드 → 테스트 → 분석기 순서가 가장 안정적입니다.'; wrap.insertAdjacentElement('afterend', note);
   }
