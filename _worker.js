@@ -31,6 +31,18 @@ if (path === '/community' || path.startsWith('/community/')) {
       if (path === '/api/ai/lookup' && method === 'GET') {
         return handleAiLookup(url, env);
       }
+      if (path === '/api/safety/domain' && method === 'GET') {
+        return handleSafetyDomainLookup(request, env);
+      }
+      if (path === '/api/safety/ip' && method === 'GET') {
+        return handleSafetyIpLookup(request, env);
+      }
+      if (path === '/api/safety/evidence' && method === 'GET') {
+        return handleSafetyEvidenceExtract(request, env);
+      }
+      if (path === '/api/safety/brand' && method === 'GET') {
+        return handleSafetyBrandDirectory(request, env);
+      }
 
       // OPS deploy patch config: always no-store (fast operations)
       if (path === '/assets/config/ops.dom.patch.json') {
