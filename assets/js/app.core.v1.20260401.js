@@ -38,33 +38,6 @@
     if (!t) { t = document.createElement('div'); t.id='siteToast'; t.className='safety-toast'; document.body.appendChild(t); }
     t.textContent = msg; t.classList.add('is-show'); clearTimeout(toast._timer); toast._timer = setTimeout(()=>t.classList.remove('is-show'), 1600);
   };
-
-  function ensureResultModal(){
-    const root = $('[data-result-modal]');
-    if(!root) return null;
-    const title = $('[data-result-modal-title]', root);
-    const body = $('[data-result-modal-body]', root);
-    const close = () => {
-      root.setAttribute('hidden','');
-      root.setAttribute('aria-hidden','true');
-      document.body.classList.remove('is-modal-open');
-    };
-    const open = ({ titleText='결과 안내', html='' } = {}) => {
-      if (title) title.textContent = titleText;
-      if (body) body.innerHTML = html;
-      root.removeAttribute('hidden');
-      root.setAttribute('aria-hidden','false');
-      document.body.classList.add('is-modal-open');
-    };
-    if (!root.dataset.bound) {
-      root.dataset.bound = '1';
-      $$('[data-result-close]', root).forEach((btn)=>btn.addEventListener('click', close));
-      document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape' && !root.hasAttribute('hidden')) close(); });
-    }
-    return { root, title, body, open, close };
-  }
-  const resultModal = ensureResultModal();
-  window.RavenResultModal = resultModal;
   const copyText = async (text) => {
     try { await navigator.clipboard.writeText(String(text)); toast('복사되었습니다.'); }
     catch (_) {
@@ -180,8 +153,8 @@
   function buildAiFact(label, value){
     return `<article class="desktop-ai-fact"><span>${esc(label)}</span><strong>${esc(value || '-')}</strong></article>`;
   }
-  function renderHomeAiResult(target, payload){
-    if(!target || !payload) return;
+  function buildHomeAiResultHtml(payload){
+    if(!payload) return '';
     const verdict = payload.verdict || {};
     const cards = payload.cards || {};
     const cautions = Array.isArray(payload.cautions) ? payload.cautions : [];
@@ -196,33 +169,132 @@
     ].join('');
     const sourceFlags = live.sourceFlags || {};
     const sourceChips = [sourceFlags.rdap && 'RDAP', sourceFlags.dns && 'DNS', sourceFlags.page && '페이지'].filter(Boolean);
-    target.innerHTML = `<section class="desktop-ai-panel" aria-label="AI 조회 결과"><div class="desktop-ai-shell" data-tone="${esc(verdict.tone || 'neutral')}"><div class="desktop-ai-head"><div><span class="desktop-ai-kicker">AI 조회 결과</span><strong>${esc(verdict.label || '추가 확인 필요')}</strong></div><div class="desktop-ai-head-actions"><span class="desktop-ai-tone">${esc(aiToneLabel(verdict.tone || 'neutral'))}</span><a class="safety-link-btn ghost" href="${googleHref}" target="_blank" rel="noopener noreferrer">원문 검색</a></div></div><div class="desktop-ai-summary">${esc(verdict.summary || '입력값 기준으로 먼저 볼 항목만 짧게 정리했습니다.')}</div>${sourceChips.length ? `<div class="desktop-ai-inline-list">${sourceChips.map((chip)=>`<span>${esc(chip)}</span>`).join('')}</div>` : ''}<div class="desktop-ai-facts">${factItems}</div><div class="desktop-ai-grid">${buildAiCard('주소 변경 이력', cards.history?.value || '-', cards.history?.body || '-')}${buildAiCard('리뉴얼 흔적', cards.renewal?.value || '-', cards.renewal?.body || '-')}${buildAiCard('계열사 유사도', cards.affinity?.value || '-', cards.affinity?.body || '-')}<article class="desktop-ai-card desktop-ai-card--list"><span>주의 포인트</span><strong>${esc(cautions.length ? `${cautions.length}개` : '기본 체크')}</strong><ul>${(cautions.length ? cautions : ['검색 결과와 공지 채널을 같이 보세요.']).slice(0,3).map((item)=>`<li>${esc(item)}</li>`).join('')}</ul></article></div><div class="desktop-ai-next"><div class="desktop-ai-next-head"><strong>다음 확인 순서</strong><span>${esc(query)}</span></div><div class="desktop-ai-step-grid">${nextSteps.map((step)=>`<a class="desktop-ai-step" href="${esc(step.href || '/tools/')}" ${step.external ? 'target="_blank" rel="noopener noreferrer"' : ''}><strong>${esc(step.label || '다음 단계')}</strong><p>${esc(step.copy || '')}</p></a>`).join('')}</div></div></div></section>`;
+    return `<section class="desktop-ai-panel" aria-label="AI 조회 결과"><div class="desktop-ai-shell" data-tone="${esc(verdict.tone || 'neutral')}"><div class="desktop-ai-head"><div><span class="desktop-ai-kicker">AI 조회 결과</span><strong>${esc(verdict.label || '추가 확인 필요')}</strong></div><div class="desktop-ai-head-actions"><span class="desktop-ai-tone">${esc(aiToneLabel(verdict.tone || 'neutral'))}</span><a class="safety-link-btn ghost" href="${googleHref}" target="_blank" rel="noopener noreferrer">원문 검색</a></div></div><div class="desktop-ai-summary">${esc(verdict.summary || '입력값 기준으로 먼저 볼 항목만 짧게 정리했습니다.')}</div>${sourceChips.length ? `<div class="desktop-ai-inline-list">${sourceChips.map((chip)=>`<span>${esc(chip)}</span>`).join('')}</div>` : ''}<div class="desktop-ai-facts">${factItems}</div><div class="desktop-ai-grid">${buildAiCard('주소 변경 이력', cards.history?.value || '-', cards.history?.body || '-')}${buildAiCard('리뉴얼 흔적', cards.renewal?.value || '-', cards.renewal?.body || '-')}${buildAiCard('계열사 유사도', cards.affinity?.value || '-', cards.affinity?.body || '-')}<article class="desktop-ai-card desktop-ai-card--list"><span>주의 포인트</span><strong>${esc(cautions.length ? `${cautions.length}개` : '기본 체크')}</strong><ul>${(cautions.length ? cautions : ['검색 결과와 공지 채널을 같이 보세요.']).slice(0,3).map((item)=>`<li>${esc(item)}</li>`).join('')}</ul></article></div><div class="desktop-ai-next"><div class="desktop-ai-next-head"><strong>다음 확인 순서</strong><span>${esc(query)}</span></div><div class="desktop-ai-step-grid">${nextSteps.map((step)=>`<a class="desktop-ai-step" href="${esc(step.href || '/tools/')}" ${step.external ? 'target="_blank" rel="noopener noreferrer"' : ''}><strong>${esc(step.label || '다음 단계')}</strong><p>${esc(step.copy || '')}</p></a>`).join('')}</div></div></div></section>`;
+  }
+  function renderHomeAiResult(target, payload){
+    if(!target || !payload) return;
+    target.hidden = false;
+    target.innerHTML = buildHomeAiResultHtml(payload);
+  }
+  function ensureSurfaceModal(){
+    let root = $('#siteSurfaceModal');
+    if(root) return root;
+    root = document.createElement('div');
+    root.id = 'siteSurfaceModal';
+    root.className = 'surface-modal';
+    root.hidden = true;
+    root.innerHTML = `<div class="surface-modal__backdrop" data-surface-close></div><div class="surface-modal__sheet" role="dialog" aria-modal="true" aria-label="빠른 도구 안내"><div class="surface-modal__head"><strong data-surface-title>빠른 도구</strong><button class="surface-modal__close" type="button" data-surface-close aria-label="닫기">✕</button></div><div class="surface-modal__body" data-surface-body></div></div>`;
+    document.body.appendChild(root);
+    const close = () => {
+      root.hidden = true;
+      document.body.classList.remove('is-surface-open');
+      const body = $('[data-surface-body]', root);
+      if(body) body.innerHTML = '';
+    };
+    root.addEventListener('click', (e)=>{ if(e.target.closest('[data-surface-close]')) close(); });
+    document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape' && !root.hidden) close(); });
+    root._close = close;
+    return root;
+  }
+  function openSurfaceModal(title, html){
+    const root = ensureSurfaceModal();
+    const titleNode = $('[data-surface-title]', root);
+    const bodyNode = $('[data-surface-body]', root);
+    if(titleNode) titleNode.textContent = title || '빠른 도구';
+    if(bodyNode) bodyNode.innerHTML = html || '';
+    root.hidden = false;
+    document.body.classList.add('is-surface-open');
+  }
+  function closeSurfaceModal(){
+    const root = $('#siteSurfaceModal');
+    root?._close?.();
+  }
+  window.RavenSurfaceModal = { open: openSurfaceModal, close: closeSurfaceModal };
+  function normalizeLines(value=''){ return String(value||'').split(/\n+/).map((v)=>v.trim()).filter(Boolean); }
+  function extractCodes(value=''){ return Array.from(new Set((String(value||'').match(/[A-Z0-9]{3,10}/g)||[]).filter((v)=>/[A-Z]/.test(v)))).slice(0,8); }
+  function openAddressQuickTool(initial=''){
+    openSurfaceModal('주소 정합성 체크', `<div class="quicktool-stack"><form class="stack" data-quicktool-address-form><textarea class="safety-textarea" rows="7" data-quicktool-address-input placeholder="한 줄에 하나씩 입력
+example.com
+example77.com
+https://t.me/example_notice">${esc(initial || '')}</textarea><div class="card-actions"><button class="safety-link-btn" type="submit">정합성 확인</button><a class="safety-link-btn ghost" href="/tools/address-consistency/">전체 도구</a></div></form><div class="empty-state" data-quicktool-address-result><strong>입력 후 확인할 수 있습니다.</strong></div></div>`);
+    const root = $('#siteSurfaceModal');
+    const form = $('[data-quicktool-address-form]', root);
+    const input = $('[data-quicktool-address-input]', root);
+    const result = $('[data-quicktool-address-result]', root);
+    form?.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const lines = normalizeLines(input?.value || '');
+      if(!lines.length){ result.className='empty-state'; result.innerHTML='<strong>입력값이 비어 있습니다.</strong>주소나 채널을 한 줄에 하나씩 넣어 주세요.'; return; }
+      const domains = lines.map((v)=>normalizeDomain(v)).filter(Boolean);
+      const uniques = Array.from(new Set(domains));
+      const roots = uniques.map((d)=>{ const parts=d.split('.'); return parts.length>1 ? parts.slice(-2).join('.') : d; });
+      const freq = {};
+      roots.forEach((d)=>{ freq[d]=(freq[d]||0)+1; });
+      const primary = Object.entries(freq).sort((a,b)=>b[1]-a[1])[0]?.[0] || uniques[0] || '-';
+      const matches = roots.filter((d)=>d===primary).length;
+      const verdict = uniques.length <= 1 ? '일치 가능성 높음' : matches >= Math.ceil(lines.length/2) ? '대표 주소 존재' : '추가 확인 필요';
+      const rows = lines.map((line)=>{ const d=normalizeDomain(line); const base=d ? (d.split('.').length>1 ? d.split('.').slice(-2).join('.') : d) : ''; const status=!d?'확인 필요':(base===primary?'일치 후보':'불일치'); return `<tr><td>${esc(line)}</td><td>${esc(d||'-')}</td><td>${esc(status)}</td></tr>`; }).join('');
+      result.className = 'toolkit-result-stack quicktool-result-stack';
+      result.innerHTML = `<div class="card"><div class="score-grid"><div class="score-metric"><span>입력 수</span><strong>${esc(lines.length)}</strong></div><div class="score-metric"><span>고유 도메인</span><strong>${esc(uniques.length)}</strong></div><div class="score-metric"><span>대표 주소</span><strong>${esc(primary)}</strong></div><div class="score-metric"><span>판정</span><strong>${esc(verdict)}</strong></div></div></div><div class="card"><table class="toolkit-table"><thead><tr><th>입력 주소</th><th>정규화</th><th>판정</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+    });
+    input?.focus();
+  }
+  function openNoticeQuickTool(initial=''){
+    openSurfaceModal('공지·반응 분석', `<div class="quicktool-stack"><form class="stack" data-quicktool-notice-form><div class="tool-grid tool-grid--dense"><div><label class="mini-badge">사이트 공지</label><textarea class="safety-textarea" rows="6" data-quicktool-notice-main placeholder="사이트 공지">${esc(initial || '')}</textarea></div><div><label class="mini-badge">채널/후기</label><textarea class="safety-textarea" rows="6" data-quicktool-notice-side placeholder="텔레그램 공지 또는 후기"></textarea></div></div><div class="card-actions"><button class="safety-link-btn" type="submit">분석하기</button><a class="safety-link-btn ghost" href="/tools/notice-review/">전체 도구</a></div></form><div class="empty-state" data-quicktool-notice-result><strong>입력 후 확인할 수 있습니다.</strong></div></div>`);
+    const root = $('#siteSurfaceModal');
+    const form = $('[data-quicktool-notice-form]', root);
+    const main = $('[data-quicktool-notice-main]', root);
+    const side = $('[data-quicktool-notice-side]', root);
+    const result = $('[data-quicktool-notice-result]', root);
+    form?.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const a = String(main?.value || '').trim();
+      const b = String(side?.value || '').trim();
+      if(!a || !b){ result.className='empty-state'; result.innerHTML='<strong>입력값이 비어 있습니다.</strong>공지 두 개를 붙여 넣어 주세요.'; return; }
+      const aDomains = extractDomainsFromText(a), bDomains = extractDomainsFromText(b);
+      const aCodes = extractCodes(a), bCodes = extractCodes(b);
+      const warnings = [];
+      if(aDomains.length || bDomains.length){ if(!aDomains.some((d)=>bDomains.includes(d))) warnings.push('주소가 다르게 보입니다.'); }
+      if(aCodes.length && bCodes.length && !aCodes.some((d)=>bCodes.includes(d))) warnings.push('코드가 다르게 보입니다.');
+      if(/긴급|즉시|서둘러|오늘만|마감/i.test(a+b)) warnings.push('과장형 긴급 문구가 있습니다.');
+      if(!warnings.length) warnings.push('큰 불일치는 적습니다.');
+      result.className = 'toolkit-result-stack quicktool-result-stack';
+      result.innerHTML = `<div class="card"><div class="score-grid"><div class="score-metric"><span>주소 비교</span><strong>${esc(aDomains.some((d)=>bDomains.includes(d)) ? '대체로 일치' : '추가 확인')}</strong></div><div class="score-metric"><span>코드 비교</span><strong>${esc(aCodes.length && bCodes.length && !aCodes.some((d)=>bCodes.includes(d)) ? '불일치' : '대체로 일치')}</strong></div><div class="score-metric"><span>주의 포인트</span><strong>${esc(warnings.length)}개</strong></div></div></div><div class="card"><table class="toolkit-table"><thead><tr><th>항목</th><th>사이트 공지</th><th>채널/후기</th></tr></thead><tbody><tr><td><strong>주소</strong></td><td>${esc(aDomains.join(', ') || '-')}</td><td>${esc(bDomains.join(', ') || '-')}</td></tr><tr><td><strong>코드</strong></td><td>${esc(aCodes.join(', ') || '-')}</td><td>${esc(bCodes.join(', ') || '-')}</td></tr></tbody></table></div><div class="card"><ul class="toolkit-list">${warnings.map((w)=>`<li><div><strong>${esc(w)}</strong></div></li>`).join('')}</ul></div>`;
+    });
+    main?.focus();
+  }
+  function wireHomeQuickTools(){
+    $$('[data-home-tool]').forEach((btn)=>btn.addEventListener('click', ()=>{
+      const aiInput = $('form[data-ai-form] input[name="q"]');
+      const seed = String(aiInput?.value || '').trim();
+      if(btn.dataset.homeTool === 'address') openAddressQuickTool(seed);
+      if(btn.dataset.homeTool === 'notice') openNoticeQuickTool(seed);
+    }));
   }
   function wireHomeAiLookup(){
     const form = $('[data-ai-form]');
     if(!form) return;
     const input = $('input[name="q"]', form);
     const select = $('select[name="mode"]', form);
-    const target = document.querySelector(form.getAttribute('data-preview-target') || '#homeSearchPreview');
-    if(target) renderHomeAiPlaceholder(target);
+    const target = document.querySelector(form.getAttribute('data-preview-target') || '#homeAiResultMount');
+    if(target){ target.hidden = true; target.innerHTML = ''; }
     form.addEventListener('submit', async (e)=>{
       e.preventDefault();
       const clean = String(input?.value || '').trim();
       if(!clean){ toast('먼저 사이트명, 도메인 또는 공지문구를 입력해 주세요.'); return; }
       const mode = select?.value || 'site';
-      const loadingHtml = `<section class="desktop-ai-panel" aria-label="AI 조회 결과"><div class="desktop-ai-shell"><div class="desktop-ai-head"><div><span class="desktop-ai-kicker">AI 조회 결과</span><strong>조회 중입니다.</strong></div></div></div></section>`;
-      resultModal?.open({ titleText:'AI 조회 결과', html: loadingHtml });
       if(target){
-        target.innerHTML = loadingHtml;
+        target.hidden = false;
+        target.innerHTML = `<section class="desktop-ai-panel" aria-label="AI 조회 결과"><div class="desktop-ai-shell"><div class="desktop-ai-head"><div><span class="desktop-ai-kicker">AI 조회 결과</span><strong>조회 중입니다.</strong></div></div></div></section>`;
       }
       try{
         const payload = await fetchJson(`/api/ai/lookup?q=${encodeURIComponent(clean)}&mode=${encodeURIComponent(mode)}`);
         renderHomeAiResult(target, payload);
-        resultModal?.open({ titleText:'AI 조회 결과', html: target?.innerHTML || loadingHtml });
       }catch(err){
-        const errorHtml = `<section class="desktop-ai-panel" aria-label="AI 조회 결과"><div class="desktop-ai-shell"><div class="desktop-ai-head"><div><span class="desktop-ai-kicker">AI 조회 결과</span><strong>조회에 실패했습니다.</strong></div></div><div class="desktop-ai-summary">${esc(err.message || '잠시 후 다시 시도해 주세요.')}</div></div></section>`;
-        if(target){ target.innerHTML = errorHtml; }
-        resultModal?.open({ titleText:'AI 조회 결과', html: errorHtml });
+        if(target){
+          target.hidden = false;
+          target.innerHTML = `<section class="desktop-ai-panel" aria-label="AI 조회 결과"><div class="desktop-ai-shell"><div class="desktop-ai-head"><div><span class="desktop-ai-kicker">AI 조회 결과</span><strong>조회에 실패했습니다.</strong></div></div><div class="desktop-ai-summary">${esc(err.message || '잠시 후 다시 시도해 주세요.')}</div></div></section>`;
+        }
       }
     });
   }
@@ -282,7 +354,7 @@
       fetchJson(BLOG_URL).then((d)=>d.posts || []).catch(()=>[]),
       fetchJson(REVIEW_LOG_URL).then((d)=>d.entries || []).catch(()=>[])
     ]);
-    renderGuaranteedCards(providers); renderHomeProviderRotator(providers); renderBlogPreviews(posts); renderReviewLogs(logs); wireHomeAiLookup();
+    renderGuaranteedCards(providers); renderHomeProviderRotator(providers); renderBlogPreviews(posts); renderReviewLogs(logs); wireHomeQuickTools(); wireHomeAiLookup();
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 })();
