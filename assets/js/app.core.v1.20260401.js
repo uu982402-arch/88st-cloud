@@ -38,6 +38,33 @@
     if (!t) { t = document.createElement('div'); t.id='siteToast'; t.className='safety-toast'; document.body.appendChild(t); }
     t.textContent = msg; t.classList.add('is-show'); clearTimeout(toast._timer); toast._timer = setTimeout(()=>t.classList.remove('is-show'), 1600);
   };
+
+  function ensureResultModal(){
+    const root = $('[data-result-modal]');
+    if(!root) return null;
+    const title = $('[data-result-modal-title]', root);
+    const body = $('[data-result-modal-body]', root);
+    const close = () => {
+      root.setAttribute('hidden','');
+      root.setAttribute('aria-hidden','true');
+      document.body.classList.remove('is-modal-open');
+    };
+    const open = ({ titleText='결과 안내', html='' } = {}) => {
+      if (title) title.textContent = titleText;
+      if (body) body.innerHTML = html;
+      root.removeAttribute('hidden');
+      root.setAttribute('aria-hidden','false');
+      document.body.classList.add('is-modal-open');
+    };
+    if (!root.dataset.bound) {
+      root.dataset.bound = '1';
+      $$('[data-result-close]', root).forEach((btn)=>btn.addEventListener('click', close));
+      document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape' && !root.hasAttribute('hidden')) close(); });
+    }
+    return { root, title, body, open, close };
+  }
+  const resultModal = ensureResultModal();
+  window.RavenResultModal = resultModal;
   const copyText = async (text) => {
     try { await navigator.clipboard.writeText(String(text)); toast('복사되었습니다.'); }
     catch (_) {
@@ -183,16 +210,19 @@
       const clean = String(input?.value || '').trim();
       if(!clean){ toast('먼저 사이트명, 도메인 또는 공지문구를 입력해 주세요.'); return; }
       const mode = select?.value || 'site';
+      const loadingHtml = `<section class="desktop-ai-panel" aria-label="AI 조회 결과"><div class="desktop-ai-shell"><div class="desktop-ai-head"><div><span class="desktop-ai-kicker">AI 조회 결과</span><strong>조회 중입니다.</strong></div></div></div></section>`;
+      resultModal?.open({ titleText:'AI 조회 결과', html: loadingHtml });
       if(target){
-        target.innerHTML = `<section class="desktop-ai-panel" aria-label="AI 조회 결과"><div class="desktop-ai-shell"><div class="desktop-ai-head"><div><span class="desktop-ai-kicker">AI 조회 결과</span><strong>조회 중입니다.</strong></div></div></div></section>`;
+        target.innerHTML = loadingHtml;
       }
       try{
         const payload = await fetchJson(`/api/ai/lookup?q=${encodeURIComponent(clean)}&mode=${encodeURIComponent(mode)}`);
         renderHomeAiResult(target, payload);
+        resultModal?.open({ titleText:'AI 조회 결과', html: target?.innerHTML || loadingHtml });
       }catch(err){
-        if(target){
-          target.innerHTML = `<section class="desktop-ai-panel" aria-label="AI 조회 결과"><div class="desktop-ai-shell"><div class="desktop-ai-head"><div><span class="desktop-ai-kicker">AI 조회 결과</span><strong>조회에 실패했습니다.</strong></div></div><div class="desktop-ai-summary">${esc(err.message || '잠시 후 다시 시도해 주세요.')}</div></div></section>`;
-        }
+        const errorHtml = `<section class="desktop-ai-panel" aria-label="AI 조회 결과"><div class="desktop-ai-shell"><div class="desktop-ai-head"><div><span class="desktop-ai-kicker">AI 조회 결과</span><strong>조회에 실패했습니다.</strong></div></div><div class="desktop-ai-summary">${esc(err.message || '잠시 후 다시 시도해 주세요.')}</div></div></section>`;
+        if(target){ target.innerHTML = errorHtml; }
+        resultModal?.open({ titleText:'AI 조회 결과', html: errorHtml });
       }
     });
   }

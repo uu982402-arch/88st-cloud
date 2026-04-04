@@ -2,6 +2,7 @@
   const qs = (s, el=document) => el.querySelector(s);
   const qsa = (s, el=document) => Array.from(el.querySelectorAll(s));
   const E = () => window.RavenEngines || {};
+  const modal = () => window.RavenResultModal;
   const money = (n) => `${Math.round(Number(n)||0).toLocaleString()}원`;
   const pct100 = (n) => `${(Number(n)||0).toFixed(1)}%`;
 
@@ -52,6 +53,7 @@
     const notesNode = qs('[data-sports-notes]', result);
     const insightValue = (key) => qs(`[data-sports-insight="${key}"]`, result);
     const insightNote = (key) => qs(`[data-sports-insight-note="${key}"]`, result);
+    let hasValidResult = false;
 
     function setMetricLabels(labels) {
       metricLabels.forEach((node, idx) => {
@@ -62,6 +64,7 @@
     }
 
     function setIdle(label) {
+      hasValidResult = false;
       if (marketLabelNode) marketLabelNode.textContent = label;
       if (summary) summary.textContent = '입력 대기';
       if (subsummary) subsummary.textContent = '공정확률 · 기대값 · 변동성 · 추천 비중';
@@ -104,6 +107,7 @@
         setIdle(cfg.label);
         return;
       }
+      hasValidResult = true;
       const fair = engines.fairProbability({ odds, market });
       const labels = cfg.resultLabels;
       const outcomes = fair.fairProbabilities.map((prob, idx) => {
@@ -140,7 +144,7 @@
 
     qsa('[data-market]', tabWrap).forEach((btn) => btn.addEventListener('click', () => applyMarket(btn.dataset.market || '1x2')));
     Object.values(inputs).forEach((input) => { if (input) input.addEventListener('input', compute); if (input && input.tagName === 'SELECT') input.addEventListener('change', compute); });
-    form.addEventListener('submit', (e) => { e.preventDefault(); compute(); });
+    form.addEventListener('submit', (e) => { e.preventDefault(); compute(); if (!hasValidResult) { return; } modal()?.open({ titleText:'스포츠 분석 결과', html: result.innerHTML }); });
     applyMarket(hiddenMarket.value || '1x2');
   }
 
