@@ -79,7 +79,14 @@
     $$('[data-blog-preview-grid]').forEach((grid)=>{
       const limit = Number(grid.getAttribute('data-limit') || '2');
       const kicker = String(grid.getAttribute('data-kicker') || '').trim();
-      const source = kicker ? posts.filter((item)=>String(item.kicker || '').trim() === kicker) : posts;
+      const featuredSlugs = String(grid.getAttribute('data-featured-slugs') || '').split(',').map((item)=>item.trim()).filter(Boolean);
+      let source = posts;
+      if (featuredSlugs.length) {
+        const featured = featuredSlugs.map((slug)=>posts.find((item)=>String(item.slug || '').trim() === slug)).filter(Boolean);
+        if (featured.length) source = featured;
+      } else if (kicker) {
+        source = posts.filter((item)=>String(item.kicker || '').trim() === kicker);
+      }
       grid.innerHTML = source.slice(0, limit).map((p)=>`<a class="article-card" href="/blog/${esc(p.slug)}/"><span class="article-kicker">${esc(p.kicker||'가이드')}</span><h3>${esc(p.title)}</h3><p>${esc(p.excerpt)}</p></a>`).join('');
     });
   }
