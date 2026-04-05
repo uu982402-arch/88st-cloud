@@ -78,16 +78,7 @@
   function renderBlogPreviews(posts){
     $$('[data-blog-preview-grid]').forEach((grid)=>{
       const limit = Number(grid.getAttribute('data-limit') || '2');
-      const kicker = String(grid.getAttribute('data-kicker') || '').trim();
-      const featuredSlugs = String(grid.getAttribute('data-featured-slugs') || '').split(',').map((item)=>item.trim()).filter(Boolean);
-      let source = posts;
-      if (featuredSlugs.length) {
-        const featured = featuredSlugs.map((slug)=>posts.find((item)=>String(item.slug || '').trim() === slug)).filter(Boolean);
-        if (featured.length) source = featured;
-      } else if (kicker) {
-        source = posts.filter((item)=>String(item.kicker || '').trim() === kicker);
-      }
-      grid.innerHTML = source.slice(0, limit).map((p)=>`<a class="article-card" href="/blog/${esc(p.slug)}/"><span class="article-kicker">${esc(p.kicker||'가이드')}</span><h3>${esc(p.title)}</h3><p>${esc(p.excerpt)}</p></a>`).join('');
+      grid.innerHTML = posts.slice(0, limit).map((p)=>`<a class="article-card" href="/blog/${esc(p.slug)}/"><span class="article-kicker">${esc(p.kicker||'가이드')}</span><h3>${esc(p.title)}</h3><p>${esc(p.excerpt)}</p></a>`).join('');
     });
   }
   function renderReviewLogs(logs){
@@ -212,7 +203,8 @@
     target.hidden = false;
     target.innerHTML = buildHomeAiResultHtml(payload);
   }
-  function ensureSurfaceModal(){
+  
+function ensureSurfaceModal(){
     let root = $('#siteSurfaceModal');
     if(root) return root;
     root = document.createElement('div');
@@ -240,6 +232,7 @@
     if(bodyNode) bodyNode.innerHTML = html || '';
     root.hidden = false;
     document.body.classList.add('is-surface-open');
+    return root;
   }
   function closeSurfaceModal(){
     const root = $('#siteSurfaceModal');
@@ -248,121 +241,145 @@
   window.RavenSurfaceModal = { open: openSurfaceModal, close: closeSurfaceModal };
   function normalizeLines(value=''){ return String(value||'').split(/\n+/).map((v)=>v.trim()).filter(Boolean); }
   function extractCodes(value=''){ return Array.from(new Set((String(value||'').match(/[A-Z0-9]{3,10}/g)||[]).filter((v)=>/[A-Z]/.test(v)))).slice(0,8); }
-  function openAddressQuickTool(initial=''){
-    openSurfaceModal('주소 정합성 체크', `<div class="quicktool-stack"><form class="stack" data-quicktool-address-form><textarea class="safety-textarea" rows="7" data-quicktool-address-input placeholder="한 줄에 하나씩 입력
-example.com
-example77.com
-https://t.me/example_notice">${esc(initial || '')}</textarea><div class="card-actions"><button class="safety-link-btn" type="submit">정합성 확인</button><a class="safety-link-btn ghost" href="/tools/address-consistency/">전체 도구</a></div></form><div class="empty-state" data-quicktool-address-result><strong>입력 후 확인할 수 있습니다.</strong></div></div>`);
-    const root = $('#siteSurfaceModal');
-    const form = $('[data-quicktool-address-form]', root);
-    const input = $('[data-quicktool-address-input]', root);
-    const result = $('[data-quicktool-address-result]', root);
-    form?.addEventListener('submit', (e)=>{
-      e.preventDefault();
-      const lines = normalizeLines(input?.value || '');
-      if(!lines.length){ result.className='empty-state'; result.innerHTML='<strong>입력값이 비어 있습니다.</strong>주소나 채널을 한 줄에 하나씩 넣어 주세요.'; return; }
-      const domains = lines.map((v)=>normalizeDomain(v)).filter(Boolean);
-      const uniques = Array.from(new Set(domains));
-      const roots = uniques.map((d)=>{ const parts=d.split('.'); return parts.length>1 ? parts.slice(-2).join('.') : d; });
-      const freq = {};
-      roots.forEach((d)=>{ freq[d]=(freq[d]||0)+1; });
-      const primary = Object.entries(freq).sort((a,b)=>b[1]-a[1])[0]?.[0] || uniques[0] || '-';
-      const matches = roots.filter((d)=>d===primary).length;
-      const verdict = uniques.length <= 1 ? '일치 가능성 높음' : matches >= Math.ceil(lines.length/2) ? '대표 주소 존재' : '추가 확인 필요';
-      const rows = lines.map((line)=>{ const d=normalizeDomain(line); const base=d ? (d.split('.').length>1 ? d.split('.').slice(-2).join('.') : d) : ''; const status=!d?'확인 필요':(base===primary?'일치 후보':'불일치'); return `<tr><td>${esc(line)}</td><td>${esc(d||'-')}</td><td>${esc(status)}</td></tr>`; }).join('');
-      result.className = 'toolkit-result-stack quicktool-result-stack';
-      result.innerHTML = `<div class="card"><div class="score-grid"><div class="score-metric"><span>입력 수</span><strong>${esc(lines.length)}</strong></div><div class="score-metric"><span>고유 도메인</span><strong>${esc(uniques.length)}</strong></div><div class="score-metric"><span>대표 주소</span><strong>${esc(primary)}</strong></div><div class="score-metric"><span>판정</span><strong>${esc(verdict)}</strong></div></div></div><div class="card"><table class="toolkit-table"><thead><tr><th>입력 주소</th><th>정규화</th><th>판정</th></tr></thead><tbody>${rows}</tbody></table></div>`;
-    });
-    input?.focus();
+  function extractDomainsFromText(value=''){ return Array.from(new Set((String(value||'').match(/(?:[a-z0-9-]+\.)+[a-z]{2,}/ig)||[]).map((v)=>normalizeDomain(v)).filter(Boolean))); }
+  function buildQuickModal(title, formMarkup, seed=''){
+    const root = openSurfaceModal(title, `<div class="quicktool-stack"><form class="stack" data-surface-tool-form>${formMarkup}</form><div class="empty-state" data-surface-tool-result><strong>입력 후 확인할 수 있습니다.</strong></div></div>`);
+    const form = $('[data-surface-tool-form]', root);
+    const result = $('[data-surface-tool-result]', root);
+    return { root, form, result, seed };
   }
-  function openNoticeQuickTool(initial=''){
-    openSurfaceModal('공지·반응 분석', `<div class="quicktool-stack"><form class="stack" data-quicktool-notice-form><div class="tool-grid tool-grid--dense"><div><label class="mini-badge">사이트 공지</label><textarea class="safety-textarea" rows="6" data-quicktool-notice-main placeholder="사이트 공지">${esc(initial || '')}</textarea></div><div><label class="mini-badge">채널/후기</label><textarea class="safety-textarea" rows="6" data-quicktool-notice-side placeholder="텔레그램 공지 또는 후기"></textarea></div></div><div class="card-actions"><button class="safety-link-btn" type="submit">분석하기</button><a class="safety-link-btn ghost" href="/tools/notice-review/">전체 도구</a></div></form><div class="empty-state" data-quicktool-notice-result><strong>입력 후 확인할 수 있습니다.</strong></div></div>`);
-    const root = $('#siteSurfaceModal');
-    const form = $('[data-quicktool-notice-form]', root);
-    const main = $('[data-quicktool-notice-main]', root);
-    const side = $('[data-quicktool-notice-side]', root);
-    const result = $('[data-quicktool-notice-result]', root);
-    form?.addEventListener('submit', (e)=>{
-      e.preventDefault();
-      const a = String(main?.value || '').trim();
-      const b = String(side?.value || '').trim();
-      if(!a || !b){ result.className='empty-state'; result.innerHTML='<strong>입력값이 비어 있습니다.</strong>공지 두 개를 붙여 넣어 주세요.'; return; }
-      const aDomains = extractDomainsFromText(a), bDomains = extractDomainsFromText(b);
-      const aCodes = extractCodes(a), bCodes = extractCodes(b);
-      const warnings = [];
-      if(aDomains.length || bDomains.length){ if(!aDomains.some((d)=>bDomains.includes(d))) warnings.push('주소가 다르게 보입니다.'); }
-      if(aCodes.length && bCodes.length && !aCodes.some((d)=>bCodes.includes(d))) warnings.push('코드가 다르게 보입니다.');
-      if(/긴급|즉시|서둘러|오늘만|마감/i.test(a+b)) warnings.push('과장형 긴급 문구가 있습니다.');
-      if(!warnings.length) warnings.push('큰 불일치는 적습니다.');
-      result.className = 'toolkit-result-stack quicktool-result-stack';
-      result.innerHTML = `<div class="card"><div class="score-grid"><div class="score-metric"><span>주소 비교</span><strong>${esc(aDomains.some((d)=>bDomains.includes(d)) ? '대체로 일치' : '추가 확인')}</strong></div><div class="score-metric"><span>코드 비교</span><strong>${esc(aCodes.length && bCodes.length && !aCodes.some((d)=>bCodes.includes(d)) ? '불일치' : '대체로 일치')}</strong></div><div class="score-metric"><span>주의 포인트</span><strong>${esc(warnings.length)}개</strong></div></div></div><div class="card"><table class="toolkit-table"><thead><tr><th>항목</th><th>사이트 공지</th><th>채널/후기</th></tr></thead><tbody><tr><td><strong>주소</strong></td><td>${esc(aDomains.join(', ') || '-')}</td><td>${esc(bDomains.join(', ') || '-')}</td></tr><tr><td><strong>코드</strong></td><td>${esc(aCodes.join(', ') || '-')}</td><td>${esc(bCodes.join(', ') || '-')}</td></tr></tbody></table></div><div class="card"><ul class="toolkit-list">${warnings.map((w)=>`<li><div><strong>${esc(w)}</strong></div></li>`).join('')}</ul></div>`;
-    });
-    main?.focus();
+  function setSurfaceResult(result, html, cls='toolkit-result-stack quicktool-result-stack'){
+    if(!result) return;
+    result.className = cls;
+    result.innerHTML = html;
   }
-  
-  function openDomainQuickTool(initial=''){
-    openSurfaceModal('도메인·IP 조회', `<div class="quicktool-stack"><form class="stack" data-quicktool-domain-form><div class="search-row search-row-advanced"><input class="safety-input" data-quicktool-domain-input type="text" placeholder="예: example.com 또는 1.2.3.4" value="${esc(initial || '')}" autocomplete="off"/><button class="safety-link-btn" type="submit">조회하기</button><a class="safety-link-btn ghost" href="/muktu-police/check/">전체 도구</a></div></form><div class="empty-state" data-quicktool-domain-result><strong>입력 후 확인할 수 있습니다.</strong></div></div>`);
-    const root = $('#siteSurfaceModal');
-    const form = $('[data-quicktool-domain-form]', root);
-    const input = $('[data-quicktool-domain-input]', root);
-    const result = $('[data-quicktool-domain-result]', root);
-    form?.addEventListener('submit', async (e)=>{
-      e.preventDefault();
-      const raw = String(input?.value || '').trim();
-      if(!raw){ result.className='empty-state'; result.innerHTML='<strong>입력값이 비어 있습니다.</strong>도메인 또는 IP를 입력해 주세요.'; return; }
-      result.className='toolkit-result-stack quicktool-result-stack';
-      result.innerHTML='<div class="card"><strong>조회 중입니다.</strong></div>';
-      try{
-        if(isValidIp(raw)){
-          const payload = await fetchJson(`/api/safety/ip?ip=${encodeURIComponent(raw)}`);
-          const risk = payload.risk || {};
-          const ptr = (payload.ptr || []).join(', ') || '-';
-          result.innerHTML = `<div class="card"><div class="score-grid"><div class="score-metric"><span>IP</span><strong>${esc(payload.ip?.ip || raw)}</strong></div><div class="score-metric"><span>ASN</span><strong>${esc(payload.ip?.asn || '-')}</strong></div><div class="score-metric"><span>조직</span><strong>${esc(payload.ip?.org || '-')}</strong></div><div class="score-metric"><span>판정</span><strong>${esc(risk.verdict || '추가 확인')}</strong></div></div></div><div class="card"><ul class="toolkit-list"><li><div><strong>PTR</strong><small>${esc(ptr)}</small></div></li><li><div><strong>짧은 판단</strong><small>${esc(risk.commentary || 'ASN, PTR, 국가 정보를 같이 봅니다.')}</small></div></li></ul></div>`;
-        } else {
-          const domain = normalizeDomain(raw);
-          const payload = await fetchJson(`/api/safety/domain?domain=${encodeURIComponent(domain)}`);
-          const rdap = payload.rdap || {};
-          const dns = payload.dns || {};
-          const risk = payload.risk || {};
-          const nets = payload.networks || [];
-          result.innerHTML = `<div class="card"><div class="score-grid"><div class="score-metric"><span>도메인</span><strong>${esc(payload.domain)}</strong></div><div class="score-metric"><span>등록일</span><strong>${esc(fmtDate(rdap.createdAt))}</strong></div><div class="score-metric"><span>네임서버</span><strong>${esc((dns.nameServers || []).length)}</strong></div><div class="score-metric"><span>판정</span><strong>${esc(risk.verdict || '추가 확인')}</strong></div></div></div><div class="card"><ul class="toolkit-list"><li><div><strong>A 레코드</strong><small>${esc((dns.aRecords || []).join(', ') || '-')}</small></div></li><li><div><strong>ASN</strong><small>${esc(nets.map((n)=>n.asn).filter(Boolean).join(', ') || '-')}</small></div></li><li><div><strong>짧은 판단</strong><small>${esc(risk.commentary || '등록일, DNS, ASN을 같이 봅니다.')}</small></div></li></ul></div>`;
-        }
-      }catch(err){
-        result.className='empty-state';
-        result.innerHTML=`<strong>조회에 실패했습니다.</strong>${esc(err.message || '잠시 후 다시 시도해 주세요.')}`;
+  function setSurfaceEmpty(result, title, body=''){
+    if(!result) return;
+    result.className = 'empty-state';
+    result.innerHTML = `<strong>${esc(title)}</strong>${body ? esc(body) : ''}`;
+  }
+  function toolGridButton(href, label='전체 도구'){
+    return `<a class="safety-link-btn ghost" href="${esc(href)}">${esc(label)}</a>`;
+  }
+  function renderDomainQuickResult(payload){
+    const risk = payload.risk || {};
+    const rdap = payload.rdap || {};
+    const dns = payload.dns || {};
+    const networks = payload.networks || [];
+    return `<div class="card"><div class="score-grid"><div class="score-metric"><span>도메인</span><strong>${esc(payload.domain || '-')}</strong></div><div class="score-metric"><span>등록일</span><strong>${esc(fmtDate(rdap.createdAt))}</strong></div><div class="score-metric"><span>운영 기간</span><strong>${esc(ageLabel(rdap.ageDays))}</strong></div><div class="score-metric"><span>리스크</span><strong>${esc(risk.band || '확인')}</strong></div></div></div><div class="card"><ul class="toolkit-list"><li><div><strong>네임서버</strong><small>${esc((dns.nameServers || []).join(', ') || '응답 없음')}</small></div></li><li><div><strong>A 레코드</strong><small>${esc((dns.aRecords || []).join(', ') || '응답 없음')}</small></div></li><li><div><strong>ASN · 조직</strong><small>${esc(networks.map((n)=>[n.asn,n.org].filter(Boolean).join(' · ')).join(' / ') || '응답 없음')}</small></div></li></ul></div>`;
+  }
+  function renderIpQuickResult(payload){
+    const info = payload.ip || {};
+    const risk = payload.risk || {};
+    return `<div class="card"><div class="score-grid"><div class="score-metric"><span>IP</span><strong>${esc(info.ip || '-')}</strong></div><div class="score-metric"><span>국가</span><strong>${esc(info.country || '-')}</strong></div><div class="score-metric"><span>ASN</span><strong>${esc(info.asn || '-')}</strong></div><div class="score-metric"><span>리스크</span><strong>${esc(risk.band || '확인')}</strong></div></div></div><div class="card"><ul class="toolkit-list"><li><div><strong>조직</strong><small>${esc(info.org || info.isp || '-')}</small></div></li><li><div><strong>네트워크</strong><small>${esc(info.network || '-')}</small></div></li><li><div><strong>PTR</strong><small>${esc((payload.ptr || []).join(', ') || '응답 없음')}</small></div></li></ul></div>`;
+  }
+  function renderTimelineQuickResult(text=''){
+    const lines = normalizeLines(text);
+    const rows = lines.map((line, idx)=>{
+      const date = (line.match(/20\d{2}[./-]\d{1,2}[./-]\d{1,2}|20\d{2}[./-]\d{1,2}|20\d{2}년\s*\d{1,2}월?/) || [`기록 ${String(idx+1).padStart(2,'0')}`])[0];
+      const domains = extractDomainsFromText(line);
+      const tag = /리뉴얼|변경|이전|신규|공지/i.test(line) ? '변경' : '참고';
+      return { date, line, domains, tag };
+    });
+    const warning = rows.filter((row)=>row.domains.length).length >= 2 ? '주소가 여러 번 언급됩니다.' : '큰 변화 문구는 많지 않습니다.';
+    return `<div class="card"><div class="timeline-list">${rows.map((row)=>`<article class="timeline-entry"><span class="mini-badge">${esc(row.date)}</span><strong>${esc(row.tag)}</strong><p>${esc(row.line)}</p>${row.domains.length ? `<small>${esc(row.domains.join(' · '))}</small>` : ''}</article>`).join('')}</div></div><div class="card"><div class="toolkit-note">${esc(warning)}</div></div>`;
+  }
+  const HOME_QUICK_TOOLS = {
+    address: {
+      title: '주소 정합성 체크',
+      mount(seed='') {
+        const { root, form, result } = buildQuickModal('주소 정합성 체크', `<textarea class="safety-textarea" rows="7" data-quicktool-address-input placeholder="한 줄에 하나씩 입력\nexample.com\nexample77.com\nhttps://t.me/example_notice">${esc(seed || '')}</textarea><div class="card-actions"><button class="safety-link-btn" type="submit">정합성 확인</button>${toolGridButton('/tools/address-consistency/')}</div>`);
+        const input = $('[data-quicktool-address-input]', root);
+        form?.addEventListener('submit', (e)=>{
+          e.preventDefault();
+          const lines = normalizeLines(input?.value || '');
+          if(!lines.length) return setSurfaceEmpty(result, '입력값이 비어 있습니다.', '주소나 채널을 한 줄에 하나씩 넣어 주세요.');
+          const domains = Array.from(new Set(lines.map((v)=>normalizeDomain(v)).filter(Boolean)));
+          const roots = domains.map((d)=>{ const parts=d.split('.'); return parts.length>1 ? parts.slice(-2).join('.') : d; });
+          const freq = {};
+          roots.forEach((d)=>{ freq[d]=(freq[d]||0)+1; });
+          const primary = Object.entries(freq).sort((a,b)=>b[1]-a[1])[0]?.[0] || domains[0] || '-';
+          const verdict = domains.length <= 1 ? '일치 가능성 높음' : '추가 확인 필요';
+          const rows = lines.map((line)=>{ const d=normalizeDomain(line); const base=d ? (d.split('.').length>1 ? d.split('.').slice(-2).join('.') : d) : ''; const status=!d?'확인 필요':(base===primary?'일치 후보':'불일치'); return `<tr><td>${esc(line)}</td><td>${esc(d||'-')}</td><td>${esc(status)}</td></tr>`; }).join('');
+          setSurfaceResult(result, `<div class="card"><div class="score-grid"><div class="score-metric"><span>입력 수</span><strong>${esc(lines.length)}</strong></div><div class="score-metric"><span>고유 도메인</span><strong>${esc(domains.length)}</strong></div><div class="score-metric"><span>대표 주소</span><strong>${esc(primary)}</strong></div><div class="score-metric"><span>판정</span><strong>${esc(verdict)}</strong></div></div></div><div class="card"><table class="toolkit-table"><thead><tr><th>입력 주소</th><th>정규화</th><th>판정</th></tr></thead><tbody>${rows}</tbody></table></div>`);
+        });
+        input?.focus();
       }
-    });
-    input?.focus();
-  }
-  function openChangeTimelineQuickTool(initial=''){
-    openSurfaceModal('변경 이력 타임라인', `<div class="quicktool-stack"><form class="stack" data-quicktool-timeline-form><textarea class="safety-textarea" rows="7" data-quicktool-timeline-input placeholder="날짜, 공지문, 주소 기록을 그대로 붙여 넣어 주세요">${esc(initial || '')}</textarea><div class="card-actions"><button class="safety-link-btn" type="submit">흐름 정리</button><a class="safety-link-btn ghost" href="/tools/change-timeline/">전체 도구</a></div></form><div class="empty-state" data-quicktool-timeline-result><strong>입력 후 확인할 수 있습니다.</strong></div></div>`);
-    const root = $('#siteSurfaceModal');
-    const form = $('[data-quicktool-timeline-form]', root);
-    const input = $('[data-quicktool-timeline-input]', root);
-    const result = $('[data-quicktool-timeline-result]', root);
-    form?.addEventListener('submit', (e)=>{
-      e.preventDefault();
-      const raw = String(input?.value || '').trim();
-      if(!raw){ result.className='empty-state'; result.innerHTML='<strong>입력값이 비어 있습니다.</strong>공지문이나 주소 기록을 붙여 넣어 주세요.'; return; }
-      const lines = normalizeLines(raw);
-      const rows = lines.map((line, idx)=>{ const date=(line.match(/20\d{2}[./-]\d{1,2}(?:[./-]\d{1,2})?|20\d{2}년\s*\d{1,2}월?/ )||[`기록 ${String(idx+1).padStart(2,'0')}`])[0]; const domains=(line.match(/(?:https?:\/\/)?(?:www\.)?[a-z0-9-]+(?:\.[a-z0-9-]+)+/ig)||[]).map((v)=>normalizeDomain(v)).filter(Boolean); const tag=/리뉴얼|변경|이전|신규|공지/i.test(line)?'변경':'참고'; return {date, line, domains, tag}; });
-      const warnings=[]; if(rows.filter((row)=>row.domains.length).length>=2) warnings.push('주소가 여러 번 언급됩니다.'); if(/리뉴얼|변경/i.test(raw)) warnings.push('리뉴얼 또는 변경 문구가 있습니다.'); if(!warnings.length) warnings.push('큰 변화 문구는 많지 않습니다.');
-      result.className='toolkit-result-stack quicktool-result-stack';
-      result.innerHTML = `<div class="card"><div class="timeline-list">${rows.map((row)=>`<article class="timeline-entry"><span class="mini-badge">${esc(row.date)}</span><strong>${esc(row.tag)}</strong><p>${esc(row.line)}</p>${row.domains.length?`<small>${esc(row.domains.join(' · '))}</small>`:''}</article>`).join('')}</div></div><div class="card"><div class="toolkit-note">${esc(warnings.join(' '))}</div></div>`;
-    });
-    input?.focus();
-  }
-function wireHomeQuickTools(){
+    },
+    notice: {
+      title: '공지·반응 분석',
+      mount(seed='') {
+        const { root, form, result } = buildQuickModal('공지·반응 분석', `<div class="tool-grid tool-grid--dense"><div><label class="mini-badge">사이트 공지</label><textarea class="safety-textarea" rows="6" data-quicktool-notice-main placeholder="사이트 공지">${esc(seed || '')}</textarea></div><div><label class="mini-badge">채널/후기</label><textarea class="safety-textarea" rows="6" data-quicktool-notice-side placeholder="텔레그램 공지 또는 후기"></textarea></div></div><div class="card-actions"><button class="safety-link-btn" type="submit">분석하기</button>${toolGridButton('/tools/notice-review/')}</div>`);
+        const main = $('[data-quicktool-notice-main]', root);
+        const side = $('[data-quicktool-notice-side]', root);
+        form?.addEventListener('submit', (e)=>{
+          e.preventDefault();
+          const a = String(main?.value || '').trim();
+          const b = String(side?.value || '').trim();
+          if(!a || !b) return setSurfaceEmpty(result, '입력값이 비어 있습니다.', '공지 두 개를 붙여 넣어 주세요.');
+          const aDomains = extractDomainsFromText(a), bDomains = extractDomainsFromText(b);
+          const aCodes = extractCodes(a), bCodes = extractCodes(b);
+          const warnings = [];
+          if((aDomains.length || bDomains.length) && !aDomains.some((d)=>bDomains.includes(d))) warnings.push('주소가 다르게 보입니다.');
+          if(aCodes.length && bCodes.length && !aCodes.some((d)=>bCodes.includes(d))) warnings.push('코드가 다르게 보입니다.');
+          if(/긴급|즉시|서둘러|오늘만/i.test(a+b)) warnings.push('과장형 긴급 문구가 있습니다.');
+          if(!warnings.length) warnings.push('큰 불일치는 적습니다.');
+          setSurfaceResult(result, `<div class="card"><div class="score-grid"><div class="score-metric"><span>주소 비교</span><strong>${esc(aDomains.some((d)=>bDomains.includes(d)) ? '대체로 일치' : '추가 확인')}</strong></div><div class="score-metric"><span>코드 비교</span><strong>${esc(aCodes.length && bCodes.length && !aCodes.some((d)=>bCodes.includes(d)) ? '불일치' : '대체로 일치')}</strong></div><div class="score-metric"><span>주의 포인트</span><strong>${esc(warnings.length)}개</strong></div></div></div><div class="card"><table class="toolkit-table"><thead><tr><th>항목</th><th>사이트 공지</th><th>채널/후기</th></tr></thead><tbody><tr><td><strong>주소</strong></td><td>${esc(aDomains.join(', ') || '-')}</td><td>${esc(bDomains.join(', ') || '-')}</td></tr><tr><td><strong>코드</strong></td><td>${esc(aCodes.join(', ') || '-')}</td><td>${esc(bCodes.join(', ') || '-')}</td></tr></tbody></table></div><div class="card"><ul class="toolkit-list">${warnings.map((w)=>`<li><div><strong>${esc(w)}</strong></div></li>`).join('')}</ul></div>`);
+        });
+        main?.focus();
+      }
+    },
+    domain: {
+      title: '도메인·IP 조회',
+      mount(seed='') {
+        const { root, form, result } = buildQuickModal('도메인·IP 조회', `<input class="safety-input" data-quicktool-domain-input placeholder="예: example.com 또는 1.1.1.1" value="${esc(seed || '')}"/><div class="card-actions"><button class="safety-link-btn" type="submit">조회하기</button>${toolGridButton('/muktu-police/check/')}</div>`);
+        const input = $('[data-quicktool-domain-input]', root);
+        form?.addEventListener('submit', async (e)=>{
+          e.preventDefault();
+          const raw = String(input?.value || '').trim();
+          if(!raw) return setSurfaceEmpty(result, '입력값이 비어 있습니다.', '도메인이나 IP를 입력해 주세요.');
+          setSurfaceEmpty(result, '조회 중입니다.', '등록일 · DNS · ASN을 확인하고 있습니다.');
+          try {
+            if(isValidIp(raw)) {
+              const payload = await fetchJson(`/api/safety/ip?ip=${encodeURIComponent(raw)}`);
+              setSurfaceResult(result, renderIpQuickResult(payload));
+            } else {
+              const domain = normalizeDomain(raw);
+              if(!domain || !domain.includes('.')) throw new Error('도메인 형식을 다시 확인해 주세요.');
+              const payload = await fetchJson(`/api/safety/domain?domain=${encodeURIComponent(domain)}`);
+              setSurfaceResult(result, renderDomainQuickResult(payload));
+            }
+          } catch(err) {
+            setSurfaceEmpty(result, '조회에 실패했습니다.', err.message || '잠시 후 다시 시도해 주세요.');
+          }
+        });
+        input?.focus();
+      }
+    },
+    timeline: {
+      title: '변경 이력 타임라인',
+      mount(seed='') {
+        const { root, form, result } = buildQuickModal('변경 이력 타임라인', `<textarea class="safety-textarea" rows="7" data-quicktool-timeline-input placeholder="주소 변경 기록, 공지문, 리뉴얼 문구를 붙여 넣어 주세요">${esc(seed || '')}</textarea><div class="card-actions"><button class="safety-link-btn" type="submit">정리하기</button>${toolGridButton('/tools/change-timeline/')}</div>`);
+        const input = $('[data-quicktool-timeline-input]', root);
+        form?.addEventListener('submit', (e)=>{
+          e.preventDefault();
+          const raw = String(input?.value || '').trim();
+          if(!raw) return setSurfaceEmpty(result, '입력값이 비어 있습니다.', '공지문이나 주소 기록을 붙여 넣어 주세요.');
+          setSurfaceResult(result, renderTimelineQuickResult(raw));
+        });
+        input?.focus();
+      }
+    }
+  };
+  function wireHomeQuickTools(){
     $$('[data-home-tool]').forEach((btn)=>btn.addEventListener('click', ()=>{
       const aiInput = $('form[data-ai-form] input[name="q"]');
       const seed = String(aiInput?.value || '').trim();
-      if(btn.dataset.homeTool === 'address') openAddressQuickTool(seed);
-      if(btn.dataset.homeTool === 'notice') openNoticeQuickTool(seed);
-      if(btn.dataset.homeTool === 'domain') openDomainQuickTool(seed);
-      if(btn.dataset.homeTool === 'timeline') openChangeTimelineQuickTool(seed);
+      const tool = HOME_QUICK_TOOLS[btn.dataset.homeTool || ''];
+      tool?.mount(seed);
     }));
   }
-  function wireHomeAiLookup(){
+function wireHomeAiLookup(){
     const form = $('[data-ai-form]');
     if(!form) return;
     const input = $('input[name="q"]', form);

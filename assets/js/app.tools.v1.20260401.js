@@ -28,8 +28,40 @@
   function overlaps(current){ return loadHistory().filter((x)=>x.key !== current.key).map((item)=>({ item, overlapNs:(current.nameservers||[]).filter((v)=>(item.nameservers||[]).includes(v)), overlapSub:(current.subnets||[]).filter((v)=>(item.subnets||[]).includes(v)), overlapAsn:(current.asns||[]).filter((v)=>(item.asns||[]).includes(v)) })).filter((x)=>x.overlapNs.length||x.overlapSub.length||x.overlapAsn.length).slice(0,8); }
   function lev(a,b){ a=String(a); b=String(b); const m=a.length,n=b.length; const dp=Array.from({length:m+1},()=>Array(n+1).fill(0)); for(let i=0;i<=m;i++)dp[i][0]=i; for(let j=0;j<=n;j++)dp[0][j]=j; for(let i=1;i<=m;i++) for(let j=1;j<=n;j++) dp[i][j]=Math.min(dp[i-1][j]+1, dp[i][j-1]+1, dp[i-1][j-1]+(a[i-1]===b[j-1]?0:1)); return dp[m][n]; }
   function similarity(a,b){ if(!a||!b) return 0; const dist=lev(a,b); return Math.max(0, Math.round((1 - dist / Math.max(a.length,b.length)) * 100)); }
-  function setResult(id, html, cls='result-stack'){ const el = typeof id === 'string' ? $(id) : id; if(!el) return; el.className = cls; el.innerHTML = html; }
+  function formForResult(el){
+    const node = typeof el === 'string' ? $(el) : el;
+    if(!node) return null;
+    const formId = node.getAttribute('data-owner-form');
+    return formId ? document.getElementById(formId) : null;
+  }
+  function finishToolForm(el){
+    const form = formForResult(el);
+    if(!form) return;
+    form.classList.remove('is-busy');
+    $$('button[type="submit"]', form).forEach((btn)=>{ btn.removeAttribute('aria-busy'); });
+  }
+  function setResult(id, html, cls='result-stack'){
+    const el = typeof id === 'string' ? $(id) : id;
+    if(!el) return;
+    el.className = cls;
+    el.innerHTML = html;
+    finishToolForm(el);
+  }
   function empty(id, title, text){ setResult(id, `<strong>${esc(title)}</strong>${esc(text)}`, 'empty-state'); }
+  function initToolFormUx(){
+    $$('form[id$="Form"]').forEach((form)=>{
+      const targetId = form.getAttribute('data-result-target') || `#${form.id.replace(/Form$/, 'Result')}`;
+      const result = $(targetId);
+      if(result) result.setAttribute('data-owner-form', form.id);
+      if(form.dataset.sharedUxBound) return;
+      form.dataset.sharedUxBound = '1';
+      form.addEventListener('submit', ()=>{
+        form.classList.add('is-busy');
+        $$('button[type="submit"]', form).forEach((btn)=>{ btn.setAttribute('aria-busy','true'); });
+      }, true);
+      form.addEventListener('input', ()=>{ form.classList.remove('has-error'); });
+    });
+  }
   function section(title, desc, body){ return `<div class="glass-card helper-box"><div class="section-head"><div><h2>${esc(title)}</h2><p>${esc(desc)}</p></div></div>${body}</div>`; }
   function listCard(items){ return `<ul class="toolkit-list">${items.map((item)=>`<li><div><strong>${esc(item.title)}</strong><small>${esc(item.detail||'')}</small></div>${item.actions||''}</li>`).join('')}</ul>`; }
   function actionButtons(query){ return `<div class="toolkit-actions"><a class="safety-link-btn ghost" href="${googleUrl(query)}" target="_blank" rel="noopener noreferrer">구글에서 보기</a><button class="safety-copy-btn mint" type="button" data-inline-copy="${esc(query)}">검색어 복사</button></div>`; }
@@ -95,7 +127,7 @@
   async function evidenceFromUrl(url){ return fetchJson(`/api/safety/evidence?url=${encodeURIComponent(url)}`); }
 
   function initEvidenceBundle(){
-    const form=$('#evidenceBundleForm') || $('#publicEvidenceForm'); const input=$('#evidenceBundleInput') || $('#publicEvidenceInput'); const result=$('#evidenceBundleResult') || $('#publicEvidenceResult'); if(!form||!input||!result) return;
+    const form=$('#evidenceBundleForm'); const input=$('#evidenceBundleInput'); const result=$('#evidenceBundleResult'); if(!form||!input||!result) return;
     form.addEventListener('submit', async (e)=>{ e.preventDefault(); const url=String(input.value||'').trim(); if(!/^https?:\/\//i.test(url)) return empty(result, 'URL 형식을 확인해 주세요.', '예: https://example.com/post');
       empty(result, '근거를 읽는 중입니다.', '제목·날짜·도메인·IP를 정리합니다.');
       try {
@@ -473,6 +505,7 @@ ${story}
 
   function init(){
     initInlineCopy();
+    initToolFormUx();
     initAddressTracker();
     initSimilarDomain();
     initSearchPack();
