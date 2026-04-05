@@ -78,7 +78,14 @@
   function renderBlogPreviews(posts){
     $$('[data-blog-preview-grid]').forEach((grid)=>{
       const limit = Number(grid.getAttribute('data-limit') || '2');
-      grid.innerHTML = posts.slice(0, limit).map((p)=>`<a class="article-card" href="/blog/${esc(p.slug)}/"><span class="article-kicker">${esc(p.kicker||'가이드')}</span><h3>${esc(p.title)}</h3><p>${esc(p.excerpt)}</p></a>`).join('');
+      const slugsAttr = (grid.getAttribute('data-slugs') || '').trim();
+      let selected = posts;
+      if (slugsAttr) {
+        const order = slugsAttr.split(',').map((s)=>s.trim()).filter(Boolean);
+        const bySlug = new Map(posts.map((p)=>[String(p.slug || '').trim(), p]));
+        selected = order.map((slug)=>bySlug.get(slug)).filter(Boolean);
+      }
+      grid.innerHTML = selected.slice(0, limit).map((p)=>`<a class="article-card" href="/blog/${esc(p.slug)}/"><span class="article-kicker">${esc(p.kicker||'가이드')}</span><h3>${esc(p.title)}</h3><p>${esc(p.excerpt)}</p></a>`).join('');
     });
   }
   function renderReviewLogs(logs){
