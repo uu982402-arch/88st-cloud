@@ -2,51 +2,6 @@
   "updatedAt": "2026-04-04T02:00:00+09:00",
   "posts": [
     {
-      "slug": "domain-ip-first-check-order",
-      "kicker": "검색·조회 활용",
-      "title": "도메인·IP 조회에서 먼저 보는 순서",
-      "excerpt": "등록일, DNS, ASN, PTR를 어떤 순서로 보면 판단이 빨라지는지 정리합니다.",
-      "description": "도메인·IP 조회에서 등록일, DNS, ASN, PTR를 어떤 순서로 보면 실전 판단이 빨라지는지 정리한 글입니다.",
-      "keywords": [
-        "도메인 조회",
-        "IP 조회",
-        "ASN",
-        "PTR",
-        "먹튀검증"
-      ],
-      "sections": []
-    },
-    {
-      "slug": "change-timeline-reading-guide",
-      "kicker": "검색·조회 활용",
-      "title": "변경 이력 타임라인을 읽는 기준",
-      "excerpt": "주소 변경, 리뉴얼 공지, 예전 브랜드 흔적을 어떤 흐름으로 봐야 하는지 정리합니다.",
-      "description": "변경 이력 타임라인에서 주소 변경, 리뉴얼 공지, 예전 브랜드 흔적을 어떤 흐름으로 봐야 하는지 정리한 글입니다.",
-      "keywords": [
-        "변경 이력",
-        "주소 변경",
-        "리뉴얼",
-        "먹튀검증",
-        "타임라인"
-      ],
-      "sections": []
-    },
-    {
-      "slug": "notice-channel-match-guide",
-      "kicker": "메이저·보증업체 기준",
-      "title": "공지 채널과 공식주소를 같이 보는 이유",
-      "excerpt": "공지 문구, 채널 링크, 공식주소 표기가 왜 같이 맞아야 하는지 실전 기준으로 정리합니다.",
-      "description": "공지 문구, 채널 링크, 공식주소 표기가 왜 같이 맞아야 하는지 실전 기준으로 정리한 글입니다.",
-      "keywords": [
-        "공지 채널",
-        "공식주소",
-        "텔레그램",
-        "메이저사이트",
-        "먹튀검증"
-      ],
-      "sections": []
-    },
-    {
       "slug": "muktu-common-patterns-20",
       "kicker": "검증·먹튀 예방",
       "title": "먹튀 사이트 전형 패턴 20가지",

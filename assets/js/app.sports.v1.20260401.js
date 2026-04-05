@@ -35,13 +35,9 @@
   function initSports() {
     const engines = E();
     const form = qs('[data-sports-mini-form]');
+    const result = qs('[data-sports-mini-result]');
     const tabWrap = qs('[data-sports-tabs]');
-    if (!form || !tabWrap || !engines.fairProbability) return;
-    const result = qs('[data-sports-mini-result]') || (() => {
-      const node = document.createElement('div');
-      node.innerHTML = `<div class="main-sports-result"><div class="sports-score-shell"><div class="sports-score-top"><div class="sports-score-copy"><strong>입력 후 바로 확인</strong><span data-sports-market-label>승·무·패</span></div><small data-sports-margin>북마진 -</small></div><div class="sports-summary-card"><span class="sports-summary-kicker">현재 포인트</span><strong data-sports-summary>입력 대기</strong><p data-sports-subsummary>공정확률 · 기대값 · 변동성 · 추천 비중</p></div><div class="sports-insight-grid"><article class="sports-insight-card"><span>공정확률</span><strong data-sports-insight="fair">-</strong><small data-sports-insight-note="fair">-</small></article><article class="sports-insight-card"><span>기대값</span><strong data-sports-insight="ev">-</strong><small data-sports-insight-note="ev">-</small></article><article class="sports-insight-card"><span>변동성</span><strong data-sports-insight="vol">-</strong><small data-sports-insight-note="vol">-</small></article><article class="sports-insight-card"><span>추천 비중</span><strong data-sports-insight="bank">-</strong><small data-sports-insight-note="bank">-</small></article></div><div class="sports-metric-list"><div class="sports-metric sports-metric--row" data-metric-slot="0"><div class="sports-metric-copy"><span>홈</span><strong>-</strong></div><div aria-hidden="true" class="sports-metric-track"><i></i></div></div><div class="sports-metric sports-metric--row" data-metric-slot="1"><div class="sports-metric-copy"><span>무</span><strong>-</strong></div><div aria-hidden="true" class="sports-metric-track"><i></i></div></div><div class="sports-metric sports-metric--row" data-metric-slot="2"><div class="sports-metric-copy"><span>원정</span><strong>-</strong></div><div aria-hidden="true" class="sports-metric-track"><i></i></div></div></div><ul class="sports-notes-list" data-sports-notes><li>배당 입력 전 대기</li></ul></div></div>`;
-      return node.firstElementChild;
-    })();
+    if (!form || !result || !tabWrap || !engines.fairProbability) return;
 
     const hiddenMarket = qs('input[name="market"]', form);
     const fieldMap = Object.fromEntries(['line','home','draw','away','over','under'].map((k)=>[k, qs(`[data-wrap="${k}"]`, form)]));

@@ -357,8 +357,8 @@ body.is-surface-open{overflow:hidden}
   .surface-modal__body{padding:16px}
 }
 
-.sports-submit-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:10px;padding-top:10px;border-top:1px solid var(--line)}
-.sports-submit-row span{font-size:11px;color:var(--muted)}
+.sports-submit-row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:12px;padding-top:12px;border-top:1px solid var(--line)}
+.sports-submit-row span{font-size:12px;color:var(--muted)}
 .result-modal{position:fixed;inset:0;z-index:120;display:flex;align-items:center;justify-content:center;padding:24px}
 .result-modal[hidden]{display:none !important}
 .result-modal__backdrop{position:absolute;inset:0;background:rgba(15,23,42,.58);backdrop-filter:blur(4px)}
