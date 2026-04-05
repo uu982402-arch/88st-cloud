@@ -39,3 +39,29 @@
 .sports-field--select select{width:100%;min-height:58px;padding:0 16px;font-size:15px;font-weight:700;border-radius:16px;border:1px solid #c9d6e4;background:#fff;color:var(--text)}
 @media (max-width:1100px){.score-grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
 @media (max-width:760px){.score-grid{grid-template-columns:1fr}.sports-field--select select{min-height:54px;font-size:14px}}
+
+.tools-suite-shell{display:grid;gap:16px}
+.suite-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.suite-card{position:relative;padding:22px;border-radius:22px;background:linear-gradient(180deg,#ffffff 0%,#f8fbff 100%);border:1px solid var(--line);box-shadow:var(--shadow-sm);display:grid;gap:10px;min-height:180px}
+.suite-card .tool-badge{justify-self:start}
+.suite-card h3{margin:0;font-size:20px;line-height:1.25;color:var(--text)}
+.suite-card p{margin:0;color:var(--muted);font-size:14px;line-height:1.55}
+.suite-card .safety-link-btn{margin-top:auto;justify-self:start}
+.tool-page-kpis{display:flex;flex-wrap:wrap;gap:10px;margin-top:-6px}
+.tool-kpi-chip{display:inline-flex;align-items:center;padding:10px 14px;border-radius:999px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow-sm);font-size:13px;font-weight:800;color:var(--text)}
+.tool-form-card{padding:20px;border-radius:22px}
+.tool-form-card form.stack{display:grid;gap:16px}
+.tool-form-card .card-actions{padding-top:2px}
+.tool-form-card .empty-state{padding:20px;border-radius:18px;border:1px dashed var(--line);background:var(--surface-2)}
+.toolkit-result-stack .glass-card{border-radius:22px}
+.toolkit-result-stack .helper-box{padding:18px 18px 16px}
+.score-grid{gap:14px}
+.score-metric{padding:16px 18px;border-radius:20px;background:linear-gradient(180deg,#fff 0%,#f9fbfd 100%)}
+.score-metric strong{font-size:20px}
+.toolkit-points{padding:16px 18px;border-radius:18px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow-sm)}
+.toolkit-points li+li{margin-top:6px}
+.tool-help-card{border-radius:20px}
+.tool-card p{min-height:42px}
+.tool-card h3{font-size:18px}
+@media (max-width:1100px){.suite-grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
+@media (max-width:760px){.suite-grid{grid-template-columns:1fr}.suite-card{min-height:auto;padding:18px}.tool-page-kpis{gap:8px}.tool-kpi-chip{font-size:12px;padding:9px 12px}.tool-form-card{padding:16px}.score-metric strong{font-size:18px}}
