@@ -1,161 +1,77 @@
 {
-  "updated": "2026-04-01",
+  "updated": "2026-04-05",
   "providers": [
     {
       "slug": "ddk",
       "name": "땅콩",
-      "theme": "orange",
+      "theme": "brand",
       "officialUrl": "https://ddk-2024.com/",
       "officialDomain": "ddk-2024.com",
       "code": "DDK888",
-      "oneLine": "코드 복사 후 빠르게 공식 주소로 이동하는 흐름에 맞춘 카드입니다.",
+      "oneLine": "공식 주소 확인 후 바로 이동",
       "benefits": [
         "공식 주소 확인",
         "코드 즉시 복사",
         "간단 진입"
       ],
       "tags": [
-        "코드복사",
-        "빠른이동",
-        "모바일"
+        "주소 확인",
+        "코드 복사"
       ]
     },
     {
       "slug": "chilbet",
       "name": "칠벳",
-      "theme": "red",
+      "theme": "brand",
       "officialUrl": "https://82clf.com/",
       "officialDomain": "82clf.com",
       "code": "6767",
-      "oneLine": "구글링과 도메인 조회 뒤 마지막에 참고하는 보증업체 카드입니다.",
+      "oneLine": "공식 주소 확인 후 바로 이동",
       "benefits": [
-        "검색 후 참고",
         "공식 주소 확인",
-        "코드 즉시 복사"
+        "코드 즉시 복사",
+        "간단 진입"
       ],
       "tags": [
-        "검색우선",
-        "주소확인",
-        "터치최적화"
+        "주소 확인",
+        "코드 복사"
       ]
     },
     {
       "slug": "yangsim",
       "name": "양심",
-      "theme": "amber",
+      "theme": "brand",
       "officialUrl": "https://평생양심.com/",
       "officialDomain": "평생양심.com",
       "code": "KAKA",
-      "oneLine": "공식 주소와 코드를 짧게 확인하고 바로 이동하는 타입의 카드입니다.",
+      "oneLine": "공식 주소 확인 후 바로 이동",
       "benefits": [
         "공식 주소 확인",
         "코드 즉시 복사",
-        "모바일 바로가기"
+        "간단 진입"
       ],
       "tags": [
-        "주소확인",
-        "코드복사",
-        "모바일"
+        "주소 확인",
+        "코드 복사"
       ]
     },
     {
       "slug": "taepyeongyang",
       "name": "태평양",
-      "theme": "cyan",
+      "theme": "brand",
       "officialUrl": "https://tpy-777.com/",
       "officialDomain": "tpy-777.com",
       "code": "KAKA",
-      "oneLine": "마지막 확인 단계에서 주소와 코드를 짧게 보는 용도의 카드입니다.",
+      "oneLine": "공식 주소 확인 후 바로 이동",
       "benefits": [
-        "주소 최종 확인",
+        "공식 주소 확인",
         "코드 즉시 복사",
-        "모바일 바로가기"
+        "간단 진입"
       ],
       "tags": [
-        "주소확인",
-        "코드복사",
-        "직접이동"
+        "주소 확인",
+        "코드 복사"
       ]
-    },
-    {
-      "slug": "avengers",
-      "name": "추가 제휴 준비중",
-      "theme": "slate",
-      "officialUrl": "#",
-      "officialDomain": "준비중",
-      "code": "준비중",
-      "oneLine": "추가 광고 승인 후 공식 주소와 가입코드가 순차적으로 들어갑니다.",
-      "benefits": [
-        "추가 슬롯 확보",
-        "정보 대기",
-        "승인 후 노출"
-      ],
-      "tags": [
-        "준비중",
-        "대기",
-        "추가예정"
-      ],
-      "pending": true
-    },
-    {
-      "slug": "vegas",
-      "name": "추가 제휴 준비중",
-      "theme": "slate",
-      "officialUrl": "#",
-      "officialDomain": "준비중",
-      "code": "준비중",
-      "oneLine": "추가 광고 승인 후 공식 주소와 가입코드가 순차적으로 들어갑니다.",
-      "benefits": [
-        "추가 슬롯 확보",
-        "정보 대기",
-        "승인 후 노출"
-      ],
-      "tags": [
-        "준비중",
-        "대기",
-        "추가예정"
-      ],
-      "pending": true
-    },
-    {
-      "slug": "tronbet",
-      "name": "추가 제휴 준비중",
-      "theme": "slate",
-      "officialUrl": "#",
-      "officialDomain": "준비중",
-      "code": "준비중",
-      "oneLine": "추가 광고 승인 후 공식 주소와 가입코드가 순차적으로 들어갑니다.",
-      "benefits": [
-        "추가 슬롯 확보",
-        "정보 대기",
-        "승인 후 노출"
-      ],
-      "tags": [
-        "준비중",
-        "대기",
-        "추가예정"
-      ],
-      "pending": true
-    },
-    {
-      "slug": "more-partners",
-      "name": "추가 제휴 준비중",
-      "theme": "slate",
-      "officialUrl": "#",
-      "officialDomain": "준비중",
-      "code": "준비중",
-      "oneLine": "추가 광고 승인 후 공식 주소와 가입코드가 순차적으로 들어갑니다.",
-      "benefits": [
-        "추가 슬롯 확보",
-        "정보 대기",
-        "승인 후 노출"
-      ],
-      "tags": [
-        "준비중",
-        "대기",
-        "추가예정"
-      ],
-      "pending": true
     }
   ]
 }

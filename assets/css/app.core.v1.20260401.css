@@ -380,3 +380,9 @@ body.is-modal-open{overflow:hidden}
   .result-modal__head{padding:14px 16px}
   .result-modal__body{padding:14px 14px 22px}
 }
+
+.telegram-icon{width:16px;height:16px;display:block;flex:0 0 auto}
+.guaranteed-card[data-theme="brand"]{--accent:var(--brand);--accent-soft:var(--brand-soft)}
+.guaranteed-card--compact .guaranteed-table{padding-top:16px}
+.guaranteed-card--compact .guaranteed-actions{grid-template-columns:1fr;gap:12px}
+.guaranteed-card--compact .guaranteed-toggle{display:none}
