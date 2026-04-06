@@ -95,22 +95,23 @@
     });
   }
   function providerCard(item){
-    const pending = !!item.pending;
-    const image = !pending && item.imageUrl ? `<div class="guaranteed-media"><img src="${esc(item.imageUrl)}" alt="${esc(item.imageAlt || `${item.name} 광고 이미지`)}" loading="lazy" decoding="async"></div>` : '';
-    const action = pending ? `<span class="guaranteed-link is-disabled" aria-disabled="true">바로가기</span>` : `<a class="guaranteed-link" href="${esc(item.officialUrl)}" target="_blank" rel="noopener noreferrer">바로가기</a>`;
-    const code = pending ? `<span class="guaranteed-code guaranteed-code--static">${esc(item.code || '준비중')}</span>` : `<button class="guaranteed-code" type="button" data-copy-text="${esc(item.code)}"><span data-copy-label data-default-label="${esc(item.code)}">${esc(item.code)}</span></button>`;
-    return `<article class="guaranteed-card" data-theme="${esc(item.theme)}">${image}<div class="guaranteed-summary"><span class="guaranteed-summary-text">${esc(item.oneLine || '공식 주소와 가입코드 확인')}</span><span class="guaranteed-status">${pending ? '준비중' : '운영중'}</span></div><div class="guaranteed-table"><div class="guaranteed-row"><span class="guaranteed-label">이름</span><strong class="guaranteed-value">${esc(item.name)}</strong></div><div class="guaranteed-row"><span class="guaranteed-label guaranteed-label--code">가입코드</span>${code}</div></div><div class="guaranteed-detail" hidden><div class="guaranteed-detail-grid"><div class="guaranteed-detail-line"><span>공식 주소</span><strong>${esc(item.officialDomain || item.officialUrl || '-')}</strong></div><div class="guaranteed-detail-line"><span>확인 기준</span><strong>${esc((item.benefits || []).slice(0,2).join(' · ') || '공식 주소와 코드 확인')}</strong></div><div class="guaranteed-detail-line"><span>핵심 태그</span><strong>${esc((item.tags || []).slice(0,3).join(' · ') || '-')}</strong></div><div class="guaranteed-detail-line"><span>상태 안내</span><strong>${pending ? '광고 준비중' : '운영중'}</strong></div></div></div><div class="guaranteed-actions"><button class="guaranteed-toggle" type="button" data-guaranteed-toggle aria-expanded="false"><span>상세보기</span></button>${action}</div></article>`;
+    const imageStyle = `--media-pos:${esc(item.imagePosition || 'center center')};--media-scale:${esc(item.imageScale || '1.12')}`;
+    const image = item.imageUrl ? `<div class="guaranteed-media" style="${imageStyle}"><img src="${esc(item.imageUrl)}" alt="${esc(item.imageAlt || `${item.name} 광고 이미지`)}" loading="lazy" decoding="async"></div>` : '';
+    const action = `<a class="guaranteed-link" href="${esc(item.officialUrl)}" target="_blank" rel="noopener noreferrer">공식 주소</a>`;
+    const code = `<button class="guaranteed-code" type="button" data-copy-text="${esc(item.code)}"><span data-copy-label data-default-label="${esc(item.code)}">${esc(item.code)}</span></button>`;
+    return `<article class="guaranteed-card" data-theme="brand">${image}<div class="guaranteed-table guaranteed-table--clean"><div class="guaranteed-row"><strong class="guaranteed-title">${esc(item.name)}</strong></div><div class="guaranteed-row"><span class="guaranteed-label guaranteed-label--code">가입코드</span>${code}</div></div><div class="guaranteed-actions guaranteed-actions--clean">${action}</div></article>`;
   }
   function renderGuaranteedCards(providers){
-    $$('[data-guaranteed-grid]').forEach((grid)=>{ if (grid.children.length) return; grid.innerHTML = providers.map(providerCard).join(''); });
+    const active = (providers || []).filter((item)=>!item.pending && item.officialUrl && item.code);
+    $$('[data-guaranteed-grid]').forEach((grid)=>{ if (grid.children.length) return; grid.innerHTML = active.map(providerCard).join(''); });
   }
 
   function providerRotatorCard(item){
-    const action = `<a class="home-provider-link" href="${esc(item.officialUrl)}" target="_blank" rel="noopener noreferrer">바로가기</a>`;
+    const imageStyle = `--media-pos:${esc(item.imagePosition || 'center center')};--media-scale:${esc(item.imageScale || '1.12')}`;
+    const action = `<a class="home-provider-link" href="${esc(item.officialUrl)}" target="_blank" rel="noopener noreferrer">공식 주소</a>`;
     const code = `<button class="home-provider-code" type="button" data-copy-text="${esc(item.code)}"><span data-copy-label data-default-label="${esc(item.code)}">${esc(item.code)}</span></button>`;
-    const tags = (item.tags || []).slice(0,2).map((tag)=>`<span>${esc(tag)}</span>`).join('');
-    const image = item.imageUrl ? `<div class="home-provider-media"><img src="${esc(item.imageUrl)}" alt="${esc(item.imageAlt || `${item.name} 광고 이미지`)}" loading="lazy" decoding="async"></div>` : '';
-    return `<article class="home-provider-card" data-theme="${esc(item.theme || 'slate')}">${image}<div class="home-provider-card-top"><strong>${esc(item.name)}</strong><span class="home-provider-status">운영중</span></div><p class="home-provider-copy">${esc(item.oneLine || '공식 주소와 가입코드 확인')}</p><div class="home-provider-tags">${tags || '<span>주소 확인</span><span>가입코드</span>'}</div><div class="home-provider-card-actions">${code}${action}</div></article>`;
+    const image = item.imageUrl ? `<div class="home-provider-media" style="${imageStyle}"><img src="${esc(item.imageUrl)}" alt="${esc(item.imageAlt || `${item.name} 광고 이미지`)}" loading="lazy" decoding="async"></div>` : '';
+    return `<article class="home-provider-card" data-theme="brand">${image}<div class="home-provider-card-top home-provider-card-top--clean"><strong>${esc(item.name)}</strong></div><div class="home-provider-card-actions">${code}${action}</div></article>`;
   }
   function renderHomeProviderRotator(providers){
     const section = $('[data-home-provider-rotator-section]');
