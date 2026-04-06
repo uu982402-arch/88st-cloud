@@ -8,7 +8,7 @@
       "officialUrl": "https://ddk-2024.com/",
       "officialDomain": "ddk-2024.com",
       "code": "DDK888",
-      "oneLine": "코드 복사 후 빠르게 공식 주소로 이동하는 흐름에 맞춘 카드입니다.",
+      "oneLine": "공식 주소와 가입코드를 마지막에 짧게 확인하는 카드입니다.",
       "benefits": [
         "공식 주소 확인",
         "코드 즉시 복사",
@@ -18,7 +18,9 @@
         "코드복사",
         "빠른이동",
         "모바일"
-      ]
+      ],
+      "imageUrl": "/assets/provider-media/ddk-card.webp",
+      "imageAlt": "땅콩 광고 카드 이미지"
     },
     {
       "slug": "chilbet",
