@@ -19,7 +19,6 @@
   }
   function googleUrl(q){ return `https://www.google.com/search?q=${encodeURIComponent(String(q||'').trim())}`; }
   function normalizeDomain(value=''){ let v=String(value||'').trim(); if(!v) return ''; try { const u=new URL(/^[a-z][a-z0-9+.-]*:\/\//i.test(v)?v:`https://${v}`); v=u.hostname||''; } catch(_){} return String(v).toLowerCase().replace(/^www\./,'').replace(/\.$/,'').split('/')[0].split('?')[0].split('#')[0].replace(/:\d+$/,''); }
-  function checkedValues(form, name){ return $$(`input[name="${name}"]:checked`, form).map((el)=>el.value); }
   function isValidIp(value=''){ const raw=String(value||'').trim(); if(!raw) return false; if(raw.includes(':')) return /^[0-9a-f:]+$/i.test(raw); const parts=raw.split('.'); return parts.length===4 && parts.every((p)=>/^\d+$/.test(p)&&Number(p)>=0&&Number(p)<=255); }
   function fetchJson(url){ return fetch(url,{cache:'no-store'}).then(async(res)=>{ let data={}; try{data=await res.json();}catch(_){} if(!res.ok||data.ok===false) throw new Error(data.message||data.error||'request_failed'); return data; }); }
   function formatDate(v){ if(!v) return '-'; const d=new Date(v); return Number.isNaN(d.getTime()) ? String(v) : new Intl.DateTimeFormat('ko-KR',{dateStyle:'medium'}).format(d); }
@@ -35,150 +34,6 @@
   function listCard(items){ return `<ul class="toolkit-list">${items.map((item)=>`<li><div><strong>${esc(item.title)}</strong><small>${esc(item.detail||'')}</small></div>${item.actions||''}</li>`).join('')}</ul>`; }
   function actionButtons(query){ return `<div class="toolkit-actions"><a class="safety-link-btn ghost" href="${googleUrl(query)}" target="_blank" rel="noopener noreferrer">구글에서 보기</a><button class="safety-copy-btn mint" type="button" data-inline-copy="${esc(query)}">검색어 복사</button></div>`; }
   function domainsFromEvidence(ev={}){ return (ev.domains||[]).filter(Boolean).slice(0,6); }
-
-  const clamp = (n, min, max) => Math.max(min, Math.min(max, Number(n) || 0));
-  function toolRiskLabel(score=0){ const n=Number(score)||0; if(n>=75) return '높음'; if(n>=45) return '보통'; return '낮음'; }
-  function cardsHtml(cards=[]){ return `<div class="score-grid">${(cards||[]).map((item)=>`<div class="score-metric"><span>${esc(item.label||item.title||'-')}</span><strong>${esc(item.value||item.detail||'-')}</strong><small>${esc(item.note||'')}</small></div>`).join('')}</div>`; }
-  function engineSet(target, title, cards=[], notes=[], extra=''){
-    const html = `<div class="toolkit-result-stack">${section(title,'',cardsHtml(cards))}${notes&&notes.length?section('실전 메모','',`<ul class="toolkit-points">${notes.map((note)=>`<li>${esc(note)}</li>`).join('')}</ul>`):''}${extra||''}</div>`;
-    setResult(target, html, 'toolkit-result-stack');
-  }
-  function engineSportsStudy({ market='moneyline', odds=[], capital=0, mode='neutral', labels=[] }={}){
-    const engines = window.RavenEngines || {};
-    const fair = engines.fairProbability ? engines.fairProbability({ odds, market }) : { odds:(odds||[]).map((v)=>Number(v)).filter((v)=>Number.isFinite(v)&&v>=1.02), fairProbabilities:[], fairOdds:[], margin:0 };
-    const cleanOdds = fair.odds || [];
-    const named = cleanOdds.map((odd, idx)=>{
-      const prob = fair.fairProbabilities?.[idx] || 0;
-      const label = labels[idx] || `선택 ${idx+1}`;
-      const ev = engines.expectedValue ? engines.expectedValue({ probability: prob, odds: odd, stake: capital || 1 }) : { evRate:0, label:'보통' };
-      return { label, odd, prob, fairOdds: fair.fairOdds?.[idx] || 0, ev };
-    });
-    const bestProb = named.slice().sort((a,b)=>b.prob-a.prob)[0] || { label:'-', prob:0, fairOdds:0 };
-    const bestEdge = named.slice().sort((a,b)=>b.ev.evRate-a.ev.evRate)[0] || { label:'-', ev:{ evRate:0, label:'중립' }, odd:0, prob:0 };
-    const vol = engines.volatilityRisk ? engines.volatilityRisk({ probability: bestProb.prob || bestEdge.prob || 0, odds: bestEdge.odd || cleanOdds[0] || 1.9, stake: capital || 1, plays: cleanOdds.length || 1 }) : { volatilityScore:0, grade:'낮음' };
-    const bankroll = engines.bankrollPlan ? engines.bankrollPlan({ capital: capital || 0, probability: bestEdge.prob || bestProb.prob || 0.5, odds: bestEdge.odd || cleanOdds[0] || 1.9, mode: mode === 'safe' ? 'safe' : mode === 'aggressive' ? 'aggressive' : 'neutral', volatilityScore: vol.volatilityScore || 0 }) : { amount:0, ratio:0, label:'보수' };
-    return { fair, outcomes:named, bestProb, bestEdge, volatilityLabel:vol.grade||'낮음', volatilityScore:vol.volatilityScore||0, bankroll };
-  }
-  function detectKeywordLines(text='', patterns=[]){
-    const rows = normalizeLines(text);
-    return rows.filter((row)=>patterns.some((re)=>re.test(row)));
-  }
-  function initNoticeReview(){
-    const form=$('#noticereviewForm'); const mainInput=$('#noticeMainInput'); const sideInput=$('#noticeSideInput'); const result=$('#noticeReviewResult'); if(!form||!mainInput||!sideInput||!result) return;
-    form.addEventListener('submit',(e)=>{
-      e.preventDefault();
-      const modes=checkedValues(form,'noticeMode');
-      if(!modes.length) return empty(result,'선택이 비어 있습니다.','실행할 항목을 하나 이상 선택해 주세요.');
-      const mainText=String(mainInput.value||'').trim(); const sideText=String(sideInput.value||'').trim();
-      if(!mainText || !sideText) return empty(result,'입력값이 비어 있습니다.','사이트 공지와 채널/후기 내용을 같이 넣어 주세요.');
-      const mainDomains=extractDomainsFromText(mainText); const sideDomains=extractDomainsFromText(sideText);
-      const mainCodes=extractCodes(mainText); const sideCodes=extractCodes(sideText);
-      const mainHandles=extractHandles(mainText); const sideHandles=extractHandles(sideText);
-      const overlapDomains=mainDomains.filter((v)=>sideDomains.includes(v));
-      const overlapCodes=mainCodes.filter((v)=>sideCodes.includes(v));
-      const overlapHandles=mainHandles.filter((v)=>sideHandles.includes(v));
-      const hypeRegex=[/100%/i,/무조건/i,/확실/i,/안전/i,/전액/i,/즉시/i,/최고/i,/무제한/i,/보장/i];
-      const reactionRegex=[/먹튀/i,/지연/i,/거절/i,/추가입금/i,/선입금/i,/사칭/i,/주의/i,/보류/i,/환전/i];
-      const hypeLines=detectKeywordLines(`${mainText}
-${sideText}`, hypeRegex);
-      const reactionLines=detectKeywordLines(`${mainText}
-${sideText}`, reactionRegex);
-      const cautionScore=clamp((overlapDomains.length?0:25)+(overlapCodes.length?0:18)+(overlapHandles.length?0:12)+(hypeLines.length*9)+(reactionLines.length*8),0,100);
-      let html=`<div class="toolkit-result-stack">${section('센터 요약','',cardsHtml([
-        {label:'주소 일치', value: overlapDomains.length?`${overlapDomains.length}개`:'없음', note: overlapDomains.slice(0,3).join(' · ')||'비교 필요'},
-        {label:'코드 일치', value: overlapCodes.length?`${overlapCodes.length}개`:'없음', note: overlapCodes.slice(0,3).join(' · ')||'코드 비교'},
-        {label:'채널 일치', value: overlapHandles.length?`${overlapHandles.length}개`:'없음', note: overlapHandles.slice(0,3).join(' · ')||'핸들 비교'},
-        {label:'주의 점수', value: `${cautionScore}점`, note: toolRiskLabel(cautionScore)}
-      ]))}`;
-      if(modes.includes('address')){
-        html += section('주소 비교','', listCard([
-          {title:'사이트 공지', detail: mainDomains.join(' · ') || '추출 없음'},
-          {title:'채널·후기', detail: sideDomains.join(' · ') || '추출 없음'},
-          {title:'겹치는 주소', detail: overlapDomains.join(' · ') || '일치 후보 없음'}
-        ]));
-      }
-      if(modes.includes('code')){
-        html += section('코드 비교','', listCard([
-          {title:'사이트 공지', detail: mainCodes.join(' · ') || '추출 없음'},
-          {title:'채널·후기', detail: sideCodes.join(' · ') || '추출 없음'},
-          {title:'겹치는 코드', detail: overlapCodes.join(' · ') || '일치 후보 없음'}
-        ]));
-      }
-      if(modes.includes('hype')){
-        html += section('과장 문구','', hypeLines.length ? listCard(hypeLines.slice(0,8).map((line, idx)=>({ title:`문구 ${idx+1}`, detail:line }))) : `<div class="toolkit-note">과장 표현은 많지 않습니다.</div>`);
-      }
-      if(modes.includes('reaction')){
-        html += section('반응 요약','', reactionLines.length ? listCard(reactionLines.slice(0,8).map((line, idx)=>({ title:`반응 ${idx+1}`, detail:line }))) : `<div class="toolkit-note">강한 경고 표현은 많지 않습니다.</div>`);
-      }
-      const notes=[];
-      notes.push(overlapDomains.length ? '주소 표기는 어느 정도 맞아도 최종 연결 주소를 다시 확인하는 편이 안전합니다.' : '공지와 채널 주소가 다르면 새주소/가짜 채널 가능성을 열어 두고 보세요.');
-      if(hypeLines.length) notes.push('과장 문구가 많을수록 실제 조건과 다를 가능성을 같이 보세요.');
-      if(reactionLines.length) notes.push('지연·거절·선입금 관련 표현이 보이면 증거를 먼저 남기고 확인하는 편이 좋습니다.');
-      html += section('실전 메모','',`<ul class="toolkit-points">${notes.map((note)=>`<li>${esc(note)}</li>`).join('')}</ul>`);
-      html += '</div>';
-      setResult(result, html, 'toolkit-result-stack');
-    });
-  }
-  function initReportPackager(){
-    const form=$('#reportpackagerForm'); const result=$('#reportPackagerResult'); if(!form||!result) return;
-    form.addEventListener('submit',(e)=>{
-      e.preventDefault();
-      const modes=checkedValues(form,'reportMode');
-      if(!modes.length) return empty(result,'선택이 비어 있습니다.','실행할 항목을 하나 이상 선택해 주세요.');
-      const site=String($('#reportSite')?.value||'').trim();
-      const domain=String($('#reportDomain')?.value||'').trim();
-      const amount=String($('#reportAmount')?.value||'').trim();
-      const code=String($('#reportCode')?.value||'').trim();
-      const story=String($('#reportStory')?.value||'').trim();
-      if(!site && !domain) return empty(result,'입력값이 비어 있습니다.','사이트명이나 도메인을 먼저 입력해 주세요.');
-      if(!story) return empty(result,'입력값이 비어 있습니다.','사건 흐름을 순서대로 적어 주세요.');
-      const lines=normalizeLines(story);
-      const dateHits=(story.match(/20\d{2}[./-]\d{1,2}(?:[./-]\d{1,2})?|오늘|어제|방금|새벽|오전|오후/g)||[]);
-      const signalHits=(story.match(/입금|문의|답변|지연|거절|차단|추가입금|보류|환전/gi)||[]);
-      const evidenceScore=[site||domain, normalizeDomain(domain)||domain, amount, code, lines.length>=2? 'story':'', dateHits.length? 'date':'' ].filter(Boolean).length * 16;
-      let html=`<div class="toolkit-result-stack">${section('센터 요약','',cardsHtml([
-        {label:'기준 정보', value: site || normalizeDomain(domain) || '-', note: normalizeDomain(domain) || '도메인 미입력'},
-        {label:'이야기 줄 수', value: `${lines.length}줄`, note: dateHits.length?`날짜 단서 ${dateHits.length}건`:'날짜 단서 적음'},
-        {label:'증거 점수', value: `${clamp(evidenceScore,0,100)}점`, note: toolRiskLabel(evidenceScore)},
-        {label:'핵심 신호', value: `${signalHits.length}건`, note: signalHits.slice(0,4).join(' · ') || '기본 흐름'}
-      ]))}`;
-      if(modes.includes('evidence')){
-        const items=[
-          {title:'사이트명/도메인', detail:(site||domain)?`${site||'-'} / ${domain||'-'}`:'누락'},
-          {title:'금액', detail:amount||'누락'},
-          {title:'가입코드', detail:code||'누락'},
-          {title:'사건 흐름', detail:lines.length>=2?`${lines.length}줄 정리됨`:'조금 더 자세한 흐름 필요'},
-          {title:'날짜 단서', detail:dateHits.length?dateHits.join(' · '):'날짜/시간 표현이 거의 없습니다.'},
-        ];
-        html += section('증거 점검','', listCard(items));
-      }
-      if(modes.includes('timeline')){
-        const timeline=`<div class="timeline-list">${lines.map((line, idx)=>{ const tag=(line.match(/20\d{2}[./-]\d{1,2}(?:[./-]\d{1,2})?|오늘|어제|방금|새벽|오전|오후/)||[`기록 ${String(idx+1).padStart(2,'0')}`])[0]; return `<article class="timeline-entry"><span class="mini-badge">${esc(tag)}</span><strong>흐름</strong><p>${esc(line)}</p></article>`; }).join('')}</div>`;
-        html += section('타임라인 정리','', timeline);
-      }
-      if(modes.includes('summary')){
-        const summary=`[제보 요약]
-사이트명: ${site || '-'}
-주소: ${domain || '-'}
-금액: ${amount || '-'}
-가입코드: ${code || '-'}
-
-[사건 흐름]
-${lines.map((line, idx)=>`${idx+1}. ${line}`).join('\n')}
-
-[추가 확인]
-- 입금내역 캡처
-- 대화 캡처
-- 공지/채널 캡처`;
-        html += section('전달용 요약','', `<div class="toolkit-copy-box"><pre>${esc(summary)}</pre><div class="toolkit-actions"><button class="safety-copy-btn mint" type="button" data-inline-copy="${esc(summary)}">요약 복사</button></div></div>`);
-      }
-      html += section('실전 메모','',`<ul class="toolkit-points"><li>입금내역, 대화, 공지 캡처가 같이 있으면 제보 신뢰도가 훨씬 높아집니다.</li><li>사건 흐름은 시간 순서대로 짧게 나누는 편이 전달력이 좋습니다.</li><li>추가입금·지연·거절 표현은 원문 그대로 남기는 쪽이 안전합니다.</li></ul>`);
-      html += '</div>';
-      setResult(result, html, 'toolkit-result-stack');
-    });
-  }
-  function initToolsHubShortcuts(){}
-  function initMainShortcuts(){}
 
   function initInlineCopy(){ document.addEventListener('click', async (e)=>{ const btn=e.target.closest('[data-inline-copy]'); if(!btn) return; await copyText(btn.getAttribute('data-inline-copy') || ''); }); }
 
@@ -352,132 +207,92 @@ ${lines.map((line, idx)=>`${idx+1}. ${line}`).join('\n')}
   function extractCodes(value=''){ return Array.from(new Set((String(value||'').match(/[A-Z0-9]{3,10}/g)||[]).filter((v)=>/[A-Z]/.test(v)))).slice(0,8); }
   function extractHandles(value=''){ return Array.from(new Set((String(value||'').match(/@[A-Za-z0-9_]{3,32}/g)||[]))).slice(0,8); }
   function badgeBand(score){ if(score>=80) return '높음'; if(score>=55) return '중간'; return '낮음'; }
-  
-  function initAddressConsistency(){
-    const form=$('#addressconsistencyForm'); const input=$('#addressConsistencyInput'); const result=$('#addressConsistencyResult'); if(!form||!input||!result) return;
-    form.addEventListener('submit', async (e)=>{
-      e.preventDefault();
-      const modes = checkedValues(form,'centerMode');
-      if(!modes.length) return empty(result,'선택이 비어 있습니다.','실행할 항목을 하나 이상 선택해 주세요.');
-      const lines=normalizeLines(input.value); if(!lines.length) return empty(result,'입력값이 비어 있습니다.','주소나 채널을 한 줄에 하나씩 넣어 주세요.');
-      const domains=Array.from(new Set(lines.map((v)=>normalizeDomain(v)).filter(Boolean)));
-      const rootCounts={}; domains.forEach((d)=>{ const parts=d.split('.'); const base=parts.length>1?parts.slice(-2).join('.'):d; rootCounts[base]=(rootCounts[base]||0)+1;});
-      const official=Object.entries(rootCounts).sort((a,b)=>b[1]-a[1])[0]?.[0]||domains[0]||'-';
-      let domainInfo=null;
-      if(modes.includes('domain') && domains[0] && !isValidIp(domains[0])){ try{ domainInfo=await fetchJson(`/api/safety/domain?domain=${encodeURIComponent(domains[0])}`); }catch(_){} }
-      const cards=[
-        {label:'기준 후보',value:official,note:`후보 ${domains.length||0}개`},
-        {label:'주소 밀도',value:`${lines.length}줄`,note:`도메인 ${domains.length||0}개`},
-      ];
-      if(domainInfo?.registration){ cards.push({label:'등록일',value:formatDate(domainInfo.registration.createdAt||domainInfo.registration.created),note:ageLabel(domainInfo.registration.ageDays)}); }
-      else if(modes.includes('domain')) { cards.push({label:'도메인 요약',value:domains[0]||'-',note:'공개 조회 기준'}); }
-      cards.push({label:'판정',value:domains.length>1?'추가 확인':'단일 후보',note:domains.length>1?'주소가 여러 개 보입니다.':'주소 후보가 단순합니다.'});
-      const notes=[];
-      if(modes.includes('search')) notes.push(`${official} 먹튀 / ${official} 주소 / ${official} 텔레그램 순서로 같이 확인하세요.`);
-      if(modes.includes('address') && domains.length>1) notes.push('공식 공지와 링크모음 주소가 섞여 보이면 최종 연결 주소를 다시 확인하세요.');
-      if(modes.includes('evidence')) notes.push('주소, 공지문, 채널 캡처를 같이 남기면 나중에 비교하기가 훨씬 쉽습니다.');
-      let html=`<div class="toolkit-result-stack">${section('센터 요약','',`<div class="score-grid">${cards.map((item)=>`<div class="score-metric"><span>${esc(item.label)}</span><strong>${esc(item.value)}</strong><small>${esc(item.note||'')}</small></div>`).join('')}</div>`)}`;
-      if(modes.includes('address')){
-        const table=`<table class="toolkit-table"><thead><tr><th>입력값</th><th>정규화</th><th>판정</th></tr></thead><tbody>${lines.map((line)=>{ const d=normalizeDomain(line); const verdict=!d?'확인 필요':(d===official||d.endsWith('.'+official)?'기준 후보':'추가 확인'); return `<tr><td>${esc(line)}</td><td>${esc(d||'-')}</td><td>${esc(verdict)}</td></tr>`; }).join('')}</tbody></table>`;
-        html += section('주소 정합성','',table);
-      }
-      if(modes.includes('domain')){
-        const domainBody = domainInfo ? `<div class="score-grid"><div class="score-metric"><span>등록일</span><strong>${esc(formatDate(domainInfo.registration?.createdAt||domainInfo.registration?.created))}</strong><small>${esc(ageLabel(domainInfo.registration?.ageDays))}</small></div><div class="score-metric"><span>네임서버</span><strong>${esc((domainInfo.dns?.ns||[]).slice(0,2).join(' · ')||'-')}</strong><small>${esc(domainInfo.domain||domains[0]||'-')}</small></div><div class="score-metric"><span>A 기록</span><strong>${esc((domainInfo.dns?.a||[]).slice(0,2).join(' · ')||'-')}</strong><small>공개 DNS 기준</small></div><div class="score-metric"><span>최종 연결</span><strong>${esc(domainInfo.live?.finalUrl||domainInfo.live?.url||'-')}</strong><small>${esc(domainInfo.live?.title||'')}</small></div></div>` : `<div class="toolkit-note">도메인 요약은 실제 도메인 형식 입력 시 더 정확합니다.</div>`;
-        html += section('도메인 요약','',domainBody);
-      }
-      if(modes.includes('search')){
-        html += section('검색 루트','',`<div class="toolkit-copy-box"><pre>${esc(`${official} 먹튀
-${official} 주소
-${official} 텔레그램
-${official} 후기`)}</pre>${actionButtons(`${official} 먹튀`)}</div>`);
-      }
-      if(modes.includes('evidence')){
-        const domainsList=(domains.length?domains:extractDomainsFromText(input.value)).slice(0,6);
-        html += section('공개 근거','', domainsList.length ? listCard(domainsList.map((d)=>({title:d,detail:'주소 후보로 캡처/기록 권장'}))) : `<div class="toolkit-note">입력값에서 추출된 주소가 없습니다.</div>`);
-      }
-      html += notes.length ? `<ul class="toolkit-points">${notes.map((item)=>`<li>${esc(item)}</li>`).join('')}</ul>` : '';
-      html += '</div>';
-      setResult(result, html, 'toolkit-result-stack');
-    });
+  function initAddressConsistency(){ const form=$('#addressconsistencyForm'); const input=$('#addressConsistencyInput'); const result=$('#addressConsistencyResult'); if(!form||!input||!result) return; form.addEventListener('submit',(e)=>{ e.preventDefault(); const lines=normalizeLines(input.value); if(!lines.length) return empty(result,'입력값이 비어 있습니다.','주소나 채널을 한 줄에 하나씩 넣어 주세요.'); const domains=Array.from(new Set(lines.map((v)=>normalizeDomain(v)).filter(Boolean))); const hostCounts={}; domains.forEach((d)=>hostCounts[d]=(hostCounts[d]||0)+1); const rootCounts={}; domains.forEach((d)=>{ const parts=d.split('.'); const base=parts.length>1?parts.slice(-2).join('.'):d; rootCounts[base]=(rootCounts[base]||0)+1;}); const official=Object.entries(rootCounts).sort((a,b)=>b[1]-a[1])[0]?.[0]||domains[0]||'-'; const table=`<table class="toolkit-table"><thead><tr><th>입력 주소</th><th>정규화</th><th>판정</th></tr></thead><tbody>${lines.map((line)=>{ const d=normalizeDomain(line); const verdict=!d?'확인 필요':(d===official||d.endsWith('.'+official.replace(/^www\./,''))?'일치 후보':'불일치'); return `<tr><td>${esc(line)}</td><td>${esc(d||'-')}</td><td>${esc(verdict)}</td></tr>`; }).join('')}</tbody></table>`; const html=section('정합성 결과','같은 기준으로 먼저 묶었습니다.',table)+section('핵심 결과','한 줄로 먼저 봅니다.',`<div class="toolkit-note">최신 후보는 ${esc(official)} 입니다. 다른 주소는 공지·채널과 다시 대조하세요.</div>`); setResult(result, html, 'toolkit-result-stack'); }); }
+  function initChangeTimeline(){ const form=$('#changetimelineForm'); const input=$('#changeTimelineInput'); const result=$('#changeTimelineResult'); if(!form||!input||!result) return; form.addEventListener('submit',(e)=>{ e.preventDefault(); const raw=String(input.value||'').trim(); if(!raw) return empty(result,'입력값이 비어 있습니다.','공지문이나 주소 기록을 붙여 넣어 주세요.'); const lines=normalizeLines(raw); const rows=lines.map((line,idx)=>{ const date=(line.match(/20\d{2}[./-]\d{1,2}[./-]\d{1,2}|20\d{2}[./-]\d{1,2}|20\d{2}년\s*\d{1,2}월?/)||['기록 '+String(idx+1).padStart(2,'0')])[0]; const domains=extractDomainsFromText(line); const tag=/리뉴얼|변경|이전|신규|공지/i.test(line)?'변경':'참고'; return {date,line,domains,tag}; }); const timeline=`<div class="timeline-list">${rows.map((row)=>`<article class="timeline-entry"><span class="mini-badge">${esc(row.date)}</span><strong>${esc(row.tag)}</strong><p>${esc(row.line)}</p>${row.domains.length?`<small>${esc(row.domains.join(' · '))}</small>`:''}</article>`).join('')}</div>`; const warnings=[]; if(rows.filter(r=>r.domains.length).length>=2) warnings.push('주소가 여러 번 언급됩니다.'); if(/리뉴얼|변경/i.test(raw)) warnings.push('리뉴얼/변경 문구가 있습니다.'); if(warnings.length===0) warnings.push('큰 변화 문구는 많지 않습니다.'); const html=section('이력 흐름','기록 순서대로 먼저 정리합니다.',timeline)+section('짧은 판단','먼저 볼 포인트만 남깁니다.',`<div class="toolkit-note">${esc(warnings.join(' '))}</div>`); setResult(result, html, 'toolkit-result-stack'); }); }
+  function initRelationshipMap(){ const form=$('#relationshipmapForm'); const base=$('#relationshipBase'); const input=$('#relationshipInput'); const result=$('#relationshipResult'); if(!form||!base||!input||!result) return; form.addEventListener('submit',(e)=>{ e.preventDefault(); const seed=String(base.value||'').trim(); const raw=String(input.value||'').trim(); if(!seed||!raw) return empty(result,'입력값이 비어 있습니다.','기준값과 관련 기록을 같이 넣어 주세요.'); const domains=extractDomainsFromText(raw); const codes=extractCodes(raw); const handles=extractHandles(raw); const score = Math.min(100, domains.length*12 + codes.length*8 + handles.length*10 + (/같은|공통|동일|리뉴얼|변경/i.test(raw)?18:0)); const map=`<div class="tool-grid tool-grid--dense"><article class="tool-help-card"><h3>도메인</h3><p>${esc(domains.join(' · ')||'-')}</p></article><article class="tool-help-card"><h3>코드</h3><p>${esc(codes.join(' · ')||'-')}</p></article><article class="tool-help-card"><h3>채널</h3><p>${esc(handles.join(' · ')||'-')}</p></article></div>`; const html=section('관계도 요약','겹치는 신호만 먼저 모았습니다.',map)+section('유사도','확정이 아니라 추정으로 봅니다.',`<div class="score-shell"><div class="score-top"><div><div class="score-big">${esc(score)}</div><span class="score-band">유사도 ${esc(badgeBand(score))}</span></div><div class="score-meta"><h2 class="score-title">${esc(seed)}</h2><p>도메인 · 코드 · 채널 · 문구가 얼마나 겹치는지 본 결과입니다.</p></div></div><div class="score-bar"><span style="width:${score}%"></span></div></div>`); setResult(result, html, 'toolkit-result-stack'); }); }
+  function initNoticeReview(){ const form=$('#noticereviewForm'); const main=$('#noticeMainInput'); const side=$('#noticeSideInput'); const result=$('#noticeReviewResult'); if(!form||!main||!side||!result) return; form.addEventListener('submit',(e)=>{ e.preventDefault(); const a=String(main.value||'').trim(); const b=String(side.value||'').trim(); if(!a||!b) return empty(result,'입력값이 비어 있습니다.','공지 두 개를 붙여 넣어 주세요.'); const aDomains=extractDomainsFromText(a), bDomains=extractDomainsFromText(b); const aCodes=extractCodes(a), bCodes=extractCodes(b); const sameDomain = aDomains.some((d)=>bDomains.includes(d)); const sameCode = aCodes.some((d)=>bCodes.includes(d)); const warnings=[]; if(!sameDomain) warnings.push('주소가 다르게 보입니다.'); if(!sameCode && aCodes.length && bCodes.length) warnings.push('코드가 다르게 보입니다.'); if(/긴급|즉시|서둘러|오늘만/.test(a+b)) warnings.push('과장형 긴급 문구가 있습니다.'); if(warnings.length===0) warnings.push('큰 불일치는 적습니다.'); const table=`<table class="toolkit-table"><thead><tr><th>항목</th><th>사이트 공지</th><th>채널/후기</th></tr></thead><tbody><tr><td><strong>주소</strong></td><td>${esc(aDomains.join(', ')||'-')}</td><td>${esc(bDomains.join(', ')||'-')}</td></tr><tr><td><strong>코드</strong></td><td>${esc(aCodes.join(', ')||'-')}</td><td>${esc(bCodes.join(', ')||'-')}</td></tr></tbody></table>`; const html=section('비교 결과','주소와 코드부터 먼저 봅니다.',table)+section('주의 포인트','짧게 남깁니다.',`<ul class="toolkit-list">${warnings.map((w)=>`<li><div><strong>${esc(w)}</strong></div></li>`).join('')}</ul>`); setResult(result, html, 'toolkit-result-stack'); }); }
+  function initReportPackager(){ const form=$('#reportpackagerForm'); const result=$('#reportPackagerResult'); if(!form||!result) return; form.addEventListener('submit',(e)=>{ e.preventDefault(); const site=$('#reportSite')?.value?.trim()||'-'; const domain=$('#reportDomain')?.value?.trim()||'-'; const amount=$('#reportAmount')?.value?.trim()||'-'; const code=$('#reportCode')?.value?.trim()||'-'; const story=$('#reportStory')?.value?.trim()||'-'; const checklist=[['사이트명',site!=='-'],['주소',domain!=='-'],['금액',amount!=='-'],['가입코드',code!=='-'],['사건 설명',story!=='-']]; const text=`[기본 정보]
+사이트명: ${site}
+주소: ${domain}
+금액: ${amount}
+가입코드: ${code}
+
+[사건 요약]
+${story}
+
+[확인 메모]
+- 입금내역:
+- 대화 캡처:
+- 공지 캡처:
+- 추가 자료:`; const html=section('자료 체크','빠진 항목부터 봅니다.',`<div class="tool-grid tool-grid--dense">${checklist.map((item)=>`<article class="tool-help-card"><h3>${esc(item[0])}</h3><p>${item[1]?'확보':'입력 필요'}</p></article>`).join('')}</div>`)+section('전달용 요약','바로 복사할 수 있습니다.',`<div class="toolkit-copy-box"><pre>${esc(text)}</pre><div class="toolkit-actions"><button class="safety-copy-btn mint" type="button" data-inline-copy="${esc(text)}">텍스트 복사</button></div></div>`); setResult(result, html, 'toolkit-result-stack'); }); }
+  function initBonusPolicy(){ const form=$('#bonuspolicyForm'); const result=$('#bonusPolicyResult'); if(!form||!result) return; form.addEventListener('submit',(e)=>{ e.preventDefault(); const deposit=Number($('#bonusDeposit')?.value||0); const percent=Number($('#bonusPercent')?.value||0); const cap=Number($('#bonusCap')?.value||0); const rolling=Number($('#bonusRolling')?.value||0); const maxWithdraw=Number($('#bonusMaxWithdraw')?.value||0); if(!deposit||!percent) return empty(result,'입력값이 비어 있습니다.','충전금과 퍼센트를 먼저 입력해 주세요.'); const bonus=Math.min(deposit*(percent/100), cap||Infinity); const total=deposit+bonus; const needRolling=total*Math.max(0,rolling); const effective=maxWithdraw?Math.min(total,maxWithdraw):total; const difficulty=needRolling>total*15?'높음':needRolling>total*8?'보통':'낮음'; const html=section('조건 결과','핵심 숫자만 먼저 봅니다.',`<div class="score-grid"><div class="score-metric"><span>보너스</span><strong>${Math.round(bonus).toLocaleString()}원</strong></div><div class="score-metric"><span>총 사용금</span><strong>${Math.round(total).toLocaleString()}원</strong></div><div class="score-metric"><span>필요 롤링</span><strong>${Math.round(needRolling).toLocaleString()}원</strong></div><div class="score-metric"><span>최대 수령</span><strong>${Math.round(effective).toLocaleString()}원</strong></div></div>`)+section('짧은 판단','부담도만 남깁니다.',`<div class="toolkit-note">조건 부담도는 ${esc(difficulty)} 입니다. 퍼센트보다 롤링과 최대 출금 제한을 같이 보세요.</div>`); setResult(result, html, 'toolkit-result-stack'); }); }
+  function initSlipCompare(){ const form=$('#slipcompareForm'); const result=$('#slipCompareResult'); if(!form||!result) return; form.addEventListener('submit',(e)=>{ e.preventDefault(); const stake=Number($('#slipStake')?.value||0); const odds=[Number($('#slipOddsA')?.value||0),Number($('#slipOddsB')?.value||0),Number($('#slipOddsC')?.value||0)].filter(Boolean); if(!stake||odds.length<2) return empty(result,'입력값이 비어 있습니다.','금액과 배당 두 개 이상을 입력해 주세요.'); const singles=odds.reduce((sum,o)=>sum+stake*o,0); const parlay=stake*odds.reduce((m,o)=>m*o,1); const html=section('비교 결과','같은 금액 기준입니다.',`<table class="toolkit-table"><thead><tr><th>방식</th><th>예상 반환금</th><th>메모</th></tr></thead><tbody><tr><td><strong>단폴 합계</strong></td><td>${Math.round(singles).toLocaleString()}원</td><td>분산형</td></tr><tr><td><strong>조합 1회</strong></td><td>${Math.round(parlay).toLocaleString()}원</td><td>집중형</td></tr></tbody></table>`)+section('짧은 판단','숫자보다 운영 방향을 먼저 봅니다.',`<div class="toolkit-note">단폴은 분산, 조합은 고변동 구조입니다. 폴더 수가 늘수록 난도도 같이 올라갑니다.</div>`); setResult(result, html, 'toolkit-result-stack'); }); }
+  function initBankrollPlanner(){ const form=$('#bankrollplannerForm'); const result=$('#bankrollPlannerResult'); if(!form||!result) return; form.addEventListener('submit',(e)=>{ e.preventDefault(); const total=Number($('#bankrollTotal')?.value||0); const unit=Number($('#bankrollUnit')?.value||0); const sessions=Number($('#bankrollSessions')?.value||0); const stop=Number($('#bankrollStop')?.value||0); if(!total||!unit||!sessions) return empty(result,'입력값이 비어 있습니다.','총 자금, 기준금, 회차 수를 입력해 주세요.'); const usable=Math.max(0,total-stop); const per=Math.floor(usable/Math.max(1,sessions)); const ratio=unit?Math.round((unit/Math.max(1,total))*100):0; const html=section('분배 결과','회차 기준으로 먼저 봅니다.',`<div class="score-grid"><div class="score-metric"><span>사용 가능</span><strong>${Math.round(usable).toLocaleString()}원</strong></div><div class="score-metric"><span>회차당 예산</span><strong>${Math.round(per).toLocaleString()}원</strong></div><div class="score-metric"><span>기준금 비율</span><strong>${ratio}%</strong></div><div class="score-metric"><span>손절선</span><strong>${Math.round(stop).toLocaleString()}원</strong></div></div>`)+section('짧은 판단','과도한 단계 상승을 막는 기준입니다.',`<div class="toolkit-note">1회 기준금이 총 자금의 5%를 넘기면 부담이 빨라질 수 있습니다. 손절선은 먼저 고정해 두는 편이 안전합니다.</div>`); setResult(result, html, 'toolkit-result-stack'); }); }
+
+  function initToolsHubShortcuts(){
+    const slots = $('#toolsExpansionGrid'); if(!slots) return;
+    const tools = [
+      ['주소 변경기','ADDRESS','새주소 · 리뉴얼','/tools/address-tracker/'],
+      ['유사 주소 후보 감지기','SIMILAR','숫자 · 하이픈','/tools/similar-domain/'],
+      ['검색 조합 생성기','SEARCH PACK','먹튀 · 후기 · 주소 조합','/tools/search-pack/'],
+      ['근거 짧은 판단 생성기','EVIDENCE','제목 · 날짜 · 도메인 · IP','/tools/evidence-bundle/'],
+      ['IP · ASN 군집 보기','CLUSTER','ASN · 대역 · NS 겹침','/tools/ip-asn-cluster/'],
+      ['공식주소 확인 체크','OFFICIAL','생성일 · DNS · 점수 체크','/tools/official-check/'],
+      ['제보 정리 템플릿','REPORT','검토용 제보 초안 자동 작성','/tools/report-template/'],
+      ['리스크 스코어 비교기','COMPARE','도메인 두 개 비교','/tools/risk-compare/']
+    ];
+    slots.innerHTML = tools.map((item)=>`<article class="toolkit-card"><span class="tool-badge">${item[1]}</span><h3>${item[0]}</h3><p>${item[2]}</p><div class="card-actions"><a class="safety-link-btn ghost" href="${item[3]}">열기</a></div></article>`).join('');
   }
 
-function initChangeTimeline(){
-  const form=$('#changetimelineForm'); const input=$('#changeTimelineInput'); const result=$('#changeTimelineResult'); if(!form||!input||!result) return;
-  form.addEventListener('submit',(e)=>{
-    e.preventDefault();
-    const modes = checkedValues(form,'timelineMode');
-    if(!modes.length) return empty(result,'선택이 비어 있습니다.','실행할 항목을 하나 이상 선택해 주세요.');
-    const raw=String(input.value||'').trim(); if(!raw) return empty(result,'입력값이 비어 있습니다.','공지문이나 주소 기록을 붙여 넣어 주세요.');
-    const lines=normalizeLines(raw);
-    const rows=lines.map((line,idx)=>{ const date=(line.match(/20\d{2}[./-]\d{1,2}[./-]\d{1,2}|20\d{2}[./-]\d{1,2}|20\d{2}년\s*\d{1,2}월?/)||['기록 '+String(idx+1).padStart(2,'0')])[0]; const domains=extractDomainsFromText(line); const tag=/리뉴얼|변경|이전|신규|merge|통합/i.test(line)?'변경':'기록'; return {date,line,domains,tag}; });
-    const domainCount = new Set(rows.flatMap((r)=>r.domains)).size;
-    const renewalHits = rows.filter((r)=>/리뉴얼|변경|이전|신규|merge|통합/i.test(r.line)).length;
-    const brandHits = rows.filter((r)=>/브랜드|운영명|이전명|새이름|rename|변경/i.test(r.line)).length;
-    let html=`<div class="toolkit-result-stack">${section('센터 요약','',`<div class="score-grid"><div class="score-metric"><span>기록 수</span><strong>${rows.length}건</strong><small>입력 기준</small></div><div class="score-metric"><span>주소 흔적</span><strong>${domainCount}개</strong><small>중복 제거</small></div><div class="score-metric"><span>리뉴얼 단서</span><strong>${renewalHits}건</strong><small>${renewalHits?toolRiskLabel(renewalHits*15):'낮음'}</small></div><div class="score-metric"><span>브랜드 단서</span><strong>${brandHits}건</strong><small>${brandHits?'이전 명칭 의심':'큰 흔적 없음'}</small></div></div>`)}`;
-    if(modes.includes('history')){
-      const timeline=`<div class="timeline-list">${rows.map((row)=>`<article class="timeline-entry"><span class="mini-badge">${esc(row.date)}</span><strong>${esc(row.tag)}</strong><p>${esc(row.line)}</p>${row.domains.length?`<small>${esc(row.domains.join(' · '))}</small>`:''}</article>`).join('')}</div>`;
-      html += section('주소 흐름','',timeline);
+  function initMainShortcuts(){
+    const grid = $('.hero-action-grid--compact');
+    if(grid){
+      grid.innerHTML = [
+        ['구글링','검색 조합','사이트명 · 도메인','/muktu-police/search/',''],
+        ['주소 변경','주소 변경','새주소 · 리뉴얼','/tools/address-tracker/','mint'],
+        ['유사 주소 후보','유사 주소','숫자 · 하이픈','/tools/similar-domain/',''],
+        ['도메인조회','도메인·IP','등록일 · DNS','/muktu-police/check/','gold'],
+      ].map((item)=>`<a class="hero-action-card ${item[4]}" href="${item[3]}"><span>${item[0]}</span><strong>${item[1]}</strong><small>${item[2]}</small></a>`).join('');
     }
-    if(modes.includes('renewal')){
-      const items = rows.filter((row)=>/리뉴얼|변경|이전|신규|merge|통합/i.test(row.line));
-      html += section('리뉴얼 흔적','', items.length ? listCard(items.map((row)=>({title:row.date, detail:row.line}))) : `<div class="toolkit-note">눈에 띄는 리뉴얼 문구는 많지 않습니다.</div>`);
+    const toolGrid = $('.home-flow-section .tool-grid');
+    if(toolGrid){
+      toolGrid.innerHTML = [
+        ['TRACKER','주소 변경','새주소 · 리뉴얼','/tools/address-tracker/'],
+        ['SEARCH PACK','검색 조합','먹튀 · 후기 · 주소 조합','/tools/search-pack/'],
+        ['OFFICIAL','최종 체크','생성일 · DNS · 점수 확인','/tools/official-check/']
+      ].map((item)=>`<article class="tool-card"><div class="tool-top"><span class="tool-badge">${item[0]}</span></div><h3>${item[1]}</h3><p>${item[2]}</p><div class="card-actions"><a class="safety-link-btn ghost" href="${item[3]}">도구 열기</a></div></article>`).join('');
     }
-    if(modes.includes('brand')){
-      const brands = rows.filter((row)=>/브랜드|운영명|이전명|새이름|rename|변경/i.test(row.line));
-      html += section('브랜드 언급','', brands.length ? listCard(brands.map((row)=>({title:row.date, detail:row.line}))) : `<div class="toolkit-note">브랜드 변경 단서는 많지 않습니다.</div>`);
-    }
-    html += `<ul class="toolkit-points"><li>주소가 여러 번 등장하면 리뉴얼 공지와 실제 연결 주소를 같이 보세요.</li><li>이전 이름이 보이면 계열사 관계도와 같이 보는 쪽이 빠릅니다.</li></ul></div>`;
-    setResult(result, html, 'toolkit-result-stack');
-  });
-}
-function initRelationshipMap(){
-    const form=$('#relationshipmapForm'); const base=$('#relationshipBase'); const input=$('#relationshipInput'); const result=$('#relationshipResult'); if(!form||!base||!input||!result) return;
-    form.addEventListener('submit',(e)=>{
-      e.preventDefault();
-      const seed=String(base.value||'').trim();
-      const raw=String(input.value||'').trim();
-      const modes=checkedValues(form,'relationshipMode');
-      if(!modes.length) return empty(result,'선택이 비어 있습니다.','실행할 항목을 하나 이상 선택해 주세요.');
-      if(!seed||!raw) return empty(result,'입력값이 비어 있습니다.','기준값과 관련 기록을 같이 넣어 주세요.');
-      const domains=extractDomainsFromText(raw);
-      const codes=extractCodes(raw);
-      const handles=extractHandles(raw);
-      const lines=normalizeLines(raw);
-      const patternHits=(raw.match(/리뉴얼|변경|이전|통합|같은|공통|문의|고객센터|채널|코드/gi)||[]).length;
-      const score = Math.min(100, domains.length*12 + codes.length*8 + handles.length*10 + patternHits*4);
-      const cards=[];
-      const notes=[];
-      if(modes.includes('domain')){
-        cards.push({label:'도메인 겹침', value:domains.length?`${domains.length}개`:'없음', note:domains.slice(0,4).join(' · ')||'도메인 추출 없음'});
-        if(domains.length>=2) notes.push('도메인 신호가 여러 개 보이면 주소 변경 흐름과 함께 보는 쪽이 빠릅니다.');
-      }
-      if(modes.includes('code')){
-        cards.push({label:'코드 신호', value:codes.length?`${codes.length}개`:'없음', note:codes.slice(0,4).join(' · ')||'코드 추출 없음'});
-        if(codes.length) notes.push('가입코드가 반복되면 같은 운영선상인지 같이 확인하는 편이 좋습니다.');
-      }
-      if(modes.includes('channel')){
-        cards.push({label:'채널 겹침', value:handles.length?`${handles.length}개`:'없음', note:handles.slice(0,4).join(' · ')||'채널 추출 없음'});
-        if(handles.length) notes.push('채널 표기가 반복되면 공지문/후기와 교차로 보는 쪽이 안전합니다.');
-      }
-      if(modes.includes('pattern')){
-        cards.push({label:'운영 패턴', value:badgeBand(score), note:`문구·코드·채널 기반 유사도 ${score}`});
-        notes.push(score>=75 ? '겹치는 신호가 많아 같은 계열 가능성을 열어 두고 보는 편이 좋습니다.' : '신호는 있으나 확정 판단보다는 추가 기록 확보가 먼저입니다.');
-      }
-      let html=`<div class="toolkit-result-stack">`;
-      html += section('관계도 요약','',`<div class="score-grid"><div class="score-metric"><span>기준값</span><strong>${esc(seed)}</strong><small>비교 기준</small></div><div class="score-metric"><span>유사도</span><strong>${esc(score)}</strong><small>${esc(badgeBand(score))}</small></div><div class="score-metric"><span>기록 줄 수</span><strong>${lines.length}</strong><small>입력 기준</small></div></div>`);
-      if(cards.length) html += section('겹치는 신호','',cardsHtml(cards));
-      html += section('실전 메모','',`<ul class="toolkit-points">${notes.map((w)=>`<li>${esc(w)}</li>`).join('')}</ul>`);
-      html += '</div>';
-      setResult(result, html, 'toolkit-result-stack');
+  }
+
+
+  function engineSet(result, title, cards, notes = []) {
+    const metrics = `<div class="score-grid">${cards.map((item)=>`<div class="score-metric"><span>${esc(item.label)}</span><strong>${esc(item.value)}</strong><small>${esc(item.note||'')}</small></div>`).join('')}</div>`;
+    const noteHtml = notes.length ? `<ul class="toolkit-points">${notes.map((item)=>`<li>${esc(item)}</li>`).join('')}</ul>` : '';
+    setResult(result, `<div class="toolkit-result-stack">${section(title,'',metrics)}${noteHtml}</div>`, 'toolkit-result-stack');
+  }
+
+  function toolRiskLabel(score){ if(score >= 75) return '매우 높음'; if(score >= 55) return '높음'; if(score >= 30) return '보통'; return '낮음'; }
+
+  function engineSportsStudy({ market='moneyline', odds=[], capital=0, mode='neutral', line=0, labels=[] }={}) {
+    const engines = window.RavenEngines || {};
+    if(!engines.fairProbability) return null;
+    const fair = engines.fairProbability({ odds, market });
+    const outcomes = fair.fairProbabilities.map((prob, idx) => {
+      const ev = engines.expectedValue({ probability: prob, odds: odds[idx], stake: capital || 100000 });
+      const vol = engines.volatilityRisk({ probability: prob, odds: odds[idx], stake: Math.max(1000, (capital || 100000) * 0.01), plays: market === '1x2' ? 3 : 2 });
+      return { label: labels[idx] || `선택 ${idx+1}`, prob, probPct: prob * 100, odds: odds[idx], ev, vol, fairOdds: fair.fairOdds[idx] };
     });
+    const bestProb = outcomes.slice().sort((a,b)=>b.prob-a.prob)[0];
+    const bestEdge = outcomes.slice().sort((a,b)=>b.ev.evRate-a.ev.evRate)[0];
+    const score = outcomes.reduce((sum,item)=>sum+item.vol.volatilityScore,0) / Math.max(1,outcomes.length);
+    const bankroll = engines.bankrollPlan({ capital, probability: bestEdge.prob, odds: bestEdge.odds, mode, volatilityScore: score });
+    return { fair, outcomes, bestProb, bestEdge, volatilityScore: score, volatilityLabel: toolRiskLabel(score), bankroll, line };
   }
 
   function initBonusPolicy(){
     const form=$('#bonuspolicyForm'); const result=$('#bonusPolicyResult'); if(!form||!result) return;
     form.addEventListener('submit',(e)=>{
       e.preventDefault();
-      const focuses=checkedValues(form,'conditionFocus');
-      if(!focuses.length) return empty(result,'선택이 비어 있습니다.','보여줄 항목을 하나 이상 선택해 주세요.');
       const engines = window.RavenEngines || {};
       const deposit=Number($('#bonusDeposit')?.value||0); const percent=Number($('#bonusPercent')?.value||0); const cap=Number($('#bonusCap')?.value||0); const rolling=Number($('#bonusRolling')?.value||0); const maxWithdraw=Number($('#bonusMaxWithdraw')?.value||0);
       if(!deposit||!percent) return empty(result,'입력값이 비어 있습니다.','충전금과 퍼센트를 먼저 입력해 주세요.');
@@ -501,8 +316,6 @@ function initRelationshipMap(){
     const form=$('#slipcompareForm'); const result=$('#slipCompareResult'); if(!form||!result) return;
     form.addEventListener('submit',(e)=>{
       e.preventDefault();
-      const focuses=checkedValues(form,'conditionFocus');
-      if(!focuses.length) return empty(result,'선택이 비어 있습니다.','보여줄 항목을 하나 이상 선택해 주세요.');
       const engines = window.RavenEngines || {};
       const stake=Number($('#slipStake')?.value||0);
       const odds=[Number($('#slipOddsA')?.value||0),Number($('#slipOddsB')?.value||0),Number($('#slipOddsC')?.value||0)].filter(Boolean);
@@ -529,8 +342,6 @@ function initRelationshipMap(){
     const form=$('#bankrollplannerForm'); const result=$('#bankrollPlannerResult'); if(!form||!result) return;
     form.addEventListener('submit',(e)=>{
       e.preventDefault();
-      const focuses=checkedValues(form,'conditionFocus');
-      if(!focuses.length) return empty(result,'선택이 비어 있습니다.','보여줄 항목을 하나 이상 선택해 주세요.');
       const engines = window.RavenEngines || {};
       const total=Number($('#bankrollTotal')?.value||0); const unit=Number($('#bankrollUnit')?.value||0); const sessions=Number($('#bankrollSessions')?.value||0); const stop=Number($('#bankrollStop')?.value||0);
       if(!total||!unit||!sessions) return empty(result,'입력값이 비어 있습니다.','총 자금, 기준금, 회차 수를 입력해 주세요.');
@@ -548,6 +359,89 @@ function initRelationshipMap(){
     });
   }
 
+
+  function focusCenterMode(){
+    const params=new URL(location.href).searchParams; return params.get('focus')||'';
+  }
+
+  function initAiDomainAnalysis(){
+    const form=$('#aidomainanalysisForm'); const result=$('#aiDomainAnalysisResult'); if(!form||!result) return;
+    const seed=$('#aiDomainSeed'); const candidates=$('#aiDomainCandidates'); const evidence=$('#aiDomainEvidence');
+    const addr=$('#domainCheckAddress'); const timeline=$('#domainCheckTimeline'); const relation=$('#domainCheckRelation');
+    const focus = focusCenterMode();
+    if(focus==='address' && addr) addr.checked=true;
+    if(focus==='timeline' && timeline) timeline.checked=true;
+    if(focus==='relation' && relation) relation.checked=true;
+    form.addEventListener('submit',(e)=>{
+      e.preventDefault();
+      const base=String(seed?.value||'').trim(); const cand=String(candidates?.value||'').trim(); const raw=String(evidence?.value||'').trim();
+      if(!base && !cand && !raw) return empty(result,'입력값이 비어 있습니다.','기준값이나 근거 텍스트를 입력해 주세요.');
+      const parts=[];
+      const allLines = normalizeLines([base,cand,raw].filter(Boolean).join('\n'));
+      const domains = Array.from(new Set(allLines.flatMap((line)=>{const d=normalizeDomain(line); return d?[d]:extractDomainsFromText(line);}))).filter(Boolean);
+      const official = domains[0] || normalizeDomain(base) || '-';
+      if(addr?.checked){
+        const table=`<table class="toolkit-table"><thead><tr><th>후보</th><th>정규화</th><th>판정</th></tr></thead><tbody>${allLines.map((line)=>{ const d=normalizeDomain(line)||extractDomainsFromText(line)[0]||''; const verdict=!d?'확인 필요':(d===official||d.endsWith('.'+official)?'일치 후보':(d===official?'일치 후보':'추가 확인')); return `<tr><td>${esc(line)}</td><td>${esc(d||'-')}</td><td>${esc(verdict)}</td></tr>`; }).join('')}</tbody></table>`;
+        parts.push(section('주소 정합성','주소 후보를 같은 기준으로 먼저 묶습니다.',table));
+      }
+      if(timeline?.checked){
+        const rows=normalizeLines(raw||cand||base).map((line,idx)=>{ const date=(line.match(/20\d{2}[./-]\d{1,2}[./-]\d{1,2}|20\d{2}[./-]\d{1,2}|20\d{2}년\s*\d{1,2}월?/)||['기록 '+String(idx+1).padStart(2,'0')])[0]; const ds=extractDomainsFromText(line); const tag=/리뉴얼|변경|이전|신규|공지/i.test(line)?'변경':'참고'; return {date,line,ds,tag}; });
+        const flow=`<div class="timeline-list">${rows.map((r)=>`<article class="timeline-entry"><span class="mini-badge">${esc(r.date)}</span><strong>${esc(r.tag)}</strong><p>${esc(r.line)}</p>${r.ds.length?`<small>${esc(r.ds.join(' · '))}</small>`:''}</article>`).join('')}</div>`;
+        parts.push(section('변경 이력','리뉴얼·주소 변경 흐름을 시간순으로 정리합니다.',flow));
+      }
+      if(relation?.checked){
+        const codes=extractCodes(raw); const handles=extractHandles(raw); const score=Math.min(100, domains.length*12 + codes.length*8 + handles.length*10 + (/같은|공통|동일|리뉴얼|변경/i.test(raw)?18:0));
+        const cards=`<div class="score-grid"><div class="score-metric"><span>주소 신호</span><strong>${domains.length||0}개</strong><small>${esc(domains.slice(0,3).join(' · ')||'-')}</small></div><div class="score-metric"><span>코드 신호</span><strong>${codes.length||0}개</strong><small>${esc(codes.slice(0,3).join(' · ')||'-')}</small></div><div class="score-metric"><span>채널 신호</span><strong>${handles.length||0}개</strong><small>${esc(handles.slice(0,2).join(' · ')||'-')}</small></div><div class="score-metric"><span>유사도</span><strong>${score}점</strong><small>${toolRiskLabel(score)}</small></div></div>`;
+        parts.push(section('계열 신호','겹치는 운영 패턴을 추정으로 묶어 봅니다.',cards));
+      }
+      const memo = [`기준 후보는 ${official} 입니다.`, domains.length>1?'주소 후보가 여러 개여서 공지·채널 대조가 필요합니다.':'주소 후보가 많지 않습니다.', /리뉴얼|변경/i.test(raw)?'리뉴얼/변경 문구가 있어 흐름 점검이 필요합니다.':'큰 변경 문구는 많지 않습니다.'];
+      parts.push(section('실전 메모','지금 바로 확인할 포인트만 남깁니다.',`<ul class="toolkit-points">${memo.map((m)=>`<li>${esc(m)}</li>`).join('')}</ul><div class="toolkit-actions"><a class="safety-link-btn ghost" href="/tools/notice-review/">공지·후기 분석</a><a class="safety-link-btn ghost" href="/tools/official-check/">공식주소 체크</a></div>`));
+      setResult(result, parts.join(''), 'toolkit-result-stack');
+    });
+  }
+
+  function syncSportsCenterFields(){
+    const mode=$('#centerMode'); if(!mode) return;
+    const val=mode.value;
+    $$('[data-center-wrap]').forEach((el)=>el.hidden=false);
+    const hide=(keys)=>keys.forEach((k)=>{ const el=$(`[data-center-wrap="${k}"]`); if(el) el.hidden=true; });
+    if(val==='condition'){ hide(['market','line','oddC']); }
+    if(val==='casino'){ hide(['market','line','oddC','percent','rolling','maxWithdraw']); }
+    if(val==='mini'){ hide(['market','line','oddA','oddB','oddC','percent','rolling','maxWithdraw']); }
+    if(val==='sports'){ hide(['percent','rolling','maxWithdraw']); }
+  }
+
+  function initAiSportsOddsAnalysis(){
+    const form=$('#aisportsoddsanalysisForm'); const result=$('#aiSportsOddsAnalysisResult'); if(!form||!result) return;
+    const focus = focusCenterMode();
+    const mode=$('#centerMode');
+    if(focus==='condition') mode.value='condition';
+    else if(focus==='casino') mode.value='casino';
+    else if(focus==='mini') mode.value='mini';
+    else mode.value='sports';
+    const market=$('#centerMarket');
+    if(focus==='ou') market.value='ou'; else if(focus==='hcp') market.value='hcp';
+    syncSportsCenterFields();
+    mode.addEventListener('change', syncSportsCenterFields);
+    form.addEventListener('submit',(e)=>{
+      e.preventDefault(); const engines=window.RavenEngines||{}; const m=mode.value; const showFair=$('#centerShowFair')?.checked; const showEv=$('#centerShowEv')?.checked; const showRisk=$('#centerShowRisk')?.checked; const showBank=$('#centerShowBank')?.checked;
+      if(m==='condition'){
+        const deposit=Number($('#centerCapital')?.value||0); const percent=Number($('#centerPercent')?.value||0); const rolling=Number($('#centerRolling')?.value||0); const maxWithdraw=Number($('#centerMaxWithdraw')?.value||0); const rules=String($('#centerRules')?.value||'').trim();
+        if(!deposit||!percent) return empty(result,'입력값이 비어 있습니다.','충전금과 보너스 %를 입력해 주세요.');
+        const bonus=deposit*(percent/100); const total=deposit+bonus; const needRolling=total*Math.max(0,rolling); const effective=maxWithdraw?Math.min(total,maxWithdraw):total; const p=Math.max(0.32, Math.min(0.78, (effective/Math.max(total,1))*0.7)); const ev=engines.expectedValue({ probability:p, odds:1.9, stake:deposit}); const burden=clamp(((needRolling/Math.max(total,1))*4.8)+(/양방|제한|최대베팅|몰수|회수/.test(rules)?20:0),0,100); const bank=engines.bankrollPlan({ capital:deposit, probability:p, odds:1.9, mode: burden>60?'safe':'neutral', volatilityScore: burden });
+        const cards=[]; if(showFair) cards.push({label:'보너스', value:`${Math.round(bonus).toLocaleString()}원`, note:`총 사용금 ${Math.round(total).toLocaleString()}원`}); if(showEv) cards.push({label:'실수령 기준', value:`${Math.round(effective).toLocaleString()}원`, note:`EV ${(ev.evRate*100).toFixed(1)}%`}); if(showRisk) cards.push({label:'조건 부담', value:toolRiskLabel(burden), note:`필요 롤링 ${Math.round(needRolling).toLocaleString()}원`}); if(showBank) cards.push({label:'권장 비중', value: bank.amount?`${Math.round(bank.amount).toLocaleString()}원`:`${(bank.ratio*100).toFixed(1)}%`, note:bank.label});
+        engineSet(result,'AI 조건 해석',cards,['최대 출금 제한은 실익을 직접 깎습니다.','규정 문구에 제한/몰수 표현이 있으면 더 보수적으로 봐야 합니다.']); return;
+      }
+      if(m==='sports'){
+        const odds=[Number($('#centerOddA')?.value||0),Number($('#centerOddB')?.value||0),Number($('#centerOddC')?.value||0)].filter(Boolean); const capital=Number($('#centerCapital')?.value||0); const risk=$('#centerRisk')?.value||'neutral'; const mk=$('#centerMarket')?.value||'1x2'; if(odds.length<2) return empty(result,'입력값이 비어 있습니다.','배당 두 개 이상을 입력해 주세요.'); const labels=mk==='1x2'?['홈','무','원정']:mk==='moneyline'?['홈','원정']:mk==='ou'?['오버','언더']:['홈','원정']; const study=engineSportsStudy({ market:mk, odds, capital, mode:risk, line:Number($('#centerLine')?.value||0), labels}); const cards=[]; if(showFair) cards.push({label:'공정확률', value:`${study.bestProb.label} ${(study.bestProb.prob*100).toFixed(1)}%`, note:`북마진 ${(study.fair.margin*100).toFixed(1)}%`}); if(showEv) cards.push({label:'기대값', value:`${(study.bestEdge.ev.evRate*100).toFixed(1)}%`, note:study.bestEdge.label}); if(showRisk) cards.push({label:'변동성', value:study.volatilityLabel, note:`연패위험 ${(study.outcomes[0].vol.streakLossProb*100).toFixed(1)}%`}); if(showBank) cards.push({label:'추천 비중', value:study.bankroll.amount?`${Math.round(study.bankroll.amount).toLocaleString()}원`:`${(study.bankroll.ratio*100).toFixed(1)}%`, note:study.bankroll.label}); engineSet(result,'AI 스포츠 배당분석',cards,[`${study.bestProb.label} 쪽 공정확률이 조금 더 앞섭니다.`, `${study.bestEdge.label} 기준으로는 ${study.bestEdge.label} 선택을 먼저 볼 수 있습니다.`]); return;
+      }
+      if(m==='casino'){
+        const rtp=Number($('#centerOddA')?.value||$('#centerOddA').value||0) || Number($('#centerOddA')?.value||0); const capital=Number($('#centerCapital')?.value||0); const unit=Number($('#centerUnit')?.value||0); const rounds=Number($('#centerRounds')?.value||0); const risk=$('#centerRisk')?.value||'neutral'; const variance = Number($('#centerOddB')?.value||0) > 2 ? 'high':'mid'; if(!capital||!unit) return empty(result,'입력값이 비어 있습니다.','현재 자본과 1회 금액을 입력해 주세요.'); const rr=Number($('#centerOddA')?.value||96); const p=Math.max(0.35, Math.min(0.98, rr/100)); const ev=engines.expectedValue({ probability:p, odds:1.0+(rr/100), stake:unit}); const volScore=variance==='high'?78:48; const bank=engines.bankrollPlan({ capital, probability:p, odds:1.85, mode:risk, volatilityScore:volScore}); const cards=[]; if(showFair) cards.push({label:'RTP 기준', value:`${rr.toFixed(1)}%`, note:'세션 기준'}); if(showEv) cards.push({label:'기대값', value:`${(ev.evRate*100).toFixed(1)}%`, note:'RTP 참고'}); if(showRisk) cards.push({label:'변동성', value:toolRiskLabel(volScore), note:'세션 흔들림'}); if(showBank) cards.push({label:'권장 비중', value:bank.amount?`${Math.round(bank.amount).toLocaleString()}원`:`${(bank.ratio*100).toFixed(1)}%`, note:bank.label}); engineSet(result,'카지노 해석',cards,['RTP가 높아 보여도 변동성이 크면 체감 손실 폭이 커질 수 있습니다.','1회 금액은 총자본의 5% 이내가 더 안전합니다.']); return;
+      }
+      const capital=Number($('#centerCapital')?.value||0); const unit=Number($('#centerUnit')?.value||0); const rounds=Number($('#centerRounds')?.value||0); const risk=$('#centerRisk')?.value||'neutral'; if(!capital||!unit||!rounds) return empty(result,'입력값이 비어 있습니다.','자본, 1회 금액, 회차를 입력해 주세요.'); const collapse=Math.min(99,(unit*rounds/Math.max(1,capital))*100); const bank=engines.bankrollPlan({ capital, probability:0.5, odds:1.9, mode:risk, volatilityScore:collapse}); const cards=[]; if(showFair) cards.push({label:'회차 예산', value:`${Math.round((capital-bank.stopLoss)/Math.max(1,rounds)).toLocaleString()}원`, note:`목표 ${rounds}회`}); if(showEv) cards.push({label:'운영 판단', value:collapse>70?'보수 접근':'운영 가능', note:'자본 대비 회차'}); if(showRisk) cards.push({label:'붕괴 위험', value:toolRiskLabel(collapse), note:`압박 ${collapse.toFixed(0)}%`}); if(showBank) cards.push({label:'권장 비중', value:bank.amount?`${Math.round(bank.amount).toLocaleString()}원`:`${(bank.ratio*100).toFixed(1)}%`, note:bank.label}); engineSet(result,'미니게임 해석',cards,['단계 베팅보다 고정금 분배가 훨씬 안정적입니다.','회차가 늘수록 기대수익보다 붕괴 위험을 먼저 봐야 합니다.']);
+    });
+  }
+
   function initAiGameLab(){
     const form=$('#aigamelabForm'); const result=$('#aiGameLabResult'); if(!form||!result) return;
     const mode=$('#aiGameMode'); const market=$('#aiGameMarket');
@@ -561,8 +455,6 @@ function initRelationshipMap(){
     mode.addEventListener('change', syncMode); market.addEventListener('change', syncMode); syncMode();
     form.addEventListener('submit',(e)=>{
       e.preventDefault();
-      const focuses=checkedValues(form,'conditionFocus');
-      if(!focuses.length) return empty(result,'선택이 비어 있습니다.','보여줄 항목을 하나 이상 선택해 주세요.');
       const engines = window.RavenEngines || {};
       const m=mode.value; const risk=$('#aiGameRisk')?.value||'neutral';
       if(m==='sports'){
@@ -618,8 +510,6 @@ function initRelationshipMap(){
     const form=$('#aiconditionlabForm'); const result=$('#aiConditionLabResult'); if(!form||!result) return;
     form.addEventListener('submit',(e)=>{
       e.preventDefault();
-      const focuses=checkedValues(form,'conditionFocus');
-      if(!focuses.length) return empty(result,'선택이 비어 있습니다.','보여줄 항목을 하나 이상 선택해 주세요.');
       const engines = window.RavenEngines || {};
       const deposit=Number($('#aiCondDeposit')?.value||0); const percent=Number($('#aiCondPercent')?.value||0); const cap=Number($('#aiCondCap')?.value||0); const rolling=Number($('#aiCondRolling')?.value||0); const maxWithdraw=Number($('#aiCondMaxWithdraw')?.value||0); const capital=Number($('#aiCondCapital')?.value||0); const rules=String($('#aiCondRules')?.value||'').trim();
       if(!deposit||!percent) return empty(result,'입력값이 비어 있습니다.','충전금과 보너스 퍼센트를 입력해 주세요.');
@@ -682,6 +572,8 @@ function initRelationshipMap(){
     initBonusPolicy();
     initSlipCompare();
     initBankrollPlanner();
+    initAiDomainAnalysis();
+    initAiSportsOddsAnalysis();
     initAiGameLab();
     initAiConditionLab();
     initOuCalculator();
