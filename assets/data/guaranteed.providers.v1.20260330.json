@@ -8,7 +8,7 @@
       "officialUrl": "https://ddk-2024.com/",
       "officialDomain": "ddk-2024.com",
       "code": "DDK888",
-      "oneLine": "코드 복사 후 빠르게 공식 주소로 이동하는 흐름에 맞춘 카드입니다.",
+      "oneLine": "",
       "benefits": [
         "공식 주소 확인",
         "코드 즉시 복사",
@@ -19,8 +19,11 @@
         "빠른이동",
         "모바일"
       ],
+      "pending": false,
       "imageUrl": "/assets/provider-media/ddk-card.webp",
-      "imageAlt": "땅콩 광고 카드 이미지"
+      "imageAlt": "땅콩 광고 이미지",
+      "imagePosition": "center 45%",
+      "imageScale": "1.16"
     },
     {
       "slug": "chilbet",
@@ -29,7 +32,7 @@
       "officialUrl": "https://82clf.com/",
       "officialDomain": "82clf.com",
       "code": "6767",
-      "oneLine": "구글링과 도메인 조회 뒤 마지막에 참고하는 보증업체 카드입니다.",
+      "oneLine": "",
       "benefits": [
         "검색 후 참고",
         "공식 주소 확인",
@@ -41,7 +44,10 @@
         "터치최적화"
       ],
       "imageUrl": "/assets/provider-media/chilbet-card.webp",
-      "imageAlt": "칠벳 광고 카드 이미지"
+      "imageAlt": "칠벳 광고 이미지",
+      "pending": false,
+      "imagePosition": "center 40%",
+      "imageScale": "1.14"
     },
     {
       "slug": "yangsim",
@@ -50,7 +56,7 @@
       "officialUrl": "https://평생양심.com/",
       "officialDomain": "평생양심.com",
       "code": "KAKA",
-      "oneLine": "공식 주소와 코드를 짧게 확인하고 바로 이동하는 타입의 카드입니다.",
+      "oneLine": "",
       "benefits": [
         "공식 주소 확인",
         "코드 즉시 복사",
@@ -62,7 +68,10 @@
         "모바일"
       ],
       "imageUrl": "/assets/provider-media/yangsim-card.webp",
-      "imageAlt": "양심 광고 카드 이미지"
+      "imageAlt": "양심 광고 이미지",
+      "pending": false,
+      "imagePosition": "center 42%",
+      "imageScale": "1.15"
     },
     {
       "slug": "avengers",
@@ -71,7 +80,7 @@
       "officialUrl": "https://av-bet.com/",
       "officialDomain": "av-bet.com",
       "code": "6789",
-      "oneLine": "코드 확인 후 공식 주소로 바로 이동할 수 있게 정리한 카드입니다.",
+      "oneLine": "",
       "benefits": [
         "공식 주소 확인",
         "코드 즉시 복사",
@@ -84,7 +93,9 @@
       ],
       "pending": false,
       "imageUrl": "/assets/provider-media/avengers-card.webp",
-      "imageAlt": "어벤져스 광고 카드 이미지"
+      "imageAlt": "어벤져스 광고 이미지",
+      "imagePosition": "center 38%",
+      "imageScale": "1.15"
     },
     {
       "slug": "diaz",
@@ -93,7 +104,7 @@
       "officialUrl": "https://diz-top.com/",
       "officialDomain": "diz-top.com",
       "code": "crow",
-      "oneLine": "코드 복사 후 공식 주소를 바로 확인할 수 있도록 정리한 카드입니다.",
+      "oneLine": "",
       "benefits": [
         "스포츠·카지노 이용",
         "코드 즉시 복사",
@@ -105,67 +116,10 @@
         "빠른이동"
       ],
       "imageUrl": "/assets/provider-media/diaz-card.webp",
-      "imageAlt": "DIAZ 광고 카드 이미지"
-    },
-    {
-      "slug": "vegas",
-      "name": "추가 제휴 준비중",
-      "theme": "slate",
-      "officialUrl": "#",
-      "officialDomain": "준비중",
-      "code": "준비중",
-      "oneLine": "추가 광고 승인 후 공식 주소와 가입코드가 순차적으로 들어갑니다.",
-      "benefits": [
-        "추가 슬롯 확보",
-        "정보 대기",
-        "승인 후 노출"
-      ],
-      "tags": [
-        "준비중",
-        "대기",
-        "추가예정"
-      ],
-      "pending": true
-    },
-    {
-      "slug": "tronbet",
-      "name": "추가 제휴 준비중",
-      "theme": "slate",
-      "officialUrl": "#",
-      "officialDomain": "준비중",
-      "code": "준비중",
-      "oneLine": "추가 광고 승인 후 공식 주소와 가입코드가 순차적으로 들어갑니다.",
-      "benefits": [
-        "추가 슬롯 확보",
-        "정보 대기",
-        "승인 후 노출"
-      ],
-      "tags": [
-        "준비중",
-        "대기",
-        "추가예정"
-      ],
-      "pending": true
-    },
-    {
-      "slug": "more-partners",
-      "name": "추가 제휴 준비중",
-      "theme": "slate",
-      "officialUrl": "#",
-      "officialDomain": "준비중",
-      "code": "준비중",
-      "oneLine": "추가 광고 승인 후 공식 주소와 가입코드가 순차적으로 들어갑니다.",
-      "benefits": [
-        "추가 슬롯 확보",
-        "정보 대기",
-        "승인 후 노출"
-      ],
-      "tags": [
-        "준비중",
-        "대기",
-        "추가예정"
-      ],
-      "pending": true
+      "imageAlt": "DIAZ 광고 이미지",
+      "pending": false,
+      "imagePosition": "center 40%",
+      "imageScale": "1.12"
     }
   ]
 }
