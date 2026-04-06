@@ -71,7 +71,7 @@
       "imageAlt": "양심 광고 이미지",
       "pending": false,
       "imagePosition": "center 40%",
-      "imageScale": 2.00
+      "imageScale": 2.20
     },
     {
       "slug": "avengers",
@@ -95,7 +95,7 @@
       "imageUrl": "/assets/provider-media/avengers-card.webp",
       "imageAlt": "어벤져스 광고 이미지",
       "imagePosition": "center 42%",
-      "imageScale": 1.70
+      "imageScale": 1.80
     },
     {
       "slug": "diaz",
