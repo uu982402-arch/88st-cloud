@@ -23,7 +23,7 @@
       "imageUrl": "/assets/provider-media/ddk-card.webp",
       "imageAlt": "땅콩 광고 이미지",
       "imagePosition": "center center",
-      "imageScale": 0.88
+      "imageScale": 0.90
     },
     {
       "slug": "chilbet",
@@ -47,7 +47,7 @@
       "imageAlt": "칠벳 광고 이미지",
       "pending": false,
       "imagePosition": "center 42%",
-      "imageScale": 1.44
+      "imageScale": 1.50
     },
     {
       "slug": "yangsim",
@@ -71,7 +71,7 @@
       "imageAlt": "양심 광고 이미지",
       "pending": false,
       "imagePosition": "center 40%",
-      "imageScale": 1.46
+      "imageScale": 1.50
     },
     {
       "slug": "avengers",
@@ -95,7 +95,7 @@
       "imageUrl": "/assets/provider-media/avengers-card.webp",
       "imageAlt": "어벤져스 광고 이미지",
       "imagePosition": "center 42%",
-      "imageScale": 1.43
+      "imageScale": 1.50
     },
     {
       "slug": "diaz",
@@ -119,7 +119,7 @@
       "imageAlt": "DIAZ 광고 이미지",
       "pending": false,
       "imagePosition": "center 38%",
-      "imageScale": 1.38
+      "imageScale": 1.50
     }
   ]
 }
