@@ -198,3 +198,46 @@
   .tool-panel--primary-main .tool-fixed-result--tall{min-height:230px;max-height:310px}
   .tool-panel--primary .tool-scroll-box,.tool-panel--primary-main .tool-scroll-box{max-height:240px}
 }
+
+/* tools hub wording and legacy polish pass */
+.tools-hub-intro{align-items:center}
+.tools-hub-intro h1{font-size:clamp(22px,2.6vw,28px);letter-spacing:-.02em}
+.tools-hub-hero{gap:14px;padding:16px 18px;border-radius:22px;background:linear-gradient(180deg,#ffffff 0%,#f7f9fc 100%);border:1px solid #d9e1ea;box-shadow:0 10px 28px rgba(15,23,42,.04)}
+.tool-page-meta{gap:8px}
+.tool-page-meta .mini-badge{background:#fff;border:1px solid var(--line);color:#405064}
+.tool-anchor-row{gap:8px}
+.tool-anchor-chip{padding:10px 13px;font-size:12px}
+.tool-status-grid{gap:10px}
+.tool-status-card{padding:14px 16px;border-radius:18px;gap:6px;min-height:auto;box-shadow:none;background:#fff}
+.tool-status-card .tool-badge{display:inline-flex;width:max-content;padding:6px 9px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);font-size:11px;line-height:1;color:#556274}
+.tool-status-card h2{font-size:16px;letter-spacing:-.01em}
+.tool-section-block>.section-head h2{font-size:20px;letter-spacing:-.02em}
+
+#tools-legacy details.faq-item{border-radius:20px;overflow:hidden;background:linear-gradient(180deg,#fff 0%,#fbfcfe 100%)}
+#tools-legacy details.faq-item + details.faq-item{margin-top:12px}
+#tools-legacy details.faq-item summary{padding:16px 18px;background:#f7f9fc;border-bottom:1px solid transparent}
+#tools-legacy details.faq-item[open] summary{border-bottom-color:var(--line)}
+#tools-legacy details.faq-item div{padding:14px 18px 18px}
+.legacy-summary-row{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%}
+.legacy-summary-row>span{font-size:15px;font-weight:800;color:var(--text)}
+.legacy-summary-row>strong{display:inline-flex;align-items:center;justify-content:center;min-width:38px;padding:6px 10px;border-radius:999px;background:#fff;border:1px solid var(--line);font-size:11px;line-height:1;color:#556274}
+.legacy-tools-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding-top:0}
+.legacy-tool-link{display:grid;gap:8px;align-content:start;min-height:132px;padding:14px 15px;border-radius:18px;background:linear-gradient(180deg,#ffffff 0%,#f8fafd 100%);border:1px solid #dde5ee;box-shadow:none;transition:transform .14s ease,border-color .14s ease,box-shadow .14s ease}
+.legacy-tool-link:hover{transform:translateY(-1px);border-color:#c6d3e2;box-shadow:0 10px 22px rgba(15,23,42,.05)}
+.legacy-tool-link .tool-badge{display:inline-flex;width:max-content;padding:6px 8px;border-radius:999px;background:#eef3f8;color:#506174;font-size:10px;line-height:1}
+.legacy-tool-link h3{margin:0;font-size:15px;letter-spacing:-.01em}
+.legacy-tool-link p{font-size:12px;line-height:1.45}
+
+@media (min-width:1181px){
+  .legacy-tools-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media (max-width:760px){
+  .tools-hub-hero{padding:14px;border-radius:18px}
+  .tool-status-card{padding:13px 14px}
+  .tool-section-block>.section-head h2{font-size:18px}
+  #tools-legacy details.faq-item summary{padding:14px 15px}
+  #tools-legacy details.faq-item div{padding:12px 15px 15px}
+  .legacy-summary-row>span{font-size:14px}
+  .legacy-tools-grid{grid-template-columns:1fr;gap:10px}
+  .legacy-tool-link{min-height:auto;padding:13px 14px;border-radius:16px}
+}
