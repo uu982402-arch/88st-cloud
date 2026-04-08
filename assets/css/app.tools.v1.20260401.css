@@ -111,3 +111,57 @@
 .tool-ratio-chip{display:inline-flex;align-items:center;gap:6px;padding:8px 11px;border-radius:999px;background:#fff;border:1px solid var(--line);font-size:12px;font-weight:800;color:var(--text)}
 .tool-ratio-chip strong{font-size:12px;color:var(--brand)}
 @media (max-width:760px){.tool-scroll-box{max-height:300px;padding:10px}}
+
+
+/* tools hub compact pass */
+.tool-panel{gap:10px;padding:16px;border-radius:20px}
+.tool-form-card{gap:10px}
+.tool-subblock{gap:10px;padding-top:4px}
+.tool-inline-actions{gap:8px}
+.tool-chip-row{gap:6px}
+.tool-chip{padding:7px 10px;font-size:12px}
+.tool-panel .desktop-calc-field{gap:4px}
+.tool-panel .desktop-calc-field span{font-size:11px}
+.tool-panel .safety-input,.tool-panel .safety-select,.tool-panel .desktop-calc-field input,.tool-panel .desktop-calc-field select{min-height:40px;padding:0 12px;border-radius:12px;font-size:14px}
+.tool-panel .safety-textarea{min-height:92px;padding:12px 14px;border-radius:14px}
+.tool-panel .safety-link-btn,.tool-panel .safety-copy-btn{min-height:38px;padding:10px 13px;border-radius:12px;font-size:13px}
+.tool-panel .section-head h3{font-size:17px}
+.tool-panel .section-head{gap:6px}
+.tool-panel .score-grid{gap:8px}
+.tool-panel .score-metric{padding:10px 12px;border-radius:14px;gap:3px;box-shadow:none}
+.tool-panel .score-metric strong{font-size:16px}
+.tool-panel .score-metric small,.tool-panel .score-metric span{font-size:11px}
+.tool-panel .toolkit-table th,.tool-panel .toolkit-table td,.tool-panel .tool-storage-table th,.tool-panel .tool-storage-table td{padding:8px 10px;font-size:12px}
+.tool-panel .tool-storage-card,.tool-panel .tool-storage-row{padding:11px 12px;border-radius:14px;gap:6px}
+.tool-panel .tool-storage-card h4,.tool-panel .tool-storage-row h4{font-size:14px}
+.tool-panel .tool-storage-meta{gap:6px;font-size:11px}
+.tool-panel .tool-output-box pre,.tool-panel .toolkit-copy-box pre{padding:11px 12px;font-size:12px;line-height:1.55;border-radius:14px}
+.tool-fixed-result{display:grid;gap:10px;min-height:220px;max-height:300px;overflow:auto;scrollbar-gutter:stable;padding:10px;border-radius:16px;border:1px solid var(--line);background:var(--surface-2)}
+.tool-fixed-result--tall{min-height:250px;max-height:360px}
+.tool-fixed-result.empty-state{display:grid;align-content:start;gap:6px}
+.tool-fixed-result.empty-state strong{font-size:14px}
+.tool-fixed-result > *{min-width:0}
+.tool-fixed-result .glass-card,.tool-fixed-result .card,.tool-fixed-result .helper-box{padding:12px;border-radius:14px;box-shadow:none}
+.tool-fixed-result .section-head h2{font-size:15px}
+.tool-fixed-result .toolkit-note{padding:10px 12px;border-radius:14px}
+.tool-fixed-result .tool-inline-actions{padding-top:2px}
+.tool-fixed-result .score-grid{gap:8px}
+.tool-fixed-result .score-metric{padding:10px 12px;border-radius:14px;box-shadow:none}
+.tool-fixed-result .score-metric strong{font-size:15px}
+.tool-fixed-result .score-metric span,.tool-fixed-result .score-metric small{font-size:11px}
+.tool-fixed-result .toolkit-table th,.tool-fixed-result .toolkit-table td{padding:8px 10px;font-size:12px}
+.tool-fixed-result .tool-output-box pre{padding:10px 12px;font-size:12px;line-height:1.55}
+.tool-scroll-box{max-height:300px;padding:10px;border-radius:16px;scrollbar-gutter:stable}
+.tool-scroll-box .tool-storage-list{gap:10px}
+.tool-ratio-line{gap:6px}
+.tool-ratio-chip{padding:7px 10px;font-size:11px}
+.tool-ratio-chip strong{font-size:11px}
+@media (max-width:760px){
+  .tool-panel{padding:14px;gap:9px}
+  .tool-form-card{gap:8px}
+  .tool-panel .safety-input,.tool-panel .safety-select,.tool-panel .desktop-calc-field input,.tool-panel .desktop-calc-field select{min-height:38px;padding:0 11px;font-size:13px}
+  .tool-panel .safety-link-btn,.tool-panel .safety-copy-btn{min-height:36px;padding:9px 12px;font-size:12px}
+  .tool-fixed-result{min-height:190px;max-height:260px;padding:9px}
+  .tool-fixed-result--tall{min-height:220px;max-height:300px}
+  .tool-scroll-box{max-height:240px;padding:8px}
+}
