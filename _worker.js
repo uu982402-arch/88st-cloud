@@ -115,74 +115,18 @@ if (path === '/community' || path.startsWith('/community/')) {
         return new Response(res.body, { status: res.status, headers: h });
       }
 
-      const legacyExactRedirects = new Map([
-        ['/blog', '/blog/'],
-        ['/tools', '/tools/'],
-        ['/guaranteed', '/guaranteed/'],
-        ['/muktu-police', '/muktu-police/'],
-        ['/muktu-police/check', '/muktu-police/check/'],
-        ['/muktu-police/search', '/muktu-police/search/'],
-        ['/muktu-police/brand', '/guaranteed/'],
-        ['/muktu-police/compare', '/tools/'],
-        ['/muktu-police/report', '/muktu-police/review/'],
-        ['/muktu-police/query', '/blog/'],
-        ['/googling', '/muktu-police/search/'],
-        ['/domain-check', '/muktu-police/check/'],
-        ['/admin', '/admin/'],
-        ['/ops', '/ops/'],
-        ['/cert', '/guaranteed/'],
-        ['/guide', '/blog/'],
-        ['/community', '/muktu-police/'],
-        ['/slot', '/tools/'],
-        ['/bonus', '/tools/'],
-        ['/strategy', '/tools/'],
-        ['/news', '/blog/'],
-        ['/play-guides', '/blog/'],
-        ['/latest', '/'],
-        ['/popular', '/'],
-        ['/archive', '/']
-      ]);
-      const exactRedirect = legacyExactRedirects.get(path);
-      if (exactRedirect) {
-        return Response.redirect(url.origin + exactRedirect, 301);
-      }
 
-      const gonePrefixes = ['/archive/', '/latest/', '/popular/'];
-      const retiredPrefixes = ['/slot/', '/bonus/', '/strategy/', '/news/', '/play-guides/'];
-      if (gonePrefixes.some((prefix) => path.startsWith(prefix))) {
-        return gone({ ok: false, error: 'gone', path, targetHint: '/' }, request);
-      }
-      if (retiredPrefixes.some((prefix) => path.startsWith(prefix))) {
-        return gone({ ok: false, error: 'gone', path, targetHint: path.startsWith('/news/') || path.startsWith('/play-guides/') ? '/blog/' : '/tools/' }, request);
-      }
-      if (path.startsWith('/cert/')) {
-        return Response.redirect(url.origin + '/guaranteed/', 301);
-      }
-      if (path.startsWith('/community/')) {
-        return Response.redirect(url.origin + '/muktu-police/', 301);
-      }
-      if (path.startsWith('/muktu-police/brand/')) {
-        return Response.redirect(url.origin + '/guaranteed/', 301);
-      }
-      if (path.startsWith('/muktu-police/compare/')) {
-        return Response.redirect(url.origin + '/tools/', 301);
-      }
-      if (path.startsWith('/muktu-police/report/')) {
-        return Response.redirect(url.origin + '/muktu-police/review/', 301);
-      }
-      if (path.startsWith('/muktu-police/query/')) {
-        return Response.redirect(url.origin + '/blog/', 301);
+      // Serve directory index routes directly to avoid redirect loops when platform trailing-slash rules
+      // and custom redirect rules disagree. This keeps legacy functionality while eliminating slash-only loops.
+      const directIndexAsset = DIRECT_INDEX_ASSET_MAP[path];
+      if (directIndexAsset) {
+        const assetUrl = new URL(directIndexAsset, url.origin);
+        const assetReq = new Request(assetUrl.toString(), request);
+        return env.ASSETS.fetch(assetReq);
       }
 
       // Static fallthrough
-      const assetResponse = await env.ASSETS.fetch(request);
-      if (assetResponse.status === 404) {
-        const accept = String(request.headers.get('accept') || '').toLowerCase();
-        if (accept.includes('text/html')) {
-          return notFoundHtml(url);
-        }
-      }
-      return assetResponse;
+      return env.ASSETS.fetch(request);
 
     } catch (e) {
       return json({ ok: false, error: 'worker_error', message: String(e?.message || e) }, 500);
@@ -197,6 +141,17 @@ if (path === '/community' || path.startsWith('/community/')) {
   }
 };
 
+
+const DIRECT_INDEX_ASSET_MAP = Object.freeze({
+  '/blog': '/blog/index.html',
+  '/tools': '/tools/index.html',
+  '/guaranteed': '/guaranteed/index.html',
+  '/admin': '/admin/index.html',
+  '/ops': '/ops/index.html',
+  '/muktu-police': '/muktu-police/index.html',
+  '/muktu-police/check': '/muktu-police/check/index.html',
+  '/muktu-police/search': '/muktu-police/search/index.html'
+});
 
 function corsHeaders(request) {
   // Same-origin is expected, but keep permissive for safety.
@@ -229,22 +184,6 @@ function gone(body, request) {
     return new Response(`<!DOCTYPE html><html lang="ko"><meta charset="utf-8"><meta name="robots" content="noindex,nofollow"><title>410 Gone</title><body style="background:#07111f;color:#eef4ff;font-family:system-ui;padding:32px"><h1>정리된 경로입니다.</h1><p>이 페이지는 더 이상 사용하지 않습니다.</p><p><a href="/" style="color:#8fb6ff">메인으로 이동</a></p></body></html>`, { status: 410, headers: { 'content-type': 'text/html; charset=utf-8', 'cache-control': 'no-store', 'x-robots-tag': 'noindex, nofollow' } });
   }
   return new Response(JSON.stringify(body), { status: 410, headers });
-}
-
-function notFoundHtml(url) {
-  const html = `<!DOCTYPE html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>404 Not Found</title><style>body{margin:0;background:#f4f6f8;color:#0f172a;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif}main{max-width:760px;margin:0 auto;padding:56px 20px}section{background:#fff;border:1px solid #d8e0e8;border-radius:20px;padding:28px;box-shadow:0 12px 28px rgba(15,23,42,.06)}h1{margin:0 0 12px;font-size:32px}p{margin:0 0 10px;line-height:1.65}.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}.btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 16px;border-radius:12px;text-decoration:none;font-weight:700}.btn.primary{background:#1e3a5f;color:#fff}.btn.secondary{background:#eef2f7;color:#0f172a}</style></head><body><main><section><h1>페이지를 찾을 수 없습니다.</h1><p>요청한 주소가 이동되었거나 현재는 사용하지 않는 경로일 수 있습니다.</p><p>주소: <strong>${escapeHtmlLite(url.pathname)}</strong></p><div class="actions"><a class="btn primary" href="/">메인으로 이동</a><a class="btn secondary" href="/blog/">블로그 보기</a><a class="btn secondary" href="/tools/">도구 보기</a><a class="btn secondary" href="/guaranteed/">보증업체 보기</a></div></section></main></body></html>`;
-  return new Response(html, {
-    status: 404,
-    headers: {
-      'content-type': 'text/html; charset=utf-8',
-      'cache-control': 'no-store',
-      'x-robots-tag': 'noindex, nofollow'
-    }
-  });
-}
-
-function escapeHtmlLite(value) {
-  return String(value || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
 
 function getDB(env) {

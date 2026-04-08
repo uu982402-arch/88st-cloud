@@ -1,11 +1,7 @@
-/blog              /blog/ 301
-/tools             /tools/ 301
-/guaranteed        /guaranteed/ 301
+# NOTE: directory index routes like /blog, /tools, /guaranteed are served directly by _worker.js to avoid trailing-slash redirect loops.
+
 /googling          /muktu-police/search/ 301
 /domain-check      /muktu-police/check/ 301
-/muktu-police      /muktu-police/ 301
-/muktu-police/check /muktu-police/check/ 301
-/muktu-police/search /muktu-police/search/ 301
 /muktu-police/brand /guaranteed/ 301
 /muktu-police/brand/* /guaranteed/ 301
 /muktu-police/compare /tools/ 301
@@ -14,8 +10,6 @@
 /muktu-police/report/* /muktu-police/review/ 301
 /muktu-police/query /blog/ 301
 /muktu-police/query/* /blog/ 301
-/admin             /admin/ 301
-/ops               /ops/ 301
 /slot              /tools/ 301
 /slot/*            /tools/ 301
 /bonus             /tools/ 301
