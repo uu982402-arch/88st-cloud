@@ -165,3 +165,36 @@
   .tool-fixed-result--tall{min-height:220px;max-height:300px}
   .tool-scroll-box{max-height:240px;padding:8px}
 }
+
+
+/* priority emphasis pass */
+.tools-workbench-grid--priority{grid-template-columns:repeat(12,minmax(0,1fr));align-items:stretch;gap:16px}
+.tools-workbench-grid--priority>.tool-panel{min-height:100%}
+.tool-panel--primary{padding:18px;border-radius:22px;gap:12px;background:linear-gradient(180deg,#ffffff 0%,#f8fafc 100%);border-color:#d6dee8;box-shadow:0 10px 28px rgba(15,23,42,.05)}
+.tool-panel--primary .section-head h3{font-size:18px}
+.tool-panel--primary .tool-form-card{gap:10px}
+.tool-panel--primary .safety-input,.tool-panel--primary .safety-select,.tool-panel--primary .desktop-calc-field input,.tool-panel--primary .desktop-calc-field select{min-height:42px;padding:0 13px;font-size:14px}
+.tool-panel--primary .safety-link-btn,.tool-panel--primary .safety-copy-btn{min-height:40px;padding:10px 14px;font-size:13px}
+.tool-panel--primary .tool-fixed-result{min-height:240px;max-height:320px}
+.tool-panel--primary .tool-scroll-box{max-height:260px}
+.tool-panel--primary-main{grid-column:span 6}
+.tool-panel--primary-main .tool-fixed-result--tall{min-height:270px;max-height:348px}
+.tool-panel--primary-main .tool-scroll-box{max-height:280px}
+.tool-panel--primary-side{grid-column:span 3}
+.tools-workbench-grid--records,.tools-workbench-grid--ops{grid-auto-rows:1fr}
+.tools-workbench-grid--records>.tool-panel,.tools-workbench-grid--ops>.tool-panel{height:100%}
+@media (max-width:1180px){
+  .tools-workbench-grid--priority{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .tool-panel--primary-main{grid-column:1/-1}
+  .tool-panel--primary-side{grid-column:auto}
+}
+@media (max-width:760px){
+  .tools-workbench-grid--priority{grid-template-columns:1fr;gap:12px}
+  .tool-panel--primary,.tool-panel--primary-main,.tool-panel--primary-side{grid-column:auto}
+  .tool-panel--primary{padding:15px;gap:10px;border-radius:18px}
+  .tool-panel--primary .safety-input,.tool-panel--primary .safety-select,.tool-panel--primary .desktop-calc-field input,.tool-panel--primary .desktop-calc-field select{min-height:39px;padding:0 11px;font-size:13px}
+  .tool-panel--primary .safety-link-btn,.tool-panel--primary .safety-copy-btn{min-height:36px;padding:9px 12px;font-size:12px}
+  .tool-panel--primary .tool-fixed-result{min-height:210px;max-height:280px}
+  .tool-panel--primary-main .tool-fixed-result--tall{min-height:230px;max-height:310px}
+  .tool-panel--primary .tool-scroll-box,.tool-panel--primary-main .tool-scroll-box{max-height:240px}
+}
