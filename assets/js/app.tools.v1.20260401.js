@@ -764,9 +764,12 @@ ${story}
     const recent = entries.slice(0, 20);
     const counts = recent.reduce((acc, item)=>{ const key = item.value; acc[key] = (acc[key] || 0) + 1; return acc; }, {});
     const ranked = Object.entries(counts).sort((a,b)=>b[1]-a[1]).slice(0,5);
+    const ratioChips = ranked.slice(0,4).map(([name, count])=>`<span class="tool-ratio-chip">${esc(name)} <strong>${percent((count / recent.length) * 100, 0)}</strong></span>`).join('');
+    const topRatio = ranked[0] ? `${esc(ranked[0][0])} ${percent((ranked[0][1] / recent.length) * 100, 0)}` : '-';
+    const secondRatio = ranked[1] ? `${esc(ranked[1][0])} ${percent((ranked[1][1] / recent.length) * 100, 0)}` : '기록 없음';
     let streak = 0; const head = recent[0]?.value;
     for(const item of recent){ if(item.value === head) streak += 1; else break; }
-    summary.innerHTML = `<div class="score-grid"><div class="score-metric"><span>최근 기록</span><strong>${entries.length}</strong><small>최대 80개 저장</small></div><div class="score-metric"><span>현재 연속</span><strong>${esc(head || '-')} ${streak}회</strong><small>최신 기준</small></div><div class="score-metric"><span>최다 토큰</span><strong>${esc(ranked[0]?.[0] || '-')}</strong><small>${ranked[0]?.[1] || 0}회</small></div><div class="score-metric"><span>게임 구분</span><strong>${esc(recent[0]?.game || '-')}</strong><small>최신 입력 기준</small></div></div>`;
+    summary.innerHTML = `<div class="score-grid"><div class="score-metric"><span>최근 기록</span><strong>${entries.length}</strong><small>최대 80개 저장</small></div><div class="score-metric"><span>현재 연속</span><strong>${esc(head || '-')} ${streak}회</strong><small>최신 기준</small></div><div class="score-metric"><span>상단 비율</span><strong>${topRatio}</strong><small>${secondRatio} · 최근 20회</small></div><div class="score-metric"><span>게임 구분</span><strong>${esc(recent[0]?.game || '-')}</strong><small>최다 토큰 ${esc(ranked[0]?.[0] || '-')} ${ranked[0]?.[1] || 0}회</small></div></div><div class="tool-ratio-line">${ratioChips}</div>`;
     list.innerHTML = `<div class="tool-storage-card"><h4>최근 빈도</h4><div class="tool-storage-tags">${ranked.map(([name, count])=>`<span class="mini-badge">${esc(name)} ${count}</span>`).join('')}</div></div>` + recent.map((item)=>storageRow(item.value, [item.game || '구분 없음', formatDate(item.at), item.note || '메모 없음'], `<button type="button" class="safety-copy-btn ghost" data-pattern-delete="${item.id}">삭제</button>`)).join('');
   }
 

@@ -96,3 +96,18 @@
 .empty-state{padding:16px;border-radius:18px;border:1px dashed var(--line-strong);background:var(--surface-2)}
 @media (max-width:1100px){.tool-status-grid,.tools-workbench-grid,.legacy-tools-grid{grid-template-columns:1fr 1fr}.tools-hub-summary{flex-direction:column}}
 @media (max-width:760px){.tool-status-grid,.tools-workbench-grid,.legacy-tools-grid{grid-template-columns:1fr}.tool-panel{padding:16px}.tool-anchor-row,.tool-inline-actions,.tool-storage-actions{width:100%}.tool-anchor-chip,.tool-inline-actions .safety-link-btn,.tool-inline-actions .safety-copy-btn{width:100%;justify-content:center}}
+
+
+.tools-hub-intro p,.tools-hub-summary .tools-hub-lead,.tool-status-card p,.tool-panel .section-head p,.tool-section-block > .section-head p{display:none !important}
+.tool-status-card{min-height:unset;align-content:start}
+.tool-status-card h2{font-size:17px}
+.tool-scroll-box{display:grid;gap:12px;max-height:360px;overflow:auto;padding:12px;border-radius:20px;border:1px solid var(--line);background:var(--surface-2)}
+.tool-scroll-box .tool-storage-list{display:grid;gap:12px}
+.tool-scroll-box .tool-storage-row,.tool-scroll-box .tool-storage-card{background:#fff}
+.tool-scroll-box .tool-storage-table{margin:0;background:#fff}
+.tool-scroll-box .tool-storage-table th{position:sticky;top:0;z-index:1}
+.tool-storage-summary{grid-template-columns:1fr}
+.tool-ratio-line{display:flex;flex-wrap:wrap;gap:8px;margin-top:2px}
+.tool-ratio-chip{display:inline-flex;align-items:center;gap:6px;padding:8px 11px;border-radius:999px;background:#fff;border:1px solid var(--line);font-size:12px;font-weight:800;color:var(--text)}
+.tool-ratio-chip strong{font-size:12px;color:var(--brand)}
+@media (max-width:760px){.tool-scroll-box{max-height:300px;padding:10px}}

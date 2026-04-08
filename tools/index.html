@@ -51,8 +51,7 @@
       <div class="container page-cluster tool-page-shell tools-hub-shell">
         <div class="page-intro compact tools-hub-intro">
           <div>
-            <h1>도구</h1>
-            <p>확인 → 계산 → 기록 → 운영 흐름으로 다시 정리했습니다.</p>
+            <h1>실전 도구</h1>
           </div>
         </div>
 
@@ -64,7 +63,7 @@
                 <span class="mini-badge">모바일 우선</span>
                 <span class="mini-badge">기존 세부 도구 유지</span>
               </div>
-              <p class="tools-hub-lead">지금은 가장 많이 쓰는 도구를 먼저 보이게 두고, 기록·운영 도구는 아래에서 이어서 쓰는 구조로 정리했습니다.</p>
+              
             </div>
             <div class="tool-anchor-row" aria-label="도구 섹션 바로가기">
               <button type="button" class="tool-anchor-chip is-active" data-scroll-target="tools-priority">1순위</button>
@@ -76,18 +75,15 @@
           <div class="tool-status-grid">
             <article class="tool-status-card">
               <span class="tool-badge">PHASE 1</span>
-              <h2>바로 실행</h2>
-              <p>사이트 체크 허브 · 배당/수익 계산 · 롤링/보너스 계산</p>
+              <h2>빠른 확인</h2>
             </article>
             <article class="tool-status-card">
               <span class="tool-badge">PHASE 2</span>
-              <h2>기록 누적</h2>
-              <p>베팅 로그북 · 패턴 기록기로 재방문 흐름을 붙였습니다.</p>
+              <h2>기록 관리</h2>
             </article>
             <article class="tool-status-card">
               <span class="tool-badge">PHASE 3</span>
               <h2>운영 보조</h2>
-              <p>응대 문구 · 링크 관리 · 정산 계산으로 실무 흐름을 묶었습니다.</p>
             </article>
           </div>
         </section>
@@ -95,13 +91,12 @@
         <section id="tools-priority" class="surface card tool-section-block">
           <div class="section-head">
             <div>
-              <h2>1순위 · 바로 실행</h2>
-              <p>트래픽이 많이 붙는 확인/계산 도구를 먼저 배치했습니다.</p>
+              <h2>확인 · 계산</h2>
             </div>
           </div>
           <div class="tools-workbench-grid">
             <article class="tool-panel tool-panel--wide">
-              <div class="section-head"><div><h3>사이트 체크 허브</h3><p>사이트명 또는 도메인 기준으로 빠르게 체크하고 검색 동선을 함께 만듭니다.</p></div></div>
+              <div class="section-head"><div><h3>사이트 체크</h3></div></div>
               <form id="toolsDomainDeskForm" class="tool-form-card">
                 <div class="input-grid-2">
                   <label class="desktop-calc-field"><span>사이트명</span><input id="toolsDomainName" type="text" class="safety-input" placeholder="예: 칠벳, bet365"/></label>
@@ -114,13 +109,13 @@
               </form>
               <div id="toolsDomainDeskResult" class="empty-state">사이트명이나 도메인을 넣으면 검색 동선, 도메인 정보, 빠른 판단을 같이 보여줍니다.</div>
               <div class="tool-subblock">
-                <div class="section-head"><div><h3>최근 확인</h3><p>같은 브라우저 기준으로 최근 확인한 항목을 남깁니다.</p></div></div>
-                <div id="toolsDomainDeskHistory" class="tool-storage-list"></div>
+                <div class="section-head"><div><h3>최근 확인</h3></div></div>
+                <div class="tool-scroll-box"><div id="toolsDomainDeskHistory" class="tool-storage-list"></div></div>
               </div>
             </article>
 
             <article class="tool-panel">
-              <div class="section-head"><div><h3>배당 · 수익 계산기</h3><p>단폴과 조합의 적중금, 순수익, 손익분기 승률을 빠르게 봅니다.</p></div></div>
+              <div class="section-head"><div><h3>배당 계산</h3></div></div>
               <form id="toolsOddsDeskForm" class="tool-form-card">
                 <div class="input-grid-2">
                   <label class="desktop-calc-field"><span>배팅금</span><input id="toolsOddsStake" type="number" inputmode="decimal" class="safety-input" placeholder="100000"/></label>
@@ -141,7 +136,7 @@
             </article>
 
             <article class="tool-panel">
-              <div class="section-head"><div><h3>롤링 · 보너스 계산기</h3><p>보너스 규모, 남은 롤링, 실출금 기준을 한 번에 정리합니다.</p></div></div>
+              <div class="section-head"><div><h3>롤링 계산</h3></div></div>
               <form id="toolsBonusDeskForm" class="tool-form-card">
                 <div class="input-grid-2">
                   <label class="desktop-calc-field"><span>입금액</span><input id="toolsBonusDeposit" type="number" inputmode="decimal" class="safety-input" placeholder="300000"/></label>
@@ -166,13 +161,12 @@
         <section id="tools-records" class="surface card tool-section-block">
           <div class="section-head">
             <div>
-              <h2>2순위 · 기록 누적</h2>
-              <p>반복 방문과 자기 기록을 만드는 도구를 아래에 붙였습니다.</p>
+              <h2>기록 도구</h2>
             </div>
           </div>
           <div class="tools-workbench-grid tools-workbench-grid--records">
             <article class="tool-panel">
-              <div class="section-head"><div><h3>베팅 로그북</h3><p>날짜, 금액, 배당, 결과를 저장하고 최근 흐름을 요약합니다.</p></div></div>
+              <div class="section-head"><div><h3>배팅 로그</h3></div></div>
               <form id="toolsLogbookForm" class="tool-form-card">
                 <div class="input-grid-2">
                   <label class="desktop-calc-field"><span>날짜</span><input id="toolsLogDate" type="date" class="safety-input"/></label>
@@ -191,11 +185,11 @@
                 <button type="submit" class="safety-link-btn">기록 추가</button>
               </form>
               <div id="toolsLogbookSummary" class="tool-storage-summary"></div>
-              <div id="toolsLogbookList" class="tool-storage-list"></div>
+              <div class="tool-scroll-box"><div id="toolsLogbookList" class="tool-storage-list"></div></div>
             </article>
 
             <article class="tool-panel">
-              <div class="section-head"><div><h3>패턴 기록기</h3><p>최근 결과를 짧게 저장하고 빈도·연속 흐름을 빠르게 봅니다.</p></div></div>
+              <div class="section-head"><div><h3>패턴 기록기</h3></div></div>
               <div class="tool-chip-row" id="toolsPatternShortcuts">
                 <button type="button" class="tool-chip" data-pattern-value="홀">홀</button>
                 <button type="button" class="tool-chip" data-pattern-value="짝">짝</button>
@@ -216,7 +210,7 @@
                 </div>
               </form>
               <div id="toolsPatternSummary" class="tool-storage-summary"></div>
-              <div id="toolsPatternList" class="tool-storage-list"></div>
+              <div class="tool-scroll-box"><div id="toolsPatternList" class="tool-storage-list"></div></div>
             </article>
           </div>
         </section>
@@ -224,13 +218,12 @@
         <section id="tools-ops" class="surface card tool-section-block">
           <div class="section-head">
             <div>
-              <h2>3순위 · 운영 보조</h2>
-              <p>총판/운영자/관계자가 자주 쓰는 템플릿·정리·계산 흐름을 붙였습니다.</p>
+              <h2>운영 도구</h2>
             </div>
           </div>
           <div class="tools-workbench-grid tools-workbench-grid--ops">
             <article class="tool-panel">
-              <div class="section-head"><div><h3>응대 문구 도구</h3><p>가입 안내, 점검 공지, 코드 전달 문구를 짧게 정리합니다.</p></div></div>
+              <div class="section-head"><div><h3>응대 문구</h3></div></div>
               <form id="toolsReplyHelperForm" class="tool-form-card">
                 <label class="desktop-calc-field"><span>문구 유형</span><select id="toolsReplyType" class="safety-select"><option value="join">가입 안내</option><option value="deposit">입금/출금 안내</option><option value="inspection">점검 공지</option><option value="code">코드 전달</option><option value="settlement">정산 문의 응답</option></select></label>
                 <div class="input-grid-2">
@@ -247,7 +240,7 @@
             </article>
 
             <article class="tool-panel">
-              <div class="section-head"><div><h3>링크 · 랜딩 관리</h3><p>자주 쓰는 주소, 코드, 메모를 브라우저에 저장하고 바로 복사합니다.</p></div></div>
+              <div class="section-head"><div><h3>링크 관리</h3></div></div>
               <form id="toolsLinkManagerForm" class="tool-form-card">
                 <div class="input-grid-2">
                   <label class="desktop-calc-field"><span>라벨</span><input id="toolsLinkLabel" type="text" class="safety-input" placeholder="예: 칠벳 메인"/></label>
@@ -259,11 +252,11 @@
                 </div>
                 <button type="submit" class="safety-link-btn">링크 저장</button>
               </form>
-              <div id="toolsLinkManagerList" class="tool-storage-list"></div>
+              <div class="tool-scroll-box"><div id="toolsLinkManagerList" class="tool-storage-list"></div></div>
             </article>
 
             <article class="tool-panel">
-              <div class="section-head"><div><h3>정산 · 실적 계산기</h3><p>유입, 첫충, CPA, RS 기준으로 예상 정산액을 빠르게 계산합니다.</p></div></div>
+              <div class="section-head"><div><h3>정산 계산</h3></div></div>
               <form id="toolsSettlementForm" class="tool-form-card">
                 <div class="input-grid-3">
                   <label class="desktop-calc-field"><span>유입 수</span><input id="toolsSetClicks" type="number" inputmode="decimal" class="safety-input" placeholder="120"/></label>
@@ -286,8 +279,7 @@
         <section id="tools-legacy" class="surface card tool-section-block">
           <div class="section-head">
             <div>
-              <h2>기존 세부 도구 유지</h2>
-              <p>현재 라우트와 개별 도구는 삭제하지 않고 아래에서 계속 열 수 있게 남겨뒀습니다.</p>
+              <h2>기존 도구</h2>
             </div>
           </div>
           <details class="faq-item" open>
