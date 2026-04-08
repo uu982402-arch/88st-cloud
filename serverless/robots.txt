@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /ops/
+Sitemap: https://88st.cloud/sitemap.xml
