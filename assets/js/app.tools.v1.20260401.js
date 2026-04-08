@@ -554,6 +554,341 @@ ${story}
       engineSet(result,'미니게임 결과',[{label:'회차 예산',value:`${Math.round(per).toLocaleString()}원`,note:`사용 가능 ${Math.round(usable).toLocaleString()}원`},{label:'붕괴 위험',value:toolRiskLabel(collapse),note:`자금 압박 ${collapse.toFixed(0)}%`},{label:'권장 비중',value:bank.amount?`${Math.round(bank.amount).toLocaleString()}원`:`${(bank.ratio*100).toFixed(1)}%`,note:bank.label},{label:'손절선',value:`${Math.round(bank.stopLoss || stop).toLocaleString()}원`,note:stage==='step'?'단계 배팅 반영':'고정금 기준'}], [stage==='step' ? '단계 배팅은 회차가 늘수록 붕괴 위험이 빠르게 커집니다.' : '고정금 운영이 훨씬 안정적입니다.', collapse > 70 ? '현재 입력값은 자본 대비 부담이 큰 편입니다.' : '현재 입력값은 과도한 편은 아닙니다.']); });
   }
 
+
+
+  const TOOLS_LOGBOOK_KEY = 'raven_tools_logbook_v1';
+  const TOOLS_PATTERN_KEY = 'raven_tools_pattern_v1';
+  const TOOLS_LINKS_KEY = 'raven_tools_links_v1';
+  const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+  function readStore(key, fallback){ try { return JSON.parse(localStorage.getItem(key) || JSON.stringify(fallback)); } catch(_) { return fallback; } }
+  function writeStore(key, value){ try { localStorage.setItem(key, JSON.stringify(value)); } catch(_) {} }
+  function won(value){ return `${Math.round(Number(value)||0).toLocaleString()}원`; }
+  function signedWon(value){ const n = Math.round(Number(value)||0); return `${n>0?'+':''}${n.toLocaleString()}원`; }
+  function percent(value, digits = 1){ const n = Number(value)||0; return `${n.toFixed(digits)}%`; }
+  function fmtDateInput(value){ const d = value ? new Date(value) : new Date(); const y = d.getFullYear(); const m = String(d.getMonth()+1).padStart(2,'0'); const day = String(d.getDate()).padStart(2,'0'); return `${y}-${m}-${day}`; }
+  function toolBadge(score){ if(score >= 80) return '높음'; if(score >= 55) return '주의'; if(score >= 30) return '보통'; return '낮음'; }
+  function storageRow(title, meta = [], actions = ''){ return `<article class="tool-storage-row"><h4>${esc(title)}</h4>${meta.length?`<div class="tool-storage-meta">${meta.map((item)=>`<span>${esc(item)}</span>`).join('')}</div>`:''}${actions?`<div class="tool-storage-actions">${actions}</div>`:''}</article>`; }
+
+  function initToolsHubNavigation(){
+    const chips = $$('.tool-anchor-chip');
+    if(!chips.length) return;
+    chips.forEach((chip)=>chip.addEventListener('click', ()=>{
+      chips.forEach((item)=>item.classList.remove('is-active'));
+      chip.classList.add('is-active');
+      const id = chip.getAttribute('data-scroll-target');
+      const target = id ? document.getElementById(id) : null;
+      if(target) target.scrollIntoView({ behavior:'smooth', block:'start' });
+    }));
+  }
+
+  function renderToolsDomainDeskHistory(){
+    const wrap = $('#toolsDomainDeskHistory');
+    if(!wrap) return;
+    const items = loadHistory().filter((item)=>item.kind === 'domain' || item.kind === 'ip').slice(0, 8);
+    if(!items.length){ wrap.innerHTML = '<div class="toolkit-note">최근 확인 기록이 아직 없습니다.</div>'; return; }
+    wrap.innerHTML = items.map((item)=>storageRow(item.label || item.key, [item.kind === 'ip' ? 'IP 조회' : '도메인 조회', item.key], `<button class="safety-copy-btn ghost" type="button" data-domain-history="${esc(item.key)}">다시 넣기</button>`)).join('');
+  }
+
+  function initToolsDomainDesk(){
+    const form = $('#toolsDomainDeskForm'); const result = $('#toolsDomainDeskResult');
+    const nameInput = $('#toolsDomainName'); const domainInput = $('#toolsDomainValue'); const resetBtn = $('#toolsDomainDeskReset');
+    if(!form || !result || !nameInput || !domainInput) return;
+    renderToolsDomainDeskHistory();
+    if(resetBtn) resetBtn.addEventListener('click', ()=>{ nameInput.value=''; domainInput.value=''; empty(result, '입력값을 기다리는 중입니다.', '사이트명이나 도메인을 넣으면 빠른 판단을 시작합니다.'); nameInput.focus(); });
+    document.addEventListener('click', (e)=>{
+      const btn = e.target.closest('[data-domain-history]');
+      if(!btn) return;
+      domainInput.value = btn.getAttribute('data-domain-history') || '';
+      form.dispatchEvent(new Event('submit', { bubbles:true, cancelable:true }));
+    });
+    form.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      const siteName = String(nameInput.value || '').trim();
+      const rawDomain = String(domainInput.value || '').trim();
+      const domain = normalizeDomain(rawDomain);
+      const seed = siteName || domain || rawDomain;
+      if(!seed) return empty(result, '입력값이 비어 있습니다.', '사이트명 또는 도메인을 한 개 이상 입력해 주세요.');
+      empty(result, '확인 중입니다.', '도메인 정보와 검색 동선을 함께 정리합니다.');
+      const queries = [
+        `${seed} 먹튀`, `${seed} 후기`, `${seed} 주소`, `${seed} 도메인 변경`, `${seed} 리뉴얼`, `${seed} 가입코드`, `${seed} 텔레그램`, `${seed} 공지`
+      ];
+      let payload = null; let lookupError = '';
+      if(domain && domain.includes('.')){
+        try {
+          payload = await lookupDomain(domain);
+          saveHistory({ kind:'domain', key:payload.domain || domain, label:siteName || payload.domain || domain, nameservers:payload.dns?.nameServers || [], subnets:payload.cluster?.subnets || [], asns:payload.cluster?.sharedAsns || [] });
+        } catch(err) { lookupError = err.message || '도메인 응답을 읽지 못했습니다.'; }
+      }
+      const rdap = payload?.rdap || {};
+      const dns = payload?.dns || {};
+      const risk = payload?.risk || {};
+      const cluster = payload?.cluster || {};
+      const networks = payload?.networks || [];
+      const hits = payload ? overlaps({ kind:'domain', key:payload.domain || domain, label:siteName || payload.domain || domain, nameservers:dns.nameServers || [], subnets:cluster.subnets || [], asns:cluster.sharedAsns || [] }) : [];
+      const summaryCards = `<div class="score-grid">
+        <div class="score-metric"><span>기준값</span><strong>${esc(siteName || domain || rawDomain)}</strong><small>${domain && domain.includes('.') ? '도메인 정규화 완료' : '검색 기준어 중심'}</small></div>
+        <div class="score-metric"><span>도메인 생성일</span><strong>${esc(formatDate(rdap.createdAt))}</strong><small>${esc(ageLabel(rdap.ageDays))}</small></div>
+        <div class="score-metric"><span>기본 판정</span><strong>${esc(risk.verdict || (domain ? '추가 확인' : '검색 우선'))}</strong><small>리스크 ${esc(risk.band || toolBadge(Number(risk.score || 0)))}</small></div>
+        <div class="score-metric"><span>네트워크</span><strong>${esc(networks.length || 0)}</strong><small>네임서버 ${(dns.nameServers || []).length}개</small></div>
+      </div>`;
+      const lookupCards = `<div class="lookup-links">${queries.slice(0,6).map((query)=>`<article class="lookup-link-card"><a href="${googleUrl(query)}" target="_blank" rel="noopener noreferrer">${esc(query)}</a><p>검색 바로가기</p></article>`).join('')}</div>`;
+      const detailTable = payload ? `<table class="toolkit-table"><thead><tr><th>항목</th><th>값</th></tr></thead><tbody>
+        <tr><td><strong>도메인</strong></td><td>${esc(payload.domain || domain)}</td></tr>
+        <tr><td><strong>등록일</strong></td><td>${esc(formatDate(rdap.createdAt))}</td></tr>
+        <tr><td><strong>만료일</strong></td><td>${esc(formatDate(rdap.expiresAt))}</td></tr>
+        <tr><td><strong>네임서버</strong></td><td>${esc((dns.nameServers || []).join(', ') || '-')}</td></tr>
+        <tr><td><strong>A 레코드</strong></td><td>${esc((dns.aRecords || []).join(', ') || '-')}</td></tr>
+        <tr><td><strong>클러스터</strong></td><td>${esc(cluster.summary || '-') }</td></tr>
+      </tbody></table>` : `<div class="toolkit-note">도메인까지 입력하면 등록일, DNS, 네트워크 힌트를 같이 확인할 수 있습니다.</div>`;
+      const driverList = (risk.drivers || []).length ? `<ul class="toolkit-points">${risk.drivers.slice(0,5).map((item)=>`<li>${esc(item.label)} · ${esc(item.detail)}</li>`).join('')}</ul>` : `<div class="toolkit-note">검색 결과와 주소/코드 일치 여부를 같이 보는 편이 좋습니다.</div>`;
+      const nextActions = `<div class="lookup-links">
+        <article class="lookup-link-card"><a href="/muktu-police/search/?q=${encodeURIComponent(seed)}&type=${encodeURIComponent('먹튀')}">구글링 도구로 이동</a><p>키워드를 더 넓게 확인합니다.</p></article>
+        <article class="lookup-link-card"><a href="/tools/official-check/${domain?`?domain=${encodeURIComponent(domain)}`:''}">공식주소 체크</a><p>최종 점검용 상세 체크로 이어집니다.</p></article>
+        <article class="lookup-link-card"><a href="/tools/search-pack/${seed?`?q=${encodeURIComponent(seed)}`:''}">검색 조합 도구</a><p>추가 조합을 만들어 더 찾아봅니다.</p></article>
+      </div>`;
+      const overlapHtml = hits.length ? listCard(hits.map((hit)=>({ title:hit.item.label || hit.item.key, detail:[hit.overlapNs.length?`NS ${hit.overlapNs.join(', ')}`:'', hit.overlapAsn.length?`ASN ${hit.overlapAsn.join(', ')}`:'', hit.overlapSub.length?`대역 ${hit.overlapSub.join(', ')}`:''].filter(Boolean).join(' · ') }))) : '<div class="toolkit-note">최근 조회 이력과 겹치는 군집 힌트가 크지 않습니다.</div>';
+      const errorBlock = lookupError ? `<div class="toolkit-note">도메인 응답을 읽지 못해 검색 동선 중심으로 먼저 정리했습니다. ${esc(lookupError)}</div>` : '';
+      const html = summaryCards + errorBlock + section('검색 동선', '검색 조합을 먼저 열어 보면서 공식 주소와 후기 흔적을 같이 확인합니다.', lookupCards) + section('도메인 응답', '도메인을 입력했을 때 보이는 기본 값입니다.', detailTable) + section('빠른 판단', '리스크 요인을 길게 늘어놓지 않고 먼저 볼 포인트만 남겼습니다.', driverList) + section('최근 기록 비교', '같은 브라우저에서 확인한 항목과 겹치는 힌트입니다.', overlapHtml) + section('다음 단계', '세부 도구는 그대로 유지하면서 이어서 볼 수 있습니다.', nextActions);
+      setResult(result, html, 'toolkit-result-stack');
+      renderToolsDomainDeskHistory();
+    });
+  }
+
+  function initToolsOddsDesk(){
+    const form = $('#toolsOddsDeskForm'); const result = $('#toolsOddsDeskResult');
+    if(!form || !result) return;
+    form.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const stake = Number($('#toolsOddsStake')?.value || 0);
+      const capital = Number($('#toolsOddsCapital')?.value || 0);
+      const mode = $('#toolsOddsMode')?.value || 'neutral';
+      const odds = [Number($('#toolsOddsOne')?.value || 0), Number($('#toolsOddsTwo')?.value || 0), Number($('#toolsOddsThree')?.value || 0), Number($('#toolsOddsFour')?.value || 0)].filter((value)=>value >= 1.01);
+      if(!stake || !odds.length) return empty(result, '입력값이 비어 있습니다.', '배팅금과 배당 하나 이상을 입력해 주세요.');
+      const comboOdds = odds.reduce((acc, value)=>acc * value, 1);
+      const payout = stake * comboOdds;
+      const profit = payout - stake;
+      const breakEven = comboOdds > 0 ? (1 / comboOdds) * 100 : 0;
+      const riskScore = clamp((odds.length - 1) * 18 + Math.max(0, comboOdds - 2) * 8 + (mode === 'safe' ? -6 : mode === 'aggressive' ? 12 : 0), 12, 96);
+      const engines = window.RavenEngines || {};
+      const bank = engines.bankrollPlan ? engines.bankrollPlan({ capital, probability: Math.max(0.08, Math.min(0.92, 1 / comboOdds)), odds: comboOdds, mode, volatilityScore: riskScore }) : null;
+      const table = `<table class="toolkit-table"><thead><tr><th>입력 배당</th><th>값</th></tr></thead><tbody>${odds.map((value, index)=>`<tr><td><strong>${index + 1}폴더</strong></td><td>${value.toFixed(2)}</td></tr>`).join('')}</tbody></table>`;
+      const notes = [
+        `${odds.length}폴더 조합 기준입니다.`,
+        `손익분기 승률은 약 ${breakEven.toFixed(1)}% 입니다.`,
+        `${toolBadge(riskScore)} 변동성으로 보며 비중은 자본 기준으로 관리하는 편이 좋습니다.`
+      ];
+      if(bank && capital) notes.push(`자본 ${won(capital)} 기준 권장 비중은 ${bank.amount ? won(bank.amount) : percent((bank.ratio || 0) * 100)} 수준입니다.`);
+      const html = section('계산 결과', '조합배당과 순수익을 먼저 봅니다.', `<div class="score-grid"><div class="score-metric"><span>조합배당</span><strong>${comboOdds.toFixed(2)}</strong><small>${odds.length}폴더</small></div><div class="score-metric"><span>적중금</span><strong>${won(payout)}</strong><small>원금 포함</small></div><div class="score-metric"><span>순수익</span><strong>${signedWon(profit)}</strong><small>적중 시 기준</small></div><div class="score-metric"><span>손익분기 승률</span><strong>${percent(breakEven)}</strong><small>이론상 최소 기준</small></div></div>`) + section('입력 배당', '입력한 폴더를 그대로 다시 보여줍니다.', table) + section('짧은 판단', '실전에서 먼저 보는 포인트만 남겼습니다.', `<ul class="toolkit-points">${notes.map((item)=>`<li>${esc(item)}</li>`).join('')}</ul>`);
+      setResult(result, html, 'toolkit-result-stack');
+    });
+  }
+
+  function initToolsBonusDesk(){
+    const form = $('#toolsBonusDeskForm'); const result = $('#toolsBonusDeskResult');
+    if(!form || !result) return;
+    form.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const deposit = Number($('#toolsBonusDeposit')?.value || 0);
+      const percentValue = Number($('#toolsBonusPercent')?.value || 0);
+      const cap = Number($('#toolsBonusCap')?.value || 0);
+      const rolling = Number($('#toolsBonusRolling')?.value || 0);
+      const contribution = clamp(Number($('#toolsBonusContribution')?.value || 100), 1, 100);
+      const progress = clamp(Number($('#toolsBonusProgress')?.value || 0), 0, 100);
+      const maxWithdraw = Number($('#toolsBonusMaxWithdraw')?.value || 0);
+      if(!deposit || !percentValue) return empty(result, '입력값이 비어 있습니다.', '입금액과 보너스 퍼센트를 입력해 주세요.');
+      const bonus = Math.min(deposit * (percentValue / 100), cap || Infinity);
+      const total = deposit + bonus;
+      const effectiveContribution = contribution / 100;
+      const needRolling = total * Math.max(0, rolling) / effectiveContribution;
+      const doneRolling = needRolling * (progress / 100);
+      const remaining = Math.max(0, needRolling - doneRolling);
+      const effectiveCashout = maxWithdraw ? Math.min(total, maxWithdraw) : total;
+      const pressure = clamp((remaining / Math.max(total, 1)) * 4.4 + (contribution < 100 ? 8 : 0) + (maxWithdraw && maxWithdraw < total ? 12 : 0), 0, 100);
+      const notes = [
+        `기여율 ${contribution}%를 반영해 필요한 롤링을 계산했습니다.`,
+        remaining > total * 10 ? '남은 롤링 부담이 큰 편이라 실수령보다 회전 비용을 먼저 보는 편이 낫습니다.' : '남은 롤링 부담이 과도한 편은 아닙니다.',
+        maxWithdraw && maxWithdraw < total ? '최대 출금 제한이 실수령 상단을 줄이고 있습니다.' : '최대 출금 제한 영향은 크지 않습니다.'
+      ];
+      const html = section('조건 결과', '핵심 숫자를 먼저 보이게 정리했습니다.', `<div class="score-grid"><div class="score-metric"><span>보너스</span><strong>${won(bonus)}</strong><small>총 사용금 ${won(total)}</small></div><div class="score-metric"><span>필요 롤링</span><strong>${won(needRolling)}</strong><small>현재 ${percent(progress)}</small></div><div class="score-metric"><span>남은 롤링</span><strong>${won(remaining)}</strong><small>완료 ${won(doneRolling)}</small></div><div class="score-metric"><span>실출금 기준</span><strong>${won(effectiveCashout)}</strong><small>부담도 ${toolBadge(pressure)}</small></div></div>`) + section('짧은 판단', '숫자를 해석할 때 먼저 볼 포인트입니다.', `<ul class="toolkit-points">${notes.map((item)=>`<li>${esc(item)}</li>`).join('')}</ul>`);
+      setResult(result, html, 'toolkit-result-stack');
+    });
+  }
+
+  function renderToolsLogbook(){
+    const summary = $('#toolsLogbookSummary'); const list = $('#toolsLogbookList');
+    if(!summary || !list) return;
+    const entries = readStore(TOOLS_LOGBOOK_KEY, []).sort((a,b)=>String(b.date).localeCompare(String(a.date)) || b.id - a.id);
+    if(!entries.length){ summary.innerHTML = ''; list.innerHTML = '<div class="toolkit-note">아직 저장된 기록이 없습니다.</div>'; return; }
+    const totalStake = entries.reduce((sum, item)=>sum + Number(item.stake || 0), 0);
+    const totalPayout = entries.reduce((sum, item)=>sum + Number(item.payout || 0), 0);
+    const profit = totalPayout - totalStake;
+    const wins = entries.filter((item)=>item.result === 'win').length;
+    summary.innerHTML = `<div class="score-grid"><div class="score-metric"><span>기록 수</span><strong>${entries.length}</strong><small>최근 저장 기준</small></div><div class="score-metric"><span>총 배팅금</span><strong>${won(totalStake)}</strong><small>누적 금액</small></div><div class="score-metric"><span>누적 손익</span><strong>${signedWon(profit)}</strong><small>회수금 기준</small></div><div class="score-metric"><span>적중률</span><strong>${percent(entries.length ? wins / entries.length * 100 : 0)}</strong><small>적중 ${wins}건</small></div></div>`;
+    list.innerHTML = `<table class="tool-storage-table"><thead><tr><th>날짜</th><th>구분</th><th>경기/게임</th><th>배당</th><th>배팅금</th><th>손익</th><th></th></tr></thead><tbody>${entries.slice(0,12).map((item)=>`<tr><td>${esc(item.date)}</td><td>${esc(item.category)}</td><td>${esc(item.title || '-')}</td><td>${item.odds ? Number(item.odds).toFixed(2) : '-'}</td><td>${won(item.stake)}</td><td>${signedWon(Number(item.payout || 0) - Number(item.stake || 0))}</td><td><button type="button" class="safety-copy-btn ghost" data-log-delete="${item.id}">삭제</button></td></tr>`).join('')}</tbody></table>`;
+  }
+
+  function initToolsLogbook(){
+    const form = $('#toolsLogbookForm');
+    if(!form) return;
+    const dateInput = $('#toolsLogDate'); if(dateInput && !dateInput.value) dateInput.value = fmtDateInput();
+    renderToolsLogbook();
+    document.addEventListener('click', (e)=>{
+      const btn = e.target.closest('[data-log-delete]');
+      if(!btn) return;
+      const id = Number(btn.getAttribute('data-log-delete'));
+      const next = readStore(TOOLS_LOGBOOK_KEY, []).filter((item)=>item.id !== id);
+      writeStore(TOOLS_LOGBOOK_KEY, next); renderToolsLogbook(); toast('기록을 삭제했습니다.');
+    });
+    form.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const date = $('#toolsLogDate')?.value || fmtDateInput();
+      const category = $('#toolsLogCategory')?.value || '스포츠';
+      const title = String($('#toolsLogTitle')?.value || '').trim();
+      const odds = Number($('#toolsLogOdds')?.value || 0);
+      const stake = Number($('#toolsLogStake')?.value || 0);
+      const resultValue = $('#toolsLogResult')?.value || 'lose';
+      const payoutInput = Number($('#toolsLogPayout')?.value || 0);
+      const memo = String($('#toolsLogMemo')?.value || '').trim();
+      if(!stake) return toast('배팅금을 입력해 주세요.');
+      const payout = payoutInput || (resultValue === 'win' && odds ? stake * odds : resultValue === 'push' ? stake : 0);
+      const next = [{ id: Date.now(), date, category, title, odds, stake, payout, result:resultValue, memo }, ...readStore(TOOLS_LOGBOOK_KEY, [])].slice(0, 60);
+      writeStore(TOOLS_LOGBOOK_KEY, next); form.reset(); if(dateInput) dateInput.value = fmtDateInput(); renderToolsLogbook(); toast('기록을 저장했습니다.');
+    });
+  }
+
+  function renderToolsPattern(){
+    const summary = $('#toolsPatternSummary'); const list = $('#toolsPatternList');
+    if(!summary || !list) return;
+    const entries = readStore(TOOLS_PATTERN_KEY, []);
+    if(!entries.length){ summary.innerHTML = ''; list.innerHTML = '<div class="toolkit-note">패턴 기록이 아직 없습니다.</div>'; return; }
+    const recent = entries.slice(0, 20);
+    const counts = recent.reduce((acc, item)=>{ const key = item.value; acc[key] = (acc[key] || 0) + 1; return acc; }, {});
+    const ranked = Object.entries(counts).sort((a,b)=>b[1]-a[1]).slice(0,5);
+    let streak = 0; const head = recent[0]?.value;
+    for(const item of recent){ if(item.value === head) streak += 1; else break; }
+    summary.innerHTML = `<div class="score-grid"><div class="score-metric"><span>최근 기록</span><strong>${entries.length}</strong><small>최대 80개 저장</small></div><div class="score-metric"><span>현재 연속</span><strong>${esc(head || '-')} ${streak}회</strong><small>최신 기준</small></div><div class="score-metric"><span>최다 토큰</span><strong>${esc(ranked[0]?.[0] || '-')}</strong><small>${ranked[0]?.[1] || 0}회</small></div><div class="score-metric"><span>게임 구분</span><strong>${esc(recent[0]?.game || '-')}</strong><small>최신 입력 기준</small></div></div>`;
+    list.innerHTML = `<div class="tool-storage-card"><h4>최근 빈도</h4><div class="tool-storage-tags">${ranked.map(([name, count])=>`<span class="mini-badge">${esc(name)} ${count}</span>`).join('')}</div></div>` + recent.map((item)=>storageRow(item.value, [item.game || '구분 없음', formatDate(item.at), item.note || '메모 없음'], `<button type="button" class="safety-copy-btn ghost" data-pattern-delete="${item.id}">삭제</button>`)).join('');
+  }
+
+  function initToolsPattern(){
+    const form = $('#toolsPatternForm'); const clearBtn = $('#toolsPatternClear'); const shortcuts = $('#toolsPatternShortcuts');
+    if(!form) return;
+    renderToolsPattern();
+    if(shortcuts) shortcuts.addEventListener('click', (e)=>{
+      const btn = e.target.closest('[data-pattern-value]'); if(!btn) return;
+      const input = $('#toolsPatternValue'); if(input) { input.value = btn.getAttribute('data-pattern-value') || ''; input.focus(); }
+    });
+    if(clearBtn) clearBtn.addEventListener('click', ()=>{ writeStore(TOOLS_PATTERN_KEY, []); renderToolsPattern(); toast('패턴 기록을 비웠습니다.'); });
+    document.addEventListener('click', (e)=>{
+      const btn = e.target.closest('[data-pattern-delete]');
+      if(!btn) return;
+      const id = Number(btn.getAttribute('data-pattern-delete'));
+      writeStore(TOOLS_PATTERN_KEY, readStore(TOOLS_PATTERN_KEY, []).filter((item)=>item.id !== id));
+      renderToolsPattern(); toast('패턴 기록을 삭제했습니다.');
+    });
+    form.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const game = String($('#toolsPatternGame')?.value || '').trim();
+      const value = String($('#toolsPatternValue')?.value || '').trim();
+      const note = String($('#toolsPatternNote')?.value || '').trim();
+      if(!value) return toast('결과 토큰을 입력해 주세요.');
+      const next = [{ id: Date.now(), game, value, note, at: new Date().toISOString() }, ...readStore(TOOLS_PATTERN_KEY, [])].slice(0, 80);
+      writeStore(TOOLS_PATTERN_KEY, next); form.reset(); renderToolsPattern(); toast('패턴 기록을 저장했습니다.');
+    });
+  }
+
+  function buildReplyTemplate(type, brand, code, url, note){
+    const safeBrand = brand || '사이트';
+    const safeCode = code ? `가입코드 ${code}` : '가입코드 확인';
+    const safeUrl = url || '공식주소 별도 안내';
+    const safeNote = note ? `
+- 참고: ${note}` : '';
+    if(type === 'deposit') return `[안내]
+${safeBrand} 이용 전 주소와 코드부터 다시 확인해 주세요.
+- 공식주소: ${safeUrl}
+- ${safeCode}${safeNote}`;
+    if(type === 'inspection') return `[점검 공지]
+${safeBrand} 점검 또는 접속 이슈가 있는 경우 공식주소와 공지 채널을 먼저 다시 확인해 주세요.
+- 공식주소: ${safeUrl}${safeNote}`;
+    if(type === 'code') return `[코드 안내]
+${safeBrand} 이용 시 ${safeCode} 기준으로 확인해 주세요.
+- 공식주소: ${safeUrl}${safeNote}`;
+    if(type === 'settlement') return `[문의 응답]
+정산 관련 문의는 현재 확인 중입니다. 주소와 코드, 진행 내역을 같이 남겨 주시면 더 빠르게 확인할 수 있습니다.${safeNote}`;
+    return `[가입 안내]
+${safeBrand} 이용 전 공식주소와 가입코드를 먼저 확인해 주세요.
+- 공식주소: ${safeUrl}
+- ${safeCode}${safeNote}`;
+  }
+
+  function initToolsReplyHelper(){
+    const form = $('#toolsReplyHelperForm'); const result = $('#toolsReplyHelperResult');
+    if(!form || !result) return;
+    form.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const type = $('#toolsReplyType')?.value || 'join';
+      const brand = String($('#toolsReplyBrand')?.value || '').trim();
+      const code = String($('#toolsReplyCode')?.value || '').trim();
+      const url = String($('#toolsReplyUrl')?.value || '').trim();
+      const note = String($('#toolsReplyNote')?.value || '').trim();
+      const text = buildReplyTemplate(type, brand, code, url, note);
+      setResult(result, `<div class="tool-output-box"><pre>${esc(text)}</pre><div class="tool-inline-actions"><button class="safety-copy-btn mint" type="button" data-inline-copy="${esc(text)}">문구 복사</button></div></div>`, 'tool-output-box');
+    });
+  }
+
+  function renderToolsLinks(){
+    const list = $('#toolsLinkManagerList');
+    if(!list) return;
+    const items = readStore(TOOLS_LINKS_KEY, []);
+    if(!items.length){ list.innerHTML = '<div class="toolkit-note">저장된 링크가 아직 없습니다.</div>'; return; }
+    list.innerHTML = items.map((item)=>storageRow(item.label || item.url, [item.url, item.code ? `코드 ${item.code}` : '코드 없음', item.note || '메모 없음'], `<a class="safety-link-btn ghost" href="${esc(item.url)}" target="_blank" rel="noopener noreferrer">열기</a><button class="safety-copy-btn ghost" type="button" data-inline-copy="${esc(item.url)}">주소 복사</button>${item.code ? `<button class="safety-copy-btn ghost" type="button" data-inline-copy="${esc(item.code)}">코드 복사</button>` : ''}<button class="safety-copy-btn ghost" type="button" data-link-delete="${item.id}">삭제</button>`)).join('');
+  }
+
+  function initToolsLinkManager(){
+    const form = $('#toolsLinkManagerForm'); if(!form) return;
+    renderToolsLinks();
+    document.addEventListener('click', (e)=>{
+      const btn = e.target.closest('[data-link-delete]');
+      if(!btn) return;
+      const id = Number(btn.getAttribute('data-link-delete'));
+      writeStore(TOOLS_LINKS_KEY, readStore(TOOLS_LINKS_KEY, []).filter((item)=>item.id !== id));
+      renderToolsLinks(); toast('링크를 삭제했습니다.');
+    });
+    form.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const label = String($('#toolsLinkLabel')?.value || '').trim();
+      const url = String($('#toolsLinkUrl')?.value || '').trim();
+      const code = String($('#toolsLinkCode')?.value || '').trim();
+      const note = String($('#toolsLinkNote')?.value || '').trim();
+      if(!url) return toast('공식주소를 입력해 주세요.');
+      const next = [{ id: Date.now(), label, url, code, note }, ...readStore(TOOLS_LINKS_KEY, [])].slice(0, 40);
+      writeStore(TOOLS_LINKS_KEY, next); form.reset(); renderToolsLinks(); toast('링크를 저장했습니다.');
+    });
+  }
+
+  function initToolsSettlement(){
+    const form = $('#toolsSettlementForm'); const result = $('#toolsSettlementResult');
+    if(!form || !result) return;
+    form.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const clicks = Number($('#toolsSetClicks')?.value || 0);
+      const signups = Number($('#toolsSetSignups')?.value || 0);
+      const ftd = Number($('#toolsSetFtd')?.value || 0);
+      const cpa = Number($('#toolsSetCpa')?.value || 0);
+      const revenue = Number($('#toolsSetRevenue')?.value || 0);
+      const rs = Number($('#toolsSetRs')?.value || 0);
+      const recharge = Number($('#toolsSetRecharge')?.value || 0);
+      if(!clicks && !signups && !ftd && !revenue) return empty(result, '입력값이 비어 있습니다.', '유입, 가입, 첫충, 매출 중 한 개 이상 입력해 주세요.');
+      const signupRate = clicks ? (signups / clicks) * 100 : 0;
+      const ftdRate = signups ? (ftd / signups) * 100 : 0;
+      const cpaEarn = ftd * cpa;
+      const rsEarn = revenue * (rs / 100);
+      const total = cpaEarn + rsEarn;
+      const html = section('정산 결과', 'CPA와 RS를 나눠서 먼저 봅니다.', `<div class="score-grid"><div class="score-metric"><span>CPA 정산</span><strong>${won(cpaEarn)}</strong><small>첫충 ${ftd}명</small></div><div class="score-metric"><span>RS 정산</span><strong>${won(rsEarn)}</strong><small>순매출 ${won(revenue)}</small></div><div class="score-metric"><span>예상 총액</span><strong>${won(total)}</strong><small>CPA + RS 합산</small></div><div class="score-metric"><span>재충전</span><strong>${recharge}</strong><small>참고 지표</small></div></div>`) + section('전환 흐름', '유입과 가입 흐름을 같이 봅니다.', `<ul class="toolkit-points"><li>유입 → 가입 전환 ${percent(signupRate)}</li><li>가입 → 첫충 전환 ${percent(ftdRate)}</li><li>CPA 단가 ${won(cpa)} · RS ${percent(rs)}</li></ul>`);
+      setResult(result, html, 'toolkit-result-stack');
+    });
+  }
+
   function init(){
     initInlineCopy();
     initAddressTracker();
@@ -582,6 +917,15 @@ ${story}
     initMinigameRounds();
     initToolsHubShortcuts();
     initMainShortcuts();
+    initToolsHubNavigation();
+    initToolsDomainDesk();
+    initToolsOddsDesk();
+    initToolsBonusDesk();
+    initToolsLogbook();
+    initToolsPattern();
+    initToolsReplyHelper();
+    initToolsLinkManager();
+    initToolsSettlement();
   }
 
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
