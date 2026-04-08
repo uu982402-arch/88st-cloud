@@ -1,5 +1,3 @@
-# NOTE: directory index routes like /blog, /tools, /guaranteed are served directly by _worker.js to avoid trailing-slash redirect loops.
-
 /googling          /muktu-police/search/ 301
 /domain-check      /muktu-police/check/ 301
 /muktu-police/brand /guaranteed/ 301
