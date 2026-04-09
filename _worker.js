@@ -148,6 +148,34 @@ if (path === '/community' || path.startsWith('/community/')) {
         ['/popular', '/'],
         ['/archive', '/']
       ]);
+      const toolWrapperRedirects = new Map([
+        ['/tools/address-consistency/', '/tools/ai-domain-analysis/?focus=address'],
+        ['/tools/official-check/', '/tools/ai-domain-analysis/?focus=address'],
+        ['/tools/search-pack/', '/tools/ai-domain-analysis/?focus=address'],
+        ['/tools/address-tracker/', '/tools/ai-domain-analysis/?focus=timeline'],
+        ['/tools/change-timeline/', '/tools/ai-domain-analysis/?focus=timeline'],
+        ['/tools/relationship-map/', '/tools/ai-domain-analysis/?focus=relation'],
+        ['/tools/similar-domain/', '/tools/ai-domain-analysis/?focus=relation'],
+        ['/tools/ip-asn-cluster/', '/tools/ai-domain-analysis/?focus=relation'],
+        ['/tools/risk-compare/', '/tools/ai-notice-check/'],
+        ['/tools/evidence-bundle/', '/tools/ai-report-draft/'],
+        ['/tools/report-packager/', '/tools/ai-report-draft/'],
+        ['/tools/report-template/', '/tools/ai-report-draft/'],
+        ['/tools/ai-condition-lab/', '/tools/ai-sports-odds-analysis/?focus=condition'],
+        ['/tools/bonus-policy/', '/tools/ai-sports-odds-analysis/?focus=condition'],
+        ['/tools/ai-game-lab/', '/tools/ai-sports-odds-analysis/?focus=casino'],
+        ['/tools/slot-session/', '/tools/ai-sports-odds-analysis/?focus=casino'],
+        ['/tools/bankroll-planner/', '/tools/ai-sports-odds-analysis/?focus=mini'],
+        ['/tools/minigame-rounds/', '/tools/ai-sports-odds-analysis/?focus=mini'],
+        ['/tools/slip-compare/', '/tools/ai-sports-odds-analysis/?focus=sports'],
+        ['/tools/ou-calculator/', '/tools/ai-sports-odds-analysis/?focus=ou'],
+        ['/tools/handicap-profit/', '/tools/ai-sports-odds-analysis/?focus=hcp']
+      ]);
+      const toolWrapperRedirect = toolWrapperRedirects.get(path);
+      if (toolWrapperRedirect) {
+        return Response.redirect(url.origin + toolWrapperRedirect, 301);
+      }
+
       const exactRedirect = legacyExactRedirects.get(path);
       if (exactRedirect) {
         return Response.redirect(url.origin + exactRedirect, 301);

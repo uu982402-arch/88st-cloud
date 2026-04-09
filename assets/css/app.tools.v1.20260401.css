@@ -269,3 +269,11 @@
   .tool-form-card--compact .safety-textarea{min-height:96px}
   #tools-records .score-grid,#tools-ops .score-grid,#toolsConditionCompareResult .score-grid,#toolsSettlementResult .score-grid,#toolsBankrollSimResult .score-grid{grid-template-columns:1fr}
 }
+
+
+.tool-detail-shell{display:grid;gap:16px}
+.tool-detail-hero,.tool-detail-card{display:grid;gap:16px}
+.tool-detail-card .tool-inline-actions{padding-top:2px}
+.tool-help-list--detail{grid-template-columns:repeat(3,minmax(0,1fr))}
+.tool-detail-card .tool-fixed-result{max-height:420px}
+@media (max-width:980px){.tool-help-list--detail{grid-template-columns:1fr}}
