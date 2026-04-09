@@ -241,3 +241,27 @@
   .legacy-tools-grid{grid-template-columns:1fr;gap:10px}
   .legacy-tool-link{min-height:auto;padding:13px 14px;border-radius:16px}
 }
+
+/* tools hub reinforcement pass */
+.tool-panel--summary-wide{grid-column:1/-1}
+.tool-mini-list-box{padding:12px 14px;border-radius:16px;border:1px solid var(--line);background:var(--surface-2)}
+.tool-mini-list-box .toolkit-points{margin:0}
+.compare-grid-shell{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.compare-card{display:grid;gap:10px;padding:12px 13px;border-radius:16px;border:1px solid var(--line);background:linear-gradient(180deg,#fff 0%,#f8fafc 100%)}
+.compare-card h4{margin:0;font-size:14px;letter-spacing:-.01em;color:var(--text)}
+.tool-form-card--compact .safety-textarea{min-height:110px}
+#tools-records .score-grid,#tools-ops .score-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+#tools-records .tool-panel--summary-wide .score-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+#tools-records .tool-panel--summary-wide .tool-mini-list-box{margin-top:2px}
+#toolsConditionCompareResult .score-grid,#toolsSettlementResult .score-grid,#toolsBankrollSimResult .score-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media (max-width:1180px){
+  .compare-grid-shell{grid-template-columns:1fr}
+}
+@media (max-width:900px){
+  #tools-records .score-grid,#tools-ops .score-grid,#toolsConditionCompareResult .score-grid,#toolsSettlementResult .score-grid,#toolsBankrollSimResult .score-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:760px){
+  .tool-panel--summary-wide{grid-column:auto}
+  .tool-form-card--compact .safety-textarea{min-height:96px}
+  #tools-records .score-grid,#tools-ops .score-grid,#toolsConditionCompareResult .score-grid,#toolsSettlementResult .score-grid,#toolsBankrollSimResult .score-grid{grid-template-columns:1fr}
+}
