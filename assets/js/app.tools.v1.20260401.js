@@ -53,8 +53,8 @@
       ];
       const nextLinks = `<div class="lookup-links">${[
         {label:'구글링 페이지', href:`/muktu-police/search/?q=${encodeURIComponent(raw)}&type=${encodeURIComponent('주소')}`, text:'더 넓게 검색합니다.'},
-        {label:'최종 체크', href:`/tools/official-check/${domain?`?domain=${encodeURIComponent(domain)}`:''}`, text:'마지막 점검으로 이동합니다.'},
-        {label:'검색 조합', href:`/tools/search-pack/${raw?`?q=${encodeURIComponent(raw)}`:''}`, text:'추가 검색어를 만듭니다.'}
+        {label:'최종 체크', href:`/tools/${domain?`?domain=${encodeURIComponent(domain)}`:''}#tools-priority`, text:'마지막 점검으로 이동합니다.'},
+        {label:'검색 조합', href:`/tools/${raw?`?q=${encodeURIComponent(raw)}`:''}#tools-priority`, text:'추가 검색어를 만듭니다.'}
       ].map((item)=>`<article class="lookup-link-card"><a href="${item.href}">${item.label}</a><p>${item.text}</p></article>`).join('')}</div>`;
       const html = section('주소 변경 조합', '자주 쓰는 조합만 남겼습니다.', listCard(queries.map((item)=>({ title:item.title, detail:item.q, actions:`<div class="toolkit-actions"><a class="safety-link-btn ghost" href="${googleUrl(item.q)}" target="_blank" rel="noopener noreferrer">열기</a><button class="safety-copy-btn mint" type="button" data-inline-copy="${esc(item.q)}">복사</button></div>` })))) + section('다음 확인', '이어 보면 좋은 도구입니다.', nextLinks);
       setResult(result, html, 'toolkit-result-stack');
@@ -72,7 +72,7 @@
         const candidate = /[가-힣]/.test(v) ? v : `${v}${tld}`;
         return { candidate, score: similarity(base, v.replace(/[-.]/g,'')), note: v.includes('-') ? '하이픈 변형' : /\d/.test(v) ? '숫자 추가' : v !== base ? '접미어 추가' : '기준 주소' };
       }).sort((a,b)=>b.score-a.score).slice(0,10);
-      const table = `<table class="toolkit-table"><thead><tr><th>후보</th><th>유사도</th><th>메모</th><th>액션</th></tr></thead><tbody>${rows.map((row)=>`<tr><td><strong>${esc(row.candidate)}</strong></td><td>${esc(row.score)}%</td><td>${esc(row.note)}</td><td><div class="toolkit-actions"><a class="safety-link-btn ghost" href="${googleUrl(`${row.candidate} 먹튀`)}" target="_blank" rel="noopener noreferrer">검색</a><a class="safety-link-btn ghost" href="/tools/official-check/?domain=${encodeURIComponent(row.candidate)}">점검</a></div></td></tr>`).join('')}</tbody></table>`;
+      const table = `<table class="toolkit-table"><thead><tr><th>후보</th><th>유사도</th><th>메모</th><th>액션</th></tr></thead><tbody>${rows.map((row)=>`<tr><td><strong>${esc(row.candidate)}</strong></td><td>${esc(row.score)}%</td><td>${esc(row.note)}</td><td><div class="toolkit-actions"><a class="safety-link-btn ghost" href="${googleUrl(`${row.candidate} 먹튀`)}" target="_blank" rel="noopener noreferrer">검색</a><a class="safety-link-btn ghost" href="/tools/?domain=${encodeURIComponent(row.candidate)}#tools-priority">점검</a></div></td></tr>`).join('')}</tbody></table>`;
       const html = section('유사 주소 후보', '변형 후보만 먼저 보여줍니다.', table) + section('빠른 기준', '숫자·하이픈·접미어부터 확인하면 됩니다.', `<div class="toolkit-note">${esc(raw)} 숫자 추가, bet/vip, 하이픈 변형부터 점검하세요.</div>`);
       setResult(result, html, 'toolkit-result-stack');
     });
@@ -109,7 +109,7 @@
           `오픈카카오: ${(ev.kakaos||[]).join(', ') || '-'}`,
           `메모: ${payload.interpretation?.map((x)=>`${x.title} - ${x.detail}`).join(' / ') || '공개 근거를 추가 확인하세요.'}`,
         ].join('\n');
-        const follow = domainsFromEvidence(ev).map((domain)=>`<article class="lookup-link-card"><a href="/tools/official-check/?domain=${encodeURIComponent(domain)}">${esc(domain)} 점검 ↗</a><p>생성일·DNS·점수를 확인합니다.</p></article>`).join('');
+        const follow = domainsFromEvidence(ev).map((domain)=>`<article class="lookup-link-card"><a href="/tools/?domain=${encodeURIComponent(domain)}#tools-priority">${esc(domain)} 점검 ↗</a><p>생성일·DNS·점수를 확인합니다.</p></article>`).join('');
         const html = section(src.title || '근거 짧은 판단', '원문과 핵심 흔적만 남겼습니다.', `<div class="score-grid"><div class="score-metric"><span>호스트</span><strong>${esc(src.host||'-')}</strong></div><div class="score-metric"><span>게시일</span><strong>${esc(formatDate(src.publishedAt))}</strong></div><div class="score-metric"><span>도메인</span><strong>${esc((ev.domains||[]).length)}</strong></div><div class="score-metric"><span>IP</span><strong>${esc((ev.ips||[]).length)}</strong></div></div>`) + section('기록 메모', '바로 붙여넣을 수 있는 메모입니다.', `<div class="toolkit-copy-box"><pre>${esc(memo)}</pre><div class="toolkit-actions"><button class="safety-copy-btn mint" type="button" data-inline-copy="${esc(memo)}">메모 복사</button><a class="safety-link-btn ghost" href="${esc(src.url||url)}" target="_blank" rel="noopener noreferrer">원문 열기</a></div></div>`) + (follow ? section('연결 점검', '추출된 도메인은 최종 체크로 이어서 봅니다.', `<div class="lookup-links">${follow}</div>`) : '');
         setResult(result, html, 'toolkit-result-stack');
       } catch(err) { empty(result, '근거 추출에 실패했습니다.', err.message || '허용된 공개 페이지 URL인지 확인해 주세요.'); }
@@ -195,7 +195,7 @@
         ];
         const table = `<table class="toolkit-table"><thead><tr><th>항목</th><th>${esc(l)}</th><th>${esc(r)}</th></tr></thead><tbody>${rows.map((row)=>`<tr><td><strong>${esc(row[0])}</strong></td><td>${esc(row[1])}</td><td>${esc(row[2])}</td></tr>`).join('')}</tbody></table>`;
         const note = (Number(lp.risk?.score||0) === Number(rp.risk?.score||0)) ? '점수는 비슷합니다. 생성일·ASN을 더 보세요.' : (Number(lp.risk?.score||0) < Number(rp.risk?.score||0) ? `${l}  쪽이 더 안정적으로 보입니다.` : `${r}  쪽이 더 안정적으로 보입니다.`);
-        const html = section('핵심 비교', '핵심 항목만 나란히 봅니다.', table) + section('짧은 판단', '점수와 생성일·NS·ASN을 같이 보세요.', `<div class="toolkit-note">${esc(note)}</div><div class="toolkit-actions"><a class="safety-link-btn ghost" href="/tools/official-check/?domain=${encodeURIComponent(l)}">${esc(l)} 체크</a><a class="safety-link-btn ghost" href="/tools/official-check/?domain=${encodeURIComponent(r)}">${esc(r)} 체크</a></div>`);
+        const html = section('핵심 비교', '핵심 항목만 나란히 봅니다.', table) + section('짧은 판단', '점수와 생성일·NS·ASN을 같이 보세요.', `<div class="toolkit-note">${esc(note)}</div><div class="toolkit-actions"><a class="safety-link-btn ghost" href="/tools/?domain=${encodeURIComponent(l)}#tools-priority">${esc(l)} 체크</a><a class="safety-link-btn ghost" href="/tools/?domain=${encodeURIComponent(r)}#tools-priority">${esc(r)} 체크</a></div>`);
         setResult(result, html, 'toolkit-result-stack');
       } catch(err) { empty(result, '비교에 실패했습니다.', err.message || '잠시 후 다시 시도해 주세요.'); }
     });
@@ -232,14 +232,14 @@ ${story}
   function initToolsHubShortcuts(){
     const slots = $('#toolsExpansionGrid'); if(!slots) return;
     const tools = [
-      ['주소 변경기','ADDRESS','새주소 · 리뉴얼','/tools/address-tracker/'],
-      ['유사 주소 후보 감지기','SIMILAR','숫자 · 하이픈','/tools/similar-domain/'],
-      ['검색 조합 생성기','SEARCH PACK','먹튀 · 후기 · 주소 조합','/tools/search-pack/'],
-      ['근거 짧은 판단 생성기','EVIDENCE','제목 · 날짜 · 도메인 · IP','/tools/evidence-bundle/'],
-      ['IP · ASN 군집 보기','CLUSTER','ASN · 대역 · NS 겹침','/tools/ip-asn-cluster/'],
-      ['공식주소 확인 체크','OFFICIAL','생성일 · DNS · 점수 체크','/tools/official-check/'],
-      ['제보 정리 템플릿','REPORT','검토용 제보 초안 자동 작성','/tools/report-template/'],
-      ['리스크 스코어 비교기','COMPARE','도메인 두 개 비교','/tools/risk-compare/']
+      ['주소 변경기','ADDRESS','새주소 · 리뉴얼','/tools/#tools-priority'],
+      ['유사 주소 후보 감지기','SIMILAR','숫자 · 하이픈','/tools/#tools-priority'],
+      ['검색 조합 생성기','SEARCH PACK','먹튀 · 후기 · 주소 조합','/tools/#tools-priority'],
+      ['근거 짧은 판단 생성기','EVIDENCE','제목 · 날짜 · 도메인 · IP','/tools/#tools-ops'],
+      ['IP · ASN 군집 보기','CLUSTER','ASN · 대역 · NS 겹침','/tools/#tools-priority'],
+      ['공식주소 확인 체크','OFFICIAL','생성일 · DNS · 점수 체크','/tools/#tools-priority'],
+      ['제보 정리 템플릿','REPORT','검토용 제보 초안 자동 작성','/tools/#tools-ops'],
+      ['리스크 스코어 비교기','COMPARE','도메인 두 개 비교','/tools/#tools-priority']
     ];
     slots.innerHTML = tools.map((item)=>`<article class="toolkit-card"><span class="tool-badge">${item[1]}</span><h3>${item[0]}</h3><p>${item[2]}</p><div class="card-actions"><a class="safety-link-btn ghost" href="${item[3]}">열기</a></div></article>`).join('');
   }
@@ -249,17 +249,17 @@ ${story}
     if(grid){
       grid.innerHTML = [
         ['구글링','검색 조합','사이트명 · 도메인','/muktu-police/search/',''],
-        ['주소 변경','주소 변경','새주소 · 리뉴얼','/tools/address-tracker/','mint'],
-        ['유사 주소 후보','유사 주소','숫자 · 하이픈','/tools/similar-domain/',''],
+        ['주소 변경','주소 변경','새주소 · 리뉴얼','/tools/#tools-priority','mint'],
+        ['유사 주소 후보','유사 주소','숫자 · 하이픈','/tools/#tools-priority',''],
         ['도메인조회','도메인·IP','등록일 · DNS','/muktu-police/check/','gold'],
       ].map((item)=>`<a class="hero-action-card ${item[4]}" href="${item[3]}"><span>${item[0]}</span><strong>${item[1]}</strong><small>${item[2]}</small></a>`).join('');
     }
     const toolGrid = $('.home-flow-section .tool-grid');
     if(toolGrid){
       toolGrid.innerHTML = [
-        ['TRACKER','주소 변경','새주소 · 리뉴얼','/tools/address-tracker/'],
-        ['SEARCH PACK','검색 조합','먹튀 · 후기 · 주소 조합','/tools/search-pack/'],
-        ['OFFICIAL','최종 체크','생성일 · DNS · 점수 확인','/tools/official-check/']
+        ['TRACKER','주소 변경','새주소 · 리뉴얼','/tools/#tools-priority'],
+        ['SEARCH PACK','검색 조합','먹튀 · 후기 · 주소 조합','/tools/#tools-priority'],
+        ['OFFICIAL','최종 체크','생성일 · DNS · 점수 확인','/tools/#tools-priority']
       ].map((item)=>`<article class="tool-card"><div class="tool-top"><span class="tool-badge">${item[0]}</span></div><h3>${item[1]}</h3><p>${item[2]}</p><div class="card-actions"><a class="safety-link-btn ghost" href="${item[3]}">도구 열기</a></div></article>`).join('');
     }
   }
@@ -395,7 +395,7 @@ ${story}
         parts.push(section('계열 신호','겹치는 운영 패턴을 추정으로 묶어 봅니다.',cards));
       }
       const memo = [`기준 후보는 ${official} 입니다.`, domains.length>1?'주소 후보가 여러 개여서 공지·채널 대조가 필요합니다.':'주소 후보가 많지 않습니다.', /리뉴얼|변경/i.test(raw)?'리뉴얼/변경 문구가 있어 흐름 점검이 필요합니다.':'큰 변경 문구는 많지 않습니다.'];
-      parts.push(section('실전 메모','지금 바로 확인할 포인트만 남깁니다.',`<ul class="toolkit-points">${memo.map((m)=>`<li>${esc(m)}</li>`).join('')}</ul><div class="toolkit-actions"><a class="safety-link-btn ghost" href="/tools/notice-review/">공지·후기 분석</a><a class="safety-link-btn ghost" href="/tools/official-check/">공식주소 체크</a></div>`));
+      parts.push(section('실전 메모','지금 바로 확인할 포인트만 남깁니다.',`<ul class="toolkit-points">${memo.map((m)=>`<li>${esc(m)}</li>`).join('')}</ul><div class="toolkit-actions"><a class="safety-link-btn ghost" href="/tools/notice-review/">공지·후기 분석</a><a class="safety-link-btn ghost" href="/tools/#tools-priority">공식주소 체크</a></div>`));
       setResult(result, parts.join(''), 'toolkit-result-stack');
     });
   }
@@ -643,8 +643,8 @@ ${story}
       const driverList = (risk.drivers || []).length ? `<ul class="toolkit-points">${risk.drivers.slice(0,5).map((item)=>`<li>${esc(item.label)} · ${esc(item.detail)}</li>`).join('')}</ul>` : `<div class="toolkit-note">검색 결과와 주소/코드 일치 여부를 같이 보는 편이 좋습니다.</div>`;
       const nextActions = `<div class="lookup-links">
         <article class="lookup-link-card"><a href="/muktu-police/search/?q=${encodeURIComponent(seed)}&type=${encodeURIComponent('먹튀')}">구글링 도구로 이동</a><p>키워드를 더 넓게 확인합니다.</p></article>
-        <article class="lookup-link-card"><a href="/tools/official-check/${domain?`?domain=${encodeURIComponent(domain)}`:''}">공식주소 체크</a><p>최종 점검용 상세 체크로 이어집니다.</p></article>
-        <article class="lookup-link-card"><a href="/tools/search-pack/${seed?`?q=${encodeURIComponent(seed)}`:''}">검색 조합 도구</a><p>추가 조합을 만들어 더 찾아봅니다.</p></article>
+        <article class="lookup-link-card"><a href="/tools/${domain?`?domain=${encodeURIComponent(domain)}`:''}#tools-priority">사이트 체크</a><p>핵심 도구에서 바로 이어서 확인합니다.</p></article>
+        <article class="lookup-link-card"><a href="/tools/${seed?`?q=${encodeURIComponent(seed)}`:''}#tools-priority">검색 동선</a><p>도구 허브에서 바로 이어서 확인합니다.</p></article>
       </div>`;
       const overlapHtml = hits.length ? listCard(hits.map((hit)=>({ title:hit.item.label || hit.item.key, detail:[hit.overlapNs.length?`NS ${hit.overlapNs.join(', ')}`:'', hit.overlapAsn.length?`ASN ${hit.overlapAsn.join(', ')}`:'', hit.overlapSub.length?`대역 ${hit.overlapSub.join(', ')}`:''].filter(Boolean).join(' · ') }))) : '<div class="toolkit-note">최근 조회 이력과 겹치는 군집 힌트가 크지 않습니다.</div>';
       const errorBlock = lookupError ? `<div class="toolkit-note">도메인 응답을 읽지 못해 검색 동선 중심으로 먼저 정리했습니다. ${esc(lookupError)}</div>` : '';
@@ -652,6 +652,14 @@ ${story}
       setResult(result, html, 'toolkit-result-stack');
       renderToolsDomainDeskHistory();
     });
+    const params = new URL(location.href).searchParams;
+    const q = String(params.get('q') || '').trim();
+    const domainQuery = String(params.get('domain') || '').trim();
+    if(domainQuery || q){
+      domainInput.value = domainQuery;
+      if(!domainQuery) nameInput.value = q;
+      form.dispatchEvent(new Event('submit', { bubbles:true, cancelable:true }));
+    }
   }
 
   function initToolsOddsDesk(){

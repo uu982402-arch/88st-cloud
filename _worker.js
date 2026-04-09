@@ -2170,12 +2170,12 @@ async function buildAiLookupPayload({ query, mode, providers=[] }) {
   if (!cautions.length) cautions.push('검색 결과와 공식 공지 주소를 마지막으로 같이 보는 보수적 흐름을 권장합니다.');
 
   const nextSteps = [
-    { label:'공식주소 체크', href:'/tools/official-check/', copy:'현재 입력 주소와 공지 주소를 한 번 더 대조합니다.' },
-    { label:'주소 변경 추적기', href:'/tools/address-tracker/', copy:'이전 주소·대체 주소 흐름을 정리합니다.' },
+    { label:'공식주소 체크', href:'/tools/#tools-priority', copy:'현재 입력 주소와 공지 주소를 한 번 더 대조합니다.' },
+    { label:'주소 변경 추적기', href:'/tools/#tools-priority', copy:'이전 주소·대체 주소 흐름을 정리합니다.' },
     { label:'보증업체 기준 보기', href:'/guaranteed/', copy:'운영중 카드 기준으로 마지막 판단 순서를 다시 봅니다.' }
   ];
   if (effectiveDomain) {
-    nextSteps[0] = { label:'유사 도메인 감지기', href:'/tools/similar-domain/', copy:`${effectiveDomain} 기준으로 헷갈리기 쉬운 주소 패턴을 먼저 봅니다.` };
+    nextSteps[0] = { label:'유사 도메인 감지기', href:'/tools/#tools-priority', copy:`${effectiveDomain} 기준으로 헷갈리기 쉬운 주소 패턴을 먼저 봅니다.` };
   }
 
   return {
