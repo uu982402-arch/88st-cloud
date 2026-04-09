@@ -61,7 +61,7 @@
 .tool-anchor-row{display:flex;flex-wrap:wrap;gap:10px}
 .tool-anchor-chip{appearance:none;border:1px solid var(--line);background:#fff;color:var(--text);border-radius:999px;padding:11px 14px;font-size:13px;font-weight:800;cursor:pointer}
 .tool-anchor-chip:hover,.tool-anchor-chip.is-active{border-color:var(--brand);background:var(--brand-soft);color:var(--brand)}
-.tool-status-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.tool-status-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
 .tool-status-card{padding:18px;border-radius:20px;background:linear-gradient(180deg,#fff 0%,#f7f9fc 100%);border:1px solid var(--line);box-shadow:var(--shadow-sm);display:grid;gap:8px}
 .tool-status-card h2{margin:0;font-size:18px;color:var(--text)}
 .tool-status-card p{margin:0;color:var(--muted);line-height:1.55}
@@ -90,11 +90,15 @@
 .tool-output-box{display:grid;gap:12px}
 .tool-output-box pre{margin:0;padding:14px 16px;border-radius:16px;border:1px solid var(--line);background:var(--surface-2);white-space:pre-wrap;word-break:break-word;font:13px/1.65 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--text)}
 .legacy-tools-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;padding-top:14px}
-.legacy-tool-link{text-decoration:none !important;color:inherit !important;min-height:150px}
+.legacy-tool-link{text-decoration:none !important;color:inherit !important;min-height:150px;display:grid;align-content:start;gap:6px}
+.legacy-tool-link .tool-badge{align-self:start}
+.legacy-tool-link:hover{transform:translateY(-2px);border-color:rgba(30,58,95,.22);box-shadow:0 14px 32px rgba(15,23,42,.08)}
+
 .legacy-tool-link h3{margin-top:8px}
 .legacy-tool-link p{line-height:1.55}
 .empty-state{padding:16px;border-radius:18px;border:1px dashed var(--line-strong);background:var(--surface-2)}
-@media (max-width:1100px){.tool-status-grid,.tools-workbench-grid,.legacy-tools-grid{grid-template-columns:1fr 1fr}.tools-hub-summary{flex-direction:column}}
+@media (max-width:1280px){.tool-status-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:1100px){.tools-workbench-grid,.legacy-tools-grid{grid-template-columns:1fr 1fr}.tools-hub-summary{flex-direction:column}}
 @media (max-width:760px){.tool-status-grid,.tools-workbench-grid,.legacy-tools-grid{grid-template-columns:1fr}.tool-panel{padding:16px}.tool-anchor-row,.tool-inline-actions,.tool-storage-actions{width:100%}.tool-anchor-chip,.tool-inline-actions .safety-link-btn,.tool-inline-actions .safety-copy-btn{width:100%;justify-content:center}}
 
 
