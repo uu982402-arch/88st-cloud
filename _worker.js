@@ -106,10 +106,16 @@ if (path === '/community' || path.startsWith('/community/')) {
       }
 
 
-      // Sitemap/robots/text feeds: explicit passthrough to avoid edge-side ambiguity
+      // Sitemap/robots/text feeds: explicit asset passthrough without reusing the original request object.
+      // Re-wrapping the incoming Request here can cause odd edge behavior for non-HTML assets on some deployments.
       if (path === '/sitemap.xml' || path === '/robots.txt' || path === '/sitemap.txt') {
         const assetPath = path === '/robots.txt' ? '/robots.txt' : (path === '/sitemap.txt' ? '/sitemap.txt' : '/sitemap.xml');
-        const assetReq = new Request(url.origin + assetPath, request);
+        const assetReq = new Request(url.origin + assetPath, {
+          method: 'GET',
+          headers: {
+            'accept': path === '/sitemap.xml' ? 'application/xml,text/xml,*/*' : 'text/plain,*/*'
+          }
+        });
         const res = await env.ASSETS.fetch(assetReq);
         const h = new Headers(res.headers);
         if (path === '/sitemap.xml') h.set('content-type', 'application/xml; charset=utf-8');
