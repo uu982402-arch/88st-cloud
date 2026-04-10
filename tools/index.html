@@ -112,7 +112,7 @@
                 </div>
               </form>
               <div id="toolsDomainDeskResult" class="empty-state" data-base-class="tool-fixed-result tool-fixed-result--tall">사이트명이나 도메인을 넣으면 검색 동선, 도메인 정보, 빠른 판단을 같이 보여줍니다.</div>
-              <div class="tool-inline-actions tool-inline-actions--after-result"><button type="button" class="safety-copy-btn ghost" data-copy-result="#toolsDomainDeskResult">결과 복사</button></div>
+              <div class="tool-inline-actions"><button type="button" class="safety-copy-btn ghost" data-copy-result-target="#toolsDomainDeskResult">결과 복사</button></div>
               <div class="tool-subblock">
                 <div class="section-head"><div><h3>최근 확인</h3></div></div>
                 <div class="tool-scroll-box"><div id="toolsDomainDeskHistory" class="tool-storage-list"></div></div>
@@ -355,7 +355,7 @@
                 <button type="submit" class="safety-link-btn">조건 비교</button>
               </form>
               <div id="toolsConditionCompareResult" class="empty-state" data-base-class="tool-fixed-result">보너스, 롤링, 기여율, 최대 출금을 함께 넣으면 두 조건의 체감 부담을 나란히 비교합니다.</div>
-              <div class="tool-inline-actions tool-inline-actions--after-result"><button type="button" class="safety-copy-btn ghost" data-copy-result="#toolsConditionCompareResult">결과 복사</button></div>
+              <div class="tool-inline-actions"><button type="button" class="safety-copy-btn ghost" data-copy-result-target="#toolsConditionCompareResult">결과 복사</button></div>
             </article>
           </div>
         </section>
@@ -373,8 +373,8 @@
               <a class="tool-card legacy-tool-link" href="/tools/ai-domain-analysis/"><span class="tool-badge">SIMILAR</span><h3>유사 주소 후보</h3><p>숫자 · 하이픈 · 접미어 비교</p></a>
               <a class="tool-card legacy-tool-link" href="/tools/ai-domain-analysis/"><span class="tool-badge">OFFICIAL</span><h3>공식주소 체크</h3><p>등록일 · DNS · 기본 점검</p></a>
               <a class="tool-card legacy-tool-link" href="/tools/ai-domain-analysis/"><span class="tool-badge">COMPARE</span><h3>리스크 비교기</h3><p>도메인 위험도 비교</p></a>
-              <a class="tool-card legacy-tool-link" href="/tools/ai-domain-analysis/?focus=timeline"><span class="tool-badge">TIMELINE</span><h3>변경 타임라인</h3><p>공지/주소 흐름 정리</p></a>
-              <a class="tool-card legacy-tool-link" href="/tools/ai-domain-analysis/?focus=relation"><span class="tool-badge">MAP</span><h3>관계도 보기</h3><p>도메인 · 코드 · 채널</p></a>
+              <a class="tool-card legacy-tool-link" href="/tools/change-timeline/"><span class="tool-badge">TIMELINE</span><h3>변경 타임라인</h3><p>공지/주소 흐름 정리</p></a>
+              <a class="tool-card legacy-tool-link" href="/tools/relationship-map/"><span class="tool-badge">MAP</span><h3>관계도 보기</h3><p>도메인 · 코드 · 채널</p></a>
             </div>
           </details>
           <details class="faq-item">
@@ -391,12 +391,12 @@
           <details class="faq-item">
             <summary><span class="legacy-summary-row"><span>스포츠 · 게임</span><strong>6개</strong></span></summary>
             <div class="legacy-tools-grid">
-              <a class="tool-card legacy-tool-link" href="/tools/ai-sports-odds-analysis/"><span class="tool-badge">SPORTS</span><h3>스포츠 분석</h3><p>공정확률 · EV · 비중</p></a>
-              <a class="tool-card legacy-tool-link" href="/tools/ai-sports-odds-analysis/?focus=ou"><span class="tool-badge">OU</span><h3>언더/오버 계산</h3><p>공정확률 해석</p></a>
-              <a class="tool-card legacy-tool-link" href="/tools/ai-sports-odds-analysis/?focus=hcp"><span class="tool-badge">HCP</span><h3>핸디캡 계산</h3><p>라인 기준 해석</p></a>
-              <a class="tool-card legacy-tool-link" href="/tools/ai-sports-odds-analysis/?focus=casino"><span class="tool-badge">SLOT</span><h3>슬롯 세션 계산</h3><p>RTP · 변동성 · 분배</p></a>
-              <a class="tool-card legacy-tool-link" href="/tools/ai-sports-odds-analysis/?focus=mini"><span class="tool-badge">MINI</span><h3>미니게임 회차</h3><p>회차 예산 · 붕괴 위험</p></a>
-              <a class="tool-card legacy-tool-link" href="/tools/ai-sports-odds-analysis/?focus=condition"><span class="tool-badge">LAB</span><h3>조건 해석기</h3><p>보너스 · 롤링 · 규정</p></a>
+              <a class="tool-card legacy-tool-link" href="/tools/ai-sports-odds-analysis/"><span class="tool-badge">AI</span><h3>AI 스포츠 분석</h3><p>공정확률 · EV · 비중</p></a>
+              <a class="tool-card legacy-tool-link" href="/tools/ou-calculator/"><span class="tool-badge">OU</span><h3>언더/오버 계산</h3><p>공정확률 해석</p></a>
+              <a class="tool-card legacy-tool-link" href="/tools/handicap-profit/"><span class="tool-badge">HCP</span><h3>핸디캡 계산</h3><p>라인 기준 해석</p></a>
+              <a class="tool-card legacy-tool-link" href="/tools/slot-session/"><span class="tool-badge">SLOT</span><h3>슬롯 세션 계산</h3><p>RTP · 변동성 · 분배</p></a>
+              <a class="tool-card legacy-tool-link" href="/tools/minigame-rounds/"><span class="tool-badge">MINI</span><h3>미니게임 회차</h3><p>회차 예산 · 붕괴 위험</p></a>
+              <a class="tool-card legacy-tool-link" href="/tools/ai-condition-lab/"><span class="tool-badge">LAB</span><h3>조건 해석기</h3><p>보너스 · 롤링 · 규정</p></a>
             </div>
           </details>
         </section>

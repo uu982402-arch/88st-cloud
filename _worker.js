@@ -44,15 +44,6 @@ if (path === '/community' || path.startsWith('/community/')) {
         return handleSafetyBrandDirectory(request, env);
       }
 
-      if (path === '/sitemap.xml' || path === '/robots.txt' || path === '/sitemap.txt') {
-        const res = await env.ASSETS.fetch(request);
-        const h = new Headers(res.headers);
-        if (path === '/sitemap.xml') h.set('content-type', 'application/xml; charset=UTF-8');
-        if (path === '/robots.txt' || path === '/sitemap.txt') h.set('content-type', 'text/plain; charset=UTF-8');
-        h.set('cache-control', 'no-store, no-cache, must-revalidate, max-age=0');
-        return new Response(res.body, { status: res.status, headers: h });
-      }
-
       // OPS deploy patch config: always no-store (fast operations)
       if (path === '/assets/config/ops.dom.patch.json') {
         const res = await env.ASSETS.fetch(request);
@@ -114,6 +105,19 @@ if (path === '/community' || path.startsWith('/community/')) {
         return new Response(res.body, { status: res.status, headers: h });
       }
 
+
+      // Sitemap/robots/text feeds: explicit passthrough to avoid edge-side ambiguity
+      if (path === '/sitemap.xml' || path === '/robots.txt' || path === '/sitemap.txt') {
+        const assetPath = path === '/robots.txt' ? '/robots.txt' : (path === '/sitemap.txt' ? '/sitemap.txt' : '/sitemap.xml');
+        const assetReq = new Request(url.origin + assetPath, request);
+        const res = await env.ASSETS.fetch(assetReq);
+        const h = new Headers(res.headers);
+        if (path === '/sitemap.xml') h.set('content-type', 'application/xml; charset=utf-8');
+        if (path === '/robots.txt' || path === '/sitemap.txt') h.set('content-type', 'text/plain; charset=utf-8');
+        h.set('cache-control', 'no-store, no-cache, must-revalidate, max-age=0');
+        return new Response(res.body, { status: res.status, headers: h });
+      }
+
       // EVENT popup image: fixed path swap (image replace only, no config changes)
       if (path === '/img/popup/event-popup.jpg') {
         const res = await env.ASSETS.fetch(request);
@@ -158,27 +162,27 @@ if (path === '/community' || path.startsWith('/community/')) {
         ['/archive', '/']
       ]);
       const toolWrapperRedirects = new Map([
-        ['/tools/address-consistency', '/tools/ai-domain-analysis/?focus=address'],
-        ['/tools/official-check', '/tools/ai-domain-analysis/?focus=address'],
-        ['/tools/search-pack', '/tools/ai-domain-analysis/?focus=address'],
-        ['/tools/address-tracker', '/tools/ai-domain-analysis/?focus=timeline'],
-        ['/tools/change-timeline', '/tools/ai-domain-analysis/?focus=timeline'],
-        ['/tools/relationship-map', '/tools/ai-domain-analysis/?focus=relation'],
-        ['/tools/similar-domain', '/tools/ai-domain-analysis/?focus=relation'],
-        ['/tools/ip-asn-cluster', '/tools/ai-domain-analysis/?focus=relation'],
-        ['/tools/risk-compare', '/tools/ai-notice-check/'],
-        ['/tools/evidence-bundle', '/tools/ai-report-draft/'],
-        ['/tools/report-packager', '/tools/ai-report-draft/'],
-        ['/tools/report-template', '/tools/ai-report-draft/'],
-        ['/tools/ai-condition-lab', '/tools/ai-sports-odds-analysis/?focus=condition'],
-        ['/tools/bonus-policy', '/tools/ai-sports-odds-analysis/?focus=condition'],
-        ['/tools/ai-game-lab', '/tools/ai-sports-odds-analysis/?focus=casino'],
-        ['/tools/slot-session', '/tools/ai-sports-odds-analysis/?focus=casino'],
-        ['/tools/bankroll-planner', '/tools/ai-sports-odds-analysis/?focus=mini'],
-        ['/tools/minigame-rounds', '/tools/ai-sports-odds-analysis/?focus=mini'],
-        ['/tools/slip-compare', '/tools/ai-sports-odds-analysis/?focus=sports'],
-        ['/tools/ou-calculator', '/tools/ai-sports-odds-analysis/?focus=ou'],
-        ['/tools/handicap-profit', '/tools/ai-sports-odds-analysis/?focus=hcp']
+        ['/tools/address-consistency/', '/tools/ai-domain-analysis/?focus=address'],
+        ['/tools/official-check/', '/tools/ai-domain-analysis/?focus=address'],
+        ['/tools/search-pack/', '/tools/ai-domain-analysis/?focus=address'],
+        ['/tools/address-tracker/', '/tools/ai-domain-analysis/?focus=timeline'],
+        ['/tools/change-timeline/', '/tools/ai-domain-analysis/?focus=timeline'],
+        ['/tools/relationship-map/', '/tools/ai-domain-analysis/?focus=relation'],
+        ['/tools/similar-domain/', '/tools/ai-domain-analysis/?focus=relation'],
+        ['/tools/ip-asn-cluster/', '/tools/ai-domain-analysis/?focus=relation'],
+        ['/tools/risk-compare/', '/tools/ai-notice-check/'],
+        ['/tools/evidence-bundle/', '/tools/ai-report-draft/'],
+        ['/tools/report-packager/', '/tools/ai-report-draft/'],
+        ['/tools/report-template/', '/tools/ai-report-draft/'],
+        ['/tools/ai-condition-lab/', '/tools/ai-sports-odds-analysis/?focus=condition'],
+        ['/tools/bonus-policy/', '/tools/ai-sports-odds-analysis/?focus=condition'],
+        ['/tools/ai-game-lab/', '/tools/ai-sports-odds-analysis/?focus=casino'],
+        ['/tools/slot-session/', '/tools/ai-sports-odds-analysis/?focus=casino'],
+        ['/tools/bankroll-planner/', '/tools/ai-sports-odds-analysis/?focus=mini'],
+        ['/tools/minigame-rounds/', '/tools/ai-sports-odds-analysis/?focus=mini'],
+        ['/tools/slip-compare/', '/tools/ai-sports-odds-analysis/?focus=sports'],
+        ['/tools/ou-calculator/', '/tools/ai-sports-odds-analysis/?focus=ou'],
+        ['/tools/handicap-profit/', '/tools/ai-sports-odds-analysis/?focus=hcp']
       ]);
       const toolWrapperRedirect = toolWrapperRedirects.get(path);
       if (toolWrapperRedirect) {

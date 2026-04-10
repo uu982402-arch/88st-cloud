@@ -99,20 +99,19 @@
     const image = item.imageUrl ? `<div class="guaranteed-media" style="${imageStyle}"><img src="${esc(item.imageUrl)}" alt="${esc(item.imageAlt || `${item.name} 광고 이미지`)}" loading="lazy" decoding="async"></div>` : '';
     const action = `<a class="guaranteed-link" href="${esc(item.officialUrl)}" target="_blank" rel="noopener noreferrer">공식 주소</a>`;
     const code = `<button class="guaranteed-code" type="button" data-copy-text="${esc(item.code)}"><span data-copy-label data-default-label="${esc(item.code)}">${esc(item.code)}</span></button>`;
-    return `<article class="guaranteed-card" data-theme="brand" data-provider-slug="${esc(item.slug || '')}">${image}<div class="guaranteed-table guaranteed-table--clean"><div class="guaranteed-row"><strong class="guaranteed-title">${esc(item.name)}</strong></div><div class="guaranteed-row"><span class="guaranteed-label guaranteed-label--code">가입코드</span>${code}</div></div><div class="guaranteed-actions guaranteed-actions--clean">${action}</div></article>`;
+    return `<article class="guaranteed-card" data-theme="brand">${image}<div class="guaranteed-table guaranteed-table--clean"><div class="guaranteed-row"><strong class="guaranteed-title">${esc(item.name)}</strong></div><div class="guaranteed-row"><span class="guaranteed-label guaranteed-label--code">가입코드</span>${code}</div></div><div class="guaranteed-actions guaranteed-actions--clean">${action}</div></article>`;
   }
   function renderGuaranteedCards(providers){
     const active = (providers || []).filter((item)=>!item.pending && item.officialUrl && item.code);
     $$('[data-guaranteed-grid]').forEach((grid)=>{
-      const existing = new Set($$('[data-provider-slug]', grid).map((node)=>String(node.getAttribute('data-provider-slug') || '').trim()).filter(Boolean));
-      const missing = active.filter((item)=>!existing.has(String(item.slug || '').trim()));
-      if (!grid.children.length) {
+      const seeded = grid.querySelectorAll('.guaranteed-card').length;
+      if (!seeded) {
         grid.innerHTML = active.map(providerCard).join('');
         return;
       }
-      if (missing.length) {
-        grid.insertAdjacentHTML('beforeend', missing.map(providerCard).join(''));
-      }
+      const seen = new Set(Array.from(grid.querySelectorAll('.guaranteed-title')).map((el)=>String(el.textContent || '').trim()));
+      const remain = active.filter((item)=>!seen.has(String(item.name || '').trim()));
+      if (remain.length) grid.insertAdjacentHTML('beforeend', remain.map(providerCard).join(''));
     });
   }
 
