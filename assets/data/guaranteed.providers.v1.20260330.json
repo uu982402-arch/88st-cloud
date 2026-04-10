@@ -47,7 +47,7 @@
       "imageUrl": "/assets/provider-media/las-card.webp",
       "imageAlt": "LAS 광고 이미지",
       "imagePosition": "center center",
-      "imageScale": 1.04
+      "imageScale": 1.0
     },
     {
       "slug": "chilbet",
