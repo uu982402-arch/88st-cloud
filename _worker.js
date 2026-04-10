@@ -44,6 +44,16 @@ if (path === '/community' || path.startsWith('/community/')) {
         return handleSafetyBrandDirectory(request, env);
       }
 
+
+      if (method === 'GET' && (rawPath === '/sitemap.xml' || rawPath === '/robots.txt' || rawPath === '/sitemap.txt')) {
+        const cleanUrl = new URL(request.url);
+        const cleanReq = new Request(cleanUrl.toString(), {
+          method: 'GET',
+          headers: new Headers({ 'accept': '*/*' })
+        });
+        return env.ASSETS.fetch(cleanReq);
+      }
+
       // OPS deploy patch config: always no-store (fast operations)
       if (path === '/assets/config/ops.dom.patch.json') {
         const res = await env.ASSETS.fetch(request);
@@ -102,25 +112,6 @@ if (path === '/community' || path.startsWith('/community/')) {
         h.set('cache-control', 'no-store, no-cache, must-revalidate, max-age=0');
         h.set('pragma', 'no-cache');
         h.set('expires', '0');
-        return new Response(res.body, { status: res.status, headers: h });
-      }
-
-
-      // Sitemap/robots/text feeds: explicit asset passthrough without reusing the original request object.
-      // Re-wrapping the incoming Request here can cause odd edge behavior for non-HTML assets on some deployments.
-      if (path === '/sitemap.xml' || path === '/robots.txt' || path === '/sitemap.txt') {
-        const assetPath = path === '/robots.txt' ? '/robots.txt' : (path === '/sitemap.txt' ? '/sitemap.txt' : '/sitemap.xml');
-        const assetReq = new Request(url.origin + assetPath, {
-          method: 'GET',
-          headers: {
-            'accept': path === '/sitemap.xml' ? 'application/xml,text/xml,*/*' : 'text/plain,*/*'
-          }
-        });
-        const res = await env.ASSETS.fetch(assetReq);
-        const h = new Headers(res.headers);
-        if (path === '/sitemap.xml') h.set('content-type', 'application/xml; charset=utf-8');
-        if (path === '/robots.txt' || path === '/sitemap.txt') h.set('content-type', 'text/plain; charset=utf-8');
-        h.set('cache-control', 'no-store, no-cache, must-revalidate, max-age=0');
         return new Response(res.body, { status: res.status, headers: h });
       }
 
