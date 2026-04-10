@@ -104,14 +104,8 @@
   function renderGuaranteedCards(providers){
     const active = (providers || []).filter((item)=>!item.pending && item.officialUrl && item.code);
     $$('[data-guaranteed-grid]').forEach((grid)=>{
-      const seeded = grid.querySelectorAll('.guaranteed-card').length;
-      if (!seeded) {
-        grid.innerHTML = active.map(providerCard).join('');
-        return;
-      }
-      const seen = new Set(Array.from(grid.querySelectorAll('.guaranteed-title')).map((el)=>String(el.textContent || '').trim()));
-      const remain = active.filter((item)=>!seen.has(String(item.name || '').trim()));
-      if (remain.length) grid.insertAdjacentHTML('beforeend', remain.map(providerCard).join(''));
+      if (!grid) return;
+      grid.innerHTML = active.map(providerCard).join('');
     });
   }
 
