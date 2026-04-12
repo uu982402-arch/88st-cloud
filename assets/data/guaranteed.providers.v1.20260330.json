@@ -20,10 +20,10 @@
         "모바일"
       ],
       "pending": false,
-      "imageUrl": "/assets/provider-media/ddk-card.webp",
-      "imageAlt": "땅콩 광고 이미지",
+      "imageUrl": "/assets/provider-media/ddk-logo.png",
+      "imageAlt": "땅콩 로고",
       "imagePosition": "center center",
-      "imageScale": 1
+      "imageScale": 1.14
     },
     {
       "slug": "las",
@@ -44,10 +44,10 @@
         "모바일"
       ],
       "pending": false,
-      "imageUrl": "/assets/provider-media/las-card.webp",
-      "imageAlt": "LAS 광고 이미지",
+      "imageUrl": "/assets/provider-media/las-logo.png",
+      "imageAlt": "LAS 로고",
       "imagePosition": "center center",
-      "imageScale": 1
+      "imageScale": 1.2
     },
     {
       "slug": "chilbet",
@@ -67,11 +67,11 @@
         "주소확인",
         "터치최적화"
       ],
-      "imageUrl": "/assets/provider-media/chilbet-card.webp",
-      "imageAlt": "칠벳 광고 이미지",
+      "imageUrl": "/assets/provider-media/chilbet-logo.png",
+      "imageAlt": "칠벳 로고",
       "pending": false,
-      "imagePosition": "center 42%",
-      "imageScale": 1.5
+      "imagePosition": "center center",
+      "imageScale": 1.16
     },
     {
       "slug": "yangsim",
@@ -94,8 +94,8 @@
       "imageUrl": "/assets/provider-media/yangsim-card.webp",
       "imageAlt": "양심 광고 이미지",
       "pending": false,
-      "imagePosition": "center 40%",
-      "imageScale": 2.2
+      "imagePosition": "center center",
+      "imageScale": 1.12
     },
     {
       "slug": "avengers",
@@ -118,8 +118,8 @@
       "pending": false,
       "imageUrl": "/assets/provider-media/avengers-card.webp",
       "imageAlt": "어벤져스 광고 이미지",
-      "imagePosition": "center 42%",
-      "imageScale": 1.8
+      "imagePosition": "center center",
+      "imageScale": 1.08
     },
     {
       "slug": "diaz",
@@ -139,11 +139,11 @@
         "코드복사",
         "빠른이동"
       ],
-      "imageUrl": "/assets/provider-media/diaz-card.webp",
-      "imageAlt": "DIAZ 광고 이미지",
+      "imageUrl": "/assets/provider-media/diaz-logo.png",
+      "imageAlt": "DIAZ 로고",
       "pending": false,
-      "imagePosition": "center 38%",
-      "imageScale": 2.0
+      "imagePosition": "center center",
+      "imageScale": 1.16
     }
   ]
 }
