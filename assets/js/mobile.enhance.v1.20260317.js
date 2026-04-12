@@ -61,20 +61,20 @@
       secondaryLabel: '텔레그램 문의하기'
     },
     {
-      id: 'avengers-main',
-      title: '믿고 이용하는 어벤저스',
-      badgeBrand: '어벤저스벳',
+      id: 'anybet-main',
+      title: 'ANY BET',
+      badgeBrand: 'ANY BET',
       badgeSuffix: ' 회원 전용 이벤트',
       bullets: [
-        '신규 첫충전,카지노 충전 이벤트',
-        '신규 정착이벤트',
-        'USTD 입금/가입,원화 입금 가능',
-        '심야충전,콤프,페이백 이벤트'
+        '스포츠·카지노 빠른 진입',
+        '공식 주소 확인 후 바로 이동',
+        '가입코드 ASK 즉시 복사',
+        '모바일 기준 빠른 접근'
       ],
-      code: '6789',
-      codeLabel: '가입코드: 6789',
-      theme: 'jaju',
-      primaryHref: 'https://av-bet.com/',
+      code: 'ASK',
+      codeLabel: '가입코드: ASK',
+      theme: 'amber',
+      primaryHref: 'https://any-777.com/',
       primaryLabel: '공식 주소 바로가기',
       secondaryHref: 'https://t.me/TRK7878',
       secondaryLabel: '텔레그램 문의하기'

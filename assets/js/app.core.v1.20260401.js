@@ -95,27 +95,22 @@
     });
   }
   function providerCard(item){
-    const mediaKind = item.imageKind || ((item.imageUrl || '').toLowerCase().endsWith('.png') ? 'logo' : 'cover');
-    const imageStyle = `--media-pos:${esc(item.imagePosition || 'center center')};--media-scale:${esc(item.imageScale || '1.12')};--media-pad:${esc(item.imagePadding || (mediaKind === 'logo' ? '14px 22px' : '0px'))}`;
-    const image = item.imageUrl ? `<div class="guaranteed-media ${mediaKind === 'logo' ? 'is-logo' : ''}" data-media-kind="${esc(mediaKind)}" style="${imageStyle}"><img src="${esc(item.imageUrl)}" alt="${esc(item.imageAlt || `${item.name} 광고 이미지`)}" loading="lazy" decoding="async"></div>` : '';
+    const imageStyle = `--media-pos:${esc(item.imagePosition || 'center center')};--media-scale:${esc(item.imageScale || '1.12')}`;
+    const image = item.imageUrl ? `<div class="guaranteed-media" style="${imageStyle}"><img src="${esc(item.imageUrl)}" alt="${esc(item.imageAlt || `${item.name} 광고 이미지`)}" loading="lazy" decoding="async"></div>` : '';
     const action = `<a class="guaranteed-link" href="${esc(item.officialUrl)}" target="_blank" rel="noopener noreferrer">공식 주소</a>`;
     const code = `<button class="guaranteed-code" type="button" data-copy-text="${esc(item.code)}"><span data-copy-label data-default-label="${esc(item.code)}">${esc(item.code)}</span></button>`;
     return `<article class="guaranteed-card" data-theme="brand">${image}<div class="guaranteed-table guaranteed-table--clean"><div class="guaranteed-row"><strong class="guaranteed-title">${esc(item.name)}</strong></div><div class="guaranteed-row"><span class="guaranteed-label guaranteed-label--code">가입코드</span>${code}</div></div><div class="guaranteed-actions guaranteed-actions--clean">${action}</div></article>`;
   }
   function renderGuaranteedCards(providers){
     const active = (providers || []).filter((item)=>!item.pending && item.officialUrl && item.code);
-    $$('[data-guaranteed-grid]').forEach((grid)=>{
-      if (!grid) return;
-      grid.innerHTML = active.map(providerCard).join('');
-    });
+    $$('[data-guaranteed-grid]').forEach((grid)=>{ if (grid.children.length) return; grid.innerHTML = active.map(providerCard).join(''); });
   }
 
   function providerRotatorCard(item){
-    const mediaKind = item.imageKind || ((item.imageUrl || '').toLowerCase().endsWith('.png') ? 'logo' : 'cover');
-    const imageStyle = `--media-pos:${esc(item.imagePosition || 'center center')};--media-scale:${esc(item.imageScale || '1.12')};--media-pad:${esc(item.imagePadding || (mediaKind === 'logo' ? '14px 22px' : '0px'))}`;
+    const imageStyle = `--media-pos:${esc(item.imagePosition || 'center center')};--media-scale:${esc(item.imageScale || '1.12')}`;
     const action = `<a class="home-provider-link" href="${esc(item.officialUrl)}" target="_blank" rel="noopener noreferrer">공식 주소</a>`;
     const code = `<button class="home-provider-code" type="button" data-copy-text="${esc(item.code)}"><span data-copy-label data-default-label="${esc(item.code)}">${esc(item.code)}</span></button>`;
-    const image = item.imageUrl ? `<div class="home-provider-media ${mediaKind === 'logo' ? 'is-logo' : ''}" data-media-kind="${esc(mediaKind)}" style="${imageStyle}"><img src="${esc(item.imageUrl)}" alt="${esc(item.imageAlt || `${item.name} 광고 이미지`)}" loading="lazy" decoding="async"></div>` : '';
+    const image = item.imageUrl ? `<div class="home-provider-media" style="${imageStyle}"><img src="${esc(item.imageUrl)}" alt="${esc(item.imageAlt || `${item.name} 광고 이미지`)}" loading="lazy" decoding="async"></div>` : '';
     return `<article class="home-provider-card" data-theme="brand">${image}<div class="home-provider-card-top home-provider-card-top--clean"><strong>${esc(item.name)}</strong></div><div class="home-provider-card-actions">${code}${action}</div></article>`;
   }
   function renderHomeProviderRotator(providers){
@@ -125,7 +120,7 @@
     const prev = $('[data-home-rotator-prev]', section);
     const next = $('[data-home-rotator-next]', section);
     const pageMeta = $('[data-home-rotator-page]', section);
-    const priority = ['ddk','las','chilbet','yangsim','avengers','diaz'];
+    const priority = ['ddk','chilbet','yangsim','anybet','diaz'];
     const active = (providers || []).filter((item)=>!item.pending && item.officialUrl && item.code).sort((a,b)=>{
       const ai = priority.indexOf(a.slug); const bi = priority.indexOf(b.slug);
       const av = ai === -1 ? 999 : ai; const bv = bi === -1 ? 999 : bi;
@@ -355,7 +350,7 @@ https://t.me/example_notice">${esc(initial || '')}</textarea><div class="card-ac
       const terms = ['먹튀','후기','주소','도메인 변경','가입코드','메이저'];
       const domain = normalizeDomain(clean);
       result.className = 'result-stack';
-      result.innerHTML = `<div class="card"><div class="section-head"><div><h2>${esc(clean)} · ${esc(suffix)}</h2><p>가장 많이 쓰는 조합만 먼저 정리합니다.</p></div><div class="section-head-actions"><a class="safety-link-btn" href="${googleUrl(`${clean} ${suffix}`)}" target="_blank" rel="noopener noreferrer">구글 검색</a></div></div><div class="lookup-links">${terms.map((term)=>`<article class="lookup-link-card"><a href="${googleUrl(`${clean} ${term}`)}" target="_blank" rel="noopener noreferrer">${esc(term)} ↗</a><p>${esc(`${clean} ${term}`)}</p></article>`).join('')}</div></div><div class="card"><div class="section-head"><div><h2>다음 확인</h2><p>검색이 끝나면 조회와 근거 정리로 이어집니다.</p></div></div><div class="lookup-links"><article class="lookup-link-card"><a href="/muktu-police/check/${domain ? `?domain=${encodeURIComponent(domain)}` : ''}">도메인·IP 조회 ↗</a><p>${domain ? esc(domain) + ' 기준으로 바로 조회합니다.' : '도메인이 있으면 바로 조회할 수 있습니다.'}</p></article><article class="lookup-link-card"><a href="/tools/#tools-ops" >도구 허브 ↗</a><p >기록·운영 도구를 함께 확인합니다.</p></article><article class="lookup-link-card"><a href="/blog/google-muktu-search-guide/">검색 기준 읽기 ↗</a><p>검색어를 왜 나눠 쓰는지부터 확인합니다.</p></article></div></div>`;
+      result.innerHTML = `<div class="card"><div class="section-head"><div><h2>${esc(clean)} · ${esc(suffix)}</h2><p>가장 많이 쓰는 조합만 먼저 정리합니다.</p></div><div class="section-head-actions"><a class="safety-link-btn" href="${googleUrl(`${clean} ${suffix}`)}" target="_blank" rel="noopener noreferrer">구글 검색</a></div></div><div class="lookup-links">${terms.map((term)=>`<article class="lookup-link-card"><a href="${googleUrl(`${clean} ${term}`)}" target="_blank" rel="noopener noreferrer">${esc(term)} ↗</a><p>${esc(`${clean} ${term}`)}</p></article>`).join('')}</div></div><div class="card"><div class="section-head"><div><h2>다음 확인</h2><p>검색이 끝나면 조회와 근거 정리로 이어집니다.</p></div></div><div class="lookup-links"><article class="lookup-link-card"><a href="/muktu-police/check/${domain ? `?domain=${encodeURIComponent(domain)}` : ''}">도메인·IP 조회 ↗</a><p>${domain ? esc(domain) + ' 기준으로 바로 조회합니다.' : '도메인이 있으면 바로 조회할 수 있습니다.'}</p></article><article class="lookup-link-card"><a href="/tools/evidence-bundle/">공개 근거 추출 ↗</a><p>공개 글 URL이 있으면 제목, 날짜, 도메인·IP 언급만 정리합니다.</p></article><article class="lookup-link-card"><a href="/blog/google-muktu-search-guide/">검색 기준 읽기 ↗</a><p>검색어를 왜 나눠 쓰는지부터 확인합니다.</p></article></div></div>`;
       };
     form.addEventListener('submit',(e)=>{ e.preventDefault(); const clean=String(input.value||'').trim(); if(!clean){ toast('먼저 사이트명이나 도메인을 입력해 주세요.'); return; } const suffix=select?.value||'먹튀'; window.open(googleUrl(`${clean} ${suffix}`),'_blank','noopener'); render(); });
     preview?.addEventListener('click', render); render();

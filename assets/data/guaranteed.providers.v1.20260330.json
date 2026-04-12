@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-10",
+  "updated": "2026-04-13",
   "providers": [
     {
       "slug": "ddk",
@@ -20,38 +20,10 @@
         "모바일"
       ],
       "pending": false,
-      "imageUrl": "/assets/provider-media/ddk-logo.png",
+      "imageUrl": "/assets/provider-media/ddk-card.webp",
       "imageAlt": "땅콩 광고 이미지",
       "imagePosition": "center center",
-      "imageScale": 1.08,
-      "imageKind": "logo",
-      "imagePadding": "16px 28px"
-    },
-    {
-      "slug": "las",
-      "name": "LAS",
-      "theme": "blue",
-      "officialUrl": "https://las-888.com/?code=crow",
-      "officialDomain": "las-888.com",
-      "code": "CROW",
-      "oneLine": "",
-      "benefits": [
-        "공식 주소 확인",
-        "코드 즉시 복사",
-        "간단 진입"
-      ],
-      "tags": [
-        "신규추가",
-        "코드복사",
-        "모바일"
-      ],
-      "pending": false,
-      "imageUrl": "/assets/provider-media/las-logo.png",
-      "imageAlt": "LAS 광고 이미지",
-      "imagePosition": "center center",
-      "imageScale": 1.06,
-      "imageKind": "logo",
-      "imagePadding": "16px 24px"
+      "imageScale": 0.9
     },
     {
       "slug": "chilbet",
@@ -71,20 +43,18 @@
         "주소확인",
         "터치최적화"
       ],
-      "imageUrl": "/assets/provider-media/chilbet-logo.png",
+      "imageUrl": "/assets/provider-media/chilbet-card.webp",
       "imageAlt": "칠벳 광고 이미지",
       "pending": false,
-      "imagePosition": "center center",
-      "imageScale": 1.16,
-      "imageKind": "logo",
-      "imagePadding": "14px 18px"
+      "imagePosition": "center 42%",
+      "imageScale": 1.5
     },
     {
       "slug": "yangsim",
       "name": "양심",
       "theme": "amber",
-      "officialUrl": "https://양심도메인.com/",
-      "officialDomain": "양심도메인.com",
+      "officialUrl": "https://평생양심.com/",
+      "officialDomain": "평생양심.com",
       "code": "KAKA",
       "oneLine": "",
       "benefits": [
@@ -104,12 +74,12 @@
       "imageScale": 2.2
     },
     {
-      "slug": "avengers",
-      "name": "어벤져스",
-      "theme": "crimson",
-      "officialUrl": "https://av-bet.com/",
-      "officialDomain": "av-bet.com",
-      "code": "6789",
+      "slug": "anybet",
+      "name": "ANY BET",
+      "theme": "amber",
+      "officialUrl": "https://any-777.com/",
+      "officialDomain": "any-777.com",
+      "code": "ASK",
       "oneLine": "",
       "benefits": [
         "공식 주소 확인",
@@ -117,15 +87,15 @@
         "빠른 진입"
       ],
       "tags": [
-        "이미지카드",
+        "로고카드",
         "코드복사",
         "빠른이동"
       ],
       "pending": false,
-      "imageUrl": "/assets/provider-media/avengers-card.webp",
-      "imageAlt": "어벤져스 광고 이미지",
-      "imagePosition": "center 42%",
-      "imageScale": 1.8
+      "imageUrl": "/assets/provider-media/anybet-logo.png",
+      "imageAlt": "ANY BET 로고",
+      "imagePosition": "center center",
+      "imageScale": 1.08
     },
     {
       "slug": "diaz",
@@ -145,13 +115,11 @@
         "코드복사",
         "빠른이동"
       ],
-      "imageUrl": "/assets/provider-media/diaz-logo.png",
+      "imageUrl": "/assets/provider-media/diaz-card.webp",
       "imageAlt": "DIAZ 광고 이미지",
       "pending": false,
-      "imagePosition": "center center",
-      "imageScale": 1.04,
-      "imageKind": "logo",
-      "imagePadding": "16px 30px"
+      "imagePosition": "center 38%",
+      "imageScale": 2.0
     }
   ]
 }
