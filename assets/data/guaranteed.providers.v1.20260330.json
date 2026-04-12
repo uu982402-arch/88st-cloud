@@ -21,9 +21,11 @@
       ],
       "pending": false,
       "imageUrl": "/assets/provider-media/ddk-logo.png",
-      "imageAlt": "땅콩 로고",
+      "imageAlt": "땅콩 광고 이미지",
       "imagePosition": "center center",
-      "imageScale": 1.14
+      "imageScale": 1.08,
+      "imageKind": "logo",
+      "imagePadding": "16px 28px"
     },
     {
       "slug": "las",
@@ -45,9 +47,11 @@
       ],
       "pending": false,
       "imageUrl": "/assets/provider-media/las-logo.png",
-      "imageAlt": "LAS 로고",
+      "imageAlt": "LAS 광고 이미지",
       "imagePosition": "center center",
-      "imageScale": 1.2
+      "imageScale": 1.06,
+      "imageKind": "logo",
+      "imagePadding": "16px 24px"
     },
     {
       "slug": "chilbet",
@@ -68,10 +72,12 @@
         "터치최적화"
       ],
       "imageUrl": "/assets/provider-media/chilbet-logo.png",
-      "imageAlt": "칠벳 로고",
+      "imageAlt": "칠벳 광고 이미지",
       "pending": false,
       "imagePosition": "center center",
-      "imageScale": 1.16
+      "imageScale": 1.16,
+      "imageKind": "logo",
+      "imagePadding": "14px 18px"
     },
     {
       "slug": "yangsim",
@@ -94,8 +100,8 @@
       "imageUrl": "/assets/provider-media/yangsim-card.webp",
       "imageAlt": "양심 광고 이미지",
       "pending": false,
-      "imagePosition": "center center",
-      "imageScale": 1.12
+      "imagePosition": "center 40%",
+      "imageScale": 2.2
     },
     {
       "slug": "avengers",
@@ -118,8 +124,8 @@
       "pending": false,
       "imageUrl": "/assets/provider-media/avengers-card.webp",
       "imageAlt": "어벤져스 광고 이미지",
-      "imagePosition": "center center",
-      "imageScale": 1.08
+      "imagePosition": "center 42%",
+      "imageScale": 1.8
     },
     {
       "slug": "diaz",
@@ -140,10 +146,12 @@
         "빠른이동"
       ],
       "imageUrl": "/assets/provider-media/diaz-logo.png",
-      "imageAlt": "DIAZ 로고",
+      "imageAlt": "DIAZ 광고 이미지",
       "pending": false,
       "imagePosition": "center center",
-      "imageScale": 1.16
+      "imageScale": 1.04,
+      "imageKind": "logo",
+      "imagePadding": "16px 30px"
     }
   ]
 }
