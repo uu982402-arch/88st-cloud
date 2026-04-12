@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-13",
+  "updated": "2026-04-01",
   "providers": [
     {
       "slug": "ddk",
@@ -20,10 +20,12 @@
         "모바일"
       ],
       "pending": false,
-      "imageUrl": "/assets/provider-media/ddk-card.webp",
-      "imageAlt": "땅콩 광고 이미지",
+      "imageUrl": "/assets/provider-media/ddk-logo.png",
+      "imageAlt": "땅콩 로고",
       "imagePosition": "center center",
-      "imageScale": 0.9
+      "imageScale": 1.06,
+      "imageKind": "logo",
+      "imagePadding": "12px 20px"
     },
     {
       "slug": "chilbet",
@@ -43,11 +45,13 @@
         "주소확인",
         "터치최적화"
       ],
-      "imageUrl": "/assets/provider-media/chilbet-card.webp",
-      "imageAlt": "칠벳 광고 이미지",
+      "imageUrl": "/assets/provider-media/chilbet-logo.png",
+      "imageAlt": "칠벳 로고",
       "pending": false,
-      "imagePosition": "center 42%",
-      "imageScale": 1.5
+      "imagePosition": "center center",
+      "imageScale": 1.14,
+      "imageKind": "logo",
+      "imagePadding": "10px 18px"
     },
     {
       "slug": "yangsim",
@@ -76,7 +80,7 @@
     {
       "slug": "anybet",
       "name": "ANY BET",
-      "theme": "amber",
+      "theme": "brand",
       "officialUrl": "https://any-777.com/",
       "officialDomain": "any-777.com",
       "code": "ASK",
@@ -84,18 +88,20 @@
       "benefits": [
         "공식 주소 확인",
         "코드 즉시 복사",
-        "빠른 진입"
+        "간단 진입"
       ],
       "tags": [
-        "로고카드",
         "코드복사",
-        "빠른이동"
+        "빠른이동",
+        "모바일"
       ],
       "pending": false,
       "imageUrl": "/assets/provider-media/anybet-logo.png",
       "imageAlt": "ANY BET 로고",
       "imagePosition": "center center",
-      "imageScale": 1.08
+      "imageScale": 0.82,
+      "imagePadding": "14px 22px",
+      "imageKind": "logo"
     },
     {
       "slug": "diaz",
@@ -115,11 +121,13 @@
         "코드복사",
         "빠른이동"
       ],
-      "imageUrl": "/assets/provider-media/diaz-card.webp",
-      "imageAlt": "DIAZ 광고 이미지",
+      "imageUrl": "/assets/provider-media/diaz-logo.png",
+      "imageAlt": "DIAZ 로고",
       "pending": false,
-      "imagePosition": "center 38%",
-      "imageScale": 2.0
+      "imagePosition": "center center",
+      "imageScale": 1.02,
+      "imageKind": "logo",
+      "imagePadding": "14px 20px"
     }
   ]
 }

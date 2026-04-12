@@ -95,22 +95,24 @@
     });
   }
   function providerCard(item){
-    const imageStyle = `--media-pos:${esc(item.imagePosition || 'center center')};--media-scale:${esc(item.imageScale || '1.12')}`;
-    const image = item.imageUrl ? `<div class="guaranteed-media" style="${imageStyle}"><img src="${esc(item.imageUrl)}" alt="${esc(item.imageAlt || `${item.name} 광고 이미지`)}" loading="lazy" decoding="async"></div>` : '';
+    const mediaKind = item.imageKind || ((item.imageUrl || '').toLowerCase().endsWith('.png') ? 'logo' : 'cover');
+    const imageStyle = `--media-pos:${esc(item.imagePosition || 'center center')};--media-scale:${esc(item.imageScale || '1.12')};--media-pad:${esc(item.imagePadding || (mediaKind === 'logo' ? '14px 22px' : '0px'))}`;
+    const image = item.imageUrl ? `<div class="guaranteed-media ${mediaKind === 'logo' ? 'is-logo' : ''}" data-media-kind="${esc(mediaKind)}" style="${imageStyle}"><img src="${esc(item.imageUrl)}" alt="${esc(item.imageAlt || `${item.name} 광고 이미지`)}" loading="lazy" decoding="async"></div>` : '';
     const action = `<a class="guaranteed-link" href="${esc(item.officialUrl)}" target="_blank" rel="noopener noreferrer">공식 주소</a>`;
     const code = `<button class="guaranteed-code" type="button" data-copy-text="${esc(item.code)}"><span data-copy-label data-default-label="${esc(item.code)}">${esc(item.code)}</span></button>`;
     return `<article class="guaranteed-card" data-theme="brand">${image}<div class="guaranteed-table guaranteed-table--clean"><div class="guaranteed-row"><strong class="guaranteed-title">${esc(item.name)}</strong></div><div class="guaranteed-row"><span class="guaranteed-label guaranteed-label--code">가입코드</span>${code}</div></div><div class="guaranteed-actions guaranteed-actions--clean">${action}</div></article>`;
   }
   function renderGuaranteedCards(providers){
     const active = (providers || []).filter((item)=>!item.pending && item.officialUrl && item.code);
-    $$('[data-guaranteed-grid]').forEach((grid)=>{ if (grid.children.length) return; grid.innerHTML = active.map(providerCard).join(''); });
+    $$('[data-guaranteed-grid]').forEach((grid)=>{ if (!grid) return; grid.innerHTML = active.map(providerCard).join(''); });
   }
 
   function providerRotatorCard(item){
-    const imageStyle = `--media-pos:${esc(item.imagePosition || 'center center')};--media-scale:${esc(item.imageScale || '1.12')}`;
+    const mediaKind = item.imageKind || ((item.imageUrl || '').toLowerCase().endsWith('.png') ? 'logo' : 'cover');
+    const imageStyle = `--media-pos:${esc(item.imagePosition || 'center center')};--media-scale:${esc(item.imageScale || '1.12')};--media-pad:${esc(item.imagePadding || (mediaKind === 'logo' ? '14px 22px' : '0px'))}`;
     const action = `<a class="home-provider-link" href="${esc(item.officialUrl)}" target="_blank" rel="noopener noreferrer">공식 주소</a>`;
     const code = `<button class="home-provider-code" type="button" data-copy-text="${esc(item.code)}"><span data-copy-label data-default-label="${esc(item.code)}">${esc(item.code)}</span></button>`;
-    const image = item.imageUrl ? `<div class="home-provider-media" style="${imageStyle}"><img src="${esc(item.imageUrl)}" alt="${esc(item.imageAlt || `${item.name} 광고 이미지`)}" loading="lazy" decoding="async"></div>` : '';
+    const image = item.imageUrl ? `<div class="home-provider-media ${mediaKind === 'logo' ? 'is-logo' : ''}" data-media-kind="${esc(mediaKind)}" style="${imageStyle}"><img src="${esc(item.imageUrl)}" alt="${esc(item.imageAlt || `${item.name} 광고 이미지`)}" loading="lazy" decoding="async"></div>` : '';
     return `<article class="home-provider-card" data-theme="brand">${image}<div class="home-provider-card-top home-provider-card-top--clean"><strong>${esc(item.name)}</strong></div><div class="home-provider-card-actions">${code}${action}</div></article>`;
   }
   function renderHomeProviderRotator(providers){

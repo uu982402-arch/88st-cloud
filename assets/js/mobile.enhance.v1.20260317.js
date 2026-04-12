@@ -59,21 +59,21 @@
       primaryLabel: '공식 주소 바로가기',
       secondaryHref: 'https://t.me/TRK7878',
       secondaryLabel: '텔레그램 문의하기'
-    },
+    },,
     {
       id: 'anybet-main',
-      title: 'ANY BET',
+      title: '실전 이용 중심 ANY BET',
       badgeBrand: 'ANY BET',
-      badgeSuffix: ' 회원 전용 이벤트',
+      badgeSuffix: ' 빠른 확인용 추천 카드',
       bullets: [
-        '스포츠·카지노 빠른 진입',
-        '공식 주소 확인 후 바로 이동',
+        '공식 주소 바로 확인',
         '가입코드 ASK 즉시 복사',
-        '모바일 기준 빠른 접근'
+        '모바일/PC 빠른 진입',
+        '간단 확인 후 이동'
       ],
       code: 'ASK',
       codeLabel: '가입코드: ASK',
-      theme: 'amber',
+      theme: 'silver',
       primaryHref: 'https://any-777.com/',
       primaryLabel: '공식 주소 바로가기',
       secondaryHref: 'https://t.me/TRK7878',
