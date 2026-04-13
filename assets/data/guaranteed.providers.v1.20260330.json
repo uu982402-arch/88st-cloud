@@ -28,6 +28,32 @@
       "imagePadding": "12px 20px"
     },
     {
+      "slug": "las",
+      "name": "LAS",
+      "theme": "gold",
+      "officialUrl": "https://las-888.com/?code=crow",
+      "officialDomain": "las-888.com",
+      "code": "CROW",
+      "oneLine": "",
+      "benefits": [
+        "공식 주소 확인",
+        "코드 즉시 복사",
+        "간단 진입"
+      ],
+      "tags": [
+        "코드복사",
+        "빠른이동",
+        "모바일"
+      ],
+      "pending": false,
+      "imageUrl": "/assets/provider-media/las-logo.png",
+      "imageAlt": "LAS 로고",
+      "imagePosition": "center center",
+      "imageScale": 0.92,
+      "imageKind": "logo",
+      "imagePadding": "12px 22px"
+    },
+    {
       "slug": "chilbet",
       "name": "칠벳",
       "theme": "red",

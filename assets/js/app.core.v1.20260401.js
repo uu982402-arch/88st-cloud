@@ -122,7 +122,7 @@
     const prev = $('[data-home-rotator-prev]', section);
     const next = $('[data-home-rotator-next]', section);
     const pageMeta = $('[data-home-rotator-page]', section);
-    const priority = ['ddk','chilbet','yangsim','anybet','diaz'];
+    const priority = ['ddk','las','chilbet','yangsim','anybet','diaz'];
     const active = (providers || []).filter((item)=>!item.pending && item.officialUrl && item.code).sort((a,b)=>{
       const ai = priority.indexOf(a.slug); const bi = priority.indexOf(b.slug);
       const av = ai === -1 ? 999 : ai; const bv = bi === -1 ? 999 : bi;
