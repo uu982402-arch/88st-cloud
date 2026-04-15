@@ -2,7 +2,7 @@ import path from 'path';
 import { loadPosts, writeTextIfChanged, ROOT, TODAY } from './lib/site-automation.mjs';
 
 const OUT = path.join(ROOT, 'docs/indexing-priority-20260322.md');
-const { posts } = await loadPosts();
+const posts = await loadPosts();
 
 function sortLatest(list){
   return [...list].sort((a,b) => (Date.parse(b.updated || b.published || 0) || 0) - (Date.parse(a.updated || a.published || 0) || 0) || (b.popular || 0) - (a.popular || 0));
@@ -10,9 +10,7 @@ function sortLatest(list){
 function sortPopular(list){
   return [...list].sort((a,b) => (b.popular || 0) - (a.popular || 0) || (Date.parse(b.updated || b.published || 0) || 0) - (Date.parse(a.updated || a.published || 0) || 0));
 }
-const hubs = [
-  '/', '/blog/', '/tools/', '/guaranteed/', '/muktu-police/', '/muktu-police/search/', '/muktu-police/check/'
-];
+const hubs = ['/', '/blog/', '/tools/', '/guaranteed/'];
 const firstWave = [
   ...hubs,
   ...sortPopular(posts.filter((post) => ['casino','slot','bonus','strategy'].includes(post.category))).slice(0, 12).map((post) => post.path)

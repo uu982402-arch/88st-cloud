@@ -22,7 +22,7 @@ export default {
 
 // TEMP: Community routes disabled (redirect to home)
 if (path === '/community' || path.startsWith('/community/')) {
-  const target = url.origin + '/';
+  const target = url.origin + '/blog/';
   return Response.redirect(target, 302);
 }
 
@@ -129,9 +129,6 @@ if (path === '/community' || path.startsWith('/community/')) {
         '/blog',
         '/tools',
         '/guaranteed',
-        '/muktu-police',
-        '/muktu-police/check',
-        '/muktu-police/search',
         '/admin',
         '/ops'
       ]);
@@ -140,42 +137,52 @@ if (path === '/community' || path.startsWith('/community/')) {
       }
 
       const legacyExactRedirects = new Map([
-        ['/googling', '/muktu-police/search/'],
-        ['/domain-check', '/muktu-police/check/'],
+        ['/muktu-police', '/blog/'],
+        ['/muktu-police/search', '/tools/ai-domain-analysis/'],
+        ['/muktu-police/check', '/tools/ai-domain-analysis/'],
+        ['/muktu-police/faq', '/guaranteed/'],
+        ['/muktu-police/logs', '/blog/'],
+        ['/muktu-police/review', '/tools/ai-report-draft/'],
+        ['/muktu-police/brand', '/guaranteed/'],
+        ['/muktu-police/compare', '/tools/ai-domain-analysis/'],
+        ['/muktu-police/report', '/tools/ai-report-draft/'],
+        ['/muktu-police/query', '/blog/search-keywords-20/'],
+        ['/googling', '/tools/ai-domain-analysis/'],
+        ['/domain-check', '/tools/ai-domain-analysis/'],
         ['/cert', '/guaranteed/'],
         ['/guide', '/blog/'],
-        ['/community', '/muktu-police/'],
-        ['/slot', '/tools/'],
-        ['/bonus', '/tools/'],
-        ['/strategy', '/tools/'],
+        ['/community', '/blog/'],
+        ['/slot', '/blog/'],
+        ['/bonus', '/blog/'],
+        ['/strategy', '/blog/'],
         ['/news', '/blog/'],
         ['/play-guides', '/blog/'],
-        ['/latest', '/'],
-        ['/popular', '/'],
-        ['/archive', '/']
+        ['/latest', '/blog/'],
+        ['/popular', '/blog/'],
+        ['/archive', '/blog/']
       ]);
       const toolWrapperRedirects = new Map([
-        ['/tools/address-consistency/', '/tools/ai-domain-analysis/?focus=address'],
-        ['/tools/official-check/', '/tools/ai-domain-analysis/?focus=address'],
-        ['/tools/search-pack/', '/tools/ai-domain-analysis/?focus=address'],
-        ['/tools/address-tracker/', '/tools/ai-domain-analysis/?focus=timeline'],
-        ['/tools/change-timeline/', '/tools/ai-domain-analysis/?focus=timeline'],
-        ['/tools/relationship-map/', '/tools/ai-domain-analysis/?focus=relation'],
-        ['/tools/similar-domain/', '/tools/ai-domain-analysis/?focus=relation'],
-        ['/tools/ip-asn-cluster/', '/tools/ai-domain-analysis/?focus=relation'],
-        ['/tools/risk-compare/', '/tools/ai-notice-check/'],
+        ['/tools/address-consistency/', '/tools/ai-domain-analysis/'],
+        ['/tools/official-check/', '/tools/ai-domain-analysis/'],
+        ['/tools/search-pack/', '/blog/search-keywords-20/'],
+        ['/tools/address-tracker/', '/tools/address-history-card/'],
+        ['/tools/change-timeline/', '/tools/brand-change-tracker/'],
+        ['/tools/relationship-map/', '/tools/prior-brand-detector/'],
+        ['/tools/similar-domain/', '/tools/prior-brand-detector/'],
+        ['/tools/ip-asn-cluster/', '/tools/ai-domain-analysis/'],
+        ['/tools/risk-compare/', '/tools/notice-review/'],
         ['/tools/evidence-bundle/', '/tools/ai-report-draft/'],
         ['/tools/report-packager/', '/tools/ai-report-draft/'],
         ['/tools/report-template/', '/tools/ai-report-draft/'],
-        ['/tools/ai-condition-lab/', '/tools/ai-sports-odds-analysis/?focus=condition'],
-        ['/tools/bonus-policy/', '/tools/ai-sports-odds-analysis/?focus=condition'],
-        ['/tools/ai-game-lab/', '/tools/ai-sports-odds-analysis/?focus=casino'],
-        ['/tools/slot-session/', '/tools/ai-sports-odds-analysis/?focus=casino'],
-        ['/tools/bankroll-planner/', '/tools/ai-sports-odds-analysis/?focus=mini'],
-        ['/tools/minigame-rounds/', '/tools/ai-sports-odds-analysis/?focus=mini'],
-        ['/tools/slip-compare/', '/tools/ai-sports-odds-analysis/?focus=sports'],
-        ['/tools/ou-calculator/', '/tools/ai-sports-odds-analysis/?focus=ou'],
-        ['/tools/handicap-profit/', '/tools/ai-sports-odds-analysis/?focus=hcp']
+        ['/tools/ai-condition-lab/', '/tools/ai-rules-interpreter/'],
+        ['/tools/bonus-policy/', '/tools/ai-rules-interpreter/'],
+        ['/tools/ai-game-lab/', '/tools/slot-rtp/'],
+        ['/tools/slot-session/', '/tools/slot-rtp/'],
+        ['/tools/bankroll-planner/', '/tools/minigame-round-planner/'],
+        ['/tools/minigame-rounds/', '/tools/minigame-round-planner/'],
+        ['/tools/slip-compare/', '/tools/odds-band/'],
+        ['/tools/ou-calculator/', '/tools/ou-payout/'],
+        ['/tools/handicap-profit/', '/tools/handicap-payout/']
       ]);
       const toolWrapperRedirect = toolWrapperRedirects.get(path);
       if (toolWrapperRedirect) {
@@ -187,24 +194,43 @@ if (path === '/community' || path.startsWith('/community/')) {
         return Response.redirect(url.origin + exactRedirect, 301);
       }
 
-      const gonePrefixes = ['/archive/', '/latest/', '/popular/'];
-      const retiredPrefixes = ['/slot/', '/bonus/', '/strategy/', '/news/', '/play-guides/'];
-      if (gonePrefixes.some((prefix) => path.startsWith(prefix))) {
-        return gone({ ok: false, error: 'gone', path, targetHint: '/' }, request);
-      }
-      if (retiredPrefixes.some((prefix) => path.startsWith(prefix))) {
-        return gone({ ok: false, error: 'gone', path, targetHint: path.startsWith('/news/') || path.startsWith('/play-guides/') ? '/blog/' : '/tools/' }, request);
-      }
       if (path.startsWith('/cert/')) {
         return Response.redirect(url.origin + '/guaranteed/', 301);
       }
       if (path.startsWith('/community/')) {
-        return Response.redirect(url.origin + '/muktu-police/', 301);
+        return Response.redirect(url.origin + '/blog/', 301);
+      }
+      if (path.startsWith('/archive/') || path.startsWith('/latest/') || path.startsWith('/popular/')) {
+        return Response.redirect(url.origin + '/blog/', 301);
+      }
+      if (path.startsWith('/slot/') || path.startsWith('/bonus/') || path.startsWith('/strategy/') || path.startsWith('/news/') || path.startsWith('/play-guides/')) {
+        return Response.redirect(url.origin + '/blog/', 301);
+      }
+      if (path.startsWith('/muktu-police/search/') || path.startsWith('/muktu-police/check/')) {
+        return Response.redirect(url.origin + '/tools/ai-domain-analysis/', 301);
+      }
+      if (path.startsWith('/muktu-police/faq/') || path.startsWith('/muktu-police/brand/')) {
+        return Response.redirect(url.origin + '/guaranteed/', 301);
+      }
+      if (path.startsWith('/muktu-police/logs/')) {
+        return Response.redirect(url.origin + '/blog/', 301);
+      }
+      if (path.startsWith('/muktu-police/review/') || path.startsWith('/muktu-police/report/')) {
+        return Response.redirect(url.origin + '/tools/ai-report-draft/', 301);
+      }
+      if (path.startsWith('/muktu-police/query/')) {
+        return Response.redirect(url.origin + '/blog/search-keywords-20/', 301);
+      }
+      if (path.startsWith('/muktu-police/compare/')) {
+        return Response.redirect(url.origin + '/tools/ai-domain-analysis/', 301);
+      }
+      if (path.startsWith('/muktu-police/')) {
+        return Response.redirect(url.origin + '/blog/', 301);
       }
 
       // Static fallthrough
       const assetResponse = await env.ASSETS.fetch(request);
-      if (assetResponse.status === 404) {
+      if (assetResponse.status === 403 || assetResponse.status === 404) {
         const accept = String(request.headers.get('accept') || '').toLowerCase();
         if (accept.includes('text/html')) {
           return notFoundHtml(url);
@@ -1193,7 +1219,7 @@ function buildNewsGuidance(category = '일반', title = '', summary = '') {
       : '야구 뉴스는 선발·불펜·타선 흐름을 함께 읽을 때 체감 가치가 커집니다.';
     return { whyImportant: why, impact: '선발과 불펜 소모 확인 뒤 경기별 비교 구간을 잡는 흐름이 좋습니다.', actionLabel: '메인에서 확인하기', actionHref: '/' };
   }
-  return { whyImportant: '핵심 이슈를 먼저 짧게 파악한 뒤 상세 맥락은 원문으로 확인하는 구조가 가장 효율적입니다.', impact: '브리핑 확인 후 관심 종목에 맞는 가이드나 분석기로 바로 이동할 수 있습니다.', actionLabel: '안전센터 이동', actionHref: '/muktu-police/' };
+  return { whyImportant: '핵심 이슈를 먼저 짧게 파악한 뒤 상세 맥락은 원문으로 확인하는 구조가 가장 효율적입니다.', impact: '브리핑 확인 후 관심 종목에 맞는 가이드나 분석기로 바로 이동할 수 있습니다.', actionLabel: '블로그 이동', actionHref: '/blog/' };
 }
 
 function localizeSportsHeadline(value = '', category = '일반') {

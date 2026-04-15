@@ -5,19 +5,32 @@ export const ROOT = process.cwd();
 export const SITE_ORIGIN = 'https://88st.cloud';
 export const POSTS_FILE = path.join(ROOT, 'assets/data/posts.index.v1.20260318.json');
 export const BRAND = '레븐';
+export const TODAY = new Date().toISOString().slice(0, 10);
 
-export const PRIVATE_PATH_PREFIXES = ['/admin/', '/ops/'];
+export const PRIVATE_PATH_PREFIXES = ['/admin/', '/ops/', '/docs/'];
 export const NOINDEX_ROUTE_PREFIXES = [
+  '/muktu-police/',
+  '/tools/address-consistency/',
   '/tools/address-tracker/',
-  '/tools/bankroll-planner/',
-  '/tools/evidence-bundle/',
-  '/tools/ip-asn-cluster/',
   '/tools/official-check/',
+  '/tools/search-pack/',
+  '/tools/change-timeline/',
+  '/tools/relationship-map/',
+  '/tools/similar-domain/',
+  '/tools/ip-asn-cluster/',
+  '/tools/risk-compare/',
+  '/tools/evidence-bundle/',
   '/tools/report-packager/',
   '/tools/report-template/',
-  '/tools/risk-compare/',
-  '/tools/search-pack/',
-  '/tools/similar-domain/'
+  '/tools/ai-condition-lab/',
+  '/tools/bonus-policy/',
+  '/tools/ai-game-lab/',
+  '/tools/slot-session/',
+  '/tools/bankroll-planner/',
+  '/tools/minigame-rounds/',
+  '/tools/slip-compare/',
+  '/tools/ou-calculator/',
+  '/tools/handicap-profit/'
 ];
 export const CATEGORY_LABELS = {
   casino: '카지노',
@@ -211,7 +224,7 @@ export function classifyPage(route, postsByPath) {
   if (postsByPath.has(normalized)) return 'post';
   if (normalized === '/') return 'home';
   if (normalized.endsWith('/archive/') || normalized === '/archive/' || normalized === '/latest/' || normalized === '/popular/') return 'archive';
-  if (['/blog/','/tools/','/guaranteed/','/muktu-police/'].includes(normalized)) return 'hub';
+  if (['/slot/','/bonus/','/strategy/','/news/','/play-guides/','/muktu-police/'].includes(normalized)) return 'hub';
   return 'page';
 }
 
@@ -224,7 +237,7 @@ export function buildBreadcrumb(route, pageTitle, category) {
       items.push({ name: `${sectionLabel} 허브`, item: `${SITE_ORIGIN}/${category}/` });
     } else if (category === 'analysis') {
     } else if (category === 'guide') {
-      items.push({ name: '블로그', item: `${SITE_ORIGIN}/blog/` });
+      items.push({ name: '가이드', item: `${SITE_ORIGIN}/play-guides/` });
     } else if (category === 'safety') {
       items.push({ name: '먹튀폴리스', item: `${SITE_ORIGIN}/muktu-police/` });
     }
@@ -320,4 +333,12 @@ export function stripExistingSeoBlocks(headInner) {
 export async function writeText(filePath, content) {
   await fs.mkdir(path.dirname(filePath), { recursive: true });
   await fs.writeFile(filePath, content, 'utf8');
+}
+
+export async function writeTextIfChanged(filePath, content) {
+  let prev = '';
+  try { prev = await fs.readFile(filePath, 'utf8'); } catch {}
+  if (prev === content) return false;
+  await writeText(filePath, content);
+  return true;
 }
