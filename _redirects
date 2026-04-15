@@ -1,13 +1,5 @@
 /googling          /muktu-police/search/ 301
 /domain-check      /muktu-police/check/ 301
-/muktu-police/brand /guaranteed/ 301
-/muktu-police/brand/* /guaranteed/ 301
-/muktu-police/compare /tools/ 301
-/muktu-police/compare/* /tools/ 301
-/muktu-police/report /muktu-police/review/ 301
-/muktu-police/report/* /muktu-police/review/ 301
-/muktu-police/query /blog/ 301
-/muktu-police/query/* /blog/ 301
 /slot              /tools/ 301
 /slot/*            /tools/ 301
 /bonus             /tools/ 301

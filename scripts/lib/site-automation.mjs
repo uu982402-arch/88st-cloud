@@ -8,10 +8,6 @@ export const BRAND = '레븐';
 
 export const PRIVATE_PATH_PREFIXES = ['/admin/', '/ops/'];
 export const NOINDEX_ROUTE_PREFIXES = [
-  '/muktu-police/brand/',
-  '/muktu-police/compare/',
-  '/muktu-police/query/',
-  '/muktu-police/report/',
   '/tools/address-tracker/',
   '/tools/bankroll-planner/',
   '/tools/evidence-bundle/',
@@ -215,7 +211,7 @@ export function classifyPage(route, postsByPath) {
   if (postsByPath.has(normalized)) return 'post';
   if (normalized === '/') return 'home';
   if (normalized.endsWith('/archive/') || normalized === '/archive/' || normalized === '/latest/' || normalized === '/popular/') return 'archive';
-  if (['/slot/','/bonus/','/strategy/','/news/','/play-guides/','/muktu-police/'].includes(normalized)) return 'hub';
+  if (['/blog/','/tools/','/guaranteed/','/muktu-police/'].includes(normalized)) return 'hub';
   return 'page';
 }
 
@@ -228,7 +224,7 @@ export function buildBreadcrumb(route, pageTitle, category) {
       items.push({ name: `${sectionLabel} 허브`, item: `${SITE_ORIGIN}/${category}/` });
     } else if (category === 'analysis') {
     } else if (category === 'guide') {
-      items.push({ name: '가이드', item: `${SITE_ORIGIN}/play-guides/` });
+      items.push({ name: '블로그', item: `${SITE_ORIGIN}/blog/` });
     } else if (category === 'safety') {
       items.push({ name: '먹튀폴리스', item: `${SITE_ORIGIN}/muktu-police/` });
     }

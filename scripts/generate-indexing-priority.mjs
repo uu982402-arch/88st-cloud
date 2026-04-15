@@ -11,7 +11,7 @@ function sortPopular(list){
   return [...list].sort((a,b) => (b.popular || 0) - (a.popular || 0) || (Date.parse(b.updated || b.published || 0) || 0) - (Date.parse(a.updated || a.published || 0) || 0));
 }
 const hubs = [
-  '/', '/slot/', '/bonus/', '/strategy/', '/news/', '/play-guides/', '/latest/', '/popular/'
+  '/', '/blog/', '/tools/', '/guaranteed/', '/muktu-police/', '/muktu-police/search/', '/muktu-police/check/'
 ];
 const firstWave = [
   ...hubs,

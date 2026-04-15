@@ -140,10 +140,6 @@ if (path === '/community' || path.startsWith('/community/')) {
       }
 
       const legacyExactRedirects = new Map([
-        ['/muktu-police/brand', '/guaranteed/'],
-        ['/muktu-police/compare', '/tools/'],
-        ['/muktu-police/report', '/muktu-police/review/'],
-        ['/muktu-police/query', '/blog/'],
         ['/googling', '/muktu-police/search/'],
         ['/domain-check', '/muktu-police/check/'],
         ['/cert', '/guaranteed/'],
@@ -204,18 +200,6 @@ if (path === '/community' || path.startsWith('/community/')) {
       }
       if (path.startsWith('/community/')) {
         return Response.redirect(url.origin + '/muktu-police/', 301);
-      }
-      if (path.startsWith('/muktu-police/brand/')) {
-        return Response.redirect(url.origin + '/guaranteed/', 301);
-      }
-      if (path.startsWith('/muktu-police/compare/')) {
-        return Response.redirect(url.origin + '/tools/', 301);
-      }
-      if (path.startsWith('/muktu-police/report/')) {
-        return Response.redirect(url.origin + '/muktu-police/review/', 301);
-      }
-      if (path.startsWith('/muktu-police/query/')) {
-        return Response.redirect(url.origin + '/blog/', 301);
       }
 
       // Static fallthrough
