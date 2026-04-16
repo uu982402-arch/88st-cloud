@@ -6,6 +6,13 @@ import {
 } from './lib/site-automation.mjs';
 
 const SEEDS = ['/', '/blog/', '/tools/', '/guaranteed/'];
+const EXCLUDED_SITEMAP_ROUTES = new Set([
+  '/tools/address-history-card/',
+  '/tools/brand-change-tracker/',
+  '/tools/minigame-round-planner/',
+  '/tools/notice-review/',
+  '/tools/prior-brand-detector/'
+]);
 const posts = await loadPosts();
 const postMap = new Map(posts.map((post) => [normalizePath(post.path), post]));
 const files = await listIndexFiles(ROOT);
@@ -57,7 +64,7 @@ while (queue.length) {
   visited.add(route);
   const html = htmlByRoute.get(route);
   if (!html) continue;
-  if (isIndexableRoute(route)) finalRoutes.add(route);
+  if (isIndexableRoute(route) && !EXCLUDED_SITEMAP_ROUTES.has(route)) finalRoutes.add(route);
   for (const nextRoute of extractInternalRoutes(html)) {
     if (visited.has(nextRoute)) continue;
     if (!htmlByRoute.has(nextRoute)) continue;
