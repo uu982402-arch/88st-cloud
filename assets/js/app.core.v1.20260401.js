@@ -119,35 +119,15 @@
     const section = $('[data-home-provider-rotator-section]');
     if (!section) return;
     const grid = $('[data-home-provider-rotator]', section);
-    const prev = $('[data-home-rotator-prev]', section);
-    const next = $('[data-home-rotator-next]', section);
-    const pageMeta = $('[data-home-rotator-page]', section);
     const priority = ['anybet','udt','chilbet','yangsim','las'];
     const active = (providers || []).filter((item)=>!item.pending && item.officialUrl && item.code).sort((a,b)=>{
       const ai = priority.indexOf(a.slug); const bi = priority.indexOf(b.slug);
       const av = ai === -1 ? 999 : ai; const bv = bi === -1 ? 999 : bi;
       return av - bv;
-    });
+    }).slice(0, 5);
     if (!grid || !active.length){ section.hidden = true; return; }
-    const viewSize = Math.min(4, active.length);
-    let startIndex = 0;
-    let timer = null;
-    const windowItems = (offset) => Array.from({ length: viewSize }, (_, idx) => active[(offset + idx) % active.length]);
-    const render = () => {
-      grid.innerHTML = windowItems(startIndex).map(providerRotatorCard).join('');
-      if (pageMeta) pageMeta.textContent = active.length > viewSize ? `${(startIndex % active.length) + 1} / ${active.length}` : '자동 순환';
-      if (prev) prev.disabled = active.length <= 1;
-      if (next) next.disabled = active.length <= 1;
-    };
-    const go = (dir = 1) => { startIndex = (startIndex + dir + active.length) % active.length; render(); };
-    const stop = () => { if (timer) { clearInterval(timer); timer = null; } };
-    const start = () => { stop(); if (active.length > 1) timer = setInterval(()=>go(1), 4200); };
-    prev?.addEventListener('click', ()=>{ go(-1); start(); });
-    next?.addEventListener('click', ()=>{ go(1); start(); });
-    section.addEventListener('mouseenter', stop);
-    section.addEventListener('mouseleave', start);
-    render();
-    start();
+    grid.innerHTML = active.map(providerRotatorCard).join('');
+    section.setAttribute('data-fixed-provider-set', String(active.length));
   }
   function wireGuaranteed(){
     document.addEventListener('click', async (e)=>{
