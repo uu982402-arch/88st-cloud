@@ -1,240 +1,122 @@
 (() => {
+  const page = document.body?.dataset?.communityPage || '';
+  const targets = new Set(['home', 'blog', 'tools', 'guaranteed']);
+  if (!targets.has(page)) return;
+
+  const STORAGE_KEY = 'raven_hub_promo_hide_until_v1';
   const PROVIDERS_URL = '/assets/data/guaranteed.providers.v1.20260330.json';
-  const TARGET_SLUGS = ['udt', 'anybet'];
-  const HIDE_KEY = 'raven_hub_promo_hide_today_v1';
-  const PATH_VARIANTS = {
-    '/': 'focus',
-    '/blog': 'focus',
-    '/tools': 'focus',
-    '/guaranteed': 'soft'
-  };
+  const ORDER = ['udt', 'anybet'];
+  const DELAY = page === 'home' ? 900 : page === 'guaranteed' ? 1500 : 1150;
+  const isSoft = page === 'guaranteed';
 
   const esc = (value) => String(value ?? '').replace(/[&<>"']/g, (ch) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
-
-  const normalizePath = (pathname = '') => {
-    const raw = String(pathname || '').trim() || '/';
-    if (raw === '/') return '/';
-    return raw.replace(/\/+$/, '') || '/';
-  };
-
-  const currentPath = normalizePath(window.location.pathname);
-  const variant = PATH_VARIANTS[currentPath];
-  if (!variant) return;
-
-  const pageLabel = (() => {
-    if (currentPath === '/') return '메인';
-    if (currentPath === '/blog') return '블로그';
-    if (currentPath === '/tools') return '도구';
-    if (currentPath === '/guaranteed') return '보증업체';
-    return '허브';
-  })();
-
   const todayKey = () => {
     const now = new Date();
-    const y = now.getFullYear();
     const m = String(now.getMonth() + 1).padStart(2, '0');
     const d = String(now.getDate()).padStart(2, '0');
-    return `${y}-${m}-${d}`;
+    return `${now.getFullYear()}-${m}-${d}`;
   };
-
-  const getStoredHideDate = () => {
-    try { return localStorage.getItem(HIDE_KEY) || ''; }
-    catch (_) { return ''; }
+  const isHiddenToday = () => {
+    try { return localStorage.getItem(STORAGE_KEY) === todayKey(); }
+    catch (_) { return false; }
   };
-
-  const hideForToday = () => {
-    try { localStorage.setItem(HIDE_KEY, todayKey()); }
+  const hideToday = () => {
+    try { localStorage.setItem(STORAGE_KEY, todayKey()); }
     catch (_) {}
   };
-
-  if (getStoredHideDate() === todayKey()) return;
-
-  const toast = (message) => {
-    let node = document.getElementById('hubPromoToast');
-    if (!node) {
-      node = document.createElement('div');
-      node.id = 'hubPromoToast';
-      node.className = 'hub-promo-toast';
-      document.body.appendChild(node);
-    }
-    node.textContent = message;
-    node.classList.add('is-show');
-    clearTimeout(toast._timer);
-    toast._timer = window.setTimeout(() => node.classList.remove('is-show'), 1500);
-  };
-
   const copyText = async (text) => {
-    const value = String(text || '').trim();
-    if (!value) return false;
     try {
-      await navigator.clipboard.writeText(value);
-      toast('가입코드를 복사했습니다.');
+      await navigator.clipboard.writeText(String(text || ''));
       return true;
     } catch (_) {
       try {
-        const area = document.createElement('textarea');
-        area.value = value;
-        area.setAttribute('readonly', '');
-        area.style.position = 'fixed';
-        area.style.opacity = '0';
-        document.body.appendChild(area);
-        area.select();
+        const ta = document.createElement('textarea');
+        ta.value = String(text || '');
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
         document.execCommand('copy');
-        area.remove();
-        toast('가입코드를 복사했습니다.');
+        ta.remove();
         return true;
-      } catch (__){
-        toast('복사 권한을 확인해 주세요.');
+      } catch (__) {
         return false;
       }
     }
   };
 
-  const buildCard = (item) => {
-    const mediaKind = item.imageKind || ((item.imageUrl || '').toLowerCase().endsWith('.png') ? 'logo' : 'cover');
-    const mediaStyle = [
-      `--promo-media-pos:${esc(item.imagePosition || 'center center')}`,
-      `--promo-media-scale:${esc(item.imageScale || (mediaKind === 'logo' ? '1' : '1.08'))}`,
-      `--promo-media-pad:${esc(item.imagePadding || (mediaKind === 'logo' ? '12px 16px' : '0px'))}`
-    ].join(';');
-    const chips = [item.officialDomain || '', item.code ? `코드 ${item.code}` : ''].filter(Boolean);
-    const summary = item.oneLine || '공식 주소와 가입코드를 빠르게 확인할 수 있게 정리했습니다.';
-    return `
-      <article class="hub-promo-card" data-variant="${esc(variant)}">
-        <div class="hub-promo-card__media ${mediaKind === 'logo' ? 'is-logo' : ''}" style="${mediaStyle}">
-          <img src="${esc(item.imageUrl || '')}" alt="${esc(item.imageAlt || item.name || '광고 이미지')}" loading="lazy" decoding="async">
-        </div>
-        <div class="hub-promo-card__body">
-          <div class="hub-promo-card__head">
-            <strong>${esc(item.name || '')}</strong>
-            <div class="hub-promo-chip-row">${chips.map((chip) => `<span class="hub-promo-chip">${esc(chip)}</span>`).join('')}</div>
-          </div>
-          <p class="hub-promo-card__copy">${esc(summary)}</p>
-          <div class="hub-promo-card__actions">
-            <button class="hub-promo-btn hub-promo-btn--ghost" type="button" data-hub-promo-copy="${esc(item.code || '')}">
-              <span data-copy-label data-default-label="가입코드 복사">가입코드 복사</span>
-            </button>
-            <a class="hub-promo-btn" href="${esc(item.officialUrl || '#')}" target="_blank" rel="noopener noreferrer">공식 주소</a>
-          </div>
-        </div>
-      </article>`;
-  };
+  function buildCard(item) {
+    const description = item.oneLine || '공식 주소와 가입코드만 빠르게 확인할 수 있도록 정리했습니다.';
+    const style = `--promo-pos:${esc(item.imagePosition || 'center center')};--promo-scale:${esc(item.imageScale || '1')};--promo-pad:${esc(item.imagePadding || '10px 16px')}`;
+    const chips = [item.officialDomain || '', '가입코드'].filter(Boolean).map((label) => `<span class="hub-promo-chip">${esc(label)}</span>`).join('');
+    return `<article class="hub-promo-card" data-slug="${esc(item.slug)}"><div class="hub-promo-card__media" style="${style}"><img src="${esc(item.imageUrl)}" alt="${esc(item.imageAlt || `${item.name} 로고`)}" loading="eager" decoding="async"></div><div class="hub-promo-card__body"><div class="hub-promo-card__top"><h3 class="hub-promo-card__title">${esc(item.name)}</h3><p class="hub-promo-card__desc">${esc(description)}</p></div><div class="hub-promo-card__meta">${chips}</div><div class="hub-promo-card__code"><span class="hub-promo-card__code-label">가입코드</span><strong class="hub-promo-card__code-value">${esc(item.code)}</strong></div><div class="hub-promo-card__actions"><button class="hub-promo-btn" type="button" data-hub-copy="${esc(item.code)}">코드 복사</button><a class="hub-promo-btn hub-promo-btn--primary" href="${esc(item.officialUrl)}" target="_blank" rel="noopener noreferrer">공식 주소</a></div></div></article>`;
+  }
 
-  const buildModalHtml = (providers) => {
-    const isSoft = variant === 'soft';
-    const kicker = isSoft ? '추가 확인' : '추천 업체';
-    const title = isSoft ? '추가로 확인해볼 업체' : `${pageLabel}에서 바로 확인할 수 있는 업체`;
-    const desc = isSoft
-      ? '보증업체 페이지에서는 흐름을 방해하지 않도록 가볍게 보여줍니다.'
-      : '공식 주소와 가입코드만 빠르게 확인할 수 있도록 UDT와 Any Bet를 모달로 정리했습니다.';
-    return `
-      <div class="hub-promo-modal__backdrop" data-hub-promo-close></div>
-      <div class="hub-promo-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="hubPromoTitle" data-variant="${esc(variant)}">
-        <button class="hub-promo-modal__close" type="button" aria-label="닫기" data-hub-promo-close>×</button>
-        <div class="hub-promo-modal__hero">
-          <span class="hub-promo-kicker">${esc(kicker)}</span>
-          <h2 id="hubPromoTitle">${esc(title)}</h2>
-          <p>${esc(desc)}</p>
-        </div>
-        <div class="hub-promo-modal__grid">
-          ${providers.map(buildCard).join('')}
-        </div>
-        <div class="hub-promo-modal__foot">
-          <button class="hub-promo-text-btn" type="button" data-hub-promo-hide>오늘 다시 보지 않기</button>
-          <button class="hub-promo-text-btn is-primary" type="button" data-hub-promo-close>닫기</button>
-        </div>
-      </div>`;
-  };
-
-  const ensureRoot = () => {
-    let root = document.getElementById('hubPromoModal');
-    if (root) return root;
-    root = document.createElement('div');
-    root.id = 'hubPromoModal';
-    root.className = 'hub-promo-modal';
+  function createModal(items) {
+    const root = document.createElement('div');
+    root.className = `hub-promo-modal${isSoft ? ' is-soft' : ''}`;
     root.hidden = true;
+    const title = isSoft ? '보증업체 빠른 확인' : '오늘 확인할 보증업체';
+    const copy = isSoft
+      ? '보증업체 페이지에서는 짧게만 안내합니다. 필요한 정보만 빠르게 확인하고 바로 이동할 수 있게 맞췄습니다.'
+      : '현재 허브 톤에 맞춰 과한 문구 없이 공식 주소와 가입코드만 빠르게 확인할 수 있도록 정리했습니다.';
+    root.innerHTML = `<div class="hub-promo-modal__backdrop" data-hub-promo-close></div><div class="hub-promo-modal__sheet" role="dialog" aria-modal="true" aria-labelledby="hubPromoTitle"><div class="hub-promo-modal__head"><div><span class="hub-promo-modal__eyebrow">${isSoft ? '빠른 안내' : '허브 추천'}</span><strong id="hubPromoTitle">${title}</strong><p>${copy}</p></div><button class="hub-promo-modal__close" type="button" aria-label="닫기" data-hub-promo-close>×</button></div><div class="hub-promo-modal__body"><div class="hub-promo-grid">${items.map(buildCard).join('')}</div></div><div class="hub-promo-modal__foot"><div class="hub-promo-modal__hint">오늘 다시 보지 않기를 누르면 같은 브라우저에서는 오늘 하루 동안 다시 열리지 않습니다.</div><div class="hub-promo-modal__foot-actions"><button class="hub-promo-modal__ghost" type="button" data-hub-hide-today>오늘 다시 보지 않기</button><button class="hub-promo-modal__ghost" type="button" data-hub-promo-close>닫기</button></div></div></div>`;
     document.body.appendChild(root);
-    return root;
-  };
 
-  const closeModal = () => {
-    const root = document.getElementById('hubPromoModal');
-    if (!root) return;
-    root.hidden = true;
-    document.body.classList.remove('is-hub-promo-open');
-  };
+    const close = () => {
+      root.hidden = true;
+      root.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('is-hub-promo-open');
+    };
+    const open = () => {
+      root.hidden = false;
+      root.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('is-hub-promo-open');
+    };
 
-  const openModal = (providers) => {
-    if (!providers.length) return;
-    const root = ensureRoot();
-    root.innerHTML = buildModalHtml(providers);
-    root.hidden = false;
-    document.body.classList.add('is-hub-promo-open');
-    const closeBtn = root.querySelector('[data-hub-promo-close]');
-    closeBtn?.focus({ preventScroll: true });
-  };
-
-  const wireRootEvents = () => {
-    const root = ensureRoot();
-    if (root.dataset.bound === '1') return;
-    root.dataset.bound = '1';
     root.addEventListener('click', async (event) => {
-      const closeTarget = event.target.closest('[data-hub-promo-close]');
-      if (closeTarget) {
-        closeModal();
+      const closeTrigger = event.target.closest('[data-hub-promo-close]');
+      if (closeTrigger) {
+        close();
         return;
       }
-      const hideTarget = event.target.closest('[data-hub-promo-hide]');
-      if (hideTarget) {
-        hideForToday();
-        closeModal();
-        toast('오늘은 다시 표시하지 않습니다.');
+      const hideTrigger = event.target.closest('[data-hub-hide-today]');
+      if (hideTrigger) {
+        hideToday();
+        close();
         return;
       }
-      const copyTarget = event.target.closest('[data-hub-promo-copy]');
-      if (copyTarget) {
-        const ok = await copyText(copyTarget.getAttribute('data-hub-promo-copy') || '');
-        const label = copyTarget.querySelector('[data-copy-label]');
-        const defaultLabel = label?.getAttribute('data-default-label') || '가입코드 복사';
-        if (ok && label) {
-          label.textContent = '복사 완료';
-          window.setTimeout(() => { label.textContent = defaultLabel; }, 1300);
-        }
+      const copyTrigger = event.target.closest('[data-hub-copy]');
+      if (copyTrigger) {
+        const ok = await copyText(copyTrigger.getAttribute('data-hub-copy') || '');
+        const original = copyTrigger.textContent;
+        copyTrigger.textContent = ok ? '복사 완료' : '복사 제한';
+        window.setTimeout(() => { copyTrigger.textContent = original; }, 1400);
       }
     });
     document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape' && !root.hidden) closeModal();
+      if (event.key === 'Escape' && !root.hidden) close();
     });
-  };
 
-  const fetchProviders = async () => {
-    const response = await fetch(PROVIDERS_URL, { cache: 'no-store' });
-    const data = await response.json().catch(() => ({}));
-    const providers = Array.isArray(data.providers) ? data.providers : [];
-    const filtered = TARGET_SLUGS
-      .map((slug) => providers.find((item) => item && item.slug === slug && !item.pending && item.officialUrl && item.code && item.imageUrl))
-      .filter(Boolean);
-    return filtered;
-  };
-
-  const start = async () => {
-    wireRootEvents();
-    try {
-      const providers = await fetchProviders();
-      if (!providers.length) return;
-      const delay = variant === 'soft' ? 1250 : 850;
-      window.setTimeout(() => {
-        if (getStoredHideDate() === todayKey()) return;
-        openModal(providers);
-      }, delay);
-    } catch (_) {
-      // noop
-    }
-  };
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', start, { once: true });
-  } else {
-    start();
+    return { open, close, root };
   }
+
+  async function init() {
+    if (isHiddenToday()) return;
+    let payload = null;
+    try {
+      const res = await fetch(PROVIDERS_URL, { cache: 'no-store' });
+      payload = await res.json();
+    } catch (_) {
+      return;
+    }
+    const providers = Array.isArray(payload?.providers) ? payload.providers : [];
+    const selected = ORDER.map((slug) => providers.find((item) => item && !item.pending && item.slug === slug && item.officialUrl && item.code && item.imageUrl)).filter(Boolean);
+    if (!selected.length) return;
+    const modal = createModal(selected);
+    window.setTimeout(() => modal.open(), DELAY);
+  }
+
+  if (document.readyState === 'complete') init();
+  else window.addEventListener('load', init, { once: true });
 })();

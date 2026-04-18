@@ -109,51 +109,51 @@
       "theme": "brand",
       "officialUrl": "https://any-777.com/",
       "officialDomain": "any-777.com",
-      "code": "seoa",
-      "oneLine": "공식 주소와 가입코드만 빠르게 확인할 수 있게 정리했습니다.",
+      "code": "SEOA",
+      "oneLine": "공식 주소와 가입코드만 빠르게 확인할 수 있도록 정리한 카드입니다.",
       "benefits": [
         "공식 주소 확인",
         "가입코드 즉시 복사",
         "모바일 빠른 진입"
       ],
       "tags": [
+        "공식확인",
         "코드복사",
-        "주소확인",
-        "모바일"
+        "빠른진입"
       ],
       "pending": false,
       "imageUrl": "/assets/provider-media/anybet-logo.png",
-      "imageAlt": "ANY BET 로고",
+      "imageAlt": "Any Bet 로고",
       "imagePosition": "center center",
-      "imageScale": 0.94,
-      "imagePadding": "14px 18px",
+      "imageScale": 0.96,
+      "imagePadding": "10px 16px",
       "imageKind": "logo"
     },
     {
       "slug": "udt",
       "name": "UDT",
-      "theme": "brand",
+      "theme": "gold",
       "officialUrl": "https://udt-01.com/",
       "officialDomain": "udt-01.com",
-      "code": "seoa",
-      "oneLine": "공식 주소와 가입코드를 빠르게 확인할 수 있도록 정리했습니다.",
+      "code": "SEOA",
+      "oneLine": "공식 주소와 가입코드를 빠르게 확인할 수 있게 정리했습니다.",
       "benefits": [
         "공식 주소 확인",
         "가입코드 즉시 복사",
         "모바일 빠른 진입"
       ],
       "tags": [
+        "공식확인",
         "코드복사",
-        "주소확인",
         "모바일"
       ],
       "pending": false,
-      "imageUrl": "/assets/provider-media/udt-logo.jpg",
+      "imageUrl": "/assets/provider-media/udt-logo.webp",
       "imageAlt": "UDT 로고",
       "imagePosition": "center center",
-      "imageScale": 1.02,
-      "imagePadding": "10px 14px",
-      "imageKind": "logo"
+      "imageScale": 1.0,
+      "imageKind": "logo",
+      "imagePadding": "6px 10px"
     },
     {
       "slug": "diaz",
