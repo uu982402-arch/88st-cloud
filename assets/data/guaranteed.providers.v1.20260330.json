@@ -2,56 +2,56 @@
   "updated": "2026-04-18",
   "providers": [
     {
-      "slug": "ddk",
-      "name": "땅콩",
-      "theme": "orange",
-      "officialUrl": "https://ddk-2024.com/",
-      "officialDomain": "ddk-2024.com",
-      "code": "DDK888",
-      "oneLine": "",
+      "slug": "anybet",
+      "name": "Any Bet",
+      "theme": "brand",
+      "officialUrl": "https://any-777.com/",
+      "officialDomain": "any-777.com",
+      "code": "SEOA",
+      "oneLine": "공식 주소와 가입코드를 짧고 빠르게 확인할 수 있게 정리했습니다.",
       "benefits": [
         "공식 주소 확인",
-        "코드 즉시 복사",
-        "간단 진입"
+        "가입코드 즉시 복사",
+        "모바일 빠른 진입"
       ],
       "tags": [
+        "공식확인",
         "코드복사",
-        "빠른이동",
-        "모바일"
+        "빠른진입"
       ],
-      "pending": true,
-      "imageUrl": "/assets/provider-media/ddk-logo.png",
-      "imageAlt": "땅콩 로고",
+      "pending": false,
+      "imageUrl": "/assets/provider-media/anybet-logo.png",
+      "imageAlt": "Any Bet 로고",
       "imagePosition": "center center",
-      "imageScale": 1.06,
-      "imageKind": "logo",
-      "imagePadding": "12px 20px"
+      "imageScale": 0.96,
+      "imagePadding": "10px 16px",
+      "imageKind": "logo"
     },
     {
-      "slug": "las",
-      "name": "LAS",
+      "slug": "udt",
+      "name": "UDT",
       "theme": "gold",
-      "officialUrl": "https://las-888.com/?code=crow",
-      "officialDomain": "las-888.com",
-      "code": "CROW",
-      "oneLine": "",
+      "officialUrl": "https://udt-01.com/",
+      "officialDomain": "udt-01.com",
+      "code": "SEOA",
+      "oneLine": "공식 주소와 가입코드를 한 번에 확인할 수 있게 정리했습니다.",
       "benefits": [
         "공식 주소 확인",
-        "코드 즉시 복사",
-        "간단 진입"
+        "가입코드 즉시 복사",
+        "모바일 빠른 진입"
       ],
       "tags": [
+        "공식확인",
         "코드복사",
-        "빠른이동",
         "모바일"
       ],
       "pending": false,
-      "imageUrl": "/assets/provider-media/las-logo.png",
-      "imageAlt": "LAS 로고",
+      "imageUrl": "/assets/provider-media/udt-logo.webp",
+      "imageAlt": "UDT 로고",
       "imagePosition": "center center",
-      "imageScale": 0.92,
+      "imageScale": 1.0,
       "imageKind": "logo",
-      "imagePadding": "12px 22px"
+      "imagePadding": "6px 10px"
     },
     {
       "slug": "chilbet",
@@ -104,82 +104,30 @@
       "imageScale": 2.2
     },
     {
-      "slug": "anybet",
-      "name": "Any Bet",
-      "theme": "brand",
-      "officialUrl": "https://any-777.com/",
-      "officialDomain": "any-777.com",
-      "code": "SEOA",
-      "oneLine": "공식 주소와 가입코드만 빠르게 확인할 수 있도록 정리한 카드입니다.",
-      "benefits": [
-        "공식 주소 확인",
-        "가입코드 즉시 복사",
-        "모바일 빠른 진입"
-      ],
-      "tags": [
-        "공식확인",
-        "코드복사",
-        "빠른진입"
-      ],
-      "pending": false,
-      "imageUrl": "/assets/provider-media/anybet-logo.png",
-      "imageAlt": "Any Bet 로고",
-      "imagePosition": "center center",
-      "imageScale": 0.96,
-      "imagePadding": "10px 16px",
-      "imageKind": "logo"
-    },
-    {
-      "slug": "udt",
-      "name": "UDT",
+      "slug": "las",
+      "name": "LAS",
       "theme": "gold",
-      "officialUrl": "https://udt-01.com/",
-      "officialDomain": "udt-01.com",
-      "code": "SEOA",
-      "oneLine": "공식 주소와 가입코드를 빠르게 확인할 수 있게 정리했습니다.",
+      "officialUrl": "https://las-888.com/?code=crow",
+      "officialDomain": "las-888.com",
+      "code": "CROW",
+      "oneLine": "",
       "benefits": [
         "공식 주소 확인",
-        "가입코드 즉시 복사",
-        "모바일 빠른 진입"
+        "코드 즉시 복사",
+        "간단 진입"
       ],
       "tags": [
-        "공식확인",
         "코드복사",
+        "빠른이동",
         "모바일"
       ],
       "pending": false,
-      "imageUrl": "/assets/provider-media/udt-logo.webp",
-      "imageAlt": "UDT 로고",
+      "imageUrl": "/assets/provider-media/las-logo.png",
+      "imageAlt": "LAS 로고",
       "imagePosition": "center center",
-      "imageScale": 1.0,
+      "imageScale": 0.92,
       "imageKind": "logo",
-      "imagePadding": "6px 10px"
-    },
-    {
-      "slug": "diaz",
-      "name": "DIAZ",
-      "theme": "indigo",
-      "officialUrl": "https://diz-top.com/",
-      "officialDomain": "diz-top.com",
-      "code": "crow",
-      "oneLine": "",
-      "benefits": [
-        "스포츠·카지노 이용",
-        "코드 즉시 복사",
-        "공식 주소 확인"
-      ],
-      "tags": [
-        "이미지카드",
-        "코드복사",
-        "빠른이동"
-      ],
-      "imageUrl": "/assets/provider-media/diaz-logo.png",
-      "imageAlt": "DIAZ 로고",
-      "pending": true,
-      "imagePosition": "center center",
-      "imageScale": 1.02,
-      "imageKind": "logo",
-      "imagePadding": "14px 20px"
+      "imagePadding": "12px 22px"
     }
   ]
 }

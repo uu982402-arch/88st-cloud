@@ -5,7 +5,7 @@
 
   const STORAGE_KEY = 'raven_hub_promo_hide_until_v1';
   const PROVIDERS_URL = '/assets/data/guaranteed.providers.v1.20260330.json';
-  const ORDER = ['udt', 'anybet'];
+  const ORDER = ['anybet', 'udt'];
   const DELAY = page === 'home' ? 900 : page === 'guaranteed' ? 1500 : 1150;
   const isSoft = page === 'guaranteed';
 
