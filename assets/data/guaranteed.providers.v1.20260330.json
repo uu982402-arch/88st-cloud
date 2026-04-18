@@ -19,7 +19,7 @@
         "빠른이동",
         "모바일"
       ],
-      "pending": false,
+      "pending": true,
       "imageUrl": "/assets/provider-media/ddk-logo.png",
       "imageAlt": "땅콩 로고",
       "imagePosition": "center center",
@@ -175,7 +175,7 @@
       ],
       "imageUrl": "/assets/provider-media/diaz-logo.png",
       "imageAlt": "DIAZ 로고",
-      "pending": false,
+      "pending": true,
       "imagePosition": "center center",
       "imageScale": 1.02,
       "imageKind": "logo",
