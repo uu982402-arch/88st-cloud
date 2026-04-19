@@ -8,11 +8,13 @@
       "officialUrl": "https://any-777.com/",
       "officialDomain": "any-777.com",
       "code": "SEOA",
-      "oneLine": "공식 주소와 가입코드를 짧고 빠르게 확인할 수 있게 정리했습니다.",
+      "oneLine": "가입 방식별 혜택과 공식 주소를 빠르게 확인할 수 있게 정리했습니다.",
       "benefits": [
-        "공식 주소 확인",
-        "가입코드 즉시 복사",
-        "모바일 빠른 진입"
+        "원화 스포츠 첫충 40%",
+        "원화 슬롯 첫충 20%",
+        "테더 입금 수수료 무제한 지원",
+        "테더 첫충 50%",
+        "주간 페이백 5%"
       ],
       "tags": [
         "공식확인",
@@ -25,7 +27,33 @@
       "imagePosition": "center center",
       "imageScale": 0.96,
       "imagePadding": "10px 16px",
-      "imageKind": "logo"
+      "imageKind": "logo",
+      "modalBenefitTitle": "Any Bet 신규 가입 혜택 안내",
+      "modalBenefitGroups": [
+        {
+          "title": "원화 가입 전용 이벤트",
+          "items": [
+            "신규 회원 스포츠 첫 충전 40%",
+            "신규 회원 슬롯 첫 충전 20%"
+          ]
+        },
+        {
+          "title": "테더(무기명) 가입 전용 이벤트",
+          "items": [
+            "코인 입금 수수료 무제한 지원",
+            "코인 입금 첫 충전 50%"
+          ]
+        },
+        {
+          "title": "공통 혜택",
+          "items": [
+            "모든 게임 충전 보너스",
+            "주간 페이백 5%",
+            "롤링 콤프 이벤트",
+            "출석 체크 이벤트 외 8개"
+          ]
+        }
+      ]
     },
     {
       "slug": "udt",
@@ -34,11 +62,13 @@
       "officialUrl": "https://udt-01.com/",
       "officialDomain": "udt-01.com",
       "code": "SEOA",
-      "oneLine": "공식 주소와 가입코드를 한 번에 확인할 수 있게 정리했습니다.",
+      "oneLine": "신규 가입 혜택과 공식 주소를 한 번에 확인할 수 있게 정리했습니다.",
       "benefits": [
-        "공식 주소 확인",
-        "가입코드 즉시 복사",
-        "모바일 빠른 진입"
+        "신규 첫충 10%",
+        "카지노·미니게임·스포츠 이용 가능",
+        "슬롯 첫충·매충 20% 무제한",
+        "주간 페이백 5%",
+        "출석 체크 이벤트"
       ],
       "tags": [
         "공식확인",
@@ -51,7 +81,20 @@
       "imagePosition": "center center",
       "imageScale": 1.0,
       "imageKind": "logo",
-      "imagePadding": "6px 10px"
+      "imagePadding": "6px 10px",
+      "modalBenefitTitle": "UDT 신규 가입 혜택 안내",
+      "modalBenefitGroups": [
+        {
+          "title": "기본 혜택",
+          "items": [
+            "신규 첫충 10%",
+            "카지노·미니게임·스포츠 이용 가능",
+            "슬롯 첫충·매충 20% 무제한 지급",
+            "주간 페이백 5%",
+            "출석 체크 이벤트"
+          ]
+        }
+      ]
     },
     {
       "slug": "chilbet",
