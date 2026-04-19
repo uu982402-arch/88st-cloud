@@ -1,1 +1,3 @@
-build=2026-04-19T08:20:00Z
+BUILD=20260419-AUDIT
+UPDATED=2026-04-19
+NOTE=live-audit-ui-ux-copy-cleanup
