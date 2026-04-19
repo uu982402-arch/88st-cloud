@@ -124,6 +124,77 @@
     return '중립';
   }
 
+
+  function marketConfidence({ fair = null, outcomes = [], market = '', line = 0, volatilityScore = 40 } = {}) {
+    const safeOutcomes = Array.isArray(outcomes) ? outcomes.filter(Boolean) : [];
+    const sortedProb = safeOutcomes.slice().sort((a, b) => (b.prob || 0) - (a.prob || 0));
+    const sortedEv = safeOutcomes.slice().sort((a, b) => (b.ev?.evRate || 0) - (a.ev?.evRate || 0));
+    const bestProb = sortedProb[0] || null;
+    const secondProb = sortedProb[1] || null;
+    const bestEdge = sortedEv[0] || null;
+    const secondEdge = sortedEv[1] || null;
+    const probGap = bestProb && secondProb ? Math.max(0, (bestProb.prob || 0) - (secondProb.prob || 0)) : 0;
+    const edgeGap = bestEdge && secondEdge ? Math.max(0, (bestEdge.ev?.evRate || 0) - (secondEdge.ev?.evRate || 0)) : Math.max(0, bestEdge?.ev?.evRate || 0);
+    const margin = Math.max(0, Number(fair?.margin) || 0);
+    const entropy = Number(fair?.entropy) || 0;
+    const maxEntropy = market === '1x2' ? Math.log2(3) : Math.log2(2);
+    const entropyPenalty = maxEntropy > 0 ? clamp((entropy / maxEntropy) * 26, 8, 26) : 12;
+    const marginPenalty = clamp(margin * 640, 0, 34);
+    const volatilityPenalty = clamp((Number(volatilityScore) || 0) * 0.26, 0, 24);
+    const evBoost = clamp((bestEdge?.ev?.evRate || 0) * 1200, -18, 28);
+    const edgeBoost = clamp(edgeGap * 4200, 0, 18);
+    const probBoost = clamp(probGap * 220, 0, 14);
+    const linePenalty = (market === 'ou' || market === 'hcp') && Number.isFinite(Number(line)) && Math.abs(Number(line)) >= 1.75 ? 6 : 0;
+    const score = clamp(58 + evBoost + edgeBoost + probBoost - marginPenalty - volatilityPenalty - entropyPenalty - linePenalty, 8, 95);
+
+    let label = '중립';
+    let action = '관망';
+    if ((bestEdge?.ev?.evRate || 0) <= 0 || margin >= 0.09) {
+      label = '낮음';
+      action = '관망';
+    } else if (score >= 76 && edgeGap >= 0.005) {
+      label = '높음';
+      action = '우선 검토';
+    } else if (score >= 60) {
+      label = '보통';
+      action = '소액 접근';
+    } else {
+      label = '낮음';
+      action = '관망';
+    }
+
+    const reasons = [];
+    if (margin >= 0.07) reasons.push('북마진이 높아 보수적으로 해석');
+    else reasons.push('북마진이 과도하지 않음');
+    if (probGap >= 0.05) reasons.push('1순위 확률 격차가 비교적 선명');
+    else reasons.push('상위 선택 간 격차가 크지 않음');
+    if ((bestEdge?.ev?.evRate || 0) > 0.02) reasons.push('보정 EV가 플러스 구간');
+    else if ((bestEdge?.ev?.evRate || 0) > 0) reasons.push('미세 우세 구간');
+    else reasons.push('가치 우위가 약함');
+
+    return { score, label, action, probGap, edgeGap, reasons };
+  }
+
+  function marketLean({ fair = null, outcomes = [], market = '', line = 0 } = {}) {
+    const safeOutcomes = Array.isArray(outcomes) ? outcomes.filter(Boolean) : [];
+    if (!safeOutcomes.length) return { title: '대기', detail: '입력 후 시장 균형을 계산합니다.' };
+    const sorted = safeOutcomes.slice().sort((a, b) => (b.prob || 0) - (a.prob || 0));
+    const best = sorted[0];
+    const second = sorted[1];
+    const gap = second ? (best.prob || 0) - (second.prob || 0) : best.prob || 0;
+    if (market === '1x2' && best.label === '무' && (best.prob || 0) >= 0.28) {
+      return { title: '무승부 경계', detail: '정배 한쪽으로 쏠리지 않아 무승부 보정이 필요한 흐름입니다.' };
+    }
+    if ((market === 'ou' || market === 'hcp') && Number.isFinite(Number(line))) {
+      const cleanLine = Number(line);
+      if (Math.abs(cleanLine) >= 1.5) return { title: '라인 강도 높음', detail: `기준점 ${cleanLine} 자체 영향이 커서 배당보다 라인 해석 비중이 큽니다.` };
+      if (gap <= 0.025) return { title: '균형 시장', detail: `기준점 ${cleanLine} 근처에서 상하 선택 차이가 크지 않습니다.` };
+    }
+    if (gap >= 0.07) return { title: '우세 흐름 선명', detail: `${best.label} 쪽 공정확률 우위가 비교적 또렷합니다.` };
+    if (gap >= 0.03) return { title: '약우세 흐름', detail: `${best.label} 쪽이 앞서지만 단독 강승부로 보기엔 격차가 제한적입니다.` };
+    return { title: '박빙 흐름', detail: '상위 선택 간 격차가 좁아 관망 또는 분산 접근이 낫습니다.' };
+  }
+
   window.RavenEngines = {
     pct,
     round,
@@ -133,5 +204,7 @@
     bankrollPlan,
     formatSignedPercent,
     describeEdge,
+    marketConfidence,
+    marketLean,
   };
 })();
