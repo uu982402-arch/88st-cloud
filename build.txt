@@ -1,3 +1,3 @@
-BUILD=20260419-AUDIT
-UPDATED=2026-04-19
-NOTE=live-audit-ui-ux-copy-cleanup
+BUILD=20260420-UIREFRESH
+UPDATED=2026-04-20
+NOTE=sitewide-ui-ux-clarity-refresh
