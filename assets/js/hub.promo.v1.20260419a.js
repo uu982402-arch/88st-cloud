@@ -64,7 +64,7 @@
   function buildCard(item) {
     const style = `--promo-pos:${esc(item.imagePosition || 'center center')};--promo-scale:${esc(item.imageScale || '1')};--promo-pad:${esc(item.imagePadding || '10px 16px')}`;
     const benefits = renderBenefitGroups(item);
-    return `<article class="hub-promo-card" data-slug="${esc(item.slug)}"><div class="hub-promo-card__media" style="${style}"><img src="${esc(item.imageUrl)}" alt="${esc(item.imageAlt || `${item.name} 로고`)}" loading="eager" decoding="async"></div><div class="hub-promo-card__body"><div class="hub-promo-card__top"><h3 class="hub-promo-card__title">${esc(item.name)}</h3></div>${benefits}<div class="hub-promo-card__code"><span class="hub-promo-card__code-label">가입코드</span><strong class="hub-promo-card__code-value">${esc(item.code)}</strong></div><div class="hub-promo-card__actions"><button class="hub-promo-btn hub-promo-btn--secondary" type="button" data-hub-copy="${esc(item.code)}">코드 복사</button><a class="hub-promo-btn hub-promo-btn--primary" href="${esc(item.officialUrl)}" target="_blank" rel="noopener noreferrer">공식 주소 바로가기</a></div></div></article>`;
+    return `<article class="hub-promo-card" data-slug="${esc(item.slug)}"><div class="hub-promo-card__media" style="${style}"><img src="${esc(item.imageUrl)}" alt="${esc(item.imageAlt || `${item.name} 로고`)}" loading="eager" decoding="async"></div><div class="hub-promo-card__body"><div class="hub-promo-card__top"><h3 class="hub-promo-card__title">${esc(item.name)}</h3></div>${benefits}<div class="hub-promo-card__code-row"><span class="hub-promo-card__code-label">가입코드</span><strong class="hub-promo-card__code-value">${esc(item.code)}</strong><a class="hub-promo-btn hub-promo-btn--primary" href="${esc(item.officialUrl)}" target="_blank" rel="noopener noreferrer" data-hub-copy-link="${esc(item.code)}">공식주소</a></div></div></article>`;
   }
 
   function createModal(items) {
@@ -72,7 +72,7 @@
     root.className = `hub-promo-modal${isSoft ? ' is-soft' : ''}`;
     root.hidden = true;
     const title = isSoft ? '보증업체 빠른 확인' : '오늘 확인할 보증업체';
-    root.innerHTML = `<div class="hub-promo-modal__backdrop" data-hub-promo-close></div><div class="hub-promo-modal__sheet" role="dialog" aria-modal="true" aria-labelledby="hubPromoTitle"><div class="hub-promo-modal__head"><div><span class="hub-promo-modal__eyebrow">${isSoft ? '빠른 안내' : '허브 추천'}</span><strong id="hubPromoTitle">${title}</strong></div><button class="hub-promo-modal__close" type="button" aria-label="닫기" data-hub-promo-close>×</button></div><div class="hub-promo-modal__body"><div class="hub-promo-grid">${items.map(buildCard).join('')}</div></div><div class="hub-promo-modal__foot"><div class="hub-promo-modal__hint">오늘 다시 보지 않기를 누르면 같은 브라우저에서는 오늘 하루 동안 다시 열리지 않습니다.</div><div class="hub-promo-modal__foot-actions"><button class="hub-promo-modal__ghost" type="button" data-hub-hide-today>오늘 다시 보지 않기</button><button class="hub-promo-modal__ghost" type="button" data-hub-promo-close>닫기</button></div></div></div>`;
+    root.innerHTML = `<div class="hub-promo-modal__backdrop" data-hub-promo-close></div><div class="hub-promo-modal__sheet" role="dialog" aria-modal="true" aria-labelledby="hubPromoTitle"><div class="hub-promo-modal__head"><div><span class="hub-promo-modal__eyebrow">${isSoft ? '빠른 안내' : '허브 추천'}</span><strong id="hubPromoTitle">${title}</strong></div><button class="hub-promo-modal__close" type="button" aria-label="닫기" data-hub-promo-close>×</button></div><div class="hub-promo-modal__body"><div class="hub-promo-grid">${items.map(buildCard).join('')}</div></div><div class="hub-promo-modal__foot"><div class="hub-promo-modal__hint">공식주소를 누르면 코드가 함께 복사됩니다.</div><div class="hub-promo-modal__foot-actions"><button class="hub-promo-modal__ghost" type="button" data-hub-hide-today>오늘 다시 보지 않기</button><button class="hub-promo-modal__ghost" type="button" data-hub-promo-close>닫기</button></div></div></div>`;
     document.body.appendChild(root);
 
     const close = () => {
@@ -104,6 +104,11 @@
         const original = copyTrigger.textContent;
         copyTrigger.textContent = ok ? '복사 완료' : '복사 제한';
         window.setTimeout(() => { copyTrigger.textContent = original; }, 1400);
+        return;
+      }
+      const linkCopyTrigger = event.target.closest('[data-hub-copy-link]');
+      if (linkCopyTrigger) {
+        await copyText(linkCopyTrigger.getAttribute('data-hub-copy-link') || '');
       }
     });
     document.addEventListener('keydown', (event) => {
