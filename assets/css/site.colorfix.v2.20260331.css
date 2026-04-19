@@ -1,0 +1,173 @@
+
+:root{
+  --rv-page-bg:#f4f6f8;
+  --rv-surface:#ffffff;
+  --rv-surface-2:#f8fafc;
+  --rv-line:#d9e2ec;
+  --rv-ink:#17212b;
+  --rv-ink-2:#4d5c6d;
+  --rv-ink-3:#7a8796;
+  --rv-link:#1759b2;
+}
+html,body{
+  background:var(--rv-page-bg)!important;
+  color:var(--rv-ink)!important;
+}
+body{
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+body :is(h1,h2,h3,h4,h5,h6,strong,b,.brand-copy strong,.section-head h2,.guaranteed-value,.sports-score-top strong,.sports-metric strong,.main-sports-head strong,.home-panel-head strong){
+  color:var(--rv-ink)!important;
+}
+body :is(p,li,dt,dd,label,small,em,.brand-copy span,.tool-card p,.toolkit-card p,.sports-note,.guaranteed-summary-text,.guaranteed-label,.guaranteed-detail-line span,.section-head p,.footer,.footer a,.helper-preview,.post-card p,.article-card p,.section-copy,.muted,.section-subtitle,.subtitle){
+  color:var(--rv-ink-2)!important;
+}
+body :is(main,section,article,aside,header,footer,nav,.section,.section-head,.safety-shell,.home-panel,.tool-card,.toolkit-card,.article-card,.post-card,.card,.panel,.quick-check-card,.guaranteed-card,.guaranteed-detail,.sports-score-shell,.mini-search-panel,.result-panel,.lookup-panel,.evidence-result,.faq-card,.review-card,.log-card,.community-card,.table-card,.metric-card,.search-row,.sports-field,.home-search-card,.main-sports-card,.editorial-grid article){
+  color:var(--rv-ink)!important;
+  border-color:var(--rv-line)!important;
+}
+body,
+.home-main-compact,
+.page-tight-hero,
+.reading-grid-compact,
+.site-bg,
+main{
+  background:var(--rv-page-bg)!important;
+}
+.site-header,
+.footer,
+.safety-shell,
+.home-panel,
+.tool-card,
+.toolkit-card,
+.article-card,
+.post-card,
+.card,
+.panel,
+.quick-check-card,
+.guaranteed-card,
+.guaranteed-detail,
+.sports-score-shell,
+.main-sports-card,
+.home-search-card,
+.faq-card,
+.review-card,
+.log-card,
+.community-card,
+.lookup-panel,
+.result-panel,
+.evidence-result,
+.search-row,
+.sports-field,
+.editorial-grid article{
+  background:var(--rv-surface)!important;
+}
+.site-header,
+.footer{
+  background:rgba(255,255,255,.94)!important;
+  backdrop-filter:saturate(1.1) blur(10px);
+}
+.site-header *,
+.footer *,
+.main-nav a,
+.brand-copy *,
+.section-head *,
+.footer-links *{
+  color:var(--rv-ink)!important;
+}
+a:not(.btn):not(.safety-link-btn):not(.guaranteed-link):not(.brand){
+  color:var(--rv-link)!important;
+}
+.skip-link{
+  background:#111827!important;
+  color:#fff!important;
+}
+input,
+select,
+textarea,
+.safety-input,
+.safety-select,
+.search-row input,
+.search-row select,
+.sports-field input{
+  background:#fff!important;
+  color:var(--rv-ink)!important;
+  border:1px solid var(--rv-line)!important;
+}
+input::placeholder,
+textarea::placeholder{
+  color:var(--rv-ink-3)!important;
+}
+select option{
+  color:var(--rv-ink)!important;
+  background:#fff!important;
+}
+.btn,
+.safety-link-btn,
+button,
+[role="button"],
+.guaranteed-toggle,
+.guaranteed-link,
+.guaranteed-code{
+  white-space:nowrap;
+}
+.btn,
+.safety-link-btn,
+button,
+.guaranteed-toggle,
+.guaranteed-link,
+.guaranteed-code{
+  border-color:var(--rv-line)!important;
+}
+.btn.btn-primary,
+.header-actions .btn,
+.safety-link-btn:not(.ghost),
+.guaranteed-link{
+  background:#111827!important;
+  color:#fff!important;
+  border-color:#111827!important;
+}
+.safety-link-btn.ghost,
+.guaranteed-toggle,
+.card-actions .ghost{
+  background:#fff!important;
+  color:var(--rv-ink)!important;
+  border:1px solid var(--rv-line)!important;
+}
+.main-sports-market-btn{
+  background:#fff!important;
+  color:var(--rv-ink)!important;
+  border:1px solid var(--rv-line)!important;
+}
+.main-sports-market-btn.is-active{
+  background:#111827!important;
+  color:#fff!important;
+  border-color:#111827!important;
+}
+.guaranteed-card .guaranteed-code,
+.guaranteed-card .guaranteed-code span{
+  color:var(--rv-ink)!important;
+  background:var(--rv-surface-2)!important;
+}
+.guaranteed-card .guaranteed-label,
+.guaranteed-card .guaranteed-value,
+.guaranteed-card .guaranteed-code,
+.guaranteed-card .guaranteed-link,
+.guaranteed-card .guaranteed-status,
+.guaranteed-card .guaranteed-summary-text,
+.guaranteed-card .guaranteed-detail *{
+  word-break:keep-all;
+  overflow-wrap:anywhere;
+}
+body [class*="badge"],
+body [class*="chip"],
+body [class*="tag"]{
+  color:var(--rv-ink)!important;
+  background:#eef3f8!important;
+  border-color:var(--rv-line)!important;
+}
+.footer-links a,
+.main-nav a{
+  opacity:1!important;
+}
