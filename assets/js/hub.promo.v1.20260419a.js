@@ -62,11 +62,9 @@
   }
 
   function buildCard(item) {
-    const description = item.oneLine || '';
     const style = `--promo-pos:${esc(item.imagePosition || 'center center')};--promo-scale:${esc(item.imageScale || '1')};--promo-pad:${esc(item.imagePadding || '10px 16px')}`;
-    const chips = [item.officialDomain || '', '가입코드'].filter(Boolean).map((label) => `<span class="hub-promo-chip">${esc(label)}</span>`).join('');
     const benefits = renderBenefitGroups(item);
-    return `<article class="hub-promo-card" data-slug="${esc(item.slug)}"><div class="hub-promo-card__media" style="${style}"><img src="${esc(item.imageUrl)}" alt="${esc(item.imageAlt || `${item.name} 로고`)}" loading="eager" decoding="async"></div><div class="hub-promo-card__body"><div class="hub-promo-card__top"><h3 class="hub-promo-card__title">${esc(item.name)}</h3>${description ? `<p class="hub-promo-card__desc">${esc(description)}</p>` : ''}</div><div class="hub-promo-card__meta">${chips}</div>${benefits}<div class="hub-promo-card__code"><span class="hub-promo-card__code-label">가입코드</span><strong class="hub-promo-card__code-value">${esc(item.code)}</strong></div><div class="hub-promo-card__actions"><button class="hub-promo-btn" type="button" data-hub-copy="${esc(item.code)}">코드 복사</button><a class="hub-promo-btn hub-promo-btn--primary" href="${esc(item.officialUrl)}" target="_blank" rel="noopener noreferrer">공식 주소</a></div></div></article>`;
+    return `<article class="hub-promo-card" data-slug="${esc(item.slug)}"><div class="hub-promo-card__media" style="${style}"><img src="${esc(item.imageUrl)}" alt="${esc(item.imageAlt || `${item.name} 로고`)}" loading="eager" decoding="async"></div><div class="hub-promo-card__body"><div class="hub-promo-card__top"><h3 class="hub-promo-card__title">${esc(item.name)}</h3></div>${benefits}<div class="hub-promo-card__code"><span class="hub-promo-card__code-label">가입코드</span><strong class="hub-promo-card__code-value">${esc(item.code)}</strong></div><div class="hub-promo-card__actions"><button class="hub-promo-btn hub-promo-btn--secondary" type="button" data-hub-copy="${esc(item.code)}">코드 복사</button><a class="hub-promo-btn hub-promo-btn--primary" href="${esc(item.officialUrl)}" target="_blank" rel="noopener noreferrer">공식 주소 바로가기</a></div></div></article>`;
   }
 
   function createModal(items) {
