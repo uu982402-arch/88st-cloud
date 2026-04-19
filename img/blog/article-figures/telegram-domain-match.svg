@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="텔레그램 공지 계정과 도메인 일치 여부 확인법">
+      <defs>
+        <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#eff6ff"/>
+          <stop offset="100%" stop-color="#ffffff"/>
+        </linearGradient>
+      </defs>
+      <rect width="1200" height="630" rx="32" fill="url(#bg)"/>
+      <rect x="36" y="36" width="1128" height="558" rx="28" fill="#ffffff" fill-opacity="0.78" stroke="#e2e8f0"/>
+      <g transform="translate(78 64)"><rect x="0" y="0" width="132" height="38" rx="19" fill="#dbeafe"/><text x="66" y="25" text-anchor="middle" font-size="17" font-weight="800" fill="#2563eb">레븐 블로그</text></g>
+      <text x="78" y="150" font-size="48" font-weight="800" fill="#16315c">텔레그램 공지 계정과 도메인 일치</text><text x="78" y="210" font-size="48" font-weight="800" fill="#16315c">여부 확인법</text>
+      <text x="78" y="236" font-size="24" fill="#5a6f8f">텔레그램 공지 계정과 사이트 도메인이 서로 맞는지 확인하는 공개 검색 체크리스트입니다.</text>
+      <g transform="translate(78 256)"><circle cx="12" cy="12" r="12" fill="#dbeafe"/><path d="M7 12l4 4 7-9" fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><text x="34" y="17" font-size="22" font-weight="700" fill="#16315c">주소 흐름</text></g><g transform="translate(78 308)"><circle cx="12" cy="12" r="12" fill="#dbeafe"/><path d="M7 12l4 4 7-9" fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><text x="34" y="17" font-size="22" font-weight="700" fill="#16315c">공개 흔적</text></g><g transform="translate(78 360)"><circle cx="12" cy="12" r="12" fill="#dbeafe"/><path d="M7 12l4 4 7-9" fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><text x="34" y="17" font-size="22" font-weight="700" fill="#16315c">교차 확인</text></g>
+      <g transform="translate(86 476)"><rect x="0" y="0" width="104" height="34" rx="17" fill="#ffffff" stroke="#dbe5f0"/><text x="52" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="#5a6f8f">텔레그램</text></g><g transform="translate(206 476)"><rect x="0" y="0" width="104" height="34" rx="17" fill="#ffffff" stroke="#dbe5f0"/><text x="52" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="#5a6f8f">공지</text></g><g transform="translate(326 476)"><rect x="0" y="0" width="104" height="34" rx="17" fill="#ffffff" stroke="#dbe5f0"/><text x="52" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="#5a6f8f">계정과</text></g>
+      <g transform="translate(830 142)">
+          <rect x="0" y="0" width="250" height="340" rx="32" fill="#ffffff" stroke="#cfe0ff"/>
+          <circle cx="95" cy="98" r="42" fill="#dbeafe"/>
+          <circle cx="95" cy="98" r="26" fill="none" stroke="#2563eb" stroke-width="10"/>
+          <line x1="120" y1="123" x2="150" y2="153" stroke="#2563eb" stroke-width="10" stroke-linecap="round"/>
+          <rect x="42" y="185" width="168" height="18" rx="9" fill="#e9eef7"/>
+          <rect x="42" y="221" width="138" height="18" rx="9" fill="#e9eef7"/>
+          <rect x="42" y="257" width="154" height="18" rx="9" fill="#e9eef7"/>
+          <rect x="42" y="298" width="96" height="24" rx="12" fill="#dbeafe"/>
+        </g>
+    </svg>

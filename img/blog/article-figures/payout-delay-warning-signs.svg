@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="출금 지연 전에 먼저 보이는 경고 신호">
+      <defs>
+        <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#fefce8"/>
+          <stop offset="100%" stop-color="#ffffff"/>
+        </linearGradient>
+      </defs>
+      <rect width="1200" height="630" rx="32" fill="url(#bg)"/>
+      <rect x="36" y="36" width="1128" height="558" rx="28" fill="#ffffff" fill-opacity="0.78" stroke="#e2e8f0"/>
+      <g transform="translate(78 64)"><rect x="0" y="0" width="132" height="38" rx="19" fill="#fef3c7"/><text x="66" y="25" text-anchor="middle" font-size="17" font-weight="800" fill="#ca8a04">레븐 블로그</text></g>
+      <text x="78" y="150" font-size="48" font-weight="800" fill="#3f3103">출금 지연 전에 먼저 보이는 경고</text><text x="78" y="210" font-size="48" font-weight="800" fill="#3f3103">신호</text>
+      <text x="78" y="236" font-size="24" fill="#7c6f3a">출금 지연 전에 자주 보이는 답변 흐름과 공지 패턴을 정리한 글입니다.</text>
+      <g transform="translate(78 256)"><circle cx="12" cy="12" r="12" fill="#fef3c7"/><path d="M7 12l4 4 7-9" fill="none" stroke="#ca8a04" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><text x="34" y="17" font-size="22" font-weight="700" fill="#3f3103">조건 해석</text></g><g transform="translate(78 308)"><circle cx="12" cy="12" r="12" fill="#fef3c7"/><path d="M7 12l4 4 7-9" fill="none" stroke="#ca8a04" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><text x="34" y="17" font-size="22" font-weight="700" fill="#3f3103">실수령 확인</text></g><g transform="translate(78 360)"><circle cx="12" cy="12" r="12" fill="#fef3c7"/><path d="M7 12l4 4 7-9" fill="none" stroke="#ca8a04" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><text x="34" y="17" font-size="22" font-weight="700" fill="#3f3103">제한 항목</text></g>
+      <g transform="translate(86 476)"><rect x="0" y="0" width="104" height="34" rx="17" fill="#ffffff" stroke="#dbe5f0"/><text x="52" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="#7c6f3a">출금</text></g><g transform="translate(206 476)"><rect x="0" y="0" width="104" height="34" rx="17" fill="#ffffff" stroke="#dbe5f0"/><text x="52" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="#7c6f3a">지연</text></g><g transform="translate(326 476)"><rect x="0" y="0" width="104" height="34" rx="17" fill="#ffffff" stroke="#dbe5f0"/><text x="52" y="22" text-anchor="middle" font-size="15" font-weight="700" fill="#7c6f3a">전에</text></g>
+      <g transform="translate(830 142)">
+          <rect x="0" y="0" width="250" height="340" rx="32" fill="#ffffff" stroke="#efe5b5"/>
+          <rect x="42" y="72" width="166" height="54" rx="16" fill="#fef3c7"/>
+          <rect x="42" y="144" width="166" height="54" rx="16" fill="#f8fafc" stroke="#e5e7eb"/>
+          <rect x="42" y="216" width="166" height="54" rx="16" fill="#f8fafc" stroke="#e5e7eb"/>
+          <circle cx="72" cy="99" r="14" fill="#ca8a04" fill-opacity="0.18"/>
+          <circle cx="72" cy="171" r="14" fill="#ca8a04" fill-opacity="0.18"/>
+          <circle cx="72" cy="243" r="14" fill="#ca8a04" fill-opacity="0.18"/>
+          <rect x="96" y="91" width="76" height="14" rx="7" fill="#7c6f3a" fill-opacity="0.28"/>
+          <rect x="96" y="163" width="58" height="14" rx="7" fill="#7c6f3a" fill-opacity="0.28"/>
+          <rect x="96" y="235" width="92" height="14" rx="7" fill="#7c6f3a" fill-opacity="0.28"/>
+        </g>
+    </svg>
