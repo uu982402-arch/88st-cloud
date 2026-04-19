@@ -12,7 +12,7 @@
 
   const criticalPages = [
     { path: '/', label: '메인', expect: ['home-provider-rotator-grid', '대표 글 6개'] },
-    { path: '/blog/', label: '블로그 허브', expect: ['대표 글', '공식 주소만 빠르게 확인'] },
+    { path: '/blog/', label: '블로그 허브', expect: ['대표 글', '필요한 주제부터 바로 내려가서 확인'] },
     { path: '/tools/', label: '도구 허브', expect: ['대표 6개', '핵심 도구'] },
     { path: '/guaranteed/', label: '보증업체', expect: ['Any Bet', 'UDT', '공식 주소와 코드'] },
     { path: '/blog/guaranteed-before-click-checks/', label: '대표 글 상세', expect: ['article-single'] },

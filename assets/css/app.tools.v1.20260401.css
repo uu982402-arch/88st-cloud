@@ -281,3 +281,18 @@
 
 .tool-inline-actions--after-result{margin-top:10px;justify-content:flex-end}
 .tool-output-box pre{white-space:pre-wrap;word-break:break-word}
+
+
+/* 2026-04-19 tool copy cleanup */
+.tools-hub-intro h1{margin-bottom:0}
+.tools-hub-hero .tool-page-meta{gap:8px}
+.tools-hub-hero .mini-badge{font-size:11px}
+.tools-hub-hero .tool-anchor-row{margin-top:2px}
+.tools-featured-panel .hub-mini-card strong{font-size:15px}
+.tools-featured-panel .hub-mini-card p{font-size:13px;line-height:1.5}
+.tool-detail-card .tool-inline-actions{flex-wrap:wrap}
+.tool-detail-card .empty-state strong{display:block;margin-bottom:6px}
+@media (max-width:768px){
+  .tools-featured-panel .hub-mini-grid{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(84%,1fr);overflow-x:auto;padding-bottom:6px;scroll-snap-type:x proximity}
+  .tools-featured-panel .hub-mini-grid > *{scroll-snap-align:start}
+}
