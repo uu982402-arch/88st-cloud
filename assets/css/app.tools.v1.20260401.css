@@ -296,3 +296,21 @@
   .tools-featured-panel .hub-mini-grid{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(84%,1fr);overflow-x:auto;padding-bottom:6px;scroll-snap-type:x proximity}
   .tools-featured-panel .hub-mini-grid > *{scroll-snap-align:start}
 }
+
+@media (max-width:760px){
+  .tools-hub-hero .tool-status-grid{
+    display:grid;
+    grid-template-columns:none;
+    grid-auto-flow:column;
+    grid-auto-columns:minmax(76%,1fr);
+    overflow-x:auto;
+    padding-bottom:6px;
+    scroll-snap-type:x proximity;
+    gap:10px;
+  }
+  .tools-hub-hero .tool-status-grid > *{scroll-snap-align:start}
+  .tools-hub-hero .tool-anchor-row{flex-wrap:nowrap;overflow:auto;padding-bottom:4px}
+  .tools-hub-hero .tool-anchor-chip{width:auto;min-width:max-content;flex:0 0 auto;justify-content:center}
+  .tools-hub-hero .tool-page-meta{display:none !important}
+  .tools-hub-hero{padding:14px}
+}

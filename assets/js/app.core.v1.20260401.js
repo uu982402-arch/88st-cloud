@@ -47,13 +47,15 @@
     const close = () => {
       root.setAttribute('hidden','');
       root.setAttribute('aria-hidden','true');
+      root.style.display = 'none';
       document.body.classList.remove('is-modal-open');
     };
-    const open = ({ titleText='결과 안내', html='' } = {}) => {
+    const open = ({ titleText='분석 결과', html='' } = {}) => {
       if (title) title.textContent = titleText;
       if (body) body.innerHTML = html;
       root.removeAttribute('hidden');
       root.setAttribute('aria-hidden','false');
+      root.style.display = 'flex';
       document.body.classList.add('is-modal-open');
     };
     if (!root.dataset.bound) {
@@ -65,6 +67,19 @@
   }
   const resultModal = ensureResultModal();
   window.RavenResultModal = resultModal;
+  function normalizeGlobalUi(){
+    $$('header .header-actions a').forEach((link)=>{
+      const href = String(link.getAttribute('href') || '');
+      const label = String(link.textContent || '').trim();
+      if (/t\.me/i.test(href) || /제보|문의|Telegram/i.test(label)) {
+        link.textContent = 'Telegram';
+        link.setAttribute('aria-label', 'Telegram');
+      }
+    });
+    const modalRoot = $('[data-result-modal]');
+    if (modalRoot && modalRoot.hasAttribute('hidden')) modalRoot.style.display = 'none';
+  }
+
   const copyText = async (text) => {
     try { await navigator.clipboard.writeText(String(text)); toast('복사되었습니다.'); }
     catch (_) {
@@ -496,6 +511,7 @@ https://t.me/example_notice">${esc(initial || '')}</textarea><div class="card-ac
   }
 
   async function init(){
+    normalizeGlobalUi();
     wireGuaranteed(); wireGoogleForms(); wireSearchPage(); wireCheckPage(); wireEvidence();
     const [providers, posts, logs] = await Promise.all([
       fetchJson(PROVIDERS_URL).then((d)=>d.providers || []).catch(()=>[]),

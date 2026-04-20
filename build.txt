@@ -1,3 +1,1 @@
-BUILD=20260420-UIREFRESH
-UPDATED=2026-04-20
-NOTE=sitewide-ui-ux-clarity-refresh
+2026-04-20-live-audit-mobile-fix

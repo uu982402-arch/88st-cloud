@@ -658,3 +658,46 @@ body[data-community-page="blog"] .section-head p{max-width:58ch}
   .post-inline-figure figcaption{font-size:12px}
   .tools-hub-hero .tool-status-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
 }
+
+/* 2026-04-20 live polish */
+.home-command-section .hub-link-card{padding:16px 17px;min-height:0}
+.home-command-section .hub-link-kicker{font-size:11px}
+.home-command-section .hub-link-card strong{font-size:16px;line-height:1.32}
+.home-command-section .hub-link-card p{font-size:13px;line-height:1.48}
+.guaranteed-precheck-panel .hub-link-card{padding:15px 16px;min-height:0}
+.guaranteed-precheck-panel .hub-link-kicker{font-size:11px}
+.guaranteed-precheck-panel .hub-link-card strong{font-size:16px;line-height:1.3}
+.guaranteed-precheck-panel .hub-link-card p{font-size:13px;line-height:1.45;color:var(--muted)}
+.guaranteed-precheck-panel,.guaranteed-resource-section{border-color:#dde5ee}
+.tools-hub-hero .tool-anchor-row{padding-bottom:2px}
+.tools-hub-hero .tool-status-card h2{letter-spacing:-.02em}
+@media (max-width:768px){
+  body[data-community-page="home"] .home-command-section .hub-link-strip,
+  body[data-community-page="home"] .quick-resource-grid,
+  body[data-community-page="blog"] .article-grid,
+  body[data-community-page="tools"] .hub-mini-grid,
+  body[data-community-page="guaranteed"] .quick-resource-grid,
+  body[data-community-page="guaranteed"] .guaranteed-precheck-panel .hub-link-strip{
+    display:grid;
+    grid-auto-flow:column;
+    grid-auto-columns:minmax(78%,1fr);
+    overflow-x:auto;
+    overscroll-behavior-x:contain;
+    padding-bottom:6px;
+    scroll-snap-type:x proximity;
+    gap:10px;
+  }
+  body[data-community-page="guaranteed"] .guaranteed-precheck-panel .hub-link-strip > *,
+  body[data-community-page="blog"] .article-grid .article-card,
+  body[data-community-page="home"] .quick-resource-grid > *,
+  body[data-community-page="home"] .hub-link-strip > *,
+  body[data-community-page="tools"] .hub-mini-grid > *,
+  body[data-community-page="guaranteed"] .quick-resource-grid > *{scroll-snap-align:start}
+  body[data-community-page="home"] .home-command-section .hub-link-card,
+  body[data-community-page="guaranteed"] .guaranteed-precheck-panel .hub-link-card{padding:14px 15px;border-radius:18px}
+  body[data-community-page="home"] .home-command-section .hub-link-card strong,
+  body[data-community-page="guaranteed"] .guaranteed-precheck-panel .hub-link-card strong{font-size:15px}
+  body[data-community-page="home"] .home-command-section .hub-link-card p,
+  body[data-community-page="guaranteed"] .guaranteed-precheck-panel .hub-link-card p{font-size:12px;line-height:1.42}
+  .site-header .header-actions .btn{min-width:98px;padding-inline:14px}
+}
