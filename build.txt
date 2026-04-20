@@ -1,1 +1,3 @@
-2026-04-20-live-audit-mobile-fix
+BUILD=20260420-SPORTS-RESTORE
+UPDATED=2026-04-20
+NOTE=restored-home-sports-assist-panel-on-latest-zip
