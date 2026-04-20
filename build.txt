@@ -1,1 +1,3 @@
-2026-04-20-blog-longform-noimage
+BUILD=20260420-MOBILE-REBUILD
+UPDATED=2026-04-20
+NOTE=mobile-compact-tabs-swipe-quickbar
