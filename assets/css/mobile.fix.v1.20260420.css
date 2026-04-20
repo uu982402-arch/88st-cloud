@@ -1,0 +1,67 @@
+
+@media (max-width:768px){
+  .main-sports-hero-copy{display:block;margin-bottom:8px}
+  .main-sports-hero-actions{display:none!important}
+
+  body[data-community-page="home"] .home-provider-rotator-section{display:block!important}
+
+  body[data-community-page="home"] .home-provider-rotator-grid,
+  body[data-community-page="home"] .quick-resource-grid,
+  body[data-community-page="blog"] .article-grid,
+  body[data-community-page="tools"] .hub-mini-grid,
+  body[data-community-page="guaranteed"] .quick-resource-grid{
+    display:flex!important;
+    flex-wrap:nowrap;
+    align-items:stretch;
+    gap:12px;
+    overflow-x:auto;
+    overscroll-behavior-x:contain;
+    -webkit-overflow-scrolling:touch;
+    scroll-snap-type:x proximity;
+    scroll-padding-inline:2px;
+    padding:0 2px 8px!important;
+    grid-template-columns:none!important;
+    grid-auto-flow:unset!important;
+    grid-auto-columns:auto!important;
+  }
+
+  body[data-community-page="home"] .home-provider-rotator-grid > *,
+  body[data-community-page="home"] .quick-resource-grid > *,
+  body[data-community-page="blog"] .article-grid > *,
+  body[data-community-page="tools"] .hub-mini-grid > *,
+  body[data-community-page="guaranteed"] .quick-resource-grid > *{
+    flex:0 0 84vw!important;
+    min-width:84vw!important;
+    max-width:84vw!important;
+    margin:0!important;
+    scroll-snap-align:start;
+    box-sizing:border-box;
+    transform:none!important;
+  }
+
+  body[data-community-page="home"] .home-provider-rotator-grid > *{
+    flex-basis:86vw!important;
+    min-width:86vw!important;
+    max-width:86vw!important;
+  }
+
+  body[data-community-page="home"] .home-provider-rotator-shell,
+  body[data-community-page="home"] .home-tool-shortcuts .container,
+  body[data-community-page="blog"] .surface.card,
+  body[data-community-page="tools"] .tools-featured-panel,
+  body[data-community-page="guaranteed"] .guaranteed-resource-section{
+    overflow:hidden;
+  }
+
+  body[data-community-page="home"] .home-provider-card,
+  body[data-community-page="home"] .quick-resource-card,
+  body[data-community-page="blog"] .article-card,
+  body[data-community-page="tools"] .hub-mini-card,
+  body[data-community-page="guaranteed"] .quick-resource-card{
+    min-height:100%;
+  }
+
+  body[data-community-page="home"] .home-provider-card .home-provider-card-actions{
+    grid-template-columns:1fr 1fr;
+  }
+}
