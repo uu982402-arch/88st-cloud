@@ -1,1 +1,3 @@
-2026-04-20 mobile swipe and guaranteed copy fix
+BUILD=20260420-FINAL-MERGED
+UPDATED=2026-04-20
+NOTE=merged-sports-mobile-modal-blog-longform-ctr
