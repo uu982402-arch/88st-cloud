@@ -1,0 +1,176 @@
+{
+  "updated": "2026-04-18",
+  "providers": [
+    {
+      "slug": "anybet",
+      "name": "Any Bet",
+      "theme": "brand",
+      "officialUrl": "https://any-777.com/",
+      "officialDomain": "any-777.com",
+      "code": "SEOA",
+      "oneLine": "가입 방식별 혜택과 공식 주소를 빠르게 확인할 수 있게 정리했습니다.",
+      "benefits": [
+        "원화 스포츠 첫충 40%",
+        "원화 슬롯 첫충 20%",
+        "테더 입금 수수료 무제한 지원",
+        "테더 첫충 50%",
+        "주간 페이백 5%"
+      ],
+      "tags": [
+        "공식확인",
+        "코드복사",
+        "빠른진입"
+      ],
+      "pending": false,
+      "imageUrl": "/assets/provider-media/anybet-logo.png",
+      "imageAlt": "Any Bet 로고",
+      "imagePosition": "center center",
+      "imageScale": 0.96,
+      "imagePadding": "10px 16px",
+      "imageKind": "logo",
+      "modalBenefitTitle": "Any Bet 신규 가입 혜택 안내",
+      "modalBenefitGroups": [
+        {
+          "title": "원화 가입 전용 이벤트",
+          "items": [
+            "신규 회원 스포츠 첫 충전 40%",
+            "신규 회원 슬롯 첫 충전 20%"
+          ]
+        },
+        {
+          "title": "테더(무기명) 가입 전용 이벤트",
+          "items": [
+            "코인 입금 수수료 무제한 지원",
+            "코인 입금 첫 충전 50%"
+          ]
+        },
+        {
+          "title": "공통 혜택",
+          "items": [
+            "모든 게임 충전 보너스",
+            "주간 페이백 5%",
+            "롤링 콤프 이벤트",
+            "출석 체크 이벤트 외 8개"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "udt",
+      "name": "UDT",
+      "theme": "gold",
+      "officialUrl": "https://udt-01.com/",
+      "officialDomain": "udt-01.com",
+      "code": "SEOA",
+      "oneLine": "신규 가입 혜택과 공식 주소를 한 번에 확인할 수 있게 정리했습니다.",
+      "benefits": [
+        "신규 첫충 10%",
+        "카지노·미니게임·스포츠 이용 가능",
+        "슬롯 첫충·매충 20% 무제한",
+        "주간 페이백 5%",
+        "출석 체크 이벤트"
+      ],
+      "tags": [
+        "공식확인",
+        "코드복사",
+        "모바일"
+      ],
+      "pending": false,
+      "imageUrl": "/assets/provider-media/udt-logo.webp",
+      "imageAlt": "UDT 로고",
+      "imagePosition": "center center",
+      "imageScale": 1.0,
+      "imageKind": "logo",
+      "imagePadding": "6px 10px",
+      "modalBenefitTitle": "UDT 신규 가입 혜택 안내",
+      "modalBenefitGroups": [
+        {
+          "title": "기본 혜택",
+          "items": [
+            "신규 첫충 10%",
+            "카지노·미니게임·스포츠 이용 가능",
+            "슬롯 첫충·매충 20% 무제한 지급",
+            "주간 페이백 5%",
+            "출석 체크 이벤트"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "chilbet",
+      "name": "칠벳",
+      "theme": "red",
+      "officialUrl": "https://82clf.com/",
+      "officialDomain": "82clf.com",
+      "code": "6767",
+      "oneLine": "",
+      "benefits": [
+        "검색 후 참고",
+        "공식 주소 확인",
+        "코드 즉시 복사"
+      ],
+      "tags": [
+        "검색우선",
+        "주소확인",
+        "터치최적화"
+      ],
+      "imageUrl": "/assets/provider-media/chilbet-logo.png",
+      "imageAlt": "칠벳 로고",
+      "pending": false,
+      "imagePosition": "center center",
+      "imageScale": 1.14,
+      "imageKind": "logo",
+      "imagePadding": "10px 18px"
+    },
+    {
+      "slug": "yangsim",
+      "name": "양심",
+      "theme": "amber",
+      "officialUrl": "https://평생양심.com/",
+      "officialDomain": "평생양심.com",
+      "code": "KAKA",
+      "oneLine": "",
+      "benefits": [
+        "공식 주소 확인",
+        "코드 즉시 복사",
+        "모바일 바로가기"
+      ],
+      "tags": [
+        "주소확인",
+        "코드복사",
+        "모바일"
+      ],
+      "imageUrl": "/assets/provider-media/yangsim-card.webp",
+      "imageAlt": "양심 광고 이미지",
+      "pending": false,
+      "imagePosition": "center 40%",
+      "imageScale": 2.2
+    },
+    {
+      "slug": "las",
+      "name": "LAS",
+      "theme": "gold",
+      "officialUrl": "https://las-888.com/?code=crow",
+      "officialDomain": "las-888.com",
+      "code": "CROW",
+      "oneLine": "",
+      "benefits": [
+        "공식 주소 확인",
+        "코드 즉시 복사",
+        "간단 진입"
+      ],
+      "tags": [
+        "코드복사",
+        "빠른이동",
+        "모바일"
+      ],
+      "pending": false,
+      "imageUrl": "/assets/provider-media/las-logo.png",
+      "imageAlt": "LAS 로고",
+      "imagePosition": "center center",
+      "imageScale": 0.92,
+      "imageKind": "logo",
+      "imagePadding": "12px 22px"
+    }
+  ]
+}
