@@ -35,7 +35,7 @@ const DEFAULT_STATE = {
     tgMatchEntryUrl: 'https://88st.cloud/',
     oddsUrl: 'https://88st.cloud/',
     playgroundUrl: 'https://88st.cloud/tg-odds/app',
-    supportUrl: 'https://t.me/TRK7878',
+    supportUrl: 'https://t.me/odds88st_bot',
     oddsButtonLabel: '배당분석 바로가기',
     supportButtonLabel: '텔레그램 문의',
     landingIntro: '스포츠 이용자에게 필요시 스포츠 분석 봇 지원 해드립니다. 문의 주세요.'

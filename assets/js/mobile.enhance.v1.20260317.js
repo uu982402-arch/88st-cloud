@@ -19,7 +19,7 @@
       theme: 'amber',
       primaryHref: 'https://평생양심.com/',
       primaryLabel: '공식 주소 바로가기',
-      secondaryHref: 'https://t.me/TRK7878',
+      secondaryHref: 'https://t.me/odds88st_bot',
       secondaryLabel: '텔레그램 문의하기'
     },
     {
@@ -38,7 +38,7 @@
       theme: 'mint',
       primaryHref: 'https://82clf.com/',
       primaryLabel: '공식 주소 바로가기',
-      secondaryHref: 'https://t.me/TRK7878',
+      secondaryHref: 'https://t.me/odds88st_bot',
       secondaryLabel: '텔레그램 문의하기'
     },
     {
@@ -57,7 +57,7 @@
       theme: 'red',
       primaryHref: 'https://las302.com/',
       primaryLabel: '공식 주소 바로가기',
-      secondaryHref: 'https://t.me/TRK7878',
+      secondaryHref: 'https://t.me/odds88st_bot',
       secondaryLabel: '텔레그램 문의하기'
     },,
     {
@@ -76,7 +76,7 @@
       theme: 'silver',
       primaryHref: 'https://any-777.com/',
       primaryLabel: '공식 주소 바로가기',
-      secondaryHref: 'https://t.me/TRK7878',
+      secondaryHref: 'https://t.me/odds88st_bot',
       secondaryLabel: '텔레그램 문의하기'
     }
   ];
@@ -302,7 +302,7 @@
       { href: '/muktu-police/search/', label: '검색', icon: '⌕' },
       { href: '/', label: '홈', icon: '⌂' },
       { href: '/', label: '메인', icon: '⌁', accent: true },
-      { href: 'https://t.me/TRK7878', label: '문의', icon: '✦', external: true }
+      { href: 'https://t.me/odds88st_bot', label: '문의', icon: '✦', external: true }
     ];
 
     const dock = document.createElement('nav');

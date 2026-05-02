@@ -1,6 +1,41 @@
 {
-  "updated": "2026-04-18",
+  "updated": "2026-05-02",
   "providers": [
+    {
+      "slug": "queenbee",
+      "name": "❤️ 여왕벌 ❤️",
+      "theme": "amber",
+      "officialUrl": "https://qb-700.com/?code=seoa",
+      "officialDomain": "qb-700.com",
+      "code": "seoa",
+      "oneLine": "테더(USDT) 수수료 지원과 프리미엄 룰렛 쿠폰 혜택을 같이 확인할 수 있게 정리했습니다.",
+      "benefits": [
+        "테더(USDT) 수수료 지원",
+        "프리미엄 룰렛 쿠폰 지급"
+      ],
+      "tags": [
+        "신규추가",
+        "공식확인",
+        "코드복사"
+      ],
+      "pending": false,
+      "imageUrl": "/assets/provider-media/queenbee-logo.svg",
+      "imageAlt": "여왕벌 로고",
+      "imagePosition": "center center",
+      "imageScale": 0.98,
+      "imagePadding": "12px 18px",
+      "imageKind": "logo",
+      "modalBenefitTitle": "❤️ 여왕벌 ❤️ 신규 가입 혜택 안내",
+      "modalBenefitGroups": [
+        {
+          "title": "기본 혜택",
+          "items": [
+            "테더 (USDT) 수수료 지원",
+            "프리미엄 룰렛 쿠폰 지급"
+          ]
+        }
+      ]
+    },
     {
       "slug": "anybet",
       "name": "Any Bet",
