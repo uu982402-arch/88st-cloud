@@ -1,0 +1,3 @@
+build=crypto-rebuild-v1.20260502
+Generated=2026-05-02T04:54:22+09:00
+Scope=main, coins, exchanges, blog, tools, guaranteed, modal, sitemap, robots
