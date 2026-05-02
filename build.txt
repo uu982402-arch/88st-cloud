@@ -1,3 +1,5 @@
-build=crypto-rebuild-v1.20260502
-Generated=2026-05-02T04:54:22+09:00
-Scope=main, coins, exchanges, blog, tools, guaranteed, modal, sitemap, robots
+build=crypto-ads-seo-v1.20260502b
+Generated=2026-05-02T05:28:00+09:00
+Scope=provider_ads_cleanup, seo_keyword_rebuild, main, coins, exchanges, blog, tools, guaranteed, modal, sitemap, robots
+Providers=queenbee,anybet,udt,chilbet
+RemovedFromActiveAds=las,yangsim

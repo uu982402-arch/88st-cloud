@@ -1,0 +1,18 @@
+PATCH ZIP만 덮어쓸 경우 아래 파일은 수동 삭제 권장입니다.
+FULL ZIP으로 전체 교체하면 이미 제외되어 있습니다.
+
+assets/provider-media/las-logo.png
+assets/provider-media/yangsim-card.webp
+
+제거된 구 양심 라우트(풀 ZIP에서는 제외):
+muktu-police/brand/yangsim/
+muktu-police/faq/yangsim/
+muktu-police/query/yangsim-address/
+muktu-police/query/yangsim-code/
+muktu-police/query/yangsim-domain/
+muktu-police/query/yangsim-major/
+muktu-police/query/yangsim-muktu/
+muktu-police/query/yangsim-review/
+muktu-police/compare/yangsim-vs-avengers/
+muktu-police/compare/yangsim-vs-chilbet/
+muktu-police/compare/yangsim-vs-vegas/

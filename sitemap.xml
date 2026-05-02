@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://88st.cloud/</loc><lastmod>2026-05-02</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url>
-  <url><loc>https://88st.cloud/coins/</loc><lastmod>2026-05-02</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
-  <url><loc>https://88st.cloud/coins/btc/</loc><lastmod>2026-05-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://88st.cloud/coins/</loc><lastmod>2026-05-02</lastmod><changefreq>daily</changefreq><priority>0.85</priority></url>
+  <url><loc>https://88st.cloud/coins/btc/</loc><lastmod>2026-05-02</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
   <url><loc>https://88st.cloud/coins/eth/</loc><lastmod>2026-05-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://88st.cloud/coins/sol/</loc><lastmod>2026-05-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://88st.cloud/coins/xrp/</loc><lastmod>2026-05-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://88st.cloud/exchanges/</loc><lastmod>2026-05-02</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
-  <url><loc>https://88st.cloud/exchanges/binance-upbit/</loc><lastmod>2026-05-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://88st.cloud/exchanges/</loc><lastmod>2026-05-02</lastmod><changefreq>daily</changefreq><priority>0.85</priority></url>
+  <url><loc>https://88st.cloud/exchanges/binance-upbit/</loc><lastmod>2026-05-02</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
   <url><loc>https://88st.cloud/blog/</loc><lastmod>2026-05-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://88st.cloud/blog/btc-market-brief/</loc><lastmod>2026-05-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://88st.cloud/blog/exchange-price-gap/</loc><lastmod>2026-05-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://88st.cloud/blog/rsi-beginner-guide/</loc><lastmod>2026-05-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://88st.cloud/blog/kimchi-premium-check/</loc><lastmod>2026-05-02</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://88st.cloud/blog/upbit-binance-price-gap/</loc><lastmod>2026-05-02</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://88st.cloud/blog/coin-rsi-macd-brief/</loc><lastmod>2026-05-02</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>
   <url><loc>https://88st.cloud/tools/</loc><lastmod>2026-05-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://88st.cloud/guaranteed/</loc><lastmod>2026-05-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://88st.cloud/guaranteed/</loc><lastmod>2026-05-02</lastmod><changefreq>weekly</changefreq><priority>0.65</priority></url>
 </urlset>
