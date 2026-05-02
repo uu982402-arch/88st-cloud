@@ -9,7 +9,7 @@
 
   const STORAGE_KEY = 'raven_hub_promo_hide_until_v2';
   const PROVIDERS_URL = '/assets/data/guaranteed.providers.v1.20260330.json';
-  const ORDER = ['queenbee', 'anybet', 'udt'];
+  const ORDER = ['queenbee', 'anybet', 'udt', 'chilbet'];
   const DELAY = page === 'home' ? 900 : page === 'guaranteed' ? 1500 : 1150;
   const isSoft = page === 'guaranteed';
 
@@ -132,8 +132,11 @@
       return;
     }
     const providers = Array.isArray(payload?.providers) ? payload.providers : [];
-    const selected = ORDER.map((slug) => providers.find((item) => item && !item.pending && item.slug === slug && item.officialUrl && item.code && item.imageUrl)).filter(Boolean);
-    if (!selected.length) return;
+    const ordered = ORDER.map((slug) => providers.find((item) => item && !item.pending && item.slug === slug && item.officialUrl && item.code && item.imageUrl)).filter(Boolean);
+    if (!ordered.length) return;
+    const offset = new Date().getDate() % ordered.length;
+    const rotated = ordered.slice(offset).concat(ordered.slice(0, offset));
+    const selected = rotated.slice(0, Math.min(3, rotated.length));
     const modal = createModal(selected);
     window.setTimeout(() => modal.open(), DELAY);
   }

@@ -4,77 +4,57 @@
 
   const PROMO_OFFERS = [
     {
-      id: 'yangsim-main',
-      title: '안전한토토사이트 ” 양심 “',
-      badgeBrand: '양심벳',
-      badgeSuffix: ' 회원 전용 이벤트 다수 진행 중',
-      bullets: [
-        '스포츠/슬롯 첫충/매충 10%',
-        '카지노,미겜 첫충,매 충전 5%',
-        '출첵 / 룰렛 / 이사 지원금 이벤트',
-        '콤프 최대 카지노 1.2% / 슬롯 4%'
-      ],
-      code: 'KAKA',
-      codeLabel: '가입코드: KAKA',
+      id: 'queenbee-main',
+      title: '❤️ 여왕벌 ❤️',
+      badgeBrand: '여왕벌',
+      badgeSuffix: ' 공식주소와 가입코드 확인',
+      bullets: ['테더(USDT) 수수료 지원', '프리미엄 룰렛 쿠폰 지급', '가입코드 seoa 즉시 복사'],
+      code: 'seoa',
+      codeLabel: '가입코드: seoa',
       theme: 'amber',
-      primaryHref: 'https://평생양심.com/',
+      primaryHref: 'https://qb-700.com/?code=seoa',
       primaryLabel: '공식 주소 바로가기',
       secondaryHref: 'https://t.me/odds88st_bot',
       secondaryLabel: '텔레그램 문의하기'
     },
     {
-      id: 'seven-main',
-      title: '칠땡잡이 승부사이트!!',
+      id: 'anybet-main',
+      title: 'Any Bet',
+      badgeBrand: 'Any Bet',
+      badgeSuffix: ' 공식주소와 코드 확인',
+      bullets: ['원화 스포츠 첫충 40%', '원화 슬롯 첫충 20%', '테더 입금 수수료 지원'],
+      code: 'SEOA',
+      codeLabel: '가입코드: SEOA',
+      theme: 'silver',
+      primaryHref: 'https://any-777.com/',
+      primaryLabel: '공식 주소 바로가기',
+      secondaryHref: 'https://t.me/odds88st_bot',
+      secondaryLabel: '텔레그램 문의하기'
+    },
+    {
+      id: 'udt-main',
+      title: 'UDT',
+      badgeBrand: 'UDT',
+      badgeSuffix: ' 공식주소와 코드 확인',
+      bullets: ['신규 첫충 10%', '슬롯 첫충·매충 20%', '주간 페이백 5%'],
+      code: 'SEOA',
+      codeLabel: '가입코드: SEOA',
+      theme: 'amber',
+      primaryHref: 'https://udt-01.com/',
+      primaryLabel: '공식 주소 바로가기',
+      secondaryHref: 'https://t.me/odds88st_bot',
+      secondaryLabel: '텔레그램 문의하기'
+    },
+    {
+      id: 'chilbet-main',
+      title: '칠벳',
       badgeBrand: '칠벳',
-      badgeSuffix: ' 회원 전용 이벤트 다수 진행 중',
-      bullets: [
-        '카지노/스포츠/슬롯/미겜 입금플러스 이벤트',
-        '가입 후 환전없을시 무제한 20%',
-        '돌발 20% 돌발 카지노10%',
-        '페이백 5%'
-      ],
+      badgeSuffix: ' 공식주소와 코드 확인',
+      bullets: ['가입코드 6767', '공식주소 확인', '모바일 접속 확인'],
       code: '6767',
       codeLabel: '가입코드: 6767',
       theme: 'mint',
       primaryHref: 'https://82clf.com/',
-      primaryLabel: '공식 주소 바로가기',
-      secondaryHref: 'https://t.me/odds88st_bot',
-      secondaryLabel: '텔레그램 문의하기'
-    },
-    {
-      id: 'vegas-main',
-      title: '라스베가스의 진정한 승부사!!',
-      badgeBrand: '베가스',
-      badgeSuffix: ' 회원 전용 이벤트 다수 진행 중',
-      bullets: [
-        '카지노/스포츠/슬롯/미겜 입금플러스 이벤트',
-        '가입 후 환전없을시 무제한 20%',
-        '돌발 20% 돌발 카지노10%',
-        '페이백 5%'
-      ],
-      code: '6789',
-      codeLabel: '가입코드: 6789',
-      theme: 'red',
-      primaryHref: 'https://las302.com/',
-      primaryLabel: '공식 주소 바로가기',
-      secondaryHref: 'https://t.me/odds88st_bot',
-      secondaryLabel: '텔레그램 문의하기'
-    },,
-    {
-      id: 'anybet-main',
-      title: '실전 이용 중심 ANY BET',
-      badgeBrand: 'ANY BET',
-      badgeSuffix: ' 빠른 확인용 추천 카드',
-      bullets: [
-        '공식 주소 바로 확인',
-        '가입코드 ASK 즉시 복사',
-        '모바일/PC 빠른 진입',
-        '간단 확인 후 이동'
-      ],
-      code: 'ASK',
-      codeLabel: '가입코드: ASK',
-      theme: 'silver',
-      primaryHref: 'https://any-777.com/',
       primaryLabel: '공식 주소 바로가기',
       secondaryHref: 'https://t.me/odds88st_bot',
       secondaryLabel: '텔레그램 문의하기'

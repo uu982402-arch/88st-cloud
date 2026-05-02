@@ -1,1 +1,1 @@
-window.__BUILD_VER__='crypto-rebuild-v1.20260502';
+window.__88ST_BUILD__='crypto-ads-seo-v1.20260502b';
