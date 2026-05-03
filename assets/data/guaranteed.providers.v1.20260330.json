@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-02",
+  "updated": "2026-05-03",
   "providers": [
     {
       "slug": "queenbee",
@@ -101,34 +101,34 @@
       ]
     },
     {
-      "slug": "chilbet",
-      "name": "칠벳",
-      "theme": "red",
-      "officialUrl": "https://82clf.com/",
-      "officialDomain": "82clf.com",
-      "code": "6767",
+      "slug": "skholdings",
+      "name": "❤️ SK 홀딩스 ❤️",
+      "theme": "blue",
+      "officialUrl": "https://snk-88.com/",
+      "officialDomain": "snk-88.com",
+      "code": "iron20",
       "oneLine": "",
       "benefits": [
-        "가입코드 6767",
-        "공식주소 확인",
-        "모바일 접속 확인"
+        "신규 첫 충전 30%",
+        "매일 첫 10% · 매충 5% · 돌발 20%",
+        "월요일 입금플러스 · 주간 페이백 · 출석체크"
       ],
       "tags": [],
-      "imageUrl": "/assets/provider-media/chilbet-logo.png",
-      "imageAlt": "칠벳 로고",
+      "imageUrl": "",
+      "imageAlt": "SK 홀딩스 로고 준비중",
       "pending": false,
       "imagePosition": "center center",
-      "imageScale": 1.14,
-      "imageKind": "logo",
-      "imagePadding": "10px 18px",
-      "modalBenefitTitle": "칠벳 핵심 혜택",
+      "imageScale": 1.0,
+      "imageKind": "text",
+      "imagePadding": "12px 18px",
+      "modalBenefitTitle": "❤️ SK 홀딩스 ❤️ 핵심 혜택",
       "modalBenefitGroups": [
         {
           "title": "확인 포인트",
           "items": [
-            "가입코드 6767",
-            "공식주소 확인",
-            "모바일 접속 확인"
+            "신규 첫 충전 30%",
+            "매일 첫 10% · 매충 5% · 돌발 20%",
+            "가입코드 iron20 자동 복사"
           ]
         }
       ]

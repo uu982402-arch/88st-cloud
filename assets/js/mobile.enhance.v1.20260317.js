@@ -46,15 +46,15 @@
       secondaryLabel: '텔레그램 문의하기'
     },
     {
-      id: 'chilbet-main',
-      title: '칠벳',
-      badgeBrand: '칠벳',
+      id: 'skholdings-main',
+      title: '❤️ SK 홀딩스 ❤️',
+      badgeBrand: 'SK 홀딩스',
       badgeSuffix: ' 공식주소와 코드 확인',
-      bullets: ['가입코드 6767', '공식주소 확인', '모바일 접속 확인'],
-      code: '6767',
-      codeLabel: '가입코드: 6767',
-      theme: 'mint',
-      primaryHref: 'https://82clf.com/',
+      bullets: ['신규 첫 충전 30%', '매일 첫 10% · 매충 5% · 돌발 20%', '월요일 입금플러스 · 주간 페이백 · 출석체크'],
+      code: 'iron20',
+      codeLabel: '가입코드: iron20',
+      theme: 'blue',
+      primaryHref: 'https://snk-88.com/',
       primaryLabel: '공식 주소 바로가기',
       secondaryHref: 'https://t.me/odds88st_bot',
       secondaryLabel: '텔레그램 문의하기'

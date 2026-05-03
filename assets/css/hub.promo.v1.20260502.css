@@ -197,3 +197,9 @@ body[data-community-page="guaranteed"] .hub-promo-modal__head strong{font-size:c
     font-size:10.5px;
   }
 }
+
+/* 2026-05-03 SK Holdings provider refresh */
+.hub-promo-card[data-slug="skholdings"] .hub-promo-card__media{background:linear-gradient(135deg,#f8fafc,#dbeafe 50%,#bfdbfe);border:1px solid rgba(37,99,235,.18)}
+.hub-promo-card__mark{display:grid;place-items:center;width:100%;height:100%;min-height:72px;border-radius:18px;background:linear-gradient(180deg,rgba(255,255,255,.9),rgba(239,246,255,.98));color:#1e3a8a;font-weight:900;font-size:28px;letter-spacing:.08em;box-shadow:inset 0 0 0 1px rgba(37,99,235,.16)}
+.hub-promo-modal__body .hub-promo-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media(max-width:720px){.hub-promo-modal__body .hub-promo-grid{grid-template-columns:1fr}.hub-promo-card__mark{min-height:64px}}

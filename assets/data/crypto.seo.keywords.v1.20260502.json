@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-02",
+  "updated": "2026-05-03",
   "primary": [
     "코인 분석",
     "가상화폐 분석",
@@ -25,7 +25,7 @@
     "/blog/kimchi-premium-check/": "김치프리미엄, 김프 확인, 업비트 바이낸스 가격차, 코인 거래소 비교",
     "/blog/upbit-binance-price-gap/": "업비트 바이낸스 가격차, Binance Upbit, 거래소 가격차, 코인 수수료 비교",
     "/blog/coin-rsi-macd-brief/": "코인 RSI, 코인 MACD, RSI 보는법, MACD 해석, 코인 지표 분석",
-    "/guaranteed/": "보증업체, 공식주소, 가입코드, 여왕벌, Any Bet, UDT, 칠벳"
+    "/guaranteed/": "보증업체, 공식주소, 가입코드, 여왕벌, Any Bet, UDT, SK 홀딩스, SK 홀딩스 가입코드"
   },
   "internalLinks": [
     "/coins/",

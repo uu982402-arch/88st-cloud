@@ -24,7 +24,7 @@
       brand: { name: '레븐', mark: '88', themeColor: '#0b0c10' },
       links: {
         home: '/',
-        cert: '/muktu-police/',
+        cert: '/guaranteed/',
         telegram: String(($('siteTelegram') && $('siteTelegram').value) || 'https://t.me/UZU59').trim()
       },
       features: {

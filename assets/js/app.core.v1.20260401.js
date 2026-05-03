@@ -119,7 +119,7 @@
     const section = $('[data-home-provider-rotator-section]');
     if (!section) return;
     const grid = $('[data-home-provider-rotator]', section);
-    const priority = ['queenbee','anybet','udt','chilbet','yangsim','las'];
+    const priority = ['queenbee','anybet','udt','skholdings'];
     const active = (providers || []).filter((item)=>!item.pending && item.officialUrl && item.code).sort((a,b)=>{
       const ai = priority.indexOf(a.slug); const bi = priority.indexOf(b.slug);
       const av = ai === -1 ? 999 : ai; const bv = bi === -1 ? 999 : bi;

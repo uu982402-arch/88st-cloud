@@ -9,7 +9,7 @@
 
   const STORAGE_KEY = 'raven_hub_promo_hide_until_v2';
   const PROVIDERS_URL = '/assets/data/guaranteed.providers.v1.20260330.json';
-  const ORDER = ['queenbee', 'anybet', 'udt', 'chilbet'];
+  const ORDER = ['queenbee', 'anybet', 'udt', 'skholdings'];
   const DELAY = page === 'home' ? 900 : page === 'guaranteed' ? 1500 : 1150;
   const isSoft = page === 'guaranteed';
 
@@ -68,14 +68,17 @@
   function buildCard(item) {
     const style = `--promo-pos:${esc(item.imagePosition || 'center center')};--promo-scale:${esc(item.imageScale || '1')};--promo-pad:${esc(item.imagePadding || '10px 16px')}`;
     const benefits = renderBenefitGroups(item);
-    return `<article class="hub-promo-card" data-slug="${esc(item.slug)}"><div class="hub-promo-card__media" style="${style}"><img src="${esc(item.imageUrl)}" alt="${esc(item.imageAlt || `${item.name} 로고`)}" loading="eager" decoding="async"></div><div class="hub-promo-card__body"><div class="hub-promo-card__top"><h3 class="hub-promo-card__title">${esc(item.name)}</h3></div>${benefits}<div class="hub-promo-card__code-row"><span class="hub-promo-card__code-label">가입코드</span><strong class="hub-promo-card__code-value">${esc(item.code)}</strong><a class="hub-promo-btn hub-promo-btn--primary hub-promo-btn--inline" href="${esc(item.officialUrl)}" target="_blank" rel="noopener noreferrer" data-hub-copy-link="${esc(item.code)}">공식주소</a></div><div class="hub-promo-card__actions hub-promo-card__actions--single"><button class="hub-promo-btn" type="button" data-hub-copy="${esc(item.code)}">코드 복사</button></div></div></article>`;
+    const media = item.imageUrl
+      ? `<img src="${esc(item.imageUrl)}" alt="${esc(item.imageAlt || `${item.name} 로고`)}" loading="eager" decoding="async">`
+      : `<div class="hub-promo-card__mark" aria-label="${esc(item.imageAlt || `${item.name} 로고 준비중`)}">${esc((item.name || 'SK').replace(/[❤️]/g, '').trim().slice(0, 2) || 'SK')}</div>`;
+    return `<article class="hub-promo-card" data-slug="${esc(item.slug)}"><div class="hub-promo-card__media" style="${style}">${media}</div><div class="hub-promo-card__body"><div class="hub-promo-card__top"><h3 class="hub-promo-card__title">${esc(item.name)}</h3></div>${benefits}<div class="hub-promo-card__code-row"><span class="hub-promo-card__code-label">가입코드</span><strong class="hub-promo-card__code-value">${esc(item.code)}</strong><a class="hub-promo-btn hub-promo-btn--primary hub-promo-btn--inline" href="${esc(item.officialUrl)}" target="_blank" rel="noopener noreferrer" data-hub-copy-link="${esc(item.code)}">공식주소</a></div><div class="hub-promo-card__actions hub-promo-card__actions--single"><button class="hub-promo-btn" type="button" data-hub-copy="${esc(item.code)}">코드 복사</button></div></div></article>`;
   }
 
   function createModal(items) {
     const root = document.createElement('div');
     root.className = `hub-promo-modal${isSoft ? ' is-soft' : ''}`;
     root.hidden = true;
-    const title = '오늘 확인할 보증업체';
+    const title = '제휴 업체';
     root.innerHTML = `<div class="hub-promo-modal__backdrop" data-hub-promo-close></div><div class="hub-promo-modal__sheet" role="dialog" aria-modal="true" aria-labelledby="hubPromoTitle"><div class="hub-promo-modal__head"><div><span class="hub-promo-modal__eyebrow">보조 정보</span><strong id="hubPromoTitle">${title}</strong></div><button class="hub-promo-modal__close" type="button" aria-label="닫기" data-hub-promo-close>×</button></div><div class="hub-promo-modal__body"><div class="hub-promo-grid">${items.map(buildCard).join('')}</div></div><div class="hub-promo-modal__foot"><div class="hub-promo-modal__hint">오늘 하루 동안 다시 보이지 않습니다.</div><div class="hub-promo-modal__foot-actions"><button class="hub-promo-modal__ghost" type="button" data-hub-hide-today>오늘 다시 보지 않기</button><button class="hub-promo-modal__ghost" type="button" data-hub-promo-close>닫기</button></div></div></div>`;
     document.body.appendChild(root);
 
@@ -132,11 +135,11 @@
       return;
     }
     const providers = Array.isArray(payload?.providers) ? payload.providers : [];
-    const ordered = ORDER.map((slug) => providers.find((item) => item && !item.pending && item.slug === slug && item.officialUrl && item.code && item.imageUrl)).filter(Boolean);
+    const ordered = ORDER.map((slug) => providers.find((item) => item && !item.pending && item.slug === slug && item.officialUrl && item.code)).filter(Boolean);
     if (!ordered.length) return;
     const offset = new Date().getDate() % ordered.length;
     const rotated = ordered.slice(offset).concat(ordered.slice(0, offset));
-    const selected = rotated.slice(0, Math.min(3, rotated.length));
+    const selected = rotated.slice(0, Math.min(4, rotated.length));
     const modal = createModal(selected);
     window.setTimeout(() => modal.open(), DELAY);
   }
