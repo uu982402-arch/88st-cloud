@@ -1799,7 +1799,7 @@ function buildSafetyGoogleSearches(domain) {
 
 
 function isDeprecatedSearchCleanupPath(path = '') {
-  return /^\/muktu-police\/(brand|compare|report|query)(\/|$)/.test(path) || /^\/muktu-police\/faq\/(yangsim|chilbet|vegas|avengers)(\/|$)/.test(path);
+  return /^\/muktu-police\/(brand|compare|report|query)(\/|$)/.test(path) || /^\/muktu-police\/faq\/(vegas|avengers)(\/|$)/.test(path);
 }
 
 function buildDomainRiskV1(rdap, dns, cluster) {

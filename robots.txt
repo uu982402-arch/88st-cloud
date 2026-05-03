@@ -3,6 +3,4 @@ Allow: /
 Disallow: /admin/
 Disallow: /ops/
 Disallow: /analysis
-Disallow: /muktu-police/query/yangsim-
-Disallow: /muktu-police/brand/yangsim/
 Sitemap: https://88st.cloud/sitemap.xml

@@ -1,7 +1,7 @@
 88ST.Cloud ads/SEO cleanup patch - 2026-05-02
 
 적용 내용
-- 보증업체 활성 광고를 ❤️ 여왕벌 ❤️, Any Bet, UDT, 칠벳 4개로 고정
+- 보증업체 활성 광고를 ❤️ 여왕벌 ❤️, Any Bet, UDT, SK 홀딩스 4개로 고정
 - LAS, 양심은 활성 보증업체 데이터/페이지/모달/자동 광고 스크립트에서 제거
 - FULL ZIP에서는 las-logo.png, yangsim-card.webp 제거
 - SEO 키워드 맵을 코인 분석, 김치프리미엄, 업비트 바이낸스 가격차, 거래소 비교, BTC/ETH/SOL/XRP 분석, RSI/MACD 중심으로 재구성

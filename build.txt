@@ -1,5 +1,5 @@
-build=crypto-ads-seo-v1.20260502b
-Generated=2026-05-02T05:28:00+09:00
-Scope=provider_ads_cleanup, seo_keyword_rebuild, main, coins, exchanges, blog, tools, guaranteed, modal, sitemap, robots
-Providers=queenbee,anybet,udt,chilbet
-RemovedFromActiveAds=las,yangsim
+build=2026-05-03T02:35:19.479Z
+version=sk-holdings-provider-refresh-v1.20260503
+Providers=queenbee,anybet,udt,skholdings
+RemovedFromActiveAds=las,yangsim,chilbet
+ModalTitle=제휴 업체

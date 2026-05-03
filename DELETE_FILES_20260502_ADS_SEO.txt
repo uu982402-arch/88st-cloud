@@ -14,5 +14,5 @@ muktu-police/query/yangsim-major/
 muktu-police/query/yangsim-muktu/
 muktu-police/query/yangsim-review/
 muktu-police/compare/yangsim-vs-avengers/
-muktu-police/compare/yangsim-vs-chilbet/
+muktu-police/compare/yangsim-vs-skholdings/
 muktu-police/compare/yangsim-vs-vegas/
