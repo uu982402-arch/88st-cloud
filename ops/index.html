@@ -243,9 +243,9 @@
 <td rowspan="2"><input id="certTelegram" value="https://t.me/UZU59"/></td>
 </tr>
 <tr>
-<td><b>777 Bet</b><div style="opacity:.75;font-size:12px;">/cert/777/</div></td>
-<td><input id="cert777Code" value="6767"/></td>
-<td><input id="cert777Join" value="https://82clf.com/?code=6767"/></td>
+<td><b>SK 홀딩스</b><div style="opacity:.75;font-size:12px;">/cert/777/</div></td>
+<td><input id="certSkCode" value="iron20"/></td>
+<td><input id="certSkJoin" value="https://snk-88.com/"/></td>
 </tr>
 </tbody>
 </table>
@@ -849,9 +849,9 @@
         const telegram = String(($('certTelegram')?.value || '')).trim() || 'https://t.me/UZU59';
         const vegasCode = String(($('certVegasCode')?.value || '')).trim();
         const vegasJoin = String(($('certVegasJoin')?.value || '')).trim();
-        const s777Code = String(($('cert777Code')?.value || '')).trim();
-        const s777Join = String(($('cert777Join')?.value || '')).trim();
-        return { telegram, vegasCode, vegasJoin, s777Code, s777Join };
+        const sSkCode = String(($('certSkCode')?.value || '')).trim();
+        const sSkJoin = String(($('certSkJoin')?.value || '')).trim();
+        return { telegram, vegasCode, vegasJoin, sSkCode, sSkJoin };
       }
 
       function buildCertDeployConfig(){
@@ -886,13 +886,13 @@
             "777": {
               id: 'card3',
               slug: '777',
-              title: v777.title || '777 Bet',
-              code: ui.s777Code || v777.code || '6767',
-              join_url: ui.s777Join || v777.join_url || 'https://82clf.com/?code=6767',
+              title: v777.title || 'SK 홀딩스',
+              code: ui.sSkCode || v777.code || 'iron20',
+              join_url: ui.sSkJoin || v777.join_url || 'https://snk-88.com/',
               landing_path: '/cert/777/',
               hero_image: '/img/landing/777-landing.webp',
               thumb_image: '/img/img2.webp',
-              benefit: v777.benefit || '가입코드 6767 전용 혜택 / 스포츠·카지노 이용 가능',
+              benefit: v777.benefit || 'SK 홀딩스 가입코드 iron20 전용 혜택',
               notice: v777.notice || '가입코드 미입력 시 혜택 적용 불가'
             }
           },
@@ -917,8 +917,8 @@
           if($('certTelegram')) $('certTelegram').value = String(cfg.telegram || 'https://t.me/UZU59');
           if($('certVegasCode')) $('certVegasCode').value = String(vVegas.code || '6789');
           if($('certVegasJoin')) $('certVegasJoin').value = String(vVegas.join_url || 'https://las403.com');
-          if($('cert777Code')) $('cert777Code').value = String(v777.code || '6767');
-          if($('cert777Join')) $('cert777Join').value = String(v777.join_url || 'https://82clf.com/?code=6767');
+          if($('certSkCode')) $('certSkCode').value = String(v777.code || 'iron20');
+          if($('certSkJoin')) $('certSkJoin').value = String(v777.join_url || 'https://snk-88.com/');
 
           $('opsCertJson').value = JSON.stringify(cfg, null, 2);
           certMsg('배포 설정 불러오기 완료', false);
