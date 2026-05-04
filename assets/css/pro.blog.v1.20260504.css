@@ -108,3 +108,94 @@ body.pro-blog-page, body.pro-home-page{background:var(--pro-bg);color:var(--pro-
     font-size: 26px;
   }
 }
+
+/* 2026-05-04 promo image sizing: keep tall ad images readable without dominating article pages */
+.seo-article-card > .seo-hero-image,
+.seo-article-body .seo-hero-image,
+.pro-article__body .seo-hero-image,
+.pro-section .seo-hero-image {
+  display: block;
+  width: min(100%, 520px);
+  height: auto;
+  max-height: 680px;
+  object-fit: contain;
+  object-position: center;
+  margin: 22px auto;
+  border-radius: 22px;
+  border: 1px solid #dbe5f0;
+  background: #10233f;
+  box-shadow: 0 16px 42px rgba(15,35,63,.10);
+}
+.seo-article-card > .seo-hero-image {
+  border-bottom: 1px solid #dbe5f0;
+}
+@media (max-width: 640px) {
+  .seo-article-card > .seo-hero-image,
+  .seo-article-body .seo-hero-image,
+  .pro-article__body .seo-hero-image,
+  .pro-section .seo-hero-image {
+    width: min(100%, 420px);
+    max-height: 560px;
+    margin: 16px auto;
+    border-radius: 16px;
+  }
+}
+
+/* 2026-05-04 main provider action buttons */
+.pro-provider__actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 12px;
+}
+.pro-provider__copy,
+.pro-provider__visit {
+  min-height: 38px;
+  padding: 0 10px;
+  border-radius: 12px;
+  border: 1px solid #cbd7e5;
+  font-size: 13px;
+  font-weight: 800;
+  text-align: center;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+.pro-provider__copy {
+  background: #fff;
+  color: #1e3a5f;
+  cursor: pointer;
+}
+.pro-provider__visit {
+  background: #1e3a5f;
+  color: #fff;
+  border-color: #1e3a5f;
+}
+.pro-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 22px;
+  transform: translateX(-50%) translateY(8px);
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  padding: 11px 14px;
+  border-radius: 999px;
+  background: #10233f;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 800;
+  box-shadow: 0 16px 36px rgba(15,35,63,.2);
+  transition: opacity .18s ease, transform .18s ease;
+}
+.pro-toast.is-show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+@media (max-width:640px) {
+  .pro-provider__actions {
+    grid-template-columns: 1fr;
+  }
+}
