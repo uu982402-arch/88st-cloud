@@ -1,8 +1,0 @@
-88ST.Cloud crypto rebuild patch 2026-05-02
-- Main page rebuilt around coin search, quick analysis, charts, market briefing, exchange comparison.
-- Added /coins/, /coins/btc/, /coins/eth/, /coins/sol/, /coins/xrp/.
-- Added /exchanges/ and /exchanges/binance-upbit/.
-- Rebuilt /blog/ and added three crypto briefing posts.
-- Rebuilt /tools/ as coin analysis tools hub.
-- Rebuilt /guaranteed/ with compact provider cards and copy/open behavior.
-- Retained existing legacy routes/files for routing safety; removal candidates are not deleted in this patch.
