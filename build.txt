@@ -1,3 +1,3 @@
-guaranteed-cards-only-20260504
-source=88st-cloud-provider-sports-content-fix-full-20260504
+telegram-id-update-20260504
+source=88st-cloud-guaranteed-cards-only-full-20260504
 updated=2026-05-04

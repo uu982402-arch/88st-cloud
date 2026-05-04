@@ -84,3 +84,12 @@
     border-radius: 16px;
   }
 }
+
+/* 2026-05-04 Queenbee common Telegram bot notice */
+.seo-telegram-bot {
+  border-color: #c9d9ec;
+  background: linear-gradient(180deg, #f8fbff 0%, #eef5ff 100%);
+}
+.seo-telegram-bot h2 {
+  color: #10233f;
+}
