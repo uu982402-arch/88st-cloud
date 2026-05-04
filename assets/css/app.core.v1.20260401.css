@@ -658,3 +658,25 @@ body[data-community-page="blog"] .section-head p{max-width:58ch}
   .post-inline-figure figcaption{font-size:12px}
   .tools-hub-hero .tool-status-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
 }
+
+
+/* 2026-05-04 logo refresh: horizontal logo + favicon symbol */
+.brand {
+  gap: 10px;
+}
+.brand-logo {
+  width: auto;
+  height: 42px;
+  max-width: 236px;
+  object-fit: contain;
+  display: block;
+}
+.brand-copy {
+  display: none !important;
+}
+@media (max-width: 640px) {
+  .brand-logo {
+    height: 36px;
+    max-width: 204px;
+  }
+}
