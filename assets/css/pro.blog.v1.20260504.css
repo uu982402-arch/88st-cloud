@@ -80,3 +80,31 @@ body.pro-blog-page, body.pro-home-page{background:var(--pro-bg);color:var(--pro-
   .pro-search{display:grid}
   .pro-btn{width:100%}
 }
+
+/* 2026-05-04 hub title cleanup: reduce oversized hero titles */
+.pro-hero {
+  padding: 38px 0 24px;
+}
+.pro-hero h1 {
+  max-width: 760px;
+  font-size: clamp(26px, 3.2vw, 40px);
+  line-height: 1.18;
+}
+.pro-hero p {
+  max-width: 720px;
+  font-size: 16px;
+}
+.pro-section__head h2 {
+  font-size: clamp(20px, 2.4vw, 28px);
+}
+.pro-kicker {
+  font-size: 12px;
+}
+@media (max-width: 820px) {
+  .pro-hero {
+    padding: 26px 0 18px;
+  }
+  .pro-hero h1 {
+    font-size: 26px;
+  }
+}
