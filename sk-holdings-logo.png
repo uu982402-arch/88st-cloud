@@ -1,8 +1,0 @@
-88ST.Cloud SK Holdings logo/navy provider media refresh
-
-- Applied uploaded SK Holdings logo image to provider JSON and /guaranteed/ card.
-- Removed temporary text mark from SK Holdings card.
-- Unified all provider logo/media boxes to deep navy backgrounds.
-- Added modal media override so provider modal cards use the same navy logo area.
-- Preserved active providers: Queenbee, Any Bet, UDT, SK Holdings. LAS/Yangsim remain removed.
-- Preserved SK Holdings official URL https://snk-88.com/ and code iron20.
