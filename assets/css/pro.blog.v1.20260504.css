@@ -199,3 +199,11 @@ body.pro-blog-page, body.pro-home-page{background:var(--pro-bg);color:var(--pro-
     grid-template-columns: 1fr;
   }
 }
+
+/* 2026-05-04 field note rewrite */
+.fieldnote-extra {
+  border-left: 3px solid #d6a437;
+  padding-left: 14px;
+  color: #334155;
+  background: #fbfdff;
+}
