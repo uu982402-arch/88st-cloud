@@ -106,12 +106,12 @@
       "theme": "blue",
       "officialUrl": "https://snk-99.com/",
       "officialDomain": "snk-99.com",
-      "code": "IRON20",
+      "code": "IRON888",
       "oneLine": "",
       "benefits": [
-        "신규 입금 플러스 외 30%",
-        "스포츠·미니게임 첫 10% · 매 5%",
-        "슬롯 첫 20% · 매 10%"
+        "스포츠 첫 충전 10%",
+        "미니게임 첫 충전 10% · 슬롯 첫 충전 20%",
+        "신규 입금 플러스 · 주간 페이백 · 룰렛 쿠폰"
       ],
       "tags": [],
       "imageUrl": "/assets/provider-media/sk-holdings-logo.png",
@@ -139,7 +139,8 @@
             "출석체크·지인추천 이벤트"
           ]
         }
-      ]
+      ],
+      "summary": "SK 홀딩스 IRON888 가입코드와 스포츠·미니게임·슬롯 이벤트를 정리한 카드입니다."
     }
   ]
 }

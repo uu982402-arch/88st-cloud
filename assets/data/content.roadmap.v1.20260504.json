@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-04",
+  "updated": "2026-05-06",
   "strategy": "전문 블로그형 7개 카테고리 × 20개 글 = 140개 콘텐츠. 1차는 각 카테고리 4개씩 28개 발행.",
   "categories": {
     "sports-toto": {
@@ -759,67 +759,67 @@
       ]
     },
     "sk-holdings": {
-      "name": "SK 홀딩스 IRON20",
-      "hub": "/blog/sk-holdings-iron20-hub.html",
+      "name": "SK 홀딩스 IRON888",
+      "hub": "/blog/sk-holdings-iron888-hub.html",
       "published": [
         {
-          "url": "/blog/sk-holdings-iron20-hub.html",
-          "title": "SK 홀딩스 IRON20 가입코드·이벤트 안내 허브",
-          "keyword": "SK 홀딩스 IRON20"
+          "url": "/blog/sk-holdings-iron888-hub.html",
+          "title": "SK 홀딩스 IRON888 가입코드·이벤트 안내 허브",
+          "keyword": "SK 홀딩스 IRON888"
         },
         {
-          "url": "/blog/sk-holdings-iron20-benefits.html",
-          "title": "SK 홀딩스 가입코드 IRON20 혜택 총정리",
-          "keyword": "SK 홀딩스 IRON20"
+          "url": "/blog/sk-holdings-iron888-benefits.html",
+          "title": "SK 홀딩스 가입코드 IRON888 혜택 총정리",
+          "keyword": "SK 홀딩스 IRON888"
         },
         {
-          "url": "/blog/sk-holdings-iron20-guide.html",
-          "title": "SK 홀딩스 가입방법 | IRON20 코드 적용 방법",
-          "keyword": "SK 홀딩스 IRON20"
+          "url": "/blog/sk-holdings-iron888-guide.html",
+          "title": "SK 홀딩스 가입방법 | IRON888 코드 적용 방법",
+          "keyword": "SK 홀딩스 IRON888"
         },
         {
-          "url": "/blog/sk-holdings-iron20-review.html",
-          "title": "SK 홀딩스 후기 | IRON20 코드 이용 전 확인사항",
-          "keyword": "SK 홀딩스 IRON20"
+          "url": "/blog/sk-holdings-iron888-review.html",
+          "title": "SK 홀딩스 후기 | IRON888 코드 이용 전 확인사항",
+          "keyword": "SK 홀딩스 IRON888"
         },
         {
           "url": "/blog/sk-holdings-sports-event.html",
           "title": "SK 홀딩스 스포츠 전용 이벤트 안내",
-          "keyword": "SK 홀딩스 IRON20"
+          "keyword": "SK 홀딩스 IRON888"
         },
         {
           "url": "/blog/sk-holdings-first-deposit-plus.html",
           "title": "SK 홀딩스 신규 입금 플러스 혜택 정리",
-          "keyword": "SK 홀딩스 IRON20"
+          "keyword": "SK 홀딩스 IRON888"
         },
         {
           "url": "/blog/sk-holdings-mini-game-event.html",
           "title": "SK 홀딩스 미니게임 충전 이벤트 안내",
-          "keyword": "SK 홀딩스 IRON20"
+          "keyword": "SK 홀딩스 IRON888"
         },
         {
           "url": "/blog/sk-holdings-slot-event.html",
           "title": "SK 홀딩스 슬롯 충전 이벤트 안내",
-          "keyword": "SK 홀딩스 IRON20"
+          "keyword": "SK 홀딩스 IRON888"
         },
         {
           "url": "/blog/sk-holdings-vip-return-event.html",
           "title": "SK 홀딩스 VIP·복귀 회원 이벤트 정리",
-          "keyword": "SK 홀딩스 IRON20"
+          "keyword": "SK 홀딩스 IRON888"
         },
         {
           "url": "/blog/sk-holdings-games.html",
           "title": "SK 홀딩스 이용 가능 게임 목록 | 스포츠·카지노·슬롯·미니게임",
-          "keyword": "SK 홀딩스 IRON20"
+          "keyword": "SK 홀딩스 IRON888"
         },
         {
-          "url": "/blog/sk-holdings-telegram-iron20.html",
+          "url": "/blog/sk-holdings-telegram-iron888.html",
           "title": "SK 홀딩스 텔레그램 문의 @IRON2O 안내",
-          "keyword": "SK 홀딩스 IRON20"
+          "keyword": "SK 홀딩스 IRON888"
         }
       ],
       "planned": []
     }
   },
-  "note": "블로그형 게시글 전체를 3000자 이상 실전형 관찰 노트 톤으로 재작성"
+  "note": "SK 홀딩스 가입코드 IRON888 및 신규 SK/ANYBET/UDT 이미지 안내 글 반영"
 }
