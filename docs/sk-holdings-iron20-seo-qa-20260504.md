@@ -1,13 +1,13 @@
-# QA 결과 - SK 홀딩스 IRON20 SEO 추가 (2026-05-04)
+# QA 결과 - SK 홀딩스 IRON888 SEO 추가 (2026-05-04)
 
 ## 신규 생성
 - SK 홀딩스 SEO 허브 1개
 - SK 홀딩스 SEO 글 10개
-- 이미지: /assets/img/sk-holdings-iron20-events.jpg
+- 이미지: /assets/img/sk-holdings-iron888-events.jpg
 
 ## SK 최신 정보 반영
 - 도메인: https://snk-99.com/
-- 가입코드: IRON20
+- 가입코드: IRON888
 - 텔레그램 문의: @IRON2O
 
 ## 동기화 위치
