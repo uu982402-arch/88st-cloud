@@ -231,3 +231,9 @@ body.guaranteed-cards-page{
     font-size:13px;
   }
 }
+
+/* 2026-05-05 guaranteed card polish */
+body.guaranteed-cards-page{background:radial-gradient(circle at 10% 0%,rgba(16,35,63,.12),transparent 32%),linear-gradient(180deg,#f5f8fc,#eef3f8 52%,#f8fafc)}
+.gcard{box-shadow:0 22px 56px rgba(15,35,63,.10);transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease}
+.gcard:hover{transform:translateY(-3px);border-color:#9fb9d4;box-shadow:0 28px 70px rgba(15,35,63,.14)}
+.gcard__media{background:linear-gradient(135deg,#0b1b33 0%,#153052 55%,#10233f 100%)}
