@@ -3,7 +3,7 @@ const STORAGE_KEY = '88stAdminState_v3';
 const DEFAULT_STATE = {
   promos: [
     { id: 'promo_1', status: 'on', order: 1, codeName: 'VEGAS', display: 'VEGAS', code: '6789', scope: ['웹','DM'], period: '상시', url: 'https://las403.com', notes: '메인 노출', startAt: '', endAt: '' },
-    { id: 'promo_2', status: 'on', order: 2, codeName: 'SK', display: 'SK 홀딩스', code: 'IRON20', scope: ['웹','DM'], period: '상시', url: 'https://snk-99.com/', notes: '제휴 업체', startAt: '', endAt: '' },
+    { id: 'promo_2', status: 'on', order: 2, codeName: 'SK', display: 'SK 홀딩스', code: 'IRON888', scope: ['웹','DM'], period: '상시', url: 'https://snk-99.com/', notes: '제휴 업체', startAt: '', endAt: '' },
     { id: 'promo_3', status: 'on', order: 3, codeName: 'FIX', display: 'FIX', code: '7799', scope: ['웹','DM'], period: '상시', url: 'https://example.com/fix', notes: '테스트 링크', startAt: '', endAt: '' },
     { id: 'promo_4', status: 'on', order: 4, codeName: 'TPY', display: '태평양', code: 'kaka 자동기입', scope: ['웹','DM'], period: '상시', url: 'https://tpy-777.com/@kaka', notes: '코드:kaka 자동기입', startAt: '', endAt: '' },
     { id: 'promo_5', status: 'off', order: 5, codeName: 'NEW-A', display: '신규업체A', code: '9090', scope: ['웹'], period: '예약', url: 'https://example.com/new', notes: '예약 노출', startAt: '', endAt: '' }
