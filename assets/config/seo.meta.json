@@ -805,7 +805,52 @@
   },
   "/consult/": {
     "title": "88ST 자동상담센터 | 88ST.Cloud",
-    "description": "가입 안내, 가입코드 확인, 이벤트 조건, 출금 전 확인, 스포츠 배당분석과 코인 현물 분석봇 안내를 한곳에서 확인합니다.",
-    "keywords": "자동상담, 가입 안내, 가입코드, 텔레그램 상담, 스포츠 배당분석, 코인 현물 분석"
+    "description": "가입 전, 이벤트 조건, 출금 전 확인, 스포츠 배당분석과 코인 현물 분석봇 안내를 세분화해 확인합니다.",
+    "keywords": "자동상담, 가입 안내, 이벤트 조건, 출금 전 확인, 분석봇, 텔레그램 상담"
+  },
+  "/tools/event-checker/": {
+    "title": "이벤트 조건 판독기 | 88ST.Cloud",
+    "description": "첫충·매충·페이백 조건과 필요 롤링을 계산합니다.",
+    "keywords": "자동상담, 가입코드, 이벤트 조건, 출금 체크, 보증업체"
+  },
+  "/tools/payout-kit/": {
+    "title": "출금 전 증거 키트 | 88ST.Cloud",
+    "description": "출금 전 필요한 캡처 자료와 문의 문구 초안을 정리합니다.",
+    "keywords": "자동상담, 가입코드, 이벤트 조건, 출금 체크, 보증업체"
+  },
+  "/tools/situation-diagnosis/": {
+    "title": "30초 상황 진단기 | 88ST.Cloud",
+    "description": "가입 전, 이벤트 확인, 출금 전 상황별 확인 루트를 안내합니다.",
+    "keywords": "자동상담, 가입코드, 이벤트 조건, 출금 체크, 보증업체"
+  },
+  "/tools/today-check/": {
+    "title": "오늘의 확인판 | 88ST.Cloud",
+    "description": "보증업체 코드, 이벤트 변경 이력, 출금 전 공통 체크와 수동 업데이트 양식을 확인합니다.",
+    "keywords": "오늘의 확인판, 보증업체 코드, 이벤트 변경 이력, 출금 체크"
+  },
+  "/consult/queenbee/": {
+    "title": "여왕벌 SEOA 가입 안내 | 88ST.Cloud",
+    "description": "여왕벌 가입코드 SEOA와 상담 연결을 확인합니다.",
+    "keywords": "자동상담, 가입코드, 이벤트 조건, 출금 체크, 보증업체"
+  },
+  "/consult/sk-holdings/": {
+    "title": "SK 홀딩스 IRON888 가입 안내 | 88ST.Cloud",
+    "description": "SK 홀딩스 가입코드 IRON888과 상담 연결을 확인합니다.",
+    "keywords": "자동상담, 가입코드, 이벤트 조건, 출금 체크, 보증업체"
+  },
+  "/consult/anybet/": {
+    "title": "ANY BET SEOA 가입 안내 | 88ST.Cloud",
+    "description": "ANY BET 가입코드 SEOA와 상담 연결을 확인합니다.",
+    "keywords": "자동상담, 가입코드, 이벤트 조건, 출금 체크, 보증업체"
+  },
+  "/consult/udt/": {
+    "title": "UDT SEOA 가입 안내 | 88ST.Cloud",
+    "description": "UDT 가입코드 SEOA와 상담 연결을 확인합니다.",
+    "keywords": "자동상담, 가입코드, 이벤트 조건, 출금 체크, 보증업체"
+  },
+  "/tools/inquiry-builder/": {
+    "title": "텔레그램 문의 문구 생성기 | 88ST.Cloud",
+    "description": "업체, 문의 유형, 추가 메모를 선택해 @seoa69 상담용 텔레그램 문의 문구를 생성합니다.",
+    "keywords": "텔레그램 문의 문구, 가입 문의, 이벤트 조건 문의, 출금 조건 확인, 상담 문구 생성"
   }
 }

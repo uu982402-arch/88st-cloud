@@ -1,0 +1,158 @@
+
+/* Customer OS v3 operation convenience */
+.customer-history-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+.customer-history-card {
+  border: 1px solid #dce6f2;
+  border-radius: 18px;
+  background: #fff;
+  padding: 15px;
+  box-shadow: 0 14px 34px rgba(15,35,63,.07);
+}
+.customer-history-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e2e8f0;
+}
+.customer-history-head strong { color:#10233f; }
+.customer-history-head span {
+  white-space: nowrap;
+  font-weight: 900;
+  color:#1e3a5f;
+}
+.customer-history-item {
+  margin-top: 11px;
+  padding-top: 2px;
+}
+.customer-history-item b {
+  display:block;
+  color:#0f172a;
+  font-size:14px;
+}
+.customer-history-item p {
+  margin:5px 0 0;
+  color:#64748b;
+  font-size:13px;
+  line-height:1.55;
+}
+.customer-admin-form label,
+.customer-tool-form label {
+  display:grid;
+  gap:7px;
+  color:#334155;
+  font-weight:800;
+  font-size:13px;
+}
+.customer-admin-form input,
+.customer-admin-form textarea,
+.customer-tool-form input,
+.customer-tool-form textarea {
+  width:100%;
+  box-sizing:border-box;
+  border:1px solid #cbd7e5;
+  border-radius:13px;
+  padding:11px 12px;
+  font:inherit;
+  background:#fff;
+  color:#0f172a;
+}
+.customer-admin-grid {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+  margin:14px 0;
+}
+.customer-admin-grid fieldset {
+  border:1px solid #dce6f2;
+  border-radius:16px;
+  padding:13px;
+  display:grid;
+  gap:10px;
+}
+.customer-admin-grid legend {
+  padding:0 6px;
+  color:#10233f;
+  font-weight:900;
+}
+.customer-os-actions {
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  align-items:center;
+}
+.customer-op-note {
+  padding:14px 15px;
+  border:1px dashed #b7c7db;
+  border-radius:16px;
+  background:#f8fbff;
+  color:#475569;
+  line-height:1.6;
+}
+.auto-consult-precheck {
+  display:grid;
+  gap:5px;
+  margin-top:12px;
+  padding:11px 12px;
+  border-radius:14px;
+  background:#f8fbff;
+  border:1px solid #dce6f2;
+}
+.auto-consult-precheck strong {
+  color:#10233f;
+  font-size:13px;
+}
+.auto-consult-precheck span {
+  color:#64748b;
+  font-size:13px;
+  line-height:1.45;
+}
+.auto-consult-faq {
+  border:1px solid #e2e8f0;
+  border-radius:14px;
+  background:#fff;
+  padding:10px 12px;
+  margin-top:8px;
+}
+.auto-consult-faq summary {
+  cursor:pointer;
+  font-weight:900;
+  color:#10233f;
+}
+.auto-consult-faq p {
+  margin:9px 0 0;
+  color:#475569;
+  font-size:13px;
+  line-height:1.55;
+}
+@media (max-width: 740px) {
+  .auto-consult-panel {
+    left: 8px;
+    right: 8px;
+    width: auto;
+    max-height: calc(100dvh - 124px);
+    bottom: calc(118px + env(safe-area-inset-bottom, 0px));
+  }
+  .auto-consult-body {
+    padding: 13px;
+  }
+  .auto-consult-option,
+  .auto-consult-action {
+    min-height: 46px;
+    font-size: 14px;
+  }
+  .auto-consult-actions {
+    grid-template-columns: 1fr;
+  }
+  .customer-history-grid,
+  .customer-admin-grid {
+    grid-template-columns: 1fr;
+  }
+  .customer-history-head {
+    display:grid;
+  }
+}
