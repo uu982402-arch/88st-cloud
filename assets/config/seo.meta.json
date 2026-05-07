@@ -802,5 +802,10 @@
     "title": "SK 홀딩스 IRON888 안내로 이동합니다 | 88ST.Cloud",
     "redirect_to": "/blog/sk-holdings-telegram-iron888.html",
     "robots": "noindex,follow"
+  },
+  "/consult/": {
+    "title": "88ST 자동상담센터 | 88ST.Cloud",
+    "description": "가입 안내, 가입코드 확인, 이벤트 조건, 출금 전 확인, 스포츠 배당분석과 코인 현물 분석봇 안내를 한곳에서 확인합니다.",
+    "keywords": "자동상담, 가입 안내, 가입코드, 텔레그램 상담, 스포츠 배당분석, 코인 현물 분석"
   }
 }
