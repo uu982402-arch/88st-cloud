@@ -1,11 +1,22 @@
-
 (() => {
   const DATA_URL = '/assets/data/auto.consult.v1.20260505.json';
-  let state = { data: null, panel: null, body: null, toast: null };
+  let state = { data: null, panel: null, body: null, toast: null, lastContext: null };
 
   const h = (value) => String(value ?? '').replace(/[&<>"']/g, ch => ({
     '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#039;'
   })[ch]);
+
+  const track = (name, params = {}) => {
+    try {
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', name, {
+          event_category: 'auto_consult',
+          page_path: location.pathname,
+          ...params
+        });
+      }
+    } catch (_) {}
+  };
 
   const copyText = async (text) => {
     const value = String(text || '').trim();
@@ -36,17 +47,39 @@
 
   const actionLink = (label, url, primary=false) => {
     const cls = primary ? 'auto-consult-action is-primary' : 'auto-consult-action';
-    return `<a class="${cls}" href="${h(url)}" target="${url.startsWith('http') ? '_blank' : '_self'}" rel="nofollow noopener">${h(label)}</a>`;
+    const external = String(url || '').startsWith('http');
+    const trackAttr = external ? ' data-consult-telegram="1"' : '';
+    return `<a class="${cls}" href="${h(url)}" target="${external ? '_blank' : '_self'}" rel="nofollow noopener"${trackAttr}>${h(label)}</a>`;
   };
 
-  const renderStart = () => {
+  const detectContext = () => {
+    const path = (location.pathname + ' ' + location.search).toLowerCase();
+    const contexts = state.data?.contexts || [];
+    return contexts.find(ctx => (ctx.match || []).some(m => path.includes(String(m).toLowerCase()))) || null;
+  };
+
+  const renderStart = (useContext = true) => {
+    const ctx = useContext ? detectContext() : null;
+    state.lastContext = ctx;
     const start = state.data.flows.start;
+    const contextBox = ctx ? `
+      <div class="auto-consult-msg auto-consult-context">
+        <h3 class="auto-consult-title">${h(ctx.title)}</h3>
+        <p>${h(ctx.message)}</p>
+        <div class="auto-consult-actions">
+          ${ctx.provider ? `<button type="button" class="auto-consult-action is-primary" data-consult-provider="${h(ctx.provider)}">맞춤 안내 열기</button>` : ''}
+          ${ctx.next ? `<button type="button" class="auto-consult-action is-primary" data-consult-next="${h(ctx.next)}">맞춤 안내 열기</button>` : ''}
+          <button type="button" class="auto-consult-action" data-consult-next="start-all">전체 메뉴 보기</button>
+        </div>
+      </div>` : '';
     state.body.innerHTML = `
+      ${contextBox}
       <div class="auto-consult-msg">
         <h3 class="auto-consult-title">무엇을 도와드릴까요?</h3>
         <p>${h(start.message)}</p>
         <div class="auto-consult-options">
           ${start.options.map((o, i) => `<button type="button" class="auto-consult-option ${i === 0 ? 'is-primary' : ''}" data-consult-next="${h(o.next)}">${h(o.label)}</button>`).join('')}
+          <button type="button" class="auto-consult-option" data-consult-next="faq">자주 묻는 질문</button>
         </div>
       </div>
       <div class="auto-consult-msg">
@@ -70,9 +103,12 @@
       </div>`;
   };
 
+  const makeInquiry = (p) => `안녕하세요.\n${p.name} 가입 문의드립니다.\n\n가입코드: ${p.code}\n확인 요청: 공식주소 / 이벤트 조건 / 출금 조건\n상담 경로: 88ST.Cloud`;
+
   const renderProvider = (slug) => {
     const p = state.data.providers.find(x => x.slug === slug);
-    if (!p) return renderStart();
+    if (!p) return renderStart(false);
+    track('consult_provider_select', { provider: slug });
     const benefits = (p.benefits || []).map(x => `<li>${h(x)}</li>`).join('');
     state.body.innerHTML = `
       <div class="auto-consult-msg">
@@ -90,9 +126,14 @@
           <div><b>자동상담/분석봇</b><span>@odds88st_bot</span></div>
         </div>
         <ul class="auto-consult-checks">${benefits}</ul>
+        <div class="auto-consult-precheck">
+          <strong>상담 전 확인</strong>
+          <span>공식주소·가입코드·이벤트 조건표·출금 기준을 먼저 확인하면 상담이 빨라집니다.</span>
+        </div>
         <div class="auto-consult-actions">
-          <button type="button" class="auto-consult-action is-primary" data-consult-copy="${h(p.code)}">코드 복사</button>
-          <a class="auto-consult-action" data-consult-open="${h(p.code)}" href="${h(p.officialUrl)}" target="_blank" rel="nofollow sponsored noopener">공식주소 이동</a>
+          <button type="button" class="auto-consult-action is-primary" data-consult-copy="${h(p.code)}" data-provider="${h(slug)}">코드 복사</button>
+          <button type="button" class="auto-consult-action" data-consult-inquiry="${h(makeInquiry(p))}" data-provider="${h(slug)}">문의 문구 복사</button>
+          <a class="auto-consult-action" data-consult-open="${h(p.code)}" href="${h(p.officialUrl)}" target="_blank" rel="nofollow sponsored noopener" data-provider="${h(slug)}">공식주소 이동</a>
           ${actionLink('@seoa69 상담', state.data.contacts.human.url)}
           ${actionLink('자동상담 봇', state.data.contacts.automation.url)}
         </div>
@@ -101,8 +142,10 @@
 
   const renderFlow = (key) => {
     if (key === 'provider') return renderProviderSelect();
+    if (key === 'faq') return renderFaq();
     const flow = state.data.flows[key];
-    if (!flow) return renderStart();
+    if (!flow) return renderStart(false);
+    track('consult_flow_select', { flow: key });
     const checks = (flow.checks || []).map(x => `<li>${h(x)}</li>`).join('');
     const links = (flow.links || []).map((l, i) => actionLink(l.label, l.url, i === 0)).join('');
     state.body.innerHTML = `
@@ -112,6 +155,22 @@
         ${checks ? `<ul class="auto-consult-checks">${checks}</ul>` : ''}
         ${links ? `<div class="auto-consult-actions">${links}</div>` : ''}
       </div>`;
+  };
+
+  const renderFaq = () => {
+    const groups = state.data.faqGroups || [{ title: '자주 묻는 질문', items: state.data.faq || [] }];
+    track('consult_faq_open');
+    state.body.innerHTML = `
+      <div class="auto-consult-msg">
+        <h3 class="auto-consult-title">자주 묻는 질문</h3>
+        <p>가입 전, 이벤트 조건, 출금 전 확인, 분석봇 관련 질문을 분리했습니다.</p>
+      </div>
+      ${groups.map(g => `
+        <div class="auto-consult-msg">
+          <h3 class="auto-consult-title">${h(g.title)}</h3>
+          ${(g.items || []).map(item => `<details class="auto-consult-faq"><summary>${h(item.q)}</summary><p>${h(item.a)}</p></details>`).join('')}
+        </div>
+      `).join('')}`;
   };
 
   const inject = async () => {
@@ -139,7 +198,7 @@
       <div class="auto-consult-body"></div>
       <div class="auto-consult-foot">
         <button type="button" class="auto-consult-option" data-consult-next="start">처음으로</button>
-        <a class="auto-consult-option is-primary" href="https://t.me/seoa69" target="_blank" rel="nofollow noopener">담당자 연결</a>
+        <a class="auto-consult-option is-primary" href="https://t.me/seoa69" target="_blank" rel="nofollow noopener" data-consult-telegram="1">담당자 연결</a>
       </div>`;
 
     const toastEl = document.createElement('div');
@@ -154,13 +213,19 @@
     state.body = panel.querySelector('.auto-consult-body');
     state.toast = toastEl;
 
-    renderStart();
+    renderStart(true);
 
     launcher.addEventListener('click', () => {
       panel.classList.toggle('is-open');
-      if (panel.classList.contains('is-open')) renderStart();
+      if (panel.classList.contains('is-open')) {
+        track('consult_open', { context: detectContext()?.id || 'default' });
+        renderStart(true);
+      }
     });
-    panel.querySelector('.auto-consult-close').addEventListener('click', () => panel.classList.remove('is-open'));
+    panel.querySelector('.auto-consult-close').addEventListener('click', () => {
+      panel.classList.remove('is-open');
+      track('consult_close');
+    });
 
     document.addEventListener('click', (event) => {
       const opener = event.target.closest('[data-auto-consult-open]');
@@ -168,17 +233,20 @@
       event.preventDefault();
       panel.classList.add('is-open');
       const key = opener.getAttribute('data-auto-consult-open');
+      track('consult_open', { open_source: 'inline_button', flow: key });
       if (key === 'provider') renderProviderSelect();
       else renderFlow(key);
     });
 
+    panel.addEventListener('autoConsultProvider', (event) => { renderProvider(event.detail.slug); });
 
     panel.addEventListener('click', async (event) => {
       const next = event.target.closest('[data-consult-next]');
       if (next) {
         event.preventDefault();
         const key = next.getAttribute('data-consult-next');
-        if (key === 'start') renderStart();
+        if (key === 'start') renderStart(true);
+        else if (key === 'start-all') renderStart(false);
         else renderFlow(key);
         return;
       }
@@ -188,19 +256,33 @@
         renderProvider(provider.getAttribute('data-consult-provider'));
         return;
       }
+      const inquiry = event.target.closest('[data-consult-inquiry]');
+      if (inquiry) {
+        event.preventDefault();
+        await copyText(inquiry.getAttribute('data-consult-inquiry'));
+        track('consult_inquiry_copy', { provider: inquiry.getAttribute('data-provider') || '' });
+        toast('텔레그램 문의 문구 복사 완료');
+        return;
+      }
       const copy = event.target.closest('[data-consult-copy]');
       if (copy) {
         event.preventDefault();
         const code = copy.getAttribute('data-consult-copy');
         await copyText(code);
+        track('consult_code_copy', { provider: copy.getAttribute('data-provider') || '', code });
         toast(`가입코드 ${code} 복사 완료`);
         return;
+      }
+      const telegram = event.target.closest('[data-consult-telegram]');
+      if (telegram) {
+        track('consult_telegram_click', { url: telegram.getAttribute('href') || '' });
       }
       const open = event.target.closest('[data-consult-open]');
       if (open) {
         const code = open.getAttribute('data-consult-open');
         if (code) {
           await copyText(code);
+          track('consult_official_click', { provider: open.getAttribute('data-provider') || '', code });
           toast(`가입코드 ${code} 복사 후 이동합니다`);
         }
       }
