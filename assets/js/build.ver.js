@@ -1,2 +1,2 @@
-window.__BUILD_VER__ = "auto-consult-center-20260505";
-window.__BUILD_TIME__ = "2026-05-07";
+window.__BUILD_VER__ = "search-entry-pack-v5-20260505";
+window.__BUILD_TIME__ = "2026-05-10";

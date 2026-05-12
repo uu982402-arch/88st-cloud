@@ -852,5 +852,400 @@
     "title": "텔레그램 문의 문구 생성기 | 88ST.Cloud",
     "description": "업체, 문의 유형, 추가 메모를 선택해 @seoa69 상담용 텔레그램 문의 문구를 생성합니다.",
     "keywords": "텔레그램 문의 문구, 가입 문의, 이벤트 조건 문의, 출금 조건 확인, 상담 문구 생성"
+  },
+  "/search-guides/sk-holdings-iron888.html": {
+    "title": "SK 홀딩스 IRON888 가입코드 확인 가이드",
+    "description": "SK 홀딩스 IRON888 가입코드와 공식주소, 이벤트 조건을 가입 전 확인하는 검색 안내입니다.",
+    "keywords": "SK 홀딩스 IRON888"
+  },
+  "/search-guides/queenbee-seoa-code.html": {
+    "title": "여왕벌 SEOA 가입코드 확인 가이드",
+    "description": "여왕벌 SEOA 코드, 상담 텔레그램, 자동화 가입 안내 봇을 이용 전 확인하는 페이지입니다.",
+    "keywords": "여왕벌 SEOA 코드"
+  },
+  "/search-guides/anybet-seoa-code.html": {
+    "title": "ANY BET SEOA 가입코드 확인 가이드",
+    "description": "ANY BET SEOA 코드와 원화·테더 이벤트 조건을 이용 전 확인하는 검색 안내입니다.",
+    "keywords": "ANY BET SEOA"
+  },
+  "/search-guides/udt-seoa-code.html": {
+    "title": "UDT SEOA 가입코드 확인 가이드",
+    "description": "UDT SEOA 코드와 슬롯·스포츠·미니게임 이벤트 조건을 확인하는 안내입니다.",
+    "keywords": "UDT SEOA"
+  },
+  "/search-guides/payout-delay-check.html": {
+    "title": "토토·카지노 출금 지연 시 먼저 확인할 자료",
+    "description": "출금 지연 상황에서 입금 내역, 배팅 내역, 이벤트 조건표, 고객센터 답변을 정리하는 안내입니다.",
+    "keywords": "출금 지연 체크"
+  },
+  "/search-guides/first-charge-rolling.html": {
+    "title": "첫충 이벤트 롤링 조건 확인 방법",
+    "description": "첫충 이벤트를 보기 전 보너스율, 롤링 기준, 인정 게임, 출금 제한 조건을 확인하는 안내입니다.",
+    "keywords": "첫충 롤링"
+  },
+  "/search-guides/slot-payback-condition.html": {
+    "title": "슬롯 페이백 조건 확인 가이드",
+    "description": "온라인 슬롯 페이백 조건을 산정 기간, 대상 게임, 지급 기준, 제외 조건 중심으로 정리합니다.",
+    "keywords": "슬롯 페이백 조건"
+  },
+  "/search-guides/casino-recharge-condition.html": {
+    "title": "카지노 매충 이벤트와 제한 조건 확인",
+    "description": "카지노 매충 이벤트의 적용 게임, 롤링, 중복 이벤트, 출금 제한을 확인하는 안내입니다.",
+    "keywords": "카지노 매충 조건"
+  },
+  "/search-guides/sports-one-pick-event.html": {
+    "title": "한폴낙 이벤트 조건 보기 전 확인사항",
+    "description": "스포츠 한폴낙 이벤트를 보기 전 제외 경기, 배당 기준, 정산 방식, 지급 조건을 확인합니다.",
+    "keywords": "한폴낙 이벤트"
+  },
+  "/search-guides/baseball-rain-settlement.html": {
+    "title": "KBO 야구 우천취소 정산 기준 확인",
+    "description": "KBO 야구 우천취소와 경기 연기 시 정산 기준을 이용 전 확인하는 안내입니다.",
+    "keywords": "야구 우천취소 정산"
+  },
+  "/search-guides/kbo-starting-pitcher-check.html": {
+    "title": "KBO 선발투수 변경 시 확인 포인트",
+    "description": "야구 스포츠토토에서 선발투수 변경과 불펜 흐름을 볼 때 확인할 항목을 정리합니다.",
+    "keywords": "KBO 선발투수"
+  },
+  "/search-guides/football-over-under-check.html": {
+    "title": "축구 언오버 보기 전 확인할 조건",
+    "description": "축구 언오버를 보기 전 라인업, 부상, 홈원정, 경기 일정 변수를 확인하는 안내입니다.",
+    "keywords": "축구 언오버"
+  },
+  "/search-guides/basketball-handicap-check.html": {
+    "title": "농구 핸디캡과 쿼터 흐름 체크",
+    "description": "농구 핸디캡을 보기 전 페이스, 쿼터별 득점, 가비지 타임 가능성을 확인합니다.",
+    "keywords": "농구 핸디캡"
+  },
+  "/search-guides/volleyball-set-handicap.html": {
+    "title": "배구 세트 핸디캡 확인 방법",
+    "description": "배구 세트 핸디캡과 세트 흐름을 보기 전 확인해야 할 항목을 정리합니다.",
+    "keywords": "배구 세트 핸디캡"
+  },
+  "/search-guides/roulette-coupon-check.html": {
+    "title": "룰렛 쿠폰 이벤트 조건 확인",
+    "description": "룰렛 쿠폰 이벤트를 보기 전 지급 기준, 사용 기한, 제외 조건을 확인합니다.",
+    "keywords": "룰렛 쿠폰"
+  },
+  "/search-guides/usdt-casino-benefit.html": {
+    "title": "테더 USDT 카지노 혜택 확인 포인트",
+    "description": "USDT 입금 이벤트의 수수료 지원, 페이백, 쿠폰 조건을 확인하는 안내입니다.",
+    "keywords": "USDT 카지노 혜택"
+  },
+  "/search-guides/telegram-consult-seoa69.html": {
+    "title": "텔레그램 상담 @seoa69 이용 전 확인",
+    "description": "@seoa69 상담 전 업체명, 가입코드, 이벤트 조건, 문의 문구를 준비하는 안내입니다.",
+    "keywords": "텔레그램 상담"
+  },
+  "/search-guides/odds88st-bot-guide.html": {
+    "title": "자동화 가입 안내 봇 @odds88st_bot 사용 안내",
+    "description": "@odds88st_bot의 자동화 가입 안내, 스포츠 배당분석, 코인 현물 분석 기능을 확인합니다.",
+    "keywords": "@odds88st_bot"
+  },
+  "/search-guides/baccarat-affiliate-settlement.html": {
+    "title": "바카라총판 정산 기준 확인 가이드",
+    "description": "바카라총판 구조와 정산 지연, 롤링 기준, 회원 분쟁 확인사항을 정보형으로 정리합니다.",
+    "keywords": "바카라총판 정산"
+  },
+  "/search-guides/toto-affiliate-code-management.html": {
+    "title": "토토사이트 총판 코드 관리 확인사항",
+    "description": "총판 코드 관리와 가입코드 확인, 정산 기준을 문의 전 정리하는 안내입니다.",
+    "keywords": "총판 코드 관리"
+  },
+  "/search-guides/minigame-rolling-condition.html": {
+    "title": "미니게임 롤링 조건 확인 방법",
+    "description": "미니게임 이벤트의 롤링 조건, 정산 기준, 제외 조건을 확인합니다.",
+    "keywords": "미니게임 롤링"
+  },
+  "/search-guides/lotus-odd-even-settlement.html": {
+    "title": "로투스 홀짝 정산 기준 확인",
+    "description": "로투스 홀짝 이용 전 결과 확인, 정산 기준, 이벤트 조건을 정리합니다.",
+    "keywords": "로투스 홀짝"
+  },
+  "/search-guides/entry-game-check.html": {
+    "title": "엔트리 게임 이용 전 체크포인트",
+    "description": "엔트리 게임 이용 전 결과 확인, 정산, 이벤트 조건, 모바일 이용 항목을 정리합니다.",
+    "keywords": "엔트리 게임"
+  },
+  "/search-guides/pragmatic-slot-event.html": {
+    "title": "프라그마틱 슬롯 이벤트 확인사항",
+    "description": "프라그마틱 슬롯 이벤트의 프리스핀, 페이백, 롤링, 제공사 조건을 확인합니다.",
+    "keywords": "프라그마틱 슬롯"
+  },
+  "/search-guides/nolimit-city-slot-check.html": {
+    "title": "노리밋시티 슬롯 이용 전 확인사항",
+    "description": "노리밋시티 슬롯의 변동성, 이벤트 조건, 페이백 적용 여부를 이용 전 확인합니다.",
+    "keywords": "노리밋시티 슬롯"
+  },
+  "/search-guides/provider-official-address.html": {
+    "title": "보증업체 공식주소 확인 기준",
+    "description": "보증업체 공식주소를 확인할 때 상담 계정, 가입코드, 도메인 변경 이력을 함께 보는 방법입니다.",
+    "keywords": "공식주소 확인"
+  },
+  "/search-guides/code-input-mistake.html": {
+    "title": "가입코드 잘못 입력했을 때 확인 순서",
+    "description": "가입코드를 잘못 입력했을 때 이벤트 적용과 상담 문의 전 확인할 순서를 정리합니다.",
+    "keywords": "가입코드 잘못 입력"
+  },
+  "/search-guides/payout-evidence-capture.html": {
+    "title": "출금 전 캡처해야 할 자료 목록",
+    "description": "출금 전 입금 내역, 배팅 내역, 조건표, 고객센터 답변을 정리하는 안내입니다.",
+    "keywords": "출금 캡처 자료"
+  },
+  "/search-guides/casino-comp-point.html": {
+    "title": "카지노 콤프 포인트 뜻과 확인사항",
+    "description": "카지노 콤프 포인트의 의미와 지급 기준, 출금 전 조건을 확인합니다.",
+    "keywords": "콤프 포인트"
+  },
+  "/search-guides/sports-betting-before-join.html": {
+    "title": "스포츠토토 사이트 가입 전 확인할 기준",
+    "description": "스포츠토토 사이트 가입 전 공식주소, 이벤트 조건, 한폴낙, 출금 기준을 확인하는 안내입니다.",
+    "keywords": "스포츠토토 가입 전"
+  },
+  "/faq/join-code-where.html": {
+    "title": "가입코드는 어디에 입력하나요? | 88ST FAQ",
+    "description": "가입코드 입력 위치와 입력 전 확인해야 할 공식주소, 상담 계정, 이벤트 조건을 정리합니다.",
+    "keywords": "가입코드는 어디에 입력하나요?"
+  },
+  "/faq/join-code-wrong.html": {
+    "title": "가입코드를 잘못 입력하면 어떻게 하나요? | 88ST FAQ",
+    "description": "가입코드 오입력 후 이벤트 적용 여부를 확인하는 순서와 상담 문구를 안내합니다.",
+    "keywords": "가입코드를 잘못 입력하면 어떻게 하나요?"
+  },
+  "/faq/official-address-check.html": {
+    "title": "공식주소는 어떻게 확인하나요? | 88ST FAQ",
+    "description": "공식주소 확인 시 도메인 철자, 상담 텔레그램, 가입코드, 변경 이력을 함께 보는 방법입니다.",
+    "keywords": "공식주소는 어떻게 확인하나요?"
+  },
+  "/faq/telegram-consult-where.html": {
+    "title": "텔레그램 상담은 어디로 하나요? | 88ST FAQ",
+    "description": "88ST 상담 텔레그램 @seoa69와 자동화 가입 안내 봇 @odds88st_bot 이용 기준을 정리합니다.",
+    "keywords": "텔레그램 상담은 어디로 하나요?"
+  },
+  "/faq/first-charge-rolling.html": {
+    "title": "첫충 롤링은 무엇을 확인해야 하나요? | 88ST FAQ",
+    "description": "첫충 이벤트의 롤링, 총 기준금액, 인정 게임, 출금 제한을 확인하는 방법입니다.",
+    "keywords": "첫충 롤링은 무엇을 확인해야 하나요?"
+  },
+  "/faq/recharge-event-limit.html": {
+    "title": "매충 이벤트 제한 조건은 무엇인가요? | 88ST FAQ",
+    "description": "매충 이벤트의 시간, 횟수, 최대 보너스, 중복 적용 여부를 정리합니다.",
+    "keywords": "매충 이벤트 제한 조건은 무엇인가요?"
+  },
+  "/faq/payback-condition.html": {
+    "title": "페이백 이벤트는 어떤 조건을 보나요? | 88ST FAQ",
+    "description": "페이백 이벤트의 산정 기간, 손실 기준, 지급일, 제외 조건을 확인합니다.",
+    "keywords": "페이백 이벤트는 어떤 조건을 보나요?"
+  },
+  "/faq/comp-point-meaning.html": {
+    "title": "콤프 포인트는 무슨 뜻인가요? | 88ST FAQ",
+    "description": "카지노·슬롯 콤프 포인트의 의미와 적립, 전환, 출금 제한 조건을 정리합니다.",
+    "keywords": "콤프 포인트는 무슨 뜻인가요?"
+  },
+  "/faq/casino-withdraw-before.html": {
+    "title": "카지노 출금 전 무엇을 확인해야 하나요? | 88ST FAQ",
+    "description": "카지노 출금 전 롤링, 조건표, 고객센터 답변, 입금 내역을 정리하는 FAQ입니다.",
+    "keywords": "카지노 출금 전 무엇을 확인해야 하나요?"
+  },
+  "/faq/payout-delay-first-check.html": {
+    "title": "출금 지연되면 먼저 무엇을 확인하나요? | 88ST FAQ",
+    "description": "출금 지연 시 조건 위반 여부와 캡처 자료를 먼저 정리하는 순서입니다.",
+    "keywords": "출금 지연되면 먼저 무엇을 확인하나요?"
+  },
+  "/faq/evidence-capture-list.html": {
+    "title": "먹튀 의심 전 어떤 자료를 캡처하나요? | 88ST FAQ",
+    "description": "먹튀 의심 전 입금, 배팅, 당첨, 조건표, 대화 기록을 정리하는 방법입니다.",
+    "keywords": "먹튀 의심 전 어떤 자료를 캡처하나요?"
+  },
+  "/faq/customer-center-log.html": {
+    "title": "고객센터 답변은 어떻게 정리하나요? | 88ST FAQ",
+    "description": "고객센터 대화 기록을 시간순으로 정리하고 문의 문구를 만드는 기준입니다.",
+    "keywords": "고객센터 답변은 어떻게 정리하나요?"
+  },
+  "/faq/kbo-rain-cancel.html": {
+    "title": "KBO 우천취소는 어떻게 정산되나요? | 88ST FAQ",
+    "description": "KBO 우천취소와 경기 연기 시 사이트별 정산 기준을 확인하는 FAQ입니다.",
+    "keywords": "KBO 우천취소는 어떻게 정산되나요?"
+  },
+  "/faq/baseball-over-under.html": {
+    "title": "야구 언오버는 무엇을 확인하나요? | 88ST FAQ",
+    "description": "야구 언오버에서 선발, 불펜, 구장, 날씨, 라인 변동을 보는 기준입니다.",
+    "keywords": "야구 언오버는 무엇을 확인하나요?"
+  },
+  "/faq/football-handicap-draw.html": {
+    "title": "축구 핸디캡에서 무승부 변수는 왜 중요한가요? | 88ST FAQ",
+    "description": "축구 핸디캡과 무승부 변수, 라인업, 홈원정 체크포인트를 정리합니다.",
+    "keywords": "축구 핸디캡에서 무승부 변수는 왜 중요한가요?"
+  },
+  "/faq/basketball-pace.html": {
+    "title": "농구 페이스는 왜 확인하나요? | 88ST FAQ",
+    "description": "농구 언오버와 핸디캡에서 페이스, 쿼터 흐름, 백투백 일정을 확인합니다.",
+    "keywords": "농구 페이스는 왜 확인하나요?"
+  },
+  "/faq/volleyball-set-handicap.html": {
+    "title": "배구 세트 핸디캡은 무엇을 보나요? | 88ST FAQ",
+    "description": "배구 세트 핸디캡에서 리시브, 세터, 외국인 선수, 듀스 가능성을 정리합니다.",
+    "keywords": "배구 세트 핸디캡은 무엇을 보나요?"
+  },
+  "/faq/slot-rtp-volatility.html": {
+    "title": "슬롯 RTP와 변동성은 무슨 뜻인가요? | 88ST FAQ",
+    "description": "슬롯 RTP와 변동성의 기본 의미와 이벤트 조건 확인 기준을 안내합니다.",
+    "keywords": "슬롯 RTP와 변동성은 무슨 뜻인가요?"
+  },
+  "/faq/minigame-settlement.html": {
+    "title": "미니게임 정산 기준은 무엇을 보나요? | 88ST FAQ",
+    "description": "미니게임 결과 확인, 무효 처리, 이벤트 조건, 출금 제한을 정리합니다.",
+    "keywords": "미니게임 정산 기준은 무엇을 보나요?"
+  },
+  "/faq/affiliate-settlement-delay.html": {
+    "title": "총판 정산 지연 시 무엇을 확인하나요? | 88ST FAQ",
+    "description": "총판 정산 지연 시 계약 조건, 코드별 유입, 롤링 기준, 고객센터 답변을 정리합니다.",
+    "keywords": "총판 정산 지연 시 무엇을 확인하나요?"
+  },
+  "/faq/": {
+    "title": "88ST 자주 묻는 질문 | 가입코드·출금·이벤트 조건",
+    "description": "가입코드, 공식주소, 이벤트 조건, 출금 지연, 스포츠 체크 관련 FAQ를 모았습니다.",
+    "keywords": "88ST FAQ"
+  },
+  "/provider-updates/sk-holdings-iron888.html": {
+    "title": "SK 홀딩스 IRON888 코드·이벤트 변경 이력",
+    "description": "SK 홀딩스 가입코드 IRON888, 공식주소, 이벤트 변경 이력을 확인하는 공개 안내입니다.",
+    "keywords": "SK 홀딩스 IRON888 변경 이력"
+  },
+  "/provider-updates/queenbee-seoa.html": {
+    "title": "여왕벌 SEOA 코드·이벤트 변경 이력",
+    "description": "여왕벌 SEOA 가입코드와 상담 계정, 이미지 변경 이력을 확인하는 공개 안내입니다.",
+    "keywords": "여왕벌 SEOA 변경 이력"
+  },
+  "/provider-updates/anybet-seoa.html": {
+    "title": "ANY BET SEOA 코드·이벤트 변경 이력",
+    "description": "ANY BET SEOA 코드와 원화·테더 이벤트 변경 내용을 확인하는 공개 안내입니다.",
+    "keywords": "ANY BET SEOA 변경 이력"
+  },
+  "/provider-updates/udt-seoa.html": {
+    "title": "UDT SEOA 코드·이벤트 변경 이력",
+    "description": "UDT SEOA 코드와 슬롯·스포츠·미니게임 이벤트 안내 변경 이력을 확인합니다.",
+    "keywords": "UDT SEOA 변경 이력"
+  },
+  "/provider-updates/": {
+    "title": "보증업체 코드·이벤트 변경 이력 | 88ST.Cloud",
+    "description": "여왕벌, SK 홀딩스, ANY BET, UDT의 코드와 이벤트 변경 이력을 확인합니다.",
+    "keywords": "보증업체 변경 이력"
+  },
+  "/sports-check/baseball/kbo-starting-pitcher.html": {
+    "title": "KBO 선발투수 변경 시 배당 확인 포인트",
+    "description": "KBO 야구에서 선발투수 변경, 불펜 소모도, 라인업을 확인하는 체크 페이지입니다.",
+    "keywords": "야구 선발투수"
+  },
+  "/sports-check/baseball/kbo-rain-cancel.html": {
+    "title": "KBO 우천취소·경기 연기 정산 기준 확인",
+    "description": "KBO 우천취소와 경기 연기 시 정산 기준, 적특 처리, 조합 영향을 확인합니다.",
+    "keywords": "야구 우천취소"
+  },
+  "/sports-check/baseball/kbo-over-under.html": {
+    "title": "KBO 야구 언오버 확인 체크리스트",
+    "description": "KBO 야구 언오버에서 선발, 불펜, 구장, 날씨 변수를 확인합니다.",
+    "keywords": "야구 언오버"
+  },
+  "/sports-check/baseball/kbo-bullpen.html": {
+    "title": "KBO 불펜 소모도와 경기 흐름 확인",
+    "description": "야구 불펜 소모도와 연투, 이동 일정, 후반 실점 흐름을 확인합니다.",
+    "keywords": "야구 불펜"
+  },
+  "/sports-check/football/lineup-injury.html": {
+    "title": "축구 라인업·부상 변수 체크",
+    "description": "축구 경기 전 라인업, 부상, 홈원정, 일정 변수를 확인합니다.",
+    "keywords": "축구 라인업"
+  },
+  "/sports-check/football/over-under.html": {
+    "title": "축구 언오버와 득점 흐름 확인",
+    "description": "축구 언오버에서 득점 기대 흐름과 라인업 변수를 확인합니다.",
+    "keywords": "축구 언오버"
+  },
+  "/sports-check/football/handicap-draw.html": {
+    "title": "축구 핸디캡과 무승부 변수 확인",
+    "description": "축구 핸디캡을 볼 때 한 골 차, 무승부, 수비적 운영 변수를 정리합니다.",
+    "keywords": "축구 핸디캡"
+  },
+  "/sports-check/basketball/pace-scoring.html": {
+    "title": "농구 페이스와 득점 흐름 확인",
+    "description": "농구 경기 페이스, 득점 흐름, 백투백 변수를 확인합니다.",
+    "keywords": "농구 페이스"
+  },
+  "/sports-check/basketball/handicap-quarter.html": {
+    "title": "농구 핸디캡과 쿼터 흐름 확인",
+    "description": "농구 핸디캡에서 쿼터별 흐름, 벤치 구간, 후반 운영을 확인합니다.",
+    "keywords": "농구 핸디캡"
+  },
+  "/sports-check/volleyball/set-handicap.html": {
+    "title": "배구 세트 핸디캡 확인 방법",
+    "description": "배구 세트 핸디캡에서 리시브, 세터, 외국인 선수 변수를 확인합니다.",
+    "keywords": "배구 세트 핸디캡"
+  },
+  "/sports-check/volleyball/over-under.html": {
+    "title": "배구 언오버와 세트별 점수 흐름",
+    "description": "배구 언오버에서 세트별 점수와 듀스 가능성을 확인합니다.",
+    "keywords": "배구 언오버"
+  },
+  "/sports-check/volleyball/rotation-form.html": {
+    "title": "배구 로테이션과 팀 컨디션 변수",
+    "description": "배구 로테이션, 주전 체력, 원정 일정, 리시브 흔들림을 확인합니다.",
+    "keywords": "배구 로테이션"
+  },
+  "/sports-check/": {
+    "title": "스포츠 경기 체크 페이지 | 야구·축구·농구·배구",
+    "description": "야구, 축구, 농구, 배구 경기 전 확인할 체크포인트를 모았습니다.",
+    "keywords": "스포츠 경기 체크"
+  },
+  "/consult-result/sk-holdings-iron888-guide.html": {
+    "title": "SK 홀딩스 IRON888 상담 결과 안내",
+    "description": "SK 홀딩스 IRON888 가입 안내, 공식주소, 이벤트 조건, 문의 문구를 상담 결과형으로 정리합니다.",
+    "keywords": "SK 홀딩스"
+  },
+  "/consult-result/queenbee-seoa-guide.html": {
+    "title": "여왕벌 SEOA 상담 결과 안내",
+    "description": "여왕벌 SEOA 가입 안내와 @seoa69 상담, @odds88st_bot 자동안내를 정리합니다.",
+    "keywords": "여왕벌"
+  },
+  "/consult-result/anybet-seoa-guide.html": {
+    "title": "ANY BET SEOA 상담 결과 안내",
+    "description": "ANY BET SEOA 코드와 원화·테더 이벤트 문의 루트를 정리합니다.",
+    "keywords": "ANY BET"
+  },
+  "/consult-result/udt-seoa-guide.html": {
+    "title": "UDT SEOA 상담 결과 안내",
+    "description": "UDT SEOA 코드와 슬롯·스포츠·미니게임 이벤트 문의 루트를 정리합니다.",
+    "keywords": "UDT"
+  },
+  "/consult-result/payout-before-check.html": {
+    "title": "출금 전 확인 상담 결과 안내",
+    "description": "출금 전 준비할 자료와 문의 문구, 증거 키트 연결을 정리합니다.",
+    "keywords": "출금 전 확인"
+  },
+  "/consult-result/event-condition-check.html": {
+    "title": "이벤트 조건 확인 상담 결과 안내",
+    "description": "첫충, 매충, 페이백, 롤링 조건 확인 루트를 상담 결과형으로 정리합니다.",
+    "keywords": "이벤트 조건"
+  },
+  "/consult-result/sports-analysis-bot-guide.html": {
+    "title": "스포츠 배당분석 봇 상담 결과 안내",
+    "description": "@odds88st_bot 스포츠 배당분석 기능을 결과 보장 없이 보조 분석 안내로 정리합니다.",
+    "keywords": "스포츠 배당분석"
+  },
+  "/consult-result/telegram-consult-guide.html": {
+    "title": "텔레그램 상담 문구 준비 안내",
+    "description": "@seoa69 상담 전 업체명, 가입코드, 확인 요청을 정리하는 방법입니다.",
+    "keywords": "텔레그램 상담"
+  },
+  "/consult-result/": {
+    "title": "상담 결과형 안내 페이지 | 88ST.Cloud",
+    "description": "자동상담 결과를 검색 가능한 안내 페이지로 정리한 허브입니다.",
+    "keywords": "상담 결과"
+  },
+  "/search-guides/": {
+    "title": "검색유입 가이드 | 가입코드·출금·이벤트 조건",
+    "description": "가입코드, 공식주소, 출금 지연, 이벤트 조건, 스포츠 경기 체크 검색 가이드를 모았습니다.",
+    "keywords": "검색유입 가이드"
   }
 }

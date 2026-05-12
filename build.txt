@@ -1,3 +1,4 @@
-conversion-boost-v4-20260505
-source=88st-cloud-ops-convenience-v3-full-20260505
-updated=2026-05-07
+search-entry-pack-v5-20260505
+source=88st-cloud-conversion-boost-v4-full-20260505
+updated=2026-05-10
+new_pages=79
