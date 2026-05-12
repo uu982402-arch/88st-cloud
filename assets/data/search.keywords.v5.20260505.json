@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-10",
+  "updated": "2026-05-05",
   "title": "오늘의 검색 키워드",
   "items": [
     {
@@ -41,6 +41,30 @@
     {
       "label": "텔레그램 상담 @seoa69",
       "url": "/search-guides/telegram-consult-seoa69.html"
+    },
+    {
+      "label": "가입코드 오입력 방지",
+      "url": "/consult-motives/code-mistake.html"
+    },
+    {
+      "label": "공식주소 사칭 확인",
+      "url": "/consult-motives/official-address.html"
+    },
+    {
+      "label": "첫충·매충 롤링 계산",
+      "url": "/consult-motives/rolling-calculation.html"
+    },
+    {
+      "label": "출금 전 자료 확인",
+      "url": "/consult-motives/payout-evidence.html"
+    },
+    {
+      "label": "이벤트 중복 적용",
+      "url": "/consult-motives/event-overlap.html"
+    },
+    {
+      "label": "한폴낙 조건 확인",
+      "url": "/consult-motives/one-pick-condition.html"
     }
   ]
 }

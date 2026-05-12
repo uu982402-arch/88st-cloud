@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-07",
+  "updated": "2026-05-05",
   "contacts": {
     "human": {
       "label": "상담 텔레그램",
@@ -82,7 +82,7 @@
   ],
   "flows": {
     "start": {
-      "message": "안녕하세요. 88ST 자동상담센터입니다. 가입 안내, 가입코드 확인, 이벤트 조건, 출금 전 확인, 분석봇 안내를 빠르게 도와드릴게요.",
+      "message": "안녕하세요. 88ST 자동상담센터입니다. 가입보다 먼저 코드, 공식주소, 이벤트 조건, 출금 전 자료처럼 불안한 부분을 확인할 수 있습니다.",
       "options": [
         {
           "label": "가입 안내",
@@ -91,6 +91,10 @@
         {
           "label": "가입코드 확인",
           "next": "provider"
+        },
+        {
+          "label": "상담 전 확인",
+          "next": "motive"
         },
         {
           "label": "이벤트 조건",
@@ -206,6 +210,234 @@
           "url": "https://t.me/odds88st_bot"
         }
       ]
+    },
+    "motive": {
+      "title": "상담 전 확인할 항목",
+      "message": "가입을 바로 진행하기보다 먼저 헷갈리는 조건을 줄이는 것이 좋습니다. 아래 항목 중 하나라도 해당되면 상담 전에 확인하세요.",
+      "checks": [
+        "가입코드 오입력 방지",
+        "공식주소 사칭 확인",
+        "첫충·매충 롤링 계산",
+        "출금 전 자료 확인",
+        "이벤트 중복 적용 확인",
+        "스포츠 한폴낙 조건 확인",
+        "테더·원화 이벤트 조건 차이 확인",
+        "담당자 부재 시 자동상담 연결"
+      ],
+      "links": [
+        {
+          "label": "상담 명분 전체 보기",
+          "url": "/consult-motives/"
+        },
+        {
+          "label": "문의 문구 만들기",
+          "url": "/tools/inquiry-builder/"
+        },
+        {
+          "label": "담당자 연결 @seoa69",
+          "url": "https://t.me/seoa69"
+        }
+      ]
+    },
+    "code_mistake": {
+      "title": "가입코드 오입력 방지",
+      "message": "가입코드는 이벤트 적용과 연결될 수 있으므로 입력 전 업체명, 코드, 공식주소를 한 번 더 확인하는 것이 좋습니다.",
+      "checks": [
+        "가입하려는 업체명 확인",
+        "현재 안내받은 가입코드 확인",
+        "코드 입력 화면 캡처",
+        "입력 전 상담 계정 확인",
+        "입력 후 이벤트 적용 여부 확인"
+      ],
+      "links": [
+        {
+          "label": "자세히 보기",
+          "url": "/consult-motives/code-mistake.html"
+        },
+        {
+          "label": "문의 문구 만들기",
+          "url": "/tools/inquiry-builder/"
+        },
+        {
+          "label": "상담 연결",
+          "url": "https://t.me/seoa69"
+        }
+      ]
+    },
+    "official_address": {
+      "title": "공식주소 사칭 확인",
+      "message": "주소가 비슷하거나 상담 계정이 여러 개로 보이면 진행 전 도메인과 상담 계정을 먼저 확인하세요.",
+      "checks": [
+        "도메인 철자 확인",
+        "상담 텔레그램 계정 확인",
+        "가입코드와 업체명 일치 확인",
+        "최근 주소 변경 이력 확인",
+        "사칭 링크 클릭 전 상담 확인"
+      ],
+      "links": [
+        {
+          "label": "자세히 보기",
+          "url": "/consult-motives/official-address.html"
+        },
+        {
+          "label": "문의 문구 만들기",
+          "url": "/tools/inquiry-builder/"
+        },
+        {
+          "label": "상담 연결",
+          "url": "https://t.me/seoa69"
+        }
+      ]
+    },
+    "rolling_calc": {
+      "title": "첫충·매충 롤링 계산",
+      "message": "혜택률만 보고 판단하지 말고 입금액, 보너스, 롤링 배수, 인정 게임, 최대 지급 한도를 함께 확인하세요.",
+      "checks": [
+        "입금액 확인",
+        "보너스율 확인",
+        "롤링 배수 확인",
+        "인정 게임 확인",
+        "최대 지급 한도 확인"
+      ],
+      "links": [
+        {
+          "label": "자세히 보기",
+          "url": "/consult-motives/rolling-calculation.html"
+        },
+        {
+          "label": "문의 문구 만들기",
+          "url": "/tools/inquiry-builder/"
+        },
+        {
+          "label": "상담 연결",
+          "url": "https://t.me/seoa69"
+        }
+      ]
+    },
+    "payout_evidence": {
+      "title": "출금 전 자료 확인",
+      "message": "출금 전에는 입금 내역, 배팅 내역, 이벤트 조건표, 고객센터 답변을 미리 정리해 두는 것이 좋습니다.",
+      "checks": [
+        "입금 내역 캡처",
+        "배팅·당첨 내역 캡처",
+        "이벤트 조건표 저장",
+        "고객센터 답변 저장",
+        "출금 신청 시간 기록"
+      ],
+      "links": [
+        {
+          "label": "자세히 보기",
+          "url": "/consult-motives/payout-evidence.html"
+        },
+        {
+          "label": "문의 문구 만들기",
+          "url": "/tools/inquiry-builder/"
+        },
+        {
+          "label": "상담 연결",
+          "url": "https://t.me/seoa69"
+        }
+      ]
+    },
+    "event_overlap": {
+      "title": "이벤트 중복 적용 확인",
+      "message": "첫충, 매충, 페이백, 룰렛, 출석 이벤트가 동시에 적용되는지 조건표 기준으로 확인하세요.",
+      "checks": [
+        "이벤트명 확인",
+        "동일일 중복 가능 여부 확인",
+        "제외 게임 확인",
+        "최대 지급 한도 확인",
+        "출금 전 제한 조건 확인"
+      ],
+      "links": [
+        {
+          "label": "자세히 보기",
+          "url": "/consult-motives/event-overlap.html"
+        },
+        {
+          "label": "문의 문구 만들기",
+          "url": "/tools/inquiry-builder/"
+        },
+        {
+          "label": "상담 연결",
+          "url": "https://t.me/seoa69"
+        }
+      ]
+    },
+    "onepick_condition": {
+      "title": "스포츠 한폴낙 조건 확인",
+      "message": "한폴낙은 최소 배당, 제외 경기, 적특 처리, 지급 한도, 신청 시간을 함께 확인해야 합니다.",
+      "checks": [
+        "최소 배당 기준 확인",
+        "제외 종목 확인",
+        "적특·무효 처리 확인",
+        "신청 시간 확인",
+        "지급 한도 확인"
+      ],
+      "links": [
+        {
+          "label": "자세히 보기",
+          "url": "/consult-motives/one-pick-condition.html"
+        },
+        {
+          "label": "문의 문구 만들기",
+          "url": "/tools/inquiry-builder/"
+        },
+        {
+          "label": "상담 연결",
+          "url": "https://t.me/seoa69"
+        }
+      ]
+    },
+    "usdt_krw": {
+      "title": "테더·원화 이벤트 조건 차이 확인",
+      "message": "USDT와 원화는 수수료 지원, 첫충, 페이백, 환산 기준이 다를 수 있어 따로 확인하는 것이 좋습니다.",
+      "checks": [
+        "입금 방식 확인",
+        "수수료 지원 기준 확인",
+        "첫충·매충 차이 확인",
+        "페이백 조건 확인",
+        "환산 기준과 출금 조건 확인"
+      ],
+      "links": [
+        {
+          "label": "자세히 보기",
+          "url": "/consult-motives/usdt-krw-event.html"
+        },
+        {
+          "label": "문의 문구 만들기",
+          "url": "/tools/inquiry-builder/"
+        },
+        {
+          "label": "상담 연결",
+          "url": "https://t.me/seoa69"
+        }
+      ]
+    },
+    "auto_bot": {
+      "title": "담당자 부재 시 자동상담 연결",
+      "message": "담당자가 바로 답하지 못할 때는 @odds88st_bot에서 자동화 가입 안내와 분석봇 안내를 먼저 확인할 수 있습니다.",
+      "checks": [
+        "자동화 가입 안내 확인",
+        "스포츠 배당분석 안내 확인",
+        "코인 현물 분석 기능 확인",
+        "직접 상담 필요 항목 정리",
+        "@seoa69로 이어서 문의"
+      ],
+      "links": [
+        {
+          "label": "자세히 보기",
+          "url": "/consult-motives/auto-bot.html"
+        },
+        {
+          "label": "문의 문구 만들기",
+          "url": "/tools/inquiry-builder/"
+        },
+        {
+          "label": "상담 연결",
+          "url": "https://t.me/seoa69"
+        }
+      ]
     }
   },
   "contexts": [
@@ -297,6 +529,86 @@
       "title": "이벤트 조건 확인",
       "message": "이벤트 조건은 혜택률보다 적용 게임, 롤링, 최대 지급 한도, 중복 적용 여부를 먼저 확인해야 합니다.",
       "next": "event"
+    },
+    {
+      "id": "code_mistake",
+      "match": [
+        "code-mistake",
+        "join-code",
+        "가입코드"
+      ],
+      "title": "가입코드 오입력 방지",
+      "message": "가입코드는 입력 전 확인이 가장 중요합니다. 업체명과 코드, 공식주소를 먼저 맞춰보세요.",
+      "next": "code_mistake"
+    },
+    {
+      "id": "official_address",
+      "match": [
+        "official-address",
+        "provider-official-address",
+        "공식주소"
+      ],
+      "title": "공식주소 사칭 확인",
+      "message": "비슷한 도메인과 사칭 채널을 피하려면 상담 계정과 주소를 함께 확인하세요.",
+      "next": "official_address"
+    },
+    {
+      "id": "rolling_calc",
+      "match": [
+        "rolling",
+        "first-charge",
+        "recharge",
+        "첫충",
+        "매충"
+      ],
+      "title": "첫충·매충 롤링 계산",
+      "message": "혜택률보다 실제 필요한 롤링과 인정 게임을 먼저 확인하세요.",
+      "next": "rolling_calc"
+    },
+    {
+      "id": "event_overlap",
+      "match": [
+        "event-overlap",
+        "payback",
+        "coupon",
+        "bonus"
+      ],
+      "title": "이벤트 중복 적용 확인",
+      "message": "이벤트는 중복 적용 여부와 제외 조건이 중요합니다.",
+      "next": "event_overlap"
+    },
+    {
+      "id": "onepick_condition",
+      "match": [
+        "one-pick",
+        "onepick",
+        "한폴낙"
+      ],
+      "title": "한폴낙 조건 확인",
+      "message": "한폴낙은 최소 배당, 제외 경기, 적특 처리 기준을 확인해야 합니다.",
+      "next": "onepick_condition"
+    },
+    {
+      "id": "usdt_krw",
+      "match": [
+        "usdt",
+        "테더",
+        "원화"
+      ],
+      "title": "테더·원화 이벤트 조건 차이",
+      "message": "USDT와 원화 이벤트는 적용 조건이 다를 수 있습니다.",
+      "next": "usdt_krw"
+    },
+    {
+      "id": "auto_bot",
+      "match": [
+        "auto-bot",
+        "odds88st",
+        "자동상담"
+      ],
+      "title": "자동상담 연결",
+      "message": "담당자 부재 시 @odds88st_bot에서 자동화 가입 안내와 분석봇 안내를 먼저 확인할 수 있습니다.",
+      "next": "auto_bot"
     }
   ],
   "faq": [
@@ -350,6 +662,23 @@
     }
   ],
   "faqGroups": [
+    {
+      "title": "상담 전 확인 FAQ",
+      "items": [
+        {
+          "q": "상담은 언제 하는 게 좋나요?",
+          "a": "가입 전 코드·공식주소·이벤트 조건·출금 기준 중 하나라도 헷갈리면 진행 전에 확인하는 것이 좋습니다."
+        },
+        {
+          "q": "가입 문의보다 어떤 질문이 더 좋은가요?",
+          "a": "가입 가능 여부보다 코드 입력, 이벤트 적용, 롤링, 출금 제한, 공식주소 확인처럼 구체적인 질문이 상담 속도를 높입니다."
+        },
+        {
+          "q": "담당자가 없으면 어떻게 하나요?",
+          "a": "담당자 부재 시 @odds88st_bot에서 자동화 가입 안내와 스포츠 배당분석·코인 현물 분석 안내를 먼저 확인할 수 있습니다."
+        }
+      ]
+    },
     {
       "title": "가입 전 자주 묻는 질문",
       "items": [

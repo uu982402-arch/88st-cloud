@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-07",
+  "updated": "2026-05-05",
   "version": "conversion-boost-v4-20260505",
   "ab": {
     "launcherLabels": [
@@ -142,6 +142,46 @@
       "id": "bot",
       "label": "분석봇 문의",
       "request": "스포츠 배당분석 / 코인 현물 분석 / 이용 조건"
+    },
+    {
+      "id": "code_mistake",
+      "label": "가입코드 오입력 방지",
+      "request": "업체명 / 현재 가입코드 / 코드 입력 전 확인 / 이벤트 적용 가능 여부"
+    },
+    {
+      "id": "official_address",
+      "label": "공식주소 사칭 확인",
+      "request": "현재 주소 / 상담 계정 / 가입코드 / 사칭 주소 여부"
+    },
+    {
+      "id": "rolling_calc",
+      "label": "첫충·매충 롤링 계산",
+      "request": "입금액 / 보너스율 / 롤링 기준 / 인정 게임 / 최대 지급 한도"
+    },
+    {
+      "id": "payout_evidence",
+      "label": "출금 전 자료 확인",
+      "request": "입금 내역 / 배팅 내역 / 조건표 / 고객센터 답변 / 출금 신청 시간"
+    },
+    {
+      "id": "event_overlap",
+      "label": "이벤트 중복 적용 확인",
+      "request": "첫충·매충·페이백·룰렛·출석 이벤트 중복 적용 여부"
+    },
+    {
+      "id": "onepick_condition",
+      "label": "한폴낙 조건 확인",
+      "request": "최소 배당 / 제외 경기 / 적특 처리 / 지급 한도 / 신청 시간"
+    },
+    {
+      "id": "usdt_krw",
+      "label": "테더·원화 이벤트 차이",
+      "request": "입금 방식 / 수수료 지원 / 첫충·매충 / 페이백 / 환산 기준"
+    },
+    {
+      "id": "auto_bot",
+      "label": "자동상담 봇 연결",
+      "request": "자동화 가입 안내 / 스포츠 배당분석 / 코인 현물 분석 / 담당자 연결"
     }
   ],
   "eventCards": {
@@ -238,6 +278,48 @@
       "id": "support",
       "label": "고객센터 답변 정리",
       "title": "고객센터 안내 내용 확인 요청드립니다."
+    }
+  ],
+  "consultMotives": [
+    {
+      "id": "code-mistake",
+      "title": "가입코드 오입력 방지",
+      "href": "/consult-motives/code-mistake.html"
+    },
+    {
+      "id": "official-address",
+      "title": "공식주소 사칭 확인",
+      "href": "/consult-motives/official-address.html"
+    },
+    {
+      "id": "rolling-calculation",
+      "title": "첫충·매충 롤링 계산",
+      "href": "/consult-motives/rolling-calculation.html"
+    },
+    {
+      "id": "payout-evidence",
+      "title": "출금 전 자료 확인",
+      "href": "/consult-motives/payout-evidence.html"
+    },
+    {
+      "id": "event-overlap",
+      "title": "이벤트 중복 적용 확인",
+      "href": "/consult-motives/event-overlap.html"
+    },
+    {
+      "id": "one-pick-condition",
+      "title": "스포츠 한폴낙 조건 확인",
+      "href": "/consult-motives/one-pick-condition.html"
+    },
+    {
+      "id": "usdt-krw-event",
+      "title": "테더·원화 이벤트 조건 차이 확인",
+      "href": "/consult-motives/usdt-krw-event.html"
+    },
+    {
+      "id": "auto-bot",
+      "title": "담당자 부재 시 자동상담 연결",
+      "href": "/consult-motives/auto-bot.html"
     }
   ]
 }
