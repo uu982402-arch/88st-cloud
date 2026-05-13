@@ -1,5 +1,3 @@
-chess-provider-v8-20260505
-source=88st-cloud-consult-motive-v7-full-20260505
+home-blog-uiux-v9-20260505
+source=88st-cloud-chess-provider-v8-full-20260505
 updated=2026-05-05
-new_provider=chess
-new_pages=5
