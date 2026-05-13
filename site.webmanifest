@@ -3,6 +3,12 @@
   "short_name": "88ST",
   "icons": [
     {
+      "src": "/img/logo-mark-v24.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
       "src": "/img/logo-mark-v23.png",
       "sizes": "512x512",
       "type": "image/png",
