@@ -543,3 +543,160 @@ html{background:var(--gw-bg)}
     font-size:12px;
   }
 }
+
+
+/* conversion focused gateway v16 */
+.gateway-hero--v15 h1{
+  letter-spacing:-.04em;
+}
+.gateway-hero--v15 p{
+  flex-basis:360px;
+}
+.gateway-card__meta p{
+  max-width:420px;
+}
+.gateway-card__benefits li{
+  justify-content:flex-start;
+  text-align:left;
+}
+.gateway-card__actions--v16{
+  grid-template-columns:1fr 1fr 1fr;
+  max-width:520px;
+}
+.gateway-btn--consult{
+  border:1px solid rgba(67,162,255,.34);
+  background:rgba(67,162,255,.10);
+  color:#dbeafe;
+}
+.gateway-card.is-code-ready .gateway-btn--primary{
+  box-shadow:0 0 0 1px rgba(255,255,255,.12),0 14px 34px rgba(255,138,0,.26);
+}
+.gateway-card.is-code-ready .gateway-code{
+  border-color:rgba(46,213,115,.58);
+  background:rgba(46,213,115,.10);
+}
+.gateway-card.is-code-ready .gateway-code span{
+  color:#86efac;
+}
+@media(max-width:820px){
+  .gateway-card__actions--v16{
+    grid-template-columns:1fr 1fr;
+  }
+  .gateway-card__actions--v16 .gateway-btn--consult{
+    grid-column:1 / -1;
+    min-height:44px;
+  }
+}
+@media(max-width:420px){
+  .gateway-card__actions--v16{
+    grid-template-columns:1fr;
+  }
+  .gateway-card__actions--v16 .gateway-btn--consult{
+    grid-column:auto;
+  }
+}
+
+
+/* guaranteed simple cards v18 */
+.gateway-hero--v15 p{
+  flex-basis:300px;
+}
+.gateway-grid--simple{
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+}
+.gateway-card--simple{
+  border-radius:20px;
+}
+.gateway-card--simple .gateway-card__inner{
+  padding:18px 16px 16px;
+  gap:10px;
+}
+.gateway-card--simple .gateway-card__logo{
+  width:min(230px,88%);
+  min-height:78px;
+  border-radius:16px;
+}
+.gateway-card--simple .gateway-card__logo img{
+  max-width:92% !important;
+  max-height:64px !important;
+}
+.gateway-card--simple.gateway-card--queenbee .gateway-card__logo img,
+.gateway-card--simple.gateway-card--udt .gateway-card__logo img{
+  max-width:94% !important;
+  max-height:62px !important;
+}
+.gateway-card__meta--simple h2{
+  margin:0;
+  font-size:clamp(20px,2.8vw,27px);
+}
+.gateway-code--simple{
+  width:min(280px,100%);
+  min-height:44px;
+  border-radius:14px;
+}
+.gateway-code--simple strong{
+  font-size:18px;
+}
+.gateway-domain-link{
+  width:min(360px,100%);
+  min-height:50px;
+  display:grid;
+  grid-template-columns:1fr;
+  place-items:center;
+  gap:2px;
+  border:0;
+  border-radius:15px;
+  background:linear-gradient(135deg,#ffc531 0%,#ff8a00 100%);
+  color:#111;
+  text-decoration:none;
+  font-weight:950;
+  box-shadow:0 12px 26px rgba(255,138,0,.16);
+  padding:8px 12px;
+  text-align:center;
+}
+.gateway-domain-link span{
+  font-size:12px;
+  letter-spacing:-.01em;
+}
+.gateway-domain-link strong{
+  max-width:100%;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  font-size:15px;
+}
+.gateway-domain-link:hover,
+.gateway-code--simple:hover{
+  transform:translateY(-1px);
+}
+.gateway-card--simple .gateway-card__benefits,
+.gateway-card--simple .gateway-card__actions,
+.gateway-card--simple .gateway-card__meta p{
+  display:none !important;
+}
+@media(max-width:820px){
+  .gateway-grid--simple{
+    grid-template-columns:1fr;
+  }
+  .gateway-card--simple .gateway-card__inner{
+    padding:17px 14px 15px;
+  }
+  .gateway-card--simple .gateway-card__logo{
+    min-height:74px;
+  }
+  .gateway-domain-link{
+    min-height:48px;
+  }
+}
+
+
+/* ddangkong provider v19 */
+.gateway-card--ddangkong .gateway-card__logo img{
+  max-width:96% !important;
+  max-height:58px !important;
+}
+.gateway-card--ddangkong .gateway-domain-link{
+  background:linear-gradient(135deg,#2f8dff 0%,#0f172a 100%);
+  color:#fff;
+}

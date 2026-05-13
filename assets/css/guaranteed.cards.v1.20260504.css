@@ -238,7 +238,7 @@ body.guaranteed-cards-page{background:radial-gradient(circle at 10% 0%,rgba(16,3
 .gcard:hover{transform:translateY(-3px);border-color:#9fb9d4;box-shadow:0 28px 70px rgba(15,35,63,.14)}
 .gcard__media{background:linear-gradient(135deg,#0b1b33 0%,#153052 55%,#10233f 100%)}
 
-.gcard[data-provider="chess"] .gcard__media img{
+.gcard[data-provider="ddangkong"] .gcard__media img{
   max-width:88%;
   max-height:88%;
 }

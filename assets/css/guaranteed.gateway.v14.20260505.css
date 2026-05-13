@@ -170,7 +170,7 @@ html{background:var(--gw-bg)}
   opacity:.65;
 }
 .gateway-card--anybet::before,
-.gateway-card--chess::before,
+.gateway-card--ddangkong::before,
 .gateway-card--skholdings::before{
   background:
     radial-gradient(circle at 50% 0%,rgba(67,162,255,.18),transparent 38%),

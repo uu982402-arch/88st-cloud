@@ -36,7 +36,7 @@
       "category": "프리미엄 카지노 · 슬롯 · USDT",
       "summary": "SEOA 코드와 USDT 수수료 지원, 쿠폰 지급 조건을 가입 전 확인하는 업체입니다.",
       "checks": [
-        "가입코드 SEOA 입력 전 확인",
+        "가입코드 ddk888 입력 전 확인",
         "USDT 입금 네트워크와 수수료 기준 확인",
         "쿠폰 지급 조건과 사용 기한 확인",
         "출금 전 조건표와 고객센터 답변 저장"
@@ -130,36 +130,55 @@
       "imageScale": 1
     },
     {
-      "slug": "chess",
-      "name": "♞ 체스",
-      "officialUrl": "https://체스주소.com",
-      "officialDomain": "체스주소.com",
-      "code": "SEOA",
+      "slug": "ddangkong",
+      "name": "땅콩",
+      "cleanName": "땅콩",
+      "displayCode": "ddk888",
+      "code": "ddk888",
+      "officialUrl": "https://ddk-2024.com/",
+      "officialDomain": "ddk-2024.com",
+      "imageUrl": "/assets/provider-media/ddangkong-logo-v19.png",
+      "imageAlt": "땅콩 로고",
+      "category": "스포츠 · 카지노 · 슬롯",
+      "oneLine": "땅콩 공식 도메인과 가입코드 ddk888을 확인하는 접속 카드입니다.",
+      "summary": "땅콩 공식 도메인, 가입코드 ddk888, 이벤트 조건을 가입 전 확인하는 업체입니다.",
       "benefits": [
-        "BTI 스포츠 · 카지노 · 슬롯게임",
-        "입금 플러스",
-        "카지노&슬롯 콤프",
-        "주간 페이백",
-        "출석체크 포인트",
-        "USDT 입금 지원",
-        "VIP 전환 가능"
+        "공식 도메인 확인",
+        "가입코드 ddk888",
+        "이벤트 조건 확인"
       ],
-      "imageUrl": "/assets/provider-media/chess-logo.png",
-      "consultTelegram": "@seoa69",
-      "autoBot": "@odds88st_bot",
-      "notice": "가입 전 공식주소, 가입코드 SEOA, 이벤트 조건, USDT 입금 기준을 먼저 확인해 주세요.",
-      "cleanName": "체스",
-      "displayCode": "SEOA",
-      "category": "BTI 스포츠 · 카지노 · 슬롯게임",
-      "summary": "SEOA 코드와 BTI 스포츠, 카지노&슬롯 콤프, 주간 페이백, USDT 입금 조건을 확인하는 업체입니다.",
-      "checks": [
-        "체스주소.com 공식주소 확인",
-        "SEOA 코드 입력 전 확인",
-        "입금 플러스·콤프·페이백 조건 확인",
-        "USDT 입금 지원과 VIP 전환 기준 확인"
+      "badges": [
+        "공식주소",
+        "가입코드",
+        "상담확인"
       ],
+      "imageKind": "logo",
+      "imagePadding": "8px 12px",
       "imageScale": 1,
-      "imagePadding": "8px 12px"
+      "conditionCards": [
+        {
+          "label": "가입코드",
+          "value": "ddk888"
+        },
+        {
+          "label": "공식주소",
+          "value": "ddk-2024.com"
+        },
+        {
+          "label": "이벤트",
+          "value": "가입 전 조건 확인"
+        },
+        {
+          "label": "출금 전",
+          "value": "자료·상담 답변 저장"
+        }
+      ],
+      "checks": [
+        "가입코드 ddk888 입력 전 확인",
+        "공식 도메인 ddk-2024.com 접속 여부 확인",
+        "이벤트 적용 게임과 롤링 기준 확인",
+        "출금 전 조건표와 상담 답변 저장"
+      ]
     }
   ],
   "flows": {
@@ -521,12 +540,12 @@
         }
       ]
     },
-    "chess_provider": {
-      "title": "체스 SEOA 가입 안내",
-      "message": "체스는 BTI 스포츠, 카지노, 슬롯게임을 함께 안내합니다. 가입 전 공식주소, 가입코드 SEOA, 입금 플러스, 콤프, 주간 페이백, USDT 입금 지원 조건을 확인하세요.",
+    "ddangkong_provider": {
+      "title": "땅콩 ddk888 가입 안내",
+      "message": "땅콩는 BTI 스포츠, 카지노, 슬롯게임을 함께 안내합니다. 가입 전 공식주소, 가입코드 ddk888, 입금 플러스, 콤프, 주간 페이백, USDT 입금 지원 조건을 확인하세요.",
       "checks": [
-        "공식주소 체스주소.com 확인",
-        "가입코드 SEOA 확인",
+        "공식주소 땅콩주소.com 확인",
+        "가입코드 ddk888 확인",
         "입금 플러스 조건 확인",
         "카지노&슬롯 콤프 기준 확인",
         "주간 페이백 산정 기준 확인",
@@ -534,8 +553,8 @@
       ],
       "links": [
         {
-          "label": "체스 상담 허브",
-          "url": "/consult/chess/"
+          "label": "땅콩 상담 허브",
+          "url": "/consult/ddangkong/"
         },
         {
           "label": "문의 문구 만들기",
@@ -596,7 +615,7 @@
         "queenbee"
       ],
       "title": "여왕벌 SEOA 안내",
-      "message": "여왕벌은 가입코드 SEOA 기준입니다. 담당자 상담은 @seoa69, 자동화 가입 안내와 분석봇은 @odds88st_bot으로 통일 안내합니다.",
+      "message": "여왕벌은 가입코드 ddk888 기준입니다. 담당자 상담은 @seoa69, 자동화 가입 안내와 분석봇은 @odds88st_bot으로 통일 안내합니다.",
       "provider": "queenbee"
     },
     {
@@ -606,7 +625,7 @@
         "anybet"
       ],
       "title": "ANY BET SEOA 안내",
-      "message": "ANY BET 원화·테더 이벤트와 가입코드 SEOA 안내를 확인할 수 있습니다.",
+      "message": "ANY BET 원화·테더 이벤트와 가입코드 ddk888 안내를 확인할 수 있습니다.",
       "provider": "anybet"
     },
     {
@@ -616,7 +635,7 @@
         "udt"
       ],
       "title": "UDT SEOA 안내",
-      "message": "UDT 슬롯·스포츠·미니게임 이벤트와 가입코드 SEOA 안내를 확인할 수 있습니다.",
+      "message": "UDT 슬롯·스포츠·미니게임 이벤트와 가입코드 ddk888 안내를 확인할 수 있습니다.",
       "provider": "udt"
     },
     {
@@ -740,16 +759,16 @@
       "next": "auto_bot"
     },
     {
-      "id": "chess",
+      "id": "ddangkong",
       "match": [
-        "chess",
-        "체스",
-        "체스주소",
-        "chess-seoa"
+        "ddangkong",
+        "땅콩",
+        "땅콩주소",
+        "ddangkong-seoa"
       ],
-      "title": "체스 SEOA 가입 안내",
-      "message": "체스는 BTI 스포츠 · 카지노 · 슬롯게임 안내와 가입코드 SEOA 기준을 먼저 확인하세요.",
-      "next": "chess_provider"
+      "title": "땅콩 ddk888 가입 안내",
+      "message": "땅콩는 스포츠 · 카지노 · 슬롯 안내와 가입코드 ddk888 기준을 먼저 확인하세요.",
+      "next": "ddangkong_provider"
     }
   ],
   "faq": [

@@ -68,7 +68,7 @@
       "category": "프리미엄 카지노 · 슬롯 · USDT",
       "summary": "SEOA 코드와 USDT 수수료 지원, 쿠폰 지급 조건을 가입 전 확인하는 업체입니다.",
       "checks": [
-        "가입코드 SEOA 입력 전 확인",
+        "가입코드 ddk888 입력 전 확인",
         "USDT 입금 네트워크와 수수료 기준 확인",
         "쿠폰 지급 조건과 사용 기한 확인",
         "출금 전 조건표와 고객센터 답변 저장"
@@ -162,36 +162,55 @@
       "imageScale": 1
     },
     {
-      "slug": "chess",
-      "name": "♞ 체스",
-      "officialUrl": "https://체스주소.com",
-      "officialDomain": "체스주소.com",
-      "code": "SEOA",
+      "slug": "ddangkong",
+      "name": "땅콩",
+      "cleanName": "땅콩",
+      "displayCode": "ddk888",
+      "code": "ddk888",
+      "officialUrl": "https://ddk-2024.com/",
+      "officialDomain": "ddk-2024.com",
+      "imageUrl": "/assets/provider-media/ddangkong-logo-v19.png",
+      "imageAlt": "땅콩 로고",
+      "category": "스포츠 · 카지노 · 슬롯",
+      "oneLine": "땅콩 공식 도메인과 가입코드 ddk888을 확인하는 접속 카드입니다.",
+      "summary": "땅콩 공식 도메인, 가입코드 ddk888, 이벤트 조건을 가입 전 확인하는 업체입니다.",
       "benefits": [
-        "BTI 스포츠 · 카지노 · 슬롯게임",
-        "입금 플러스",
-        "카지노&슬롯 콤프",
-        "주간 페이백",
-        "출석체크 포인트",
-        "USDT 입금 지원",
-        "VIP 전환 가능"
+        "공식 도메인 확인",
+        "가입코드 ddk888",
+        "이벤트 조건 확인"
       ],
-      "imageUrl": "/assets/provider-media/chess-logo.png",
-      "consultTelegram": "@seoa69",
-      "autoBot": "@odds88st_bot",
-      "notice": "가입 전 공식주소, 가입코드 SEOA, 이벤트 조건, USDT 입금 기준을 먼저 확인해 주세요.",
-      "cleanName": "체스",
-      "displayCode": "SEOA",
-      "category": "BTI 스포츠 · 카지노 · 슬롯게임",
-      "summary": "SEOA 코드와 BTI 스포츠, 카지노&슬롯 콤프, 주간 페이백, USDT 입금 조건을 확인하는 업체입니다.",
-      "checks": [
-        "체스주소.com 공식주소 확인",
-        "SEOA 코드 입력 전 확인",
-        "입금 플러스·콤프·페이백 조건 확인",
-        "USDT 입금 지원과 VIP 전환 기준 확인"
+      "badges": [
+        "공식주소",
+        "가입코드",
+        "상담확인"
       ],
+      "imageKind": "logo",
+      "imagePadding": "8px 12px",
       "imageScale": 1,
-      "imagePadding": "8px 12px"
+      "conditionCards": [
+        {
+          "label": "가입코드",
+          "value": "ddk888"
+        },
+        {
+          "label": "공식주소",
+          "value": "ddk-2024.com"
+        },
+        {
+          "label": "이벤트",
+          "value": "가입 전 조건 확인"
+        },
+        {
+          "label": "출금 전",
+          "value": "자료·상담 답변 저장"
+        }
+      ],
+      "checks": [
+        "가입코드 ddk888 입력 전 확인",
+        "공식 도메인 ddk-2024.com 접속 여부 확인",
+        "이벤트 적용 게임과 롤링 기준 확인",
+        "출금 전 조건표와 상담 답변 저장"
+      ]
     }
   ],
   "inquiryTypes": [
@@ -339,22 +358,22 @@
         "value": "주간 페이백·한도 확인"
       }
     ],
-    "chess": [
+    "ddangkong": [
       {
         "label": "가입코드",
-        "value": "SEOA"
+        "value": "ddk888"
       },
       {
-        "label": "BTI 스포츠",
-        "value": "입금 플러스 기준 확인"
+        "label": "공식주소",
+        "value": "ddk-2024.com"
       },
       {
-        "label": "콤프/페이백",
-        "value": "카지노&슬롯 콤프·주간 페이백"
+        "label": "이벤트",
+        "value": "가입 전 조건 확인"
       },
       {
-        "label": "USDT",
-        "value": "입금 지원·VIP 전환 기준 확인"
+        "label": "출금 전",
+        "value": "자료·상담 답변 저장"
       }
     ]
   },
