@@ -1,3 +1,4 @@
-home-blog-uiux-v9-20260505
-source=88st-cloud-chess-provider-v8-full-20260505
+home-blog-compact-uiux-v10-20260505
+source=88st-cloud-home-blog-uiux-v9-full-20260505
 updated=2026-05-05
+fix=compact_hero_remove_today_board_reorder_sections
