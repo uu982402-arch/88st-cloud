@@ -14,7 +14,7 @@
 - SK 홀딩스: `sk-holdings-logo.png`
 - ANY BET: `anybet-logo.png`
 - UDT: `udt-logo-transparent.png`
-- 체스: `chess-logo.png`
+- 땅콩: `ddangkong-logo-v19.png`
 
 ## 교체 시 확인
 1. `/assets/data/guaranteed.providers...json`의 `imageUrl` 확인
