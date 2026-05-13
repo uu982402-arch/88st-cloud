@@ -1,0 +1,14 @@
+{
+  "updated": "2026-05-05",
+  "source": "88st-cloud-icon-image-v17-full-20260505.zip",
+  "summary": "/guaranteed/ 보증업체 카드를 상세 설명 없이 로고, 업체명, 가입코드, 도메인 바로가기만 남긴 간단한 접속 카드로 정리",
+  "created_or_modified": [
+    "PATCH_NOTES_20260505_GUARANTEED_SIMPLE_V18.md",
+    "assets/config/seo.meta.json",
+    "assets/css/guaranteed.gateway.v18.20260505.css",
+    "assets/js/build.ver.js",
+    "build.txt",
+    "guaranteed/index.html"
+  ],
+  "deleted_from_full": []
+}

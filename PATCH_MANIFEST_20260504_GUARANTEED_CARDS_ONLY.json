@@ -1,0 +1,15 @@
+{
+  "updated": "2026-05-04",
+  "source": "88st-cloud-provider-sports-content-fix-full-20260504.zip",
+  "summary": "/guaranteed/ 보증업체 페이지를 광고 카드만 나열되는 카드 전용 UI로 재작성",
+  "created_or_modified": [
+    "PATCH_NOTES_20260504_GUARANTEED_CARDS_ONLY.md",
+    "assets/config/seo.meta.json",
+    "assets/css/guaranteed.cards.v1.20260504.css",
+    "assets/js/build.ver.js",
+    "assets/js/guaranteed.cards.v1.20260504.js",
+    "build.txt",
+    "guaranteed/index.html"
+  ],
+  "deleted_from_full": []
+}

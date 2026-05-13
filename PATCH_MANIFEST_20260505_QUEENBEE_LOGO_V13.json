@@ -1,0 +1,20 @@
+{
+  "updated": "2026-05-05",
+  "source": "88st-cloud-guaranteed-gateway-v12-full-20260505.zip",
+  "summary": "여왕벌 카드 이미지 전면 교체 v13: 업로드 로고를 provider 데이터, 보증업체 게이트웨이, 메인, 상담 허브, 코드 확인 도구에 반영",
+  "created_or_modified": [
+    "PATCH_NOTES_20260505_QUEENBEE_LOGO_V13.md",
+    "assets/css/guaranteed.gateway.v12.20260505.css",
+    "assets/data/auto.consult.v1.20260505.json",
+    "assets/data/conversion.boost.v4.20260505.json",
+    "assets/data/guaranteed.providers.v1.20260330.json",
+    "assets/js/build.ver.js",
+    "assets/provider-media/queenbee-logo-v13.png",
+    "build.txt",
+    "consult/queenbee/index.html",
+    "guaranteed/index.html",
+    "index.html",
+    "tools/code-check/index.html"
+  ],
+  "deleted_from_full": []
+}

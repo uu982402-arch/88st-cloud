@@ -1,0 +1,14 @@
+{
+  "updated": "2026-05-05",
+  "source": "88st-cloud-provider-order-transparent-v14-full-20260505.zip",
+  "summary": "/guaranteed/ 상단 긴 문구 제거 및 OFFICIAL ACCESS compact bar 디자인 적용",
+  "created_or_modified": [
+    "PATCH_NOTES_20260505_GUARANTEED_HERO_V15.md",
+    "assets/config/seo.meta.json",
+    "assets/css/guaranteed.gateway.v15.20260505.css",
+    "assets/js/build.ver.js",
+    "build.txt",
+    "guaranteed/index.html"
+  ],
+  "deleted_from_full": []
+}

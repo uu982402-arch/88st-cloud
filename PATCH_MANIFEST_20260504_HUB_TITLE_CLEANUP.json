@@ -1,0 +1,31 @@
+{
+  "updated": "2026-05-04",
+  "source": "88st-cloud-logo-refresh-full-20260504.zip",
+  "summary": "메인/블로그/도구/보증업체/카테고리 허브 상단 타이틀과 부타이틀을 짧고 고급스럽게 재정리",
+  "created_or_modified": [
+    "PATCH_NOTES_20260504_HUB_TITLE_CLEANUP.md",
+    "assets/config/seo.meta.json",
+    "assets/css/pro.blog.v1.20260504.css",
+    "assets/js/build.ver.js",
+    "blog/address-change-center/index.html",
+    "blog/affiliate/index.html",
+    "blog/bet365-virtual/index.html",
+    "blog/code-notice-center/index.html",
+    "blog/index.html",
+    "blog/minigame/index.html",
+    "blog/online-casino/index.html",
+    "blog/online-slot/index.html",
+    "blog/payout-risk/index.html",
+    "blog/queenbee-seoa-hub.html",
+    "blog/review-evidence-center/index.html",
+    "blog/sk-holdings-iron888-hub.html",
+    "blog/sports-toto/index.html",
+    "blog/telegram-official-center/index.html",
+    "blog/withdraw-rolling-center/index.html",
+    "build.txt",
+    "guaranteed/index.html",
+    "index.html",
+    "tools/index.html"
+  ],
+  "deleted_from_full": []
+}

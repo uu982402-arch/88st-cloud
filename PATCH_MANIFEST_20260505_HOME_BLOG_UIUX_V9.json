@@ -1,0 +1,14 @@
+{
+  "updated": "2026-05-05",
+  "source": "88st-cloud-chess-provider-v8-full-20260505.zip",
+  "summary": "메인/블로그 UI·UX 업그레이드 v9: hero 재구성, 버튼/카드/검색/빠른 작업 구조 개선, 체스 카드/신규 글 링크 반영",
+  "created_or_modified": [
+    "PATCH_NOTES_20260505_HOME_BLOG_UIUX_V9.md",
+    "assets/css/home.blog.uiux.v9.20260505.css",
+    "assets/js/build.ver.js",
+    "blog/index.html",
+    "build.txt",
+    "index.html"
+  ],
+  "deleted_from_full": []
+}
