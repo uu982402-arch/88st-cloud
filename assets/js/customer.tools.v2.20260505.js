@@ -1,0 +1,47 @@
+(()=>{const money=n=>Number(n||0).toLocaleString('ko-KR')+'원';document.addEventListener('submit',e=>{const f=e.target;if(f.id==='eventCalc'){e.preventDefault();const deposit=+f.deposit.value||0;const bonusRate=+f.bonus.value||0;const rolling=+f.rolling.value||0;const bonus=Math.floor(deposit*bonusRate/100);const base=deposit+bonus;const need=Math.floor(base*rolling/100);f.querySelector('.customer-tool-result').textContent=`예상 보너스: ${money(bonus)}\n총 기준금액: ${money(base)}\n필요 롤링: ${money(need)}\n\n확인 필요:\n- 최대 지급 한도\n- 인정 게임과 제외 게임\n- 중복 이벤트 가능 여부\n- 출금 전 제한 조건\n- 고객센터 답변 캡처`;}
+if(f.id==='reportDraft'){e.preventDefault();const v=k=>f[k].value.trim();const msg=`출금/정산 확인 요청 정리\n\n업체명: ${v('brand')}\n입금 시간: ${v('depositTime')}\n출금 신청 시간: ${v('withdrawTime')}\n현재 안내받은 사유: ${v('reason')}\n보유 자료: ${v('proof')}\n\n확인 요청:\n- 롤링/이벤트 조건 충족 여부\n- 출금 제한 조건\n- 추가로 필요한 자료`;f.querySelector('.customer-tool-result').textContent=msg;}});document.addEventListener('change',e=>{const wrap=e.target.closest('[data-evidence-kit]');if(!wrap)return;const checks=[...wrap.querySelectorAll('input[type=checkbox]')];const done=checks.filter(x=>x.checked).length;const pct=Math.round(done/checks.length*100);const missing=checks.filter(x=>!x.checked).map(x=>x.value);wrap.querySelector('[data-kit-result]').textContent=`자료 준비율 ${pct}%\n부족한 항목: ${missing.length?missing.join(', '):'없음'}`})})();
+
+/* v4 payout inquiry template enhancement */
+(() => {
+  const track = (name, params = {}) => {
+    try {
+      if (typeof window.gtag === 'function') window.gtag('event', name, { event_category: 'conversion_boost', page_path: location.pathname, ...params });
+    } catch (_) {}
+  };
+  const templates = {
+    before: '출금 신청 전 조건 확인 문의드립니다.',
+    delay: '출금 지연 관련 확인 요청드립니다.',
+    event: '이벤트 조건 적용 여부 확인 요청드립니다.',
+    support: '고객센터 안내 내용 확인 요청드립니다.'
+  };
+  const build = (form) => {
+    const type = form.templateType?.value || 'before';
+    const title = templates[type] || templates.before;
+    return `안녕하세요.\n${title}\n\n업체명: ${form.brand?.value || ''}\n입금 시간: ${form.depositTime?.value || ''}\n출금 신청 시간: ${form.withdrawTime?.value || ''}\n안내받은 사유: ${form.reason?.value || ''}\n보유 자료: ${form.proof?.value || ''}\n\n확인 요청: 롤링 / 이벤트 제한 / 출금 가능 조건 / 추가로 필요한 자료\n상담 경로: 88ST.Cloud`;
+  };
+  const init = () => {
+    const form = document.querySelector('#reportDraft');
+    if (!form || form.dataset.v4Enhanced === '1') return;
+    form.dataset.v4Enhanced = '1';
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const out = form.querySelector('.customer-tool-result');
+      if (out) out.textContent = build(form);
+      track('payout_template_generate', { template: form.templateType?.value || 'before' });
+    }, true);
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'pro-btn';
+    btn.textContent = '문의문 복사';
+    btn.setAttribute('data-payout-copy-template', '1');
+    form.appendChild(btn);
+    btn.addEventListener('click', async () => {
+      const out = form.querySelector('.customer-tool-result');
+      const text = out?.textContent || build(form);
+      try { await navigator.clipboard.writeText(text); } catch (_) {}
+      track('payout_template_copy', { template: form.templateType?.value || 'before' });
+    });
+  };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();

@@ -1,0 +1,37 @@
+(() => {
+  const DATA_URL = '/assets/data/consult.motives.v7.20260505.json';
+  const h = (v) => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
+  const track = (name, params = {}) => {
+    try {
+      if (typeof window.gtag === 'function') window.gtag('event', name, { event_category:'consult_motive', page_path:location.pathname, ...params });
+    } catch (_) {}
+  };
+  const choose = (motives) => {
+    const path = location.pathname.toLowerCase();
+    const byId = (id) => motives.find(m => m.id === id);
+    if (path.includes('payout') || path.includes('withdraw') || path.includes('evidence')) return ['payout-evidence','official-address','auto-bot'].map(byId).filter(Boolean);
+    if (path.includes('bonus') || path.includes('event') || path.includes('slot') || path.includes('casino') || path.includes('minigame') || path.includes('rolling')) return ['rolling-calculation','event-overlap','usdt-krw-event'].map(byId).filter(Boolean);
+    if (path.includes('sports') || path.includes('baseball') || path.includes('football') || path.includes('basketball') || path.includes('volleyball') || path.includes('one-pick')) return ['one-pick-condition','rolling-calculation','auto-bot'].map(byId).filter(Boolean);
+    if (path.includes('sk-holdings') || path.includes('queenbee') || path.includes('anybet') || path.includes('udt') || path.includes('provider')) return ['code-mistake','official-address','event-overlap'].map(byId).filter(Boolean);
+    return ['code-mistake','official-address','auto-bot'].map(byId).filter(Boolean);
+  };
+  const renderStrip = (items) => {
+    if (!items.length) return '';
+    return `<section class="consult-motive-strip"><h2>상담 전 먼저 확인할 것</h2><p>가입보다 중요한 것은 불안 요소를 먼저 줄이는 것입니다. 아래 항목 중 하나라도 헷갈리면 상담으로 확인하세요.</p><div class="consult-motive-strip__grid">${items.map(m => `<a class="consult-motive-mini" href="${h(m.href)}" data-consult-motive="${h(m.id)}"><strong>${h(m.shortTitle || m.title)}</strong><span>${h(m.summary)}</span></a>`).join('')}</div></section>`;
+  };
+  const init = async () => {
+    let payload;
+    try { payload = await fetch(DATA_URL, { cache:'no-store' }).then(r => r.json()); } catch (_) { return; }
+    const motives = Array.isArray(payload?.motives) ? payload.motives : [];
+    const target = document.querySelector('.pro-article__body, .entry-article');
+    if (target && !document.querySelector('.consult-motive-strip')) {
+      target.insertAdjacentHTML('beforeend', renderStrip(choose(motives)));
+    }
+    document.addEventListener('click', (event) => {
+      const a = event.target.closest('[data-consult-motive]');
+      if (a) track('consult_motive_click', { motive: a.getAttribute('data-consult-motive') || '' });
+    });
+  };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
