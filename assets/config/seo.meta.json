@@ -10,9 +10,9 @@
     "keywords": "스포츠토토, 온라인카지노, 슬롯, 미니게임, 당첨금먹튀, 바카라총판, 이벤트 조건"
   },
   "/guaranteed/": {
-    "title": "보증업체 | 88ST.Cloud",
-    "description": "여왕벌, Any Bet, UDT, SK 홀딩스 광고 카드와 가입코드, 공식주소를 바로 확인합니다.",
-    "keywords": "보증업체, 여왕벌, Any Bet, UDT, SK 홀딩스, 가입코드, 공식주소"
+    "title": "보증업체 | 여왕벌·Any Bet·UDT·SK 홀딩스·체스 | 88ST.Cloud",
+    "description": "여왕벌, Any Bet, UDT, SK 홀딩스, 체스 광고 카드와 가입코드, 공식주소를 바로 확인합니다.",
+    "keywords": "보증업체, 체스, 체스 SEOA, 여왕벌, Any Bet, UDT, SK 홀딩스"
   },
   "/tools/": {
     "title": "계산·조회 도구 | 88ST.Cloud",
@@ -1292,5 +1292,30 @@
     "title": "담당자 부재 시 자동상담 연결 | 88ST 상담센터",
     "description": "담당자가 바로 답하지 못할 때 @odds88st_bot에서 가입 안내와 분석봇 기능을 먼저 확인합니다.",
     "keywords": "자동상담 봇 연결"
+  },
+  "/consult/chess/": {
+    "title": "체스 상담 허브 | SEOA 가입코드·BTI 스포츠·카지노·슬롯게임",
+    "description": "체스 SEOA 가입코드, BTI 스포츠, 카지노&슬롯 콤프, 주간 페이백, USDT 입금 지원 조건을 상담 전 확인합니다.",
+    "keywords": "체스, 체스 SEOA, 체스주소, BTI 스포츠, 카지노 콤프, 슬롯 콤프, 주간 페이백"
+  },
+  "/blog/online-casino/chess-bti-sports-casino-slot-guide.html": {
+    "title": "체스 SEOA 가입코드·BTI 스포츠·카지노·슬롯게임 확인 가이드",
+    "description": "체스 SEOA 가입코드와 BTI 스포츠, 라이브 카지노, 슬롯게임, 입금 플러스, 콤프, 주간 페이백, USDT 입금 지원 조건을 정리합니다.",
+    "keywords": "체스 SEOA, 체스주소, BTI 스포츠, 카지노 슬롯, 입금 플러스, 주간 페이백"
+  },
+  "/search-guides/chess-seoa-code.html": {
+    "title": "체스 SEOA 가입코드 확인 가이드 | 88ST.Cloud",
+    "description": "체스 SEOA 가입코드, 체스주소.com, BTI 스포츠, 카지노&슬롯 콤프, 주간 페이백 조건을 확인합니다.",
+    "keywords": "체스 SEOA, 체스 가입코드, 체스주소, 체스 보증업체"
+  },
+  "/provider-updates/chess-seoa.html": {
+    "title": "체스 SEOA 코드·이벤트 변경 이력 | 88ST.Cloud",
+    "description": "체스 SEOA 가입코드, 공식주소, BTI 스포츠·카지노·슬롯게임 이벤트 변경 기준을 확인합니다.",
+    "keywords": "체스 변경 이력, 체스 SEOA, 체스 이벤트"
+  },
+  "/consult-result/chess-seoa-guide.html": {
+    "title": "체스 SEOA 상담 결과 안내 | 88ST.Cloud",
+    "description": "체스 SEOA 코드와 BTI 스포츠, 카지노, 슬롯게임 조건을 상담 결과형으로 정리합니다.",
+    "keywords": "체스 상담, 체스 SEOA, 체스 가입 안내"
   }
 }

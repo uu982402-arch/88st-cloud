@@ -51,7 +51,7 @@ body.guaranteed-cards-page{
 }
 .gcards-wrap{
   display:grid;
-  grid-template-columns:repeat(4,minmax(0,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
   gap:16px;
   align-items:stretch;
 }
@@ -237,3 +237,8 @@ body.guaranteed-cards-page{background:radial-gradient(circle at 10% 0%,rgba(16,3
 .gcard{box-shadow:0 22px 56px rgba(15,35,63,.10);transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease}
 .gcard:hover{transform:translateY(-3px);border-color:#9fb9d4;box-shadow:0 28px 70px rgba(15,35,63,.14)}
 .gcard__media{background:linear-gradient(135deg,#0b1b33 0%,#153052 55%,#10233f 100%)}
+
+.gcard[data-provider="chess"] .gcard__media img{
+  max-width:88%;
+  max-height:88%;
+}

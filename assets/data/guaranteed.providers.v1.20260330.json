@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-04",
+  "updated": "2026-05-05",
   "providers": [
     {
       "slug": "queenbee",
@@ -141,6 +141,39 @@
         }
       ],
       "summary": "SK 홀딩스 IRON888 가입코드와 스포츠·미니게임·슬롯 이벤트를 정리한 카드입니다."
+    },
+    {
+      "slug": "chess",
+      "name": "♞ 체스",
+      "theme": "blue",
+      "officialUrl": "https://체스주소.com",
+      "officialDomain": "체스주소.com",
+      "code": "SEOA",
+      "oneLine": "BTI 스포츠 · 카지노 · 슬롯게임 안내",
+      "benefits": [
+        "입금 플러스",
+        "카지노&슬롯 콤프",
+        "주간 페이백"
+      ],
+      "tags": [],
+      "pending": false,
+      "imageUrl": "/assets/provider-media/chess-logo.png",
+      "imageAlt": "체스 로고",
+      "imagePosition": "center center",
+      "imageScale": 1,
+      "imagePadding": "14px 16px",
+      "imageKind": "logo",
+      "modalBenefitTitle": "♞ 체스 핵심 확인",
+      "modalBenefitGroups": [
+        {
+          "title": "확인 포인트",
+          "items": [
+            "BTI 스포츠 · 카지노 · 슬롯게임",
+            "가입코드 SEOA",
+            "공식주소 확인 후 코드 복사"
+          ]
+        }
+      ]
     }
   ]
 }

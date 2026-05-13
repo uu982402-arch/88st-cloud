@@ -240,6 +240,7 @@
     if (path.includes('queenbee')) return { title:'여왕벌 SEOA 상담 루트', desc:'SEOA 코드와 상담·자동상담 봇 연결을 확인합니다.', href:'/consult/queenbee/', primary:'SEOA 가입 안내' };
     if (path.includes('anybet')) return { title:'ANY BET SEOA 상담 루트', desc:'원화·테더 이벤트 조건과 가입코드를 확인합니다.', href:'/consult/anybet/', primary:'ANY BET 안내' };
     if (path.includes('udt')) return { title:'UDT SEOA 상담 루트', desc:'슬롯·스포츠·미니게임 이벤트 조건을 확인합니다.', href:'/consult/udt/', primary:'UDT 안내' };
+    if (path.includes('chess') || path.includes('체스')) return { title:'체스 SEOA 상담 루트', desc:'BTI 스포츠·카지노·슬롯게임 이벤트 조건을 확인합니다.', href:'/consult/chess/', primary:'체스 안내' };
     if (path.includes('payout-risk') || path.includes('withdraw')) return { title:'출금 전 증거 키트', desc:'출금 전 필요한 캡처 자료와 문의문을 정리합니다.', href:'/tools/payout-kit/', primary:'증거 키트 열기' };
     if (path.includes('first-charge') || path.includes('recharge') || path.includes('payback') || path.includes('bonus') || path.includes('event')) return { title:'이벤트 조건 판독기', desc:'입금액, 보너스율, 롤링 기준을 넣어 필요 롤링을 확인합니다.', href:'/tools/event-checker/', primary:'조건 계산하기' };
     if (path.includes('sports-toto') || path.includes('baseball') || path.includes('football') || path.includes('basketball') || path.includes('volleyball')) return { title:'스포츠 배당분석 봇 안내', desc:'@odds88st_bot에서 스포츠 배당분석 안내를 받을 수 있습니다.', href:'https://t.me/odds88st_bot', primary:'분석봇 열기' };

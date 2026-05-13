@@ -110,6 +110,26 @@
       "consultTelegram": "@seoa69",
       "autoBot": "@odds88st_bot",
       "notice": "가입 전 공식주소, 가입코드, 이벤트 조건표, 출금 기준을 먼저 확인해 주세요."
+    },
+    {
+      "slug": "chess",
+      "name": "♞ 체스",
+      "officialUrl": "https://체스주소.com",
+      "officialDomain": "체스주소.com",
+      "code": "SEOA",
+      "benefits": [
+        "BTI 스포츠 · 카지노 · 슬롯게임",
+        "입금 플러스",
+        "카지노&슬롯 콤프",
+        "주간 페이백",
+        "출석체크 포인트",
+        "USDT 입금 지원",
+        "VIP 전환 가능"
+      ],
+      "imageUrl": "/assets/provider-media/chess-logo.png",
+      "consultTelegram": "@seoa69",
+      "autoBot": "@odds88st_bot",
+      "notice": "가입 전 공식주소, 가입코드 SEOA, 이벤트 조건, USDT 입금 기준을 먼저 확인해 주세요."
     }
   ],
   "inquiryTypes": [
@@ -255,6 +275,24 @@
       {
         "label": "페이백",
         "value": "주간 5%"
+      }
+    ],
+    "chess": [
+      {
+        "label": "가입코드",
+        "value": "SEOA"
+      },
+      {
+        "label": "게임",
+        "value": "BTI 스포츠·카지노·슬롯"
+      },
+      {
+        "label": "혜택",
+        "value": "입금 플러스·콤프·페이백"
+      },
+      {
+        "label": "상담",
+        "value": "@seoa69"
       }
     ]
   },
