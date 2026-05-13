@@ -1,0 +1,14 @@
+{
+  "updated": "2026-05-05",
+  "source": "88st-cloud-home-blog-uiux-v9-full-20260505.zip",
+  "summary": "메인/블로그 UIUX v10: v9 대형 상단 제거, compact hero 적용, 오늘 확인판/검색 키워드 보드 제거, 섹션 순서 재정리",
+  "created_or_modified": [
+    "PATCH_NOTES_20260505_HOME_BLOG_UIUX_V10.md",
+    "assets/css/home.blog.uiux.v10.20260505.css",
+    "assets/js/build.ver.js",
+    "blog/index.html",
+    "build.txt",
+    "index.html"
+  ],
+  "deleted_from_full": []
+}

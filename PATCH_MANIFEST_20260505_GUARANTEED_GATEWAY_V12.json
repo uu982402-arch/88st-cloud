@@ -1,0 +1,14 @@
+{
+  "updated": "2026-05-05",
+  "source": "88st-cloud-blog-provider-hubs-v11-full-20260505.zip",
+  "summary": "/guaranteed/ 보증업체 페이지를 헤리티지 스타일의 어두운 공식 접속 게이트웨이 랜딩페이지로 리디자인",
+  "created_or_modified": [
+    "PATCH_NOTES_20260505_GUARANTEED_GATEWAY_V12.md",
+    "assets/config/seo.meta.json",
+    "assets/css/guaranteed.gateway.v12.20260505.css",
+    "assets/js/build.ver.js",
+    "build.txt",
+    "guaranteed/index.html"
+  ],
+  "deleted_from_full": []
+}
