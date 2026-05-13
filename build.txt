@@ -1,4 +1,4 @@
-home-blog-compact-uiux-v10-20260505
-source=88st-cloud-home-blog-uiux-v9-full-20260505
+blog-provider-hubs-v11-20260505
+source=88st-cloud-home-blog-uiux-v10-full-20260505
 updated=2026-05-05
-fix=compact_hero_remove_today_board_reorder_sections
+fix=blog_bottom_all_provider_hubs

@@ -383,3 +383,51 @@
     grid-template-columns:1fr;
   }
 }
+
+
+/* Blog provider hub section v11 */
+.blog-uiux-v10 .provider-hub-section{
+  padding-top:18px;
+}
+.blog-uiux-v10 .provider-hub-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:10px;
+}
+.blog-uiux-v10 .provider-hub-card{
+  display:grid;
+  gap:6px;
+  min-height:82px;
+  padding:15px;
+  border:1px solid #dce6f2;
+  border-radius:17px;
+  background:linear-gradient(180deg,#fff 0%,#f8fbff 100%);
+  color:#10233f;
+  text-decoration:none;
+  box-shadow:0 10px 24px rgba(15,35,63,.045);
+  transition:transform .15s ease,border-color .15s ease,box-shadow .15s ease;
+}
+.blog-uiux-v10 .provider-hub-card:hover{
+  transform:translateY(-1px);
+  border-color:#bfccdc;
+  box-shadow:0 16px 34px rgba(15,35,63,.075);
+}
+.blog-uiux-v10 .provider-hub-card strong{
+  font-size:16px;
+  line-height:1.25;
+  letter-spacing:-.02em;
+}
+.blog-uiux-v10 .provider-hub-card span{
+  color:#64748b;
+  font-size:13px;
+  line-height:1.4;
+}
+@media(max-width:720px){
+  .blog-uiux-v10 .provider-hub-grid{
+    grid-template-columns:1fr;
+  }
+  .blog-uiux-v10 .provider-hub-card{
+    min-height:70px;
+    padding:13px;
+  }
+}
