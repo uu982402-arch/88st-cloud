@@ -1,4 +1,1 @@
-guaranteed-simple-cards-v18-20260505
-source=88st-cloud-icon-image-v17-full-20260505
-updated=2026-05-05
-scope=guaranteed_simple_code_domain_cards
+build=2026-05-13T12:21:40.387Z
