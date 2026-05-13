@@ -8,13 +8,13 @@
 
   const STORAGE_KEY = 'raven_hub_promo_compact_hide_until_v6';
   const PROVIDERS_URL = '/assets/data/guaranteed.providers.v1.20260330.json';
-  const ORDER = ['queenbee', 'skholdings', 'anybet', 'udt', 'chess'];
+  const ORDER = ['queenbee', 'skholdings', 'anybet', 'udt', 'ddangkong'];
   const CONSULT_URLS = {
     queenbee: '/consult/queenbee/',
     skholdings: '/consult/sk-holdings/',
     anybet: '/consult/anybet/',
     udt: '/consult/udt/',
-    chess: '/consult/chess/'
+    ddangkong: '/consult/ddangkong/'
   };
   const DELAY = isHome ? 900 : 1300;
 

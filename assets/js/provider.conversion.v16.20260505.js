@@ -1,5 +1,5 @@
 (() => {
-  const PROVIDERS = [{"slug": "queenbee", "name": "여왕벌", "code": "SEOA", "href": "/consult/queenbee/", "summary": "SEOA 코드와 USDT 수수료 지원, 쿠폰 지급 조건을 가입 전 확인하는 업체입니다."}, {"slug": "skholdings", "name": "SK 홀딩스", "code": "IRON888", "href": "/consult/sk-holdings/", "summary": "IRON888 코드와 신규 입금 플러스, 스포츠·미니게임·슬롯 이벤트 조건을 확인하는 업체입니다."}, {"slug": "anybet", "name": "ANY BET", "code": "SEOA", "href": "/consult/anybet/", "summary": "SEOA 코드와 원화/테더 입금 이벤트, 스포츠·슬롯 조건을 구분해서 확인하는 업체입니다."}, {"slug": "udt", "name": "UDT", "code": "SEOA", "href": "/consult/udt/", "summary": "SEOA 코드와 슬롯 첫충/매충, 스포츠·미니게임 이벤트 조건을 확인하는 업체입니다."}, {"slug": "chess", "name": "체스", "code": "SEOA", "href": "/consult/chess/", "summary": "SEOA 코드와 BTI 스포츠, 카지노&슬롯 콤프, 주간 페이백, USDT 입금 조건을 확인하는 업체입니다."}];
+  const PROVIDERS = [{"slug": "queenbee", "name": "여왕벌", "code": "SEOA", "href": "/consult/queenbee/", "summary": "SEOA 코드와 USDT 수수료 지원, 쿠폰 지급 조건을 가입 전 확인하는 업체입니다."}, {"slug": "skholdings", "name": "SK 홀딩스", "code": "IRON888", "href": "/consult/sk-holdings/", "summary": "IRON888 코드와 신규 입금 플러스, 스포츠·미니게임·슬롯 이벤트 조건을 확인하는 업체입니다."}, {"slug": "anybet", "name": "ANY BET", "code": "SEOA", "href": "/consult/anybet/", "summary": "SEOA 코드와 원화/테더 입금 이벤트, 스포츠·슬롯 조건을 구분해서 확인하는 업체입니다."}, {"slug": "udt", "name": "UDT", "code": "SEOA", "href": "/consult/udt/", "summary": "SEOA 코드와 슬롯 첫충/매충, 스포츠·미니게임 이벤트 조건을 확인하는 업체입니다."}, {"slug": "ddangkong", "name": "땅콩", "code": "SEOA", "href": "/consult/ddangkong/", "summary": "SEOA 코드와 BTI 스포츠, 카지노&슬롯 콤프, 주간 페이백, USDT 입금 조건을 확인하는 업체입니다."}];
   const track = (name, params = {}) => {
     try {
       if (typeof window.gtag === 'function') {
@@ -16,12 +16,12 @@
     if (path.includes('sk-holdings') || path.includes('sk-') || path.includes('iron')) add('skholdings');
     if (path.includes('anybet') || path.includes('any-bet')) add('anybet');
     if (path.includes('udt')) add('udt');
-    if (path.includes('chess') || path.includes('체스')) add('chess');
+    if (path.includes('ddangkong') || path.includes('땅콩')) add('ddangkong');
     if (path.includes('casino') || path.includes('slot') || path.includes('bonus') || path.includes('payback') || path.includes('usdt')) {
-      ['queenbee','anybet','chess'].forEach(add);
+      ['queenbee','anybet','ddangkong'].forEach(add);
     }
     if (path.includes('sports') || path.includes('baseball') || path.includes('football') || path.includes('basketball') || path.includes('volleyball')) {
-      ['skholdings','udt','chess'].forEach(add);
+      ['skholdings','udt','ddangkong'].forEach(add);
     }
     if (!selected.length) ['queenbee','skholdings','anybet'].forEach(add);
     return selected.slice(0,3);
