@@ -3,20 +3,15 @@
   "short_name": "88ST",
   "icons": [
     {
-      "src": "/img/logo-v21.png",
-      "sizes": "512x134",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "/icon-192.png",
-      "sizes": "192x192",
+      "src": "/img/logo-v22.png",
+      "sizes": "720x188",
       "type": "image/png"
     },
     {
-      "src": "/icon-512.png",
+      "src": "/img/logo-mark-v19.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ],
   "theme_color": "#06080c",
