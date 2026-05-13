@@ -72,7 +72,10 @@
         "USDT 입금 네트워크와 수수료 기준 확인",
         "쿠폰 지급 조건과 사용 기한 확인",
         "출금 전 조건표와 고객센터 답변 저장"
-      ]
+      ],
+      "imageKind": "logo",
+      "imagePadding": "8px 12px",
+      "imageScale": 1
     },
     {
       "slug": "skholdings",
@@ -124,7 +127,9 @@
         "원화와 테더 이벤트 조건 차이 확인",
         "스포츠와 슬롯 혜택률 구분 확인",
         "출금 전 롤링과 최대 지급 한도 확인"
-      ]
+      ],
+      "imageScale": 1.12,
+      "imagePadding": "8px 12px"
     },
     {
       "slug": "udt",
@@ -151,7 +156,10 @@
         "슬롯 첫충·매충 적용 게임 확인",
         "스포츠·미니게임 이벤트 기준 구분",
         "주간 페이백 조건과 출금 제한 확인"
-      ]
+      ],
+      "imageKind": "logo",
+      "imagePadding": "8px 12px",
+      "imageScale": 1
     },
     {
       "slug": "chess",
@@ -181,7 +189,9 @@
         "SEOA 코드 입력 전 확인",
         "입금 플러스·콤프·페이백 조건 확인",
         "USDT 입금 지원과 VIP 전환 기준 확인"
-      ]
+      ],
+      "imageScale": 1,
+      "imagePadding": "8px 12px"
     }
   ],
   "inquiryTypes": [

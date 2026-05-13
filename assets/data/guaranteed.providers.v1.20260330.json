@@ -20,7 +20,7 @@
       "imageAlt": "여왕벌 로고",
       "imagePosition": "center center",
       "imageScale": 1,
-      "imagePadding": "10px 14px",
+      "imagePadding": "8px 12px",
       "imageKind": "logo",
       "modalBenefitTitle": "❤️ 여왕벌 ❤️ 핵심 혜택",
       "modalBenefitGroups": [
@@ -149,8 +149,8 @@
       "imageUrl": "/assets/provider-media/anybet-logo.png",
       "imageAlt": "Any Bet 로고",
       "imagePosition": "center center",
-      "imageScale": 0.96,
-      "imagePadding": "10px 16px",
+      "imageScale": 1.12,
+      "imagePadding": "8px 12px",
       "imageKind": "logo",
       "modalBenefitTitle": "Any Bet 핵심 혜택",
       "modalBenefitGroups": [
@@ -212,7 +212,7 @@
       "imagePosition": "center center",
       "imageScale": 1,
       "imageKind": "logo",
-      "imagePadding": "10px 14px",
+      "imagePadding": "8px 12px",
       "modalBenefitTitle": "UDT 핵심 혜택",
       "modalBenefitGroups": [
         {
@@ -272,7 +272,7 @@
       "imageAlt": "체스 로고",
       "imagePosition": "center center",
       "imageScale": 1,
-      "imagePadding": "14px 16px",
+      "imagePadding": "8px 12px",
       "imageKind": "logo",
       "modalBenefitTitle": "♞ 체스 핵심 확인",
       "modalBenefitGroups": [
