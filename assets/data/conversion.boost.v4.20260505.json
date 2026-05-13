@@ -62,7 +62,17 @@
       "consultTelegram": "@seoa69",
       "autoBot": "@odds88st_bot",
       "notice": "가입 전 공식주소, 가입코드, 이벤트 조건표, 출금 기준을 먼저 확인해 주세요.",
-      "imageAlt": "여왕벌 로고"
+      "imageAlt": "여왕벌 로고",
+      "cleanName": "여왕벌",
+      "displayCode": "SEOA",
+      "category": "프리미엄 카지노 · 슬롯 · USDT",
+      "summary": "SEOA 코드와 USDT 수수료 지원, 쿠폰 지급 조건을 가입 전 확인하는 업체입니다.",
+      "checks": [
+        "가입코드 SEOA 입력 전 확인",
+        "USDT 입금 네트워크와 수수료 기준 확인",
+        "쿠폰 지급 조건과 사용 기한 확인",
+        "출금 전 조건표와 고객센터 답변 저장"
+      ]
     },
     {
       "slug": "skholdings",
@@ -78,7 +88,17 @@
       "imageUrl": "/assets/provider-media/sk-holdings-logo.png",
       "consultTelegram": "@seoa69",
       "autoBot": "@odds88st_bot",
-      "notice": "가입 전 공식주소, 가입코드, 이벤트 조건표, 출금 기준을 먼저 확인해 주세요."
+      "notice": "가입 전 공식주소, 가입코드, 이벤트 조건표, 출금 기준을 먼저 확인해 주세요.",
+      "cleanName": "SK 홀딩스",
+      "displayCode": "IRON888",
+      "category": "스포츠 · 미니게임 · 슬롯 이벤트",
+      "summary": "IRON888 코드와 신규 입금 플러스, 스포츠·미니게임·슬롯 이벤트 조건을 확인하는 업체입니다.",
+      "checks": [
+        "가입코드 IRON888 적용 여부 확인",
+        "스포츠/미니게임/슬롯 이벤트 구분 확인",
+        "신규 입금 플러스 조건과 롤링 기준 확인",
+        "주간 페이백·룰렛 쿠폰 중복 여부 확인"
+      ]
     },
     {
       "slug": "anybet",
@@ -94,7 +114,17 @@
       "imageUrl": "/assets/provider-media/anybet-logo.png",
       "consultTelegram": "@seoa69",
       "autoBot": "@odds88st_bot",
-      "notice": "가입 전 공식주소, 가입코드, 이벤트 조건표, 출금 기준을 먼저 확인해 주세요."
+      "notice": "가입 전 공식주소, 가입코드, 이벤트 조건표, 출금 기준을 먼저 확인해 주세요.",
+      "cleanName": "ANY BET",
+      "displayCode": "SEOA",
+      "category": "원화 · 테더 · 스포츠 · 슬롯",
+      "summary": "SEOA 코드와 원화/테더 입금 이벤트, 스포츠·슬롯 조건을 구분해서 확인하는 업체입니다.",
+      "checks": [
+        "SEOA 코드 입력 전 확인",
+        "원화와 테더 이벤트 조건 차이 확인",
+        "스포츠와 슬롯 혜택률 구분 확인",
+        "출금 전 롤링과 최대 지급 한도 확인"
+      ]
     },
     {
       "slug": "udt",
@@ -111,7 +141,17 @@
       "consultTelegram": "@seoa69",
       "autoBot": "@odds88st_bot",
       "notice": "가입 전 공식주소, 가입코드, 이벤트 조건표, 출금 기준을 먼저 확인해 주세요.",
-      "imageAlt": "UDT 로고"
+      "imageAlt": "UDT 로고",
+      "cleanName": "UDT",
+      "displayCode": "SEOA",
+      "category": "스포츠 · 미니게임 · 슬롯",
+      "summary": "SEOA 코드와 슬롯 첫충/매충, 스포츠·미니게임 이벤트 조건을 확인하는 업체입니다.",
+      "checks": [
+        "SEOA 코드와 공식주소 확인",
+        "슬롯 첫충·매충 적용 게임 확인",
+        "스포츠·미니게임 이벤트 기준 구분",
+        "주간 페이백 조건과 출금 제한 확인"
+      ]
     },
     {
       "slug": "chess",
@@ -131,7 +171,17 @@
       "imageUrl": "/assets/provider-media/chess-logo.png",
       "consultTelegram": "@seoa69",
       "autoBot": "@odds88st_bot",
-      "notice": "가입 전 공식주소, 가입코드 SEOA, 이벤트 조건, USDT 입금 기준을 먼저 확인해 주세요."
+      "notice": "가입 전 공식주소, 가입코드 SEOA, 이벤트 조건, USDT 입금 기준을 먼저 확인해 주세요.",
+      "cleanName": "체스",
+      "displayCode": "SEOA",
+      "category": "BTI 스포츠 · 카지노 · 슬롯게임",
+      "summary": "SEOA 코드와 BTI 스포츠, 카지노&슬롯 콤프, 주간 페이백, USDT 입금 조건을 확인하는 업체입니다.",
+      "checks": [
+        "체스주소.com 공식주소 확인",
+        "SEOA 코드 입력 전 확인",
+        "입금 플러스·콤프·페이백 조건 확인",
+        "USDT 입금 지원과 VIP 전환 기준 확인"
+      ]
     }
   ],
   "inquiryTypes": [
@@ -213,16 +263,16 @@
         "value": "SEOA"
       },
       {
-        "label": "테더",
-        "value": "USDT 수수료 지원"
+        "label": "USDT 입금",
+        "value": "수수료 지원·네트워크 확인"
       },
       {
         "label": "쿠폰",
-        "value": "프리미엄 룰렛 쿠폰"
+        "value": "프리미엄 룰렛 쿠폰 기준 확인"
       },
       {
-        "label": "상담",
-        "value": "@seoa69"
+        "label": "출금 전",
+        "value": "조건표·상담 답변 캡처"
       }
     ],
     "skholdings": [
@@ -232,15 +282,15 @@
       },
       {
         "label": "스포츠",
-        "value": "첫 충전 10%"
+        "value": "첫 충전·매 충전 기준 확인"
       },
       {
-        "label": "슬롯",
-        "value": "첫 충전 20%"
+        "label": "미니/슬롯",
+        "value": "게임별 이벤트 적용 기준 확인"
       },
       {
-        "label": "상담",
-        "value": "@seoa69"
+        "label": "페이백",
+        "value": "주간 정산·지급 한도 확인"
       }
     ],
     "anybet": [
@@ -249,16 +299,16 @@
         "value": "SEOA"
       },
       {
-        "label": "원화",
-        "value": "스포츠 첫충 40%"
+        "label": "원화 이벤트",
+        "value": "스포츠·슬롯 첫충 기준 확인"
       },
       {
-        "label": "슬롯",
-        "value": "첫충 20%"
+        "label": "테더 입금",
+        "value": "수수료 지원·환산 기준 확인"
       },
       {
-        "label": "테더",
-        "value": "입금 수수료 지원"
+        "label": "출금 전",
+        "value": "이벤트 제외 조건 확인"
       }
     ],
     "udt": [
@@ -267,16 +317,16 @@
         "value": "SEOA"
       },
       {
-        "label": "첫충",
-        "value": "10%"
+        "label": "슬롯",
+        "value": "첫충·매충 조건 확인"
       },
       {
-        "label": "슬롯",
-        "value": "첫충·매충 20%"
+        "label": "스포츠",
+        "value": "첫 충전 기준 확인"
       },
       {
         "label": "페이백",
-        "value": "주간 5%"
+        "value": "주간 페이백·한도 확인"
       }
     ],
     "chess": [
@@ -285,16 +335,16 @@
         "value": "SEOA"
       },
       {
-        "label": "게임",
-        "value": "BTI 스포츠·카지노·슬롯"
+        "label": "BTI 스포츠",
+        "value": "입금 플러스 기준 확인"
       },
       {
-        "label": "혜택",
-        "value": "입금 플러스·콤프·페이백"
+        "label": "콤프/페이백",
+        "value": "카지노&슬롯 콤프·주간 페이백"
       },
       {
-        "label": "상담",
-        "value": "@seoa69"
+        "label": "USDT",
+        "value": "입금 지원·VIP 전환 기준 확인"
       }
     ]
   },
@@ -361,5 +411,14 @@
       "title": "담당자 부재 시 자동상담 연결",
       "href": "/consult-motives/auto-bot.html"
     }
+  ],
+  "standardEvents": [
+    "provider_code_copy",
+    "provider_official_click",
+    "provider_consult_click",
+    "consult_open",
+    "inquiry_builder_copy",
+    "safe_click_open",
+    "blog_provider_hub_click"
   ]
 }

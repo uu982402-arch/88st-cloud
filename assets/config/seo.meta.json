@@ -1317,5 +1317,30 @@
     "title": "체스 SEOA 상담 결과 안내 | 88ST.Cloud",
     "description": "체스 SEOA 코드와 BTI 스포츠, 카지노, 슬롯게임 조건을 상담 결과형으로 정리합니다.",
     "keywords": "체스 상담, 체스 SEOA, 체스 가입 안내"
+  },
+  "/search-guides/casino-slot-comp-condition.html": {
+    "title": "카지노&슬롯 콤프 조건 확인 가이드",
+    "description": "카지노와 슬롯 콤프 지급 기준, 적립 방식, 전환 조건, 출금 제한을 가입 전 확인하는 가이드입니다.",
+    "keywords": "카지노&슬롯 콤프 조건 확인"
+  },
+  "/search-guides/weekly-payback-condition.html": {
+    "title": "주간 페이백 조건 확인 가이드",
+    "description": "주간 페이백 산정 기간, 손실 기준, 지급일, 제외 게임, 지급 한도를 확인하는 검색 가이드입니다.",
+    "keywords": "주간 페이백 조건 확인"
+  },
+  "/search-guides/payout-inquiry-template.html": {
+    "title": "출금 전 문의 문구 작성법",
+    "description": "출금 전 고객센터에 보낼 문의 문구와 필요한 캡처 자료를 정리하는 가이드입니다.",
+    "keywords": "출금 전 문의 문구 작성법"
+  },
+  "/search-guides/official-address-impersonation-check.html": {
+    "title": "공식주소 사칭 확인 방법",
+    "description": "비슷한 도메인과 사칭 상담 계정을 피하기 위해 공식주소, 가입코드, 상담 계정을 함께 확인하는 방법입니다.",
+    "keywords": "공식주소 사칭 확인 방법"
+  },
+  "/search-guides/usdt-deposit-provider-check.html": {
+    "title": "USDT 입금 지원 업체 확인 가이드",
+    "description": "USDT 입금 지원 업체를 볼 때 네트워크, 수수료 지원, 환산 기준, 이벤트 적용 조건을 확인합니다.",
+    "keywords": "USDT 입금 지원 업체 확인"
   }
 }

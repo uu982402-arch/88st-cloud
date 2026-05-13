@@ -30,7 +30,17 @@
       "consultTelegram": "@seoa69",
       "autoBot": "@odds88st_bot",
       "notice": "가입 전 공식주소, 가입코드, 이벤트 조건표, 출금 기준을 먼저 확인해 주세요.",
-      "imageAlt": "여왕벌 로고"
+      "imageAlt": "여왕벌 로고",
+      "cleanName": "여왕벌",
+      "displayCode": "SEOA",
+      "category": "프리미엄 카지노 · 슬롯 · USDT",
+      "summary": "SEOA 코드와 USDT 수수료 지원, 쿠폰 지급 조건을 가입 전 확인하는 업체입니다.",
+      "checks": [
+        "가입코드 SEOA 입력 전 확인",
+        "USDT 입금 네트워크와 수수료 기준 확인",
+        "쿠폰 지급 조건과 사용 기한 확인",
+        "출금 전 조건표와 고객센터 답변 저장"
+      ]
     },
     {
       "slug": "skholdings",
@@ -46,7 +56,17 @@
       "imageUrl": "/assets/provider-media/sk-holdings-logo.png",
       "consultTelegram": "@seoa69",
       "autoBot": "@odds88st_bot",
-      "notice": "가입 전 공식주소, 가입코드, 이벤트 조건표, 출금 기준을 먼저 확인해 주세요."
+      "notice": "가입 전 공식주소, 가입코드, 이벤트 조건표, 출금 기준을 먼저 확인해 주세요.",
+      "cleanName": "SK 홀딩스",
+      "displayCode": "IRON888",
+      "category": "스포츠 · 미니게임 · 슬롯 이벤트",
+      "summary": "IRON888 코드와 신규 입금 플러스, 스포츠·미니게임·슬롯 이벤트 조건을 확인하는 업체입니다.",
+      "checks": [
+        "가입코드 IRON888 적용 여부 확인",
+        "스포츠/미니게임/슬롯 이벤트 구분 확인",
+        "신규 입금 플러스 조건과 롤링 기준 확인",
+        "주간 페이백·룰렛 쿠폰 중복 여부 확인"
+      ]
     },
     {
       "slug": "anybet",
@@ -62,7 +82,17 @@
       "imageUrl": "/assets/provider-media/anybet-logo.png",
       "consultTelegram": "@seoa69",
       "autoBot": "@odds88st_bot",
-      "notice": "가입 전 공식주소, 가입코드, 이벤트 조건표, 출금 기준을 먼저 확인해 주세요."
+      "notice": "가입 전 공식주소, 가입코드, 이벤트 조건표, 출금 기준을 먼저 확인해 주세요.",
+      "cleanName": "ANY BET",
+      "displayCode": "SEOA",
+      "category": "원화 · 테더 · 스포츠 · 슬롯",
+      "summary": "SEOA 코드와 원화/테더 입금 이벤트, 스포츠·슬롯 조건을 구분해서 확인하는 업체입니다.",
+      "checks": [
+        "SEOA 코드 입력 전 확인",
+        "원화와 테더 이벤트 조건 차이 확인",
+        "스포츠와 슬롯 혜택률 구분 확인",
+        "출금 전 롤링과 최대 지급 한도 확인"
+      ]
     },
     {
       "slug": "udt",
@@ -79,7 +109,17 @@
       "consultTelegram": "@seoa69",
       "autoBot": "@odds88st_bot",
       "notice": "가입 전 공식주소, 가입코드, 이벤트 조건표, 출금 기준을 먼저 확인해 주세요.",
-      "imageAlt": "UDT 로고"
+      "imageAlt": "UDT 로고",
+      "cleanName": "UDT",
+      "displayCode": "SEOA",
+      "category": "스포츠 · 미니게임 · 슬롯",
+      "summary": "SEOA 코드와 슬롯 첫충/매충, 스포츠·미니게임 이벤트 조건을 확인하는 업체입니다.",
+      "checks": [
+        "SEOA 코드와 공식주소 확인",
+        "슬롯 첫충·매충 적용 게임 확인",
+        "스포츠·미니게임 이벤트 기준 구분",
+        "주간 페이백 조건과 출금 제한 확인"
+      ]
     },
     {
       "slug": "chess",
@@ -99,40 +139,50 @@
       "imageUrl": "/assets/provider-media/chess-logo.png",
       "consultTelegram": "@seoa69",
       "autoBot": "@odds88st_bot",
-      "notice": "가입 전 공식주소, 가입코드 SEOA, 이벤트 조건, USDT 입금 기준을 먼저 확인해 주세요."
+      "notice": "가입 전 공식주소, 가입코드 SEOA, 이벤트 조건, USDT 입금 기준을 먼저 확인해 주세요.",
+      "cleanName": "체스",
+      "displayCode": "SEOA",
+      "category": "BTI 스포츠 · 카지노 · 슬롯게임",
+      "summary": "SEOA 코드와 BTI 스포츠, 카지노&슬롯 콤프, 주간 페이백, USDT 입금 조건을 확인하는 업체입니다.",
+      "checks": [
+        "체스주소.com 공식주소 확인",
+        "SEOA 코드 입력 전 확인",
+        "입금 플러스·콤프·페이백 조건 확인",
+        "USDT 입금 지원과 VIP 전환 기준 확인"
+      ]
     }
   ],
   "flows": {
     "start": {
-      "message": "안녕하세요. 88ST 자동상담센터입니다. 가입보다 먼저 코드, 공식주소, 이벤트 조건, 출금 전 자료처럼 불안한 부분을 확인할 수 있습니다.",
+      "message": "필요한 것만 빠르게 확인하세요. 가입 전에는 코드, 공식주소, 이벤트 조건, 출금 전 자료를 먼저 보는 것이 가장 안전합니다.",
       "options": [
         {
-          "label": "가입 안내",
+          "label": "코드 확인",
           "next": "provider"
         },
         {
-          "label": "가입코드 확인",
-          "next": "provider"
-        },
-        {
-          "label": "상담 전 확인",
-          "next": "motive"
+          "label": "공식주소 확인",
+          "next": "official_address"
         },
         {
           "label": "이벤트 조건",
           "next": "event"
         },
         {
-          "label": "출금 전 확인",
+          "label": "출금 전 체크",
           "next": "payout"
         },
         {
-          "label": "스포츠 배당분석",
-          "next": "sports"
+          "label": "상담 전 확인",
+          "next": "motive"
         },
         {
-          "label": "코인 현물 분석",
-          "next": "coin"
+          "label": "문의 문구 만들기",
+          "next": "inquiry"
+        },
+        {
+          "label": "분석봇 안내",
+          "next": "sports"
         },
         {
           "label": "담당자 연결",
@@ -486,6 +536,27 @@
           "url": "https://t.me/seoa69"
         }
       ]
+    },
+    "inquiry": {
+      "title": "문의 문구 만들기",
+      "message": "업체명, 가입코드, 확인할 조건을 정리하면 상담이 빨라집니다. 문의 문구 생성기에서 복사 후 텔레그램으로 보내세요.",
+      "checks": [
+        "업체 선택",
+        "문의 유형 선택",
+        "추가 메모 입력",
+        "문구 복사",
+        "@seoa69 상담 이동"
+      ],
+      "links": [
+        {
+          "label": "문의 문구 생성기",
+          "url": "/tools/inquiry-builder/"
+        },
+        {
+          "label": "상담 이동",
+          "url": "https://t.me/seoa69"
+        }
+      ]
     }
   },
   "contexts": [
@@ -723,19 +794,19 @@
   ],
   "faqGroups": [
     {
-      "title": "상담 전 확인 FAQ",
+      "title": "상담 전 빠른 확인",
       "items": [
         {
-          "q": "상담은 언제 하는 게 좋나요?",
-          "a": "가입 전 코드·공식주소·이벤트 조건·출금 기준 중 하나라도 헷갈리면 진행 전에 확인하는 것이 좋습니다."
+          "q": "가입 전 무엇을 먼저 확인하나요?",
+          "a": "공식주소, 가입코드, 이벤트 조건, 출금 전 제한을 먼저 확인하세요."
         },
         {
-          "q": "가입 문의보다 어떤 질문이 더 좋은가요?",
-          "a": "가입 가능 여부보다 코드 입력, 이벤트 적용, 롤링, 출금 제한, 공식주소 확인처럼 구체적인 질문이 상담 속도를 높입니다."
+          "q": "코드 복사 후 바로 접속해도 되나요?",
+          "a": "가능하지만 이벤트 조건이 헷갈리면 업체 허브나 상담센터에서 먼저 확인하는 편이 좋습니다."
         },
         {
-          "q": "담당자가 없으면 어떻게 하나요?",
-          "a": "담당자 부재 시 @odds88st_bot에서 자동화 가입 안내와 스포츠 배당분석·코인 현물 분석 안내를 먼저 확인할 수 있습니다."
+          "q": "상담 문구는 어떻게 적나요?",
+          "a": "업체명, 가입코드, 확인할 이벤트명, 입금 방식, 궁금한 조건을 짧게 정리하면 됩니다."
         }
       ]
     },
