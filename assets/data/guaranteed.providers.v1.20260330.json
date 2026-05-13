@@ -16,7 +16,7 @@
       ],
       "tags": [],
       "pending": false,
-      "imageUrl": "/assets/provider-media/queenbee-logo-v13.png",
+      "imageUrl": "/assets/provider-media/queenbee-logo-transparent-v14.png",
       "imageAlt": "여왕벌 로고",
       "imagePosition": "center center",
       "imageScale": 1,
@@ -33,6 +33,48 @@
           ]
         }
       ]
+    },
+    {
+      "slug": "skholdings",
+      "name": "❤️ SK 홀딩스 ❤️",
+      "theme": "blue",
+      "officialUrl": "https://snk-99.com/",
+      "officialDomain": "snk-99.com",
+      "code": "IRON888",
+      "oneLine": "",
+      "benefits": [
+        "스포츠 첫 충전 10%",
+        "미니게임 첫 충전 10% · 슬롯 첫 충전 20%",
+        "신규 입금 플러스 · 주간 페이백 · 룰렛 쿠폰"
+      ],
+      "tags": [],
+      "imageUrl": "/assets/provider-media/sk-holdings-logo.png",
+      "imageAlt": "SK 홀딩스 로고",
+      "pending": false,
+      "imagePosition": "center center",
+      "imageScale": 1.0,
+      "imageKind": "logo",
+      "imagePadding": "12px 18px",
+      "modalBenefitTitle": "❤️ SK 홀딩스 ❤️ 핵심 혜택",
+      "modalBenefitGroups": [
+        {
+          "title": "입금·충전",
+          "items": [
+            "신규 입금 플러스",
+            "스포츠·미니게임 첫 10% · 매 5%",
+            "슬롯 첫 20% · 매 10%"
+          ]
+        },
+        {
+          "title": "이벤트",
+          "items": [
+            "VIP 충전 이벤트",
+            "주간 페이백",
+            "출석체크·지인추천 이벤트"
+          ]
+        }
+      ],
+      "summary": "SK 홀딩스 IRON888 가입코드와 스포츠·미니게임·슬롯 이벤트를 정리한 카드입니다."
     },
     {
       "slug": "anybet",
@@ -82,12 +124,12 @@
       ],
       "tags": [],
       "pending": false,
-      "imageUrl": "/assets/provider-media/udt-logo.webp",
+      "imageUrl": "/assets/provider-media/udt-logo-transparent-v14.png",
       "imageAlt": "UDT 로고",
       "imagePosition": "center center",
-      "imageScale": 1.0,
+      "imageScale": 1,
       "imageKind": "logo",
-      "imagePadding": "6px 10px",
+      "imagePadding": "10px 14px",
       "modalBenefitTitle": "UDT 핵심 혜택",
       "modalBenefitGroups": [
         {
@@ -99,48 +141,6 @@
           ]
         }
       ]
-    },
-    {
-      "slug": "skholdings",
-      "name": "❤️ SK 홀딩스 ❤️",
-      "theme": "blue",
-      "officialUrl": "https://snk-99.com/",
-      "officialDomain": "snk-99.com",
-      "code": "IRON888",
-      "oneLine": "",
-      "benefits": [
-        "스포츠 첫 충전 10%",
-        "미니게임 첫 충전 10% · 슬롯 첫 충전 20%",
-        "신규 입금 플러스 · 주간 페이백 · 룰렛 쿠폰"
-      ],
-      "tags": [],
-      "imageUrl": "/assets/provider-media/sk-holdings-logo.png",
-      "imageAlt": "SK 홀딩스 로고",
-      "pending": false,
-      "imagePosition": "center center",
-      "imageScale": 1.0,
-      "imageKind": "logo",
-      "imagePadding": "12px 18px",
-      "modalBenefitTitle": "❤️ SK 홀딩스 ❤️ 핵심 혜택",
-      "modalBenefitGroups": [
-        {
-          "title": "입금·충전",
-          "items": [
-            "신규 입금 플러스",
-            "스포츠·미니게임 첫 10% · 매 5%",
-            "슬롯 첫 20% · 매 10%"
-          ]
-        },
-        {
-          "title": "이벤트",
-          "items": [
-            "VIP 충전 이벤트",
-            "주간 페이백",
-            "출석체크·지인추천 이벤트"
-          ]
-        }
-      ],
-      "summary": "SK 홀딩스 IRON888 가입코드와 스포츠·미니게임·슬롯 이벤트를 정리한 카드입니다."
     },
     {
       "slug": "chess",

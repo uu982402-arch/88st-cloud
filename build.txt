@@ -1,4 +1,6 @@
-queenbee-logo-replace-v13-20260505
-source=88st-cloud-guaranteed-gateway-v12-full-20260505
+provider-order-transparent-v14-20260505
+source=88st-cloud-queenbee-logo-v13-full-20260505
 updated=2026-05-05
-asset=queenbee-logo-v13.png
+order=queenbee,skholdings,anybet,udt,chess
+transparent=queenbee,udt
+layout=guaranteed_2_columns_compact
