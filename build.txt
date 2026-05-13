@@ -1,6 +1,4 @@
-provider-order-transparent-v14-20260505
-source=88st-cloud-queenbee-logo-v13-full-20260505
+guaranteed-hero-compact-v15-20260505
+source=88st-cloud-provider-order-transparent-v14-full-20260505
 updated=2026-05-05
-order=queenbee,skholdings,anybet,udt,chess
-transparent=queenbee,udt
-layout=guaranteed_2_columns_compact
+fix=shorten_guaranteed_top_title
