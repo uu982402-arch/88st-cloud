@@ -1,4 +1,4 @@
-blog-provider-hubs-v11-20260505
-source=88st-cloud-home-blog-uiux-v10-full-20260505
+queenbee-logo-replace-v13-20260505
+source=88st-cloud-guaranteed-gateway-v12-full-20260505
 updated=2026-05-05
-fix=blog_bottom_all_provider_hubs
+asset=queenbee-logo-v13.png
