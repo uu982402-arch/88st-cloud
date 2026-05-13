@@ -26,10 +26,11 @@
         "프리미엄 룰렛 쿠폰 지급",
         "공식주소 확인 후 코드 복사"
       ],
-      "imageUrl": "/assets/provider-media/queenbee-logo.svg",
+      "imageUrl": "/assets/provider-media/queenbee-logo-v13.png",
       "consultTelegram": "@seoa69",
       "autoBot": "@odds88st_bot",
-      "notice": "가입 전 공식주소, 가입코드, 이벤트 조건표, 출금 기준을 먼저 확인해 주세요."
+      "notice": "가입 전 공식주소, 가입코드, 이벤트 조건표, 출금 기준을 먼저 확인해 주세요.",
+      "imageAlt": "여왕벌 로고"
     },
     {
       "slug": "anybet",
