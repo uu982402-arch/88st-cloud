@@ -185,14 +185,14 @@
     const launcher = document.createElement('button');
     launcher.type = 'button';
     launcher.className = 'auto-consult-launcher';
-    launcher.textContent = '자동상담';
+    launcher.innerHTML = '<span class="auto-consult-moon" aria-hidden="true">☾</span><span class="auto-consult-launch-copy"><strong>상담센터</strong><small>코드·조건 확인</small></span>'; launcher.setAttribute('aria-label','88ST 상담센터 열기');
 
     const panel = document.createElement('section');
     panel.className = 'auto-consult-panel';
     panel.setAttribute('aria-label', '88ST 자동상담센터');
     panel.innerHTML = `
       <div class="auto-consult-head">
-        <div><strong>88ST 자동상담센터</strong><span>가입 안내 · 코드 확인 · 이벤트 조건 · 분석봇 연결</span></div>
+        <div><strong>88ST 상담센터</strong><span>코드 · 공식주소 · 이벤트 조건 · 출금 전 확인</span></div>
         <button type="button" class="auto-consult-close" aria-label="상담창 닫기">×</button>
       </div>
       <div class="auto-consult-body"></div>

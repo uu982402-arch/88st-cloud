@@ -1,5 +1,5 @@
 (() => {
-  const FALLBACK = '/img/logo.png';
+  const FALLBACK = '/img/logo-v22.png';
   const mark = (img) => {
     if (!img || img.dataset.imageGuarded === '1') return;
     img.dataset.imageGuarded = '1';
