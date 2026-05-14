@@ -126,7 +126,7 @@ img.is-image-fallback{
 /* header logo cache fix v19 */
 .site-header .brand img.brand-logo,
 img.brand-logo{
-  content:url("/img/logo-v22.png");
+  content:url("/img/logo-v24.png");
   width:118px !important;
   height:auto !important;
   max-width:118px !important;
@@ -135,7 +135,7 @@ img.brand-logo{
   border-radius:0 !important;
 }
 .gateway-brand img{
-  content:url("/img/logo-v22.png");
+  content:url("/img/logo-v24.png");
   width:118px !important;
   height:auto !important;
   max-width:118px !important;
