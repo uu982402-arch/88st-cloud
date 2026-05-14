@@ -41,181 +41,23 @@
 .hub-promo-modal__ghost:hover{border-color:#cbd5e1;background:#f8fafc}
 body.is-hub-promo-open{overflow:hidden}
 body[data-community-page="guaranteed"] .hub-promo-modal__head strong{font-size:clamp(20px,2.4vw,26px)}
-@media (max-width: 860px){
-  .hub-promo-modal__sheet{width:min(700px,100%)}
-  .hub-promo-card__title{font-size:22px}
+@media (max-width: 860px){ .hub-promo-modal__sheet{width:min(700px,100%)} .hub-promo-card__title{font-size:22px}
 }
-@media (max-width: 768px){
-  .hub-promo-modal{align-items:flex-end;padding:0}
-  .hub-promo-modal__sheet,.hub-promo-modal.is-soft .hub-promo-modal__sheet{width:100%;max-height:84vh;border-radius:22px 22px 0 0;border-bottom:0}
-  .hub-promo-modal__head{padding:18px 16px 14px}
-  .hub-promo-modal__body{padding:14px 16px 8px}
-  .hub-promo-modal__foot{padding:14px 16px 20px;align-items:flex-start;flex-direction:column}
-  .hub-promo-grid{grid-template-columns:1fr;gap:12px}
-  .hub-promo-card{border-radius:20px}
-  .hub-promo-card__media{min-height:118px}
-  .hub-promo-card__title{font-size:21px}
-  .hub-promo-modal__hint{font-size:12px}
-  .hub-promo-modal__foot-actions{width:100%}
-  .hub-promo-modal__ghost{flex:1 1 auto;min-width:calc(50% - 6px)}
+@media (max-width: 768px){ .hub-promo-modal{align-items:flex-end;padding:0} .hub-promo-modal__sheet,.hub-promo-modal.is-soft .hub-promo-modal__sheet{width:100%;max-height:84vh;border-radius:22px 22px 0 0;border-bottom:0} .hub-promo-modal__head{padding:18px 16px 14px} .hub-promo-modal__body{padding:14px 16px 8px} .hub-promo-modal__foot{padding:14px 16px 20px;align-items:flex-start;flex-direction:column} .hub-promo-grid{grid-template-columns:1fr;gap:12px} .hub-promo-card{border-radius:20px} .hub-promo-card__media{min-height:118px} .hub-promo-card__title{font-size:21px} .hub-promo-modal__hint{font-size:12px} .hub-promo-modal__foot-actions{width:100%} .hub-promo-modal__ghost{flex:1 1 auto;min-width:calc(50% - 6px)}
 }
-@media (max-width: 768px){
-  .hub-promo-modal__sheet,
-  .hub-promo-modal.is-soft .hub-promo-modal__sheet{
-    max-height:82vh;
-    border-radius:20px 20px 0 0;
-  }
-  .hub-promo-modal__head{
-    gap:12px;
-    padding:16px 14px 12px;
-  }
-  .hub-promo-modal__eyebrow{
-    min-height:24px;
-    padding:0 9px;
-    font-size:11px;
-  }
-  .hub-promo-modal__head strong{
-    margin-top:8px;
-    font-size:clamp(18px,5.6vw,22px);
-  }
-  .hub-promo-modal__body{
-    padding:12px 14px 8px;
-  }
-  .hub-promo-grid{
-    gap:10px;
-  }
-  .hub-promo-card{
-    flex-direction:row;
-    border-radius:18px;
-  }
-  .hub-promo-card__media{
-    flex:0 0 40%;
-    width:40%;
-    aspect-ratio:auto;
-    min-height:108px;
-    padding:10px 12px;
-  }
-  .hub-promo-card__body{
-    flex:1 1 auto;
-    min-width:0;
-    gap:8px;
-    padding:12px;
-  }
-  .hub-promo-card__top{
-    gap:4px;
-  }
-  .hub-promo-card__title{
-    font-size:18px;
-  }
-  .hub-promo-card__benefits{
-    gap:8px;
-    padding:10px;
-    border-radius:16px;
-  }
-  .hub-promo-card__benefit-title{
-    font-size:12px;
-  }
-  .hub-promo-card__benefit-group{
-    gap:6px;
-  }
-  .hub-promo-card__benefit-group-title{
-    min-height:24px;
-    padding:0 8px;
-    font-size:10px;
-  }
-  .hub-promo-card__benefit-list{
-    padding-left:16px;
-    gap:5px;
-    font-size:11px;
-    line-height:1.42;
-  }
-  .hub-promo-card__code-row{
-    grid-template-columns:62px minmax(0,1fr);
-    gap:8px;
-  }
-  .hub-promo-card__code-label,
-  .hub-promo-card__code-value,
-  .hub-promo-btn{
-    min-height:38px;
-  }
-  .hub-promo-card__code-label{
-    font-size:12px;
-    border-radius:12px;
-  }
-  .hub-promo-card__code-value{
-    padding:0 12px;
-    font-size:14px;
-    border-radius:12px;
-  }
-  .hub-promo-btn{
-    padding:0 10px;
-    font-size:13px;
-    border-radius:12px;
-  }
-  .hub-promo-btn--inline{
-    grid-column:1 / -1;
-    min-width:0;
-  }
-  .hub-promo-modal__foot{
-    gap:10px;
-    padding:12px 14px 16px;
-  }
-  .hub-promo-modal__hint{
-    font-size:11px;
-    line-height:1.4;
-  }
-  .hub-promo-modal__foot-actions{
-    width:100%;
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:8px;
-  }
-  .hub-promo-modal__ghost{
-    width:100%;
-    min-width:0;
-    min-height:40px;
-    border-radius:999px;
-  }
+@media (max-width: 768px){ .hub-promo-modal__sheet, .hub-promo-modal.is-soft .hub-promo-modal__sheet{ max-height:82vh; border-radius:20px 20px 0 0; } .hub-promo-modal__head{ gap:12px; padding:16px 14px 12px; } .hub-promo-modal__eyebrow{ min-height:24px; padding:0 9px; font-size:11px; } .hub-promo-modal__head strong{ margin-top:8px; font-size:clamp(18px,5.6vw,22px); } .hub-promo-modal__body{ padding:12px 14px 8px; } .hub-promo-grid{ gap:10px; } .hub-promo-card{ flex-direction:row; border-radius:18px; } .hub-promo-card__media{ flex:0 0 40%; width:40%; aspect-ratio:auto; min-height:108px; padding:10px 12px; } .hub-promo-card__body{ flex:1 1 auto; min-width:0; gap:8px; padding:12px; } .hub-promo-card__top{ gap:4px; } .hub-promo-card__title{ font-size:18px; } .hub-promo-card__benefits{ gap:8px; padding:10px; border-radius:16px; } .hub-promo-card__benefit-title{ font-size:12px; } .hub-promo-card__benefit-group{ gap:6px; } .hub-promo-card__benefit-group-title{ min-height:24px; padding:0 8px; font-size:10px; } .hub-promo-card__benefit-list{ padding-left:16px; gap:5px; font-size:11px; line-height:1.42; } .hub-promo-card__code-row{ grid-template-columns:62px minmax(0,1fr); gap:8px; } .hub-promo-card__code-label, .hub-promo-card__code-value, .hub-promo-btn{ min-height:38px; } .hub-promo-card__code-label{ font-size:12px; border-radius:12px; } .hub-promo-card__code-value{ padding:0 12px; font-size:14px; border-radius:12px; } .hub-promo-btn{ padding:0 10px; font-size:13px; border-radius:12px; } .hub-promo-btn--inline{ grid-column:1 / -1; min-width:0; } .hub-promo-modal__foot{ gap:10px; padding:12px 14px 16px; } .hub-promo-modal__hint{ font-size:11px; line-height:1.4; } .hub-promo-modal__foot-actions{ width:100%; display:grid; grid-template-columns:1fr 1fr; gap:8px; } .hub-promo-modal__ghost{ width:100%; min-width:0; min-height:40px; border-radius:999px; }
 }
-@media (max-width: 430px){
-  .hub-promo-modal__sheet,
-  .hub-promo-modal.is-soft .hub-promo-modal__sheet{
-    max-height:80vh;
-  }
-  .hub-promo-card__media{
-    flex-basis:38%;
-    width:38%;
-    min-height:102px;
-  }
-  .hub-promo-card__body{
-    padding:11px;
-  }
-  .hub-promo-card__title{
-    font-size:17px;
-  }
-  .hub-promo-card__benefit-list{
-    font-size:10.5px;
-  }
-}
-
-/* 2026-05-03 SK Holdings provider refresh */
+@media (max-width: 430px){ .hub-promo-modal__sheet, .hub-promo-modal.is-soft .hub-promo-modal__sheet{ max-height:80vh; } .hub-promo-card__media{ flex-basis:38%; width:38%; min-height:102px; } .hub-promo-card__body{ padding:11px; } .hub-promo-card__title{ font-size:17px; } .hub-promo-card__benefit-list{ font-size:10.5px; }
+} /* 2026-05-03 SK Holdings provider refresh */
 .hub-promo-card[data-slug="skholdings"] .hub-promo-card__media{background:linear-gradient(135deg,#f8fafc,#dbeafe 50%,#bfdbfe);border:1px solid rgba(37,99,235,.18)}
 .hub-promo-card__mark{display:grid;place-items:center;width:100%;height:100%;min-height:72px;border-radius:18px;background:linear-gradient(180deg,rgba(255,255,255,.9),rgba(239,246,255,.98));color:#1e3a8a;font-weight:900;font-size:28px;letter-spacing:.08em;box-shadow:inset 0 0 0 1px rgba(37,99,235,.16)}
 .hub-promo-modal__body .hub-promo-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-@media(max-width:720px){.hub-promo-modal__body .hub-promo-grid{grid-template-columns:1fr}.hub-promo-card__mark{min-height:64px}}
-
-
-/* 2026-05-03 SK Holdings modal logo + navy media refresh */
+@media(max-width:720px){.hub-promo-modal__body .hub-promo-grid{grid-template-columns:1fr}.hub-promo-card__mark{min-height:64px}} /* 2026-05-03 SK Holdings modal logo + navy media refresh */
 .hub-promo-card .hub-promo-card__media,
 .hub-promo-card[data-slug="queenbee"] .hub-promo-card__media,
 .hub-promo-card[data-slug="anybet"] .hub-promo-card__media,
 .hub-promo-card[data-slug="udt"] .hub-promo-card__media,
-.hub-promo-card[data-slug="skholdings"] .hub-promo-card__media{
-  background:linear-gradient(135deg,#10233f 0%,#163155 58%,#0b1b33 100%) !important;
-  border:1px solid rgba(148,163,184,.22);
+.hub-promo-card[data-slug="skholdings"] .hub-promo-card__media{ background:linear-gradient(135deg,#10233f 0%,#163155 58%,#0b1b33 100%) !important; border:1px solid rgba(148,163,184,.22);
 }
-.hub-promo-card .hub-promo-card__media img{
-  object-fit:contain;
-  object-position:center center;
-  filter:drop-shadow(0 12px 22px rgba(0,0,0,.28));
+.hub-promo-card .hub-promo-card__media img{ object-fit:contain; object-position:center center; filter:drop-shadow(0 12px 22px rgba(0,0,0,.28));
 }

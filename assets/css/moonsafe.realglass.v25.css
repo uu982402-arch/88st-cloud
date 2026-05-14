@@ -1,27 +1,12 @@
 
-/* V25 RealGlass Polish
-   Goal: reduce cartoon feel, increase realistic glass depth, tune layout ratio.
+/* V25 RealGlass Polish Goal: reduce cartoon feel, increase realistic glass depth, tune layout ratio.
 */
-:root{
-  --rg-glass:rgba(8,14,24,.46);
-  --rg-glass-strong:rgba(8,14,24,.68);
-  --rg-frost:rgba(255,255,255,.065);
-  --rg-line:rgba(236,194,107,.20);
-  --rg-line-soft:rgba(255,255,255,.13);
-  --rg-blur:24px;
+:root{ --rg-glass:rgba(8,14,24,.46); --rg-glass-strong:rgba(8,14,24,.68); --rg-frost:rgba(255,255,255,.065); --rg-line:rgba(236,194,107,.20); --rg-line-soft:rgba(255,255,255,.13); --rg-blur:24px;
+} /* make background feel photographic/atmospheric instead of illustration-heavy */
+body::before{ opacity:.20!important; filter:saturate(.72) contrast(.94) brightness(.82) blur(.2px)!important;
 }
-
-/* make background feel photographic/atmospheric instead of illustration-heavy */
-body::before{
-  opacity:.20!important;
-  filter:saturate(.72) contrast(.94) brightness(.82) blur(.2px)!important;
-}
-body::after{
-  opacity:.78!important;
-  filter:blur(34px)!important;
-}
-
-/* stronger glass: cards become frosted surfaces, images become subtle texture */
+body::after{ opacity:.78!important; filter:blur(34px)!important;
+} /* stronger glass: cards become frosted surfaces, images become subtle texture */
 .moon-info-card,
 .moon-tool-card,
 .moon-section,
@@ -45,294 +30,123 @@ section[class*="card"],
 article[class*="card"],
 div[class*="card"],
 div[class*="panel"],
-div[class*="box"]{
-  background-color:var(--rg-glass)!important;
-  background-blend-mode:soft-light,normal!important;
-  backdrop-filter:blur(var(--rg-blur)) saturate(1.18)!important;
-  -webkit-backdrop-filter:blur(var(--rg-blur)) saturate(1.18)!important;
-  border-color:var(--rg-line-soft)!important;
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.10),
-    inset 0 -1px 0 rgba(0,0,0,.26),
-    0 26px 80px rgba(0,0,0,.48)!important;
-}
-
-/* tone down card image backgrounds so they are not cartoon-like */
+div[class*="box"]{ background-color:var(--rg-glass)!important; background-blend-mode:soft-light,normal!important; backdrop-filter:blur(var(--rg-blur)) saturate(1.18)!important; -webkit-backdrop-filter:blur(var(--rg-blur)) saturate(1.18)!important; border-color:var(--rg-line-soft)!important; box-shadow: inset 0 1px 0 rgba(255,255,255,.10), inset 0 -1px 0 rgba(0,0,0,.26), 0 26px 80px rgba(0,0,0,.48)!important;
+} /* tone down card image backgrounds so they are not cartoon-like */
 .moon-info-card,
-.moon-tool-card{
-  background:
-    linear-gradient(180deg,rgba(9,16,28,.58),rgba(5,10,18,.88)),
-    var(--card-img) center/cover no-repeat!important;
+.moon-tool-card{ background: linear-gradient(180deg,rgba(9,16,28,.58),rgba(5,10,18,.88)), var(--card-img) center/cover no-repeat!important;
 }
 .moon-info-card::before,
-.moon-tool-card::before{
-  background:
-    linear-gradient(180deg,rgba(2,6,11,.18),rgba(2,6,11,.72)),
-    radial-gradient(circle at 72% 12%,rgba(255,235,188,.10),transparent 28%)!important;
+.moon-tool-card::before{ background: linear-gradient(180deg,rgba(2,6,11,.18),rgba(2,6,11,.72)), radial-gradient(circle at 72% 12%,rgba(255,235,188,.10),transparent 28%)!important;
 }
 .moon-info-card::after,
 .moon-tool-card::after,
 .moon-provider-card::after,
 .moon-search-panel::after,
-.moon-side-tools::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  pointer-events:none;
-  border-radius:inherit;
-  background:
-    linear-gradient(135deg,rgba(255,255,255,.10),transparent 28%,transparent 70%,rgba(255,255,255,.035)),
-    radial-gradient(circle at 10% 0%,rgba(255,255,255,.07),transparent 28%);
-  opacity:.72;
+.moon-side-tools::after{ content:""; position:absolute; inset:0; pointer-events:none; border-radius:inherit; background: linear-gradient(135deg,rgba(255,255,255,.10),transparent 28%,transparent 70%,rgba(255,255,255,.035)), radial-gradient(circle at 10% 0%,rgba(255,255,255,.07),transparent 28%); opacity:.72;
 }
 .moon-info-card,
 .moon-tool-card,
 .moon-provider-card,
 .moon-search-panel,
-.moon-side-tools{
-  position:relative;
-  overflow:hidden;
+.moon-side-tools{ position:relative; overflow:hidden;
 }
 .moon-info-card>*,
 .moon-tool-card>*,
 .moon-provider-card>*,
 .moon-search-panel>*,
-.moon-side-tools>*{
-  position:relative;
-  z-index:1;
-}
-
-/* more dashboard-like ratio */
+.moon-side-tools>*{ position:relative; z-index:1;
+} /* more dashboard-like ratio */
 .moon-dashboard,
-.moon-page-grid{
-  grid-template-columns:minmax(0,1fr) 390px!important;
-  gap:20px!important;
+.moon-page-grid{ grid-template-columns:minmax(0,1fr) 390px!important; gap:20px!important;
 }
-.moon-main{
-  gap:16px!important;
+.moon-main{ gap:16px!important;
 }
-.moon-hero{
-  min-height:370px!important;
+.moon-hero{ min-height:370px!important;
 }
 .moon-hero__copy,
-.moon-compact-hero{
-  padding:50px 66px!important;
+.moon-compact-hero{ padding:50px 66px!important;
 }
 .moon-hero h1,
-.moon-compact-hero h1{
-  font-size:clamp(38px,4.15vw,66px)!important;
-  line-height:1.10!important;
+.moon-compact-hero h1{ font-size:clamp(38px,4.15vw,66px)!important; line-height:1.10!important;
 }
 .moon-hero p,
-.moon-compact-hero p{
-  font-size:17px!important;
-  line-height:1.66!important;
+.moon-compact-hero p{ font-size:17px!important; line-height:1.66!important;
 }
-.moon-card-grid{
-  grid-template-columns:repeat(4,minmax(0,1fr))!important;
-  gap:12px!important;
+.moon-card-grid{ grid-template-columns:repeat(4,minmax(0,1fr))!important; gap:12px!important;
 }
-.moon-info-card{
-  min-height:260px!important;
-  padding:24px 21px 18px!important;
+.moon-info-card{ min-height:260px!important; padding:24px 21px 18px!important;
 }
-.moon-info-card h3{
-  font-size:21px!important;
+.moon-info-card h3{ font-size:21px!important;
 }
-.moon-info-card p{
-  font-size:14px!important;
+.moon-info-card p{ font-size:14px!important;
 }
-.moon-info-card li{
-  font-size:13px!important;
+.moon-info-card li{ font-size:13px!important;
+} /* main right provider strip */
+.moon-provider-strip-panel{ padding:18px!important;
 }
-
-/* main right provider strip */
-.moon-provider-strip-panel{
-  padding:18px!important;
+.moon-section-head--compact{ margin-bottom:12px!important;
 }
-.moon-section-head--compact{
-  margin-bottom:12px!important;
+.moon-section-head--compact h2{ font-size:21px!important;
 }
-.moon-section-head--compact h2{
-  font-size:21px!important;
+.moon-provider-chip-row{ display:grid; gap:9px;
 }
-.moon-provider-chip-row{
-  display:grid;
-  gap:9px;
+.moon-provider-chip{ display:grid; grid-template-columns:54px 1fr; align-items:center; gap:10px; min-height:62px; padding:9px 10px; text-decoration:none; border:1px solid rgba(255,255,255,.12); border-radius:14px; background:rgba(255,255,255,.045); color:var(--m24-soft)!important; box-shadow:inset 0 1px 0 rgba(255,255,255,.07); backdrop-filter:blur(12px);
 }
-.moon-provider-chip{
-  display:grid;
-  grid-template-columns:54px 1fr;
-  align-items:center;
-  gap:10px;
-  min-height:62px;
-  padding:9px 10px;
-  text-decoration:none;
-  border:1px solid rgba(255,255,255,.12);
-  border-radius:14px;
-  background:rgba(255,255,255,.045);
-  color:var(--m24-soft)!important;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.07);
-  backdrop-filter:blur(12px);
+.moon-provider-chip:hover{ border-color:rgba(236,194,107,.32); background:rgba(236,194,107,.07); transform:translateY(-1px);
 }
-.moon-provider-chip:hover{
-  border-color:rgba(236,194,107,.32);
-  background:rgba(236,194,107,.07);
-  transform:translateY(-1px);
+.moon-provider-chip img{ width:54px; max-height:38px; object-fit:contain; background:transparent!important;
 }
-.moon-provider-chip img{
-  width:54px;
-  max-height:38px;
-  object-fit:contain;
-  background:transparent!important;
+.moon-provider-chip b{ display:block; color:var(--m24-text)!important; font-size:14px; line-height:1.2;
 }
-.moon-provider-chip b{
-  display:block;
-  color:var(--m24-text)!important;
-  font-size:14px;
-  line-height:1.2;
+.moon-provider-chip small{ display:block; margin-top:4px; color:var(--m24-muted)!important; font-size:11px; line-height:1.25; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
 }
-.moon-provider-chip small{
-  display:block;
-  margin-top:4px;
-  color:var(--m24-muted)!important;
-  font-size:11px;
-  line-height:1.25;
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
+.moon-panel-note{ margin:12px 2px 0!important; font-size:12px!important; color:var(--m24-muted)!important; line-height:1.48!important;
+} /* provider page proportion */
+.moon-provider-grid--gateway{ grid-template-columns:repeat(2,minmax(0,1fr))!important; gap:12px!important;
 }
-.moon-panel-note{
-  margin:12px 2px 0!important;
-  font-size:12px!important;
-  color:var(--m24-muted)!important;
-  line-height:1.48!important;
+.moon-provider-card{ min-height:156px!important; grid-template-columns:136px 1fr!important; background: linear-gradient(180deg,rgba(8,14,24,.60),rgba(4,8,14,.92)), url('/assets/img/v24/card-providers-v24.webp') center/cover no-repeat!important;
 }
-
-/* provider page proportion */
-.moon-provider-grid--gateway{
-  grid-template-columns:repeat(2,minmax(0,1fr))!important;
-  gap:12px!important;
+.moon-provider-card__logo{ padding:14px!important;
 }
-.moon-provider-card{
-  min-height:156px!important;
-  grid-template-columns:136px 1fr!important;
-  background:
-    linear-gradient(180deg,rgba(8,14,24,.60),rgba(4,8,14,.92)),
-    url('/assets/img/v24/card-providers-v24.webp') center/cover no-repeat!important;
+.moon-provider-card__logo img{ max-height:68px!important;
 }
-.moon-provider-card__logo{
-  padding:14px!important;
-}
-.moon-provider-card__logo img{
-  max-height:68px!important;
-}
-.moon-provider-card h3{
-  font-size:21px!important;
+.moon-provider-card h3{ font-size:21px!important;
 }
 .moon-code,
-.moon-domain{
-  min-height:39px!important;
+.moon-domain{ min-height:39px!important;
 }
 .moon-code b,
-.moon-domain b{
-  font-size:14px!important;
-}
-
-/* article/detail readability */
+.moon-domain b{ font-size:14px!important;
+} /* article/detail readability */
 .entry-article,
-body.moon-page:not(.moon-home):not(.moon-blog):not(.moon-tools):not(.moon-consult):not(.moon-guaranteed) main{
-  max-width:1080px!important;
+body.moon-page:not(.moon-home):not(.moon-blog):not(.moon-tools):not(.moon-consult):not(.moon-guaranteed) main{ max-width:1080px!important;
 }
-.entry-article{
-  padding:clamp(22px,3.2vw,42px)!important;
+.entry-article{ padding:clamp(22px,3.2vw,42px)!important;
 }
-.entry-article h1{
-  font-size:clamp(32px,4vw,52px)!important;
-  line-height:1.16!important;
+.entry-article h1{ font-size:clamp(32px,4vw,52px)!important; line-height:1.16!important;
 }
-.entry-article h2{
-  font-size:clamp(24px,3vw,34px)!important;
-  margin-top:34px!important;
+.entry-article h2{ font-size:clamp(24px,3vw,34px)!important; margin-top:34px!important;
 }
 .entry-article p,
-.entry-article li{
-  font-size:16px!important;
-  line-height:1.78!important;
-}
-
-/* buttons: less toy-like, more premium */
+.entry-article li{ font-size:16px!important; line-height:1.78!important;
+} /* buttons: less toy-like, more premium */
 .moon-primary,
 .moon-search button,
 .pro-btn--primary,
 button[type="submit"],
-.moon-domain{
-  background:
-    linear-gradient(180deg,rgba(255,231,185,.96),rgba(189,139,65,.96))!important;
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.45),
-    0 14px 34px rgba(236,194,107,.15)!important;
+.moon-domain{ background: linear-gradient(180deg,rgba(255,231,185,.96),rgba(189,139,65,.96))!important; box-shadow: inset 0 1px 0 rgba(255,255,255,.45), 0 14px 34px rgba(236,194,107,.15)!important;
 }
 .moon-ghost,
 .pro-btn:not(.pro-btn--primary),
-.moon-code{
-  background:rgba(255,255,255,.045)!important;
-  backdrop-filter:blur(14px)!important;
+.moon-code{ background:rgba(255,255,255,.045)!important; backdrop-filter:blur(14px)!important;
+} /* floating consult - stronger glass */
+.auto-consult-launcher{ backdrop-filter:blur(20px) saturate(1.2)!important; -webkit-backdrop-filter:blur(20px) saturate(1.2)!important;
 }
-
-/* floating consult - stronger glass */
-.auto-consult-launcher{
-  backdrop-filter:blur(20px) saturate(1.2)!important;
-  -webkit-backdrop-filter:blur(20px) saturate(1.2)!important;
+.auto-consult-panel{ backdrop-filter:blur(28px) saturate(1.22)!important; -webkit-backdrop-filter:blur(28px) saturate(1.22)!important; background: linear-gradient(180deg,rgba(12,20,34,.82),rgba(4,8,14,.94)), url('/assets/img/v24/card-consult-v24.webp') center/cover no-repeat!important; background-blend-mode:normal,soft-light!important;
+} /* mobile tuning */
+@media(max-width:1260px){ .moon-dashboard, .moon-page-grid{ grid-template-columns:1fr!important; } .moon-provider-chip-row{ grid-template-columns:repeat(5,minmax(150px,1fr)); overflow-x:auto; padding-bottom:4px; } .moon-provider-chip{ min-width:150px; }
 }
-.auto-consult-panel{
-  backdrop-filter:blur(28px) saturate(1.22)!important;
-  -webkit-backdrop-filter:blur(28px) saturate(1.22)!important;
-  background:
-    linear-gradient(180deg,rgba(12,20,34,.82),rgba(4,8,14,.94)),
-    url('/assets/img/v24/card-consult-v24.webp') center/cover no-repeat!important;
-  background-blend-mode:normal,soft-light!important;
+@media(max-width:900px){ .moon-hero__copy, .moon-compact-hero{ padding:34px 24px!important; } .moon-card-grid, .moon-tool-grid, .moon-consult-grid, .moon-provider-grid--gateway{ grid-template-columns:1fr!important; } .moon-info-card{ min-height:230px!important; } .moon-provider-card{ grid-template-columns:112px 1fr!important; }
 }
-
-/* mobile tuning */
-@media(max-width:1260px){
-  .moon-dashboard,
-  .moon-page-grid{
-    grid-template-columns:1fr!important;
-  }
-  .moon-provider-chip-row{
-    grid-template-columns:repeat(5,minmax(150px,1fr));
-    overflow-x:auto;
-    padding-bottom:4px;
-  }
-  .moon-provider-chip{
-    min-width:150px;
-  }
-}
-@media(max-width:900px){
-  .moon-hero__copy,
-  .moon-compact-hero{
-    padding:34px 24px!important;
-  }
-  .moon-card-grid,
-  .moon-tool-grid,
-  .moon-consult-grid,
-  .moon-provider-grid--gateway{
-    grid-template-columns:1fr!important;
-  }
-  .moon-info-card{
-    min-height:230px!important;
-  }
-  .moon-provider-card{
-    grid-template-columns:112px 1fr!important;
-  }
-}
-@media(max-width:430px){
-  .moon-provider-chip-row{
-    grid-template-columns:1fr;
-    overflow:visible;
-  }
-  .moon-provider-card{
-    grid-template-columns:1fr!important;
-  }
+@media(max-width:430px){ .moon-provider-chip-row{ grid-template-columns:1fr; overflow:visible; } .moon-provider-card{ grid-template-columns:1fr!important; }
 }

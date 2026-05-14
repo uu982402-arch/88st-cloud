@@ -8,10 +8,10 @@
       "description": "가입 안내, 이벤트 조건, 공식주소 확인이 필요할 때 연결하는 상담 계정입니다."
     },
     "automation": {
-      "label": "자동화 가입 안내 봇",
-      "id": "@odds88st_bot",
-      "url": "https://t.me/odds88st_bot",
-      "description": "담당자 부재 시 자동화 가입 안내를 받을 수 있고, 스포츠 배당분석 기능과 코인 현물 분석 기능도 함께 사용할 수 있는 봇입니다."
+      "label": "상담센터",
+      "id": "@seoa69",
+      "url": "https://t.me/seoa69",
+      "description": "담당자 부재 시 상담 안내를 받을 수 있고, 스포츠 배당분석 기능과 코인 현물 분석 기능도 함께 사용할 수 있는 봇입니다."
     }
   },
   "providers": [
@@ -28,7 +28,7 @@
       ],
       "imageUrl": "/assets/provider-media/queenbee-logo-clean-v22.png",
       "consultTelegram": "@seoa69",
-      "autoBot": "@odds88st_bot",
+      "autoBot": "@seoa69",
       "notice": "가입 전 공식주소, 가입코드, 이벤트 조건표, 출금 기준을 먼저 확인해 주세요.",
       "imageAlt": "여왕벌 로고",
       "cleanName": "여왕벌",
@@ -58,7 +58,7 @@
       ],
       "imageUrl": "/assets/provider-media/sk-holdings-logo.png",
       "consultTelegram": "@seoa69",
-      "autoBot": "@odds88st_bot",
+      "autoBot": "@seoa69",
       "notice": "가입 전 공식주소, 가입코드, 이벤트 조건표, 출금 기준을 먼저 확인해 주세요.",
       "cleanName": "SK 홀딩스",
       "displayCode": "IRON888",
@@ -84,7 +84,7 @@
       ],
       "imageUrl": "/assets/provider-media/anybet-logo.png",
       "consultTelegram": "@seoa69",
-      "autoBot": "@odds88st_bot",
+      "autoBot": "@seoa69",
       "notice": "가입 전 공식주소, 가입코드, 이벤트 조건표, 출금 기준을 먼저 확인해 주세요.",
       "cleanName": "ANY BET",
       "displayCode": "SEOA",
@@ -112,7 +112,7 @@
       ],
       "imageUrl": "/assets/provider-media/udt-logo-transparent-v14.png",
       "consultTelegram": "@seoa69",
-      "autoBot": "@odds88st_bot",
+      "autoBot": "@seoa69",
       "notice": "가입 전 공식주소, 가입코드, 이벤트 조건표, 출금 기준을 먼저 확인해 주세요.",
       "imageAlt": "UDT 로고",
       "cleanName": "UDT",
@@ -210,7 +210,7 @@
           "next": "inquiry"
         },
         {
-          "label": "분석봇 안내",
+          "label": "상담센터 안내",
           "next": "sports"
         },
         {
@@ -264,7 +264,7 @@
     },
     "sports": {
       "title": "스포츠 배당분석 안내",
-      "message": "스포츠 배당분석은 @odds88st_bot에서 안내받을 수 있습니다. 경기 결과를 보장하는 기능이 아니라, 배당·마진·흐름을 확인하는 보조 분석 기능으로 보는 것이 좋습니다.",
+      "message": "스포츠 배당분석은 @seoa69에서 안내받을 수 있습니다. 경기 결과를 보장하는 기능이 아니라, 배당·마진·흐름을 확인하는 보조 분석 기능으로 보는 것이 좋습니다.",
       "checks": [
         "야구: 선발·불펜·우천 변수",
         "축구: 라인업·부상·무승부 변수",
@@ -273,8 +273,8 @@
       ],
       "links": [
         {
-          "label": "분석봇 열기",
-          "url": "https://t.me/odds88st_bot"
+          "label": "상담센터 열기",
+          "url": "https://t.me/seoa69"
         },
         {
           "label": "스포츠토토 글 보기",
@@ -284,7 +284,7 @@
     },
     "coin": {
       "title": "코인 현물 분석 안내",
-      "message": "코인 현물 분석 기능은 @odds88st_bot에서 안내받을 수 있습니다. 유료 기능으로 운영될 수 있으며, 투자 수익을 보장하지 않습니다. 이용 전 기능 범위와 안내 조건을 먼저 확인해 주세요.",
+      "message": "코인 현물 분석 기능은 @seoa69에서 안내받을 수 있습니다. 유료 기능으로 운영될 수 있으며, 투자 수익을 보장하지 않습니다. 이용 전 기능 범위와 안내 조건을 먼저 확인해 주세요.",
       "checks": [
         "현물 기준 분석 여부 확인",
         "유료 기능 안내 확인",
@@ -293,22 +293,22 @@
       ],
       "links": [
         {
-          "label": "분석봇 열기",
-          "url": "https://t.me/odds88st_bot"
+          "label": "상담센터 열기",
+          "url": "https://t.me/seoa69"
         }
       ]
     },
     "human": {
       "title": "담당자 연결",
-      "message": "직접 상담이 필요하면 @seoa69로 문의해 주세요. 담당자 부재 시에는 @odds88st_bot에서 자동화 가입 안내와 분석봇 안내를 먼저 받을 수 있습니다.",
+      "message": "직접 상담이 필요하면 @seoa69로 문의해 주세요. 담당자 부재 시에는 @seoa69에서 상담 및 조건 확인 안내를 먼저 받을 수 있습니다.",
       "links": [
         {
           "label": "@seoa69 상담",
           "url": "https://t.me/seoa69"
         },
         {
-          "label": "@odds88st_bot 자동상담",
-          "url": "https://t.me/odds88st_bot"
+          "label": "@seoa69 자동상담",
+          "url": "https://t.me/seoa69"
         }
       ]
     },
@@ -517,9 +517,9 @@
     },
     "auto_bot": {
       "title": "담당자 부재 시 자동상담 연결",
-      "message": "담당자가 바로 답하지 못할 때는 @odds88st_bot에서 자동화 가입 안내와 분석봇 안내를 먼저 확인할 수 있습니다.",
+      "message": "담당자가 바로 답하지 못할 때는 @seoa69에서 상담 및 조건 확인 안내를 먼저 확인할 수 있습니다.",
       "checks": [
-        "자동화 가입 안내 확인",
+        "상담 안내 확인",
         "스포츠 배당분석 안내 확인",
         "코인 현물 분석 기능 확인",
         "직접 상담 필요 항목 정리",
@@ -528,7 +528,7 @@
       "links": [
         {
           "label": "자세히 보기",
-          "url": "/consult-motives/auto-bot.html"
+          "url": "/consult-motives/consult.html"
         },
         {
           "label": "문의 문구 만들기",
@@ -615,7 +615,7 @@
         "queenbee"
       ],
       "title": "여왕벌 SEOA 안내",
-      "message": "여왕벌은 가입코드 ddk888 기준입니다. 담당자 상담은 @seoa69, 자동화 가입 안내와 분석봇은 @odds88st_bot으로 통일 안내합니다.",
+      "message": "여왕벌은 가입코드 ddk888 기준입니다. 담당자 상담은 @seoa69, 상담 및 조건 확인은 @seoa69으로 통일 안내합니다.",
       "provider": "queenbee"
     },
     {
@@ -659,7 +659,7 @@
         "volleyball"
       ],
       "title": "스포츠 배당분석 안내",
-      "message": "스포츠 글을 보고 있다면 @odds88st_bot의 배당분석 기능 안내를 확인할 수 있습니다. 결과 보장형이 아니라 배당과 변수 확인용 보조 기능입니다.",
+      "message": "스포츠 글을 보고 있다면 @seoa69의 배당분석 기능 안내를 확인할 수 있습니다. 결과 보장형이 아니라 배당과 변수 확인용 보조 기능입니다.",
       "next": "sports"
     },
     {
@@ -748,15 +748,16 @@
       "next": "usdt_krw"
     },
     {
-      "id": "auto_bot",
+      "id": "auto_consult",
       "match": [
-        "auto-bot",
-        "odds88st",
-        "자동상담"
+        "자동상담",
+        "상담센터",
+        "상담",
+        "문의"
       ],
-      "title": "자동상담 연결",
-      "message": "담당자 부재 시 @odds88st_bot에서 자동화 가입 안내와 분석봇 안내를 먼저 확인할 수 있습니다.",
-      "next": "auto_bot"
+      "title": "상담센터 연결",
+      "message": "담당자 부재 시 @seoa69에서 상담 및 조건 확인 안내를 먼저 확인할 수 있습니다.",
+      "next": "auto_consult"
     },
     {
       "id": "ddangkong",
@@ -810,7 +811,7 @@
     },
     {
       "q": "스포츠 배당분석은 어디서 확인하나요?",
-      "a": "@odds88st_bot에서 안내받을 수 있습니다. 결과 보장 기능이 아니라 배당과 변수를 확인하는 보조 기능입니다."
+      "a": "@seoa69에서 안내받을 수 있습니다. 결과 보장 기능이 아니라 배당과 변수를 확인하는 보조 기능입니다."
     },
     {
       "q": "코인 현물 분석은 무료인가요?",
@@ -818,7 +819,7 @@
     },
     {
       "q": "담당자가 없으면 어디로 문의하나요?",
-      "a": "담당자 부재 시 @odds88st_bot에서 자동화 가입 안내와 분석봇 안내를 먼저 받을 수 있습니다."
+      "a": "담당자 부재 시 @seoa69에서 상담 및 조건 확인 안내를 먼저 받을 수 있습니다."
     }
   ],
   "faqGroups": [
@@ -891,11 +892,11 @@
       ]
     },
     {
-      "title": "분석봇 FAQ",
+      "title": "상담센터 FAQ",
       "items": [
         {
           "q": "스포츠 배당분석은 어디서 확인하나요?",
-          "a": "@odds88st_bot에서 안내받을 수 있습니다. 결과 보장 기능이 아니라 배당과 변수를 확인하는 보조 기능입니다."
+          "a": "@seoa69에서 안내받을 수 있습니다. 결과 보장 기능이 아니라 배당과 변수를 확인하는 보조 기능입니다."
         },
         {
           "q": "코인 현물 분석은 무료인가요?",
@@ -903,7 +904,7 @@
         },
         {
           "q": "담당자가 없으면 어디로 문의하나요?",
-          "a": "담당자 부재 시 @odds88st_bot에서 자동화 가입 안내와 분석봇 안내를 먼저 받을 수 있습니다."
+          "a": "담당자 부재 시 @seoa69에서 상담 및 조건 확인 안내를 먼저 받을 수 있습니다."
         }
       ]
     }

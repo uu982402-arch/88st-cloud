@@ -1,154 +1,58 @@
 
 /* 88ST icon/image normalize v17 */
-img{
-  image-rendering:auto;
+img{ image-rendering:auto;
 }
-img[alt]{
-  overflow:hidden;
+img[alt]{ overflow:hidden;
 }
 .site-header .brand,
-.gateway-brand{
-  min-width:0;
+.gateway-brand{ min-width:0;
 }
 .site-header .brand img.brand-logo,
-.brand-logo{
-  width:42px !important;
-  height:auto !important;
-  max-width:42px !important;
-  max-height:38px !important;
-  object-fit:contain !important;
-  flex:0 0 auto;
+.brand-logo{ width:42px !important; height:auto !important; max-width:42px !important; max-height:38px !important; object-fit:contain !important; flex:0 0 auto;
 }
-.gateway-brand img{
-  width:40px !important;
-  height:40px !important;
-  max-width:40px !important;
-  max-height:40px !important;
-  object-fit:contain !important;
+.gateway-brand img{ width:40px !important; height:40px !important; max-width:40px !important; max-height:40px !important; object-fit:contain !important;
 }
 .pro-provider__logo,
 .gcard__media,
-.gateway-card__logo{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  overflow:hidden;
+.gateway-card__logo{ display:flex; align-items:center; justify-content:center; overflow:hidden;
 }
-.pro-provider__logo{
-  min-height:78px;
+.pro-provider__logo{ min-height:78px;
 }
-.pro-provider__logo img{
-  width:auto !important;
-  height:auto !important;
-  max-width:88% !important;
-  max-height:64px !important;
-  object-fit:contain !important;
+.pro-provider__logo img{ width:auto !important; height:auto !important; max-width:88% !important; max-height:64px !important; object-fit:contain !important;
 }
-.gateway-card__logo{
-  min-height:92px;
+.gateway-card__logo{ min-height:92px;
 }
-.gateway-card__logo img{
-  width:auto !important;
-  height:auto !important;
-  max-width:92% !important;
-  max-height:74px !important;
-  object-fit:contain !important;
+.gateway-card__logo img{ width:auto !important; height:auto !important; max-width:92% !important; max-height:74px !important; object-fit:contain !important;
 }
 .gateway-card--queenbee .gateway-card__logo img,
-.gateway-card--udt .gateway-card__logo img{
-  max-width:94% !important;
-  max-height:70px !important;
+.gateway-card--udt .gateway-card__logo img{ max-width:94% !important; max-height:70px !important;
 }
-.gateway-card--anybet .gateway-card__logo img{
-  max-width:96% !important;
-  max-height:70px !important;
-  transform:scale(1.08);
+.gateway-card--anybet .gateway-card__logo img{ max-width:96% !important; max-height:70px !important; transform:scale(1.08);
 }
-.gateway-card--ddangkong .gateway-card__logo img{
-  max-height:76px !important;
+.gateway-card--ddangkong .gateway-card__logo img{ max-height:76px !important;
 }
-.gcard__media img{
-  width:auto !important;
-  height:auto !important;
-  max-width:88% !important;
-  max-height:82% !important;
-  object-fit:contain !important;
+.gcard__media img{ width:auto !important; height:auto !important; max-width:88% !important; max-height:82% !important; object-fit:contain !important;
 }
 .entry-article img,
 .pro-article__body img,
 .customer-os-card img,
-.entry-content img{
-  max-width:100%;
-  height:auto;
-  object-fit:contain;
+.entry-content img{ max-width:100%; height:auto; object-fit:contain;
 }
 .provider-desk-panel img,
-.provider-condition-v16 img{
-  max-width:100%;
-  height:auto;
-  object-fit:contain;
+.provider-condition-v16 img{ max-width:100%; height:auto; object-fit:contain;
 }
-img.is-image-fallback{
-  object-fit:contain !important;
-  opacity:.92;
+img.is-image-fallback{ object-fit:contain !important; opacity:.92;
 }
 .icon,
 [class*="icon-"],
-[class*="__icon"]{
-  line-height:1;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
+[class*="__icon"]{ line-height:1; display:inline-flex; align-items:center; justify-content:center;
 }
-@media(max-width:720px){
-  .site-header .brand img.brand-logo,
-  .brand-logo{
-    width:38px !important;
-    max-width:38px !important;
-    max-height:34px !important;
-  }
-  .gateway-brand img{
-    width:36px !important;
-    height:36px !important;
-  }
-  .pro-provider__logo{
-    min-height:70px;
-  }
-  .gateway-card__logo{
-    min-height:84px;
-  }
-  .gateway-card__logo img{
-    max-height:66px !important;
-  }
-}
-
-
-/* header logo cache fix v19 */
+@media(max-width:720px){ .site-header .brand img.brand-logo, .brand-logo{ width:38px !important; max-width:38px !important; max-height:34px !important; } .gateway-brand img{ width:36px !important; height:36px !important; } .pro-provider__logo{ min-height:70px; } .gateway-card__logo{ min-height:84px; } .gateway-card__logo img{ max-height:66px !important; }
+} /* header logo cache fix v19 */
 .site-header .brand img.brand-logo,
-img.brand-logo{
-  content:url("/img/logo-v24.png");
-  width:118px !important;
-  height:auto !important;
-  max-width:118px !important;
-  max-height:34px !important;
-  object-fit:contain !important;
-  border-radius:0 !important;
+img.brand-logo{ content:url("/img/logo-v24.png"); width:118px !important; height:auto !important; max-width:118px !important; max-height:34px !important; object-fit:contain !important; border-radius:0 !important;
 }
-.gateway-brand img{
-  content:url("/img/logo-v24.png");
-  width:118px !important;
-  height:auto !important;
-  max-width:118px !important;
-  max-height:34px !important;
-  object-fit:contain !important;
-  border-radius:0 !important;
+.gateway-brand img{ content:url("/img/logo-v24.png"); width:118px !important; height:auto !important; max-width:118px !important; max-height:34px !important; object-fit:contain !important; border-radius:0 !important;
 }
-@media(max-width:720px){
-  .site-header .brand img.brand-logo,
-  img.brand-logo,
-  .gateway-brand img{
-    width:104px !important;
-    max-width:104px !important;
-    max-height:30px !important;
-  }
+@media(max-width:720px){ .site-header .brand img.brand-logo, img.brand-logo, .gateway-brand img{ width:104px !important; max-width:104px !important; max-height:30px !important; }
 }
