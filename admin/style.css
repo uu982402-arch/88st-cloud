@@ -1,32 +1,9 @@
 
-:root {
-  --bg: #eef5ff;
-  --bg-2: #f9fbff;
-  --surface: rgba(255, 255, 255, 0.88);
-  --surface-strong: #ffffff;
-  --line: #d8e6fb;
-  --text: #132442;
-  --muted: #6b7d97;
-  --primary: #2d6bff;
-  --primary-2: #5a8cff;
-  --success: #12a56b;
-  --warn: #c28b00;
-  --danger: #d24e55;
-  --glass-shadow: 0 20px 48px rgba(33, 63, 120, 0.13);
-  --radius-xl: 24px;
-  --radius-lg: 18px;
-  --radius-md: 14px;
+:root { --bg: #eef5ff; --bg-2: #f9fbff; --surface: rgba(255, 255, 255, 0.88); --surface-strong: #ffffff; --line: #d8e6fb; --text: #132442; --muted: #6b7d97; --primary: #2d6bff; --primary-2: #5a8cff; --success: #12a56b; --warn: #c28b00; --danger: #d24e55; --glass-shadow: 0 20px 48px rgba(33, 63, 120, 0.13); --radius-xl: 24px; --radius-lg: 18px; --radius-md: 14px;
 }
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
-body {
-  min-height: 100vh;
-  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  color: var(--text);
-  background:
-    radial-gradient(circle at top left, rgba(173, 209, 255, 0.5), transparent 28%),
-    radial-gradient(circle at top right, rgba(189, 228, 255, 0.35), transparent 24%),
-    linear-gradient(180deg, var(--bg-2), var(--bg));
+body { min-height: 100vh; font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: var(--text); background: radial-gradient(circle at top left, rgba(173, 209, 255, 0.5), transparent 28%), radial-gradient(circle at top right, rgba(189, 228, 255, 0.35), transparent 24%), linear-gradient(180deg, var(--bg-2), var(--bg));
 }
 button, input, textarea, select { font: inherit; }
 code { background:#eef4ff; padding:.12rem .34rem; border-radius:8px; color:#2a4d91; }
@@ -122,9 +99,7 @@ th { color:var(--muted); font-size:12px; text-transform:uppercase; letter-spacin
 .empty { padding:18px; border-radius:18px; border:1px dashed var(--line); color:var(--muted); text-align:center; }
 @media (max-width: 1260px){ .kpi-grid{grid-template-columns:repeat(3,minmax(0,1fr));} .two-up{grid-template-columns:1fr;} }
 @media (max-width: 900px){ .admin-shell{grid-template-columns:1fr;} .sidebar{position:relative;height:auto;border-right:0;border-bottom:1px solid rgba(216,230,251,.85);} .content{padding:18px;} .hero{flex-direction:column;} .hero-actions{justify-content:flex-start;} .kpi-grid{grid-template-columns:repeat(2,minmax(0,1fr));} .two-col{grid-template-columns:1fr;} }
-@media (max-width: 640px){ .kpi-grid{grid-template-columns:1fr;} .toolbar input,.toolbar select{width:100%; min-width:0;} .action-grid{grid-template-columns:1fr;} .modal-card{width:calc(100vw - 20px); margin:10px auto;} }
-
-.auth-gate { position: fixed; inset: 0; z-index: 100; display: flex; align-items: center; justify-content: center; padding: 20px; background: rgba(8,18,38,.32); backdrop-filter: blur(8px); }
+@media (max-width: 640px){ .kpi-grid{grid-template-columns:1fr;} .toolbar input,.toolbar select{width:100%; min-width:0;} .action-grid{grid-template-columns:1fr;} .modal-card{width:calc(100vw - 20px); margin:10px auto;} } .auth-gate { position: fixed; inset: 0; z-index: 100; display: flex; align-items: center; justify-content: center; padding: 20px; background: rgba(8,18,38,.32); backdrop-filter: blur(8px); }
 .auth-gate.hidden { opacity: 0; pointer-events: none; }
 .auth-card { width: min(560px, calc(100vw - 24px)); border-radius: 28px; padding: 26px 24px; background: linear-gradient(180deg, rgba(255,255,255,.98), rgba(245,249,255,.96)); border: 1px solid rgba(216,230,251,.95); box-shadow: 0 24px 60px rgba(22,44,86,.22); }
 .auth-card h2 { margin: 14px 0 10px; font-size: 28px; line-height: 1.12; }
@@ -133,8 +108,5 @@ th { color:var(--muted); font-size:12px; text-transform:uppercase; letter-spacin
 .auth-status.warn { background: #fff7df; color: #9a6900; }
 .auth-status.success { background: #e9fbf3; color: #137447; }
 .auth-status.error { background: #fff3f3; color: #b03a42; }
-.admin-shell.locked { filter: blur(6px); pointer-events: none; user-select: none; }
-
-
-/* 20260330 premium refresh */
+.admin-shell.locked { filter: blur(6px); pointer-events: none; user-select: none; } /* 20260330 premium refresh */
 body{letter-spacing:-.01em;-webkit-font-smoothing:antialiased}.hero,.surface,.brand-card,.row-card,.kpi-card,.action-tile,.toggle-row,.text-item,.security-item,.schedule-item{backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}.hero h2,.auth-card h2{letter-spacing:-.04em}.glass-btn,.menu-item,.action-tile{transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease}.glass-btn:hover,.menu-item:hover,.action-tile:hover{transform:translateY(-2px);box-shadow:0 18px 34px rgba(39,69,126,.12)}@media (max-width:640px){.glass-btn{min-height:46px}}
