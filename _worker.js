@@ -1,12 +1,144 @@
-// 레븐 Pages Advanced Mode Worker (_worker.js)
-// Community board API: D1 + Turnstile
-// - /api/posts GET(list) / POST(create)
-// - /api/posts/:id GET(detail)
-// - /api/posts/:id/comments POST(create)
-// - /api/health GET(debug) let __schemaReady = false; export default { async fetch(request, env, ctx) { try { const url = new URL(request.url); const rawPath = url.pathname || '/'; const path = rawPath === '/' ? '/' : rawPath.replace(/\/+$/, ''); const hasTrailingSlash = rawPath.length > 1 && rawPath.endsWith('/'); const method = request.method.toUpperCase(); // Fix: Chrome/Edge speculative prefetch can receive a Cloudflare "speculation refused" 503 and then // poison subsequent navigations ("503 from prefetch cache"). // We normalize speculative requests by stripping purpose headers before serving from Pages assets. // TEMP: Community routes disabled (redirect to home)
-if (path === '/community' || path.startsWith('/community/')) { const target = url.origin + '/blog/'; return Response.redirect(target, 302);
-} if (path === '/api/ai/lookup' && method === 'GET') { return handleAiLookup(url, env); } if (path === '/api/safety/domain' && method === 'GET') { return handleSafetyDomainLookup(request, env); } if (path === '/api/safety/ip' && method === 'GET') { return handleSafetyIpLookup(request, env); } if (path === '/api/safety/evidence' && method === 'GET') { return handleSafetyEvidenceExtract(request, env); } if (path === '/api/safety/brand' && method === 'GET') { return handleSafetyBrandDirectory(request, env); } if (method === 'GET' && (rawPath === '/sitemap.xml' || rawPath === '/robots.txt' || rawPath === '/sitemap.txt')) { const cleanUrl = new URL(request.url); const cleanReq = new Request(cleanUrl.toString(), { method: 'GET', headers: new Headers({ 'accept': '*/*' }) }); return env.ASSETS.fetch(cleanReq); } // OPS deploy patch config: always no-store (fast operations) if (path === '/assets/config/ops.dom.patch.json') { const res = await env.ASSETS.fetch(request); const h = new Headers(res.headers); h.set('cache-control', 'no-store, no-cache, must-revalidate, max-age=0'); h.set('pragma', 'no-cache'); h.set('expires', '0'); return new Response(res.body, { status: res.status, headers: h }); } // CERT landing deploy config: always no-store (operational swaps) if (path === '/assets/config/cert.landing.json') { const res = await env.ASSETS.fetch(request); const h = new Headers(res.headers); h.set('cache-control', 'no-store, no-cache, must-revalidate, max-age=0'); h.set('pragma', 'no-cache'); h.set('expires', '0'); return new Response(res.body, { status: res.status, headers: h }); } // EVENT popup deploy config: always no-store (operational swaps) if (path === '/assets/config/popup.event.json') { const res = await env.ASSETS.fetch(request); const h = new Headers(res.headers); h.set('cache-control', 'no-store, no-cache, must-revalidate, max-age=0'); h.set('pragma', 'no-cache'); h.set('expires', '0'); return new Response(res.body, { status: res.status, headers: h }); } // SITE runtime deploy config: always no-store (operational swaps) if (path === '/assets/config/site.runtime.json') { const res = await env.ASSETS.fetch(request); const h = new Headers(res.headers); h.set('cache-control', 'no-store, no-cache, must-revalidate, max-age=0'); h.set('pragma', 'no-cache'); h.set('expires', '0'); return new Response(res.body, { status: res.status, headers: h }); } // SEO keyword bank: always no-store (operational swaps) if (path === '/assets/config/seo.bank.json') { const res = await env.ASSETS.fetch(request); const h = new Headers(res.headers); h.set('cache-control', 'no-store, no-cache, must-revalidate, max-age=0'); h.set('pragma', 'no-cache'); h.set('expires', '0'); return new Response(res.body, { status: res.status, headers: h }); } // SEO meta deploy file: always no-store (operational swaps) if (path === '/assets/config/seo.meta.json') { const res = await env.ASSETS.fetch(request); const h = new Headers(res.headers); h.set('cache-control', 'no-store, no-cache, must-revalidate, max-age=0'); h.set('pragma', 'no-cache'); h.set('expires', '0'); return new Response(res.body, { status: res.status, headers: h }); } // EVENT popup image: fixed path swap (image replace only, no config changes) if (path === '/img/popup/event-popup.jpg') { const res = await env.ASSETS.fetch(request); const h = new Headers(res.headers); h.set('cache-control', 'no-store, no-cache, must-revalidate, max-age=0'); h.set('pragma', 'no-cache'); h.set('expires', '0'); return new Response(res.body, { status: res.status, headers: h }); } const slashOnlyPages = new Set([ '/blog', '/tools', '/guaranteed', '/admin', '/ops' ]); if (!hasTrailingSlash && slashOnlyPages.has(path)) { return Response.redirect(url.origin + path + '/', 301); } const legacyExactRedirects = new Map([ ['/muktu-police', '/blog/'], ['/muktu-police/search', '/tools/ai-domain-analysis/'], ['/muktu-police/check', '/tools/ai-domain-analysis/'], ['/muktu-police/faq', '/guaranteed/'], ['/muktu-police/logs', '/blog/'], ['/muktu-police/review', '/tools/ai-report-draft/'], ['/muktu-police/brand', '/guaranteed/'], ['/muktu-police/compare', '/tools/ai-domain-analysis/'], ['/muktu-police/report', '/tools/ai-report-draft/'], ['/muktu-police/query', '/blog/search-keywords-20/'], ['/googling', '/tools/ai-domain-analysis/'], ['/domain-check', '/tools/ai-domain-analysis/'], ['/cert', '/guaranteed/'], ['/guide', '/blog/'], ['/community', '/blog/'], ['/slot', '/blog/'], ['/bonus', '/blog/'], ['/strategy', '/blog/'], ['/news', '/blog/'], ['/play-guides', '/blog/'], ['/latest', '/blog/'], ['/popular', '/blog/'], ['/archive', '/blog/'] ]); const toolWrapperRedirects = new Map([ ['/tools/address-consistency/', '/tools/ai-domain-analysis/'], ['/tools/official-check/', '/tools/ai-domain-analysis/'], ['/tools/search-pack/', '/blog/search-keywords-20/'], ['/tools/address-tracker/', '/tools/address-history-card/'], ['/tools/change-timeline/', '/tools/brand-change-tracker/'], ['/tools/relationship-map/', '/tools/prior-brand-detector/'], ['/tools/similar-domain/', '/tools/prior-brand-detector/'], ['/tools/ip-asn-cluster/', '/tools/ai-domain-analysis/'], ['/tools/risk-compare/', '/tools/notice-review/'], ['/tools/evidence-bundle/', '/tools/ai-report-draft/'], ['/tools/report-packager/', '/tools/ai-report-draft/'], ['/tools/report-template/', '/tools/ai-report-draft/'], ['/tools/ai-condition-lab/', '/tools/ai-rules-interpreter/'], ['/tools/bonus-policy/', '/tools/ai-rules-interpreter/'], ['/tools/ai-game-lab/', '/tools/slot-rtp/'], ['/tools/slot-session/', '/tools/slot-rtp/'], ['/tools/bankroll-planner/', '/tools/minigame-round-planner/'], ['/tools/minigame-rounds/', '/tools/minigame-round-planner/'], ['/tools/slip-compare/', '/tools/odds-band/'], ['/tools/ou-calculator/', '/tools/ou-payout/'], ['/tools/handicap-profit/', '/tools/handicap-payout/'] ]); const toolWrapperRedirect = toolWrapperRedirects.get(path); if (toolWrapperRedirect) { return Response.redirect(url.origin + toolWrapperRedirect, 301); } const exactRedirect = legacyExactRedirects.get(path); if (exactRedirect) { return Response.redirect(url.origin + exactRedirect, 301); } if (path.startsWith('/cert/')) { return Response.redirect(url.origin + '/guaranteed/', 301); } if (path.startsWith('/community/')) { return Response.redirect(url.origin + '/blog/', 301); } if (path.startsWith('/archive/') || path.startsWith('/latest/') || path.startsWith('/popular/')) { return Response.redirect(url.origin + '/blog/', 301); } if (path.startsWith('/slot/') || path.startsWith('/bonus/') || path.startsWith('/strategy/') || path.startsWith('/news/') || path.startsWith('/play-guides/')) { return Response.redirect(url.origin + '/blog/', 301); } if (path.startsWith('/muktu-police/search/') || path.startsWith('/muktu-police/check/')) { return Response.redirect(url.origin + '/tools/ai-domain-analysis/', 301); } if (path.startsWith('/muktu-police/faq/') || path.startsWith('/muktu-police/brand/')) { return Response.redirect(url.origin + '/guaranteed/', 301); } if (path.startsWith('/muktu-police/logs/')) { return Response.redirect(url.origin + '/blog/', 301); } if (path.startsWith('/muktu-police/review/') || path.startsWith('/muktu-police/report/')) { return Response.redirect(url.origin + '/tools/ai-report-draft/', 301); } if (path.startsWith('/muktu-police/query/')) { return Response.redirect(url.origin + '/blog/search-keywords-20/', 301); } if (path.startsWith('/muktu-police/compare/')) { return Response.redirect(url.origin + '/tools/ai-domain-analysis/', 301); } if (path.startsWith('/muktu-police/')) { return Response.redirect(url.origin + '/blog/', 301); } // Static fallthrough const assetResponse = await env.ASSETS.fetch(request); if (assetResponse.status === 403 || assetResponse.status === 404) { const accept = String(request.headers.get('accept') || '').toLowerCase(); if (accept.includes('text/html')) { return notFoundHtml(url); } } return assetResponse; } catch (e) { return json({ ok: false, error: 'worker_error', message: String(e?.message || e) }, 500); } }, async scheduled(event, env, ctx) { // Optional: set a Cron Trigger in Cloudflare to run this daily. // Recommended: schedule around 03:10 KST to avoid peak traffic. try{ await seoSyncCore(env, ctx, { days: 28, reason: 'cron' }); }catch(e){} }
-}; function corsHeaders(request) { // Same-origin is expected, but keep permissive for safety. const origin = request.headers.get('Origin') || '*'; return { 'access-control-allow-origin': origin, 'access-control-allow-methods': 'GET,POST,OPTIONS', 'access-control-allow-headers': 'content-type', 'access-control-max-age': '86400' };
+// 88ST.Cloud Pages Advanced Mode Worker (_worker.js)
+// V32.1 build fix: clean export default wrapper. Existing API helpers are preserved below.
+let __schemaReady = false;
+
+export default {
+  async fetch(request, env, ctx) {
+    try {
+      const url = new URL(request.url);
+      const rawPath = url.pathname || '/';
+      const path = rawPath === '/' ? '/' : rawPath.replace(/\/+$/, '');
+      const hasTrailingSlash = rawPath.length > 1 && rawPath.endsWith('/');
+      const method = request.method.toUpperCase();
+
+      if (method === 'OPTIONS') {
+        return new Response(null, { status: 204, headers: corsHeaders(request) });
+      }
+
+      if (path === '/community' || path.startsWith('/community/')) {
+        return Response.redirect(url.origin + '/blog/', 302);
+      }
+
+      if (path === '/api/ai/lookup' && method === 'GET') return handleAiLookup(url, env);
+      if (path === '/api/safety/domain' && method === 'GET') return handleSafetyDomainLookup(request, env);
+      if (path === '/api/safety/ip' && method === 'GET') return handleSafetyIpLookup(request, env);
+      if (path === '/api/safety/evidence' && method === 'GET') return handleSafetyEvidenceExtract(request, env);
+      if (path === '/api/safety/brand' && method === 'GET') return handleSafetyBrandDirectory(request, env);
+
+      if (method === 'GET' && (rawPath === '/sitemap.xml' || rawPath === '/robots.txt' || rawPath === '/sitemap.txt')) {
+        const cleanReq = new Request(url.toString(), { method: 'GET', headers: new Headers({ accept: '*/*' }) });
+        return env.ASSETS.fetch(cleanReq);
+      }
+
+      const noStorePaths = new Set([
+        '/assets/config/ops.dom.patch.json',
+        '/assets/config/cert.landing.json',
+        '/assets/config/popup.event.json',
+        '/assets/config/site.runtime.json',
+        '/assets/config/seo.bank.json',
+        '/assets/config/seo.meta.json',
+        '/img/popup/event-popup.jpg'
+      ]);
+      if (noStorePaths.has(path)) {
+        const res = await env.ASSETS.fetch(request);
+        const h = new Headers(res.headers);
+        h.set('cache-control', 'no-store, no-cache, must-revalidate, max-age=0');
+        h.set('pragma', 'no-cache');
+        h.set('expires', '0');
+        return new Response(res.body, { status: res.status, headers: h });
+      }
+
+      const slashOnlyPages = new Set(['/blog', '/tools', '/guaranteed', '/admin', '/ops']);
+      if (!hasTrailingSlash && slashOnlyPages.has(path)) {
+        return Response.redirect(url.origin + path + '/', 301);
+      }
+
+      const legacyExactRedirects = new Map([
+        ['/muktu-police', '/blog/'],
+        ['/muktu-police/search', '/tools/ai-domain-analysis/'],
+        ['/muktu-police/check', '/tools/ai-domain-analysis/'],
+        ['/muktu-police/faq', '/guaranteed/'],
+        ['/muktu-police/logs', '/blog/'],
+        ['/muktu-police/review', '/tools/ai-report-draft/'],
+        ['/muktu-police/brand', '/guaranteed/'],
+        ['/muktu-police/compare', '/tools/ai-domain-analysis/'],
+        ['/muktu-police/report', '/tools/ai-report-draft/'],
+        ['/muktu-police/query', '/blog/search-keywords-20/'],
+        ['/googling', '/tools/ai-domain-analysis/'],
+        ['/domain-check', '/tools/ai-domain-analysis/'],
+        ['/cert', '/guaranteed/'],
+        ['/guide', '/blog/'],
+        ['/community', '/blog/'],
+        ['/slot', '/blog/'],
+        ['/bonus', '/blog/'],
+        ['/strategy', '/blog/'],
+        ['/news', '/blog/'],
+        ['/play-guides', '/blog/'],
+        ['/latest', '/blog/'],
+        ['/popular', '/blog/'],
+        ['/archive', '/blog/']
+      ]);
+
+      const toolWrapperRedirects = new Map([
+        ['/tools/address-consistency/', '/tools/ai-domain-analysis/'],
+        ['/tools/official-check/', '/tools/ai-domain-analysis/'],
+        ['/tools/search-pack/', '/blog/search-keywords-20/'],
+        ['/tools/address-tracker/', '/tools/address-history-card/'],
+        ['/tools/change-timeline/', '/tools/brand-change-tracker/'],
+        ['/tools/relationship-map/', '/tools/prior-brand-detector/'],
+        ['/tools/similar-domain/', '/tools/prior-brand-detector/'],
+        ['/tools/ip-asn-cluster/', '/tools/ai-domain-analysis/'],
+        ['/tools/risk-compare/', '/tools/notice-review/'],
+        ['/tools/evidence-bundle/', '/tools/ai-report-draft/'],
+        ['/tools/report-packager/', '/tools/ai-report-draft/'],
+        ['/tools/report-template/', '/tools/ai-report-draft/'],
+        ['/tools/ai-condition-lab/', '/tools/ai-rules-interpreter/'],
+        ['/tools/bonus-policy/', '/tools/ai-rules-interpreter/'],
+        ['/tools/ai-game-lab/', '/tools/slot-rtp/'],
+        ['/tools/slot-session/', '/tools/slot-rtp/'],
+        ['/tools/bankroll-planner/', '/tools/minigame-round-planner/'],
+        ['/tools/minigame-rounds/', '/tools/minigame-round-planner/'],
+        ['/tools/slip-compare/', '/tools/odds-band/'],
+        ['/tools/ou-calculator/', '/tools/ou-payout/'],
+        ['/tools/handicap-profit/', '/tools/handicap-payout/']
+      ]);
+      const toolWrapperRedirect = toolWrapperRedirects.get(path) || toolWrapperRedirects.get(rawPath);
+      if (toolWrapperRedirect) return Response.redirect(url.origin + toolWrapperRedirect, 301);
+
+      const exactRedirect = legacyExactRedirects.get(path);
+      if (exactRedirect) return Response.redirect(url.origin + exactRedirect, 301);
+
+      if (path.startsWith('/cert/')) return Response.redirect(url.origin + '/guaranteed/', 301);
+      if (path.startsWith('/community/')) return Response.redirect(url.origin + '/blog/', 301);
+      if (path.startsWith('/archive/') || path.startsWith('/latest/') || path.startsWith('/popular/')) return Response.redirect(url.origin + '/blog/', 301);
+      if (path.startsWith('/slot/') || path.startsWith('/bonus/') || path.startsWith('/strategy/') || path.startsWith('/news/') || path.startsWith('/play-guides/')) return Response.redirect(url.origin + '/blog/', 301);
+      if (path.startsWith('/muktu-police/search/') || path.startsWith('/muktu-police/check/')) return Response.redirect(url.origin + '/tools/ai-domain-analysis/', 301);
+      if (path.startsWith('/muktu-police/faq/') || path.startsWith('/muktu-police/brand/')) return Response.redirect(url.origin + '/guaranteed/', 301);
+      if (path.startsWith('/muktu-police/logs/')) return Response.redirect(url.origin + '/blog/', 301);
+      if (path.startsWith('/muktu-police/review/') || path.startsWith('/muktu-police/report/')) return Response.redirect(url.origin + '/tools/ai-report-draft/', 301);
+      if (path.startsWith('/muktu-police/query/')) return Response.redirect(url.origin + '/blog/search-keywords-20/', 301);
+      if (path.startsWith('/muktu-police/compare/')) return Response.redirect(url.origin + '/tools/ai-domain-analysis/', 301);
+      if (path.startsWith('/muktu-police/')) return Response.redirect(url.origin + '/blog/', 301);
+
+      const assetResponse = await env.ASSETS.fetch(request);
+      if (assetResponse.status === 403 || assetResponse.status === 404) {
+        const accept = String(request.headers.get('accept') || '').toLowerCase();
+        if (accept.includes('text/html')) return notFoundHtml(url);
+      }
+      return assetResponse;
+    } catch (e) {
+      return json({ ok: false, error: 'worker_error', message: String(e?.message || e) }, 500);
+    }
+  },
+
+  async scheduled(event, env, ctx) {
+    try {
+      await seoSyncCore(env, ctx, { days: 28, reason: 'cron' });
+    } catch (e) {}
+  }
+};
+
+function corsHeaders(request) { // Same-origin is expected, but keep permissive for safety. const origin = request.headers.get('Origin') || '*'; return { 'access-control-allow-origin': origin, 'access-control-allow-methods': 'GET,POST,OPTIONS', 'access-control-allow-headers': 'content-type', 'access-control-max-age': '86400' };
 } function json(body, status = 200, extraHeaders = {}) { const headers = new Headers({ 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store', ...extraHeaders }); return new Response(JSON.stringify(body), { status, headers });
 } function gone(body, request) { const headers = new Headers({ 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store', 'x-robots-tag': 'noindex, nofollow' }); const accept = String(request.headers.get('accept') || '').toLowerCase(); if (accept.includes('text/html')) { return new Response(`<!DOCTYPE html><html lang="ko"><meta charset="utf-8"><meta name="robots" content="noindex,nofollow"><title>410 Gone</title><body style="background:#07111f;color:#eef4ff;font-family:system-ui;padding:32px"><h1>정리된 경로입니다.</h1><p>이 페이지는 더 이상 사용하지 않습니다.</p><p><a href="/" style="color:#8fb6ff">메인으로 이동</a></p></body></html>`, { status: 410, headers: { 'content-type': 'text/html; charset=utf-8', 'cache-control': 'no-store', 'x-robots-tag': 'noindex, nofollow' } }); } return new Response(JSON.stringify(body), { status: 410, headers });
 } function notFoundHtml(url) { const html = `<!DOCTYPE html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>404 Not Found</title><style>body{margin:0;background:#f4f6f8;color:#0f172a;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif}main{max-width:760px;margin:0 auto;padding:56px 20px}section{background:#fff;border:1px solid #d8e0e8;border-radius:20px;padding:28px;box-shadow:0 12px 28px rgba(15,23,42,.06)}h1{margin:0 0 12px;font-size:32px}p{margin:0 0 10px;line-height:1.65}.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}.btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 16px;border-radius:12px;text-decoration:none;font-weight:700}.btn.primary{background:#1e3a5f;color:#fff}.btn.secondary{background:#eef2f7;color:#0f172a}</style></head><body><main><section><h1>페이지를 찾을 수 없습니다.</h1><p>요청한 주소가 이동되었거나 현재는 사용하지 않는 경로일 수 있습니다.</p><p>주소: <strong>${escapeHtmlLite(url.pathname)}</strong></p><div class="actions"><a class="btn primary" href="/">메인으로 이동</a><a class="btn secondary" href="/blog/">블로그 보기</a><a class="btn secondary" href="/tools/">도구 보기</a><a class="btn secondary" href="/guaranteed/">보증업체 보기</a></div></section></main></body></html>`; return new Response(html, { status: 404, headers: { 'content-type': 'text/html; charset=utf-8', 'cache-control': 'no-store', 'x-robots-tag': 'noindex, nofollow' } });
