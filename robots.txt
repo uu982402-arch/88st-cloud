@@ -1,3 +1,8 @@
 User-agent: *
+Disallow: /admin/
 Disallow: /ops/
-Allow: / Sitemap: https://88st.cloud/sitemap.xml
+Disallow: /api/
+Disallow: /muktu-police/
+Allow: /
+
+Sitemap: https://88st.cloud/sitemap.xml

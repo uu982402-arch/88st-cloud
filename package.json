@@ -1,2 +1,19 @@
-{ "name": "88st-cloud-static-site", "private": true, "version": "1.0.0", "description": "Static build shim for Cloudflare Pages", "scripts": { "build": "node scripts/gen-build-ver.mjs", "seo:static": "node scripts/generate-static-seo-og.mjs", "related:static": "node scripts/generate-related-posts.mjs", "seo:refresh": "node scripts/generate-brand-pages.mjs && node scripts/generate-static-seo-og.mjs && node scripts/generate-related-posts.mjs && node scripts/generate-sitemap.mjs && node scripts/generate-indexing-audit.mjs && node scripts/generate-ctr-report.mjs && node scripts/generate-traffic-roadmap.mjs", "sitemap:static": "node scripts/generate-sitemap.mjs", "audit:index": "node scripts/generate-indexing-audit.mjs", "audit:ctr": "node scripts/generate-ctr-report.mjs", "traffic:roadmap": "node scripts/generate-traffic-roadmap.mjs", "brands:static": "node scripts/generate-brand-pages.mjs", "community:manifest": "node scripts/generate-community-manifest.mjs" }
+{
+  "name": "88st-cloud-static-site",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Static build shim for Cloudflare Pages",
+  "scripts": {
+    "build": "node scripts/generate-brand-pages.mjs && node scripts/seo-intelligence-v31.mjs && node scripts/gen-build-ver.mjs",
+    "seo:static": "node scripts/generate-static-seo-og.mjs",
+    "related:static": "node scripts/generate-related-posts.mjs",
+    "seo:refresh": "node scripts/generate-brand-pages.mjs && node scripts/generate-static-seo-og.mjs && node scripts/generate-related-posts.mjs && node scripts/generate-sitemap.mjs && node scripts/generate-indexing-audit.mjs && node scripts/generate-ctr-report.mjs && node scripts/generate-traffic-roadmap.mjs",
+    "sitemap:static": "node scripts/generate-sitemap.mjs",
+    "audit:index": "node scripts/generate-indexing-audit.mjs",
+    "audit:ctr": "node scripts/generate-ctr-report.mjs",
+    "traffic:roadmap": "node scripts/generate-traffic-roadmap.mjs",
+    "brands:static": "node scripts/generate-brand-pages.mjs",
+    "community:manifest": "node scripts/generate-community-manifest.mjs",
+    "seo:intel": "node scripts/seo-intelligence-v31.mjs"
+  }
 }
