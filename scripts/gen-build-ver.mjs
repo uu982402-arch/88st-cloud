@@ -3,7 +3,7 @@ import { dirname, resolve } from 'node:path';
 
 const stamp = new Date().toISOString();
 const compact = stamp.replace(/[-:.TZ]/g, '').slice(0, 14);
-const version = `static-seo-intelligence-v31-${compact}`;
+const version = `worker-hardfix-v35-${compact}`;
 
 const buildTxt = resolve(process.cwd(), 'build.txt');
 mkdirSync(dirname(buildTxt), { recursive: true });
