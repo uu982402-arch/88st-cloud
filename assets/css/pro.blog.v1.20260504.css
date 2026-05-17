@@ -117,3 +117,21 @@ body.pro-blog-page, body.pro-home-page{ background: radial-gradient(circle at 12
 .pro-routine-grid span{display:block;font-size:13.5px;line-height:1.55;color:#d8e6f6}
 .seo-hero-image{box-shadow:0 18px 50px rgba(15,35,63,.13);border:1px solid rgba(216,224,234,.75)}
 @media (max-width:820px){.pro-routine-grid{grid-template-columns:1fr}.pro-hero h1{font-size:clamp(27px,9vw,40px)}.pro-section{padding:28px 0}}
+
+
+/* V41 dark blog visual guard: prevents white article cards on generated blog details */
+html body.pro-blog-page{background:#03070d!important;color:#edf4ff!important;}
+body.pro-blog-page{background:radial-gradient(circle at 14% -8%,rgba(245,215,139,.13),transparent 32%),linear-gradient(180deg,#03070d 0%,#07101c 42%,#03070d 100%)!important;}
+body.pro-blog-page #mainContent{background:transparent!important;color:#edf4ff!important;}
+body.pro-blog-page .pro-article{background:transparent!important;color:#edf4ff!important;border:0!important;box-shadow:none!important;}
+body.pro-blog-page .pro-article__wrap{width:min(920px,calc(100% - 32px))!important;color:#edf4ff!important;}
+body.pro-blog-page .pro-article h1{color:#fff4df!important;}
+body.pro-blog-page .pro-article .lead{color:rgba(223,232,246,.84)!important;}
+body.pro-blog-page .pro-article__meta span{background:rgba(245,215,139,.12)!important;color:#f5d78b!important;border-color:rgba(245,215,139,.25)!important;}
+body.pro-blog-page .pro-article__body{background:linear-gradient(180deg,rgba(255,255,255,.072),rgba(255,255,255,.03)),rgba(7,13,23,.90)!important;color:#dbe5f1!important;border:1px solid rgba(215,228,255,.14)!important;box-shadow:0 28px 86px rgba(0,0,0,.42),inset 0 1px 0 rgba(255,255,255,.075)!important;}
+body.pro-blog-page .pro-article__body h2,body.pro-blog-page .pro-article__body h3,body.pro-blog-page .v37-article-summary h2{color:#fff4df!important;}
+body.pro-blog-page .pro-article__body p,body.pro-blog-page .pro-article__body li,body.pro-blog-page .pro-article__body ul,body.pro-blog-page .pro-article__body ol{color:#dbe5f1!important;}
+body.pro-blog-page .pro-article__body a{color:#f5d78b!important;text-decoration:none!important;border-bottom:1px solid rgba(245,215,139,.34)!important;}
+body.pro-blog-page .v37-article-summary{background:rgba(255,255,255,.058)!important;border-color:rgba(245,215,139,.20)!important;color:#dbe5f1!important;}
+body.pro-blog-page .pro-related a{background:rgba(255,255,255,.062)!important;color:#fff4df!important;border-color:rgba(215,228,255,.15)!important;}
+body.pro-blog-page .pro-notice{color:rgba(223,232,246,.70)!important;border-top-color:rgba(215,228,255,.15)!important;}
