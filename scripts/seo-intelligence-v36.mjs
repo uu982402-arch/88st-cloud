@@ -10,7 +10,7 @@ import path from "path";
 
 const ROOT = process.cwd();
 const DOMAIN = "https://88st.cloud";
-const VERSION = "static-growth-conversion-v37-20260517";
+const VERSION = "static-growth-conversion-v38-20260517";
 const TODAY = "2026-05-17";
 const BOT_URL = "https://t.me/TRS999_bot";
 
@@ -40,6 +40,7 @@ function classify(r) {
   if (r === "index.html") return "home";
   if (r.startsWith("admin/") || r.startsWith("ops/") || r.startsWith("api/")) return "noindex";
   if (r === "blog/index.html") return "blog_hub";
+  if (r.startsWith("blog/page/") && r.endsWith(".html")) return "blog_hub";
   if (r.startsWith("blog/") && r.endsWith(".html")) return "blog_article";
   if (r === "search-guides/index.html") return "search_hub";
   if (r.startsWith("search-guides/") && r.endsWith(".html")) return "search_guide";
@@ -211,7 +212,7 @@ const routeSet = new Set(publicPages.map(p => p.route));
 
 const topicLinks = {
   "출금": [["출금 전 문의 문구","/search-guides/payout-inquiry-template.html"],["출금 지연 체크","/search-guides/payout-delay-check.html"],["출금 전 확인","/consult-result/payout-before-check.html"]],
-  "조건": [["조건 비교","/tools/"],["이벤트 조건 확인","/consult-result/event-condition-check.html"],["첫충·롤링 확인","/search-guides/first-charge-rolling.html"]],
+  "조건": [["도구","/tools/"],["이벤트 조건 확인","/consult-result/event-condition-check.html"],["첫충·롤링 확인","/search-guides/first-charge-rolling.html"]],
   "주소": [["공식주소 사칭 확인","/search-guides/official-address-impersonation-check.html"],["가입코드 조회","/tools/code-check/"],["보증업체 게이트웨이","/guaranteed/"]],
   "코드": [["가입코드 조회","/tools/code-check/"],["보증업체 바로가기","/guaranteed/"],["문의 문구 만들기","/tools/inquiry-builder/"]]
 };
@@ -258,7 +259,7 @@ function conversionBlock(page) {
   return `<section class="v36-conversion-cta" aria-label="상담 전환"><div><span>CHECK BEFORE ACTION</span><h2>상담 전 필요한 항목만 먼저 확인하세요</h2><p>가입코드, 공식주소, 이벤트 조건, 출금 전 자료를 정리한 뒤 자동화 상담봇으로 연결할 수 있습니다.</p></div><nav><a href="/tools/code-check/">가입코드 확인</a><a href="/search-guides/official-address-impersonation-check.html">공식주소 확인</a><a href="/tools/inquiry-builder/">문의 문구 만들기</a><a class="is-primary" href="${BOT_URL}?start=${start}" target="_blank" rel="nofollow noopener">조건 먼저 확인하기</a></nav></section>`;
 }
 
-const detailKinds = new Set(["blog_article","search_guide","faq","provider_update","consult_result","consult_motive","sports","tool","guaranteed"]);
+const detailKinds = new Set(["blog_article","search_guide","faq","provider_update","consult_result","consult_motive","sports","tool"]);
 for (const page of pages) {
   let txt = fs.readFileSync(page.file, "utf8");
   txt = removeOld(txt);
