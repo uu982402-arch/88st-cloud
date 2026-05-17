@@ -1,6 +1,6 @@
 
 (function(){
-  var VERSION = "static-growth-conversion-v40-20260517";
+  var VERSION = "static-growth-conversion-v41-20260517";
   var BOT_URL = "https://t.me/TRS999_bot";
   function track(name, params){
     params = params || {};
@@ -60,9 +60,9 @@
     try {
       var target = document.querySelector('#providerCards');
       if (!target) return;
-      target.classList.add('v39-provider-focus');
+      target.classList.add('v39-provider-focus'); target.classList.add('v41-provider-focus');
       target.scrollIntoView({ behavior:'smooth', block:'start' });
-      setTimeout(function(){ target.classList.remove('v39-provider-focus'); }, 1400);
+      setTimeout(function(){ target.classList.remove('v39-provider-focus'); target.classList.remove('v41-provider-focus'); }, 1400);
     } catch(e) {}
   }
   document.addEventListener("click", function(e){
@@ -80,6 +80,6 @@
 
 try {
   var style = document.createElement('style');
-  style.textContent = '#providerCards.v39-provider-focus{animation:v39ProviderPulse 1.15s ease both}@keyframes v39ProviderPulse{0%{filter:brightness(1)}35%{filter:brightness(1.16)}100%{filter:brightness(1)}}';
+  style.textContent = '#providerCards.v39-provider-focus,#providerCards.v41-provider-focus{animation:v39ProviderPulse 1.15s ease both}@keyframes v39ProviderPulse{0%{filter:brightness(1)}35%{filter:brightness(1.16)}100%{filter:brightness(1)}}';
   document.head.appendChild(style);
 } catch(e) {}
