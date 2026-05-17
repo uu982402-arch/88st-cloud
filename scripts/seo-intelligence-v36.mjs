@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-/* V36 Static Growth & Conversion Engine / V37 Non-Duplicate Game SEO Expansion
+/* V36 Static Growth & Conversion Engine / V39 Main Header & Guaranteed Interaction Fix
    - strict SEO meta/canonical/schema
    - sitemap/robots generation
    - related links + topic hubs + conversion CTAs
@@ -10,7 +10,7 @@ import path from "path";
 
 const ROOT = process.cwd();
 const DOMAIN = "https://88st.cloud";
-const VERSION = "static-growth-conversion-v38-20260517";
+const VERSION = "static-growth-conversion-v39-20260517";
 const TODAY = "2026-05-17";
 const BOT_URL = "https://t.me/TRS999_bot";
 
@@ -74,7 +74,7 @@ function rawDesc(txt, title) {
 function titleTemplate(page) {
   const base = cleanTitle(page.baseTitle || page.title || titleFromPath(page.rel));
   const byKind = {
-    home: "88ST.Cloud | 코드·주소·조건 확인 대시보드",
+    home: "Team RUST MAIN | RUST 에이전시",
     blog_hub: "블로그 | 코드·주소·조건 확인 가이드",
     blog_article: `${base} | 확인 가이드`,
     search_hub: "검색 가이드 | 공식주소·조건 확인",
@@ -82,7 +82,7 @@ function titleTemplate(page) {
     faq_hub: "FAQ | 상담 전 자주 묻는 질문",
     faq: `${base} | FAQ`,
     provider_update: `${base} | 업체 변경 이력`,
-    guaranteed: "보증업체 | 공식 코드·도메인 확인",
+    guaranteed: "RUST 에이전시 보증 업체",
     tools_hub: "도구 | 조건·코드·문의 문구 확인",
     tool: `${base} | 확인 도구`,
     consult: "상담센터 | 자동화 상담봇 연결",
@@ -96,9 +96,9 @@ function titleTemplate(page) {
 }
 function descTemplate(page) {
   let d = strip(page.rawDescription || "");
-  if (page.kind === "home") d = "코드 확인, 공식주소 확인, 이벤트 조건, 출금 전 확인을 한 흐름으로 정리한 88ST.Cloud 대시보드입니다.";
-  if (page.kind === "guaranteed") d = "보증업체별 가입코드와 공식 도메인을 짧게 확인하고, 필요 시 자동화 상담봇으로 조건을 정리합니다.";
-  if (page.kind === "consult") d = "가입 전 코드, 공식주소, 이벤트 조건, 출금 전 확인을 자동화 상담봇 기준으로 빠르게 정리합니다.";
+  if (page.kind === "home") d = "Team RUST MAIN과 RUST 에이전시 기준의 메인 화면입니다. 불필요한 부제와 홍보 박스를 줄이고 핵심 확인 루트만 간결하게 정리했습니다.";
+  if (page.kind === "guaranteed") d = "RUST 에이전시 보증 업체의 코드 확인, 도메인 바로가기, 상담 연결을 카드 중심으로 빠르게 확인할 수 있도록 정리한 공식 안내 페이지입니다.";
+  if (page.kind === "consult") d = "고객센터 페이지입니다. 복잡한 안내 섹션을 줄이고 텔레그램 상담센터로 바로 이동하는 단일 CTA 흐름만 제공하도록 정리한 상담 연결 페이지입니다.";
   if (!d || d.length < 80) d = `${cleanTitle(page.baseTitle)} 관련 내용을 코드, 공식주소, 이벤트 조건, 출금 전 확인 흐름으로 정리했습니다.`;
   const legacyPattern = new RegExp([
     "@" + "seo" + "a69",
@@ -123,14 +123,18 @@ function replaceOrInsert(txt, regex, tag) {
   if (regex.test(txt)) return txt.replace(regex, tag);
   return txt.replace("</head>", tag + "\n</head>");
 }
+function dropAndAppendHead(txt, regex, tag) {
+  txt = txt.replace(regex, "\n");
+  return txt.replace("</head>", tag + "\n</head>");
+}
 function upsertName(txt, name, content) {
-  return replaceOrInsert(txt, new RegExp(`<meta\\s+name=["']${name}["']\\s+content=["'][^"']*["']\\s*/?>`, "i"), `<meta name="${name}" content="${esc(content)}"/>`);
+  return dropAndAppendHead(txt, new RegExp(`<meta\\b(?=[^>]*\\bname=["']${name}["'])[^>]*>`, "ig"), `<meta name="${name}" content="${esc(content)}"/>`);
 }
 function upsertProp(txt, prop, content) {
-  return replaceOrInsert(txt, new RegExp(`<meta\\s+property=["']${prop}["']\\s+content=["'][^"']*["']\\s*/?>`, "i"), `<meta property="${prop}" content="${esc(content)}"/>`);
+  return dropAndAppendHead(txt, new RegExp(`<meta\\b(?=[^>]*\\bproperty=["']${prop}["'])[^>]*>`, "ig"), `<meta property="${prop}" content="${esc(content)}"/>`);
 }
 function upsertLink(txt, relName, href) {
-  return replaceOrInsert(txt, new RegExp(`<link\\s+rel=["']${relName}["']\\s+href=["'][^"']*["']\\s*/?>`, "i"), `<link rel="${relName}" href="${esc(href)}"/>`);
+  return dropAndAppendHead(txt, new RegExp(`<link\\b(?=[^>]*\\brel=["']${relName}["'])[^>]*>`, "ig"), `<link rel="${relName}" href="${esc(href)}"/>`);
 }
 function removeOld(txt) {
   return txt
@@ -139,8 +143,8 @@ function removeOld(txt) {
     .replace(/\n?<section class="v36-growth-hubs"[\s\S]*?<\/section>\s*/ig, "\n")
     .replace(/\n?<section class="v36-related-links"[\s\S]*?<\/section>\s*/ig, "\n")
     .replace(/\n?<section class="v36-conversion-cta"[\s\S]*?<\/section>\s*/ig, "\n")
-    .replace(/\n?<script type="application\/ld\+json" data-v31-schema="[^"]+">[\s\S]*?<\/script>\s*/ig, "\n")
-    .replace(/\n?<script type="application\/ld\+json" data-v36-schema="[^"]+">[\s\S]*?<\/script>\s*/ig, "\n");
+    .replace(/\n?<script\b(?=[^>]*data-v31-schema=)[^>]*>[\s\S]*?<\/script>\s*/ig, "\n")
+    .replace(/\n?<script\b(?=[^>]*data-v36-schema=)[^>]*>[\s\S]*?<\/script>\s*/ig, "\n");
 }
 function breadcrumbSchema(page) {
   const parts = page.route.split("/").filter(Boolean);

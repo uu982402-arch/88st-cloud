@@ -70,8 +70,8 @@ for (const f of htmls) {
 for (const f of htmls) {
   const txt = read(f);
   if (!/<title[\s>]/i.test(txt)) fail(errors, `missing title ${rel(f)}`);
-  if (!/<meta\s+name=["']description["']/i.test(txt)) fail(errors, `missing description ${rel(f)}`);
-  if (!/<link\s+rel=["']canonical["']/i.test(txt)) fail(errors, `missing canonical ${rel(f)}`);
+  if (!/<meta\b(?=[^>]*\bname=["']description["'])/i.test(txt)) fail(errors, `missing description ${rel(f)}`);
+  if (!/<link\b(?=[^>]*\brel=["']canonical["'])/i.test(txt)) fail(errors, `missing canonical ${rel(f)}`);
   if (!/data-v36-schema="primary"|data-v31-schema="primary"/i.test(txt)) fail(errors, `missing schema ${rel(f)}`);
   for (const m of txt.matchAll(/\b(?:href|src)=["']([^"']+)["']/g)) {
     const href = m[1].split("#")[0].split("?")[0];
