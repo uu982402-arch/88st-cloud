@@ -1,6 +1,6 @@
 
 (function(){
-  var VERSION = "static-growth-conversion-v36-20260516";
+  var VERSION = "static-growth-conversion-v39-20260517";
   var BOT_URL = "https://t.me/TRS999_bot";
   function track(name, params){
     params = params || {};
@@ -55,6 +55,20 @@
     var related = e.target.closest(".v36-related-links a,.v36-growth-hubs a,.v36-conversion-cta a");
     if (related) track("internal_recommendation_click", { label: label(related), href: related.getAttribute("href") || "" });
   }, true);
+
+  function focusProviderCards(){
+    try {
+      var target = document.querySelector('#providerCards');
+      if (!target) return;
+      target.classList.add('v39-provider-focus');
+      target.scrollIntoView({ behavior:'smooth', block:'start' });
+      setTimeout(function(){ target.classList.remove('v39-provider-focus'); }, 1400);
+    } catch(e) {}
+  }
+  document.addEventListener("click", function(e){
+    var cta = e.target.closest('[data-v39-hero-action="code"],[data-v39-hero-action="domain"]');
+    if (cta) focusProviderCards();
+  }, true);
   document.addEventListener("DOMContentLoaded", function(){
     document.documentElement.classList.add("v36-growth-ready");
     track("seo_page_ready", { title: document.title });
@@ -62,3 +76,10 @@
   window.__GROWTH_CONVERSION_V36__ = VERSION;
   window.__CONSULT_BOT_URL__ = BOT_URL;
 })();
+
+
+try {
+  var style = document.createElement('style');
+  style.textContent = '#providerCards.v39-provider-focus{animation:v39ProviderPulse 1.15s ease both}@keyframes v39ProviderPulse{0%{filter:brightness(1)}35%{filter:brightness(1.16)}100%{filter:brightness(1)}}';
+  document.head.appendChild(style);
+} catch(e) {}
