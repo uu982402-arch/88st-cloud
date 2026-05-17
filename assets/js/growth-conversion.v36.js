@@ -1,6 +1,6 @@
 
 (function(){
-  var VERSION = "static-growth-conversion-v39-20260517";
+  var VERSION = "static-growth-conversion-v40-20260517";
   var BOT_URL = "https://t.me/TRS999_bot";
   function track(name, params){
     params = params || {};

@@ -1,6 +1,6 @@
-build=2026-05-17T05:51:04.924Z
-version=static-growth-conversion-v39-20260517055104
-cache=20260517055104
+build=2026-05-17T06:07:09.923Z
+version=static-growth-conversion-v40-20260517060709
+cache=20260517060709
 html=365
 sitemap=361
 worker=safe-mode

@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-/* V36 Static Growth & Conversion Engine / V39 Main Header & Guaranteed Interaction Fix
+/* V36 Static Growth & Conversion Engine / V39 Main Header & Guaranteed Interaction Fix / V40 Home Title Typography Tune
    - strict SEO meta/canonical/schema
    - sitemap/robots generation
    - related links + topic hubs + conversion CTAs
@@ -10,7 +10,7 @@ import path from "path";
 
 const ROOT = process.cwd();
 const DOMAIN = "https://88st.cloud";
-const VERSION = "static-growth-conversion-v39-20260517";
+const VERSION = "static-growth-conversion-v40-20260517";
 const TODAY = "2026-05-17";
 const BOT_URL = "https://t.me/TRS999_bot";
 
