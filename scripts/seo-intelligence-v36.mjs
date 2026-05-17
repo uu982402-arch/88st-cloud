@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-/* V36 Static Growth & Conversion Engine
+/* V36 Static Growth & Conversion Engine / V37 Non-Duplicate Game SEO Expansion
    - strict SEO meta/canonical/schema
    - sitemap/robots generation
    - related links + topic hubs + conversion CTAs
@@ -10,8 +10,8 @@ import path from "path";
 
 const ROOT = process.cwd();
 const DOMAIN = "https://88st.cloud";
-const VERSION = "static-growth-conversion-v36-20260516";
-const TODAY = "2026-05-16";
+const VERSION = "static-growth-conversion-v37-20260517";
+const TODAY = "2026-05-17";
 const BOT_URL = "https://t.me/TRS999_bot";
 
 function walk(dir, out = []) {
