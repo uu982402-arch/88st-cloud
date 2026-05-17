@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-/* V36 Static Growth & Conversion Engine / V39 Main Header & Guaranteed Interaction Fix / V40 Home Title Typography Tune
+/* V36 Static Growth & Conversion Engine / V41 Visual QA Fix
    - strict SEO meta/canonical/schema
    - sitemap/robots generation
    - related links + topic hubs + conversion CTAs
@@ -10,7 +10,7 @@ import path from "path";
 
 const ROOT = process.cwd();
 const DOMAIN = "https://88st.cloud";
-const VERSION = "static-growth-conversion-v40-20260517";
+const VERSION = "static-growth-conversion-v41-20260517";
 const TODAY = "2026-05-17";
 const BOT_URL = "https://t.me/TRS999_bot";
 
@@ -74,7 +74,7 @@ function rawDesc(txt, title) {
 function titleTemplate(page) {
   const base = cleanTitle(page.baseTitle || page.title || titleFromPath(page.rel));
   const byKind = {
-    home: "Team RUST MAIN | RUST 에이전시",
+    home: "Team RUST MAIN | 88ST.Cloud",
     blog_hub: "블로그 | 코드·주소·조건 확인 가이드",
     blog_article: `${base} | 확인 가이드`,
     search_hub: "검색 가이드 | 공식주소·조건 확인",
@@ -96,7 +96,7 @@ function titleTemplate(page) {
 }
 function descTemplate(page) {
   let d = strip(page.rawDescription || "");
-  if (page.kind === "home") d = "Team RUST MAIN과 RUST 에이전시 기준의 메인 화면입니다. 불필요한 부제와 홍보 박스를 줄이고 핵심 확인 루트만 간결하게 정리했습니다.";
+  if (page.kind === "home") d = "Team RUST MAIN 기준의 메인 화면입니다. 불필요한 부제와 홍보 박스를 줄이고 핵심 확인 루트만 간결하게 정리했습니다.";
   if (page.kind === "guaranteed") d = "RUST 에이전시 보증 업체의 코드 확인, 도메인 바로가기, 상담 연결을 카드 중심으로 빠르게 확인할 수 있도록 정리한 공식 안내 페이지입니다.";
   if (page.kind === "consult") d = "고객센터 페이지입니다. 복잡한 안내 섹션을 줄이고 텔레그램 상담센터로 바로 이동하는 단일 CTA 흐름만 제공하도록 정리한 상담 연결 페이지입니다.";
   if (!d || d.length < 80) d = `${cleanTitle(page.baseTitle)} 관련 내용을 코드, 공식주소, 이벤트 조건, 출금 전 확인 흐름으로 정리했습니다.`;
@@ -137,12 +137,12 @@ function upsertLink(txt, relName, href) {
   return dropAndAppendHead(txt, new RegExp(`<link\\b(?=[^>]*\\brel=["']${relName}["'])[^>]*>`, "ig"), `<link rel="${relName}" href="${esc(href)}"/>`);
 }
 function removeOld(txt) {
+  const seoSection = /\n?<section\b(?=[^>]*class=["'][^"']*(?:v31-related-links|v31-topic-hubs|v36-growth-hubs|v36-related-links|v36-conversion-cta)[^"']*["'])[^>]*>[\s\S]*?<\/section>\s*/ig;
   return txt
-    .replace(/\n?<section class="v31-related-links"[\s\S]*?<\/section>\s*/ig, "\n")
-    .replace(/\n?<section class="v31-topic-hubs"[\s\S]*?<\/section>\s*/ig, "\n")
-    .replace(/\n?<section class="v36-growth-hubs"[\s\S]*?<\/section>\s*/ig, "\n")
-    .replace(/\n?<section class="v36-related-links"[\s\S]*?<\/section>\s*/ig, "\n")
-    .replace(/\n?<section class="v36-conversion-cta"[\s\S]*?<\/section>\s*/ig, "\n")
+    .replace(seoSection, "\n")
+    .replace(/\n?<style\b(?=[^>]*id=["']v41-blog-visual-guard["'])[^>]*>[\s\S]*?<\/style>\s*/ig, "\n")
+    .replace(/\n?<style\b(?=[^>]*id=["']v41-guaranteed-visual-guard["'])[^>]*>[\s\S]*?<\/style>\s*/ig, "\n")
+    .replace(/\n?<script\b(?=[^>]*id=["']v41-guaranteed-interaction["'])[^>]*>[\s\S]*?<\/script>\s*/ig, "\n")
     .replace(/\n?<script\b(?=[^>]*data-v31-schema=)[^>]*>[\s\S]*?<\/script>\s*/ig, "\n")
     .replace(/\n?<script\b(?=[^>]*data-v36-schema=)[^>]*>[\s\S]*?<\/script>\s*/ig, "\n");
 }
@@ -258,9 +258,15 @@ function hubsBlock(page) {
   return `<section class="v36-growth-hubs" aria-label="키워드 허브"><div class="v36-section-head"><span>TOPIC HUB</span><h2>키워드별 확인 허브</h2></div><div class="v36-hub-grid">${cards}</div></section>`;
 }
 function conversionBlock(page) {
-  if (!["blog_article","search_guide","faq","provider_update","tool","consult_result","consult_motive","guaranteed"].includes(page.kind)) return "";
+  if (!["blog_article","search_guide","faq","provider_update","tool","consult_result","consult_motive"].includes(page.kind)) return "";
   const start = page.route.replace(/[^a-z0-9가-힣]+/gi, "-").replace(/^-|-$/g, "").slice(0,48) || "home";
-  return `<section class="v36-conversion-cta" aria-label="상담 전환"><div><span>CHECK BEFORE ACTION</span><h2>상담 전 필요한 항목만 먼저 확인하세요</h2><p>가입코드, 공식주소, 이벤트 조건, 출금 전 자료를 정리한 뒤 자동화 상담봇으로 연결할 수 있습니다.</p></div><nav><a href="/tools/code-check/">가입코드 확인</a><a href="/search-guides/official-address-impersonation-check.html">공식주소 확인</a><a href="/tools/inquiry-builder/">문의 문구 만들기</a><a class="is-primary" href="${BOT_URL}?start=${start}" target="_blank" rel="nofollow noopener">조건 먼저 확인하기</a></nav></section>`;
+  return `<section class="v36-conversion-cta" aria-label="상담 전환"><div><span>CHECK BEFORE ACTION</span><h2>상담 전 필요한 항목만 먼저 확인하세요</h2><p>가입코드, 공식주소, 이벤트 조건, 출금 전 자료를 정리한 뒤 고객센터로 연결할 수 있습니다.</p></div><nav><a href="/tools/code-check/">가입코드 확인</a><a href="/search-guides/official-address-impersonation-check.html">공식주소 확인</a><a href="/tools/inquiry-builder/">문의 문구 만들기</a><a class="is-primary" href="${BOT_URL}?start=${start}" target="_blank" rel="nofollow noopener">고객센터에서 확인하기</a></nav></section>`;
+}
+
+function blogVisualGuard() {
+  return `<style id="v41-blog-visual-guard">
+html,body.pro-blog-page{background:#03070d!important;color:#edf4ff!important;}body.pro-blog-page{background:radial-gradient(circle at 14% -8%,rgba(245,215,139,.13),transparent 32%),linear-gradient(180deg,#03070d 0%,#07101c 42%,#03070d 100%)!important;}body.pro-blog-page #mainContent{background:transparent!important;color:#edf4ff!important;}body.pro-blog-page .pro-article{background:transparent!important;color:#edf4ff!important;border:0!important;box-shadow:none!important;padding:30px 0 42px!important;}body.pro-blog-page .pro-article__wrap{width:min(920px,calc(100% - 32px))!important;margin-inline:auto!important;color:#edf4ff!important;}body.pro-blog-page .pro-article h1{color:#fff4df!important;text-shadow:0 10px 34px rgba(0,0,0,.34)!important;}body.pro-blog-page .pro-article .lead{color:rgba(223,232,246,.84)!important;}body.pro-blog-page .pro-article__meta span{background:rgba(245,215,139,.12)!important;color:#f5d78b!important;border:1px solid rgba(245,215,139,.25)!important;}body.pro-blog-page .pro-article__body{background:linear-gradient(180deg,rgba(255,255,255,.072),rgba(255,255,255,.03)),rgba(7,13,23,.90)!important;color:#dbe5f1!important;border:1px solid rgba(215,228,255,.14)!important;box-shadow:0 28px 86px rgba(0,0,0,.42),inset 0 1px 0 rgba(255,255,255,.075)!important;}body.pro-blog-page .pro-article__body h2,body.pro-blog-page .pro-article__body h3,body.pro-blog-page .v37-article-summary h2{color:#fff4df!important;}body.pro-blog-page .pro-article__body p,body.pro-blog-page .pro-article__body li,body.pro-blog-page .pro-article__body ul,body.pro-blog-page .pro-article__body ol{color:#dbe5f1!important;}body.pro-blog-page .pro-article__body a{color:#f5d78b!important;text-decoration:none!important;border-bottom:1px solid rgba(245,215,139,.34)!important;}body.pro-blog-page .v37-article-summary{background:rgba(255,255,255,.058)!important;border-color:rgba(245,215,139,.20)!important;color:#dbe5f1!important;}body.pro-blog-page .pro-related a{background:rgba(255,255,255,.062)!important;color:#fff4df!important;border-color:rgba(215,228,255,.15)!important;}body.pro-blog-page .pro-notice{color:rgba(223,232,246,.70)!important;border-top-color:rgba(215,228,255,.15)!important;}body.pro-blog-page .v36-conversion-cta,body.pro-blog-page .v36-growth-hubs,body.pro-blog-page .v36-related-links{background:linear-gradient(180deg,rgba(255,255,255,.065),rgba(255,255,255,.028)),rgba(7,13,23,.80)!important;color:#edf4ff!important;}body.pro-blog-page .v36-related-grid a,body.pro-blog-page .v36-hub-card{background:rgba(255,255,255,.052)!important;color:#dbe5f1!important;border-color:rgba(215,228,255,.14)!important;}@media(max-width:640px){body.pro-blog-page .pro-article__wrap{width:calc(100% - 18px)!important}body.pro-blog-page .pro-article__body{padding:18px!important;border-radius:18px!important}}
+</style>`;
 }
 
 const detailKinds = new Set(["blog_article","search_guide","faq","provider_update","consult_result","consult_motive","sports","tool"]);
@@ -282,8 +288,11 @@ for (const page of pages) {
   txt = upsertName(txt, "twitter:description", page.desc);
   txt = upsertName(txt, "twitter:image", DOMAIN + "/assets/img/v24/moonsafe-hero-v24.webp");
   txt = txt.replace("</head>", schema(page, txt) + "\n</head>");
-  if (!txt.includes("/assets/css/growth-conversion.v36.css")) txt = txt.replace("</head>", `<link rel="stylesheet" href="/assets/css/growth-conversion.v36.css?v=${VERSION}"/>\n</head>`);
-  if (!txt.includes("/assets/js/growth-conversion.v36.js")) txt = txt.replace("</body>", `<script src="/assets/js/growth-conversion.v36.js?v=${VERSION}" defer></script>\n</body>`);
+  if (page.kind === "blog_article") txt = txt.replace("</head>", blogVisualGuard() + "\n</head>");
+  if (txt.includes("/assets/css/growth-conversion.v36.css")) txt = txt.replace(/\/assets\/css\/growth-conversion\.v36\.css\?v=[^"']+/g, `/assets/css/growth-conversion.v36.css?v=${VERSION}`);
+  else txt = txt.replace("</head>", `<link rel="stylesheet" href="/assets/css/growth-conversion.v36.css?v=${VERSION}"/>\n</head>`);
+  if (txt.includes("/assets/js/growth-conversion.v36.js")) txt = txt.replace(/\/assets\/js\/growth-conversion\.v36\.js\?v=[^"']+/g, `/assets/js/growth-conversion.v36.js?v=${VERSION}`);
+  else txt = txt.replace("</body>", `<script src="/assets/js/growth-conversion.v36.js?v=${VERSION}" defer></script>\n</body>`);
   if (detailKinds.has(page.kind)) {
     const blocks = hubsBlock(page) + relatedBlock(page) + conversionBlock(page);
     if (txt.includes('<section class="v27-detail-support"')) txt = txt.replace('<section class="v27-detail-support"', blocks + '<section class="v27-detail-support"');
