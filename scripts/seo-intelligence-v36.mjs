@@ -1,8 +1,8 @@
 #!/usr/bin/env node
-/* V36 Static Growth & Conversion Engine / V41 Visual QA Fix
+/* V36 Static Growth & Conversion Engine / V43 Comprehensive Quality Upgrade
    - strict SEO meta/canonical/schema
    - sitemap/robots generation
-   - related links + topic hubs + conversion CTAs
+   - related links + topic hubs; blog detail conversion CTAs removed; V43 quality guards
    - provider JSON aware ordering and links
 */
 import fs from "fs";
@@ -10,7 +10,7 @@ import path from "path";
 
 const ROOT = process.cwd();
 const DOMAIN = "https://88st.cloud";
-const VERSION = "static-growth-conversion-v41-20260517";
+const VERSION = "static-growth-conversion-v43-20260518";
 const TODAY = "2026-05-17";
 const BOT_URL = "https://t.me/TRS999_bot";
 
@@ -109,7 +109,7 @@ function descTemplate(page) {
     "\\uCF54\\uC778\\s*\\uD604\\uBB3C"
   ].join("|"), "gi");
   d = d.replace(legacyPattern, "").replace(/\s+/g, " ").trim();
-  if (d.length < 80) d += " 상담 전 필요한 확인 항목과 관련 가이드를 함께 볼 수 있습니다.";
+  if (d.length < 80) d += " 이용 전 필요한 확인 항목과 관련 가이드를 함께 볼 수 있습니다.";
   if (d.length > 150) d = d.slice(0, 147).trim() + "...";
   return d;
 }
@@ -141,6 +141,8 @@ function removeOld(txt) {
   return txt
     .replace(seoSection, "\n")
     .replace(/\n?<style\b(?=[^>]*id=["']v41-blog-visual-guard["'])[^>]*>[\s\S]*?<\/style>\s*/ig, "\n")
+    .replace(/\n?<style\b(?=[^>]*id=["']v42-blog-visual-guard["'])[^>]*>[\s\S]*?<\/style>\s*/ig, "\n")
+    .replace(/\n?<style\b(?=[^>]*id=["']v43-blog-visual-guard["'])[^>]*>[\s\S]*?<\/style>\s*/ig, "\n")
     .replace(/\n?<style\b(?=[^>]*id=["']v41-guaranteed-visual-guard["'])[^>]*>[\s\S]*?<\/style>\s*/ig, "\n")
     .replace(/\n?<script\b(?=[^>]*id=["']v41-guaranteed-interaction["'])[^>]*>[\s\S]*?<\/script>\s*/ig, "\n")
     .replace(/\n?<script\b(?=[^>]*data-v31-schema=)[^>]*>[\s\S]*?<\/script>\s*/ig, "\n")
@@ -166,6 +168,15 @@ function extractFaqEntities(txt, page) {
     "acceptedAnswer":{"@type":"Answer", "text":page.desc}
   }));
 }
+
+function headHints(txt) {
+  const hints = [];
+  if (!/<link\b(?=[^>]*rel=["']preconnect["'])(?=[^>]*href=["']https:\/\/t\.me["'])/i.test(txt)) hints.push('<link rel="preconnect" href="https://t.me" crossorigin/>');
+  if (!/<link\b(?=[^>]*rel=["']preload["'])(?=[^>]*href=["']\/img\/logo-v24\.png["'])/i.test(txt)) hints.push('<link rel="preload" as="image" href="/img/logo-v24.png" imagesrcset="/img/logo-v24.png"/>');
+  if (!hints.length) return txt;
+  return txt.replace('</head>', hints.join('\n') + '\n</head>');
+}
+
 function schema(page, txt) {
   const graph = [
     { "@type":"Organization", "@id":DOMAIN+"/#organization", "name":"88ST.Cloud", "url":DOMAIN+"/", "logo":DOMAIN+"/img/logo-v24.png" },
@@ -258,14 +269,23 @@ function hubsBlock(page) {
   return `<section class="v36-growth-hubs" aria-label="키워드 허브"><div class="v36-section-head"><span>TOPIC HUB</span><h2>키워드별 확인 허브</h2></div><div class="v36-hub-grid">${cards}</div></section>`;
 }
 function conversionBlock(page) {
-  if (!["blog_article","search_guide","faq","provider_update","tool","consult_result","consult_motive"].includes(page.kind)) return "";
+  if (page.kind === "blog_article") return "";
+  if (!["search_guide","faq","provider_update","tool","consult_result","consult_motive"].includes(page.kind)) return "";
   const start = page.route.replace(/[^a-z0-9가-힣]+/gi, "-").replace(/^-|-$/g, "").slice(0,48) || "home";
   return `<section class="v36-conversion-cta" aria-label="상담 전환"><div><span>CHECK BEFORE ACTION</span><h2>상담 전 필요한 항목만 먼저 확인하세요</h2><p>가입코드, 공식주소, 이벤트 조건, 출금 전 자료를 정리한 뒤 고객센터로 연결할 수 있습니다.</p></div><nav><a href="/tools/code-check/">가입코드 확인</a><a href="/search-guides/official-address-impersonation-check.html">공식주소 확인</a><a href="/tools/inquiry-builder/">문의 문구 만들기</a><a class="is-primary" href="${BOT_URL}?start=${start}" target="_blank" rel="nofollow noopener">고객센터에서 확인하기</a></nav></section>`;
 }
 
+
+function trimProRelated(txt) {
+  return txt.replace(/<div\s+class=["']pro-related__grid["'][^>]*>([\s\S]*?)<\/div>/ig, (full, inner) => {
+    const links = [...inner.matchAll(/<a\b[\s\S]*?<\/a>/ig)].map(m => m[0]).slice(0, 4);
+    return `<div class="pro-related__grid">${links.join("")}</div>`;
+  });
+}
+
 function blogVisualGuard() {
-  return `<style id="v41-blog-visual-guard">
-html,body.pro-blog-page{background:#03070d!important;color:#edf4ff!important;}body.pro-blog-page{background:radial-gradient(circle at 14% -8%,rgba(245,215,139,.13),transparent 32%),linear-gradient(180deg,#03070d 0%,#07101c 42%,#03070d 100%)!important;}body.pro-blog-page #mainContent{background:transparent!important;color:#edf4ff!important;}body.pro-blog-page .pro-article{background:transparent!important;color:#edf4ff!important;border:0!important;box-shadow:none!important;padding:30px 0 42px!important;}body.pro-blog-page .pro-article__wrap{width:min(920px,calc(100% - 32px))!important;margin-inline:auto!important;color:#edf4ff!important;}body.pro-blog-page .pro-article h1{color:#fff4df!important;text-shadow:0 10px 34px rgba(0,0,0,.34)!important;}body.pro-blog-page .pro-article .lead{color:rgba(223,232,246,.84)!important;}body.pro-blog-page .pro-article__meta span{background:rgba(245,215,139,.12)!important;color:#f5d78b!important;border:1px solid rgba(245,215,139,.25)!important;}body.pro-blog-page .pro-article__body{background:linear-gradient(180deg,rgba(255,255,255,.072),rgba(255,255,255,.03)),rgba(7,13,23,.90)!important;color:#dbe5f1!important;border:1px solid rgba(215,228,255,.14)!important;box-shadow:0 28px 86px rgba(0,0,0,.42),inset 0 1px 0 rgba(255,255,255,.075)!important;}body.pro-blog-page .pro-article__body h2,body.pro-blog-page .pro-article__body h3,body.pro-blog-page .v37-article-summary h2{color:#fff4df!important;}body.pro-blog-page .pro-article__body p,body.pro-blog-page .pro-article__body li,body.pro-blog-page .pro-article__body ul,body.pro-blog-page .pro-article__body ol{color:#dbe5f1!important;}body.pro-blog-page .pro-article__body a{color:#f5d78b!important;text-decoration:none!important;border-bottom:1px solid rgba(245,215,139,.34)!important;}body.pro-blog-page .v37-article-summary{background:rgba(255,255,255,.058)!important;border-color:rgba(245,215,139,.20)!important;color:#dbe5f1!important;}body.pro-blog-page .pro-related a{background:rgba(255,255,255,.062)!important;color:#fff4df!important;border-color:rgba(215,228,255,.15)!important;}body.pro-blog-page .pro-notice{color:rgba(223,232,246,.70)!important;border-top-color:rgba(215,228,255,.15)!important;}body.pro-blog-page .v36-conversion-cta,body.pro-blog-page .v36-growth-hubs,body.pro-blog-page .v36-related-links{background:linear-gradient(180deg,rgba(255,255,255,.065),rgba(255,255,255,.028)),rgba(7,13,23,.80)!important;color:#edf4ff!important;}body.pro-blog-page .v36-related-grid a,body.pro-blog-page .v36-hub-card{background:rgba(255,255,255,.052)!important;color:#dbe5f1!important;border-color:rgba(215,228,255,.14)!important;}@media(max-width:640px){body.pro-blog-page .pro-article__wrap{width:calc(100% - 18px)!important}body.pro-blog-page .pro-article__body{padding:18px!important;border-radius:18px!important}}
+  return `<style id="v43-blog-visual-guard">
+html,body.pro-blog-page{background:#03070d!important;color:#edf4ff!important;color-scheme:dark;}body.pro-blog-page{background:radial-gradient(circle at 14% -8%,rgba(245,215,139,.13),transparent 32%),radial-gradient(circle at 84% 8%,rgba(79,140,255,.10),transparent 34%),linear-gradient(180deg,#03070d 0%,#07101c 42%,#03070d 100%)!important;}body.pro-blog-page #mainContent{background:transparent!important;color:#edf4ff!important;}body.pro-blog-page .pro-article{background:transparent!important;color:#edf4ff!important;border:0!important;box-shadow:none!important;padding:clamp(18px,4vw,34px) 0 42px!important;}body.pro-blog-page .pro-article__wrap{width:min(920px,calc(100% - 32px))!important;margin-inline:auto!important;color:#edf4ff!important;}body.pro-blog-page .pro-article h1{margin-top:0!important;color:#fff4df!important;font-size:clamp(30px,4.6vw,52px)!important;line-height:1.08!important;letter-spacing:-.04em!important;text-wrap:balance!important;text-shadow:0 10px 34px rgba(0,0,0,.34)!important;}body.pro-blog-page .pro-article .lead{color:rgba(223,232,246,.84)!important;line-height:1.72!important;}body.pro-blog-page .pro-article__meta{gap:8px!important;flex-wrap:wrap!important;}body.pro-blog-page .pro-article__meta span{background:rgba(245,215,139,.10)!important;color:#f5d78b!important;border:1px solid rgba(245,215,139,.24)!important;border-radius:999px!important;font-size:11px!important;padding:5px 9px!important;}body.pro-blog-page .pro-article__body{background:linear-gradient(180deg,rgba(255,255,255,.072),rgba(255,255,255,.03)),rgba(7,13,23,.92)!important;color:#dbe5f1!important;border:1px solid rgba(215,228,255,.14)!important;border-radius:24px!important;box-shadow:0 20px 64px rgba(0,0,0,.32),inset 0 1px 0 rgba(255,255,255,.075)!important;line-height:1.72!important;}body.pro-blog-page .pro-article__body h2,body.pro-blog-page .pro-article__body h3,body.pro-blog-page .v37-article-summary h2{color:#fff4df!important;margin-top:1.65em!important;margin-bottom:.6em!important;line-height:1.22!important;}body.pro-blog-page .pro-article__body p,body.pro-blog-page .pro-article__body li,body.pro-blog-page .pro-article__body ul,body.pro-blog-page .pro-article__body ol{color:#dbe5f1!important;}body.pro-blog-page .pro-article__body li{margin:.38em 0!important;}body.pro-blog-page .pro-article__body a{color:#f5d78b!important;text-decoration:none!important;border-bottom:1px solid rgba(245,215,139,.34)!important;overflow-wrap:anywhere;}body.pro-blog-page .pro-article__body a[target="_blank"]::after{content:"↗";font-size:.86em;margin-left:.18em;color:#f5d78b;}body.pro-blog-page .v37-article-summary,body.pro-blog-page .pro-related,body.pro-blog-page .article-related-panel{background:rgba(255,255,255,.058)!important;border:1px solid rgba(245,215,139,.18)!important;color:#dbe5f1!important;border-radius:20px!important;}body.pro-blog-page .pro-related__grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important;}body.pro-blog-page .pro-related a,body.pro-blog-page .article-related-card,body.pro-blog-page .related-card{background:rgba(255,255,255,.062)!important;color:#fff4df!important;border:1px solid rgba(215,228,255,.15)!important;border-radius:16px!important;display:-webkit-box!important;-webkit-line-clamp:2!important;-webkit-box-orient:vertical!important;overflow:hidden!important;}body.pro-blog-page .pro-notice{font-size:12.5px!important;color:rgba(223,232,246,.68)!important;border-top-color:rgba(215,228,255,.15)!important;}body.pro-blog-page .v36-growth-hubs,body.pro-blog-page .v36-related-links{background:linear-gradient(180deg,rgba(255,255,255,.065),rgba(255,255,255,.028)),rgba(7,13,23,.82)!important;color:#edf4ff!important;border:1px solid rgba(215,228,255,.12)!important;}body.pro-blog-page .v36-related-grid a,body.pro-blog-page .v36-hub-card{background:rgba(255,255,255,.052)!important;color:#dbe5f1!important;border-color:rgba(215,228,255,.14)!important;}body.pro-blog-page blockquote{margin:18px 0!important;padding:14px 16px!important;border-left:3px solid #f5d78b!important;border-radius:14px!important;background:rgba(245,215,139,.08)!important;color:#fff4df!important;}body.pro-blog-page table{display:block!important;max-width:100%!important;overflow-x:auto!important;border-collapse:collapse!important;}body.pro-blog-page code,body.pro-blog-page kbd,body.pro-blog-page samp{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace!important;color:#f7df9e!important;background:rgba(255,255,255,.07)!important;border-radius:6px!important;padding:.08em .32em!important;}body.pro-blog-page [style*="background:#fff"],body.pro-blog-page [style*="background: #fff"],body.pro-blog-page [style*="background-color:#fff"],body.pro-blog-page [style*="background-color: #fff"],body.pro-blog-page [style*="background:white"],body.pro-blog-page [style*="background: white"]{background:rgba(7,13,23,.88)!important;color:#dbe5f1!important;}@media(max-width:720px){body.pro-blog-page .pro-article__wrap{width:calc(100% - 18px)!important}body.pro-blog-page .pro-article__body{padding:18px!important;border-radius:18px!important}body.pro-blog-page .pro-related__grid{grid-template-columns:1fr!important}}@media print{body.pro-blog-page{background:#fff!important;color:#111!important}body.pro-blog-page .moon-header,body.pro-blog-page .v36-growth-hubs,body.pro-blog-page .v36-related-links,body.pro-blog-page .moon-footer{display:none!important}body.pro-blog-page .pro-article__body{box-shadow:none!important;border:1px solid #ccc!important;color:#111!important;background:#fff!important}}
 </style>`;
 }
 
@@ -273,6 +293,7 @@ const detailKinds = new Set(["blog_article","search_guide","faq","provider_updat
 for (const page of pages) {
   let txt = fs.readFileSync(page.file, "utf8");
   txt = removeOld(txt);
+  txt = txt.replace(/\n?<meta\b(?=[^>]*\bname=["\']keywords["\'])[^>]*>\s*/ig, "\n");
   txt = txt.match(/<title[^>]*>[\s\S]*?<\/title>/i) ? txt.replace(/<title[^>]*>[\s\S]*?<\/title>/i, `<title>${esc(page.title)}</title>`) : txt.replace("</head>", `<title>${esc(page.title)}</title>\n</head>`);
   txt = upsertName(txt, "description", page.desc);
   txt = upsertName(txt, "robots", page.kind === "noindex" ? "noindex,nofollow,noarchive" : "index,follow,max-image-preview:large");
@@ -287,8 +308,12 @@ for (const page of pages) {
   txt = upsertName(txt, "twitter:title", page.title);
   txt = upsertName(txt, "twitter:description", page.desc);
   txt = upsertName(txt, "twitter:image", DOMAIN + "/assets/img/v24/moonsafe-hero-v24.webp");
+  txt = headHints(txt);
   txt = txt.replace("</head>", schema(page, txt) + "\n</head>");
-  if (page.kind === "blog_article") txt = txt.replace("</head>", blogVisualGuard() + "\n</head>");
+  if (page.kind === "blog_article") {
+    txt = trimProRelated(txt);
+    txt = txt.replace("</head>", blogVisualGuard() + "\n</head>");
+  }
   if (txt.includes("/assets/css/growth-conversion.v36.css")) txt = txt.replace(/\/assets\/css\/growth-conversion\.v36\.css\?v=[^"']+/g, `/assets/css/growth-conversion.v36.css?v=${VERSION}`);
   else txt = txt.replace("</head>", `<link rel="stylesheet" href="/assets/css/growth-conversion.v36.css?v=${VERSION}"/>\n</head>`);
   if (txt.includes("/assets/js/growth-conversion.v36.js")) txt = txt.replace(/\/assets\/js\/growth-conversion\.v36\.js\?v=[^"']+/g, `/assets/js/growth-conversion.v36.js?v=${VERSION}`);

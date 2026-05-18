@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-/* V36 pre-deploy verification. Run: npm run verify */
+/* V36/V43 pre-deploy verification. Run: npm run verify */
 import fs from "fs";
 import path from "path";
 import { spawnSync } from "child_process";
@@ -84,6 +84,37 @@ for (const f of htmls) {
       fail(errors, `dead internal link ${rel(f)} -> ${href}`);
     }
   }
+}
+
+
+// V43 regression checks
+const blogDetails = htmls.filter(f => rel(f).startsWith("blog/") && rel(f) !== "blog/index.html" && /pro-blog-page/i.test(read(f)));
+for (const f of blogDetails) {
+  const txt = read(f);
+  if (/v36-conversion-cta|CHECK BEFORE ACTION|상담 전 필요한 항목만 먼저 확인하세요/i.test(txt)) fail(errors, `blog conversion CTA regression ${rel(f)}`);
+  if (!/v43-blog-visual-guard/i.test(txt)) fail(errors, `missing blog visual guard ${rel(f)}`);
+  if (/<meta\b(?=[^>]*\bname=["']keywords["'])/i.test(txt)) fail(errors, `meta keywords should not exist ${rel(f)}`);
+  const related = (txt.match(/<div\s+class=["']pro-related__grid["'][^>]*>[\s\S]*?<\/div>/i) || [""])[0];
+  const linkCount = (related.match(/<a\b/gi) || []).length;
+  if (related && linkCount > 4) fail(errors, `pro related over 4 links ${rel(f)}: ${linkCount}`);
+}
+const guaranteed = path.join(ROOT, "guaranteed/index.html");
+if (fs.existsSync(guaranteed)) {
+  const g = read(guaranteed);
+  if (!/v41-provider-facts/.test(g)) fail(errors, "guaranteed missing provider facts");
+  if (!/도메인 바로가기/.test(g)) fail(errors, "guaranteed missing domain button text");
+  if (/접속 전 확인|빠른 체크/.test(g)) fail(errors, "guaranteed removed section regressed");
+}
+const consult = path.join(ROOT, "consult/index.html");
+if (fs.existsSync(consult) && /가이드\s*고객센터|가이드고객센터/.test(read(consult))) fail(errors, "consult header text regression");
+const toolsIndex = path.join(ROOT, "tools/index.html");
+if (fs.existsSync(toolsIndex) && /조건\s*비교/.test(read(toolsIndex))) fail(errors, "tools label regression: 조건 비교");
+for (const f of htmls) {
+  const txt = read(f);
+  if (/<meta\b(?=[^>]*\bname=["']keywords["'])/i.test(txt)) fail(errors, `meta keywords exists ${rel(f)}`);
+}
+for (const must of ["assets/data/v43.quality.audit.json","assets/data/indexing.priority.v43.json","assets/data/asset.inventory.v43.json"]) {
+  if (!fs.existsSync(path.join(ROOT, must))) fail(errors, `missing V43 quality data ${must}`);
 }
 
 const sitemap = path.join(ROOT, "sitemap.xml");

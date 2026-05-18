@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "description": "Static build shim for Cloudflare Pages",
   "scripts": {
-    "build": "node scripts/generate-brand-pages.mjs && node scripts/seo-intelligence-v36.mjs && node scripts/gen-build-ver.mjs",
+    "build": "node scripts/generate-brand-pages.mjs && node scripts/seo-intelligence-v36.mjs && node scripts/generate-v43-quality-data.mjs && node scripts/gen-build-ver.mjs",
     "seo:static": "node scripts/generate-static-seo-og.mjs",
     "related:static": "node scripts/generate-related-posts.mjs",
     "seo:refresh": "node scripts/generate-brand-pages.mjs && node scripts/generate-static-seo-og.mjs && node scripts/generate-related-posts.mjs && node scripts/generate-sitemap.mjs && node scripts/generate-indexing-audit.mjs && node scripts/generate-ctr-report.mjs && node scripts/generate-traffic-roadmap.mjs",
@@ -16,6 +16,7 @@
     "community:manifest": "node scripts/generate-community-manifest.mjs",
     "seo:intel": "node scripts/seo-intelligence-v36.mjs",
     "verify": "node scripts/verify-v36.mjs",
-    "verify:wrangler": "RUN_WRANGLER_VERIFY=1 node scripts/verify-v36.mjs"
+    "verify:wrangler": "RUN_WRANGLER_VERIFY=1 node scripts/verify-v36.mjs",
+    "quality:v43": "node scripts/generate-v43-quality-data.mjs"
   }
 }
