@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-/* V36/V43 pre-deploy verification. Run: npm run verify */
+/* V36/V46 pre-deploy verification. Run: npm run verify */
 import fs from "fs";
 import path from "path";
 import { spawnSync } from "child_process";
@@ -87,24 +87,35 @@ for (const f of htmls) {
 }
 
 
-// V44 regression checks
-const blogDetails = htmls.filter(f => rel(f).startsWith("blog/") && rel(f) !== "blog/index.html" && /pro-blog-page/i.test(read(f)));
+// V45 blog/detail regression checks
+const blogHtmls = htmls.filter(f => rel(f).startsWith("blog/") && rel(f) !== "blog/index.html" && !rel(f).startsWith("blog/page/"));
+for (const f of blogHtmls) {
+  const txt = read(f);
+  if (/v36-conversion-cta|CHECK BEFORE ACTION|상담 전 필요한 항목|blog-standard-cta-v16|상담 전 확인할 것|상담 전 먼저 확인할 것|v27-detail-support/i.test(txt)) fail(errors, `blog consult/support section regression ${rel(f)}`);
+  if (/v36-growth-hubs|키워드별 확인 허브/i.test(txt)) fail(errors, `blog keyword hub regression ${rel(f)}`);
+  if (/https:\/\/t\.me|@TRS999|TRS999_bot|텔레그램|카톡|상담\s*전/i.test(txt)) fail(errors, `blog messenger/contact regression ${rel(f)}`);
+  if (/<meta\b(?=[^>]*\bname=["']keywords["'])/i.test(txt)) fail(errors, `meta keywords should not exist ${rel(f)}`);
+}
+const blogDetails = blogHtmls.filter(f => /<body[^>]*class=["'][^"']*pro-blog-page/i.test(read(f)));
 for (const f of blogDetails) {
   const txt = read(f);
-  if (/v36-conversion-cta|CHECK BEFORE ACTION|상담 전 필요한 항목만 먼저 확인하세요|blog-standard-cta-v16|상담 전 확인할 것|상담 전 먼저 확인할 것|v27-detail-support/i.test(txt)) fail(errors, `blog consult/support section regression ${rel(f)}`);
-  if (/v36-growth-hubs|키워드별 확인 허브/i.test(txt)) fail(errors, `blog keyword hub regression ${rel(f)}`);
-  if (!/v43-blog-visual-guard/i.test(txt)) fail(errors, `missing blog visual guard ${rel(f)}`);
-  if (/<meta\b(?=[^>]*\bname=["']keywords["'])/i.test(txt)) fail(errors, `meta keywords should not exist ${rel(f)}`);
-  const related = (txt.match(/<div\s+class=["']pro-related__grid["'][^>]*>[\s\S]*?<\/div>/i) || [""])[0];
-  const linkCount = (related.match(/<a\b/gi) || []).length;
-  if (related && linkCount > 4) fail(errors, `pro related over 4 links ${rel(f)}: ${linkCount}`);
+  if (!/v46-blog-visual-guard/i.test(txt)) fail(errors, `missing blog visual guard ${rel(f)}`);
+  if (/<section\b(?=[^>]*class=["'][^"']*v36-related-links)/i.test(txt)) fail(errors, `blog automated related block regression ${rel(f)}`);
+  const m = txt.match(/<article\b(?=[^>]*class=["'][^"']*pro-article__body)[^>]*>([\s\S]*?)<\/article>/i);
+  if (!m) fail(errors, `missing expert article body ${rel(f)}`);
+  else {
+    const bodyText = m[1].replace(/<script[\s\S]*?<\/script>/gi," ").replace(/<style[\s\S]*?<\/style>/gi," ").replace(/<[^>]+>/g," ").replace(/\s+/g," ").trim();
+    if (bodyText.length < 3000) fail(errors, `blog expert body under 3000 chars ${rel(f)}: ${bodyText.length}`);
+  }
 }
 const guaranteed = path.join(ROOT, "guaranteed/index.html");
 if (fs.existsSync(guaranteed)) {
   const g = read(guaranteed);
-  if (!/v41-provider-facts/.test(g)) fail(errors, "guaranteed missing provider facts");
+  if (!/premium-card/.test(g) || !/code-badge/.test(g)) fail(errors, "guaranteed missing premium card code facts");
   if (!/>바로가기<|>바로가기\s*</.test(g)) fail(errors, "guaranteed missing shortcut button text");
   if (/class=["'][^"']*moon-code|<button[^>]*data-g-copy/i.test(g)) fail(errors, "guaranteed duplicate code button regression");
+  const codeRows = (g.match(/class=["'][^"']*code-badge/gi) || []).length;
+  if (codeRows !== 5) fail(errors, `guaranteed code badge count regression: ${codeRows}`);
   if (/접속 전 확인|빠른 체크/.test(g)) fail(errors, "guaranteed removed section regressed");
 }
 const consult = path.join(ROOT, "consult/index.html");
@@ -120,7 +131,7 @@ for (const f of htmls) {
   const txt = read(f);
   if (/<meta\b(?=[^>]*\bname=["']keywords["'])/i.test(txt)) fail(errors, `meta keywords exists ${rel(f)}`);
 }
-for (const must of ["assets/data/v43.quality.audit.json","assets/data/indexing.priority.v43.json","assets/data/asset.inventory.v43.json"]) {
+for (const must of ["assets/data/v43.quality.audit.json","assets/data/indexing.priority.v43.json","assets/data/asset.inventory.v43.json","assets/data/v45.content.upgrade.json"]) {
   if (!fs.existsSync(path.join(ROOT, must))) fail(errors, `missing V43 quality data ${must}`);
 }
 

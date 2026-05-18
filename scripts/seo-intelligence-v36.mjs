@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-/* V36 Static Growth & Conversion Engine / V43 Comprehensive Quality Upgrade
+/* V36 Static Growth & Conversion Engine / V46 Blog Visual/Sitemap Recovery
    - strict SEO meta/canonical/schema
    - sitemap/robots generation
    - related links + topic hubs; blog detail conversion CTAs removed; V43 quality guards
@@ -10,8 +10,8 @@ import path from "path";
 
 const ROOT = process.cwd();
 const DOMAIN = "https://88st.cloud";
-const VERSION = "static-growth-conversion-v44-20260518";
-const TODAY = "2026-05-17";
+const VERSION = "static-growth-conversion-v46-20260518";
+const TODAY = "2026-05-18";
 const BOT_URL = "https://t.me/TRS999_bot";
 
 function walk(dir, out = []) {
@@ -38,6 +38,9 @@ function titleFromPath(r) {
 }
 function classify(r) {
   if (r === "index.html") return "home";
+  const blogPageMatch = r.match(/^blog\/page\/(\d+)\.html$/);
+  if (blogPageMatch && Number(blogPageMatch[1]) > 3) return "noindex";
+  if (/^blog\/(?:.*telegram.*|sk-holdings-iron20.*)/i.test(r)) return "noindex";
   if (r.startsWith("admin/") || r.startsWith("ops/") || r.startsWith("api/")) return "noindex";
   if (r === "blog/index.html") return "blog_hub";
   if (r.startsWith("blog/page/") && r.endsWith(".html")) return "blog_hub";
@@ -94,12 +97,26 @@ function titleTemplate(page) {
   let t = byKind[page.kind] || byKind.webpage;
   return t.length > 62 ? t.slice(0, 59).trim() + "..." : t;
 }
+
+function blogExpertDesc(page) {
+  const title = cleanTitle(page.baseTitle || page.title || titleFromPath(page.rel));
+  const r = page.rel.toLowerCase();
+  const t = title.toLowerCase();
+  if (r.includes('/sports-toto/') || /kbo|월드컵|축구|야구|농구|배구|proto|odds|handicap|overround|clv/.test(t)) return `${title}를 배당 마진, 기대값 EV, 라인 이동, 환수율, 약관 조건 중심으로 해석한 스포츠토토 기술 문서입니다.`;
+  if (r.includes('/online-casino/') || /카지노|바카라|블랙잭|룰렛|라이브|에볼루션|프라그마틱/.test(t)) return `${title}를 라이브 테이블 구조, 제공사 표기, API 출처, 하우스 엣지, 롤링 약관 중심으로 검토하는 카지노 기술 문서입니다.`;
+  if (r.includes('/online-slot/') || /슬롯|rtp|변동성|pg soft|노리밋|프라그마틱|넷엔트|릴렉스|마이크로게이밍/.test(t)) return `${title}를 RTP, 변동성, RNG, 보너스 구매, 제공사 검증 기준으로 정리한 온라인슬롯 기술 문서입니다.`;
+  if (r.includes('/minigame/') || r.includes('/bet365-virtual/') || /파워볼|사다리|스피드키노|bet365|가상게임|회차|해시/.test(t)) return `${title}를 회차 구조, 결과 생성 방식, 해시 검증 개념, 마틴게일 파산 위험 관점에서 분석한 미니게임 기술 문서입니다.`;
+  return `${title}를 WHOIS, DNS, TLS 인증서, URL 구조, 약관 독해 중심으로 분석한 먹튀검증 보안 문서입니다.`;
+}
+
 function descTemplate(page) {
   let d = strip(page.rawDescription || "");
+  if (page.kind === "blog_article") d = blogExpertDesc(page);
+  if (page.kind === "blog_hub") d = "스포츠토토, 온라인카지노, 온라인슬롯, 미니게임, 먹튀검증을 수식·공개 지표·약관 독해 중심으로 정리한 기술형 블로그 아카이브입니다.";
   if (page.kind === "home") d = "Team RUST MAIN 기준의 메인 화면입니다. 불필요한 부제와 홍보 박스를 줄이고 핵심 확인 루트만 간결하게 정리했습니다.";
   if (page.kind === "guaranteed") d = "RUST 에이전시 보증 업체의 코드 확인, 도메인 바로가기, 상담 연결을 카드 중심으로 빠르게 확인할 수 있도록 정리한 공식 안내 페이지입니다.";
   if (page.kind === "consult") d = "고객센터 페이지입니다. 복잡한 안내 섹션을 줄이고 텔레그램 상담센터로 바로 이동하는 단일 CTA 흐름만 제공하도록 정리한 상담 연결 페이지입니다.";
-  if (!d || d.length < 80) d = `${cleanTitle(page.baseTitle)} 관련 내용을 코드, 공식주소, 이벤트 조건, 출금 전 확인 흐름으로 정리했습니다.`;
+  if (!d || d.length < 80) d = `${cleanTitle(page.baseTitle)} 관련 내용을 수학적 구조, 공개 지표, 약관 독해, 기록 기준 중심으로 정리했습니다.`;
   const legacyPattern = new RegExp([
     "@" + "seo" + "a69",
     "seo" + "a69",
@@ -109,7 +126,8 @@ function descTemplate(page) {
     "\\uCF54\\uC778\\s*\\uD604\\uBB3C"
   ].join("|"), "gi");
   d = d.replace(legacyPattern, "").replace(/\s+/g, " ").trim();
-  if (d.length < 80) d += " 이용 전 필요한 확인 항목과 관련 가이드를 함께 볼 수 있습니다.";
+  if (d.length < 80) d += " 공개 지표, 약관 조건, 수식 기반 확인 항목을 함께 정리했습니다.";
+  if (page.kind === "blog_article" || page.kind === "blog_hub") d = d.replace(/상담\s*전[^.。!！?？]{0,120}[.。!！?？]?/g, "").replace(/https:\/\/t\.me\/[^\s"']+/gi, "").replace(/@TRS999|TRS999_bot|텔레그램|카톡/gi, "").replace(/코드, 공식주소, 이벤트 조건, 출금 전 확인 흐름/g, "수학적 구조, 공개 지표, 약관 독해, 기록 기준").replace(/공식주소, 이벤트 조건, 출금 전 확인 흐름/g, "공개 지표, 약관 조건, 기록 기준").replace(/\s+/g, " ").trim();
   if (d.length > 150) d = d.slice(0, 147).trim() + "...";
   return d;
 }
@@ -142,7 +160,7 @@ function removeOld(txt) {
     .replace(seoSection, "\n")
     .replace(/\n?<style\b(?=[^>]*id=["']v41-blog-visual-guard["'])[^>]*>[\s\S]*?<\/style>\s*/ig, "\n")
     .replace(/\n?<style\b(?=[^>]*id=["']v42-blog-visual-guard["'])[^>]*>[\s\S]*?<\/style>\s*/ig, "\n")
-    .replace(/\n?<style\b(?=[^>]*id=["']v43-blog-visual-guard["'])[^>]*>[\s\S]*?<\/style>\s*/ig, "\n")
+    .replace(/\n?<style\b(?=[^>]*id=["']v46-blog-visual-guard["'])[^>]*>[\s\S]*?<\/style>\s*/ig, "\n")
     .replace(/\n?<section\b(?=[^>]*class=["'][^"']*(?:v27-detail-support|blog-standard-cta-v16)[^"']*["'])[^>]*>[\s\S]*?<\/section>\s*/ig, "\n")
     .replace(/\n?<style\b(?=[^>]*id=["']v41-guaranteed-visual-guard["'])[^>]*>[\s\S]*?<\/style>\s*/ig, "\n")
     .replace(/\n?<script\b(?=[^>]*id=["']v41-guaranteed-interaction["'])[^>]*>[\s\S]*?<\/script>\s*/ig, "\n")
@@ -172,7 +190,6 @@ function extractFaqEntities(txt, page) {
 
 function headHints(txt) {
   const hints = [];
-  if (!/<link\b(?=[^>]*rel=["']preconnect["'])(?=[^>]*href=["']https:\/\/t\.me["'])/i.test(txt)) hints.push('<link rel="preconnect" href="https://t.me" crossorigin/>');
   if (!/<link\b(?=[^>]*rel=["']preload["'])(?=[^>]*href=["']\/img\/logo-v24\.png["'])/i.test(txt)) hints.push('<link rel="preload" as="image" href="/img/logo-v24.png" imagesrcset="/img/logo-v24.png"/>');
   if (!hints.length) return txt;
   return txt.replace('</head>', hints.join('\n') + '\n</head>');
@@ -285,7 +302,7 @@ function trimProRelated(txt) {
 }
 
 function blogVisualGuard() {
-  return `<style id="v43-blog-visual-guard">
+  return `<style id="v46-blog-visual-guard">
 html,body.pro-blog-page{background:#03070d!important;color:#edf4ff!important;color-scheme:dark;}body.pro-blog-page{background:radial-gradient(circle at 14% -8%,rgba(245,215,139,.13),transparent 32%),radial-gradient(circle at 84% 8%,rgba(79,140,255,.10),transparent 34%),linear-gradient(180deg,#03070d 0%,#07101c 42%,#03070d 100%)!important;}body.pro-blog-page #mainContent{background:transparent!important;color:#edf4ff!important;}body.pro-blog-page .pro-article{background:transparent!important;color:#edf4ff!important;border:0!important;box-shadow:none!important;padding:clamp(18px,4vw,34px) 0 42px!important;}body.pro-blog-page .pro-article__wrap{width:min(920px,calc(100% - 32px))!important;margin-inline:auto!important;color:#edf4ff!important;}body.pro-blog-page .pro-article h1{margin-top:0!important;color:#fff4df!important;font-size:clamp(30px,4.6vw,52px)!important;line-height:1.08!important;letter-spacing:-.04em!important;text-wrap:balance!important;text-shadow:0 10px 34px rgba(0,0,0,.34)!important;}body.pro-blog-page .pro-article .lead{color:rgba(223,232,246,.84)!important;line-height:1.72!important;}body.pro-blog-page .pro-article__meta{gap:8px!important;flex-wrap:wrap!important;}body.pro-blog-page .pro-article__meta span{background:rgba(245,215,139,.10)!important;color:#f5d78b!important;border:1px solid rgba(245,215,139,.24)!important;border-radius:999px!important;font-size:11px!important;padding:5px 9px!important;}body.pro-blog-page .pro-article__body{background:linear-gradient(180deg,rgba(255,255,255,.072),rgba(255,255,255,.03)),rgba(7,13,23,.92)!important;color:#dbe5f1!important;border:1px solid rgba(215,228,255,.14)!important;border-radius:24px!important;box-shadow:0 20px 64px rgba(0,0,0,.32),inset 0 1px 0 rgba(255,255,255,.075)!important;line-height:1.72!important;}body.pro-blog-page .pro-article__body h2,body.pro-blog-page .pro-article__body h3,body.pro-blog-page .v37-article-summary h2{color:#fff4df!important;margin-top:1.65em!important;margin-bottom:.6em!important;line-height:1.22!important;}body.pro-blog-page .pro-article__body p,body.pro-blog-page .pro-article__body li,body.pro-blog-page .pro-article__body ul,body.pro-blog-page .pro-article__body ol{color:#dbe5f1!important;}body.pro-blog-page .pro-article__body li{margin:.38em 0!important;}body.pro-blog-page .pro-article__body a{color:#f5d78b!important;text-decoration:none!important;border-bottom:1px solid rgba(245,215,139,.34)!important;overflow-wrap:anywhere;}body.pro-blog-page .pro-article__body a[target="_blank"]::after{content:"↗";font-size:.86em;margin-left:.18em;color:#f5d78b;}body.pro-blog-page .v37-article-summary,body.pro-blog-page .pro-related,body.pro-blog-page .article-related-panel{background:rgba(255,255,255,.058)!important;border:1px solid rgba(245,215,139,.18)!important;color:#dbe5f1!important;border-radius:20px!important;}body.pro-blog-page .pro-related__grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important;}body.pro-blog-page .pro-related a,body.pro-blog-page .article-related-card,body.pro-blog-page .related-card{background:rgba(255,255,255,.062)!important;color:#fff4df!important;border:1px solid rgba(215,228,255,.15)!important;border-radius:16px!important;display:-webkit-box!important;-webkit-line-clamp:2!important;-webkit-box-orient:vertical!important;overflow:hidden!important;}body.pro-blog-page .pro-notice{font-size:12.5px!important;color:rgba(223,232,246,.68)!important;border-top-color:rgba(215,228,255,.15)!important;}body.pro-blog-page .v36-related-links{background:linear-gradient(180deg,rgba(255,255,255,.065),rgba(255,255,255,.028)),rgba(7,13,23,.82)!important;color:#edf4ff!important;border:1px solid rgba(215,228,255,.12)!important;}body.pro-blog-page .v36-related-grid a{background:rgba(255,255,255,.052)!important;color:#dbe5f1!important;border-color:rgba(215,228,255,.14)!important;}body.pro-blog-page blockquote{margin:18px 0!important;padding:14px 16px!important;border-left:3px solid #f5d78b!important;border-radius:14px!important;background:rgba(245,215,139,.08)!important;color:#fff4df!important;}body.pro-blog-page table{display:block!important;max-width:100%!important;overflow-x:auto!important;border-collapse:collapse!important;}body.pro-blog-page code,body.pro-blog-page kbd,body.pro-blog-page samp{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace!important;color:#f7df9e!important;background:rgba(255,255,255,.07)!important;border-radius:6px!important;padding:.08em .32em!important;}body.pro-blog-page [style*="background:#fff"],body.pro-blog-page [style*="background: #fff"],body.pro-blog-page [style*="background-color:#fff"],body.pro-blog-page [style*="background-color: #fff"],body.pro-blog-page [style*="background:white"],body.pro-blog-page [style*="background: white"]{background:rgba(7,13,23,.88)!important;color:#dbe5f1!important;}@media(max-width:720px){body.pro-blog-page .pro-article__wrap{width:calc(100% - 18px)!important}body.pro-blog-page .pro-article__body{padding:18px!important;border-radius:18px!important}body.pro-blog-page .pro-related__grid{grid-template-columns:1fr!important}}@media print{body.pro-blog-page{background:#fff!important;color:#111!important}body.pro-blog-page .moon-header,body.pro-blog-page .v36-related-links,body.pro-blog-page .moon-footer{display:none!important}body.pro-blog-page .pro-article__body{box-shadow:none!important;border:1px solid #ccc!important;color:#111!important;background:#fff!important}}
 </style>`;
 }
@@ -311,16 +328,16 @@ for (const page of pages) {
   txt = upsertName(txt, "twitter:image", DOMAIN + "/assets/img/v24/moonsafe-hero-v24.webp");
   txt = headHints(txt);
   txt = txt.replace("</head>", schema(page, txt) + "\n</head>");
-  if (page.kind === "blog_article") {
+  if (page.kind === "blog_article" || (page.rel.startsWith("blog/") && /pro-blog-page/i.test(txt))) {
     txt = trimProRelated(txt);
-    txt = txt.replace("</head>", blogVisualGuard() + "\n</head>");
+    if (!/v46-blog-visual-guard/i.test(txt)) txt = txt.replace("</head>", blogVisualGuard() + "\n</head>");
   }
   if (txt.includes("/assets/css/growth-conversion.v36.css")) txt = txt.replace(/\/assets\/css\/growth-conversion\.v36\.css\?v=[^"']+/g, `/assets/css/growth-conversion.v36.css?v=${VERSION}`);
   else txt = txt.replace("</head>", `<link rel="stylesheet" href="/assets/css/growth-conversion.v36.css?v=${VERSION}"/>\n</head>`);
   if (txt.includes("/assets/js/growth-conversion.v36.js")) txt = txt.replace(/\/assets\/js\/growth-conversion\.v36\.js\?v=[^"']+/g, `/assets/js/growth-conversion.v36.js?v=${VERSION}`);
   else txt = txt.replace("</body>", `<script src="/assets/js/growth-conversion.v36.js?v=${VERSION}" defer></script>\n</body>`);
   if (detailKinds.has(page.kind)) {
-    const blocks = page.kind === "blog_article" ? relatedBlock(page) : hubsBlock(page) + relatedBlock(page) + conversionBlock(page);
+    const blocks = page.kind === "blog_article" ? "" : hubsBlock(page) + relatedBlock(page) + conversionBlock(page);
     txt = txt.includes("</main>") ? txt.replace("</main>", blocks + "\n</main>") : txt.replace("</body>", blocks + "\n</body>");
   }
   fs.writeFileSync(page.file, txt);
