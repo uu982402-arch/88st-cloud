@@ -87,11 +87,12 @@ for (const f of htmls) {
 }
 
 
-// V43 regression checks
+// V44 regression checks
 const blogDetails = htmls.filter(f => rel(f).startsWith("blog/") && rel(f) !== "blog/index.html" && /pro-blog-page/i.test(read(f)));
 for (const f of blogDetails) {
   const txt = read(f);
-  if (/v36-conversion-cta|CHECK BEFORE ACTION|상담 전 필요한 항목만 먼저 확인하세요/i.test(txt)) fail(errors, `blog conversion CTA regression ${rel(f)}`);
+  if (/v36-conversion-cta|CHECK BEFORE ACTION|상담 전 필요한 항목만 먼저 확인하세요|blog-standard-cta-v16|상담 전 확인할 것|상담 전 먼저 확인할 것|v27-detail-support/i.test(txt)) fail(errors, `blog consult/support section regression ${rel(f)}`);
+  if (/v36-growth-hubs|키워드별 확인 허브/i.test(txt)) fail(errors, `blog keyword hub regression ${rel(f)}`);
   if (!/v43-blog-visual-guard/i.test(txt)) fail(errors, `missing blog visual guard ${rel(f)}`);
   if (/<meta\b(?=[^>]*\bname=["']keywords["'])/i.test(txt)) fail(errors, `meta keywords should not exist ${rel(f)}`);
   const related = (txt.match(/<div\s+class=["']pro-related__grid["'][^>]*>[\s\S]*?<\/div>/i) || [""])[0];
@@ -102,13 +103,19 @@ const guaranteed = path.join(ROOT, "guaranteed/index.html");
 if (fs.existsSync(guaranteed)) {
   const g = read(guaranteed);
   if (!/v41-provider-facts/.test(g)) fail(errors, "guaranteed missing provider facts");
-  if (!/도메인 바로가기/.test(g)) fail(errors, "guaranteed missing domain button text");
+  if (!/>바로가기<|>바로가기\s*</.test(g)) fail(errors, "guaranteed missing shortcut button text");
+  if (/class=["'][^"']*moon-code|<button[^>]*data-g-copy/i.test(g)) fail(errors, "guaranteed duplicate code button regression");
   if (/접속 전 확인|빠른 체크/.test(g)) fail(errors, "guaranteed removed section regressed");
 }
 const consult = path.join(ROOT, "consult/index.html");
 if (fs.existsSync(consult) && /가이드\s*고객센터|가이드고객센터/.test(read(consult))) fail(errors, "consult header text regression");
 const toolsIndex = path.join(ROOT, "tools/index.html");
 if (fs.existsSync(toolsIndex) && /조건\s*비교/.test(read(toolsIndex))) fail(errors, "tools label regression: 조건 비교");
+const mainIndex = path.join(ROOT, "index.html");
+if (fs.existsSync(mainIndex)) {
+  const home = read(mainIndex);
+  if (/moon-provider-chip[\s\S]{0,260}<small>/i.test(home)) fail(errors, "home provider chip code/domain text regression");
+}
 for (const f of htmls) {
   const txt = read(f);
   if (/<meta\b(?=[^>]*\bname=["']keywords["'])/i.test(txt)) fail(errors, `meta keywords exists ${rel(f)}`);
