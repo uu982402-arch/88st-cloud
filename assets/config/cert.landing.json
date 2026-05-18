@@ -1,0 +1,2 @@
+{ "enabled": true, "version": "2026-05-03-skholdings", "telegram": "https://t.me/UZU59", "vendors": { "skholdings": { "id": "skholdings", "slug": "skholdings", "title": "❤️ SK 홀딩스 ❤️", "code": "IRON888", "join_url": "https://snk-99.com/", "landing_path": "/guaranteed/", "hero_image": "", "thumb_image": "", "benefit": "신규 첫 충전 30% / 매일 첫 10% · 매충 5% · 돌발 20% / 주간 페이백", "notice": "가입코드 미입력 시 혜택 적용 불가" } }
+}

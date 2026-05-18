@@ -1,0 +1,7 @@
+{
+  "version": "static-growth-conversion-v40-20260517",
+  "basedOn": "88st-cloud-worker-hardfix-v35-full-20260516.zip",
+  "safeWorker": true,
+  "rollbackNote": "If future worker logic fails, restore V35/V36 safe _worker.js and keep SQL/D1 schema outside Pages Functions.",
+  "generatedAt": "2026-05-16"
+}
