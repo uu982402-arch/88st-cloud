@@ -2,14 +2,14 @@
   "updated": "2026-05-07",
   "contacts": {
     "human": {
-      "label": "자동화 상담봇",
-      "id": "@TRS999_bot",
+      "label": "상담센터",
+      "id": "TRS999 상담센터",
       "url": "https://t.me/TRS999_bot",
       "description": "코드, 공식주소, 이벤트 조건, 출금 전 확인을 자동으로 안내하는 상담봇입니다."
     },
     "automation": {
-      "label": "자동화 상담봇",
-      "id": "@TRS999_bot",
+      "label": "상담센터",
+      "id": "TRS999 상담센터",
       "url": "https://t.me/TRS999_bot",
       "description": "코드, 공식주소, 이벤트 조건, 출금 전 확인을 자동으로 안내하는 상담봇입니다."
     }
@@ -112,8 +112,8 @@
       "slug": "queenbee",
       "name": "❤️ 여왕벌 ❤️",
       "code": "SEOA",
-      "consult": "@TRS999_bot",
-      "bot": "@TRS999_bot",
+      "consult": "TRS999 상담센터",
+      "bot": "TRS999 상담센터",
       "items": [
         {
           "date": "2026-05-07",
@@ -131,8 +131,8 @@
       "slug": "skholdings",
       "name": "❤️ SK 홀딩스 ❤️",
       "code": "IRON888",
-      "consult": "@TRS999_bot",
-      "bot": "@TRS999_bot",
+      "consult": "TRS999 상담센터",
+      "bot": "TRS999 상담센터",
       "items": [
         {
           "date": "2026-05-07",
@@ -150,8 +150,8 @@
       "slug": "anybet",
       "name": "Any Bet",
       "code": "SEOA",
-      "consult": "@TRS999_bot",
-      "bot": "@TRS999_bot",
+      "consult": "TRS999 상담센터",
+      "bot": "TRS999 상담센터",
       "items": [
         {
           "date": "2026-05-07",
@@ -164,8 +164,8 @@
       "slug": "udt",
       "name": "UDT",
       "code": "SEOA",
-      "consult": "@TRS999_bot",
-      "bot": "@TRS999_bot",
+      "consult": "TRS999 상담센터",
+      "bot": "TRS999 상담센터",
       "items": [
         {
           "date": "2026-05-07",

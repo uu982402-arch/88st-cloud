@@ -1,6 +1,6 @@
 {
   "version": "static-growth-conversion-v36-20260516",
-  "bot": "@TRS999_bot",
+  "bot": "TRS999 상담센터",
   "botUrl": "https://t.me/TRS999_bot",
   "abCandidates": {
     "primary": [
@@ -43,7 +43,7 @@
     },
     {
       "id": "bot",
-      "label": "자동화 상담봇",
+      "label": "상담센터",
       "href": "https://t.me/TRS999_bot"
     }
   ]

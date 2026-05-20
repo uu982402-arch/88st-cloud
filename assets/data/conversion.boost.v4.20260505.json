@@ -29,7 +29,7 @@
     ],
     "ratios": [
       {
-        "name": "상담창 열림 대비 텔레그램 이동률",
+        "name": "상담창 열림 대비 공식 채널 이동률",
         "formula": "consult_telegram_click / consult_open"
       },
       {
@@ -59,8 +59,8 @@
         "공식주소 확인 후 코드 복사"
       ],
       "imageUrl": "/assets/provider-media/queenbee-logo-clean-v22.png",
-      "consultTelegram": "@TRS999_bot",
-      "autoBot": "@TRS999_bot",
+      "consultTelegram": "TRS999 상담센터",
+      "autoBot": "TRS999 상담센터",
       "notice": "가입 전 공식주소, 가입코드, 이벤트 조건표, 출금 기준을 먼저 확인해 주세요.",
       "imageAlt": "여왕벌 로고",
       "cleanName": "여왕벌",
@@ -89,8 +89,8 @@
         "신규 입금 플러스 · 주간 페이백 · 룰렛 쿠폰"
       ],
       "imageUrl": "/assets/provider-media/sk-holdings-logo.png",
-      "consultTelegram": "@TRS999_bot",
-      "autoBot": "@TRS999_bot",
+      "consultTelegram": "TRS999 상담센터",
+      "autoBot": "TRS999 상담센터",
       "notice": "가입 전 공식주소, 가입코드, 이벤트 조건표, 출금 기준을 먼저 확인해 주세요.",
       "cleanName": "SK 홀딩스",
       "displayCode": "IRON888",
@@ -115,8 +115,8 @@
         "테더 입금 수수료 지원"
       ],
       "imageUrl": "/assets/provider-media/anybet-logo.png",
-      "consultTelegram": "@TRS999_bot",
-      "autoBot": "@TRS999_bot",
+      "consultTelegram": "TRS999 상담센터",
+      "autoBot": "TRS999 상담센터",
       "notice": "가입 전 공식주소, 가입코드, 이벤트 조건표, 출금 기준을 먼저 확인해 주세요.",
       "cleanName": "ANY BET",
       "displayCode": "SEOA",
@@ -143,8 +143,8 @@
         "주간 페이백 5%"
       ],
       "imageUrl": "/assets/provider-media/udt-logo-transparent-v14.png",
-      "consultTelegram": "@TRS999_bot",
-      "autoBot": "@TRS999_bot",
+      "consultTelegram": "TRS999 상담센터",
+      "autoBot": "TRS999 상담센터",
       "notice": "가입 전 공식주소, 가입코드, 이벤트 조건표, 출금 기준을 먼저 확인해 주세요.",
       "imageAlt": "UDT 로고",
       "cleanName": "UDT",
@@ -252,7 +252,7 @@
     {
       "id": "official_address",
       "label": "공식주소 사칭 확인",
-      "request": "현재 주소 / 자동화 상담봇 / 가입코드 / 사칭 주소 여부"
+      "request": "현재 주소 / 상담센터 / 가입코드 / 사칭 주소 여부"
     },
     {
       "id": "rolling_calc",
@@ -282,7 +282,7 @@
     {
       "id": "consult",
       "label": "상담센터 연결",
-      "request": "상담 안내 / 상담 및 조건 확인 / 자동화 상담봇 연결"
+      "request": "상담 안내 / 상담 및 조건 확인 / 상담센터 연결"
     }
   ],
   "eventCards": {
@@ -437,7 +437,7 @@
     },
     {
       "id": "auto-consult",
-      "title": "상담이 필요한 경우 자동화 상담봇 연결",
+      "title": "상담이 필요한 경우 상담센터 연결",
       "href": "/consult/"
     }
   ],

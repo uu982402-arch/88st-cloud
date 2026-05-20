@@ -1,40 +1,43 @@
 {
-  "version": "static-growth-conversion-v46",
-  "generatedAt": "2026-05-18T10:20:02.258Z",
+  "version": "static-growth-conversion-v47",
+  "generatedAt": "2026-05-20T07:52:39.093Z",
   "counts": {
-    "html": 416,
-    "blog": 250,
+    "html": 568,
+    "blog": 402,
     "images": 72,
     "imageBytes": 9827239
   },
   "seo": {
-    "duplicateTitleGroups": 0,
+    "duplicateTitleGroups": 1,
     "duplicateDescriptionGroups": 2,
     "missingSchema": 0,
     "missingCanonical": 0,
     "metaKeywords": 0,
     "blogConversionCta": 0,
-    "thinPages": 4
+    "thinPages": 2
   },
   "quality": {
-    "blogDetailsWithGuard": 239,
-    "averageBlogWords": 955
+    "blogDetailsWithGuard": 0,
+    "averageBlogWords": 952
   },
   "samples": {
-    "duplicateTitles": [],
+    "duplicateTitles": [
+      {
+        "title": "SK 홀딩스 IRON888 안내로 이동합니다 | 88ST.Cloud",
+        "count": 5
+      }
+    ],
     "duplicateDescriptions": [
       {
-        "description": "스포츠토토, 온라인카지노, 온라인슬롯, 미니게임, 먹튀검증을 수식·공개 지표·약관 독해 중심으로 정리한 기술형 블로그 아카이브입니다.",
-        "count": 3
+        "description": "스포츠토토, 온라인카지노, 온라인슬롯, 미니게임, 먹튀검증을 수식·약관·공개 지표 중심으로 정리한 기술형 블로그 아카이브입니다.",
+        "count": 7
       },
       {
-        "description": "현재 블로그 목록은 최신 페이지네이션으로 재정리되었습니다.",
-        "count": 2
+        "description": "SK 홀딩스 IRON888 안내로 이동합니다를 먹튀검증 관점에서 수식, 공개 지표, 약관 조건, 검증 절차 중심으로 정리한 88ST.Cloud 기술형 정보 문서입니다.",
+        "count": 5
       }
     ],
     "thinPages": [
-      "/blog/page/4.html",
-      "/blog/page/5.html",
       "/consult/",
       "/guaranteed/"
     ]
@@ -45,50 +48,50 @@
     "https://88st.cloud/guaranteed/",
     "https://88st.cloud/tools/",
     "https://88st.cloud/consult/",
+    "https://88st.cloud/blog/minigame/",
+    "https://88st.cloud/blog/online-casino/",
     "https://88st.cloud/blog/online-slot/",
+    "https://88st.cloud/blog/minigame/bet365-virtual-football-pricing.html",
+    "https://88st.cloud/blog/sports-toto/baseball-kbo-check.html",
+    "https://88st.cloud/blog/sports-toto/2026-world-cup-before-check.html",
+    "https://88st.cloud/blog/sports-toto/kbo-fall-baseball-check.html",
+    "https://88st.cloud/blog/sports-toto/kbo-pitcher-bullpen-odds-model.html",
+    "https://88st.cloud/blog/sports-toto/kbo-postseason-market-volatility.html",
+    "https://88st.cloud/blog/sports-toto/v47-kbo-runline-1-5-handicap.html",
+    "https://88st.cloud/blog/sports-toto/v47-kbo-starting-pitcher-void-rules.html",
+    "https://88st.cloud/blog/sports-toto/v47-nba-handicap-quarter-volatility.html",
+    "https://88st.cloud/blog/online-slot/v47-slot-rtp-96-not-session-return.html",
+    "https://88st.cloud/blog/sports-toto/v47-kbo-postseason-bullpen-odds.html",
+    "https://88st.cloud/blog/sports-toto/v47-kbo-rainout-suspended-settlement.html",
+    "https://88st.cloud/blog/sports-toto/v47-kbo-total-line-ballpark-factor.html",
+    "https://88st.cloud/blog/sports-toto/v47-worldcup-group-stage-odds-volatility.html",
     "https://88st.cloud/blog/online-slot/basic-guide.html",
+    "https://88st.cloud/blog/online-slot/netent-classic-modern-rtp.html",
+    "https://88st.cloud/blog/online-slot/pgsoft-mobile-portrait-slot-math.html",
+    "https://88st.cloud/blog/online-slot/slot-rng-api-packet-check.html",
+    "https://88st.cloud/blog/online-slot/v47-pg-soft-rtp-observed-variance.html",
+    "https://88st.cloud/blog/sports-toto/v47-football-cup-rotation-odds-volatility.html",
     "https://88st.cloud/blog/online-slot/buy-feature-before-check.html",
+    "https://88st.cloud/blog/online-slot/pg-soft-mobile-slot-feature.html",
+    "https://88st.cloud/blog/online-slot/playngo-grid-slot-feature-check.html",
+    "https://88st.cloud/blog/online-slot/provider-official-game-list-check.html",
+    "https://88st.cloud/blog/online-slot/red-tiger-jackpot-drop-model.html",
+    "https://88st.cloud/blog/online-slot/slot-free-spin-expected-value.html",
+    "https://88st.cloud/blog/online-slot/v47-pg-soft-mobile-session-structure.html",
+    "https://88st.cloud/blog/online-slot/v47-pg-soft-portrait-ui-touch-ux.html",
+    "https://88st.cloud/blog/online-slot/v47-pg-soft-scatter-bonus-payout.html",
+    "https://88st.cloud/blog/online-slot/v47-slot-max-win-cap-ev-impact.html",
+    "https://88st.cloud/blog/online-casino/casino-turnover-sidebet-reading.html",
     "https://88st.cloud/blog/online-slot/demo-and-real-slot-difference.html",
     "https://88st.cloud/blog/online-slot/habanero-paytable-variance-guide.html",
     "https://88st.cloud/blog/online-slot/habanero-slot-mobile-check.html",
     "https://88st.cloud/blog/online-slot/mobile-slot-session-limit.html",
-    "https://88st.cloud/blog/online-slot/netent-classic-modern-rtp.html",
     "https://88st.cloud/blog/online-slot/nolimit-city-xways-volatility-model.html",
-    "https://88st.cloud/blog/online-slot/pg-soft-mobile-slot-feature.html",
-    "https://88st.cloud/blog/online-slot/pgsoft-mobile-portrait-slot-math.html",
-    "https://88st.cloud/blog/online-slot/playngo-grid-slot-feature-check.html",
     "https://88st.cloud/blog/online-slot/playngo-slot-before-check.html",
-    "https://88st.cloud/blog/online-slot/pragmatic-guide.html",
-    "https://88st.cloud/blog/online-slot/pragmatic-play-volatility-check.html",
-    "https://88st.cloud/blog/online-slot/pragmatic-rtp-range-bonus-buy.html",
-    "https://88st.cloud/blog/online-slot/provider-official-game-list-check.html",
-    "https://88st.cloud/blog/online-slot/red-tiger-jackpot-drop-model.html",
     "https://88st.cloud/blog/online-slot/relax-gaming-megaways-variance.html",
-    "https://88st.cloud/blog/online-slot/rtp-volatility.html",
-    "https://88st.cloud/blog/online-slot/slot-free-spin-expected-value.html",
-    "https://88st.cloud/blog/online-slot/slot-rng-api-packet-check.html",
-    "https://88st.cloud/blog/sports-toto/2026-world-cup-before-check.html",
-    "https://88st.cloud/blog/sports-toto/baseball-kbo-check.html",
-    "https://88st.cloud/blog/sports-toto/kbo-fall-baseball-check.html",
-    "https://88st.cloud/blog/sports-toto/kbo-pitcher-bullpen-odds-model.html",
-    "https://88st.cloud/blog/sports-toto/kbo-postseason-market-volatility.html",
-    "https://88st.cloud/blog/online-slot/booongo-hold-and-win-check.html",
-    "https://88st.cloud/blog/online-slot/free-spin-event-condition.html",
-    "https://88st.cloud/blog/online-slot/microgaming-progressive-jackpot-math.html",
-    "https://88st.cloud/blog/online-slot/netent-classic-slot-check.html",
-    "https://88st.cloud/blog/online-slot/nolimit-city-high-volatility.html",
-    "https://88st.cloud/blog/online-slot/red-tiger-daily-jackpot-check.html",
-    "https://88st.cloud/blog/online-slot/relax-gaming-megaways-check.html",
-    "https://88st.cloud/blog/online-slot/slot-volatility-bankroll-drawdown.html",
-    "https://88st.cloud/blog/online-slot/nolimit-city-guide.html",
-    "https://88st.cloud/blog/online-slot/microgaming-progressive-jackpot-check.html",
-    "https://88st.cloud/blog/online-slot/slot-rtp-provider-table.html",
-    "https://88st.cloud/blog/online-casino/live-casino-vs-online-slot.html",
-    "https://88st.cloud/blog/online-slot/slot-low-mid-high-volatility.html",
-    "https://88st.cloud/blog/minigame/bet365-virtual-football-pricing.html",
-    "https://88st.cloud/blog/minigame/basic-guide.html",
-    "https://88st.cloud/blog/minigame/bet365-virtual-racing-rng-check.html",
-    "https://88st.cloud/blog/minigame/donghaeng-powerball-official-result.html",
-    "https://88st.cloud/blog/minigame/entry-powerball-hash-verification.html"
+    "https://88st.cloud/blog/online-slot/v47-booongo-hold-and-win-model.html",
+    "https://88st.cloud/blog/online-slot/v47-habanero-asia-ui-bonus-model.html",
+    "https://88st.cloud/blog/online-slot/v47-habanero-ways-vs-payline.html",
+    "https://88st.cloud/blog/online-slot/v47-netent-starburst-simple-model.html"
   ]
 }
