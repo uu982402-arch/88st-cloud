@@ -3,7 +3,7 @@ import fs from "fs";
 import path from "path";
 const ROOT = process.cwd();
 const DOMAIN = "https://88st.cloud";
-const VERSION = "static-growth-conversion-v46";
+const VERSION = "static-growth-conversion-v47";
 function walk(dir,out=[]){for(const name of fs.readdirSync(dir)){if(["node_modules",".git","__MACOSX"].includes(name))continue;const p=path.join(dir,name);const st=fs.statSync(p);if(st.isDirectory())walk(p,out);else out.push(p);}return out;}
 function rel(p){return path.relative(ROOT,p).replaceAll(path.sep,"/");}
 function route(r){if(r==="index.html")return "/"; if(r.endsWith("/index.html"))return "/"+r.slice(0,-10); return "/"+r;}
@@ -12,7 +12,7 @@ function meta(html,name){const m=html.match(new RegExp(`<meta\\b(?=[^>]*\\bname=
 function title(html){const m=html.match(/<title[^>]*>([\s\S]*?)<\/title>/i);return strip(m&&m[1]);}
 const files=walk(ROOT);
 const htmlFiles=files.filter(f=>f.endsWith(".html"));
-const pages=htmlFiles.map(file=>{const r=rel(file);const html=fs.readFileSync(file,"utf8");const text=strip(html);const isBlog=r.startsWith("blog/")&&r!=="blog/index.html"&&r.endsWith(".html");return {route:route(r),file:r,title:title(html),description:meta(html,"description"),bytes:Buffer.byteLength(html),words:text.split(/\s+/).filter(Boolean).length,isBlog,hasSchema:/data-v36-schema="primary"|data-v31-schema="primary"/i.test(html),hasCanonical:/<link\b(?=[^>]*rel=["']canonical["'])/i.test(html),hasMetaKeywords:/<meta\b(?=[^>]*name=["']keywords["'])/i.test(html),hasConversionCta:/v36-conversion-cta|CHECK BEFORE ACTION|상담 전 필요한 항목만 먼저 확인하세요/.test(html),hasGuard:/v46-blog-visual-guard/i.test(html)};});
+const pages=htmlFiles.map(file=>{const r=rel(file);const html=fs.readFileSync(file,"utf8");const text=strip(html);const isBlog=r.startsWith("blog/")&&r!=="blog/index.html"&&r.endsWith(".html");return {route:route(r),file:r,title:title(html),description:meta(html,"description"),bytes:Buffer.byteLength(html),words:text.split(/\s+/).filter(Boolean).length,isBlog,hasSchema:/data-v36-schema="primary"|data-v31-schema="primary"/i.test(html),hasCanonical:/<link\b(?=[^>]*rel=["']canonical["'])/i.test(html),hasMetaKeywords:/<meta\b(?=[^>]*name=["']keywords["'])/i.test(html),hasConversionCta:/v36-conversion-cta|CHECK BEFORE ACTION|상담 전 필요한 항목만 먼저 확인하세요/.test(html),hasGuard:/v47-seo-prepass-guard/i.test(html)};});
 const titleMap=new Map(), descMap=new Map();
 for(const p of pages){titleMap.set(p.title,(titleMap.get(p.title)||0)+1);descMap.set(p.description,(descMap.get(p.description)||0)+1);}
 const duplicateTitles=[...titleMap].filter(([k,v])=>k&&v>1).map(([title,count])=>({title,count}));

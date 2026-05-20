@@ -3,7 +3,7 @@ import fs from 'fs';
 import path from 'path';
 const ROOT=process.cwd();
 const DOMAIN='https://88st.cloud';
-const VERSION='static-growth-conversion-v46-20260518';
+const VERSION='static-growth-conversion-v47-20260520';
 const EXCLUDE=/^blog\/(?:.*telegram.*|sk-holdings-iron20.*)/i;
 const BAD=/(상담\s*전\s*(?:먼저\s*)?(?:확인할\s*것|필요한\s*확인\s*항목|필요한\s*항목)|CHECK BEFORE ACTION|키워드별 확인 허브|이 글에서 확인할 항목|https:\/\/t\.me|@TRS999|TRS999_bot|텔레그램|카톡)/ig;
 const CATEGORY_MAP=[['sports-toto','스포츠토토'],['online-casino','온라인카지노'],['online-slot','온라인슬롯'],['bet365-virtual','BET365 가상게임'],['minigame','미니게임'],['game-guides','먹튀검증'],['affiliate','제휴 구조']];

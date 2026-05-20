@@ -99,13 +99,24 @@ for (const f of blogHtmls) {
 const blogDetails = blogHtmls.filter(f => /<body[^>]*class=["'][^"']*pro-blog-page/i.test(read(f)));
 for (const f of blogDetails) {
   const txt = read(f);
-  if (!/v46-blog-visual-guard/i.test(txt)) fail(errors, `missing blog visual guard ${rel(f)}`);
+  if (!/v47-expert-page/i.test(txt)) fail(errors, `missing blog visual guard ${rel(f)}`);
   if (/<section\b(?=[^>]*class=["'][^"']*v36-related-links)/i.test(txt)) fail(errors, `blog automated related block regression ${rel(f)}`);
   const m = txt.match(/<article\b(?=[^>]*class=["'][^"']*pro-article__body)[^>]*>([\s\S]*?)<\/article>/i);
   if (!m) fail(errors, `missing expert article body ${rel(f)}`);
   else {
     const bodyText = m[1].replace(/<script[\s\S]*?<\/script>/gi," ").replace(/<style[\s\S]*?<\/style>/gi," ").replace(/<[^>]+>/g," ").replace(/\s+/g," ").trim();
     if (bodyText.length < 3000) fail(errors, `blog expert body under 3000 chars ${rel(f)}: ${bodyText.length}`);
+  }
+}
+const v47BlogDetails = blogHtmls.filter(f => /<body[^>]*class=["'][^"']*v47-expert-page/i.test(read(f)));
+if (v47BlogDetails.length < 300) fail(errors, `V47 minimum blog inventory failed: ${v47BlogDetails.length}`);
+for (const f of v47BlogDetails) {
+  const txt = read(f);
+  const m = txt.match(/<article\b(?=[^>]*class=["'][^"']*v47-article-body)[^>]*>([\s\S]*?)<\/article>/i);
+  if (!m) fail(errors, `missing V47 article body ${rel(f)}`);
+  else {
+    const plain = m[1].replace(/<script[\s\S]*?<\/script>/gi,' ').replace(/<style[\s\S]*?<\/style>/gi,' ').replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim();
+    if (plain.length < 3000) fail(errors, `V47 body under 3000 chars ${rel(f)}: ${plain.length}`);
   }
 }
 const guaranteed = path.join(ROOT, "guaranteed/index.html");
@@ -131,7 +142,7 @@ for (const f of htmls) {
   const txt = read(f);
   if (/<meta\b(?=[^>]*\bname=["']keywords["'])/i.test(txt)) fail(errors, `meta keywords exists ${rel(f)}`);
 }
-for (const must of ["assets/data/v43.quality.audit.json","assets/data/indexing.priority.v43.json","assets/data/asset.inventory.v43.json","assets/data/v45.content.upgrade.json"]) {
+for (const must of ["assets/data/v43.quality.audit.json","assets/data/indexing.priority.v43.json","assets/data/asset.inventory.v43.json","assets/data/v45.content.upgrade.json","assets/data/v47.comprehensive.upgrade.json","assets/data/indexing.priority.v47.json"]) {
   if (!fs.existsSync(path.join(ROOT, must))) fail(errors, `missing V43 quality data ${must}`);
 }
 
