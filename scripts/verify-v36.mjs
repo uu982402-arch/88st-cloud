@@ -313,6 +313,14 @@ if (wranglerWanted) {
 
 
 
+
+
+
+
+
+
+
+
 // V52 open ready checks
 {
   const tools = path.join(ROOT, 'tools/index.html');
@@ -351,6 +359,33 @@ if (wranglerWanted) {
   if (!fs.existsSync(jsG)) fail(errors, 'V52 guaranteed JS file missing');
 }
 // END V52 open ready checks
+
+
+// V53 main open ready checks
+{
+  const home = path.join(ROOT, 'index.html');
+  if (!fs.existsSync(home)) fail(errors, 'V53 home index missing');
+  else {
+    const h = read(home);
+    if (!/v53-home-page/.test(h)) fail(errors, 'V53 home body class missing');
+    if (!/v53.main-open-ready.css/.test(h)) fail(errors, 'V53 main CSS missing');
+    if (!/assets\/js\/v53\.main\.js/.test(h)) fail(errors, 'V53 main JS missing');
+    if ((h.match(/class=["'][^"']*v53-provider-card/g)||[]).length !== 5) fail(errors, 'V53 home provider card count failed');
+    if ((h.match(/class=["'][^"']*v53-tool-card/g)||[]).length !== 6) fail(errors, 'V53 home tool card count failed');
+    if ((h.match(/class=["'][^"']*v53-guide-card/g)||[]).length !== 4) fail(errors, 'V53 home guide card count failed');
+    if (/RUST 에이전시/.test(h)) fail(errors, 'V53 removed title returned on home');
+    if (/상담 전 체크/.test(h)) fail(errors, 'V53 old consult-check card returned on home');
+    if (/data-g-code=|가입코드|공식 도메인/.test(h)) fail(errors, 'V53 code/domain leaked on home provider cards');
+    if (/href=["']#["']|javascript:void\(0\)/i.test(h)) fail(errors, 'V53 bad href in home');
+  }
+  const css = path.join(ROOT, 'assets/css/v53.main-open-ready.css');
+  const js = path.join(ROOT, 'assets/js/v53.main.js');
+  const audit = path.join(ROOT, 'assets/data/v53.main.audit.json');
+  if (!fs.existsSync(css)) fail(errors, 'V53 main CSS file missing');
+  if (!fs.existsSync(js)) fail(errors, 'V53 main JS file missing');
+  if (!fs.existsSync(audit)) fail(errors, 'V53 audit JSON missing');
+}
+// END V53 main open ready checks
 
 const result = {
   ok: errors.length === 0,
