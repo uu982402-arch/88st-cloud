@@ -171,6 +171,42 @@ if (wranglerWanted) {
   warnings.push("wrangler verification skipped; set RUN_WRANGLER_VERIFY=1 to run Cloudflare Pages Functions build locally.");
 }
 
+
+// V48 visual stability checks
+{
+  const titleMap = new Map();
+  for (const f of htmls) {
+    const txt = read(f);
+    if (/href=["']#["']|href=["']javascript:void\(0\)["']/i.test(txt)) fail(errors, 'empty/javascript href regression ' + rel(f));
+    const title = (txt.match(/<title[^>]*>([\s\S]*?)<\/title>/i)||[])[1]?.trim();
+    if (title) titleMap.set(title, [...(titleMap.get(title)||[]), rel(f)]);
+    if (rel(f).startsWith('blog/') && !rel(f).startsWith('blog/page/') && rel(f) !== 'blog/index.html') {
+      if (/상담\s*전|CHECK BEFORE ACTION|키워드별 확인 허브|이 글에서 확인할 항목|전문가형\s*판독\s*체크포인트|https:\/\/t\.me|@TRS999|TRS999_bot|텔레그램|카톡/i.test(txt)) fail(errors, 'V48 banned blog term regression ' + rel(f));
+      if (/style=["'][^"']*background\s*:\s*(#fff|white)|style=["'][^"']*background-color\s*:\s*(#fff|white)/i.test(txt)) fail(errors, 'V48 inline white background in blog ' + rel(f));
+      if (/v47-expert-page/.test(txt) && !/v48-expert-page/.test(txt)) fail(errors, 'missing V48 blog page guard ' + rel(f));
+    }
+  }
+  const duplicateTitles = [...titleMap.entries()].filter(([_, arr]) => arr.length > 1 && !/보존 페이지/.test(_));
+  if (duplicateTitles.length) fail(errors, 'duplicate title groups: ' + duplicateTitles.slice(0,3).map(([t,a])=>t+':'+a.join(',')).join(' | '));
+  const sitemapFile = path.join(ROOT, 'sitemap.xml');
+  if (fs.existsSync(sitemapFile)) {
+    const sm = read(sitemapFile);
+    for (const m of sm.matchAll(/<loc>https:\/\/88st\.cloud([^<]+)<\/loc>/g)) {
+      const route = m[1];
+      const target = route === '/' ? path.join(ROOT,'index.html') : route.endsWith('/') ? path.join(ROOT, route.slice(1), 'index.html') : path.join(ROOT, route.slice(1));
+      if (!fs.existsSync(target)) fail(errors, 'sitemap missing file ' + route);
+      else if (/noindex/i.test(read(target))) fail(errors, 'sitemap includes noindex ' + route);
+    }
+  }
+  const guaranteedFile = path.join(ROOT, 'guaranteed/index.html');
+  if (fs.existsSync(guaranteedFile)) {
+    const g = read(guaranteedFile);
+    if ((g.match(/v48-guaranteed-card/g)||[]).length !== 5) fail(errors, 'V48 guaranteed card count failed');
+    if ((g.match(/data-v47-copy-code=/g)||[]).length !== 5) fail(errors, 'V48 guaranteed code count failed');
+    if (!/v48-vendor-hero/.test(g)) fail(errors, 'V48 guaranteed image-first layout missing');
+  }
+}
+
 const result = {
   ok: errors.length === 0,
   html: htmls.length,
@@ -182,3 +218,36 @@ const result = {
 };
 console.log(JSON.stringify(result, null, 2));
 if (errors.length) process.exit(1);
+
+// V49 guaranteed vendor landing checks
+{
+  const vendorRoutes = ['queenbee','sk-holdings','anybet','udt','ddangkong'];
+  const guaranteedIndex = path.join(ROOT, 'guaranteed/index.html');
+  if (!fs.existsSync(guaranteedIndex)) fail(errors, 'V49 guaranteed index missing');
+  else {
+    const g = read(guaranteedIndex);
+    if ((g.match(/v49-guaranteed-card/g)||[]).length !== 5) fail(errors, 'V49 guaranteed card count failed');
+    if ((g.match(/data-v49-detail-click=/g)||[]).length !== 5) fail(errors, 'V49 detail button count failed');
+    if ((g.match(/data-v49-domain-click=/g)||[]).length < 5) fail(errors, 'V49 domain click tracking missing');
+    if (!/상세보기/.test(g)) fail(errors, 'V49 detail button text missing');
+    if (new RegExp("SEO"+"A69|seo"+"a69", "i").test(g)) fail(errors, 'V49 forbidden legacy contact regression in guaranteed index');
+  }
+  for (const slug of vendorRoutes) {
+    const fp = path.join(ROOT, 'guaranteed', slug, 'index.html');
+    if (!fs.existsSync(fp)) fail(errors, `V49 vendor landing missing: ${slug}`);
+    else {
+      const txt = read(fp);
+      if (!/<meta\b(?=[^>]*\bname=["']description["'])/i.test(txt)) fail(errors, `V49 vendor missing description: ${slug}`);
+      if (!/<link\b(?=[^>]*\brel=["']canonical["'])/i.test(txt)) fail(errors, `V49 vendor missing canonical: ${slug}`);
+      if (!/v49-vendor-landing/.test(txt)) fail(errors, `V49 vendor landing class missing: ${slug}`);
+      if (!/공식 도메인/.test(txt) || !/가입코드/.test(txt) || !/핵심 혜택 요약/.test(txt)) fail(errors, `V49 vendor content block missing: ${slug}`);
+      if (!/@TRS999_bot/.test(txt)) fail(errors, `V49 vendor common consult bot missing: ${slug}`);
+      if (new RegExp("SEO"+"A69|seo"+"a69", "i").test(txt)) fail(errors, `V49 forbidden legacy contact regression: ${slug}`);
+    }
+  }
+  const sm = path.join(ROOT, 'sitemap.xml');
+  if (fs.existsSync(sm)) {
+    const txt = read(sm);
+    for (const slug of vendorRoutes) if (!txt.includes(`https://88st.cloud/guaranteed/${slug}/`)) fail(errors, `V49 sitemap missing vendor route: ${slug}`);
+  }
+}
