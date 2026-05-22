@@ -337,6 +337,71 @@ if (wranglerWanted) {
 
 
 
+
+
+
+
+
+// V54 vendor landing design checks
+{
+  const vendorRoutes = ['queenbee','sk-holdings','anybet','udt','ddangkong'];
+  for (const slug of vendorRoutes) {
+    const fp = path.join(ROOT, 'guaranteed', slug, 'index.html');
+    if (!fs.existsSync(fp)) fail(errors, `V54 vendor landing missing: ${slug}`);
+    else {
+      const txt = read(fp);
+      if (!/v54-vendor-detail/.test(txt)) fail(errors, `V54 vendor detail body class missing: ${slug}`);
+      if (!/v54.vendor-landing.css/.test(txt)) fail(errors, `V54 vendor CSS missing: ${slug}`);
+      if (!/v54-hero-card/.test(txt) || !/v54-visual-card/.test(txt)) fail(errors, `V54 compact visual hero missing: ${slug}`);
+      if (!/v54-fact-strip/.test(txt) || !/v54-benefit-grid/.test(txt)) fail(errors, `V54 vendor fact/benefit layout missing: ${slug}`);
+    }
+  }
+  if (!fs.existsSync(path.join(ROOT, 'assets/css/v54.vendor-landing.css'))) fail(errors, 'V54 vendor CSS file missing');
+  if (!fs.existsSync(path.join(ROOT, 'assets/js/v54.vendor-landing.js'))) fail(errors, 'V54 vendor JS file missing');
+}
+
+// V55 luminous sitewide visual renewal checks
+{
+  const css = path.join(ROOT, 'assets/css/v55.luminous-sitewide.css');
+  const js = path.join(ROOT, 'assets/js/v55.luminous-sitewide.js');
+  const audit = path.join(ROOT, 'assets/data/v55.luminous.audit.json');
+  const generator = path.join(ROOT, 'scripts/generate-v55-luminous-sitewide-design.mjs');
+  if (!fs.existsSync(css)) fail(errors, 'V55 luminous CSS file missing');
+  else {
+    const c = read(css);
+    if (!/V55 Luminous Sitewide Renewal/.test(c)) fail(errors, 'V55 CSS header missing');
+    if (!/compact title-section guard/.test(c)) fail(errors, 'V55 compact title guard missing');
+    for (const m of c.matchAll(/font-size:\s*clamp\(([^)]*)\)/gi)) {
+      const parts = m[1].split(',').map(x => x.trim());
+      const max = parts[2] || '';
+      const n = Number((max.match(/([0-9.]+)rem/i)||[])[1] || 0);
+      if (n >= 3.6) fail(errors, 'V55 title font too large');
+    }
+  }
+  if (!fs.existsSync(js)) fail(errors, 'V55 luminous JS file missing');
+  if (!fs.existsSync(audit)) fail(errors, 'V55 luminous audit JSON missing');
+  if (!fs.existsSync(generator)) fail(errors, 'V55 generator missing');
+  const corePages = ['index.html','blog/index.html','tools/index.html','guaranteed/index.html','consult/index.html'];
+  for (const route of corePages) {
+    const fp = path.join(ROOT, route);
+    if (fs.existsSync(fp)) {
+      const txt = read(fp);
+      if (!/v55-luminous-site/.test(txt)) fail(errors, 'V55 body class missing ' + route);
+      if (!/v55\.luminous-sitewide\.css/.test(txt)) fail(errors, 'V55 CSS link missing ' + route);
+      if (!/v55\.luminous-sitewide\.js/.test(txt)) fail(errors, 'V55 JS link missing ' + route);
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
 // V52 open ready checks
 {
   const tools = path.join(ROOT, 'tools/index.html');
