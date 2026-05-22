@@ -1,0 +1,51 @@
+{
+  "version": "V54",
+  "generatedAt": "2026-05-22T06:38:27.938Z",
+  "pages": [
+    {
+      "slug": "queenbee",
+      "route": "/guaranteed/queenbee/",
+      "name": "여왕벌",
+      "image": "/assets/provider-media/queenbee-logo-clean-v22.png",
+      "domain": "qb-700.com",
+      "code": "seoa"
+    },
+    {
+      "slug": "sk-holdings",
+      "route": "/guaranteed/sk-holdings/",
+      "name": "SK 홀딩스",
+      "image": "/assets/provider-media/sk-holdings-logo.png",
+      "domain": "snk-99.com",
+      "code": "IRON888"
+    },
+    {
+      "slug": "anybet",
+      "route": "/guaranteed/anybet/",
+      "name": "ANYBET",
+      "image": "/assets/provider-media/anybet-logo.png",
+      "domain": "any-777.com",
+      "code": "seoa"
+    },
+    {
+      "slug": "udt",
+      "route": "/guaranteed/udt/",
+      "name": "UDT",
+      "image": "/assets/provider-media/udt-logo-transparent-v14.png",
+      "domain": "특공대.COM",
+      "code": "SEOA"
+    },
+    {
+      "slug": "ddangkong",
+      "route": "/guaranteed/ddangkong/",
+      "name": "땅콩",
+      "image": "/assets/provider-media/ddangkong-logo-v19.png",
+      "domain": "ddk-2025.com",
+      "code": "ddk888"
+    }
+  ],
+  "checks": {
+    "topImage": "compact 16:7 visual card",
+    "layout": "hero card + fact strip + benefit grid + info cards",
+    "contactBot": "@TRS999_bot"
+  }
+}
