@@ -1,0 +1,117 @@
+{
+  "version": "static-growth-conversion-v51-20260522",
+  "generatedAt": "2026-05-22T05:35:56.730Z",
+  "pages": [
+    "/tools/",
+    "/guaranteed/"
+  ],
+  "providers": [
+    {
+      "slug": "queenbee",
+      "name": "여왕벌",
+      "route": "/guaranteed/queenbee/",
+      "domain": "qb-700.com",
+      "code": "seoa"
+    },
+    {
+      "slug": "sk-holdings",
+      "name": "SK 홀딩스",
+      "route": "/guaranteed/sk-holdings/",
+      "domain": "snk-99.com",
+      "code": "IRON888"
+    },
+    {
+      "slug": "anybet",
+      "name": "ANYBET",
+      "route": "/guaranteed/anybet/",
+      "domain": "any-777.com",
+      "code": "seoa"
+    },
+    {
+      "slug": "udt",
+      "name": "UDT",
+      "route": "/guaranteed/udt/",
+      "domain": "특공대.COM",
+      "code": "SEOA"
+    },
+    {
+      "slug": "ddangkong",
+      "name": "땅콩",
+      "route": "/guaranteed/ddangkong/",
+      "domain": "ddk-2025.com",
+      "code": "ddk888"
+    }
+  ],
+  "tools": [
+    {
+      "id": "official-url",
+      "group": "주소·코드",
+      "title": "공식주소 확인"
+    },
+    {
+      "id": "join-code",
+      "group": "주소·코드",
+      "title": "가입코드 확인"
+    },
+    {
+      "id": "bonus-net",
+      "group": "보너스·롤링",
+      "title": "보너스 실수령 계산"
+    },
+    {
+      "id": "rolling",
+      "group": "보너스·롤링",
+      "title": "롤링 조건 계산"
+    },
+    {
+      "id": "withdraw",
+      "group": "출금",
+      "title": "출금 가능 금액 계산"
+    },
+    {
+      "id": "first-recurring",
+      "group": "혜택 비교",
+      "title": "첫충 / 매충 비교"
+    },
+    {
+      "id": "overround",
+      "group": "스포츠 배당",
+      "title": "환수율 계산"
+    },
+    {
+      "id": "ev",
+      "group": "스포츠 배당",
+      "title": "EV 기대값 계산"
+    },
+    {
+      "id": "combo",
+      "group": "스포츠 배당",
+      "title": "조합 배당 실수령"
+    },
+    {
+      "id": "slot-rtp",
+      "group": "카지노·슬롯",
+      "title": "슬롯 RTP 체감 손실"
+    },
+    {
+      "id": "martingale",
+      "group": "미니게임",
+      "title": "마틴게일 파산 위험"
+    },
+    {
+      "id": "phishing",
+      "group": "주소·보안",
+      "title": "피싱 URL 변조 확인"
+    }
+  ],
+  "checks": [
+    "tools_12_cards",
+    "tools_12_panels",
+    "guaranteed_5_cards",
+    "copy_code_5",
+    "detail_links_5",
+    "domain_links_5",
+    "no_hash_href",
+    "no_javascript_void"
+  ]
+}

@@ -304,6 +304,54 @@ if (wranglerWanted) {
   if (fs.existsSync(pkg) && !/generate-v51-user-facing-tools\.mjs/.test(read(pkg))) fail(errors, 'V51 build script missing');
 }
 
+
+
+
+
+
+
+
+
+
+// V52 open ready checks
+{
+  const tools = path.join(ROOT, 'tools/index.html');
+  if (!fs.existsSync(tools)) fail(errors, 'V52 tools index missing');
+  else {
+    const t = read(tools);
+    if (!/v52-tools-index/.test(t)) fail(errors, 'V52 tools body class missing');
+    if (!/v52.open-ready.css/.test(t)) fail(errors, 'V52 CSS missing from tools');
+    if (!/assets\/js\/v52\.tools\.js/.test(t)) fail(errors, 'V52 tools JS missing from tools');
+    if ((t.match(/data-v52-open=/g)||[]).length !== 12) fail(errors, 'V52 tool card count failed');
+    if ((t.match(/data-v52-panel=/g)||[]).length !== 12) fail(errors, 'V52 tool panel count failed');
+    if (/href=["']#["']|javascript:void\(0\)/i.test(t)) fail(errors, 'V52 bad href in tools');
+    if (/도구 기능 추가 후보 500건/i.test(t)) fail(errors, 'V52 internal roadmap exposed on tools page');
+  }
+  const gfp = path.join(ROOT, 'guaranteed/index.html');
+  if (!fs.existsSync(gfp)) fail(errors, 'V52 guaranteed index missing');
+  else {
+    const g = read(gfp);
+    if (!/v52-guaranteed-page/.test(g)) fail(errors, 'V52 guaranteed body class missing');
+    if (!/v52-guaranteed-grid/.test(g)) fail(errors, 'V52 guaranteed grid missing');
+    if ((g.match(/class=["'][^"']*v52-provider-card/g)||[]).length !== 5) fail(errors, 'V52 provider card count failed');
+    if ((g.match(/data-v52-copy-code=/g)||[]).length !== 5) fail(errors, 'V52 copy code count failed');
+    if ((g.match(/data-v52-detail-click=/g)||[]).length !== 5) fail(errors, 'V52 detail click count failed');
+    if ((g.match(/data-v52-domain-click=/g)||[]).length < 5) fail(errors, 'V52 domain click count failed');
+    if (new RegExp('SEO'+'A69|seo'+'a69','i').test(g)) fail(errors, 'V52 forbidden legacy contact in guaranteed');
+  }
+  for (const f of htmls) {
+    const txt = read(f);
+    if (/href=["']#["']|href=["']javascript:void\(0\)["']/i.test(txt)) fail(errors, 'V52 bad href regression ' + rel(f));
+  }
+  const css = path.join(ROOT, 'assets/css/v52.open-ready.css');
+  const jsTools = path.join(ROOT, 'assets/js/v52.tools.js');
+  const jsG = path.join(ROOT, 'assets/js/v52.guaranteed.js');
+  if (!fs.existsSync(css)) fail(errors, 'V52 CSS file missing');
+  if (!fs.existsSync(jsTools)) fail(errors, 'V52 tools JS file missing');
+  if (!fs.existsSync(jsG)) fail(errors, 'V52 guaranteed JS file missing');
+}
+// END V52 open ready checks
+
 const result = {
   ok: errors.length === 0,
   html: htmls.length,
