@@ -1,4 +1,4 @@
-const VERSION = "static-growth-conversion-v48-20260520";
+const VERSION = "static-growth-conversion-v51-20260522";
 const JSON_HEADERS = {
   "content-type": "application/json; charset=utf-8",
   "cache-control": "no-store"
