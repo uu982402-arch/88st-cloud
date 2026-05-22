@@ -10,7 +10,7 @@ import path from "path";
 
 const ROOT = process.cwd();
 const DOMAIN = "https://88st.cloud";
-const VERSION = "static-growth-conversion-v47-20260520";
+const VERSION = "static-growth-conversion-v51-20260522";
 const TODAY = "2026-05-18";
 const BOT_URL = "https://t.me/TRS999_bot";
 

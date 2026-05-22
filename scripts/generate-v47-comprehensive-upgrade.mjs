@@ -3,7 +3,7 @@ import fs from 'fs';
 import path from 'path';
 const ROOT=process.cwd();
 const DOMAIN='https://88st.cloud';
-const VERSION='static-growth-conversion-v47-20260520';
+const VERSION='static-growth-conversion-v51-20260522';
 const TODAY=new Date().toISOString().slice(0,10);
 const CATEGORY_LABEL={
   'sports-toto':'스포츠토토','online-casino':'온라인카지노','online-slot':'온라인슬롯','bet365-virtual':'BET365 가상게임','minigame':'미니게임','game-guides':'먹튀검증','affiliate':'제휴 구조','misc':'기술 아카이브'

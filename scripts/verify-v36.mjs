@@ -207,18 +207,6 @@ if (wranglerWanted) {
   }
 }
 
-const result = {
-  ok: errors.length === 0,
-  html: htmls.length,
-  json: jsons.length,
-  scripts: scripts.length,
-  errors,
-  warnings,
-  checkedAt: new Date().toISOString()
-};
-console.log(JSON.stringify(result, null, 2));
-if (errors.length) process.exit(1);
-
 // V49 guaranteed vendor landing checks
 {
   const vendorRoutes = ['queenbee','sk-holdings','anybet','udt','ddangkong'];
@@ -251,3 +239,79 @@ if (errors.length) process.exit(1);
     for (const slug of vendorRoutes) if (!txt.includes(`https://88st.cloud/guaranteed/${slug}/`)) fail(errors, `V49 sitemap missing vendor route: ${slug}`);
   }
 }
+
+// V50 guaranteed compact + tools roadmap checks
+{
+  const gfp = path.join(ROOT, 'guaranteed/index.html');
+  if (!fs.existsSync(gfp)) fail(errors, 'V50 guaranteed index missing');
+  else {
+    const g = read(gfp);
+    if (!/v50-guaranteed-page/.test(g)) fail(errors, 'V50 guaranteed page class missing');
+    if (!/v50-guarantee-container/.test(g)) fail(errors, 'V50 guaranteed compact container missing');
+    if ((g.match(/v50-guaranteed-card/g)||[]).length !== 5) fail(errors, 'V50 guaranteed compact card count failed');
+    if ((g.match(/class=["'][^"']*detail-btn/g)||[]).length < 5) fail(errors, 'V50 guaranteed detail buttons missing');
+    if ((g.match(/class=["'][^"']*action-btn/g)||[]).length < 5) fail(errors, 'V50 guaranteed shortcut buttons missing');
+  }
+  const tools = path.join(ROOT, 'tools/index.html');
+  if (!fs.existsSync(tools)) fail(errors, 'V50 tools index missing');
+  else {
+    const t = read(tools);
+    if (!/v50-tools-index/.test(t)) fail(errors, 'V50 tools page class missing');
+    if (!/v50-provider-row/.test(t)) fail(errors, 'V50 tools provider row missing');
+    if ((t.match(/v50-provider-mini-card/g)||[]).length !== 5) fail(errors, 'V50 tools provider card count failed');
+    if (/<img[^>]*\/\s+decoding=/.test(t)) fail(errors, 'V50 malformed img regression in tools');
+  }
+  const roadmap = path.join(ROOT, 'assets/data/v50.tools.feature-roadmap.json');
+  if (!fs.existsSync(roadmap)) fail(errors, 'V50 tools roadmap JSON missing');
+  else {
+    try {
+      const data = JSON.parse(read(roadmap));
+      if (!Array.isArray(data.items) || data.items.length !== 500) fail(errors, 'V50 tools roadmap count failed');
+    } catch(e) { fail(errors, 'V50 tools roadmap JSON parse failed: ' + e.message); }
+  }
+  const css = path.join(ROOT, 'assets/css/growth-conversion.v36.css');
+  if (fs.existsSync(css) && !/V50 GUARANTEED COMPACT \+ TOOLS POLISH START/.test(read(css))) fail(errors, 'V50 CSS block missing');
+}
+
+
+// V51 user-facing tools checks
+{
+  const tools = path.join(ROOT, 'tools/index.html');
+  if (!fs.existsSync(tools)) fail(errors, 'V51 tools index missing');
+  else {
+    const t = read(tools);
+    if (!/v51-tools-index/.test(t)) fail(errors, 'V51 tools body class missing');
+    if (!/v51-tools-app/.test(t)) fail(errors, 'V51 tools app missing');
+    if ((t.match(/data-v51-open=/g)||[]).length !== 12) fail(errors, 'V51 implemented tool card count failed');
+    if ((t.match(/data-v51-panel=/g)||[]).length !== 12) fail(errors, 'V51 implemented tool panel count failed');
+    if (!/assets\/js\/v51\.tools\.js/.test(t)) fail(errors, 'V51 tools JS missing from index');
+    if (/도구 기능 추가 후보 500건/i.test(t)) fail(errors, 'V51 internal roadmap exposed on tools page');
+    if (/href=["']#["']|javascript:void\(0\)/i.test(t)) fail(errors, 'V51 bad href in tools');
+  }
+  const js = path.join(ROOT, 'assets/js/v51.tools.js');
+  if (!fs.existsSync(js)) fail(errors, 'V51 tools JS file missing');
+  const roadmap = path.join(ROOT, 'assets/data/v51.user-facing-tools.json');
+  if (!fs.existsSync(roadmap)) fail(errors, 'V51 user-facing tools JSON missing');
+  else {
+    try {
+      const data = JSON.parse(read(roadmap));
+      if (!Array.isArray(data.implementedTools) || data.implementedTools.length !== 12) fail(errors, 'V51 implemented tools JSON count failed');
+      if (data.roadmapTotal !== 500) fail(errors, 'V51 roadmap total should be 500 from V50 source');
+      if (!data.buckets || !data.buckets.visitor_candidate) fail(errors, 'V51 roadmap bucket classification missing');
+    } catch(e) { fail(errors, 'V51 user-facing tools JSON parse failed: ' + e.message); }
+  }
+  const pkg = path.join(ROOT, 'package.json');
+  if (fs.existsSync(pkg) && !/generate-v51-user-facing-tools\.mjs/.test(read(pkg))) fail(errors, 'V51 build script missing');
+}
+
+const result = {
+  ok: errors.length === 0,
+  html: htmls.length,
+  json: jsons.length,
+  scripts: scripts.length,
+  errors,
+  warnings,
+  checkedAt: new Date().toISOString()
+};
+console.log(JSON.stringify(result, null, 2));
+if (errors.length) process.exit(1);

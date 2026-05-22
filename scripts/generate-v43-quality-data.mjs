@@ -3,7 +3,7 @@ import fs from "fs";
 import path from "path";
 const ROOT = process.cwd();
 const DOMAIN = "https://88st.cloud";
-const VERSION = "static-growth-conversion-v47";
+const VERSION = "static-growth-conversion-v51";
 function walk(dir,out=[]){for(const name of fs.readdirSync(dir)){if(["node_modules",".git","__MACOSX"].includes(name))continue;const p=path.join(dir,name);const st=fs.statSync(p);if(st.isDirectory())walk(p,out);else out.push(p);}return out;}
 function rel(p){return path.relative(ROOT,p).replaceAll(path.sep,"/");}
 function route(r){if(r==="index.html")return "/"; if(r.endsWith("/index.html"))return "/"+r.slice(0,-10); return "/"+r;}

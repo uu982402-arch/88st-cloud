@@ -4,7 +4,7 @@ import path from 'node:path';
 
 const ROOT = process.cwd();
 const DOMAIN = 'https://88st.cloud';
-const VERSION = 'static-growth-conversion-v49-20260521';
+const VERSION = 'static-growth-conversion-v51-20260522';
 const BOT = '@TRS999_bot';
 const BOT_URL = 'https://t.me/TRS999_bot?start=guaranteed_vendor';
 
@@ -179,11 +179,11 @@ function updateSitemaps(){
 function updatePackageVersionReferences(){
   const pkgPath = path.join(ROOT, 'package.json');
   const pkg = JSON.parse(read(pkgPath));
-  pkg.scripts.build = 'node scripts/generate-brand-pages.mjs && node scripts/seo-intelligence-v36.mjs && node scripts/generate-v47-comprehensive-upgrade.mjs && node scripts/generate-v48-content-dedupe-visual-stability.mjs && node scripts/generate-v49-guaranteed-vendor-landings.mjs && node scripts/generate-v43-quality-data.mjs && node scripts/gen-build-ver.mjs';
+  pkg.scripts.build = 'node scripts/generate-brand-pages.mjs && node scripts/seo-intelligence-v36.mjs && node scripts/generate-v47-comprehensive-upgrade.mjs && node scripts/generate-v48-content-dedupe-visual-stability.mjs && node scripts/generate-v49-guaranteed-vendor-landings.mjs && node scripts/generate-v50-guaranteed-tools-upgrade.mjs && node scripts/generate-v51-user-facing-tools.mjs && node scripts/generate-v43-quality-data.mjs && node scripts/gen-build-ver.mjs';
   pkg.scripts['quality:v49'] = 'node scripts/generate-v49-guaranteed-vendor-landings.mjs';
   write(pkgPath, JSON.stringify(pkg,null,2)+'\n');
   const gen = path.join(ROOT,'scripts/gen-build-ver.mjs');
-  if (fs.existsSync(gen)) write(gen, read(gen).replace(/static-growth-conversion-v\d+-/g,'static-growth-conversion-v49-'));
+  if (fs.existsSync(gen)) write(gen, read(gen).replace(/static-growth-conversion-v\d+-/g,'static-growth-conversion-v50-'));
 }
 
 renderIndex();

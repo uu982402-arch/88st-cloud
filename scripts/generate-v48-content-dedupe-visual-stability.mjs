@@ -4,7 +4,7 @@ import path from 'path';
 
 const ROOT = process.cwd();
 const DOMAIN = 'https://88st.cloud';
-const VERSION = 'static-growth-conversion-v48-20260520';
+const VERSION = 'static-growth-conversion-v51-20260522';
 const TODAY = new Date().toISOString().slice(0,10);
 const CATEGORY_LABEL = {
   'sports-toto':'스포츠토토',
