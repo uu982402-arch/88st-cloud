@@ -1,0 +1,1706 @@
+{
+  "version": "V48",
+  "generatedAt": "2026-05-21T19:50:35.602Z",
+  "count": 338,
+  "byCategory": {
+    "affiliate": 4,
+    "bet365-virtual": 25,
+    "game-guides": 46,
+    "minigame": 50,
+    "online-casino": 59,
+    "online-slot": 80,
+    "sports-toto": 74
+  },
+  "posts": [
+    {
+      "title": "바카라총판이란? 구조와 확인사항 정리",
+      "cat": "affiliate",
+      "route": "/blog/affiliate/baccarat-affiliate-basic.html"
+    },
+    {
+      "title": "총판 정산 방식과 조건표 체크노트",
+      "cat": "affiliate",
+      "route": "/blog/affiliate/settlement-guide.html"
+    },
+    {
+      "title": "총판 코드 관리와 가입코드 분쟁 막는 법",
+      "cat": "affiliate",
+      "route": "/blog/affiliate/code-management.html"
+    },
+    {
+      "title": "토토사이트 총판 구조 실전 체크노트",
+      "cat": "affiliate",
+      "route": "/blog/affiliate/basic-structure.html"
+    },
+    {
+      "title": "가상게임 결과 이의제기 자료 정리법",
+      "cat": "bet365-virtual",
+      "route": "/blog/bet365-virtual/v47-virtual-game-dispute-record-standard.html"
+    },
+    {
+      "title": "가상게임 공급사 표기 확인법",
+      "cat": "bet365-virtual",
+      "route": "/blog/bet365-virtual/v47-virtual-game-provider-identity-check.html"
+    },
+    {
+      "title": "가상게임 롤링 인정률이 실효 조건을 바꾸는 방식",
+      "cat": "bet365-virtual",
+      "route": "/blog/bet365-virtual/v48-virtual-game-turnover-contribution-rate.html"
+    },
+    {
+      "title": "가상게임 롤링 조건이 불리해지는 구조",
+      "cat": "bet365-virtual",
+      "route": "/blog/bet365-virtual/v47-virtual-game-turnover-disadvantage.html"
+    },
+    {
+      "title": "가상게임 배당 변동성이 낮은 이유",
+      "cat": "bet365-virtual",
+      "route": "/blog/bet365-virtual/v47-virtual-game-low-odds-volatility.html"
+    },
+    {
+      "title": "가상게임 연속 회차 참여 시 자본 변동성",
+      "cat": "bet365-virtual",
+      "route": "/blog/bet365-virtual/v47-virtual-game-consecutive-round-bankroll.html"
+    },
+    {
+      "title": "가상게임 이벤트 인정 범위 확인법",
+      "cat": "bet365-virtual",
+      "route": "/blog/bet365-virtual/v47-virtual-game-event-scope-check.html"
+    },
+    {
+      "title": "가상게임 이용 전 기술 체크리스트",
+      "cat": "bet365-virtual",
+      "route": "/blog/bet365-virtual/v47-virtual-game-technical-checklist.html"
+    },
+    {
+      "title": "가상게임 회차 ID와 결과 이력 기록법",
+      "cat": "bet365-virtual",
+      "route": "/blog/bet365-virtual/v48-virtual-game-round-id-history-audit.html"
+    },
+    {
+      "title": "가상게임 Bonus Abuse 조항 해석",
+      "cat": "bet365-virtual",
+      "route": "/blog/bet365-virtual/v47-virtual-game-bonus-abuse-clause.html"
+    },
+    {
+      "title": "가상게임 RNG와 스포츠 배당의 구조적 차이",
+      "cat": "bet365-virtual",
+      "route": "/blog/bet365-virtual/v47-virtual-game-rng-vs-sports-odds.html"
+    },
+    {
+      "title": "가상경마 회차 주기와 배당 표시 구조",
+      "cat": "bet365-virtual",
+      "route": "/blog/bet365-virtual/v48-virtual-horse-racing-round-odds-cycle.html"
+    },
+    {
+      "title": "가상축구 하이라이트 화면과 결과 정산 구조",
+      "cat": "bet365-virtual",
+      "route": "/blog/bet365-virtual/v47-virtual-football-highlight-settlement.html"
+    },
+    {
+      "title": "가상축구 하이라이트 화면과 선결정 결과의 차이",
+      "cat": "bet365-virtual",
+      "route": "/blog/bet365-virtual/v48-virtual-football-highlight-precomputed-result.html"
+    },
+    {
+      "title": "BET365 가상게임 정산 기준 체크노트",
+      "cat": "bet365-virtual",
+      "route": "/blog/bet365-virtual/basic-guide.html"
+    },
+    {
+      "title": "bet365 가상게임 회차 ID 확인법",
+      "cat": "bet365-virtual",
+      "route": "/blog/bet365-virtual/v47-bet365-virtual-round-id-check.html"
+    },
+    {
+      "title": "BET365 가상게임 회차와 결과 확인법",
+      "cat": "bet365-virtual",
+      "route": "/blog/bet365-virtual/result-cycle-check.html"
+    },
+    {
+      "title": "BET365 가상게임과 실제 스포츠토토의 차이",
+      "cat": "bet365-virtual",
+      "route": "/blog/bet365-virtual/virtual-game-vs-real-sports.html"
+    },
+    {
+      "title": "bet365 가상게임에서 결과 시드가 중요한 이유",
+      "cat": "bet365-virtual",
+      "route": "/blog/bet365-virtual/v47-bet365-virtual-game-result-seed.html"
+    },
+    {
+      "title": "bet365 가상경마 확률 모델과 표시 방식",
+      "cat": "bet365-virtual",
+      "route": "/blog/bet365-virtual/v47-bet365-virtual-racing-probability-display.html"
+    },
+    {
+      "title": "BET365 가상경마와 가상 레이싱 차이",
+      "cat": "bet365-virtual",
+      "route": "/blog/bet365-virtual/virtual-racing.html"
+    },
+    {
+      "title": "bet365 가상농구 결과 주기와 배당 구조",
+      "cat": "bet365-virtual",
+      "route": "/blog/bet365-virtual/v47-bet365-virtual-basketball-cycle-odds.html"
+    },
+    {
+      "title": "BET365 가상농구 결과·정산 체크노트",
+      "cat": "bet365-virtual",
+      "route": "/blog/bet365-virtual/virtual-basketball.html"
+    },
+    {
+      "title": "BET365 가상축구 결과 확인 체크노트",
+      "cat": "bet365-virtual",
+      "route": "/blog/bet365-virtual/virtual-football.html"
+    },
+    {
+      "title": "bet365 가상축구와 실제 축구 배당의 차이",
+      "cat": "bet365-virtual",
+      "route": "/blog/bet365-virtual/v47-bet365-virtual-football-vs-real-football.html"
+    },
+    {
+      "title": "개인정보 입력 페이지의 보안 체크리스트",
+      "cat": "game-guides",
+      "route": "/blog/game-guides/v47-personal-data-page-security-checklist.html"
+    },
+    {
+      "title": "게임 시작 전 공식주소 확인 루틴",
+      "cat": "game-guides",
+      "route": "/blog/game-guides/official-address-before-game.html"
+    },
+    {
+      "title": "게임 이벤트 조건표 먼저 읽는 법",
+      "cat": "game-guides",
+      "route": "/blog/game-guides/game-event-condition-first.html"
+    },
+    {
+      "title": "게임·주소·약관 검증 기록을 남기는 증거 프로토콜",
+      "cat": "game-guides",
+      "route": "/blog/game-guides/security-recording-evidence-protocol.html"
+    },
+    {
+      "title": "게임사 로고와 실제 API 출처 일치 여부 확인법",
+      "cat": "game-guides",
+      "route": "/blog/game-guides/provider-logo-api-consistency.html"
+    },
+    {
+      "title": "고객센터 사칭 채널 판별 기준",
+      "cat": "game-guides",
+      "route": "/blog/game-guides/v47-fake-customer-center-channel-check.html"
+    },
+    {
+      "title": "고객센터에 질문할 때 필요한 문구",
+      "cat": "game-guides",
+      "route": "/blog/game-guides/customer-center-question-template.html"
+    },
+    {
+      "title": "공식주소와 사칭주소를 구분하는 DNS 기준",
+      "cat": "game-guides",
+      "route": "/blog/game-guides/v47-official-vs-impersonation-dns-check.html"
+    },
+    {
+      "title": "다계정 의심 조항의 위험성",
+      "cat": "game-guides",
+      "route": "/blog/game-guides/v47-multi-account-risk-clause.html"
+    },
+    {
+      "title": "당첨금먹튀 의심 전 자료 정리 체크노트",
+      "cat": "game-guides",
+      "route": "/blog/payout-risk/basic-checklist.html"
+    },
+    {
+      "title": "도메인 등록일과 운영 안정성의 상관관계",
+      "cat": "game-guides",
+      "route": "/blog/game-guides/v47-domain-age-operation-stability.html"
+    },
+    {
+      "title": "롤링 약관의 독소 조항과 최대 환전 제한 독해법",
+      "cat": "game-guides",
+      "route": "/blog/game-guides/terms-rolling-toxic-clause.html"
+    },
+    {
+      "title": "롤링 조건 미충족 판단 기준",
+      "cat": "game-guides",
+      "route": "/blog/game-guides/v47-turnover-insufficient-condition-standard.html"
+    },
+    {
+      "title": "먹튀 사이트가 주소를 자주 바꾸는 기술적 이유",
+      "cat": "game-guides",
+      "route": "/blog/game-guides/v47-frequent-domain-change-technical-reason.html"
+    },
+    {
+      "title": "먹튀 의심 상황에서 캡처해야 할 자료",
+      "cat": "game-guides",
+      "route": "/blog/payout-risk/evidence-capture.html"
+    },
+    {
+      "title": "먹튀검증에서 WHOIS 생성일을 보는 이유",
+      "cat": "game-guides",
+      "route": "/blog/game-guides/v47-whois-domain-creation-date-risk.html"
+    },
+    {
+      "title": "모바일 게임 이용 전 체크리스트",
+      "cat": "game-guides",
+      "route": "/blog/game-guides/mobile-game-before-start.html"
+    },
+    {
+      "title": "보너스 몰수 조항에서 자주 보이는 표현 방식",
+      "cat": "game-guides",
+      "route": "/blog/game-guides/v48-bonus-forfeit-clause-taxonomy.html"
+    },
+    {
+      "title": "보너스 몰수 조항의 대표적인 표현 방식",
+      "cat": "game-guides",
+      "route": "/blog/game-guides/v47-bonus-forfeiture-clause-pattern.html"
+    },
+    {
+      "title": "보너스 혜택률보다 EV와 롤링 상한을 먼저 계산하는 이유",
+      "cat": "game-guides",
+      "route": "/blog/game-guides/bonus-ev-turnover-limit.html"
+    },
+    {
+      "title": "사이트 리뉴얼 흔적을 보는 HTML 소스 체크법",
+      "cat": "game-guides",
+      "route": "/blog/game-guides/v47-html-source-renewal-signal-check.html"
+    },
+    {
+      "title": "사이트 이용 전 최종 기술 점검 체크리스트",
+      "cat": "game-guides",
+      "route": "/blog/game-guides/v47-final-technical-site-checklist.html"
+    },
+    {
+      "title": "사칭 피싱 URL과 스크립트 변조 흔적 판별법",
+      "cat": "game-guides",
+      "route": "/blog/game-guides/phishing-url-script-tampering.html"
+    },
+    {
+      "title": "이벤트 배너와 약관 내용이 다를 때 확인 순서",
+      "cat": "game-guides",
+      "route": "/blog/game-guides/v47-event-banner-terms-mismatch-order.html"
+    },
+    {
+      "title": "이용 전 스스로 정해야 할 제한 기준",
+      "cat": "game-guides",
+      "route": "/blog/game-guides/responsible-play-checklist.html"
+    },
+    {
+      "title": "입금 전 도메인·IP·SSL 공개 지표 최종 점검표",
+      "cat": "game-guides",
+      "route": "/blog/game-guides/v48-deposit-before-domain-ip-ssl-checklist.html"
+    },
+    {
+      "title": "입금 전 도메인/IP/SSL 확인 루틴",
+      "cat": "game-guides",
+      "route": "/blog/game-guides/v47-deposit-before-domain-ip-ssl-routine.html"
+    },
+    {
+      "title": "최대 출금 한도 조항의 계산 방식",
+      "cat": "game-guides",
+      "route": "/blog/game-guides/v47-max-withdrawal-cap-calculation.html"
+    },
+    {
+      "title": "출금 거절 사유를 자료부터 정리하는 순서",
+      "cat": "game-guides",
+      "route": "/blog/payout-risk/rejected-withdraw.html"
+    },
+    {
+      "title": "출금 지연 사유를 약관에서 읽는 방법",
+      "cat": "game-guides",
+      "route": "/blog/game-guides/v47-withdraw-delay-terms-reading.html"
+    },
+    {
+      "title": "출금 지연이 발생했을 때 먼저 먼저 모을 자료",
+      "cat": "game-guides",
+      "route": "/blog/payout-risk/withdraw-delay.html"
+    },
+    {
+      "title": "피싱 URL 유사문자와 하이픈 변조 패턴 분석",
+      "cat": "game-guides",
+      "route": "/blog/game-guides/v48-phishing-url-homoglyph-hyphen-pattern.html"
+    },
+    {
+      "title": "피싱 URL에서 자주 보이는 문자 변조 패턴",
+      "cat": "game-guides",
+      "route": "/blog/game-guides/v47-phishing-url-homograph-pattern.html"
+    },
+    {
+      "title": "Cloudflare 사용 사이트에서 공개 신호만 확인하는 법",
+      "cat": "game-guides",
+      "route": "/blog/game-guides/v48-cloudflare-public-signal-check.html"
+    },
+    {
+      "title": "Cloudflare 사용 사이트의 공개 보안 신호와 추적 한계",
+      "cat": "game-guides",
+      "route": "/blog/game-guides/v47-cloudflare-public-security-signal-limit.html"
+    },
+    {
+      "title": "Cloudflare 프록시 사이트의 공개 보안 신호 확인법",
+      "cat": "game-guides",
+      "route": "/blog/game-guides/cloudflare-proxy-public-signal-check.html"
+    },
+    {
+      "title": "DNS A·CNAME·NS 레코드 변화로 주소 구조 확인하기",
+      "cat": "game-guides",
+      "route": "/blog/game-guides/v48-dns-record-change-address-structure.html"
+    },
+    {
+      "title": "DNS와 TLS 인증서 타임라인으로 공식주소를 검증하는 법",
+      "cat": "game-guides",
+      "route": "/blog/game-guides/dns-certificate-timeline-analysis.html"
+    },
+    {
+      "title": "JavaScript 리다이렉트로 숨겨진 피싱 구조",
+      "cat": "game-guides",
+      "route": "/blog/game-guides/v47-javascript-redirect-phishing-structure.html"
+    },
+    {
+      "title": "JavaScript 리다이렉트와 meta refresh 이동 구조 비교",
+      "cat": "game-guides",
+      "route": "/blog/game-guides/v48-js-redirect-meta-refresh-audit.html"
+    },
+    {
+      "title": "RTP와 변동성 쉽게 구분하기",
+      "cat": "game-guides",
+      "route": "/blog/game-guides/rtp-volatility-simple-meaning.html"
+    },
+    {
+      "title": "SSL 인증서 발급자와 도메인 신뢰도 해석",
+      "cat": "game-guides",
+      "route": "/blog/game-guides/v47-ssl-certificate-issuer-domain-trust.html"
+    },
+    {
+      "title": "SSL 인증서 SAN 항목과 도메인 일치성 확인법",
+      "cat": "game-guides",
+      "route": "/blog/game-guides/v48-ssl-san-domain-match-check.html"
+    },
+    {
+      "title": "VPN 접속 제한 조항 확인법",
+      "cat": "game-guides",
+      "route": "/blog/game-guides/v47-vpn-access-restriction-clause.html"
+    },
+    {
+      "title": "WHOIS 도메인 생성일과 먹튀검증 위험 점수화 방법",
+      "cat": "game-guides",
+      "route": "/blog/game-guides/whois-domain-age-risk-score.html"
+    },
+    {
+      "title": "WHOIS와 RDAP 필드로 도메인 이력 읽는 법",
+      "cat": "game-guides",
+      "route": "/blog/game-guides/v48-whois-rdap-domain-history-fields.html"
+    },
+    {
+      "title": "동행스피드키노 번호 조합 확률 구조",
+      "cat": "minigame",
+      "route": "/blog/minigame/v47-donghaeng-speedkeno-number-combination-probability.html"
+    },
+    {
+      "title": "동행스피드키노 연속 패턴 착시 분석",
+      "cat": "minigame",
+      "route": "/blog/minigame/v47-donghaeng-speedkeno-streak-illusion.html"
+    },
+    {
+      "title": "동행스피드키노 회차 데이터와 통계적 노이즈 해석",
+      "cat": "minigame",
+      "route": "/blog/minigame/donghaeng-speedkeno-statistical-noise.html"
+    },
+    {
+      "title": "동행스피드키노 회차와 결과 구조",
+      "cat": "minigame",
+      "route": "/blog/minigame/v47-donghaeng-speedkeno-round-result-model.html"
+    },
+    {
+      "title": "동행스피드키노 회차와 결과 확인 방식",
+      "cat": "minigame",
+      "route": "/blog/minigame/donghaeng-speedkeno-round-check.html"
+    },
+    {
+      "title": "동행파워볼 공식 결과 확인 방식",
+      "cat": "minigame",
+      "route": "/blog/minigame/v47-donghaeng-powerball-official-result-check.html"
+    },
+    {
+      "title": "동행파워볼 공식 결과와 사설 표기 차이 검증",
+      "cat": "minigame",
+      "route": "/blog/minigame/donghaeng-powerball-official-result.html"
+    },
+    {
+      "title": "동행파워볼 회차 오류와 정정 기준",
+      "cat": "minigame",
+      "route": "/blog/minigame/v47-donghaeng-powerball-round-error-correction.html"
+    },
+    {
+      "title": "동행파워볼과 사설 파워볼 차이",
+      "cat": "minigame",
+      "route": "/blog/minigame/v47-donghaeng-powerball-vs-private-powerball.html"
+    },
+    {
+      "title": "동행파워볼과 일반 파워볼 차이",
+      "cat": "minigame",
+      "route": "/blog/minigame/donghaeng-powerball-difference.html"
+    },
+    {
+      "title": "로투스 홀짝 게임 회차 흐름 체크노트",
+      "cat": "minigame",
+      "route": "/blog/minigame/lotus-odd-even.html"
+    },
+    {
+      "title": "미니게임 결과 지연 정산 기준",
+      "cat": "minigame",
+      "route": "/blog/minigame/v47-minigame-delayed-result-settlement.html"
+    },
+    {
+      "title": "미니게임 결과 지연 정산과 무효 처리 기준",
+      "cat": "minigame",
+      "route": "/blog/minigame/v48-minigame-delayed-settlement-void-rules.html"
+    },
+    {
+      "title": "미니게임 마감 시간과 정산 지연 기준 분석",
+      "cat": "minigame",
+      "route": "/blog/minigame/minigame-round-cutoff-settlement.html"
+    },
+    {
+      "title": "미니게임 연속 패턴 착시와 독립시행 검증",
+      "cat": "minigame",
+      "route": "/blog/minigame/v48-minigame-pattern-fallacy-independent-trial.html"
+    },
+    {
+      "title": "미니게임 이벤트 롤링 조건 독해법",
+      "cat": "minigame",
+      "route": "/blog/minigame/v47-minigame-event-turnover-terms.html"
+    },
+    {
+      "title": "미니게임 이벤트 조건 확인 방법",
+      "cat": "minigame",
+      "route": "/blog/minigame/minigame-event-rolling-condition.html"
+    },
+    {
+      "title": "미니게임 이용 전 확인해야 할 회차·정산 체크노트",
+      "cat": "minigame",
+      "route": "/blog/minigame/basic-guide.html"
+    },
+    {
+      "title": "미니게임 증빙 자료 캡처 기준",
+      "cat": "minigame",
+      "route": "/blog/minigame/v47-minigame-evidence-capture-standard.html"
+    },
+    {
+      "title": "미니게임 최대 당첨 한도 조항 해석",
+      "cat": "minigame",
+      "route": "/blog/minigame/v47-minigame-max-win-cap-clause.html"
+    },
+    {
+      "title": "미니게임 API 제공사 확인법",
+      "cat": "minigame",
+      "route": "/blog/minigame/v47-minigame-api-provider-check.html"
+    },
+    {
+      "title": "보글보글 게임 이용 전 알아둘 점",
+      "cat": "minigame",
+      "route": "/blog/minigame/bubble-game.html"
+    },
+    {
+      "title": "사다리게임 루틴 배팅과 도박사의 파산 확률",
+      "cat": "minigame",
+      "route": "/blog/minigame/ladder-game-gambler-ruin.html"
+    },
+    {
+      "title": "사다리게임 루틴 패턴 착시 분석",
+      "cat": "minigame",
+      "route": "/blog/minigame/v47-ladder-routine-pattern-illusion.html"
+    },
+    {
+      "title": "사다리게임 이용 전 확인해야 할 구조",
+      "cat": "minigame",
+      "route": "/blog/minigame/ladder-game-structure-check.html"
+    },
+    {
+      "title": "사다리게임 좌우·홀짝 결과의 확률 트리 분석",
+      "cat": "minigame",
+      "route": "/blog/minigame/v48-ladder-game-probability-tree.html"
+    },
+    {
+      "title": "사다리게임 좌우/홀짝 조합의 실제 확률",
+      "cat": "minigame",
+      "route": "/blog/minigame/v47-ladder-left-right-odd-even-probability.html"
+    },
+    {
+      "title": "사다리게임 확률 구조와 결과 판별 방식",
+      "cat": "minigame",
+      "route": "/blog/minigame/v47-ladder-game-probability-result-check.html"
+    },
+    {
+      "title": "사다리게임 회차 결과 검증 자료 정리",
+      "cat": "minigame",
+      "route": "/blog/minigame/v47-ladder-round-result-evidence.html"
+    },
+    {
+      "title": "스피드키노 번호 조합 확률과 표본 착시",
+      "cat": "minigame",
+      "route": "/blog/minigame/v48-speedkeno-combination-probability-bias.html"
+    },
+    {
+      "title": "엔트리 게임 기본 흐름과 정산 체크노트",
+      "cat": "minigame",
+      "route": "/blog/minigame/entry-game.html"
+    },
+    {
+      "title": "엔트리 게임사 이용 전 확인 기준",
+      "cat": "minigame",
+      "route": "/blog/minigame/entry-game-provider-check.html"
+    },
+    {
+      "title": "엔트리 게임사 표기 확인법",
+      "cat": "minigame",
+      "route": "/blog/minigame/v47-entry-game-provider-name-check.html"
+    },
+    {
+      "title": "엔트리 파워볼 결과 확인 전 주의할 점",
+      "cat": "minigame",
+      "route": "/blog/minigame/entry-powerball-round-check.html"
+    },
+    {
+      "title": "엔트리 파워볼 해시 검증 개념과 회차 기록법",
+      "cat": "minigame",
+      "route": "/blog/minigame/entry-powerball-hash-verification.html"
+    },
+    {
+      "title": "엔트리 파워볼과 일반 파워볼 차이",
+      "cat": "minigame",
+      "route": "/blog/minigame/v47-entry-powerball-vs-general-powerball.html"
+    },
+    {
+      "title": "엔트리 회차 결과 캡처 기준",
+      "cat": "minigame",
+      "route": "/blog/minigame/v47-entry-round-result-capture-standard.html"
+    },
+    {
+      "title": "파워볼 게임 방식과 회차 확인 방법",
+      "cat": "minigame",
+      "route": "/blog/minigame/powerball-round-result-check.html"
+    },
+    {
+      "title": "파워볼 결과값 해시 검증 개념",
+      "cat": "minigame",
+      "route": "/blog/minigame/v47-powerball-result-hash-verification-concept.html"
+    },
+    {
+      "title": "파워볼 루틴 배팅이 실패하는 수학적 이유",
+      "cat": "minigame",
+      "route": "/blog/minigame/v47-powerball-routine-betting-failure-math.html"
+    },
+    {
+      "title": "파워볼 마틴게일 전략의 자산 파산 수식 증명",
+      "cat": "minigame",
+      "route": "/blog/minigame/powerball-martingale-bankroll-risk.html"
+    },
+    {
+      "title": "파워볼 마틴게일 전략의 파산 확률",
+      "cat": "minigame",
+      "route": "/blog/minigame/v47-powerball-martingale-bankruptcy-probability.html"
+    },
+    {
+      "title": "파워볼 연속 패턴 착시와 독립시행 원리",
+      "cat": "minigame",
+      "route": "/blog/minigame/v47-powerball-streak-illusion-independent-trial.html"
+    },
+    {
+      "title": "파워볼 조합 베팅에서 경우의 수가 늘어나는 방식",
+      "cat": "minigame",
+      "route": "/blog/minigame/v48-powerball-combination-state-space.html"
+    },
+    {
+      "title": "파워볼 조합 베팅의 마진 누적 구조",
+      "cat": "minigame",
+      "route": "/blog/minigame/v47-powerball-combination-margin-compounding.html"
+    },
+    {
+      "title": "파워볼 홀짝·언오버의 공정배당과 실제 지급률",
+      "cat": "minigame",
+      "route": "/blog/minigame/v48-powerball-even-odd-fair-odds-margin.html"
+    },
+    {
+      "title": "파워볼 홀짝/언오버 확률 구조 분석",
+      "cat": "minigame",
+      "route": "/blog/minigame/v47-powerball-odd-even-under-over-probability.html"
+    },
+    {
+      "title": "파워볼 회차 구조와 결과 확인 방식",
+      "cat": "minigame",
+      "route": "/blog/minigame/v47-powerball-round-structure-result-check.html"
+    },
+    {
+      "title": "bet365 가상경마 회차와 RNG형 결과 구조 분석",
+      "cat": "minigame",
+      "route": "/blog/minigame/bet365-virtual-racing-rng-check.html"
+    },
+    {
+      "title": "bet365 가상축구 가격 구조와 실제 축구 배당 차이",
+      "cat": "minigame",
+      "route": "/blog/minigame/bet365-virtual-football-pricing.html"
+    },
+    {
+      "title": "땅콩 ddk888 가입코드와 BTI 스포츠·카지노·슬롯게임 확인",
+      "cat": "online-casino",
+      "route": "/blog/online-casino/ddangkong-ddk888-domain-code-guide.html"
+    },
+    {
+      "title": "라이브 딜러 게임 라운드 캡처 기준",
+      "cat": "online-casino",
+      "route": "/blog/online-casino/live-dealer-round-capture.html"
+    },
+    {
+      "title": "라이브 딜러 라운드 ID 증빙 자료 기록법",
+      "cat": "online-casino",
+      "route": "/blog/online-casino/v48-live-dealer-round-id-evidence.html"
+    },
+    {
+      "title": "라이브 딜러 영상과 결과 API 무결성 확인법",
+      "cat": "online-casino",
+      "route": "/blog/online-casino/live-dealer-video-api-integrity.html"
+    },
+    {
+      "title": "라이브 블랙잭 룰 변형과 기대값 차이 분석",
+      "cat": "online-casino",
+      "route": "/blog/online-casino/live-blackjack-rule-variants.html"
+    },
+    {
+      "title": "라이브카지노 결과 이의제기 자료 정리 기준",
+      "cat": "online-casino",
+      "route": "/blog/online-casino/v47-live-casino-dispute-evidence-standard.html"
+    },
+    {
+      "title": "라이브카지노 결과 캡처에 필요한 데이터 항목",
+      "cat": "online-casino",
+      "route": "/blog/online-casino/v47-live-casino-result-capture-data.html"
+    },
+    {
+      "title": "라이브카지노 공식주소 확인이 필요한 이유",
+      "cat": "online-casino",
+      "route": "/blog/online-casino/casino-official-address-game-check.html"
+    },
+    {
+      "title": "라이브카지노 딜러 스트리밍 지연과 정산 기준",
+      "cat": "online-casino",
+      "route": "/blog/online-casino/v47-live-casino-stream-delay-settlement.html"
+    },
+    {
+      "title": "라이브카지노 보너스 롤링 제외 게임 판별법",
+      "cat": "online-casino",
+      "route": "/blog/online-casino/v47-live-casino-bonus-excluded-games.html"
+    },
+    {
+      "title": "라이브카지노 선택 전 확인할 항목",
+      "cat": "online-casino",
+      "route": "/blog/online-casino/live-casino-check.html"
+    },
+    {
+      "title": "라이브카지노 세션 리스크와 기록 관리 프로토콜",
+      "cat": "online-casino",
+      "route": "/blog/online-casino/live-casino-session-risk-protocol.html"
+    },
+    {
+      "title": "라이브카지노 스트리밍 지연과 정산 지연의 차이",
+      "cat": "online-casino",
+      "route": "/blog/online-casino/v48-live-casino-stream-settlement-delay.html"
+    },
+    {
+      "title": "라이브카지노 약관의 지연 정산 조항 해석",
+      "cat": "online-casino",
+      "route": "/blog/online-casino/v47-live-casino-delayed-settlement-clause.html"
+    },
+    {
+      "title": "라이브카지노 테이블 한도와 이벤트 인정 범위",
+      "cat": "online-casino",
+      "route": "/blog/online-casino/v47-live-casino-table-limit-event-scope.html"
+    },
+    {
+      "title": "라이브카지노와 온라인슬롯의 차이",
+      "cat": "online-casino",
+      "route": "/blog/online-casino/live-casino-vs-online-slot.html"
+    },
+    {
+      "title": "룰렛 0 규칙과 하우스 엣지 비교 분석",
+      "cat": "online-casino",
+      "route": "/blog/online-casino/roulette-zero-rule-house-edge.html"
+    },
+    {
+      "title": "룰렛 마틴게일 전략의 자본 파산 확률",
+      "cat": "online-casino",
+      "route": "/blog/online-casino/v47-roulette-martingale-ruin-probability.html"
+    },
+    {
+      "title": "룰렛 유럽식과 미국식 하우스엣지 차이",
+      "cat": "online-casino",
+      "route": "/blog/online-casino/v47-roulette-european-american-edge.html"
+    },
+    {
+      "title": "룰렛 쿠폰과 이벤트 조건 확인법",
+      "cat": "online-casino",
+      "route": "/blog/online-casino/roulette-coupon-condition.html"
+    },
+    {
+      "title": "바카라 뱅커 수수료가 기대값에 미치는 영향",
+      "cat": "online-casino",
+      "route": "/blog/online-casino/v47-baccarat-banker-commission-ev.html"
+    },
+    {
+      "title": "바카라 뱅커 수수료와 노커미션 룰의 기대값 차이",
+      "cat": "online-casino",
+      "route": "/blog/online-casino/v48-baccarat-commission-no-commission-edge.html"
+    },
+    {
+      "title": "바카라 사이드 베팅의 분산과 기대값 리스크",
+      "cat": "online-casino",
+      "route": "/blog/online-casino/baccarat-side-bet-risk-model.html"
+    },
+    {
+      "title": "바카라 이용 전 알아야 할 기본 흐름",
+      "cat": "online-casino",
+      "route": "/blog/online-casino/baccarat-check.html"
+    },
+    {
+      "title": "바카라 타이 배당의 수학적 함정",
+      "cat": "online-casino",
+      "route": "/blog/online-casino/v47-baccarat-tie-bet-math-trap.html"
+    },
+    {
+      "title": "바카라 타이 배당의 하우스엣지와 지급표 판독법",
+      "cat": "online-casino",
+      "route": "/blog/online-casino/v48-baccarat-tie-payout-house-edge.html"
+    },
+    {
+      "title": "바카라·블랙잭·룰렛 차이와 확인 기준",
+      "cat": "online-casino",
+      "route": "/blog/online-casino/baccarat-blackjack-roulette-difference.html"
+    },
+    {
+      "title": "블랙잭 기본전략과 하우스엣지 변화",
+      "cat": "online-casino",
+      "route": "/blog/online-casino/v47-blackjack-basic-strategy-house-edge.html"
+    },
+    {
+      "title": "블랙잭 보험 베팅의 음의 기대값 구조",
+      "cat": "online-casino",
+      "route": "/blog/online-casino/v48-blackjack-insurance-negative-ev.html"
+    },
+    {
+      "title": "블랙잭 보험 베팅이 불리한 수학적 이유",
+      "cat": "online-casino",
+      "route": "/blog/online-casino/v47-blackjack-insurance-negative-ev.html"
+    },
+    {
+      "title": "블랙잭 이용 전 기본 규칙 확인",
+      "cat": "online-casino",
+      "route": "/blog/online-casino/blackjack-basic-rule-check.html"
+    },
+    {
+      "title": "블랙잭 S17·H17 룰 차이가 기대값에 미치는 영향",
+      "cat": "online-casino",
+      "route": "/blog/online-casino/v48-blackjack-s17-h17-rule-edge.html"
+    },
+    {
+      "title": "에볼루션 게임쇼형 라이브카지노 라운드 구조 분석",
+      "cat": "online-casino",
+      "route": "/blog/online-casino/evolution-game-show-round-structure.html"
+    },
+    {
+      "title": "에볼루션 라이브 딜러 테이블 종류와 차이",
+      "cat": "online-casino",
+      "route": "/blog/online-casino/v47-evolution-live-dealer-table-types.html"
+    },
+    {
+      "title": "에볼루션 라이브 스튜디오 게임 종류 정리",
+      "cat": "online-casino",
+      "route": "/blog/online-casino/evolution-live-studio-types.html"
+    },
+    {
+      "title": "에볼루션 라이트닝 바카라 배수 구조 분석",
+      "cat": "online-casino",
+      "route": "/blog/online-casino/v47-evolution-lightning-baccarat-multiplier.html"
+    },
+    {
+      "title": "에볼루션 룰렛 게임의 하우스엣지 계산",
+      "cat": "online-casino",
+      "route": "/blog/online-casino/v47-evolution-roulette-house-edge.html"
+    },
+    {
+      "title": "에볼루션 바카라 라운드 ID와 결과 검증 구조",
+      "cat": "online-casino",
+      "route": "/blog/online-casino/v47-evolution-baccarat-round-id-verification.html"
+    },
+    {
+      "title": "에볼루션 바카라 이용 전 확인할 항목",
+      "cat": "online-casino",
+      "route": "/blog/online-casino/evolution-baccarat-before-check.html"
+    },
+    {
+      "title": "에볼루션 바카라 테이블 룰과 하우스 엣지 계산",
+      "cat": "online-casino",
+      "route": "/blog/online-casino/evolution-baccarat-table-rule-math.html"
+    },
+    {
+      "title": "에볼루션 스피드 바카라와 일반 바카라 차이",
+      "cat": "online-casino",
+      "route": "/blog/online-casino/v47-evolution-speed-baccarat-difference.html"
+    },
+    {
+      "title": "온라인카지노 이용 전 이용 전 조건표 체크노트",
+      "cat": "online-casino",
+      "route": "/blog/online-casino/basic-guide.html"
+    },
+    {
+      "title": "온라인카지노 제공사 정품 여부를 F12로 확인하는 기준",
+      "cat": "online-casino",
+      "route": "/blog/online-casino/casino-provider-identity-f12-check.html"
+    },
+    {
+      "title": "유럽식 룰렛과 미국식 룰렛의 제로 구조 비교",
+      "cat": "online-casino",
+      "route": "/blog/online-casino/v48-roulette-single-double-zero-edge.html"
+    },
+    {
+      "title": "카지노 게임 공급사 로고와 실제 API 검증",
+      "cat": "online-casino",
+      "route": "/blog/online-casino/v47-casino-provider-logo-api-check.html"
+    },
+    {
+      "title": "카지노 공급사 표기와 공개 리소스 출처 비교법",
+      "cat": "online-casino",
+      "route": "/blog/online-casino/v48-casino-provider-resource-origin-check.html"
+    },
+    {
+      "title": "카지노 공식주소 피싱 URL 판별법",
+      "cat": "online-casino",
+      "route": "/blog/online-casino/v47-casino-official-address-phishing-url.html"
+    },
+    {
+      "title": "카지노 도메인 변경 시 DNS 확인 루틴",
+      "cat": "online-casino",
+      "route": "/blog/online-casino/v47-casino-domain-change-dns-routine.html"
+    },
+    {
+      "title": "카지노 롤링 조건에서 사이드 베팅 인정률 읽는 법",
+      "cat": "online-casino",
+      "route": "/blog/online-casino/casino-turnover-sidebet-reading.html"
+    },
+    {
+      "title": "카지노 이벤트 조건에서 최대 당첨 한도 해석",
+      "cat": "online-casino",
+      "route": "/blog/online-casino/v47-casino-event-max-win-cap.html"
+    },
+    {
+      "title": "카지노 이벤트 최대 지급 한도와 몰수 조항 판독법",
+      "cat": "online-casino",
+      "route": "/blog/online-casino/v48-casino-max-cashout-forfeit-clause.html"
+    },
+    {
+      "title": "카지노 이용 전 브라우저 개발자도구 확인법",
+      "cat": "online-casino",
+      "route": "/blog/online-casino/v47-casino-browser-devtools-check.html"
+    },
+    {
+      "title": "카지노 첫충 이벤트 조건 조건표 읽는 법",
+      "cat": "online-casino",
+      "route": "/blog/online-casino/first-charge-event.html"
+    },
+    {
+      "title": "프라그마틱 라이브카지노 게임 종류 확인",
+      "cat": "online-casino",
+      "route": "/blog/online-casino/pragmatic-live-casino-games.html"
+    },
+    {
+      "title": "프라그마틱 라이브카지노 테이블 API와 제공사 표기 검증",
+      "cat": "online-casino",
+      "route": "/blog/online-casino/pragmatic-live-api-table-check.html"
+    },
+    {
+      "title": "프라그마틱 라이브카지노 API 공급 구조",
+      "cat": "online-casino",
+      "route": "/blog/online-casino/v47-pragmatic-live-casino-api-supply-chain.html"
+    },
+    {
+      "title": "프라그마틱 메가휠 세그먼트 가중치와 배당 구조",
+      "cat": "online-casino",
+      "route": "/blog/online-casino/v48-pragmatic-mega-wheel-segment-weight.html"
+    },
+    {
+      "title": "프라그마틱 메가휠과 확률 가중치 구조",
+      "cat": "online-casino",
+      "route": "/blog/online-casino/v47-pragmatic-mega-wheel-weight-model.html"
+    },
+    {
+      "title": "프라그마틱 바카라와 에볼루션 바카라 비교",
+      "cat": "online-casino",
+      "route": "/blog/online-casino/v47-pragmatic-vs-evolution-baccarat-comparison.html"
+    },
+    {
+      "title": "게임사별 RTP와 변동성 개념",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/slot-rtp-provider-table.html"
+    },
+    {
+      "title": "넷엔트 클래식 슬롯 확인 기준",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/netent-classic-slot-check.html"
+    },
+    {
+      "title": "넷엔트 클래식 슬롯과 최신 슬롯 RTP 구조 비교",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/netent-classic-modern-rtp.html"
+    },
+    {
+      "title": "넷엔트 클래식 슬롯의 저변동성 구조",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/v47-netent-classic-low-variance.html"
+    },
+    {
+      "title": "넷엔트 Starburst류 슬롯이 단순 구조인 이유",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/v47-netent-starburst-simple-model.html"
+    },
+    {
+      "title": "노리밋시티 고변동성 슬롯 구조 분석",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/v47-nolimit-city-high-variance-structure.html"
+    },
+    {
+      "title": "노리밋시티 보너스 구매와 최대 노출 구조",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/v47-nolimit-city-bonus-buy-max-exposure.html"
+    },
+    {
+      "title": "노리밋시티 슬롯 변동성 체크노트",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/nolimit-city-guide.html"
+    },
+    {
+      "title": "노리밋시티 슬롯이 고변동성으로 분류되는 이유",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/nolimit-city-high-volatility.html"
+    },
+    {
+      "title": "노리밋시티 Mental 계열 슬롯 리스크 구조",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/v47-nolimit-city-mental-risk-structure.html"
+    },
+    {
+      "title": "노리밋시티 RTP 설정값 확인 방법",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/v47-nolimit-city-rtp-configuration-check.html"
+    },
+    {
+      "title": "노리밋시티 xNudge와 xWays 기능 해석",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/v47-nolimit-city-xnudge-xways-explained.html"
+    },
+    {
+      "title": "노리밋시티 xNudge와 xWays 기능의 분산 구조",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/v48-nolimit-xnudge-xways-variance.html"
+    },
+    {
+      "title": "노리밋시티 xWays 구조와 고변동성 분산 모델",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/nolimit-city-xways-volatility-model.html"
+    },
+    {
+      "title": "레드타이거 슬롯 잭팟 문구 확인법",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/red-tiger-daily-jackpot-check.html"
+    },
+    {
+      "title": "레드타이거 잭팟 드롭 구조와 이벤트 제외 조건",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/red-tiger-jackpot-drop-model.html"
+    },
+    {
+      "title": "레드타이거 Buy Feature 조건 해석",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/v47-red-tiger-buy-feature-condition.html"
+    },
+    {
+      "title": "레드타이거 Daily Drop Jackpot 구조",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/v47-red-tiger-daily-drop-jackpot.html"
+    },
+    {
+      "title": "릴렉스 게이밍 메가웨이즈 변동성 구조 분석",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/relax-gaming-megaways-variance.html"
+    },
+    {
+      "title": "릴렉스 게이밍 메가웨이즈 슬롯 체크",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/relax-gaming-megaways-check.html"
+    },
+    {
+      "title": "릴렉스 게이밍 Megaways 구조와 변동성",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/v47-relax-gaming-megaways-volatility.html"
+    },
+    {
+      "title": "릴렉스 게이밍 Money Train 계열 리스크",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/v47-relax-gaming-money-train-risk.html"
+    },
+    {
+      "title": "릴렉스 Megaways 경우의 수와 실제 변동성 차이",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/v48-relax-megaways-combinatorics-volatility.html"
+    },
+    {
+      "title": "마이크로게이밍 프로그레시브 슬롯 확인",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/microgaming-progressive-jackpot-check.html"
+    },
+    {
+      "title": "마이크로게이밍 프로그레시브 잭팟 수학 구조",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/microgaming-progressive-jackpot-math.html"
+    },
+    {
+      "title": "마이크로게이밍 프로그레시브 잭팟 풀 구조",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/v48-microgaming-progressive-jackpot-pool.html"
+    },
+    {
+      "title": "마이크로게이밍 프로그레시브 잭팟 pool 구조",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/v47-microgaming-progressive-jackpot-pool.html"
+    },
+    {
+      "title": "마이크로게이밍 Mega Moolah류 잭팟 이해",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/v47-microgaming-mega-moolah-jackpot.html"
+    },
+    {
+      "title": "모바일 슬롯 세션 한도 정하는 법",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/mobile-slot-session-limit.html"
+    },
+    {
+      "title": "부운고 홀드앤윈 슬롯 확인 포인트",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/booongo-hold-and-win-check.html"
+    },
+    {
+      "title": "부운고 Hold and Win 구조 분석",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/v47-booongo-hold-and-win-model.html"
+    },
+    {
+      "title": "슬롯 게임사 공식 목록 확인이 필요한 이유",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/provider-official-game-list-check.html"
+    },
+    {
+      "title": "슬롯 고변동성 세션의 드로다운 모델 이해",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/v48-slot-high-volatility-drawdown-model.html"
+    },
+    {
+      "title": "슬롯 단기 분산과 장기 RTP의 차이",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/v47-slot-short-term-variance-long-term-rtp.html"
+    },
+    {
+      "title": "슬롯 데모게임과 실게임 RNG 차이",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/v47-slot-demo-real-rng-difference.html"
+    },
+    {
+      "title": "슬롯 데모와 실제 이용 화면 차이",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/demo-and-real-slot-difference.html"
+    },
+    {
+      "title": "슬롯 변동성과 자금 Drawdown 계산법",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/slot-volatility-bankroll-drawdown.html"
+    },
+    {
+      "title": "슬롯 보너스 구매 가격과 평균 지급의 차이",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/v48-slot-bonus-buy-cost-vs-average-return.html"
+    },
+    {
+      "title": "슬롯 보너스 구매 기능 이용 전 확인",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/buy-feature-before-check.html"
+    },
+    {
+      "title": "슬롯 보너스 라운드 빈도와 기대값 계산",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/v47-slot-bonus-frequency-ev.html"
+    },
+    {
+      "title": "슬롯 저·중·고변동성 차이",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/slot-low-mid-high-volatility.html"
+    },
+    {
+      "title": "슬롯 프리스핀 기대값과 보너스 라운드 분산 분석",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/slot-free-spin-expected-value.html"
+    },
+    {
+      "title": "슬롯 프리스핀 기여율 0% 조항 판독법",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/v48-slot-free-spin-zero-contribution-clause.html"
+    },
+    {
+      "title": "슬롯 프리스핀 이벤트 조건 확인법",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/free-spin-event-condition.html"
+    },
+    {
+      "title": "슬롯 Excluded Game List 확인법",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/v47-slot-excluded-game-list-check.html"
+    },
+    {
+      "title": "슬롯 Free Spin 이벤트 약관 독해법",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/v47-slot-free-spin-event-terms.html"
+    },
+    {
+      "title": "슬롯 Hit Frequency와 RTP가 서로 다른 지표인 이유",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/v48-slot-hit-frequency-vs-rtp.html"
+    },
+    {
+      "title": "슬롯 Max Win Cap이 기대값에 미치는 영향",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/v47-slot-max-win-cap-ev-impact.html"
+    },
+    {
+      "title": "슬롯 Max Win Cap이 장기 기대값에 미치는 영향",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/v48-slot-max-win-cap-expected-value.html"
+    },
+    {
+      "title": "슬롯 RNG와 API 패킷 출처를 확인하는 기술 기준",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/slot-rng-api-packet-check.html"
+    },
+    {
+      "title": "슬롯 RTP 96%가 실제 96% 환급을 뜻하지 않는 이유",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/v47-slot-rtp-96-not-session-return.html"
+    },
+    {
+      "title": "슬롯 RTP와 변동성 실전 체크노트",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/rtp-volatility.html"
+    },
+    {
+      "title": "온라인 슬롯 이용 전 확인해야 할 기본 기준",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/basic-guide.html"
+    },
+    {
+      "title": "프라그마틱 게이츠 오브 올림푸스 수학 모델",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/v47-pragmatic-gates-of-olympus-math.html"
+    },
+    {
+      "title": "프라그마틱 보너스 구매 기능의 기대값 함정",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/v47-pragmatic-bonus-buy-ev-trap.html"
+    },
+    {
+      "title": "프라그마틱 빅베스 계열 보너스 구조 분석",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/v47-pragmatic-big-bass-bonus-model.html"
+    },
+    {
+      "title": "프라그마틱 슈가러쉬 tumble mechanic 분석",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/v47-pragmatic-sugar-rush-tumble-mechanic.html"
+    },
+    {
+      "title": "프라그마틱 슬롯 이벤트 조건 체크노트",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/pragmatic-guide.html"
+    },
+    {
+      "title": "프라그마틱 슬롯 RTP 범위와 변동성 해석",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/v47-pragmatic-slot-rtp-range-variance.html"
+    },
+    {
+      "title": "프라그마틱 슬롯 RTP Range와 보너스 구매 수학",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/pragmatic-rtp-range-bonus-buy.html"
+    },
+    {
+      "title": "프라그마틱 플레이 슬롯 변동성 확인 방법",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/pragmatic-play-volatility-check.html"
+    },
+    {
+      "title": "프라그마틱 RTP 설정 범위와 버전 차이 판독법",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/v48-pragmatic-rtp-version-range-check.html"
+    },
+    {
+      "title": "프라그마틱 Tumble 기능과 멀티플라이어 리셋 구조",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/v48-pragmatic-tumble-multiplier-reset.html"
+    },
+    {
+      "title": "플레이앤고 슬롯 기능 구조와 RTP 표기 확인법",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/playngo-grid-slot-feature-check.html"
+    },
+    {
+      "title": "플레이앤고 슬롯 이용 전 확인할 것",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/playngo-slot-before-check.html"
+    },
+    {
+      "title": "플레이앤고 슬롯 grid 구조와 payline 비교",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/v47-playngo-grid-payline-comparison.html"
+    },
+    {
+      "title": "플레이앤고 클러스터 방식과 페이라인 방식 비교",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/v48-playngo-cluster-vs-payline-model.html"
+    },
+    {
+      "title": "플레이앤고 Book 계열 슬롯 보너스 구조",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/v47-playngo-book-series-bonus.html"
+    },
+    {
+      "title": "플레이앤고 Reactoonz 계열 cluster 구조",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/v47-playngo-reactoonz-cluster-model.html"
+    },
+    {
+      "title": "하바네로 슬롯 모바일 이용 전 체크",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/habanero-slot-mobile-check.html"
+    },
+    {
+      "title": "하바네로 슬롯 아시아권 UI와 보너스 구조",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/v47-habanero-asia-ui-bonus-model.html"
+    },
+    {
+      "title": "하바네로 슬롯 지급표와 분산 지표 해석법",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/habanero-paytable-variance-guide.html"
+    },
+    {
+      "title": "하바네로 Ways 방식과 payline 방식 차이",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/v47-habanero-ways-vs-payline.html"
+    },
+    {
+      "title": "PG Soft 모바일 슬롯 세션 구조 분석",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/v47-pg-soft-mobile-session-structure.html"
+    },
+    {
+      "title": "PG Soft 모바일 슬롯 특징과 확인 포인트",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/pg-soft-mobile-slot-feature.html"
+    },
+    {
+      "title": "PG Soft 세로형 모바일 슬롯 UI가 세션에 미치는 영향",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/v48-pgsoft-portrait-mobile-session-ux.html"
+    },
+    {
+      "title": "PG Soft 세로형 모바일 슬롯의 UX와 변동성 분석",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/pgsoft-mobile-portrait-slot-math.html"
+    },
+    {
+      "title": "PG Soft portrait UI와 터치 UX 특징",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/v47-pg-soft-portrait-ui-touch-ux.html"
+    },
+    {
+      "title": "PG Soft RTP 표기와 실제 체감 변동성 차이",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/v47-pg-soft-rtp-observed-variance.html"
+    },
+    {
+      "title": "PG Soft scatter 보너스 구조와 지급 방식",
+      "cat": "online-slot",
+      "route": "/blog/online-slot/v47-pg-soft-scatter-bonus-payout.html"
+    },
+    {
+      "title": "2026 미국 월드컵 경기 전 확인 포인트",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/2026-world-cup-before-check.html"
+    },
+    {
+      "title": "2026 미국 월드컵 배당 시장 사전 체크리스트",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/v47-worldcup-2026-usa-market-checklist.html"
+    },
+    {
+      "title": "2026 미국 월드컵 조별리그 배당 변수와 시차 리스크",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/worldcup-2026-group-stage-odds.html"
+    },
+    {
+      "title": "농구 경기 페이스와 득점 흐름 페이스·쿼터 흐름 체크노트",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/basketball-pace.html"
+    },
+    {
+      "title": "농구 언더오버 라인과 페이스 지표 해석",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/v47-basketball-total-pace-metric.html"
+    },
+    {
+      "title": "농구 언오버 기준과 팀 득점 흐름 체크노트",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/basketball-over-under.html"
+    },
+    {
+      "title": "농구 페이스와 포제션 기반 언더오버 배당 해석",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/nba-kbl-pace-possession-odds.html"
+    },
+    {
+      "title": "농구 포제션 기반 언더오버 라인 산출 방식",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/v48-basketball-possession-total-model.html"
+    },
+    {
+      "title": "농구 핸디캡과 쿼터별 흐름을 볼 때 실전 체크노트",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/basketball-handicap.html"
+    },
+    {
+      "title": "농구·배구 시즌 초반 경기 체크 기준",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/basketball-volleyball-season-check.html"
+    },
+    {
+      "title": "라이브 배팅 지연과 정산 차이 확인법",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/live-betting-delay-risk.html"
+    },
+    {
+      "title": "마감 배당 CLV로 경기 판단 품질을 평가하는 법",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/closing-line-value-guide.html"
+    },
+    {
+      "title": "배구 듀스 구간이 언더오버와 세트 핸디캡에 미치는 영향",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/v48-volleyball-deuce-total-handicap-risk.html"
+    },
+    {
+      "title": "배구 세트 핸디캡과 경기 핸디캡 차이",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/v47-volleyball-set-vs-match-handicap.html"
+    },
+    {
+      "title": "배구 세트 핸디캡과 매치 승패 시장 구조",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/volleyball-set-handicap-market.html"
+    },
+    {
+      "title": "배구 세트 핸디캡과 세트 흐름 세트 흐름 체크노트노트",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/volleyball-set-handicap.html"
+    },
+    {
+      "title": "배구 언오버와 세트별 점수 흐름 체크노트",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/volleyball-over-under.html"
+    },
+    {
+      "title": "배구 팀 컨디션과 로테이션 변수를 볼 때 로테이션 체크노트",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/volleyball-team-form.html"
+    },
+    {
+      "title": "스포츠 이벤트 롤링 조건 확인 체크리스트",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/sports-event-rolling-checklist.html"
+    },
+    {
+      "title": "스포츠토토 롤링 조건과 실수령 기대값",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/v47-sports-toto-turnover-real-ev.html"
+    },
+    {
+      "title": "스포츠토토 마감 배당과 초기 배당 비교법",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/v47-sports-toto-opening-closing-line-compare.html"
+    },
+    {
+      "title": "스포츠토토 배당판에서 마켓별 마진 비교",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/v47-sports-toto-market-margin-comparison.html"
+    },
+    {
+      "title": "스포츠토토 보험형 이벤트 약관 독해법",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/v47-sports-toto-insurance-event-terms.html"
+    },
+    {
+      "title": "스포츠토토 이용 전 확인해야 할 기본 체크리스트",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/basic-checklist.html"
+    },
+    {
+      "title": "스포츠토토 인기팀 쏠림과 배당 왜곡",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/v47-sports-toto-public-team-odds-bias.html"
+    },
+    {
+      "title": "스포츠토토 조합 배팅 마진 누적률 계산 실전표",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/v48-sports-toto-parlay-margin-table.html"
+    },
+    {
+      "title": "스포츠토토 조합 배팅 상관관계와 기대값 왜곡",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/parlay-correlation-risk.html"
+    },
+    {
+      "title": "스포츠토토 조합 배팅에서 마진이 누적되는 구조",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/v47-sports-toto-parlay-margin-compounding.html"
+    },
+    {
+      "title": "스포츠토토 초보자가 먼저 확인해야 할 기본 용어",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/basic-terms-first-check.html"
+    },
+    {
+      "title": "스포츠토토 초보자가 착각하는 적중률과 수익률 차이",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/v47-sports-toto-hit-rate-vs-profit-rate.html"
+    },
+    {
+      "title": "스포츠토토 한폴낙 이벤트의 실제 기대값 계산",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/v47-sports-toto-one-pick-insurance-ev.html"
+    },
+    {
+      "title": "스포츠토토 환수율 계산법과 EV 산출식",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/v47-sports-toto-payback-rate-ev-formula.html"
+    },
+    {
+      "title": "아시안핸디캡 라인과 푸시 조건 계산법",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/handicap-asian-line-push-logic.html"
+    },
+    {
+      "title": "야구 선발투수와 불펜 흐름을 볼 때 주의할 점",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/baseball-starting-pitcher.html"
+    },
+    {
+      "title": "야구 스포츠토토 KBO 경기 전 선발·불펜·우천 변수 체크노트",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/baseball-kbo-check.html"
+    },
+    {
+      "title": "야구 언오버 기준과 득점 흐름 흐름 읽는 법",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/baseball-over-under.html"
+    },
+    {
+      "title": "야구 우천취소와 경기 연기 정산 기준",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/baseball-rain-and-postponed-result.html"
+    },
+    {
+      "title": "언더오버 기준점과 총점 시장 가격 형성 원리",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/over-under-total-market-pricing.html"
+    },
+    {
+      "title": "월드컵 이벤트 조건표에서 꼭 볼 항목",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/worldcup-event-condition-note.html"
+    },
+    {
+      "title": "월드컵 조별리그 동기부여와 배당 변동성 체크",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/v48-worldcup-group-motivation-odds-risk.html"
+    },
+    {
+      "title": "축구 -0.25·-0.75 아시안 핸디캡 정산 매트릭스",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/v48-football-quarter-asian-handicap-settlement.html"
+    },
+    {
+      "title": "축구 1X2 배당판에서 오버라운드 계산하는 법",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/v47-football-1x2-overround-calculation.html"
+    },
+    {
+      "title": "축구 경기 전 라인업·홈원정·부상 변수 체크",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/football-basic-check.html"
+    },
+    {
+      "title": "축구 라이브 배팅 지연 시간과 체결 리스크",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/v47-football-live-betting-delay-risk.html"
+    },
+    {
+      "title": "축구 마감 배당 CLV 기록표 만드는 법",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/v48-football-closing-line-value-audit.html"
+    },
+    {
+      "title": "축구 무승부 배당이 높게 책정되는 구조",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/v47-football-draw-odds-pricing-structure.html"
+    },
+    {
+      "title": "축구 배당 급락이 항상 정보 신호가 아닌 이유",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/v47-football-dropping-odds-false-signal.html"
+    },
+    {
+      "title": "축구 언더오버 2.25·2.75 라인의 푸시와 반정산 구조",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/v48-football-quarter-total-line-settlement.html"
+    },
+    {
+      "title": "축구 언더오버 라인 이동과 시장 확률 해석",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/v47-football-total-line-movement-probability.html"
+    },
+    {
+      "title": "축구 언오버와 득점 기대 흐름 흐름 읽는 법",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/football-over-under.html"
+    },
+    {
+      "title": "축구 월드컵 조별리그 배당 변동 패턴",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/v47-worldcup-group-stage-odds-volatility.html"
+    },
+    {
+      "title": "축구 컵대회 로테이션과 배당 변동성",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/v47-football-cup-rotation-odds-volatility.html"
+    },
+    {
+      "title": "축구 프로토 배당판 분석과 수학적 환수율 계산법",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/football-proto-overround-ev-model.html"
+    },
+    {
+      "title": "축구 프로토 배당판과 해외 북메이커 배당 차이",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/v47-football-proto-vs-bookmaker-odds.html"
+    },
+    {
+      "title": "축구 핸디캡 배당과 무승부 변수를 볼 때 무승부 변수 체크노트",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/football-handicap.html"
+    },
+    {
+      "title": "축구 핸디캡 배당과 아시안 핸디캡 차이",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/v47-football-asian-handicap-line-difference.html"
+    },
+    {
+      "title": "축구 Draw No Bet 배당과 무승부 환급 구조 분석",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/v48-football-draw-no-bet-refund-model.html"
+    },
+    {
+      "title": "축구 Dropping Odds와 시장 신호 판독법",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/football-dropping-odds-market-signal.html"
+    },
+    {
+      "title": "프로토 기대값 EV와 Kelly 자금 배분 공식",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/proto-ev-kelly-bankroll.html"
+    },
+    {
+      "title": "프로토 승부식과 기록식의 구조적 차이",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/v47-proto-match-vs-prop-market.html"
+    },
+    {
+      "title": "한폴낙 이벤트 조건 확인 방법",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/one-pick-event-condition.html"
+    },
+    {
+      "title": "KBL 농구 시즌 초반 배당 오류가 생기는 이유",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/v47-kbl-early-season-pricing-error.html"
+    },
+    {
+      "title": "KBO 5이닝 기준과 우천 정산 조건 해석",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/v48-kbo-five-innings-rain-settlement.html"
+    },
+    {
+      "title": "KBO 가을야구 경기 전 확인해야 할 변수",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/kbo-fall-baseball-check.html"
+    },
+    {
+      "title": "KBO 가을야구 배당 변동성과 불펜 리스크 분석",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/kbo-postseason-market-volatility.html"
+    },
+    {
+      "title": "KBO 불펜 소모와 런라인 1.5 가격 변동 분석",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/v48-kbo-bullpen-runline-price-model.html"
+    },
+    {
+      "title": "KBO 선발투수와 불펜 소모가 배당에 반영되는 방식",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/kbo-pitcher-bullpen-odds-model.html"
+    },
+    {
+      "title": "KBO 야구 선발투수 변경과 베팅 무효 기준",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/v47-kbo-starting-pitcher-void-rules.html"
+    },
+    {
+      "title": "KBO 언더오버 라인과 구장별 득점 환경",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/v47-kbo-total-line-ballpark-factor.html"
+    },
+    {
+      "title": "KBO 우천취소와 서스펜디드 경기 정산 기준",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/v47-kbo-rainout-suspended-settlement.html"
+    },
+    {
+      "title": "KBO 포스트시즌 배당 변동과 불펜 변수",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/v47-kbo-postseason-bullpen-odds.html"
+    },
+    {
+      "title": "KBO 핸디캡 라인에서 1.5 기준이 중요한 이유",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/v47-kbo-runline-1-5-handicap.html"
+    },
+    {
+      "title": "NBA 농구 핸디캡 배당 구조와 쿼터 변동성",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/v47-nba-handicap-quarter-volatility.html"
+    },
+    {
+      "title": "V리그 배구 시즌 초반 라인업 변수 체크",
+      "cat": "sports-toto",
+      "route": "/blog/sports-toto/v47-vleague-lineup-market-check.html"
+    }
+  ]
+}

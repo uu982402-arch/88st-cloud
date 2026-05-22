@@ -1,0 +1,334 @@
+{
+  "updated": "2026-05-16",
+  "providers": [
+    {
+      "slug": "queenbee",
+      "name": "❤️ 여왕벌 ❤️",
+      "theme": "amber",
+      "officialUrl": "https://qb-700.com/?code=seoa",
+      "officialDomain": "qb-700.com",
+      "code": "seoa",
+      "oneLine": "",
+      "benefits": [
+        "테더(USDT) 수수료 지원",
+        "프리미엄 룰렛 쿠폰 지급",
+        "공식주소 확인 후 코드 복사"
+      ],
+      "tags": [],
+      "pending": false,
+      "imageUrl": "/assets/provider-media/queenbee-logo-clean-v22.png",
+      "imageAlt": "여왕벌 로고",
+      "imagePosition": "center center",
+      "imageScale": 1,
+      "imagePadding": "8px 12px",
+      "imageKind": "logo",
+      "modalBenefitTitle": "❤️ 여왕벌 ❤️ 핵심 혜택",
+      "modalBenefitGroups": [
+        {
+          "title": "확인 포인트",
+          "items": [
+            "테더(USDT) 수수료 지원",
+            "프리미엄 룰렛 쿠폰 지급",
+            "가입코드 seoa 자동 복사"
+          ]
+        }
+      ],
+      "cleanName": "여왕벌",
+      "displayCode": "SEOA",
+      "category": "프리미엄 카지노 · 슬롯 · USDT",
+      "summary": "SEOA 코드와 USDT 수수료 지원, 쿠폰 지급 조건을 가입 전 확인하는 업체입니다.",
+      "conditionCards": [
+        {
+          "label": "가입코드",
+          "value": "SEOA"
+        },
+        {
+          "label": "USDT 입금",
+          "value": "수수료 지원·네트워크 확인"
+        },
+        {
+          "label": "쿠폰",
+          "value": "프리미엄 룰렛 쿠폰 기준 확인"
+        },
+        {
+          "label": "출금 전",
+          "value": "조건표·상담 답변 캡처"
+        }
+      ],
+      "checks": [
+        "가입코드 ddk888 입력 전 확인",
+        "USDT 입금 네트워크와 수수료 기준 확인",
+        "쿠폰 지급 조건과 사용 기한 확인",
+        "출금 전 조건표와 고객센터 답변 저장"
+      ],
+      "sortOrder": 1,
+      "codeCheckUrl": "/tools/code-check/",
+      "impersonationCheckUrl": "/search-guides/official-address-impersonation-check.html",
+      "inquiryBuilderUrl": "/tools/inquiry-builder/",
+      "consultBotUrl": "https://t.me/TRS999_bot?start=queenbee"
+    },
+    {
+      "slug": "skholdings",
+      "name": "❤️ SK 홀딩스 ❤️",
+      "theme": "blue",
+      "officialUrl": "https://snk-99.com/",
+      "officialDomain": "snk-99.com",
+      "code": "IRON888",
+      "oneLine": "",
+      "benefits": [
+        "스포츠 첫 충전 10%",
+        "미니게임 첫 충전 10% · 슬롯 첫 충전 20%",
+        "신규 입금 플러스 · 주간 페이백 · 룰렛 쿠폰"
+      ],
+      "tags": [],
+      "imageUrl": "/assets/provider-media/sk-holdings-logo.png",
+      "imageAlt": "SK 홀딩스 로고",
+      "pending": false,
+      "imagePosition": "center center",
+      "imageScale": 1.0,
+      "imageKind": "logo",
+      "imagePadding": "12px 18px",
+      "modalBenefitTitle": "❤️ SK 홀딩스 ❤️ 핵심 혜택",
+      "modalBenefitGroups": [
+        {
+          "title": "입금·충전",
+          "items": [
+            "신규 입금 플러스",
+            "스포츠·미니게임 첫 10% · 매 5%",
+            "슬롯 첫 20% · 매 10%"
+          ]
+        },
+        {
+          "title": "이벤트",
+          "items": [
+            "VIP 충전 이벤트",
+            "주간 페이백",
+            "출석체크·지인추천 이벤트"
+          ]
+        }
+      ],
+      "summary": "IRON888 코드와 신규 입금 플러스, 스포츠·미니게임·슬롯 이벤트 조건을 확인하는 업체입니다.",
+      "cleanName": "SK 홀딩스",
+      "displayCode": "IRON888",
+      "category": "스포츠 · 미니게임 · 슬롯 이벤트",
+      "conditionCards": [
+        {
+          "label": "가입코드",
+          "value": "IRON888"
+        },
+        {
+          "label": "스포츠",
+          "value": "첫 충전·매 충전 기준 확인"
+        },
+        {
+          "label": "미니/슬롯",
+          "value": "게임별 이벤트 적용 기준 확인"
+        },
+        {
+          "label": "페이백",
+          "value": "주간 정산·지급 한도 확인"
+        }
+      ],
+      "checks": [
+        "가입코드 IRON888 적용 여부 확인",
+        "스포츠/미니게임/슬롯 이벤트 구분 확인",
+        "신규 입금 플러스 조건과 롤링 기준 확인",
+        "주간 페이백·룰렛 쿠폰 중복 여부 확인"
+      ],
+      "sortOrder": 101,
+      "codeCheckUrl": "/tools/code-check/",
+      "impersonationCheckUrl": "/search-guides/official-address-impersonation-check.html",
+      "inquiryBuilderUrl": "/tools/inquiry-builder/",
+      "consultBotUrl": "https://t.me/TRS999_bot?start=skholdings"
+    },
+    {
+      "slug": "anybet",
+      "name": "Any Bet",
+      "theme": "brand",
+      "officialUrl": "https://any-777.com/",
+      "officialDomain": "any-777.com",
+      "code": "SEOA",
+      "oneLine": "",
+      "benefits": [
+        "원화 스포츠 첫충 40%",
+        "원화 슬롯 첫충 20%",
+        "테더 입금 수수료 지원"
+      ],
+      "tags": [],
+      "pending": false,
+      "imageUrl": "/assets/provider-media/anybet-logo.png",
+      "imageAlt": "Any Bet 로고",
+      "imagePosition": "center center",
+      "imageScale": 1.12,
+      "imagePadding": "8px 12px",
+      "imageKind": "logo",
+      "modalBenefitTitle": "Any Bet 핵심 혜택",
+      "modalBenefitGroups": [
+        {
+          "title": "확인 포인트",
+          "items": [
+            "원화 스포츠 첫충 40%",
+            "원화 슬롯 첫충 20%",
+            "테더 입금 수수료 지원"
+          ]
+        }
+      ],
+      "cleanName": "ANY BET",
+      "displayCode": "SEOA",
+      "category": "원화 · 테더 · 스포츠 · 슬롯",
+      "summary": "SEOA 코드와 원화/테더 입금 이벤트, 스포츠·슬롯 조건을 구분해서 확인하는 업체입니다.",
+      "conditionCards": [
+        {
+          "label": "가입코드",
+          "value": "SEOA"
+        },
+        {
+          "label": "원화 이벤트",
+          "value": "스포츠·슬롯 첫충 기준 확인"
+        },
+        {
+          "label": "테더 입금",
+          "value": "수수료 지원·환산 기준 확인"
+        },
+        {
+          "label": "출금 전",
+          "value": "이벤트 제외 조건 확인"
+        }
+      ],
+      "checks": [
+        "SEOA 코드 입력 전 확인",
+        "원화와 테더 이벤트 조건 차이 확인",
+        "스포츠와 슬롯 혜택률 구분 확인",
+        "출금 전 롤링과 최대 지급 한도 확인"
+      ],
+      "sortOrder": 3,
+      "codeCheckUrl": "/tools/code-check/",
+      "impersonationCheckUrl": "/search-guides/official-address-impersonation-check.html",
+      "inquiryBuilderUrl": "/tools/inquiry-builder/",
+      "consultBotUrl": "https://t.me/TRS999_bot?start=anybet"
+    },
+    {
+      "slug": "udt",
+      "name": "UDT",
+      "theme": "gold",
+      "officialUrl": "https://udt-01.com/",
+      "officialDomain": "udt-01.com",
+      "code": "SEOA",
+      "oneLine": "",
+      "benefits": [
+        "신규 첫충 10%",
+        "슬롯 첫충·매충 20%",
+        "주간 페이백 5%"
+      ],
+      "tags": [],
+      "pending": false,
+      "imageUrl": "/assets/provider-media/udt-logo-transparent-v14.png",
+      "imageAlt": "UDT 로고",
+      "imagePosition": "center center",
+      "imageScale": 1,
+      "imageKind": "logo",
+      "imagePadding": "8px 12px",
+      "modalBenefitTitle": "UDT 핵심 혜택",
+      "modalBenefitGroups": [
+        {
+          "title": "확인 포인트",
+          "items": [
+            "신규 첫충 10%",
+            "슬롯 첫충·매충 20%",
+            "주간 페이백 5%"
+          ]
+        }
+      ],
+      "cleanName": "UDT",
+      "displayCode": "SEOA",
+      "category": "스포츠 · 미니게임 · 슬롯",
+      "summary": "SEOA 코드와 슬롯 첫충/매충, 스포츠·미니게임 이벤트 조건을 확인하는 업체입니다.",
+      "conditionCards": [
+        {
+          "label": "가입코드",
+          "value": "SEOA"
+        },
+        {
+          "label": "슬롯",
+          "value": "첫충·매충 조건 확인"
+        },
+        {
+          "label": "스포츠",
+          "value": "첫 충전 기준 확인"
+        },
+        {
+          "label": "페이백",
+          "value": "주간 페이백·한도 확인"
+        }
+      ],
+      "checks": [
+        "SEOA 코드와 공식주소 확인",
+        "슬롯 첫충·매충 적용 게임 확인",
+        "스포츠·미니게임 이벤트 기준 구분",
+        "주간 페이백 조건과 출금 제한 확인"
+      ],
+      "sortOrder": 4,
+      "codeCheckUrl": "/tools/code-check/",
+      "impersonationCheckUrl": "/search-guides/official-address-impersonation-check.html",
+      "inquiryBuilderUrl": "/tools/inquiry-builder/",
+      "consultBotUrl": "https://t.me/TRS999_bot?start=udt"
+    },
+    {
+      "slug": "ddangkong",
+      "name": "땅콩",
+      "cleanName": "땅콩",
+      "displayCode": "ddk888",
+      "code": "ddk888",
+      "officialUrl": "https://ddk-2024.com/",
+      "officialDomain": "ddk-2024.com",
+      "imageUrl": "/assets/provider-media/ddangkong-logo-v19.png",
+      "imageAlt": "땅콩 로고",
+      "category": "스포츠 · 카지노 · 슬롯",
+      "oneLine": "땅콩 공식 도메인과 가입코드 ddk888을 확인하는 접속 카드입니다.",
+      "summary": "땅콩 공식 도메인, 가입코드 ddk888, 이벤트 조건을 가입 전 확인하는 업체입니다.",
+      "benefits": [
+        "공식 도메인 확인",
+        "가입코드 ddk888",
+        "이벤트 조건 확인"
+      ],
+      "badges": [
+        "공식주소",
+        "가입코드",
+        "상담확인"
+      ],
+      "imageKind": "logo",
+      "imagePadding": "8px 12px",
+      "imageScale": 1,
+      "conditionCards": [
+        {
+          "label": "가입코드",
+          "value": "ddk888"
+        },
+        {
+          "label": "공식주소",
+          "value": "ddk-2024.com"
+        },
+        {
+          "label": "이벤트",
+          "value": "가입 전 조건 확인"
+        },
+        {
+          "label": "출금 전",
+          "value": "자료·상담 답변 저장"
+        }
+      ],
+      "checks": [
+        "가입코드 ddk888 입력 전 확인",
+        "공식 도메인 ddk-2024.com 접속 여부 확인",
+        "이벤트 적용 게임과 롤링 기준 확인",
+        "출금 전 조건표와 상담 답변 저장"
+      ],
+      "sortOrder": 5,
+      "codeCheckUrl": "/tools/code-check/",
+      "impersonationCheckUrl": "/search-guides/official-address-impersonation-check.html",
+      "inquiryBuilderUrl": "/tools/inquiry-builder/",
+      "consultBotUrl": "https://t.me/TRS999_bot?start=ddangkong"
+    }
+  ],
+  "providerOrderConfig": "/assets/data/provider.order.v36.json"
+}
