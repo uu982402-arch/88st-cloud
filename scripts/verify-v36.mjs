@@ -402,6 +402,43 @@ if (wranglerWanted) {
 
 
 
+
+
+
+
+// V56 high-end unified design system checks
+{
+  const css = path.join(ROOT, 'assets/css/v56.high-end-system.css');
+  const js = path.join(ROOT, 'assets/js/v56.design-system.js');
+  const audit = path.join(ROOT, 'assets/data/v56.high-end-system.audit.json');
+  if (!fs.existsSync(css)) fail(errors, 'V56 high-end CSS file missing');
+  if (!fs.existsSync(js)) fail(errors, 'V56 design JS file missing');
+  if (!fs.existsSync(audit)) fail(errors, 'V56 audit JSON missing');
+  let missingV56 = 0;
+  let missingLogo = 0;
+  for (const f of htmls) {
+    const txt = read(f);
+    if (!/v56-design-system/.test(txt) || !/v56\.high-end-system\.css/.test(txt) || !/v56\.design-system\.js/.test(txt)) missingV56++;
+    const hasHeaderBrand = /<a\b[^>]*class=["'][^"']*(moon-brand|\bbrand\b)[^"']*["'][^>]*>/i.test(txt);
+    const isRedirectOnly = /http-equiv=["']refresh["']/i.test(txt) && !/<main\b/i.test(txt);
+    if (hasHeaderBrand && !isRedirectOnly && (!/v56-logo-symbol/.test(txt) || !/v56-logo-main/.test(txt) || !/v56-logo-cloud/.test(txt))) missingLogo++;
+    if (/href=["']#["']|href=["']javascript:void\(0\)["']/i.test(txt)) fail(errors, 'V56 bad href regression ' + rel(f));
+    if (/<img[^>]+logo-v24\.png[^>]*>/.test(txt) && /moon-brand/.test(txt)) fail(errors, 'V56 legacy image logo in header ' + rel(f));
+  }
+  if (missingV56) fail(errors, 'V56 design layer missing from ' + missingV56 + ' HTML files');
+  if (missingLogo) fail(errors, 'V56 unified CSS logo missing from ' + missingLogo + ' HTML files');
+  const style = fs.existsSync(css) ? read(css) : '';
+  for (const token of ['#090D16', '#00F0FF', '#39FF14', 'v56-logo-symbol', 'backdrop-filter', 'hover:border']) {
+    if (!style.includes(token)) fail(errors, 'V56 design token missing ' + token);
+  }
+}
+// END V56 high-end unified design system checks
+
+
+
+
+
+
 // V52 open ready checks
 {
   const tools = path.join(ROOT, 'tools/index.html');
