@@ -1,0 +1,4008 @@
+{
+  "version": "static-growth-conversion-v51-20260522",
+  "count": 500,
+  "generatedAt": "2026-05-22T04:59:53.126Z",
+  "policy": "중복 내용 및 중복 기능 제외. 실제 구현 전 기존 도구와 URL 충돌 여부를 우선 검사합니다.",
+  "items": [
+    {
+      "id": 1,
+      "category_key": "domain_dns_ssl",
+      "category": "도메인·DNS·SSL 공개 신호 도구",
+      "title": "WHOIS 생성일 확인",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 2,
+      "category_key": "domain_dns_ssl",
+      "category": "도메인·DNS·SSL 공개 신호 도구",
+      "title": "WHOIS 만료일 확인",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 3,
+      "category_key": "domain_dns_ssl",
+      "category": "도메인·DNS·SSL 공개 신호 도구",
+      "title": "네임서버 변경 이력 메모",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 4,
+      "category_key": "domain_dns_ssl",
+      "category": "도메인·DNS·SSL 공개 신호 도구",
+      "title": "A 레코드 구조 확인",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 5,
+      "category_key": "domain_dns_ssl",
+      "category": "도메인·DNS·SSL 공개 신호 도구",
+      "title": "CNAME 구조 확인",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 6,
+      "category_key": "domain_dns_ssl",
+      "category": "도메인·DNS·SSL 공개 신호 도구",
+      "title": "MX 레코드 유무 확인",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 7,
+      "category_key": "domain_dns_ssl",
+      "category": "도메인·DNS·SSL 공개 신호 도구",
+      "title": "CAA 레코드 확인",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 8,
+      "category_key": "domain_dns_ssl",
+      "category": "도메인·DNS·SSL 공개 신호 도구",
+      "title": "SSL 발급자 확인",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 9,
+      "category_key": "domain_dns_ssl",
+      "category": "도메인·DNS·SSL 공개 신호 도구",
+      "title": "SSL 만료일 확인",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 10,
+      "category_key": "domain_dns_ssl",
+      "category": "도메인·DNS·SSL 공개 신호 도구",
+      "title": "SAN 도메인 일치 확인",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 11,
+      "category_key": "domain_dns_ssl",
+      "category": "도메인·DNS·SSL 공개 신호 도구",
+      "title": "HTTP→HTTPS 리다이렉트 확인",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 12,
+      "category_key": "domain_dns_ssl",
+      "category": "도메인·DNS·SSL 공개 신호 도구",
+      "title": "www/non-www 정규화 확인",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 13,
+      "category_key": "domain_dns_ssl",
+      "category": "도메인·DNS·SSL 공개 신호 도구",
+      "title": "punycode 도메인 변환",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 14,
+      "category_key": "domain_dns_ssl",
+      "category": "도메인·DNS·SSL 공개 신호 도구",
+      "title": "유사문자 도메인 탐지",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 15,
+      "category_key": "domain_dns_ssl",
+      "category": "도메인·DNS·SSL 공개 신호 도구",
+      "title": "하이픈/숫자 변조 패턴 탐지",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 16,
+      "category_key": "domain_dns_ssl",
+      "category": "도메인·DNS·SSL 공개 신호 도구",
+      "title": "서브도메인 사칭 패턴 탐지",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 17,
+      "category_key": "domain_dns_ssl",
+      "category": "도메인·DNS·SSL 공개 신호 도구",
+      "title": "도메인 나이 위험 점수",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 18,
+      "category_key": "domain_dns_ssl",
+      "category": "도메인·DNS·SSL 공개 신호 도구",
+      "title": "DNS TTL 확인",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 19,
+      "category_key": "domain_dns_ssl",
+      "category": "도메인·DNS·SSL 공개 신호 도구",
+      "title": "robots/sitemap 위치 확인",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 20,
+      "category_key": "domain_dns_ssl",
+      "category": "도메인·DNS·SSL 공개 신호 도구",
+      "title": "canonical 도메인 일치 확인",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 21,
+      "category_key": "domain_dns_ssl",
+      "category": "도메인·DNS·SSL 공개 신호 도구",
+      "title": "OG URL 도메인 일치 확인",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 22,
+      "category_key": "domain_dns_ssl",
+      "category": "도메인·DNS·SSL 공개 신호 도구",
+      "title": "favicon 해시 비교",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 23,
+      "category_key": "domain_dns_ssl",
+      "category": "도메인·DNS·SSL 공개 신호 도구",
+      "title": "브랜드명-도메인 문자열 거리",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 24,
+      "category_key": "domain_dns_ssl",
+      "category": "도메인·DNS·SSL 공개 신호 도구",
+      "title": "도메인 변경 메모장",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 25,
+      "category_key": "domain_dns_ssl",
+      "category": "도메인·DNS·SSL 공개 신호 도구",
+      "title": "주소 확인 리포트 출력",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 26,
+      "category_key": "url_redirect_phishing",
+      "category": "URL·리다이렉트·피싱 판독 도구",
+      "title": "리다이렉트 체인 표시",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 27,
+      "category_key": "url_redirect_phishing",
+      "category": "URL·리다이렉트·피싱 판독 도구",
+      "title": "meta refresh 탐지",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 28,
+      "category_key": "url_redirect_phishing",
+      "category": "URL·리다이렉트·피싱 판독 도구",
+      "title": "JS location 이동 탐지",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 29,
+      "category_key": "url_redirect_phishing",
+      "category": "URL·리다이렉트·피싱 판독 도구",
+      "title": "short URL 확장",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 30,
+      "category_key": "url_redirect_phishing",
+      "category": "URL·리다이렉트·피싱 판독 도구",
+      "title": "쿼리 파라미터 위험도",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 31,
+      "category_key": "url_redirect_phishing",
+      "category": "URL·리다이렉트·피싱 판독 도구",
+      "title": "utm 파라미터 정리",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 32,
+      "category_key": "url_redirect_phishing",
+      "category": "URL·리다이렉트·피싱 판독 도구",
+      "title": "앵커 링크 무결성",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 33,
+      "category_key": "url_redirect_phishing",
+      "category": "URL·리다이렉트·피싱 판독 도구",
+      "title": "외부 링크 rel 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 34,
+      "category_key": "url_redirect_phishing",
+      "category": "URL·리다이렉트·피싱 판독 도구",
+      "title": "target blank rel 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 35,
+      "category_key": "url_redirect_phishing",
+      "category": "URL·리다이렉트·피싱 판독 도구",
+      "title": "문자열 난독화 탐지",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 36,
+      "category_key": "url_redirect_phishing",
+      "category": "URL·리다이렉트·피싱 판독 도구",
+      "title": "iframe 삽입 탐지",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 37,
+      "category_key": "url_redirect_phishing",
+      "category": "URL·리다이렉트·피싱 판독 도구",
+      "title": "폼 action 도메인 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 38,
+      "category_key": "url_redirect_phishing",
+      "category": "URL·리다이렉트·피싱 판독 도구",
+      "title": "로그인 폼 mixed-content 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 39,
+      "category_key": "url_redirect_phishing",
+      "category": "URL·리다이렉트·피싱 판독 도구",
+      "title": "복사한 주소 정규화",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 40,
+      "category_key": "url_redirect_phishing",
+      "category": "URL·리다이렉트·피싱 판독 도구",
+      "title": "한글 도메인 표시/변환",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 41,
+      "category_key": "url_redirect_phishing",
+      "category": "URL·리다이렉트·피싱 판독 도구",
+      "title": "사칭 URL 비교표",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 42,
+      "category_key": "url_redirect_phishing",
+      "category": "URL·리다이렉트·피싱 판독 도구",
+      "title": "브랜드명 포함 URL 점수",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 43,
+      "category_key": "url_redirect_phishing",
+      "category": "URL·리다이렉트·피싱 판독 도구",
+      "title": "과도한 팝업 스크립트 탐지",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 44,
+      "category_key": "url_redirect_phishing",
+      "category": "URL·리다이렉트·피싱 판독 도구",
+      "title": "브라우저 경고 체크리스트",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 45,
+      "category_key": "url_redirect_phishing",
+      "category": "URL·리다이렉트·피싱 판독 도구",
+      "title": "링크 스냅샷 저장",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 46,
+      "category_key": "url_redirect_phishing",
+      "category": "URL·리다이렉트·피싱 판독 도구",
+      "title": "URL 검사 결과 공유문 생성",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 47,
+      "category_key": "url_redirect_phishing",
+      "category": "URL·리다이렉트·피싱 판독 도구",
+      "title": "위험 파라미터 하이라이트",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 48,
+      "category_key": "url_redirect_phishing",
+      "category": "URL·리다이렉트·피싱 판독 도구",
+      "title": "리다이렉트 최종 도착지 요약",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 49,
+      "category_key": "url_redirect_phishing",
+      "category": "URL·리다이렉트·피싱 판독 도구",
+      "title": "공식주소 대비 차이점",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 50,
+      "category_key": "url_redirect_phishing",
+      "category": "URL·리다이렉트·피싱 판독 도구",
+      "title": "피싱 의심 근거 리포트",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 51,
+      "category_key": "sports_odds_math",
+      "category": "스포츠 배당·EV·환수율 도구",
+      "title": "1X2 오버라운드 계산",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 52,
+      "category_key": "sports_odds_math",
+      "category": "스포츠 배당·EV·환수율 도구",
+      "title": "2-way 마진 계산",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 53,
+      "category_key": "sports_odds_math",
+      "category": "스포츠 배당·EV·환수율 도구",
+      "title": "아시안핸디캡 -0.25 분할 계산",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 54,
+      "category_key": "sports_odds_math",
+      "category": "스포츠 배당·EV·환수율 도구",
+      "title": "아시안핸디캡 -0.75 분할 계산",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 55,
+      "category_key": "sports_odds_math",
+      "category": "스포츠 배당·EV·환수율 도구",
+      "title": "언더오버 2.25 분할 계산",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 56,
+      "category_key": "sports_odds_math",
+      "category": "스포츠 배당·EV·환수율 도구",
+      "title": "언더오버 2.75 분할 계산",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 57,
+      "category_key": "sports_odds_math",
+      "category": "스포츠 배당·EV·환수율 도구",
+      "title": "공정확률 변환",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 58,
+      "category_key": "sports_odds_math",
+      "category": "스포츠 배당·EV·환수율 도구",
+      "title": "소수 배당→확률 변환",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 59,
+      "category_key": "sports_odds_math",
+      "category": "스포츠 배당·EV·환수율 도구",
+      "title": "확률→공정 배당 변환",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 60,
+      "category_key": "sports_odds_math",
+      "category": "스포츠 배당·EV·환수율 도구",
+      "title": "EV 계산",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 61,
+      "category_key": "sports_odds_math",
+      "category": "스포츠 배당·EV·환수율 도구",
+      "title": "Kelly stake 계산",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 62,
+      "category_key": "sports_odds_math",
+      "category": "스포츠 배당·EV·환수율 도구",
+      "title": "half-Kelly 계산",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 63,
+      "category_key": "sports_odds_math",
+      "category": "스포츠 배당·EV·환수율 도구",
+      "title": "조합 배당 마진 누적",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 64,
+      "category_key": "sports_odds_math",
+      "category": "스포츠 배당·EV·환수율 도구",
+      "title": "초기배당-현재배당 차이",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 65,
+      "category_key": "sports_odds_math",
+      "category": "스포츠 배당·EV·환수율 도구",
+      "title": "배당 급락률 계산",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 66,
+      "category_key": "sports_odds_math",
+      "category": "스포츠 배당·EV·환수율 도구",
+      "title": "closing line value 메모",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 67,
+      "category_key": "sports_odds_math",
+      "category": "스포츠 배당·EV·환수율 도구",
+      "title": "핸디캡 push 처리",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 68,
+      "category_key": "sports_odds_math",
+      "category": "스포츠 배당·EV·환수율 도구",
+      "title": "야구 선발투수 변경 메모",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 69,
+      "category_key": "sports_odds_math",
+      "category": "스포츠 배당·EV·환수율 도구",
+      "title": "KBO 우천취소 체크",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 70,
+      "category_key": "sports_odds_math",
+      "category": "스포츠 배당·EV·환수율 도구",
+      "title": "농구 pace 지표 입력",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 71,
+      "category_key": "sports_odds_math",
+      "category": "스포츠 배당·EV·환수율 도구",
+      "title": "배구 세트핸디캡 비교",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 72,
+      "category_key": "sports_odds_math",
+      "category": "스포츠 배당·EV·환수율 도구",
+      "title": "월드컵 조별/토너먼트 구분",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 73,
+      "category_key": "sports_odds_math",
+      "category": "스포츠 배당·EV·환수율 도구",
+      "title": "인기팀 쏠림 메모",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 74,
+      "category_key": "sports_odds_math",
+      "category": "스포츠 배당·EV·환수율 도구",
+      "title": "라이브 배팅 지연 체크",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 75,
+      "category_key": "sports_odds_math",
+      "category": "스포츠 배당·EV·환수율 도구",
+      "title": "스포츠 이벤트 기대값 요약",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 76,
+      "category_key": "casino_live_math",
+      "category": "라이브카지노 수학·라운드 검증 도구",
+      "title": "바카라 Banker 수수료 EV",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 77,
+      "category_key": "casino_live_math",
+      "category": "라이브카지노 수학·라운드 검증 도구",
+      "title": "바카라 Player EV",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 78,
+      "category_key": "casino_live_math",
+      "category": "라이브카지노 수학·라운드 검증 도구",
+      "title": "바카라 Tie 하우스엣지",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 79,
+      "category_key": "casino_live_math",
+      "category": "라이브카지노 수학·라운드 검증 도구",
+      "title": "바카라 페어 배당 기대값",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 80,
+      "category_key": "casino_live_math",
+      "category": "라이브카지노 수학·라운드 검증 도구",
+      "title": "라운드 ID 메모",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 81,
+      "category_key": "casino_live_math",
+      "category": "라이브카지노 수학·라운드 검증 도구",
+      "title": "테이블 ID 메모",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 82,
+      "category_key": "casino_live_math",
+      "category": "라이브카지노 수학·라운드 검증 도구",
+      "title": "결과 캡처 체크리스트",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 83,
+      "category_key": "casino_live_math",
+      "category": "라이브카지노 수학·라운드 검증 도구",
+      "title": "블랙잭 basic strategy 요약",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 84,
+      "category_key": "casino_live_math",
+      "category": "라이브카지노 수학·라운드 검증 도구",
+      "title": "블랙잭 보험 EV",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 85,
+      "category_key": "casino_live_math",
+      "category": "라이브카지노 수학·라운드 검증 도구",
+      "title": "블랙잭 split 조건 확인",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 86,
+      "category_key": "casino_live_math",
+      "category": "라이브카지노 수학·라운드 검증 도구",
+      "title": "블랙잭 double 조건 확인",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 87,
+      "category_key": "casino_live_math",
+      "category": "라이브카지노 수학·라운드 검증 도구",
+      "title": "룰렛 유럽식 하우스엣지",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 88,
+      "category_key": "casino_live_math",
+      "category": "라이브카지노 수학·라운드 검증 도구",
+      "title": "룰렛 미국식 하우스엣지",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 89,
+      "category_key": "casino_live_math",
+      "category": "라이브카지노 수학·라운드 검증 도구",
+      "title": "룰렛 베팅 유형별 배당표",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 90,
+      "category_key": "casino_live_math",
+      "category": "라이브카지노 수학·라운드 검증 도구",
+      "title": "라이브딜러 지연 메모",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 91,
+      "category_key": "casino_live_math",
+      "category": "라이브카지노 수학·라운드 검증 도구",
+      "title": "정산 지연 사유 분류",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 92,
+      "category_key": "casino_live_math",
+      "category": "라이브카지노 수학·라운드 검증 도구",
+      "title": "테이블 한도 비교",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 93,
+      "category_key": "casino_live_math",
+      "category": "라이브카지노 수학·라운드 검증 도구",
+      "title": "게임 공급사 표기 확인",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 94,
+      "category_key": "casino_live_math",
+      "category": "라이브카지노 수학·라운드 검증 도구",
+      "title": "excluded game list 메모",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 95,
+      "category_key": "casino_live_math",
+      "category": "라이브카지노 수학·라운드 검증 도구",
+      "title": "max cashout 조건 계산",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 96,
+      "category_key": "casino_live_math",
+      "category": "라이브카지노 수학·라운드 검증 도구",
+      "title": "wagering contribution 표",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 97,
+      "category_key": "casino_live_math",
+      "category": "라이브카지노 수학·라운드 검증 도구",
+      "title": "라이브 이벤트 조건 파서",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 98,
+      "category_key": "casino_live_math",
+      "category": "라이브카지노 수학·라운드 검증 도구",
+      "title": "라운드 증빙 묶음 생성",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 99,
+      "category_key": "casino_live_math",
+      "category": "라이브카지노 수학·라운드 검증 도구",
+      "title": "카지노 약관 조항 하이라이트",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 100,
+      "category_key": "casino_live_math",
+      "category": "라이브카지노 수학·라운드 검증 도구",
+      "title": "카지노 리스크 요약 카드",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 101,
+      "category_key": "slot_rtp_variance",
+      "category": "슬롯 RTP·분산·보너스 도구",
+      "title": "RTP 표기값 입력",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 102,
+      "category_key": "slot_rtp_variance",
+      "category": "슬롯 RTP·분산·보너스 도구",
+      "title": "가변 RTP range 비교",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 103,
+      "category_key": "slot_rtp_variance",
+      "category": "슬롯 RTP·분산·보너스 도구",
+      "title": "theoretical RTP 설명 카드",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 104,
+      "category_key": "slot_rtp_variance",
+      "category": "슬롯 RTP·분산·보너스 도구",
+      "title": "observed RTP 샘플 계산",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 105,
+      "category_key": "slot_rtp_variance",
+      "category": "슬롯 RTP·분산·보너스 도구",
+      "title": "변동성 등급 메모",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 106,
+      "category_key": "slot_rtp_variance",
+      "category": "슬롯 RTP·분산·보너스 도구",
+      "title": "단기 분산 시뮬레이션",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 107,
+      "category_key": "slot_rtp_variance",
+      "category": "슬롯 RTP·분산·보너스 도구",
+      "title": "bankroll drawdown 계산",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 108,
+      "category_key": "slot_rtp_variance",
+      "category": "슬롯 RTP·분산·보너스 도구",
+      "title": "free spin contribution 계산",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 109,
+      "category_key": "slot_rtp_variance",
+      "category": "슬롯 RTP·분산·보너스 도구",
+      "title": "bonus buy 비용 대비 EV",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 110,
+      "category_key": "slot_rtp_variance",
+      "category": "슬롯 RTP·분산·보너스 도구",
+      "title": "max win cap 영향 계산",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 111,
+      "category_key": "slot_rtp_variance",
+      "category": "슬롯 RTP·분산·보너스 도구",
+      "title": "payline 방식 설명",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 112,
+      "category_key": "slot_rtp_variance",
+      "category": "슬롯 RTP·분산·보너스 도구",
+      "title": "ways 방식 설명",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 113,
+      "category_key": "slot_rtp_variance",
+      "category": "슬롯 RTP·분산·보너스 도구",
+      "title": "cluster 방식 설명",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 114,
+      "category_key": "slot_rtp_variance",
+      "category": "슬롯 RTP·분산·보너스 도구",
+      "title": "Megaways 경우의 수 메모",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 115,
+      "category_key": "slot_rtp_variance",
+      "category": "슬롯 RTP·분산·보너스 도구",
+      "title": "xNudge 기능 메모",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 116,
+      "category_key": "slot_rtp_variance",
+      "category": "슬롯 RTP·분산·보너스 도구",
+      "title": "xWays 기능 메모",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 117,
+      "category_key": "slot_rtp_variance",
+      "category": "슬롯 RTP·분산·보너스 도구",
+      "title": "scatter 조건 메모",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 118,
+      "category_key": "slot_rtp_variance",
+      "category": "슬롯 RTP·분산·보너스 도구",
+      "title": "wild 기능 메모",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 119,
+      "category_key": "slot_rtp_variance",
+      "category": "슬롯 RTP·분산·보너스 도구",
+      "title": "tumble 기능 메모",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 120,
+      "category_key": "slot_rtp_variance",
+      "category": "슬롯 RTP·분산·보너스 도구",
+      "title": "progressive jackpot pool 메모",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 121,
+      "category_key": "slot_rtp_variance",
+      "category": "슬롯 RTP·분산·보너스 도구",
+      "title": "Hold and Win 구조표",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 122,
+      "category_key": "slot_rtp_variance",
+      "category": "슬롯 RTP·분산·보너스 도구",
+      "title": "provider official game list 체크",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 123,
+      "category_key": "slot_rtp_variance",
+      "category": "슬롯 RTP·분산·보너스 도구",
+      "title": "데모/실게임 차이 기록",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 124,
+      "category_key": "slot_rtp_variance",
+      "category": "슬롯 RTP·분산·보너스 도구",
+      "title": "slot session limit 계산",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 125,
+      "category_key": "slot_rtp_variance",
+      "category": "슬롯 RTP·분산·보너스 도구",
+      "title": "슬롯 약관 제외 게임 정리",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 126,
+      "category_key": "minigame_probability",
+      "category": "미니게임 확률·회차 검증 도구",
+      "title": "파워볼 홀짝 확률표",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 127,
+      "category_key": "minigame_probability",
+      "category": "미니게임 확률·회차 검증 도구",
+      "title": "파워볼 언오버 확률표",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 128,
+      "category_key": "minigame_probability",
+      "category": "미니게임 확률·회차 검증 도구",
+      "title": "파워볼 조합 마진 계산",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 129,
+      "category_key": "minigame_probability",
+      "category": "미니게임 확률·회차 검증 도구",
+      "title": "회차 ID 기록",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 130,
+      "category_key": "minigame_probability",
+      "category": "미니게임 확률·회차 검증 도구",
+      "title": "결과 발표 시각 기록",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 131,
+      "category_key": "minigame_probability",
+      "category": "미니게임 확률·회차 검증 도구",
+      "title": "독립시행 설명 카드",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 132,
+      "category_key": "minigame_probability",
+      "category": "미니게임 확률·회차 검증 도구",
+      "title": "연속패턴 착시 체크",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 133,
+      "category_key": "minigame_probability",
+      "category": "미니게임 확률·회차 검증 도구",
+      "title": "마틴게일 파산확률 계산",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 134,
+      "category_key": "minigame_probability",
+      "category": "미니게임 확률·회차 검증 도구",
+      "title": "Gambler ruin 입력 계산",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 135,
+      "category_key": "minigame_probability",
+      "category": "미니게임 확률·회차 검증 도구",
+      "title": "사다리 좌우 확률표",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 136,
+      "category_key": "minigame_probability",
+      "category": "미니게임 확률·회차 검증 도구",
+      "title": "사다리 홀짝 조합표",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 137,
+      "category_key": "minigame_probability",
+      "category": "미니게임 확률·회차 검증 도구",
+      "title": "사다리 확률 트리",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 138,
+      "category_key": "minigame_probability",
+      "category": "미니게임 확률·회차 검증 도구",
+      "title": "동행파워볼 공식 결과 링크 메모",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 139,
+      "category_key": "minigame_probability",
+      "category": "미니게임 확률·회차 검증 도구",
+      "title": "동행스피드키노 번호 조합 계산",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 140,
+      "category_key": "minigame_probability",
+      "category": "미니게임 확률·회차 검증 도구",
+      "title": "키노 번호 빈도 메모",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 141,
+      "category_key": "minigame_probability",
+      "category": "미니게임 확률·회차 검증 도구",
+      "title": "결과 정정 기준 메모",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 142,
+      "category_key": "minigame_probability",
+      "category": "미니게임 확률·회차 검증 도구",
+      "title": "결과 지연 정산 분류",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 143,
+      "category_key": "minigame_probability",
+      "category": "미니게임 확률·회차 검증 도구",
+      "title": "미니게임 인정 회차 체크",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 144,
+      "category_key": "minigame_probability",
+      "category": "미니게임 확률·회차 검증 도구",
+      "title": "제외 회차 체크",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 145,
+      "category_key": "minigame_probability",
+      "category": "미니게임 확률·회차 검증 도구",
+      "title": "round proof 캡처 체크리스트",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 146,
+      "category_key": "minigame_probability",
+      "category": "미니게임 확률·회차 검증 도구",
+      "title": "API provider 표기 메모",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 147,
+      "category_key": "minigame_probability",
+      "category": "미니게임 확률·회차 검증 도구",
+      "title": "hash value 기록란",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 148,
+      "category_key": "minigame_probability",
+      "category": "미니게임 확률·회차 검증 도구",
+      "title": "해시 비교 설명 카드",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 149,
+      "category_key": "minigame_probability",
+      "category": "미니게임 확률·회차 검증 도구",
+      "title": "루틴 배팅 리스크 요약",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 150,
+      "category_key": "minigame_probability",
+      "category": "미니게임 확률·회차 검증 도구",
+      "title": "미니게임 이벤트 조건 요약",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 151,
+      "category_key": "bonus_rolling_payout",
+      "category": "보너스·롤링·출금 조건 도구",
+      "title": "첫충 보너스 실수령 계산",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 152,
+      "category_key": "bonus_rolling_payout",
+      "category": "보너스·롤링·출금 조건 도구",
+      "title": "매충 보너스 실수령 계산",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 153,
+      "category_key": "bonus_rolling_payout",
+      "category": "보너스·롤링·출금 조건 도구",
+      "title": "롤링 배수 계산",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 154,
+      "category_key": "bonus_rolling_payout",
+      "category": "보너스·롤링·출금 조건 도구",
+      "title": "turnover required 계산",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 155,
+      "category_key": "bonus_rolling_payout",
+      "category": "보너스·롤링·출금 조건 도구",
+      "title": "입금+보너스 합산 기준",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 156,
+      "category_key": "bonus_rolling_payout",
+      "category": "보너스·롤링·출금 조건 도구",
+      "title": "보너스 제외 게임 체크",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 157,
+      "category_key": "bonus_rolling_payout",
+      "category": "보너스·롤링·출금 조건 도구",
+      "title": "최대출금 한도 계산",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 158,
+      "category_key": "bonus_rolling_payout",
+      "category": "보너스·롤링·출금 조건 도구",
+      "title": "max cashout 적용 후 실수령",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 159,
+      "category_key": "bonus_rolling_payout",
+      "category": "보너스·롤링·출금 조건 도구",
+      "title": "쿠폰 금액 반영 계산",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 160,
+      "category_key": "bonus_rolling_payout",
+      "category": "보너스·롤링·출금 조건 도구",
+      "title": "페이백 퍼센트 계산",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 161,
+      "category_key": "bonus_rolling_payout",
+      "category": "보너스·롤링·출금 조건 도구",
+      "title": "콤프 적립률 계산",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 162,
+      "category_key": "bonus_rolling_payout",
+      "category": "보너스·롤링·출금 조건 도구",
+      "title": "슬롯 콤프 계산",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 163,
+      "category_key": "bonus_rolling_payout",
+      "category": "보너스·롤링·출금 조건 도구",
+      "title": "카지노 콤프 계산",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 164,
+      "category_key": "bonus_rolling_payout",
+      "category": "보너스·롤링·출금 조건 도구",
+      "title": "룰렛 쿠폰 가치 산정",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 165,
+      "category_key": "bonus_rolling_payout",
+      "category": "보너스·롤링·출금 조건 도구",
+      "title": "페이백 정산 주기 메모",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 166,
+      "category_key": "bonus_rolling_payout",
+      "category": "보너스·롤링·출금 조건 도구",
+      "title": "이벤트 중복 적용 여부",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 167,
+      "category_key": "bonus_rolling_payout",
+      "category": "보너스·롤링·출금 조건 도구",
+      "title": "복귀 이벤트 조건 정리",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 168,
+      "category_key": "bonus_rolling_payout",
+      "category": "보너스·롤링·출금 조건 도구",
+      "title": "지인추천 조건 정리",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 169,
+      "category_key": "bonus_rolling_payout",
+      "category": "보너스·롤링·출금 조건 도구",
+      "title": "출석체크 누적값 계산",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 170,
+      "category_key": "bonus_rolling_payout",
+      "category": "보너스·롤링·출금 조건 도구",
+      "title": "충전 구간별 혜택 비교",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 171,
+      "category_key": "bonus_rolling_payout",
+      "category": "보너스·롤링·출금 조건 도구",
+      "title": "스포츠/카지노/슬롯 기여도 표",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 172,
+      "category_key": "bonus_rolling_payout",
+      "category": "보너스·롤링·출금 조건 도구",
+      "title": "롤링 부족분 계산",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 173,
+      "category_key": "bonus_rolling_payout",
+      "category": "보너스·롤링·출금 조건 도구",
+      "title": "출금 전 자료 체크리스트",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 174,
+      "category_key": "bonus_rolling_payout",
+      "category": "보너스·롤링·출금 조건 도구",
+      "title": "약관 독소조항 하이라이트",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 175,
+      "category_key": "bonus_rolling_payout",
+      "category": "보너스·롤링·출금 조건 도구",
+      "title": "조건표 공유 이미지 생성",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 176,
+      "category_key": "vendor_partner_ops",
+      "category": "보증업체·파트너 운영 도구",
+      "title": "업체 카드 데이터 검증",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 177,
+      "category_key": "vendor_partner_ops",
+      "category": "보증업체·파트너 운영 도구",
+      "title": "가입코드 중복 노출 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 178,
+      "category_key": "vendor_partner_ops",
+      "category": "보증업체·파트너 운영 도구",
+      "title": "도메인 누락 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 179,
+      "category_key": "vendor_partner_ops",
+      "category": "보증업체·파트너 운영 도구",
+      "title": "상세보기 링크 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 180,
+      "category_key": "vendor_partner_ops",
+      "category": "보증업체·파트너 운영 도구",
+      "title": "바로가기 링크 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 181,
+      "category_key": "vendor_partner_ops",
+      "category": "보증업체·파트너 운영 도구",
+      "title": "로고 이미지 누락 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 182,
+      "category_key": "vendor_partner_ops",
+      "category": "보증업체·파트너 운영 도구",
+      "title": "로고 비율 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 183,
+      "category_key": "vendor_partner_ops",
+      "category": "보증업체·파트너 운영 도구",
+      "title": "업체별 이벤트 갱신일",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 184,
+      "category_key": "vendor_partner_ops",
+      "category": "보증업체·파트너 운영 도구",
+      "title": "이벤트 변경 로그",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 185,
+      "category_key": "vendor_partner_ops",
+      "category": "보증업체·파트너 운영 도구",
+      "title": "업체별 태그 정리",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 186,
+      "category_key": "vendor_partner_ops",
+      "category": "보증업체·파트너 운영 도구",
+      "title": "업체별 혜택 비교표",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 187,
+      "category_key": "vendor_partner_ops",
+      "category": "보증업체·파트너 운영 도구",
+      "title": "업체별 게임 카테고리 지원표",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 188,
+      "category_key": "vendor_partner_ops",
+      "category": "보증업체·파트너 운영 도구",
+      "title": "업체별 충전 혜택 표",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 189,
+      "category_key": "vendor_partner_ops",
+      "category": "보증업체·파트너 운영 도구",
+      "title": "업체별 페이백 표",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 190,
+      "category_key": "vendor_partner_ops",
+      "category": "보증업체·파트너 운영 도구",
+      "title": "업체별 콤프 표",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 191,
+      "category_key": "vendor_partner_ops",
+      "category": "보증업체·파트너 운영 도구",
+      "title": "업체별 주의 조항 메모",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 192,
+      "category_key": "vendor_partner_ops",
+      "category": "보증업체·파트너 운영 도구",
+      "title": "상세 랜딩 SEO 점수",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 193,
+      "category_key": "vendor_partner_ops",
+      "category": "보증업체·파트너 운영 도구",
+      "title": "카드 클릭 이벤트 QA",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 194,
+      "category_key": "vendor_partner_ops",
+      "category": "보증업체·파트너 운영 도구",
+      "title": "코드 복사 이벤트 QA",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 195,
+      "category_key": "vendor_partner_ops",
+      "category": "보증업체·파트너 운영 도구",
+      "title": "도메인 클릭 이벤트 QA",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 196,
+      "category_key": "vendor_partner_ops",
+      "category": "보증업체·파트너 운영 도구",
+      "title": "업체 카드 모바일 QA",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 197,
+      "category_key": "vendor_partner_ops",
+      "category": "보증업체·파트너 운영 도구",
+      "title": "업체 카드 PC QA",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 198,
+      "category_key": "vendor_partner_ops",
+      "category": "보증업체·파트너 운영 도구",
+      "title": "이미지 fallback 점검",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 199,
+      "category_key": "vendor_partner_ops",
+      "category": "보증업체·파트너 운영 도구",
+      "title": "sponsored rel 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 200,
+      "category_key": "vendor_partner_ops",
+      "category": "보증업체·파트너 운영 도구",
+      "title": "보증업체 sitemap 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 201,
+      "category_key": "content_seo_blog",
+      "category": "블로그·SEO 콘텐츠 QA 도구",
+      "title": "title 중복 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 202,
+      "category_key": "content_seo_blog",
+      "category": "블로그·SEO 콘텐츠 QA 도구",
+      "title": "description 중복 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 203,
+      "category_key": "content_seo_blog",
+      "category": "블로그·SEO 콘텐츠 QA 도구",
+      "title": "canonical 누락 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 204,
+      "category_key": "content_seo_blog",
+      "category": "블로그·SEO 콘텐츠 QA 도구",
+      "title": "schema 누락 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 205,
+      "category_key": "content_seo_blog",
+      "category": "블로그·SEO 콘텐츠 QA 도구",
+      "title": "H1 누락 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 206,
+      "category_key": "content_seo_blog",
+      "category": "블로그·SEO 콘텐츠 QA 도구",
+      "title": "H2 번호 중복 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 207,
+      "category_key": "content_seo_blog",
+      "category": "블로그·SEO 콘텐츠 QA 도구",
+      "title": "본문 3000자 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 208,
+      "category_key": "content_seo_blog",
+      "category": "블로그·SEO 콘텐츠 QA 도구",
+      "title": "반복 결론 문단 탐지",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 209,
+      "category_key": "content_seo_blog",
+      "category": "블로그·SEO 콘텐츠 QA 도구",
+      "title": "템플릿 문단 유사도 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 210,
+      "category_key": "content_seo_blog",
+      "category": "블로그·SEO 콘텐츠 QA 도구",
+      "title": "금지 상담 문구 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 211,
+      "category_key": "content_seo_blog",
+      "category": "블로그·SEO 콘텐츠 QA 도구",
+      "title": "키워드 밀도 계산",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 212,
+      "category_key": "content_seo_blog",
+      "category": "블로그·SEO 콘텐츠 QA 도구",
+      "title": "내부링크 개수 계산",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 213,
+      "category_key": "content_seo_blog",
+      "category": "블로그·SEO 콘텐츠 QA 도구",
+      "title": "외부링크 rel 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 214,
+      "category_key": "content_seo_blog",
+      "category": "블로그·SEO 콘텐츠 QA 도구",
+      "title": "관련글 과다 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 215,
+      "category_key": "content_seo_blog",
+      "category": "블로그·SEO 콘텐츠 QA 도구",
+      "title": "noindex 포함 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 216,
+      "category_key": "content_seo_blog",
+      "category": "블로그·SEO 콘텐츠 QA 도구",
+      "title": "sitemap 포함 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 217,
+      "category_key": "content_seo_blog",
+      "category": "블로그·SEO 콘텐츠 QA 도구",
+      "title": "meta keywords 차단",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 218,
+      "category_key": "content_seo_blog",
+      "category": "블로그·SEO 콘텐츠 QA 도구",
+      "title": "OG title 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 219,
+      "category_key": "content_seo_blog",
+      "category": "블로그·SEO 콘텐츠 QA 도구",
+      "title": "OG image 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 220,
+      "category_key": "content_seo_blog",
+      "category": "블로그·SEO 콘텐츠 QA 도구",
+      "title": "breadcrumb schema 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 221,
+      "category_key": "content_seo_blog",
+      "category": "블로그·SEO 콘텐츠 QA 도구",
+      "title": "Article schema 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 222,
+      "category_key": "content_seo_blog",
+      "category": "블로그·SEO 콘텐츠 QA 도구",
+      "title": "thin content 후보 추출",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 223,
+      "category_key": "content_seo_blog",
+      "category": "블로그·SEO 콘텐츠 QA 도구",
+      "title": "legacy 파일 후보 추출",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 224,
+      "category_key": "content_seo_blog",
+      "category": "블로그·SEO 콘텐츠 QA 도구",
+      "title": "GSC 색인 우선순위 산출",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 225,
+      "category_key": "content_seo_blog",
+      "category": "블로그·SEO 콘텐츠 QA 도구",
+      "title": "블로그 시각 QA 점수",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 226,
+      "category_key": "technical_audit_build",
+      "category": "빌드·배포·정적 QA 도구",
+      "title": "npm build 결과 요약",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 227,
+      "category_key": "technical_audit_build",
+      "category": "빌드·배포·정적 QA 도구",
+      "title": "npm verify 결과 요약",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 228,
+      "category_key": "technical_audit_build",
+      "category": "빌드·배포·정적 QA 도구",
+      "title": "JS syntax 전체 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 229,
+      "category_key": "technical_audit_build",
+      "category": "빌드·배포·정적 QA 도구",
+      "title": "MJS syntax 전체 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 230,
+      "category_key": "technical_audit_build",
+      "category": "빌드·배포·정적 QA 도구",
+      "title": "JSON parse 전체 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 231,
+      "category_key": "technical_audit_build",
+      "category": "빌드·배포·정적 QA 도구",
+      "title": "HTML 파일 수 카운트",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 232,
+      "category_key": "technical_audit_build",
+      "category": "빌드·배포·정적 QA 도구",
+      "title": "sitemap URL 수 카운트",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 233,
+      "category_key": "technical_audit_build",
+      "category": "빌드·배포·정적 QA 도구",
+      "title": "sitemap missing file 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 234,
+      "category_key": "technical_audit_build",
+      "category": "빌드·배포·정적 QA 도구",
+      "title": "dead internal link 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 235,
+      "category_key": "technical_audit_build",
+      "category": "빌드·배포·정적 QA 도구",
+      "title": "missing asset 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 236,
+      "category_key": "technical_audit_build",
+      "category": "빌드·배포·정적 QA 도구",
+      "title": "bad href 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 237,
+      "category_key": "technical_audit_build",
+      "category": "빌드·배포·정적 QA 도구",
+      "title": "href # 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 238,
+      "category_key": "technical_audit_build",
+      "category": "빌드·배포·정적 QA 도구",
+      "title": "javascript void 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 239,
+      "category_key": "technical_audit_build",
+      "category": "빌드·배포·정적 QA 도구",
+      "title": "worker safe mode 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 240,
+      "category_key": "technical_audit_build",
+      "category": "빌드·배포·정적 QA 도구",
+      "title": "PRAGMA 문자열 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 241,
+      "category_key": "technical_audit_build",
+      "category": "빌드·배포·정적 QA 도구",
+      "title": "CREATE TABLE 문자열 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 242,
+      "category_key": "technical_audit_build",
+      "category": "빌드·배포·정적 QA 도구",
+      "title": "CREATE INDEX 문자열 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 243,
+      "category_key": "technical_audit_build",
+      "category": "빌드·배포·정적 QA 도구",
+      "title": "schemaSQL 문자열 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 244,
+      "category_key": "technical_audit_build",
+      "category": "빌드·배포·정적 QA 도구",
+      "title": "foreign_keys 문자열 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 245,
+      "category_key": "technical_audit_build",
+      "category": "빌드·배포·정적 QA 도구",
+      "title": "ZIP testzip 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 246,
+      "category_key": "technical_audit_build",
+      "category": "빌드·배포·정적 QA 도구",
+      "title": "패치 변경 파일 카운트",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 247,
+      "category_key": "technical_audit_build",
+      "category": "빌드·배포·정적 QA 도구",
+      "title": "FULL ZIP 용량 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 248,
+      "category_key": "technical_audit_build",
+      "category": "빌드·배포·정적 QA 도구",
+      "title": "asset inventory 생성",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 249,
+      "category_key": "technical_audit_build",
+      "category": "빌드·배포·정적 QA 도구",
+      "title": "빌드 버전 표시",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 250,
+      "category_key": "technical_audit_build",
+      "category": "빌드·배포·정적 QA 도구",
+      "title": "배포 후 확인 URL 출력",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 251,
+      "category_key": "performance_cwv",
+      "category": "성능·Core Web Vitals 도구",
+      "title": "이미지 width/height 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 252,
+      "category_key": "performance_cwv",
+      "category": "성능·Core Web Vitals 도구",
+      "title": "lazy loading 누락 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 253,
+      "category_key": "performance_cwv",
+      "category": "성능·Core Web Vitals 도구",
+      "title": "eager 이미지 과다 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 254,
+      "category_key": "performance_cwv",
+      "category": "성능·Core Web Vitals 도구",
+      "title": "CSS 파일 수 점검",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 255,
+      "category_key": "performance_cwv",
+      "category": "성능·Core Web Vitals 도구",
+      "title": "JS defer 누락 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 256,
+      "category_key": "performance_cwv",
+      "category": "성능·Core Web Vitals 도구",
+      "title": "preload 이미지 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 257,
+      "category_key": "performance_cwv",
+      "category": "성능·Core Web Vitals 도구",
+      "title": "font preload 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 258,
+      "category_key": "performance_cwv",
+      "category": "성능·Core Web Vitals 도구",
+      "title": "unused CSS 후보",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 259,
+      "category_key": "performance_cwv",
+      "category": "성능·Core Web Vitals 도구",
+      "title": "inline style 과다 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 260,
+      "category_key": "performance_cwv",
+      "category": "성능·Core Web Vitals 도구",
+      "title": "LCP 후보 이미지 표시",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 261,
+      "category_key": "performance_cwv",
+      "category": "성능·Core Web Vitals 도구",
+      "title": "CLS 위험 요소 표시",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 262,
+      "category_key": "performance_cwv",
+      "category": "성능·Core Web Vitals 도구",
+      "title": "FID/INP 위험 JS 표시",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 263,
+      "category_key": "performance_cwv",
+      "category": "성능·Core Web Vitals 도구",
+      "title": "DOM 노드 수 점검",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 264,
+      "category_key": "performance_cwv",
+      "category": "성능·Core Web Vitals 도구",
+      "title": "HTML 용량 점검",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 265,
+      "category_key": "performance_cwv",
+      "category": "성능·Core Web Vitals 도구",
+      "title": "이미지 총 용량 점검",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 266,
+      "category_key": "performance_cwv",
+      "category": "성능·Core Web Vitals 도구",
+      "title": "WebP 후보 추출",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 267,
+      "category_key": "performance_cwv",
+      "category": "성능·Core Web Vitals 도구",
+      "title": "PNG 대체 후보 추출",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 268,
+      "category_key": "performance_cwv",
+      "category": "성능·Core Web Vitals 도구",
+      "title": "cache query version 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 269,
+      "category_key": "performance_cwv",
+      "category": "성능·Core Web Vitals 도구",
+      "title": "Cloudflare cache purge URL 목록",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 270,
+      "category_key": "performance_cwv",
+      "category": "성능·Core Web Vitals 도구",
+      "title": "critical CSS 후보",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 271,
+      "category_key": "performance_cwv",
+      "category": "성능·Core Web Vitals 도구",
+      "title": "페이지별 script 조건부 실행표",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 272,
+      "category_key": "performance_cwv",
+      "category": "성능·Core Web Vitals 도구",
+      "title": "bundle 크기 리포트",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 273,
+      "category_key": "performance_cwv",
+      "category": "성능·Core Web Vitals 도구",
+      "title": "mobile 390px QA",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 274,
+      "category_key": "performance_cwv",
+      "category": "성능·Core Web Vitals 도구",
+      "title": "desktop 1440px QA",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 275,
+      "category_key": "performance_cwv",
+      "category": "성능·Core Web Vitals 도구",
+      "title": "성능 개선 우선순위",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 276,
+      "category_key": "accessibility_ui",
+      "category": "접근성·UI 일관성 도구",
+      "title": "색 대비 계산",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 277,
+      "category_key": "accessibility_ui",
+      "category": "접근성·UI 일관성 도구",
+      "title": "focus-visible 누락 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 278,
+      "category_key": "accessibility_ui",
+      "category": "접근성·UI 일관성 도구",
+      "title": "skip-link 확인",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 279,
+      "category_key": "accessibility_ui",
+      "category": "접근성·UI 일관성 도구",
+      "title": "button aria-label 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 280,
+      "category_key": "accessibility_ui",
+      "category": "접근성·UI 일관성 도구",
+      "title": "img alt 누락 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 281,
+      "category_key": "accessibility_ui",
+      "category": "접근성·UI 일관성 도구",
+      "title": "nav aria-label 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 282,
+      "category_key": "accessibility_ui",
+      "category": "접근성·UI 일관성 도구",
+      "title": "touch target 크기 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 283,
+      "category_key": "accessibility_ui",
+      "category": "접근성·UI 일관성 도구",
+      "title": "모바일 overflow 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 284,
+      "category_key": "accessibility_ui",
+      "category": "접근성·UI 일관성 도구",
+      "title": "헤더 줄바꿈 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 285,
+      "category_key": "accessibility_ui",
+      "category": "접근성·UI 일관성 도구",
+      "title": "sticky header z-index 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 286,
+      "category_key": "accessibility_ui",
+      "category": "접근성·UI 일관성 도구",
+      "title": "카드 radius 일관성 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 287,
+      "category_key": "accessibility_ui",
+      "category": "접근성·UI 일관성 도구",
+      "title": "shadow 과다 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 288,
+      "category_key": "accessibility_ui",
+      "category": "접근성·UI 일관성 도구",
+      "title": "링크 밑줄 정책 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 289,
+      "category_key": "accessibility_ui",
+      "category": "접근성·UI 일관성 도구",
+      "title": "폼 label 연결 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 290,
+      "category_key": "accessibility_ui",
+      "category": "접근성·UI 일관성 도구",
+      "title": "input placeholder 길이 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 291,
+      "category_key": "accessibility_ui",
+      "category": "접근성·UI 일관성 도구",
+      "title": "keyboard tab 순서",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 292,
+      "category_key": "accessibility_ui",
+      "category": "접근성·UI 일관성 도구",
+      "title": "모달 focus trap 점검",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 293,
+      "category_key": "accessibility_ui",
+      "category": "접근성·UI 일관성 도구",
+      "title": "toast aria-live 검토",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 294,
+      "category_key": "accessibility_ui",
+      "category": "접근성·UI 일관성 도구",
+      "title": "텍스트 clamp 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 295,
+      "category_key": "accessibility_ui",
+      "category": "접근성·UI 일관성 도구",
+      "title": "모바일 글자 크기 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 296,
+      "category_key": "accessibility_ui",
+      "category": "접근성·UI 일관성 도구",
+      "title": "다크/화이트 배경 충돌 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 297,
+      "category_key": "accessibility_ui",
+      "category": "접근성·UI 일관성 도구",
+      "title": "버튼 상태 hover/focus/active",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 298,
+      "category_key": "accessibility_ui",
+      "category": "접근성·UI 일관성 도구",
+      "title": "카드 grid 균형 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 299,
+      "category_key": "accessibility_ui",
+      "category": "접근성·UI 일관성 도구",
+      "title": "안전영역 inset 대응",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 300,
+      "category_key": "accessibility_ui",
+      "category": "접근성·UI 일관성 도구",
+      "title": "UI 회귀 스냅샷 메모",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 301,
+      "category_key": "consult_flow",
+      "category": "고객센터·상담 흐름 QA 도구",
+      "title": "상담 CTA 단일 흐름 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 302,
+      "category_key": "consult_flow",
+      "category": "고객센터·상담 흐름 QA 도구",
+      "title": "상담 버튼 링크 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 303,
+      "category_key": "consult_flow",
+      "category": "고객센터·상담 흐름 QA 도구",
+      "title": "상담 start 파라미터 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 304,
+      "category_key": "consult_flow",
+      "category": "고객센터·상담 흐름 QA 도구",
+      "title": "구버전 봇명 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 305,
+      "category_key": "consult_flow",
+      "category": "고객센터·상담 흐름 QA 도구",
+      "title": "금지 연락처 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 306,
+      "category_key": "consult_flow",
+      "category": "고객센터·상담 흐름 QA 도구",
+      "title": "고객센터 페이지 hero 높이 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 307,
+      "category_key": "consult_flow",
+      "category": "고객센터·상담 흐름 QA 도구",
+      "title": "고객센터 버튼 대비 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 308,
+      "category_key": "consult_flow",
+      "category": "고객센터·상담 흐름 QA 도구",
+      "title": "상담 문구 과다 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 309,
+      "category_key": "consult_flow",
+      "category": "고객센터·상담 흐름 QA 도구",
+      "title": "개인정보 입력 유도 문구 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 310,
+      "category_key": "consult_flow",
+      "category": "고객센터·상담 흐름 QA 도구",
+      "title": "문의 문구 템플릿 생성",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 311,
+      "category_key": "consult_flow",
+      "category": "고객센터·상담 흐름 QA 도구",
+      "title": "출금 전 증빙 목록 생성",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 312,
+      "category_key": "consult_flow",
+      "category": "고객센터·상담 흐름 QA 도구",
+      "title": "이벤트 문의 문구 생성",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 313,
+      "category_key": "consult_flow",
+      "category": "고객센터·상담 흐름 QA 도구",
+      "title": "도메인 확인 문의 문구 생성",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 314,
+      "category_key": "consult_flow",
+      "category": "고객센터·상담 흐름 QA 도구",
+      "title": "코드 확인 문의 문구 생성",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 315,
+      "category_key": "consult_flow",
+      "category": "고객센터·상담 흐름 QA 도구",
+      "title": "상담 목적 분류",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 316,
+      "category_key": "consult_flow",
+      "category": "고객센터·상담 흐름 QA 도구",
+      "title": "상담 답변 캡처 체크리스트",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 317,
+      "category_key": "consult_flow",
+      "category": "고객센터·상담 흐름 QA 도구",
+      "title": "상담 CTA GA4 이벤트",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 318,
+      "category_key": "consult_flow",
+      "category": "고객센터·상담 흐름 QA 도구",
+      "title": "상담 링크 rel 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 319,
+      "category_key": "consult_flow",
+      "category": "고객센터·상담 흐름 QA 도구",
+      "title": "상담 페이지 sitemap 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 320,
+      "category_key": "consult_flow",
+      "category": "고객센터·상담 흐름 QA 도구",
+      "title": "상담 페이지 meta 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 321,
+      "category_key": "consult_flow",
+      "category": "고객센터·상담 흐름 QA 도구",
+      "title": "상담 페이지 noindex 확인",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 322,
+      "category_key": "consult_flow",
+      "category": "고객센터·상담 흐름 QA 도구",
+      "title": "상담 버튼 모바일 full width",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 323,
+      "category_key": "consult_flow",
+      "category": "고객센터·상담 흐름 QA 도구",
+      "title": "상담 단계 3줄 요약",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 324,
+      "category_key": "consult_flow",
+      "category": "고객센터·상담 흐름 QA 도구",
+      "title": "상담 전제조건 문구 검수",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 325,
+      "category_key": "consult_flow",
+      "category": "고객센터·상담 흐름 QA 도구",
+      "title": "고객센터 회귀 테스트",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 326,
+      "category_key": "analytics_ga4",
+      "category": "GA4·이벤트 분석 도구",
+      "title": "page_view 정상 수집 체크",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 327,
+      "category_key": "analytics_ga4",
+      "category": "GA4·이벤트 분석 도구",
+      "title": "blog_filter_click 이벤트",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 328,
+      "category_key": "analytics_ga4",
+      "category": "GA4·이벤트 분석 도구",
+      "title": "blog_search 이벤트",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 329,
+      "category_key": "analytics_ga4",
+      "category": "GA4·이벤트 분석 도구",
+      "title": "tool_open 이벤트",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 330,
+      "category_key": "analytics_ga4",
+      "category": "GA4·이벤트 분석 도구",
+      "title": "provider_detail_click 이벤트",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 331,
+      "category_key": "analytics_ga4",
+      "category": "GA4·이벤트 분석 도구",
+      "title": "provider_domain_click 이벤트",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 332,
+      "category_key": "analytics_ga4",
+      "category": "GA4·이벤트 분석 도구",
+      "title": "provider_code_copy 이벤트",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 333,
+      "category_key": "analytics_ga4",
+      "category": "GA4·이벤트 분석 도구",
+      "title": "consult_click 이벤트",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 334,
+      "category_key": "analytics_ga4",
+      "category": "GA4·이벤트 분석 도구",
+      "title": "outbound_click 이벤트",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 335,
+      "category_key": "analytics_ga4",
+      "category": "GA4·이벤트 분석 도구",
+      "title": "scroll_depth 이벤트",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 336,
+      "category_key": "analytics_ga4",
+      "category": "GA4·이벤트 분석 도구",
+      "title": "copy_success 이벤트",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 337,
+      "category_key": "analytics_ga4",
+      "category": "GA4·이벤트 분석 도구",
+      "title": "form_submit 이벤트",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 338,
+      "category_key": "analytics_ga4",
+      "category": "GA4·이벤트 분석 도구",
+      "title": "error_event 이벤트",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 339,
+      "category_key": "analytics_ga4",
+      "category": "GA4·이벤트 분석 도구",
+      "title": "404 감지 이벤트",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 340,
+      "category_key": "analytics_ga4",
+      "category": "GA4·이벤트 분석 도구",
+      "title": "CTA 위치별 이벤트명 표준화",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 341,
+      "category_key": "analytics_ga4",
+      "category": "GA4·이벤트 분석 도구",
+      "title": "event parameter 길이 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 342,
+      "category_key": "analytics_ga4",
+      "category": "GA4·이벤트 분석 도구",
+      "title": "UTM 보존 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 343,
+      "category_key": "analytics_ga4",
+      "category": "GA4·이벤트 분석 도구",
+      "title": "referrer 분류",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 344,
+      "category_key": "analytics_ga4",
+      "category": "GA4·이벤트 분석 도구",
+      "title": "landing page 그룹화",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 345,
+      "category_key": "analytics_ga4",
+      "category": "GA4·이벤트 분석 도구",
+      "title": "blog category 그룹화",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 346,
+      "category_key": "analytics_ga4",
+      "category": "GA4·이벤트 분석 도구",
+      "title": "provider slug 그룹화",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 347,
+      "category_key": "analytics_ga4",
+      "category": "GA4·이벤트 분석 도구",
+      "title": "tools funnel 정의",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 348,
+      "category_key": "analytics_ga4",
+      "category": "GA4·이벤트 분석 도구",
+      "title": "conversion path 요약",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 349,
+      "category_key": "analytics_ga4",
+      "category": "GA4·이벤트 분석 도구",
+      "title": "GA4 debug mode 메모",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 350,
+      "category_key": "analytics_ga4",
+      "category": "GA4·이벤트 분석 도구",
+      "title": "이벤트 QA 리포트",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 351,
+      "category_key": "search_indexing",
+      "category": "색인·검색노출 운영 도구",
+      "title": "오늘 색인 요청 15개 산출",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 352,
+      "category_key": "search_indexing",
+      "category": "색인·검색노출 운영 도구",
+      "title": "신규 글 색인 우선순위",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 353,
+      "category_key": "search_indexing",
+      "category": "색인·검색노출 운영 도구",
+      "title": "카테고리 허브 우선순위",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 354,
+      "category_key": "search_indexing",
+      "category": "색인·검색노출 운영 도구",
+      "title": "보증업체 상세 우선순위",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 355,
+      "category_key": "search_indexing",
+      "category": "색인·검색노출 운영 도구",
+      "title": "sitemap 제출 체크",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 356,
+      "category_key": "search_indexing",
+      "category": "색인·검색노출 운영 도구",
+      "title": "lastmod 변경 파일 목록",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 357,
+      "category_key": "search_indexing",
+      "category": "색인·검색노출 운영 도구",
+      "title": "noindex 파일 목록",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 358,
+      "category_key": "search_indexing",
+      "category": "색인·검색노출 운영 도구",
+      "title": "canonical mismatch 목록",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 359,
+      "category_key": "search_indexing",
+      "category": "색인·검색노출 운영 도구",
+      "title": "검색 의도별 URL 묶음",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 360,
+      "category_key": "search_indexing",
+      "category": "색인·검색노출 운영 도구",
+      "title": "seasonal URL 묶음",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 361,
+      "category_key": "search_indexing",
+      "category": "색인·검색노출 운영 도구",
+      "title": "월드컵 URL 묶음",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 362,
+      "category_key": "search_indexing",
+      "category": "색인·검색노출 운영 도구",
+      "title": "KBO URL 묶음",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 363,
+      "category_key": "search_indexing",
+      "category": "색인·검색노출 운영 도구",
+      "title": "슬롯 게임사 URL 묶음",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 364,
+      "category_key": "search_indexing",
+      "category": "색인·검색노출 운영 도구",
+      "title": "카지노 공급사 URL 묶음",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 365,
+      "category_key": "search_indexing",
+      "category": "색인·검색노출 운영 도구",
+      "title": "미니게임 URL 묶음",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 366,
+      "category_key": "search_indexing",
+      "category": "색인·검색노출 운영 도구",
+      "title": "먹튀검증 URL 묶음",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 367,
+      "category_key": "search_indexing",
+      "category": "색인·검색노출 운영 도구",
+      "title": "오래된 URL 갱신 후보",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 368,
+      "category_key": "search_indexing",
+      "category": "색인·검색노출 운영 도구",
+      "title": "중복 URL 제거 후보",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 369,
+      "category_key": "search_indexing",
+      "category": "색인·검색노출 운영 도구",
+      "title": "페이지네이션 색인 정책",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 370,
+      "category_key": "search_indexing",
+      "category": "색인·검색노출 운영 도구",
+      "title": "GSC 수동 요청 큐",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 371,
+      "category_key": "search_indexing",
+      "category": "색인·검색노출 운영 도구",
+      "title": "색인 제외 사유 메모",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 372,
+      "category_key": "search_indexing",
+      "category": "색인·검색노출 운영 도구",
+      "title": "URL inspection 체크리스트",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 373,
+      "category_key": "search_indexing",
+      "category": "색인·검색노출 운영 도구",
+      "title": "CTR 개선 title 후보",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 374,
+      "category_key": "search_indexing",
+      "category": "색인·검색노출 운영 도구",
+      "title": "description 개선 후보",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 375,
+      "category_key": "search_indexing",
+      "category": "색인·검색노출 운영 도구",
+      "title": "검색노출 운영 로그",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 376,
+      "category_key": "security_privacy",
+      "category": "보안·개인정보 안전 도구",
+      "title": "민감정보 문자열 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 377,
+      "category_key": "security_privacy",
+      "category": "보안·개인정보 안전 도구",
+      "title": "텔레그램 구버전 ID 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 378,
+      "category_key": "security_privacy",
+      "category": "보안·개인정보 안전 도구",
+      "title": "이메일 노출 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 379,
+      "category_key": "security_privacy",
+      "category": "보안·개인정보 안전 도구",
+      "title": "전화번호 노출 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 380,
+      "category_key": "security_privacy",
+      "category": "보안·개인정보 안전 도구",
+      "title": "토큰 패턴 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 381,
+      "category_key": "security_privacy",
+      "category": "보안·개인정보 안전 도구",
+      "title": "API 키 패턴 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 382,
+      "category_key": "security_privacy",
+      "category": "보안·개인정보 안전 도구",
+      "title": "Cloudflare token 패턴 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 383,
+      "category_key": "security_privacy",
+      "category": "보안·개인정보 안전 도구",
+      "title": "wrangler 설정 노출 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 384,
+      "category_key": "security_privacy",
+      "category": "보안·개인정보 안전 도구",
+      "title": "source map 노출 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 385,
+      "category_key": "security_privacy",
+      "category": "보안·개인정보 안전 도구",
+      "title": "admin 경로 robots 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 386,
+      "category_key": "security_privacy",
+      "category": "보안·개인정보 안전 도구",
+      "title": "ops 경로 robots 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 387,
+      "category_key": "security_privacy",
+      "category": "보안·개인정보 안전 도구",
+      "title": "api 경로 robots 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 388,
+      "category_key": "security_privacy",
+      "category": "보안·개인정보 안전 도구",
+      "title": "CSP 후보 생성",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 389,
+      "category_key": "security_privacy",
+      "category": "보안·개인정보 안전 도구",
+      "title": "X-Content-Type header 확인",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 390,
+      "category_key": "security_privacy",
+      "category": "보안·개인정보 안전 도구",
+      "title": "referrer-policy 확인",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 391,
+      "category_key": "security_privacy",
+      "category": "보안·개인정보 안전 도구",
+      "title": "permissions-policy 확인",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 392,
+      "category_key": "security_privacy",
+      "category": "보안·개인정보 안전 도구",
+      "title": "외부 스크립트 목록",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 393,
+      "category_key": "security_privacy",
+      "category": "보안·개인정보 안전 도구",
+      "title": "외부 이미지 목록",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 394,
+      "category_key": "security_privacy",
+      "category": "보안·개인정보 안전 도구",
+      "title": "nofollow/sponsored 링크 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 395,
+      "category_key": "security_privacy",
+      "category": "보안·개인정보 안전 도구",
+      "title": "사용자 입력 저장 여부 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 396,
+      "category_key": "security_privacy",
+      "category": "보안·개인정보 안전 도구",
+      "title": "개인정보 입력 폼 탐지",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 397,
+      "category_key": "security_privacy",
+      "category": "보안·개인정보 안전 도구",
+      "title": "쿠키 사용 여부 점검",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 398,
+      "category_key": "security_privacy",
+      "category": "보안·개인정보 안전 도구",
+      "title": "로컬스토리지 사용 점검",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 399,
+      "category_key": "security_privacy",
+      "category": "보안·개인정보 안전 도구",
+      "title": "보안 헤더 리포트",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 400,
+      "category_key": "security_privacy",
+      "category": "보안·개인정보 안전 도구",
+      "title": "배포 전 민감정보 스캔",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 401,
+      "category_key": "forms_inputs",
+      "category": "입력폼·계산기 UX 도구",
+      "title": "input type 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 402,
+      "category_key": "forms_inputs",
+      "category": "입력폼·계산기 UX 도구",
+      "title": "number input min/max 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 403,
+      "category_key": "forms_inputs",
+      "category": "입력폼·계산기 UX 도구",
+      "title": "placeholder 짧게 만들기",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 404,
+      "category_key": "forms_inputs",
+      "category": "입력폼·계산기 UX 도구",
+      "title": "error message 일관화",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 405,
+      "category_key": "forms_inputs",
+      "category": "입력폼·계산기 UX 도구",
+      "title": "copy button 상태 복구",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 406,
+      "category_key": "forms_inputs",
+      "category": "입력폼·계산기 UX 도구",
+      "title": "reset button 제공",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 407,
+      "category_key": "forms_inputs",
+      "category": "입력폼·계산기 UX 도구",
+      "title": "결과 박스 다크톤 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 408,
+      "category_key": "forms_inputs",
+      "category": "입력폼·계산기 UX 도구",
+      "title": "결과 공유 텍스트 생성",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 409,
+      "category_key": "forms_inputs",
+      "category": "입력폼·계산기 UX 도구",
+      "title": "입력값 trim 처리",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 410,
+      "category_key": "forms_inputs",
+      "category": "입력폼·계산기 UX 도구",
+      "title": "한글 도메인 입력 처리",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 411,
+      "category_key": "forms_inputs",
+      "category": "입력폼·계산기 UX 도구",
+      "title": "대소문자 코드 정규화",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 412,
+      "category_key": "forms_inputs",
+      "category": "입력폼·계산기 UX 도구",
+      "title": "콤마 금액 입력 처리",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 413,
+      "category_key": "forms_inputs",
+      "category": "입력폼·계산기 UX 도구",
+      "title": "퍼센트 입력 처리",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 414,
+      "category_key": "forms_inputs",
+      "category": "입력폼·계산기 UX 도구",
+      "title": "배당 소수점 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 415,
+      "category_key": "forms_inputs",
+      "category": "입력폼·계산기 UX 도구",
+      "title": "잘못된 수식 입력 안내",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 416,
+      "category_key": "forms_inputs",
+      "category": "입력폼·계산기 UX 도구",
+      "title": "모바일 키보드 타입",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 417,
+      "category_key": "forms_inputs",
+      "category": "입력폼·계산기 UX 도구",
+      "title": "autofocus 제거 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 418,
+      "category_key": "forms_inputs",
+      "category": "입력폼·계산기 UX 도구",
+      "title": "form preventDefault 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 419,
+      "category_key": "forms_inputs",
+      "category": "입력폼·계산기 UX 도구",
+      "title": "no-JS fallback 안내",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 420,
+      "category_key": "forms_inputs",
+      "category": "입력폼·계산기 UX 도구",
+      "title": "계산 결과 aria-live",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 421,
+      "category_key": "forms_inputs",
+      "category": "입력폼·계산기 UX 도구",
+      "title": "도구별 예시 입력",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 422,
+      "category_key": "forms_inputs",
+      "category": "입력폼·계산기 UX 도구",
+      "title": "도구별 빈값 처리",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 423,
+      "category_key": "forms_inputs",
+      "category": "입력폼·계산기 UX 도구",
+      "title": "도구별 최대값 보호",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 424,
+      "category_key": "forms_inputs",
+      "category": "입력폼·계산기 UX 도구",
+      "title": "도구별 GA4 이벤트",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 425,
+      "category_key": "forms_inputs",
+      "category": "입력폼·계산기 UX 도구",
+      "title": "입력폼 회귀 테스트",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 426,
+      "category_key": "data_management",
+      "category": "데이터·콘텐츠 관리 도구",
+      "title": "업체 데이터 JSON 검증",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 427,
+      "category_key": "data_management",
+      "category": "데이터·콘텐츠 관리 도구",
+      "title": "블로그 데이터 JSON 검증",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 428,
+      "category_key": "data_management",
+      "category": "데이터·콘텐츠 관리 도구",
+      "title": "검색 키워드 JSON 검증",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 429,
+      "category_key": "data_management",
+      "category": "데이터·콘텐츠 관리 도구",
+      "title": "로드맵 JSON 검증",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 430,
+      "category_key": "data_management",
+      "category": "데이터·콘텐츠 관리 도구",
+      "title": "sitemap source 목록",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 431,
+      "category_key": "data_management",
+      "category": "데이터·콘텐츠 관리 도구",
+      "title": "카테고리별 글 수 통계",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 432,
+      "category_key": "data_management",
+      "category": "데이터·콘텐츠 관리 도구",
+      "title": "slug 중복 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 433,
+      "category_key": "data_management",
+      "category": "데이터·콘텐츠 관리 도구",
+      "title": "파일명 규칙 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 434,
+      "category_key": "data_management",
+      "category": "데이터·콘텐츠 관리 도구",
+      "title": "한글 파일명 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 435,
+      "category_key": "data_management",
+      "category": "데이터·콘텐츠 관리 도구",
+      "title": "이미지 매핑 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 436,
+      "category_key": "data_management",
+      "category": "데이터·콘텐츠 관리 도구",
+      "title": "provider 이미지 매핑 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 437,
+      "category_key": "data_management",
+      "category": "데이터·콘텐츠 관리 도구",
+      "title": "vendor detail 매핑 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 438,
+      "category_key": "data_management",
+      "category": "데이터·콘텐츠 관리 도구",
+      "title": "legacy 후보 목록",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 439,
+      "category_key": "data_management",
+      "category": "데이터·콘텐츠 관리 도구",
+      "title": "삭제 후보 목록",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 440,
+      "category_key": "data_management",
+      "category": "데이터·콘텐츠 관리 도구",
+      "title": "noindex 후보 목록",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 441,
+      "category_key": "data_management",
+      "category": "데이터·콘텐츠 관리 도구",
+      "title": "최근 업데이트 파일 목록",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 442,
+      "category_key": "data_management",
+      "category": "데이터·콘텐츠 관리 도구",
+      "title": "대량 변경 diff 요약",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 443,
+      "category_key": "data_management",
+      "category": "데이터·콘텐츠 관리 도구",
+      "title": "패치 파일 목록 생성 금지 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 444,
+      "category_key": "data_management",
+      "category": "데이터·콘텐츠 관리 도구",
+      "title": "설명 MD 생성 금지 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 445,
+      "category_key": "data_management",
+      "category": "데이터·콘텐츠 관리 도구",
+      "title": "DELETE_FILES 생성 금지 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 446,
+      "category_key": "data_management",
+      "category": "데이터·콘텐츠 관리 도구",
+      "title": "PATCH_MANIFEST 생성 금지 검사",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 447,
+      "category_key": "data_management",
+      "category": "데이터·콘텐츠 관리 도구",
+      "title": "빌드 데이터 버전 표시",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 448,
+      "category_key": "data_management",
+      "category": "데이터·콘텐츠 관리 도구",
+      "title": "데이터 스키마 설명",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 449,
+      "category_key": "data_management",
+      "category": "데이터·콘텐츠 관리 도구",
+      "title": "정적 데이터 압축 후보",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 450,
+      "category_key": "data_management",
+      "category": "데이터·콘텐츠 관리 도구",
+      "title": "데이터 회귀 테스트",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 451,
+      "category_key": "visual_regression",
+      "category": "시각 회귀·디자인 QA 도구",
+      "title": "홈 첫 화면 QA",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 452,
+      "category_key": "visual_regression",
+      "category": "시각 회귀·디자인 QA 도구",
+      "title": "블로그 목록 QA",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 453,
+      "category_key": "visual_regression",
+      "category": "시각 회귀·디자인 QA 도구",
+      "title": "블로그 상세 QA",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 454,
+      "category_key": "visual_regression",
+      "category": "시각 회귀·디자인 QA 도구",
+      "title": "도구 페이지 QA",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 455,
+      "category_key": "visual_regression",
+      "category": "시각 회귀·디자인 QA 도구",
+      "title": "보증업체 페이지 QA",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 456,
+      "category_key": "visual_regression",
+      "category": "시각 회귀·디자인 QA 도구",
+      "title": "업체 상세 랜딩 QA",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 457,
+      "category_key": "visual_regression",
+      "category": "시각 회귀·디자인 QA 도구",
+      "title": "고객센터 QA",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 458,
+      "category_key": "visual_regression",
+      "category": "시각 회귀·디자인 QA 도구",
+      "title": "헤더 PC QA",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 459,
+      "category_key": "visual_regression",
+      "category": "시각 회귀·디자인 QA 도구",
+      "title": "헤더 모바일 QA",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 460,
+      "category_key": "visual_regression",
+      "category": "시각 회귀·디자인 QA 도구",
+      "title": "푸터 QA",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 461,
+      "category_key": "visual_regression",
+      "category": "시각 회귀·디자인 QA 도구",
+      "title": "카드 크기 QA",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 462,
+      "category_key": "visual_regression",
+      "category": "시각 회귀·디자인 QA 도구",
+      "title": "카드 간격 QA",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 463,
+      "category_key": "visual_regression",
+      "category": "시각 회귀·디자인 QA 도구",
+      "title": "버튼 색 대비 QA",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 464,
+      "category_key": "visual_regression",
+      "category": "시각 회귀·디자인 QA 도구",
+      "title": "노란 버튼 글자색 QA",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 465,
+      "category_key": "visual_regression",
+      "category": "시각 회귀·디자인 QA 도구",
+      "title": "흰 배경 재발 QA",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 466,
+      "category_key": "visual_regression",
+      "category": "시각 회귀·디자인 QA 도구",
+      "title": "이미지 찌그러짐 QA",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 467,
+      "category_key": "visual_regression",
+      "category": "시각 회귀·디자인 QA 도구",
+      "title": "로고 잘림 QA",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 468,
+      "category_key": "visual_regression",
+      "category": "시각 회귀·디자인 QA 도구",
+      "title": "긴 제목 줄바꿈 QA",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 469,
+      "category_key": "visual_regression",
+      "category": "시각 회귀·디자인 QA 도구",
+      "title": "모바일 360px QA",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 470,
+      "category_key": "visual_regression",
+      "category": "시각 회귀·디자인 QA 도구",
+      "title": "모바일 390px QA",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 471,
+      "category_key": "visual_regression",
+      "category": "시각 회귀·디자인 QA 도구",
+      "title": "태블릿 768px QA",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 472,
+      "category_key": "visual_regression",
+      "category": "시각 회귀·디자인 QA 도구",
+      "title": "PC 1440px QA",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 473,
+      "category_key": "visual_regression",
+      "category": "시각 회귀·디자인 QA 도구",
+      "title": "초대형 1920px QA",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 474,
+      "category_key": "visual_regression",
+      "category": "시각 회귀·디자인 QA 도구",
+      "title": "스크롤바 overflow QA",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 475,
+      "category_key": "visual_regression",
+      "category": "시각 회귀·디자인 QA 도구",
+      "title": "시각 점검 체크리스트",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 476,
+      "category_key": "future_ai_assist",
+      "category": "AI 보조·해석 도구 후보",
+      "title": "약관 문장 요약",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 477,
+      "category_key": "future_ai_assist",
+      "category": "AI 보조·해석 도구 후보",
+      "title": "이벤트 조건 자동 분류",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 478,
+      "category_key": "future_ai_assist",
+      "category": "AI 보조·해석 도구 후보",
+      "title": "롤링 조건 자동 추출",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 479,
+      "category_key": "future_ai_assist",
+      "category": "AI 보조·해석 도구 후보",
+      "title": "최대출금 조건 자동 추출",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 480,
+      "category_key": "future_ai_assist",
+      "category": "AI 보조·해석 도구 후보",
+      "title": "제외 게임 자동 추출",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 481,
+      "category_key": "future_ai_assist",
+      "category": "AI 보조·해석 도구 후보",
+      "title": "주소 공지 자동 비교",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 482,
+      "category_key": "future_ai_assist",
+      "category": "AI 보조·해석 도구 후보",
+      "title": "도메인 변경 요약",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 483,
+      "category_key": "future_ai_assist",
+      "category": "AI 보조·해석 도구 후보",
+      "title": "배당판 수식 설명",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 484,
+      "category_key": "future_ai_assist",
+      "category": "AI 보조·해석 도구 후보",
+      "title": "슬롯 RTP 설명",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 485,
+      "category_key": "future_ai_assist",
+      "category": "AI 보조·해석 도구 후보",
+      "title": "바카라 하우스엣지 설명",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 486,
+      "category_key": "future_ai_assist",
+      "category": "AI 보조·해석 도구 후보",
+      "title": "미니게임 파산확률 설명",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 487,
+      "category_key": "future_ai_assist",
+      "category": "AI 보조·해석 도구 후보",
+      "title": "피싱 URL 근거 설명",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 488,
+      "category_key": "future_ai_assist",
+      "category": "AI 보조·해석 도구 후보",
+      "title": "SEO title 후보 생성",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 489,
+      "category_key": "future_ai_assist",
+      "category": "AI 보조·해석 도구 후보",
+      "title": "description 후보 생성",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 490,
+      "category_key": "future_ai_assist",
+      "category": "AI 보조·해석 도구 후보",
+      "title": "FAQ 후보 생성",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 491,
+      "category_key": "future_ai_assist",
+      "category": "AI 보조·해석 도구 후보",
+      "title": "관련글 후보 추천",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 492,
+      "category_key": "future_ai_assist",
+      "category": "AI 보조·해석 도구 후보",
+      "title": "내부링크 anchor 추천",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 493,
+      "category_key": "future_ai_assist",
+      "category": "AI 보조·해석 도구 후보",
+      "title": "글 중복도 설명",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 494,
+      "category_key": "future_ai_assist",
+      "category": "AI 보조·해석 도구 후보",
+      "title": "문단 반복 제거 제안",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 495,
+      "category_key": "future_ai_assist",
+      "category": "AI 보조·해석 도구 후보",
+      "title": "모바일 문구 압축 제안",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 496,
+      "category_key": "future_ai_assist",
+      "category": "AI 보조·해석 도구 후보",
+      "title": "CTA 과다 탐지 제안",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 497,
+      "category_key": "future_ai_assist",
+      "category": "AI 보조·해석 도구 후보",
+      "title": "고객센터 답변 초안",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 498,
+      "category_key": "future_ai_assist",
+      "category": "AI 보조·해석 도구 후보",
+      "title": "증빙자료 목록 생성",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 499,
+      "category_key": "future_ai_assist",
+      "category": "AI 보조·해석 도구 후보",
+      "title": "운영 점검 요약",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    },
+    {
+      "id": 500,
+      "category_key": "future_ai_assist",
+      "category": "AI 보조·해석 도구 후보",
+      "title": "배포 후 QA 요약",
+      "status": "candidate",
+      "duplicate_policy": "중복 기능 제외 후 기존 도구에 통합 또는 신규 상세 도구로 분리"
+    }
+  ]
+}

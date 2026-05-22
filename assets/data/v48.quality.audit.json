@@ -1,0 +1,21 @@
+{
+  "version": "V48 Content Deduplication & Visual Stability Upgrade",
+  "generatedAt": "2026-05-22T04:59:52.382Z",
+  "cssGuard": true,
+  "blogPosts": 338,
+  "newPosts": 50,
+  "legacyCandidates": 32,
+  "sitemapUrls": 586,
+  "requiredChecks": [
+    "blog white background guard",
+    "blog colors auto inspection",
+    "duplicate H2 number cleanup",
+    "repeated paragraph detector report",
+    "duplicate title removal",
+    "legacy candidate extraction",
+    "CTA link audit",
+    "image missing audit",
+    "sitemap file existence audit",
+    "build/verify gate"
+  ]
+}
