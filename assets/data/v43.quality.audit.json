@@ -1,6 +1,6 @@
 {
   "version": "static-growth-conversion-v51",
-  "generatedAt": "2026-05-22T04:59:54.909Z",
+  "generatedAt": "2026-05-22T07:34:58.810Z",
   "counts": {
     "html": 624,
     "blog": 453,
@@ -18,7 +18,7 @@
   },
   "quality": {
     "blogDetailsWithGuard": 0,
-    "averageBlogWords": 869
+    "averageBlogWords": 881
   },
   "samples": {
     "duplicateTitles": [],
