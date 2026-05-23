@@ -1,0 +1,1 @@
+(()=>{const mark='v59VendorLogoSystem';if(window[mark])return;window[mark]=true;document.querySelectorAll('img[src*="/assets/vendor-logos/v59/"]').forEach(img=>{img.addEventListener('error',()=>{const p=img.parentElement;if(p){p.classList.add('v58-image-fallback');p.dataset.v58Fallback=img.alt?.replace(/\s*통일.*$/,'')||'88ST';}img.remove();},{once:true});});})();
