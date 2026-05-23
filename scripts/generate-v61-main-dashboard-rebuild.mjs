@@ -147,6 +147,15 @@ try {
   }
   pkg.scripts = pkg.scripts || {};
   pkg.scripts['quality:v61'] = cmd;
+  const v65cmd = 'node scripts/generate-v65-global-premium-fix.mjs';
+  if (pkg.scripts?.build && !pkg.scripts.build.includes(v65cmd)) {
+    if (pkg.scripts.build.includes('node scripts/generate-v43-quality-data.mjs && node scripts/gen-build-ver.mjs')) {
+      pkg.scripts.build = pkg.scripts.build.replace('node scripts/generate-v43-quality-data.mjs && node scripts/gen-build-ver.mjs', 'node scripts/generate-v43-quality-data.mjs && ' + v65cmd + ' && node scripts/gen-build-ver.mjs');
+    } else if (pkg.scripts.build.includes('node scripts/gen-build-ver.mjs')) {
+      pkg.scripts.build = pkg.scripts.build.replace('node scripts/gen-build-ver.mjs', v65cmd + ' && node scripts/gen-build-ver.mjs');
+    }
+  }
+  pkg.scripts['quality:v65'] = v65cmd;
   writeFileSync(pkgPath, JSON.stringify(pkg, null, 2) + '\n', 'utf8');
 } catch {}
 
