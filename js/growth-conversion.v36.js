@@ -1,7 +1,7 @@
 (function(){
   if (window.__GROWTH_CONVERSION_V43_INIT__) return;
   window.__GROWTH_CONVERSION_V43_INIT__ = true;
-  var VERSION = "static-growth-conversion-v48-20260520";
+  var VERSION = "static-growth-conversion-v51-20260522";
   var BOT_URL = "https://t.me/TRS999_bot";
   function ready(fn){ if(document.readyState !== "loading") fn(); else document.addEventListener("DOMContentLoaded", fn, { once:true }); }
   function track(name, params){
