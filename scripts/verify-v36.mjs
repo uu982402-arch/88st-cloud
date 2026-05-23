@@ -394,9 +394,9 @@ if (wranglerWanted) {
     const fp = path.join(ROOT, route);
     if (fs.existsSync(fp)) {
       const txt = read(fp);
-      if (!/v55-luminous-site|v57-high-end|v58-dashboard-home|v58-enhanced/.test(txt)) fail(errors, 'V55/V57/V58 body class missing ' + route);
-      if (!/v55\.luminous-sitewide\.css|v57\.mobile-bento\.css|v58\.app-dashboard\.css/.test(txt)) fail(errors, 'V55/V57/V58 CSS link missing ' + route);
-      if (!/v55\.luminous-sitewide\.js|v57\.mobile-bento\.js|v58\.app-dashboard\.js/.test(txt)) fail(errors, 'V55/V57/V58 JS link missing ' + route);
+      if (!/v55-luminous-site|v57-high-end|v58-dashboard-home|v58-enhanced|v61-home/.test(txt)) fail(errors, 'V55/V57/V58 body class missing ' + route);
+      if (!/v55\.luminous-sitewide\.css|v57\.mobile-bento\.css|v58\.app-dashboard\.css|v61\.main-dashboard-rebuild\.css/.test(txt)) fail(errors, 'V55/V57/V58 CSS link missing ' + route);
+      if (!/v55\.luminous-sitewide\.js|v57\.mobile-bento\.js|v58\.app-dashboard\.js|v61\.main-dashboard-rebuild\.js/.test(txt)) fail(errors, 'V55/V57/V58 JS link missing ' + route);
     }
   }
 }
@@ -426,10 +426,10 @@ if (wranglerWanted) {
   let missingLogo = 0;
   for (const f of htmls) {
     const txt = read(f);
-    if (!/v57-home-page|v57-guaranteed-page|v58-dashboard-home/.test(txt) && (!/v56-design-system/.test(txt) || !/v56\.high-end-system\.css/.test(txt) || !/v56\.design-system\.js/.test(txt))) missingV56++;
+    if (!/v61-home|v57-home-page|v57-guaranteed-page|v58-dashboard-home/.test(txt) && (!/v56-design-system/.test(txt) || !/v56\.high-end-system\.css/.test(txt) || !/v56\.design-system\.js/.test(txt))) missingV56++;
     const hasHeaderBrand = /<a\b[^>]*class=["'][^"']*(moon-brand|\bbrand\b)[^"']*["'][^>]*>/i.test(txt);
     const isRedirectOnly = /http-equiv=["']refresh["']/i.test(txt) && !/<main\b/i.test(txt);
-    if (hasHeaderBrand && !isRedirectOnly && (!(/v56-logo-symbol/.test(txt) && /v56-logo-main/.test(txt) && /v56-logo-cloud/.test(txt)) && !/v57-logo-mark|v58-logo-symbol/.test(txt))) missingLogo++;
+    if (hasHeaderBrand && !isRedirectOnly && (!(/v56-logo-symbol/.test(txt) && /v56-logo-main/.test(txt) && /v56-logo-cloud/.test(txt)) && !/v57-logo-mark|v58-logo-symbol|v61-logo-mark/.test(txt))) missingLogo++;
     if (/href=["']#["']|href=["']javascript:void\(0\)["']/i.test(txt)) fail(errors, 'V56 bad href regression ' + rel(f));
     if (/<img[^>]+logo-v24\.png[^>]*>/.test(txt) && /moon-brand/.test(txt)) fail(errors, 'V56 legacy image logo in header ' + rel(f));
   }
@@ -462,8 +462,8 @@ if (wranglerWanted) {
   const home = path.join(ROOT, 'index.html');
   if (fs.existsSync(home)) {
     const h = read(home);
-    if (!/v57-home-page|v58-dashboard-home/.test(h)) fail(errors, 'V57/V58 home body class missing');
-    if (!/v58-dashboard-home/.test(h)) {
+    if (!/v61-home|v57-home-page|v58-dashboard-home/.test(h)) fail(errors, 'V57/V58/V61 home body class missing');
+    if (!/v61-home|v58-dashboard-home/.test(h)) {
       if (!/v57-provider-grid2/.test(h)) fail(errors, 'V57 provider section missing on home');
       if ((h.match(/class=["'][^"']*v57-provider-card2/g)||[]).length !== 5) fail(errors, 'V57 home provider card count failed');
       if ((h.match(/class=["'][^"']*v57-bento-card/g)||[]).length !== 12) fail(errors, 'V57 bento tool card count failed');
@@ -523,8 +523,9 @@ if (wranglerWanted) {
   if (!fs.existsSync(audit)) fail(errors, 'V58 audit JSON missing');
   if (fs.existsSync(home)) {
     const h = read(home);
-    if (!/v58-dashboard-home/.test(h)) fail(errors, 'V58 home body class missing');
-    if ((h.match(/data-v58-tab-trigger=/g)||[]).length < 10) fail(errors, 'V58 tab trigger count failed');
+    if (!/v61-home/.test(h)) {
+      if (!/v58-dashboard-home/.test(h)) fail(errors, 'V58 home body class missing');
+      if ((h.match(/data-v58-tab-trigger=/g)||[]).length < 10) fail(errors, 'V58 tab trigger count failed');
     if ((h.match(/data-v58-view=/g)||[]).length !== 5) fail(errors, 'V58 view count failed');
     if ((h.match(/class=["'][^"']*v58-provider-card/g)||[]).length < 10) fail(errors, 'V58 provider cards missing');
     if ((h.match(/class=["'][^"']*v58-tool-card/g)||[]).length < 18) fail(errors, 'V58 tool cards missing');
@@ -532,6 +533,7 @@ if (wranglerWanted) {
     if (!/data-v58-live-search/.test(h)) fail(errors, 'V58 live search missing');
     if (!/v58-bottom-nav/.test(h)) fail(errors, 'V58 mobile bottom nav missing');
     if (/href=["']#["']|javascript:void(0)/i.test(h)) fail(errors, 'V58 bad href in home');
+    }
   }
   const style = fs.existsSync(css) ? read(css) : '';
   for (const token of ['#000','rgba(255,255,255,.026)','@media (max-width:768px)','overflow-x:auto','grid-template-columns:repeat(4','v58-bottom-nav','translateY(-5px)']) {
@@ -580,9 +582,11 @@ if (wranglerWanted) {
     const fp = path.join(ROOT, route);
     if (!fs.existsSync(fp)) continue;
     const txt = read(fp);
-    if (!/v59-vendor-logo-system/.test(txt)) fail(errors, 'V59 body class missing ' + route);
-    if (!/v59.vendor-logo-system.css/.test(txt)) fail(errors, 'V59 CSS link missing ' + route);
-    if (!/v59.vendor-logo-system.js/.test(txt)) fail(errors, 'V59 JS link missing ' + route);
+    if (!/v61-home/.test(txt)) {
+      if (!/v59-vendor-logo-system/.test(txt)) fail(errors, 'V59 body class missing ' + route);
+      if (!/v59.vendor-logo-system.css/.test(txt)) fail(errors, 'V59 CSS link missing ' + route);
+      if (!/v59.vendor-logo-system.js/.test(txt)) fail(errors, 'V59 JS link missing ' + route);
+    } else if (!/v59.vendor-logo-system.css/.test(txt)) fail(errors, 'V59 CSS link missing ' + route);
   }
   const guaranteed = path.join(ROOT, 'guaranteed/index.html');
   if (fs.existsSync(guaranteed)) {
@@ -593,7 +597,8 @@ if (wranglerWanted) {
   const home = path.join(ROOT, 'index.html');
   if (fs.existsSync(home)) {
     const h = read(home);
-    if ((h.match(/v59-provider-logo-img/g)||[]).length < 5) fail(errors, 'V59 home unified logo count failed');
+    if (!/v61-home/.test(h) && (h.match(/v59-provider-logo-img/g)||[]).length < 5) fail(errors, 'V59 home unified logo count failed');
+    if (/v61-home/.test(h) && (h.match(/assets\/vendor-logos\/v59\//g)||[]).length < 5) fail(errors, 'V61 home unified logo count failed');
   }
   const tools = path.join(ROOT, 'tools/index.html');
   if (fs.existsSync(tools)) {
@@ -651,9 +656,11 @@ if (wranglerWanted) {
     if (!fs.existsSync(fp)) fail(errors, 'V60 required page missing ' + route);
     else {
       const txt = read(fp);
-      if (!/v60-open-ready/.test(txt)) fail(errors, 'V60 body class missing ' + route);
-      if (!/v60\.open-ready-final\.css/.test(txt)) fail(errors, 'V60 CSS link missing ' + route);
-      if (!/v60\.open-ready-final\.js/.test(txt)) fail(errors, 'V60 JS link missing ' + route);
+      if (!/v61-home/.test(txt)) {
+        if (!/v60-open-ready/.test(txt)) fail(errors, 'V60 body class missing ' + route);
+        if (!/v60\.open-ready-final\.css/.test(txt)) fail(errors, 'V60 CSS link missing ' + route);
+        if (!/v60\.open-ready-final\.js/.test(txt)) fail(errors, 'V60 JS link missing ' + route);
+      }
     }
   }
   const home = path.join(ROOT, 'index.html');
@@ -668,6 +675,26 @@ if (wranglerWanted) {
   }
 }
 // END V60 open-ready conversion finalization checks
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -730,17 +757,17 @@ if (wranglerWanted) {
   if (!fs.existsSync(home)) fail(errors, 'V53 home index missing');
   else {
     const h = read(home);
-    if (!/v53-home-page|v57-home-page|v58-dashboard-home/.test(h)) fail(errors, 'V53/V57/V58 home body class missing');
-    if (!/v53.main-open-ready.css|v57.mobile-bento.css|v58.app-dashboard.css/.test(h)) fail(errors, 'V53/V57/V58 main CSS missing');
-    if (!/assets\/js\/v53\.main\.js|assets\/js\/v57\.mobile-bento\.js|assets\/js\/v58\.app-dashboard\.js/.test(h)) fail(errors, 'V53/V57/V58 main JS missing');
-    if (!/v57-home-page|v58-dashboard-home/.test(h)) {
+    if (!/v61-home|v53-home-page|v57-home-page|v58-dashboard-home/.test(h)) fail(errors, 'V53/V57/V58/V61 home body class missing');
+    if (!/v61.main-dashboard-rebuild.css|v53.main-open-ready.css|v57.mobile-bento.css|v58.app-dashboard.css/.test(h)) fail(errors, 'V53/V57/V58/V61 main CSS missing');
+    if (!/assets\/js\/v61\.main-dashboard-rebuild\.js|assets\/js\/v53\.main\.js|assets\/js\/v57\.mobile-bento\.js|assets\/js\/v58\.app-dashboard\.js/.test(h)) fail(errors, 'V53/V57/V58/V61 main JS missing');
+    if (!/v61-home|v57-home-page|v58-dashboard-home/.test(h)) {
       if ((h.match(/class=["'][^"']*v53-provider-card/g)||[]).length !== 5) fail(errors, 'V53 home provider card count failed');
       if ((h.match(/class=["'][^"']*v53-tool-card/g)||[]).length !== 6) fail(errors, 'V53 home tool card count failed');
       if ((h.match(/class=["'][^"']*v53-guide-card/g)||[]).length !== 4) fail(errors, 'V53 home guide card count failed');
     }
     if (/RUST 에이전시/.test(h)) fail(errors, 'V53 removed title returned on home');
     if (/상담 전 체크/.test(h)) fail(errors, 'V53 old consult-check card returned on home');
-    if (!/v57-home-page|v58-dashboard-home/.test(h) && /data-g-code=|가입코드|공식 도메인/.test(h)) fail(errors, 'V53 code/domain leaked on home provider cards');
+    if (!/v61-home|v57-home-page|v58-dashboard-home/.test(h) && /data-g-code=|가입코드|공식 도메인/.test(h)) fail(errors, 'V53 code/domain leaked on home provider cards');
     if (/href=["']#["']|javascript:void\(0\)/i.test(h)) fail(errors, 'V53 bad href in home');
   }
   const css = path.join(ROOT, 'assets/css/v53.main-open-ready.css');
@@ -762,4 +789,15 @@ const result = {
   checkedAt: new Date().toISOString()
 };
 console.log(JSON.stringify(result, null, 2));
+
+// V61 compact main dashboard checks
+if (fs.existsSync(path.join(ROOT, "index.html"))) {
+  const v61Home = read(path.join(ROOT, "index.html"));
+  if (!/v61-home/.test(v61Home)) fail(errors, "V61 main dashboard class missing");
+  if (/Team RUST MAIN|RUST 에이전시/.test(v61Home)) fail(errors, "V61 old giant title text regression");
+  const providerLogos = (v61Home.match(/assets\/vendor-logos\/v59\//g) || []).length;
+  if (providerLogos < 5) fail(errors, `V61 provider logos missing: ${providerLogos}`);
+  if (!/v61-provider-visual/.test(v61Home)) fail(errors, "V61 large provider visual missing");
+}
+
 if (errors.length) process.exit(1);

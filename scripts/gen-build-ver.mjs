@@ -3,7 +3,7 @@ import { dirname, resolve, join } from 'node:path';
 
 const stamp = new Date().toISOString();
 const compact = stamp.replace(/[-:.TZ]/g, '').slice(0, 14);
-const version = `static-growth-conversion-v60-${compact}`;
+const version = `static-growth-conversion-v61-${compact}`;
 
 function countFiles(pattern) {
   let n = 0;
