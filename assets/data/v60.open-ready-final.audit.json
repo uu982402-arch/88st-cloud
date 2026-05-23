@@ -1,9 +1,9 @@
 {
   "version": "static-growth-conversion-v60",
-  "generatedAt": "2026-05-23T02:23:13.451Z",
+  "generatedAt": "2026-05-23T11:57:59.869Z",
   "summary": {
     "html": 624,
-    "files": 926,
+    "files": 930,
     "badHref": 0,
     "missingAsset": 0,
     "deadInternal": 0,
@@ -85,6 +85,7 @@
       "assets/css/v57.mobile-bento.css",
       "assets/css/v59.vendor-logo-system.css",
       "assets/css/v60.open-ready-final.css",
+      "assets/css/v61.main-dashboard-rebuild.css",
       "assets/css/vvip-hub.v85.css",
       "assets/css/vvip-luxe.v75.css",
       "assets/data/asset.inventory.v43.json",
@@ -123,8 +124,7 @@
       "assets/data/v56.high-end-system.audit.json",
       "assets/data/v57.mobile-bento.audit.json",
       "assets/data/v58.app-dashboard.audit.json",
-      "assets/data/v59.vendor-logo-system.audit.json",
-      "assets/data/v60.open-ready-final.audit.json"
+      "assets/data/v59.vendor-logo-system.audit.json"
     ]
   },
   "details": {
