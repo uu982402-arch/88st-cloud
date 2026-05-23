@@ -1,9 +1,9 @@
 {
   "version": "static-growth-conversion-v60",
-  "generatedAt": "2026-05-23T11:57:59.869Z",
+  "generatedAt": "2026-05-23T17:49:23.276Z",
   "summary": {
     "html": 624,
-    "files": 930,
+    "files": 941,
     "badHref": 0,
     "missingAsset": 0,
     "deadInternal": 0,
@@ -86,6 +86,9 @@
       "assets/css/v59.vendor-logo-system.css",
       "assets/css/v60.open-ready-final.css",
       "assets/css/v61.main-dashboard-rebuild.css",
+      "assets/css/v62.main-hard-reset.css",
+      "assets/css/v63.sitewide-hard-reset.css",
+      "assets/css/v64.mobile-tools-dark-fix.css",
       "assets/css/vvip-hub.v85.css",
       "assets/css/vvip-luxe.v75.css",
       "assets/data/asset.inventory.v43.json",
@@ -121,10 +124,7 @@
       "assets/data/v53.main.audit.json",
       "assets/data/v54.vendor-landing.audit.json",
       "assets/data/v55.luminous.audit.json",
-      "assets/data/v56.high-end-system.audit.json",
-      "assets/data/v57.mobile-bento.audit.json",
-      "assets/data/v58.app-dashboard.audit.json",
-      "assets/data/v59.vendor-logo-system.audit.json"
+      "assets/data/v56.high-end-system.audit.json"
     ]
   },
   "details": {

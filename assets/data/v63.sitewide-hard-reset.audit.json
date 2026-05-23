@@ -1,0 +1,22 @@
+{
+  "version": "static-growth-conversion-v63",
+  "generatedAt": "2026-05-23T17:49:23.754Z",
+  "htmlScanned": 624,
+  "htmlUpdated": 624,
+  "css": "assets/css/v63.sitewide-hard-reset.css",
+  "js": "assets/js/v63.sitewide-hard-reset.js",
+  "scope": [
+    "main",
+    "tools",
+    "guaranteed",
+    "vendor-landings",
+    "blog",
+    "consult",
+    "headers",
+    "footers"
+  ],
+  "compactTitleLock": true,
+  "providerImageEmphasis": true,
+  "mobileAppNavigationGuard": true,
+  "note": "V63 applies a final global premium hard reset layer after previous V55-V62 styles without removing existing functionality."
+}

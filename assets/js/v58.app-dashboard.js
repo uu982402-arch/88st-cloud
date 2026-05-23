@@ -32,7 +32,7 @@
   } else {
     document.body.classList.add('v58-enhanced');
     if (!document.querySelector('.v58-bottom-nav')) {
-      const map=[['/','홈','메인'],['/blog/','가이드','블로그'],['/tools/','도구','도구'],['/guaranteed/','업체','보증업체'],['/consult/','센터','고객센터']];
+      const map=[['/','홈','메인'],['/blog/','블로그','블로그'],['/tools/','도구','도구'],['/guaranteed/','보증','보증업체'],['/consult/','센터','고객센터']];
       const nav=document.createElement('nav'); nav.className='v58-bottom-nav'; nav.setAttribute('aria-label','모바일 하단 내비게이션');
       nav.innerHTML=map.map(([href,short,label])=>'<a href="'+href+'" class="'+(location.pathname===href?'is-active':'')+'"><span>'+short+'</span><small>'+label+'</small></a>').join('');
       document.body.appendChild(nav);
