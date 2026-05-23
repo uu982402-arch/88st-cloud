@@ -394,9 +394,9 @@ if (wranglerWanted) {
     const fp = path.join(ROOT, route);
     if (fs.existsSync(fp)) {
       const txt = read(fp);
-      if (!/v55-luminous-site|v57-high-end|v58-dashboard-home|v58-enhanced|v61-home|v62-home|v62-home/.test(txt)) fail(errors, 'V55/V57/V58 body class missing ' + route);
-      if (!/v55\.luminous-sitewide\.css|v57\.mobile-bento\.css|v58\.app-dashboard\.css|v61\.main-dashboard-rebuild\.css|v62\.main-hard-reset\.css|v62\.main-hard-reset\.css/.test(txt)) fail(errors, 'V55/V57/V58 CSS link missing ' + route);
-      if (!/v55\.luminous-sitewide\.js|v57\.mobile-bento\.js|v58\.app-dashboard\.js|v61\.main-dashboard-rebuild\.js|v62\.main-hard-reset\.js|v62\.main-hard-reset\.js/.test(txt)) fail(errors, 'V55/V57/V58 JS link missing ' + route);
+      if (!/v55-luminous-site|v57-high-end|v58-dashboard-home|v58-enhanced|v61-home|v62-home|v62-home|v62-home|v62-home|v62-home/.test(txt)) fail(errors, 'V55/V57/V58 body class missing ' + route);
+      if (!/v55\.luminous-sitewide\.css|v57\.mobile-bento\.css|v58\.app-dashboard\.css|v61\.main-dashboard-rebuild\.css|v62\.main-hard-reset\.css|v62\.main-hard-reset\.css|v62\.main-hard-reset\.css|v62\.main-hard-reset\.css|v62\.main-hard-reset\.css/.test(txt)) fail(errors, 'V55/V57/V58 CSS link missing ' + route);
+      if (!/v55\.luminous-sitewide\.js|v57\.mobile-bento\.js|v58\.app-dashboard\.js|v61\.main-dashboard-rebuild\.js|v62\.main-hard-reset\.js|v62\.main-hard-reset\.js|v62\.main-hard-reset\.js|v62\.main-hard-reset\.js|v62\.main-hard-reset\.js/.test(txt)) fail(errors, 'V55/V57/V58 JS link missing ' + route);
     }
   }
 }
@@ -429,7 +429,7 @@ if (wranglerWanted) {
     if (!/v61-home|v62-home|v57-home-page|v57-guaranteed-page|v58-dashboard-home/.test(txt) && (!/v56-design-system/.test(txt) || !/v56\.high-end-system\.css/.test(txt) || !/v56\.design-system\.js/.test(txt))) missingV56++;
     const hasHeaderBrand = /<a\b[^>]*class=["'][^"']*(moon-brand|\bbrand\b)[^"']*["'][^>]*>/i.test(txt);
     const isRedirectOnly = /http-equiv=["']refresh["']/i.test(txt) && !/<main\b/i.test(txt);
-    if (hasHeaderBrand && !isRedirectOnly && (!(/v56-logo-symbol/.test(txt) && /v56-logo-main/.test(txt) && /v56-logo-cloud/.test(txt)) && !/v57-logo-mark|v58-logo-symbol|v61-logo-mark|v62-symbol|v62-symbol/.test(txt))) missingLogo++;
+    if (hasHeaderBrand && !isRedirectOnly && (!(/v56-logo-symbol/.test(txt) && /v56-logo-main/.test(txt) && /v56-logo-cloud/.test(txt)) && !/v57-logo-mark|v58-logo-symbol|v61-logo-mark|v62-symbol|v62-symbol|v62-symbol|v62-symbol|v62-symbol/.test(txt))) missingLogo++;
     if (/href=["']#["']|href=["']javascript:void\(0\)["']/i.test(txt)) fail(errors, 'V56 bad href regression ' + rel(f));
     if (/<img[^>]+logo-v24\.png[^>]*>/.test(txt) && /moon-brand/.test(txt)) fail(errors, 'V56 legacy image logo in header ' + rel(f));
   }
@@ -729,6 +729,22 @@ if (wranglerWanted) {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // V52 open ready checks
 {
   const tools = path.join(ROOT, 'tools/index.html');
@@ -834,5 +850,45 @@ try {
   if (/data-g-code=|공식 도메인/.test(h)) fail(errors, 'V62 home leaks code/domain labels');
 } catch (e) { fail(errors, 'V62 main checks failed: ' + e.message); }
 
+
+// V64 mobile/tools/guaranteed regression checks
+try {
+  const sampleTools = read(path.join(ROOT, 'tools/index.html'));
+  const sampleGuaranteed = read(path.join(ROOT, 'guaranteed/index.html'));
+  if (!/v64\.mobile-tools-dark-fix\.css/.test(sampleTools)) fail(errors, 'V64 tools CSS missing');
+  if (!/v64\.mobile-tools-dark-fix\.js/.test(sampleTools)) fail(errors, 'V64 tools JS missing');
+  if (!/v64-mobile-tools-dark-fix/.test(sampleTools)) fail(errors, 'V64 tools body class missing');
+  if (!/v64-mobile-tools-dark-fix/.test(sampleGuaranteed)) fail(errors, 'V64 guaranteed body class missing');
+  const v64Css = read(path.join(ROOT, 'assets/css/v64.mobile-tools-dark-fix.css'));
+  if (!/v52-tool-card/.test(v64Css) || !/background:linear-gradient\(180deg,rgba\(255,255,255,.055\)/.test(v64Css)) fail(errors, 'V64 dark tool card guard missing');
+  if (!/v52-provider-card/.test(v64Css) || !/object-fit:contain/.test(v64Css)) fail(errors, 'V64 provider image fit guard missing');
+  const v58jsPath = path.join(ROOT, 'assets/js/v58.app-dashboard.js');
+  if (fs.existsSync(v58jsPath)) {
+    const v58js = read(v58jsPath);
+    if (/\['\/blog\/',\s*'가이드',\s*'블로그'\]/.test(v58js)) fail(errors, 'V64 old guide bottom label remains in v58 JS');
+    if (/\['\/guaranteed\/',\s*'업체',\s*'보증업체'\]/.test(v58js)) fail(errors, 'V64 old vendor short label remains in v58 JS');
+  }
+} catch (e) { fail(errors, 'V64 checks failed: ' + e.message); }
+
 if (errors.length) process.exit(1);
 // END V62 checks
+
+
+// V63 sitewide hard reset checks
+const v63KeyPages = [
+  'index.html','tools/index.html','guaranteed/index.html','blog/index.html','consult/index.html',
+  'guaranteed/queenbee/index.html','guaranteed/sk-holdings/index.html','guaranteed/anybet/index.html','guaranteed/udt/index.html','guaranteed/ddangkong/index.html'
+];
+for (const page of v63KeyPages) {
+  const p = path.join(ROOT, page);
+  if (!fs.existsSync(p)) fail(errors, `V63 key page missing ${page}`);
+  else {
+    const txt = read(p);
+    if (!/v63\.sitewide-hard-reset\.css/i.test(txt)) fail(errors, `V63 css missing ${page}`);
+    if (!/v63\.sitewide-hard-reset\.js/i.test(txt)) fail(errors, `V63 js missing ${page}`);
+    if (!/v63-sitewide-hard-reset/i.test(txt)) fail(errors, `V63 body class missing ${page}`);
+  }
+}
+if (!fs.existsSync(path.join(ROOT,'assets/css/v63.sitewide-hard-reset.css'))) fail(errors, 'V63 css asset missing');
+if (!fs.existsSync(path.join(ROOT,'assets/js/v63.sitewide-hard-reset.js'))) fail(errors, 'V63 js asset missing');
+if (!fs.existsSync(path.join(ROOT,'assets/data/v63.sitewide-hard-reset.audit.json'))) fail(errors, 'V63 audit missing');
