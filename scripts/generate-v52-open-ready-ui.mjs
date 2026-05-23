@@ -10,11 +10,11 @@ const read = p => fs.readFileSync(path.join(ROOT, p), 'utf8');
 const fileExists = p => fs.existsSync(path.join(ROOT, p));
 
 const providers = [
-  { slug:'queenbee', name:'여왕벌', label:'QUEENBEE', img:'/assets/provider-media/queenbee-logo-clean-v22.png', domain:'https://qb-700.com/?code=seoa', display:'qb-700.com', code:'seoa', detail:'/guaranteed/queenbee/', note:'신규·USDT 혜택 중심' },
-  { slug:'sk-holdings', name:'SK 홀딩스', label:'SK HOLDINGS', img:'/assets/provider-media/sk-holdings-logo.png', domain:'https://snk-99.com/', display:'snk-99.com', code:'IRON888', detail:'/guaranteed/sk-holdings/', note:'입금 플러스·복귀 이벤트 중심' },
-  { slug:'anybet', name:'ANYBET', label:'ANYBET', img:'/assets/provider-media/anybet-logo.png', domain:'https://any-777.com/', display:'any-777.com', code:'seoa', detail:'/guaranteed/anybet/', note:'원화·USDT 첫충 혜택 중심' },
-  { slug:'udt', name:'UDT', label:'UDT', img:'/assets/provider-media/udt-logo-transparent-v14.png', domain:'https://특공대.com', display:'특공대.COM', code:'SEOA', detail:'/guaranteed/udt/', note:'미니게임·페이백 중심' },
-  { slug:'ddangkong', name:'땅콩', label:'DDANGKONG', img:'/assets/provider-media/ddangkong-logo-v19.png', domain:'https://ddk-2025.com', display:'ddk-2025.com', code:'ddk888', detail:'/guaranteed/ddangkong/', note:'카지노·슬롯 콤프 중심' }
+  { slug:'queenbee', name:'여왕벌', label:'QUEENBEE', img:'/assets/vendor-logos/v59/queenbee-card.svg', domain:'https://qb-700.com/?code=seoa', display:'qb-700.com', code:'seoa', detail:'/guaranteed/queenbee/', note:'신규·USDT 혜택 중심' },
+  { slug:'sk-holdings', name:'SK 홀딩스', label:'SK HOLDINGS', img:'/assets/vendor-logos/v59/sk-holdings-card.svg', domain:'https://snk-99.com/', display:'snk-99.com', code:'IRON888', detail:'/guaranteed/sk-holdings/', note:'입금 플러스·복귀 이벤트 중심' },
+  { slug:'anybet', name:'ANYBET', label:'ANYBET', img:'/assets/vendor-logos/v59/anybet-card.svg', domain:'https://any-777.com/', display:'any-777.com', code:'seoa', detail:'/guaranteed/anybet/', note:'원화·USDT 첫충 혜택 중심' },
+  { slug:'udt', name:'UDT', label:'UDT', img:'/assets/vendor-logos/v59/udt-card.svg', domain:'https://특공대.com', display:'특공대.COM', code:'SEOA', detail:'/guaranteed/udt/', note:'미니게임·페이백 중심' },
+  { slug:'ddangkong', name:'땅콩', label:'DDANGKONG', img:'/assets/vendor-logos/v59/ddangkong-card.svg', domain:'https://ddk-2025.com', display:'ddk-2025.com', code:'ddk888', detail:'/guaranteed/ddangkong/', note:'카지노·슬롯 콤프 중심' }
 ];
 
 const tools = [

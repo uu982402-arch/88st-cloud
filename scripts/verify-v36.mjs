@@ -122,11 +122,13 @@ for (const f of v47BlogDetails) {
 const guaranteed = path.join(ROOT, "guaranteed/index.html");
 if (fs.existsSync(guaranteed)) {
   const g = read(guaranteed);
-  if (!/premium-card/.test(g) || !/code-badge/.test(g)) fail(errors, "guaranteed missing premium card code facts");
+  if (!/v57-guaranteed-page/.test(g)) {
+    if (!/premium-card/.test(g) || !/code-badge/.test(g)) fail(errors, "guaranteed missing premium card code facts");
+    const codeRows = (g.match(/class=["'][^"']*code-badge/gi) || []).length;
+    if (codeRows !== 5) fail(errors, `guaranteed code badge count regression: ${codeRows}`);
+  }
   if (!/>바로가기<|>바로가기\s*</.test(g)) fail(errors, "guaranteed missing shortcut button text");
   if (/class=["'][^"']*moon-code|<button[^>]*data-g-copy/i.test(g)) fail(errors, "guaranteed duplicate code button regression");
-  const codeRows = (g.match(/class=["'][^"']*code-badge/gi) || []).length;
-  if (codeRows !== 5) fail(errors, `guaranteed code badge count regression: ${codeRows}`);
   if (/접속 전 확인|빠른 체크/.test(g)) fail(errors, "guaranteed removed section regressed");
 }
 const consult = path.join(ROOT, "consult/index.html");
@@ -201,9 +203,11 @@ if (wranglerWanted) {
   const guaranteedFile = path.join(ROOT, 'guaranteed/index.html');
   if (fs.existsSync(guaranteedFile)) {
     const g = read(guaranteedFile);
-    if ((g.match(/v48-guaranteed-card/g)||[]).length !== 5) fail(errors, 'V48 guaranteed card count failed');
-    if ((g.match(/data-v47-copy-code=/g)||[]).length !== 5) fail(errors, 'V48 guaranteed code count failed');
-    if (!/v48-vendor-hero/.test(g)) fail(errors, 'V48 guaranteed image-first layout missing');
+    if (!/v57-guaranteed-page/.test(g)) {
+      if ((g.match(/v48-guaranteed-card/g)||[]).length !== 5) fail(errors, 'V48 guaranteed card count failed');
+      if ((g.match(/data-v47-copy-code=/g)||[]).length !== 5) fail(errors, 'V48 guaranteed code count failed');
+      if (!/v48-vendor-hero/.test(g)) fail(errors, 'V48 guaranteed image-first layout missing');
+    }
   }
 }
 
@@ -214,9 +218,11 @@ if (wranglerWanted) {
   if (!fs.existsSync(guaranteedIndex)) fail(errors, 'V49 guaranteed index missing');
   else {
     const g = read(guaranteedIndex);
-    if ((g.match(/v49-guaranteed-card/g)||[]).length !== 5) fail(errors, 'V49 guaranteed card count failed');
-    if ((g.match(/data-v49-detail-click=/g)||[]).length !== 5) fail(errors, 'V49 detail button count failed');
-    if ((g.match(/data-v49-domain-click=/g)||[]).length < 5) fail(errors, 'V49 domain click tracking missing');
+    if (!/v57-guaranteed-page/.test(g)) {
+      if ((g.match(/v49-guaranteed-card/g)||[]).length !== 5) fail(errors, 'V49 guaranteed card count failed');
+      if ((g.match(/data-v49-detail-click=/g)||[]).length !== 5) fail(errors, 'V49 detail button count failed');
+      if ((g.match(/data-v49-domain-click=/g)||[]).length < 5) fail(errors, 'V49 domain click tracking missing');
+    }
     if (!/상세보기/.test(g)) fail(errors, 'V49 detail button text missing');
     if (new RegExp("SEO"+"A69|seo"+"a69", "i").test(g)) fail(errors, 'V49 forbidden legacy contact regression in guaranteed index');
   }
@@ -246,11 +252,13 @@ if (wranglerWanted) {
   if (!fs.existsSync(gfp)) fail(errors, 'V50 guaranteed index missing');
   else {
     const g = read(gfp);
-    if (!/v50-guaranteed-page/.test(g)) fail(errors, 'V50 guaranteed page class missing');
-    if (!/v50-guarantee-container/.test(g)) fail(errors, 'V50 guaranteed compact container missing');
-    if ((g.match(/v50-guaranteed-card/g)||[]).length !== 5) fail(errors, 'V50 guaranteed compact card count failed');
-    if ((g.match(/class=["'][^"']*detail-btn/g)||[]).length < 5) fail(errors, 'V50 guaranteed detail buttons missing');
-    if ((g.match(/class=["'][^"']*action-btn/g)||[]).length < 5) fail(errors, 'V50 guaranteed shortcut buttons missing');
+    if (!/v57-guaranteed-page/.test(g)) {
+      if (!/v50-guaranteed-page/.test(g)) fail(errors, 'V50 guaranteed page class missing');
+      if (!/v50-guarantee-container/.test(g)) fail(errors, 'V50 guaranteed compact container missing');
+      if ((g.match(/v50-guaranteed-card/g)||[]).length !== 5) fail(errors, 'V50 guaranteed compact card count failed');
+      if ((g.match(/class=["'][^"']*detail-btn/g)||[]).length < 5) fail(errors, 'V50 guaranteed detail buttons missing');
+      if ((g.match(/class=["'][^"']*action-btn/g)||[]).length < 5) fail(errors, 'V50 guaranteed shortcut buttons missing');
+    }
   }
   const tools = path.join(ROOT, 'tools/index.html');
   if (!fs.existsSync(tools)) fail(errors, 'V50 tools index missing');
@@ -386,9 +394,9 @@ if (wranglerWanted) {
     const fp = path.join(ROOT, route);
     if (fs.existsSync(fp)) {
       const txt = read(fp);
-      if (!/v55-luminous-site/.test(txt)) fail(errors, 'V55 body class missing ' + route);
-      if (!/v55\.luminous-sitewide\.css/.test(txt)) fail(errors, 'V55 CSS link missing ' + route);
-      if (!/v55\.luminous-sitewide\.js/.test(txt)) fail(errors, 'V55 JS link missing ' + route);
+      if (!/v55-luminous-site|v57-high-end|v58-dashboard-home|v58-enhanced/.test(txt)) fail(errors, 'V55/V57/V58 body class missing ' + route);
+      if (!/v55\.luminous-sitewide\.css|v57\.mobile-bento\.css|v58\.app-dashboard\.css/.test(txt)) fail(errors, 'V55/V57/V58 CSS link missing ' + route);
+      if (!/v55\.luminous-sitewide\.js|v57\.mobile-bento\.js|v58\.app-dashboard\.js/.test(txt)) fail(errors, 'V55/V57/V58 JS link missing ' + route);
     }
   }
 }
@@ -418,10 +426,10 @@ if (wranglerWanted) {
   let missingLogo = 0;
   for (const f of htmls) {
     const txt = read(f);
-    if (!/v56-design-system/.test(txt) || !/v56\.high-end-system\.css/.test(txt) || !/v56\.design-system\.js/.test(txt)) missingV56++;
+    if (!/v57-home-page|v57-guaranteed-page|v58-dashboard-home/.test(txt) && (!/v56-design-system/.test(txt) || !/v56\.high-end-system\.css/.test(txt) || !/v56\.design-system\.js/.test(txt))) missingV56++;
     const hasHeaderBrand = /<a\b[^>]*class=["'][^"']*(moon-brand|\bbrand\b)[^"']*["'][^>]*>/i.test(txt);
     const isRedirectOnly = /http-equiv=["']refresh["']/i.test(txt) && !/<main\b/i.test(txt);
-    if (hasHeaderBrand && !isRedirectOnly && (!/v56-logo-symbol/.test(txt) || !/v56-logo-main/.test(txt) || !/v56-logo-cloud/.test(txt))) missingLogo++;
+    if (hasHeaderBrand && !isRedirectOnly && (!(/v56-logo-symbol/.test(txt) && /v56-logo-main/.test(txt) && /v56-logo-cloud/.test(txt)) && !/v57-logo-mark|v58-logo-symbol/.test(txt))) missingLogo++;
     if (/href=["']#["']|href=["']javascript:void\(0\)["']/i.test(txt)) fail(errors, 'V56 bad href regression ' + rel(f));
     if (/<img[^>]+logo-v24\.png[^>]*>/.test(txt) && /moon-brand/.test(txt)) fail(errors, 'V56 legacy image logo in header ' + rel(f));
   }
@@ -433,6 +441,241 @@ if (wranglerWanted) {
   }
 }
 // END V56 high-end unified design system checks
+
+
+
+
+
+
+
+
+
+
+// V57 mobile-first high-end bento checks
+{
+  const css = path.join(ROOT, 'assets/css/v57.mobile-bento.css');
+  const js = path.join(ROOT, 'assets/js/v57.mobile-bento.js');
+  const audit = path.join(ROOT, 'assets/data/v57.mobile-bento.audit.json');
+  if (!fs.existsSync(css)) fail(errors, 'V57 mobile bento CSS file missing');
+  if (!fs.existsSync(js)) fail(errors, 'V57 mobile bento JS file missing');
+  if (!fs.existsSync(audit)) fail(errors, 'V57 audit JSON missing');
+  const home = path.join(ROOT, 'index.html');
+  if (fs.existsSync(home)) {
+    const h = read(home);
+    if (!/v57-home-page|v58-dashboard-home/.test(h)) fail(errors, 'V57/V58 home body class missing');
+    if (!/v58-dashboard-home/.test(h)) {
+      if (!/v57-provider-grid2/.test(h)) fail(errors, 'V57 provider section missing on home');
+      if ((h.match(/class=["'][^"']*v57-provider-card2/g)||[]).length !== 5) fail(errors, 'V57 home provider card count failed');
+      if ((h.match(/class=["'][^"']*v57-bento-card/g)||[]).length !== 12) fail(errors, 'V57 bento tool card count failed');
+      if ((h.match(/class=["'][^"']*v57-blog-card2/g)||[]).length !== 4) fail(errors, 'V57 blog card count failed');
+    }
+    if (/상담 전 체크|RUST 에이전시/.test(h)) fail(errors, 'V57 removed home copy returned');
+    if (/data-g-code=/.test(h)) fail(errors, 'V57 data-g-code leaked on home provider cards');
+  }
+  const guaranteed = path.join(ROOT, 'guaranteed/index.html');
+  if (fs.existsSync(guaranteed)) {
+    const g = read(guaranteed);
+    if (!/v57-guaranteed-page/.test(g)) fail(errors, 'V57 guaranteed body class missing');
+    if ((g.match(/class=["'][^"']*v57-premium-provider-card/g)||[]).length !== 5) fail(errors, 'V57 guaranteed card count failed');
+    if ((g.match(/class=["'][^"']*v57-provider-logo-frame/g)||[]).length !== 5) fail(errors, 'V57 guaranteed logo frame count failed');
+    if ((g.match(/data-v57-copy-code=/g)||[]).length !== 5) fail(errors, 'V57 copy code count failed');
+    for (const img of ['queenbee-card.svg','sk-holdings-card.svg','anybet-card.svg','udt-card.svg','ddangkong-card.svg']) {
+      if (!g.includes(img)) fail(errors, 'V57/V59 missing unified provider image ' + img);
+      if (!fs.existsSync(path.join(ROOT, 'assets/vendor-logos/v59', img))) fail(errors, 'V57/V59 unified provider image asset missing ' + img);
+    }
+  }
+  const style = fs.existsSync(css) ? read(css) : '';
+  for (const token of ['grid-template-columns:repeat(4', '@media (max-width:768px)', 'grid-template-columns:1fr', '#090D16', '#00F0FF', '#39FF14', 'v57-provider-logo-frame']) {
+    if (!style.includes(token)) fail(errors, 'V57 design token missing ' + token);
+  }
+}
+// END V57 mobile-first high-end bento checks
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// V58 app-style dashboard checks
+{
+  const home = path.join(ROOT, 'index.html');
+  const css = path.join(ROOT, 'assets/css/v58.app-dashboard.css');
+  const js = path.join(ROOT, 'assets/js/v58.app-dashboard.js');
+  const audit = path.join(ROOT, 'assets/data/v58.app-dashboard.audit.json');
+  if (!fs.existsSync(css)) fail(errors, 'V58 CSS file missing');
+  if (!fs.existsSync(js)) fail(errors, 'V58 JS file missing');
+  if (!fs.existsSync(audit)) fail(errors, 'V58 audit JSON missing');
+  if (fs.existsSync(home)) {
+    const h = read(home);
+    if (!/v58-dashboard-home/.test(h)) fail(errors, 'V58 home body class missing');
+    if ((h.match(/data-v58-tab-trigger=/g)||[]).length < 10) fail(errors, 'V58 tab trigger count failed');
+    if ((h.match(/data-v58-view=/g)||[]).length !== 5) fail(errors, 'V58 view count failed');
+    if ((h.match(/class=["'][^"']*v58-provider-card/g)||[]).length < 10) fail(errors, 'V58 provider cards missing');
+    if ((h.match(/class=["'][^"']*v58-tool-card/g)||[]).length < 18) fail(errors, 'V58 tool cards missing');
+    if ((h.match(/class=["'][^"']*v58-guide-card/g)||[]).length < 4) fail(errors, 'V58 guide cards missing');
+    if (!/data-v58-live-search/.test(h)) fail(errors, 'V58 live search missing');
+    if (!/v58-bottom-nav/.test(h)) fail(errors, 'V58 mobile bottom nav missing');
+    if (/href=["']#["']|javascript:void(0)/i.test(h)) fail(errors, 'V58 bad href in home');
+  }
+  const style = fs.existsSync(css) ? read(css) : '';
+  for (const token of ['#000','rgba(255,255,255,.026)','@media (max-width:768px)','overflow-x:auto','grid-template-columns:repeat(4','v58-bottom-nav','translateY(-5px)']) {
+    if (!style.includes(token)) fail(errors, 'V58 design token missing ' + token);
+  }
+  const script = fs.existsSync(js) ? read(js) : '';
+  for (const token of ['setTab','data-v58-live-search','v58-ripple','v58-image-fallback']) {
+    if (!script.includes(token)) fail(errors, 'V58 JS token missing ' + token);
+  }
+}
+// END V58 app-style dashboard checks
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// V59 vendor logo system checks
+{
+  const css = path.join(ROOT, 'assets/css/v59.vendor-logo-system.css');
+  const js = path.join(ROOT, 'assets/js/v59.vendor-logo-system.js');
+  const audit = path.join(ROOT, 'assets/data/v59.vendor-logo-system.audit.json');
+  const logos = ['queenbee-card.svg','sk-holdings-card.svg','anybet-card.svg','udt-card.svg','ddangkong-card.svg'];
+  if (!fs.existsSync(css)) fail(errors, 'V59 vendor logo CSS missing');
+  if (!fs.existsSync(js)) fail(errors, 'V59 vendor logo JS missing');
+  if (!fs.existsSync(audit)) fail(errors, 'V59 vendor logo audit missing');
+  for (const logo of logos) {
+    const fp = path.join(ROOT, 'assets/vendor-logos/v59', logo);
+    if (!fs.existsSync(fp)) fail(errors, 'V59 unified SVG logo missing: ' + logo);
+    else if (!/<svg/i.test(read(fp))) fail(errors, 'V59 logo is not SVG: ' + logo);
+  }
+  const runtimePages = ['index.html','guaranteed/index.html','tools/index.html','guaranteed/queenbee/index.html','guaranteed/sk-holdings/index.html','guaranteed/anybet/index.html','guaranteed/udt/index.html','guaranteed/ddangkong/index.html'];
+  for (const route of runtimePages) {
+    const fp = path.join(ROOT, route);
+    if (!fs.existsSync(fp)) continue;
+    const txt = read(fp);
+    if (!/v59-vendor-logo-system/.test(txt)) fail(errors, 'V59 body class missing ' + route);
+    if (!/v59.vendor-logo-system.css/.test(txt)) fail(errors, 'V59 CSS link missing ' + route);
+    if (!/v59.vendor-logo-system.js/.test(txt)) fail(errors, 'V59 JS link missing ' + route);
+  }
+  const guaranteed = path.join(ROOT, 'guaranteed/index.html');
+  if (fs.existsSync(guaranteed)) {
+    const g = read(guaranteed);
+    for (const logo of logos) if (!g.includes('/assets/vendor-logos/v59/' + logo)) fail(errors, 'V59 guaranteed missing logo reference ' + logo);
+    for (const old of ['queenbee-logo-clean-v22.png','sk-holdings-logo.png','anybet-logo.png','udt-logo-transparent-v14.png','ddangkong-logo-v19.png']) if (g.includes(old)) fail(errors, 'V59 old provider logo leaked in guaranteed ' + old);
+  }
+  const home = path.join(ROOT, 'index.html');
+  if (fs.existsSync(home)) {
+    const h = read(home);
+    if ((h.match(/v59-provider-logo-img/g)||[]).length < 5) fail(errors, 'V59 home unified logo count failed');
+  }
+  const tools = path.join(ROOT, 'tools/index.html');
+  if (fs.existsSync(tools)) {
+    const t = read(tools);
+    for (const logo of logos) if (!t.includes('/assets/vendor-logos/v59/' + logo)) fail(errors, 'V59 tools missing logo reference ' + logo);
+  }
+}
+// END V59 vendor logo system checks
+
+
+
+
+
+
+
+
+
+
+// V60 open-ready conversion finalization checks
+{
+  const css = path.join(ROOT, 'assets/css/v60.open-ready-final.css');
+  const js = path.join(ROOT, 'assets/js/v60.open-ready-final.js');
+  const audit = path.join(ROOT, 'assets/data/v60.open-ready-final.audit.json');
+  const generator = path.join(ROOT, 'scripts/generate-v60-open-ready-finalization.mjs');
+  if (!fs.existsSync(css)) fail(errors, 'V60 CSS file missing');
+  if (!fs.existsSync(js)) fail(errors, 'V60 JS file missing');
+  if (!fs.existsSync(audit)) fail(errors, 'V60 audit JSON missing');
+  if (!fs.existsSync(generator)) fail(errors, 'V60 generator missing');
+  const cssText = fs.existsSync(css) ? read(css) : '';
+  for (const token of ['V60 Open-Ready Conversion', '--v60-cyan', 'v60-toast', 'v60-vendor-sticky', '@media (max-width:768px)', 'min-height:56px']) {
+    if (!cssText.includes(token)) fail(errors, 'V60 CSS token missing ' + token);
+  }
+  const jsText = fs.existsSync(js) ? read(js) : '';
+  for (const token of ['v60-toast', 'data-v60-copy-result', 'ensureVendorSticky', 'imageFallbacks']) {
+    if (!jsText.includes(token)) fail(errors, 'V60 JS token missing ' + token);
+  }
+  let auditData = null;
+  if (fs.existsSync(audit)) {
+    try { auditData = JSON.parse(read(audit)); }
+    catch(e) { fail(errors, 'V60 audit JSON parse failed: ' + e.message); }
+  }
+  if (auditData) {
+    if (auditData.summary.badHref !== 0) fail(errors, 'V60 bad href count not zero: ' + auditData.summary.badHref);
+    if (auditData.summary.missingAsset !== 0) fail(errors, 'V60 missing asset count not zero: ' + auditData.summary.missingAsset);
+    if (auditData.summary.deadInternal !== 0) fail(errors, 'V60 dead internal count not zero: ' + auditData.summary.deadInternal);
+    if (auditData.summary.sitemapMissing !== 0) fail(errors, 'V60 sitemap missing count not zero: ' + auditData.summary.sitemapMissing);
+    if (auditData.summary.sitemapDuplicates !== 0) fail(errors, 'V60 sitemap duplicate count not zero: ' + auditData.summary.sitemapDuplicates);
+    if (auditData.summary.noindexInSitemap !== 0) fail(errors, 'V60 noindex sitemap count not zero: ' + auditData.summary.noindexInSitemap);
+    if ((auditData.vendor?.vendorLandings || 0) !== 5) fail(errors, 'V60 vendor landing count failed');
+    if ((auditData.tools?.cards || 0) < 12 || (auditData.tools?.panels || 0) < 12) fail(errors, 'V60 tools inventory failed');
+  }
+  const requiredPages = ['index.html','tools/index.html','guaranteed/index.html','consult/index.html','blog/index.html','guaranteed/queenbee/index.html','guaranteed/sk-holdings/index.html','guaranteed/anybet/index.html','guaranteed/udt/index.html','guaranteed/ddangkong/index.html'];
+  for (const route of requiredPages) {
+    const fp = path.join(ROOT, route);
+    if (!fs.existsSync(fp)) fail(errors, 'V60 required page missing ' + route);
+    else {
+      const txt = read(fp);
+      if (!/v60-open-ready/.test(txt)) fail(errors, 'V60 body class missing ' + route);
+      if (!/v60\.open-ready-final\.css/.test(txt)) fail(errors, 'V60 CSS link missing ' + route);
+      if (!/v60\.open-ready-final\.js/.test(txt)) fail(errors, 'V60 JS link missing ' + route);
+    }
+  }
+  const home = path.join(ROOT, 'index.html');
+  if (fs.existsSync(home)) {
+    const h = read(home);
+    if (/data-g-code=|RUST 에이전시|상담 전 체크/.test(h)) fail(errors, 'V60 home regression');
+  }
+  const g = path.join(ROOT, 'guaranteed/index.html');
+  if (fs.existsSync(g)) {
+    const txt = read(g);
+    for (const logo of ['queenbee-card.svg','sk-holdings-card.svg','anybet-card.svg','udt-card.svg','ddangkong-card.svg']) if (!txt.includes(logo)) fail(errors, 'V60 guaranteed missing unified logo ' + logo);
+  }
+}
+// END V60 open-ready conversion finalization checks
+
+
+
+
+
+
+
+
 
 
 
@@ -457,12 +700,14 @@ if (wranglerWanted) {
   if (!fs.existsSync(gfp)) fail(errors, 'V52 guaranteed index missing');
   else {
     const g = read(gfp);
-    if (!/v52-guaranteed-page/.test(g)) fail(errors, 'V52 guaranteed body class missing');
-    if (!/v52-guaranteed-grid/.test(g)) fail(errors, 'V52 guaranteed grid missing');
-    if ((g.match(/class=["'][^"']*v52-provider-card/g)||[]).length !== 5) fail(errors, 'V52 provider card count failed');
-    if ((g.match(/data-v52-copy-code=/g)||[]).length !== 5) fail(errors, 'V52 copy code count failed');
-    if ((g.match(/data-v52-detail-click=/g)||[]).length !== 5) fail(errors, 'V52 detail click count failed');
-    if ((g.match(/data-v52-domain-click=/g)||[]).length < 5) fail(errors, 'V52 domain click count failed');
+    if (!/v52-guaranteed-page|v57-guaranteed-page/.test(g)) fail(errors, 'V52/V57 guaranteed body class missing');
+    if (!/v52-guaranteed-grid|v57-premium-provider-grid/.test(g)) fail(errors, 'V52/V57 guaranteed grid missing');
+    if (!/v57-guaranteed-page/.test(g)) {
+      if ((g.match(/class=["'][^"']*v52-provider-card/g)||[]).length !== 5) fail(errors, 'V52 provider card count failed');
+      if ((g.match(/data-v52-copy-code=/g)||[]).length !== 5) fail(errors, 'V52 copy code count failed');
+      if ((g.match(/data-v52-detail-click=/g)||[]).length !== 5) fail(errors, 'V52 detail click count failed');
+      if ((g.match(/data-v52-domain-click=/g)||[]).length < 5) fail(errors, 'V52 domain click count failed');
+    }
     if (new RegExp('SEO'+'A69|seo'+'a69','i').test(g)) fail(errors, 'V52 forbidden legacy contact in guaranteed');
   }
   for (const f of htmls) {
@@ -485,15 +730,17 @@ if (wranglerWanted) {
   if (!fs.existsSync(home)) fail(errors, 'V53 home index missing');
   else {
     const h = read(home);
-    if (!/v53-home-page/.test(h)) fail(errors, 'V53 home body class missing');
-    if (!/v53.main-open-ready.css/.test(h)) fail(errors, 'V53 main CSS missing');
-    if (!/assets\/js\/v53\.main\.js/.test(h)) fail(errors, 'V53 main JS missing');
-    if ((h.match(/class=["'][^"']*v53-provider-card/g)||[]).length !== 5) fail(errors, 'V53 home provider card count failed');
-    if ((h.match(/class=["'][^"']*v53-tool-card/g)||[]).length !== 6) fail(errors, 'V53 home tool card count failed');
-    if ((h.match(/class=["'][^"']*v53-guide-card/g)||[]).length !== 4) fail(errors, 'V53 home guide card count failed');
+    if (!/v53-home-page|v57-home-page|v58-dashboard-home/.test(h)) fail(errors, 'V53/V57/V58 home body class missing');
+    if (!/v53.main-open-ready.css|v57.mobile-bento.css|v58.app-dashboard.css/.test(h)) fail(errors, 'V53/V57/V58 main CSS missing');
+    if (!/assets\/js\/v53\.main\.js|assets\/js\/v57\.mobile-bento\.js|assets\/js\/v58\.app-dashboard\.js/.test(h)) fail(errors, 'V53/V57/V58 main JS missing');
+    if (!/v57-home-page|v58-dashboard-home/.test(h)) {
+      if ((h.match(/class=["'][^"']*v53-provider-card/g)||[]).length !== 5) fail(errors, 'V53 home provider card count failed');
+      if ((h.match(/class=["'][^"']*v53-tool-card/g)||[]).length !== 6) fail(errors, 'V53 home tool card count failed');
+      if ((h.match(/class=["'][^"']*v53-guide-card/g)||[]).length !== 4) fail(errors, 'V53 home guide card count failed');
+    }
     if (/RUST 에이전시/.test(h)) fail(errors, 'V53 removed title returned on home');
     if (/상담 전 체크/.test(h)) fail(errors, 'V53 old consult-check card returned on home');
-    if (/data-g-code=|가입코드|공식 도메인/.test(h)) fail(errors, 'V53 code/domain leaked on home provider cards');
+    if (!/v57-home-page|v58-dashboard-home/.test(h) && /data-g-code=|가입코드|공식 도메인/.test(h)) fail(errors, 'V53 code/domain leaked on home provider cards');
     if (/href=["']#["']|javascript:void\(0\)/i.test(h)) fail(errors, 'V53 bad href in home');
   }
   const css = path.join(ROOT, 'assets/css/v53.main-open-ready.css');

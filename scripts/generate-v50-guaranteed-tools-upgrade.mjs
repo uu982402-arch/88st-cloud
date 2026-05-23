@@ -28,11 +28,11 @@ function walk(dir, out=[]) {
 }
 
 const providers = [
-  { slug:'queenbee', name:'여왕벌', label:'QUEENBEE', img:'/assets/provider-media/queenbee-logo-clean-v22.png', detail:'/guaranteed/queenbee/' },
-  { slug:'sk-holdings', name:'SK 홀딩스', label:'SK HOLDINGS', img:'/assets/provider-media/sk-holdings-logo.png', detail:'/guaranteed/sk-holdings/' },
-  { slug:'anybet', name:'ANYBET', label:'ANYBET', img:'/assets/provider-media/anybet-logo.png', detail:'/guaranteed/anybet/' },
-  { slug:'udt', name:'UDT', label:'UDT', img:'/assets/provider-media/udt-logo-transparent-v14.png', detail:'/guaranteed/udt/' },
-  { slug:'ddangkong', name:'땅콩', label:'DDANGKONG', img:'/assets/provider-media/ddangkong-logo-v19.png', detail:'/guaranteed/ddangkong/' }
+  { slug:'queenbee', name:'여왕벌', label:'QUEENBEE', img:'/assets/vendor-logos/v59/queenbee-card.svg', detail:'/guaranteed/queenbee/' },
+  { slug:'sk-holdings', name:'SK 홀딩스', label:'SK HOLDINGS', img:'/assets/vendor-logos/v59/sk-holdings-card.svg', detail:'/guaranteed/sk-holdings/' },
+  { slug:'anybet', name:'ANYBET', label:'ANYBET', img:'/assets/vendor-logos/v59/anybet-card.svg', detail:'/guaranteed/anybet/' },
+  { slug:'udt', name:'UDT', label:'UDT', img:'/assets/vendor-logos/v59/udt-card.svg', detail:'/guaranteed/udt/' },
+  { slug:'ddangkong', name:'땅콩', label:'DDANGKONG', img:'/assets/vendor-logos/v59/ddangkong-card.svg', detail:'/guaranteed/ddangkong/' }
 ];
 
 function classAdd(html, selector, addClass) {

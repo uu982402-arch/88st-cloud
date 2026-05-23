@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "description": "Static build shim for Cloudflare Pages",
   "scripts": {
-    "build": "node scripts/generate-brand-pages.mjs && node scripts/seo-intelligence-v36.mjs && node scripts/generate-v47-comprehensive-upgrade.mjs && node scripts/generate-v48-content-dedupe-visual-stability.mjs && node scripts/generate-v49-guaranteed-vendor-landings.mjs && node scripts/generate-v50-guaranteed-tools-upgrade.mjs && node scripts/generate-v51-user-facing-tools.mjs && node scripts/generate-v52-open-ready-ui.mjs && node scripts/generate-v53-main-open-ready.mjs && node scripts/generate-v54-vendor-landing-design.mjs && node scripts/generate-v55-luminous-sitewide-design.mjs && node scripts/generate-v56-high-end-design-system.mjs && node scripts/generate-v43-quality-data.mjs && node scripts/gen-build-ver.mjs",
+    "build": "node scripts/generate-brand-pages.mjs && node scripts/seo-intelligence-v36.mjs && node scripts/generate-v47-comprehensive-upgrade.mjs && node scripts/generate-v48-content-dedupe-visual-stability.mjs && node scripts/generate-v49-guaranteed-vendor-landings.mjs && node scripts/generate-v50-guaranteed-tools-upgrade.mjs && node scripts/generate-v51-user-facing-tools.mjs && node scripts/generate-v52-open-ready-ui.mjs && node scripts/generate-v53-main-open-ready.mjs && node scripts/generate-v54-vendor-landing-design.mjs && node scripts/generate-v55-luminous-sitewide-design.mjs && node scripts/generate-v56-high-end-design-system.mjs && node scripts/generate-v57-mobile-bento-ui.mjs && node scripts/generate-v58-app-dashboard.mjs && node scripts/generate-v59-vendor-logo-system.mjs && node scripts/generate-v60-open-ready-finalization.mjs && node scripts/generate-v43-quality-data.mjs && node scripts/gen-build-ver.mjs",
     "seo:static": "node scripts/generate-static-seo-og.mjs",
     "related:static": "node scripts/generate-related-posts.mjs",
     "seo:refresh": "node scripts/generate-brand-pages.mjs && node scripts/generate-static-seo-og.mjs && node scripts/generate-related-posts.mjs && node scripts/generate-sitemap.mjs && node scripts/generate-indexing-audit.mjs && node scripts/generate-ctr-report.mjs && node scripts/generate-traffic-roadmap.mjs",
@@ -28,6 +28,10 @@
     "quality:v53": "node scripts/generate-v53-main-open-ready.mjs",
     "quality:v54": "node scripts/generate-v54-vendor-landing-design.mjs",
     "quality:v55": "node scripts/generate-v55-luminous-sitewide-design.mjs",
-    "quality:v56": "node scripts/generate-v56-high-end-design-system.mjs"
+    "quality:v56": "node scripts/generate-v56-high-end-design-system.mjs",
+    "quality:v57": "node scripts/generate-v57-mobile-bento-ui.mjs",
+    "quality:v58": "node scripts/generate-v58-app-dashboard.mjs",
+    "quality:v59": "node scripts/generate-v59-vendor-logo-system.mjs",
+    "quality:v60": "node scripts/generate-v60-open-ready-finalization.mjs"
   }
 }

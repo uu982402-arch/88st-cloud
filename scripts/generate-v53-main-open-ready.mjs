@@ -9,11 +9,11 @@ const write = (p, s) => { const fp = path.join(ROOT, p); fs.mkdirSync(path.dirna
 const read = p => fs.readFileSync(path.join(ROOT, p), 'utf8');
 
 const providers = [
-  { slug:'queenbee', name:'여왕벌', img:'/assets/provider-media/queenbee-logo-clean-v22.png', detail:'/guaranteed/queenbee/', alt:'여왕벌 보증업체 이미지' },
-  { slug:'sk-holdings', name:'SK 홀딩스', img:'/assets/provider-media/sk-holdings-logo.png', detail:'/guaranteed/sk-holdings/', alt:'SK 홀딩스 보증업체 이미지' },
-  { slug:'anybet', name:'ANYBET', img:'/assets/provider-media/anybet-logo.png', detail:'/guaranteed/anybet/', alt:'ANYBET 보증업체 이미지' },
-  { slug:'udt', name:'UDT', img:'/assets/provider-media/udt-logo-transparent-v14.png', detail:'/guaranteed/udt/', alt:'UDT 보증업체 이미지' },
-  { slug:'ddangkong', name:'땅콩', img:'/assets/provider-media/ddangkong-logo-v19.png', detail:'/guaranteed/ddangkong/', alt:'땅콩 보증업체 이미지' }
+  { slug:'queenbee', name:'여왕벌', img:'/assets/vendor-logos/v59/queenbee-card.svg', detail:'/guaranteed/queenbee/', alt:'여왕벌 보증업체 이미지' },
+  { slug:'sk-holdings', name:'SK 홀딩스', img:'/assets/vendor-logos/v59/sk-holdings-card.svg', detail:'/guaranteed/sk-holdings/', alt:'SK 홀딩스 보증업체 이미지' },
+  { slug:'anybet', name:'ANYBET', img:'/assets/vendor-logos/v59/anybet-card.svg', detail:'/guaranteed/anybet/', alt:'ANYBET 보증업체 이미지' },
+  { slug:'udt', name:'UDT', img:'/assets/vendor-logos/v59/udt-card.svg', detail:'/guaranteed/udt/', alt:'UDT 보증업체 이미지' },
+  { slug:'ddangkong', name:'땅콩', img:'/assets/vendor-logos/v59/ddangkong-card.svg', detail:'/guaranteed/ddangkong/', alt:'땅콩 보증업체 이미지' }
 ];
 
 const toolHighlights = [
@@ -45,7 +45,7 @@ function schema() {
 }
 
 function head() {
-  return `<!DOCTYPE html><html lang="ko"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/><title>88ST.Cloud 메인 | Team RUST MAIN</title><meta name="description" content="보증업체, 실사용 도구, 전문 가이드를 한 화면에서 정리한 88ST.Cloud 메인 허브입니다."/><meta name="robots" content="index,follow,max-image-preview:large"/><meta name="theme-color" content="#050b13"/><link rel="canonical" href="${DOMAIN}/"/><link rel="icon" href="/favicon.ico" type="image/x-icon"/><link rel="apple-touch-icon" href="/apple-touch-icon-v24.png"/><link rel="manifest" href="/site.webmanifest"/><link rel="preload" as="image" href="/img/logo-v24.png"/><link rel="preload" as="image" href="/assets/provider-media/queenbee-logo-clean-v22.png"/><link rel="stylesheet" href="/assets/css/app.core.v1.20260401.css"/><link rel="stylesheet" href="/assets/css/mobile.fix.v1.20260420.css"/><link rel="stylesheet" href="/assets/css/growth-conversion.v36.css?v=${VERSION}"/><link rel="stylesheet" href="/assets/css/v52.open-ready.css?v=${VERSION}"/><link rel="stylesheet" href="/assets/css/v53.main-open-ready.css?v=${VERSION}"/><meta property="og:type" content="website"/><meta property="og:site_name" content="88ST.Cloud"/><meta property="og:title" content="88ST.Cloud 메인 | Team RUST MAIN"/><meta property="og:description" content="보증업체, 실사용 도구, 전문 가이드를 한 화면에서 정리한 메인 허브입니다."/><meta property="og:url" content="${DOMAIN}/"/><meta property="og:image" content="${DOMAIN}/img/logo-v24.png"/><meta name="twitter:card" content="summary_large_image"/><script type="application/ld+json" data-v36-schema="primary">${schema()}</script></head>`;
+  return `<!DOCTYPE html><html lang="ko"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/><title>88ST.Cloud 메인 | Team RUST MAIN</title><meta name="description" content="보증업체, 실사용 도구, 전문 가이드를 한 화면에서 정리한 88ST.Cloud 메인 허브입니다."/><meta name="robots" content="index,follow,max-image-preview:large"/><meta name="theme-color" content="#050b13"/><link rel="canonical" href="${DOMAIN}/"/><link rel="icon" href="/favicon.ico" type="image/x-icon"/><link rel="apple-touch-icon" href="/apple-touch-icon-v24.png"/><link rel="manifest" href="/site.webmanifest"/><link rel="preload" as="image" href="/img/logo-v24.png"/><link rel="preload" as="image" href="/assets/vendor-logos/v59/queenbee-card.svg"/><link rel="stylesheet" href="/assets/css/app.core.v1.20260401.css"/><link rel="stylesheet" href="/assets/css/mobile.fix.v1.20260420.css"/><link rel="stylesheet" href="/assets/css/growth-conversion.v36.css?v=${VERSION}"/><link rel="stylesheet" href="/assets/css/v52.open-ready.css?v=${VERSION}"/><link rel="stylesheet" href="/assets/css/v53.main-open-ready.css?v=${VERSION}"/><meta property="og:type" content="website"/><meta property="og:site_name" content="88ST.Cloud"/><meta property="og:title" content="88ST.Cloud 메인 | Team RUST MAIN"/><meta property="og:description" content="보증업체, 실사용 도구, 전문 가이드를 한 화면에서 정리한 메인 허브입니다."/><meta property="og:url" content="${DOMAIN}/"/><meta property="og:image" content="${DOMAIN}/img/logo-v24.png"/><meta name="twitter:card" content="summary_large_image"/><script type="application/ld+json" data-v36-schema="primary">${schema()}</script></head>`;
 }
 
 function header() {

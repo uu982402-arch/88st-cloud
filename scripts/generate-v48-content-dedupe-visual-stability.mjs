@@ -279,11 +279,11 @@ function generateDirectories(){
 }
 function updateGuaranteed(){
   const cards = [
-    ['여왕벌','/assets/provider-media/queenbee-logo-clean-v22.png','https://qb-700.com/?code=seoa','qb-700.com','SEOA'],
-    ['SK 홀딩스','/assets/provider-media/sk-holdings-logo.png','https://snk-99.com/','snk-99.com','IRON888'],
-    ['ANYBET','/assets/provider-media/anybet-logo.png','https://any-777.com/','any-777.com','SEOA'],
-    ['UDT','/assets/provider-media/udt-logo-transparent-v14.png','https://udt-01.com/','udt-01.com','SEOA'],
-    ['땅콩','/assets/provider-media/ddangkong-logo-v19.png','https://ddk-2024.com/','ddk-2024.com','ddk888']
+    ['여왕벌','/assets/vendor-logos/v59/queenbee-card.svg','https://qb-700.com/?code=seoa','qb-700.com','SEOA'],
+    ['SK 홀딩스','/assets/vendor-logos/v59/sk-holdings-card.svg','https://snk-99.com/','snk-99.com','IRON888'],
+    ['ANYBET','/assets/vendor-logos/v59/anybet-card.svg','https://any-777.com/','any-777.com','SEOA'],
+    ['UDT','/assets/vendor-logos/v59/udt-card.svg','https://udt-01.com/','udt-01.com','SEOA'],
+    ['땅콩','/assets/vendor-logos/v59/ddangkong-card.svg','https://ddk-2024.com/','ddk-2024.com','ddk888']
   ];
   const title='RUST 에이전시 보증 업체'; const desc='RUST 에이전시 보증 업체의 공식 도메인과 가입코드를 이미지 중심 카드에서 확인할 수 있도록 정리한 안내 페이지입니다.';
   const cardHtml = cards.map(([name,img,href,domain,code])=>`<article class="premium-card v47-guaranteed-card v48-guaranteed-card" data-v48-provider="${esc(name)}"><a class="vendor-hero v48-vendor-hero" href="${href}" target="_blank" rel="nofollow sponsored noopener noreferrer" aria-label="${esc(name)} 바로가기"><img src="${img}" alt="${esc(name)} 로고" loading="lazy" decoding="async" width="640" height="240" onerror="this.closest('.premium-card').classList.add('is-logo-missing')"/></a><div class="card-body"><h2 class="vendor-title">${esc(name)}</h2><div class="info-row"><span class="info-label">공식 도메인</span><a class="domain-link" href="${href}" target="_blank" rel="nofollow sponsored noopener noreferrer">${esc(domain)} ↗</a></div><div class="info-row"><span class="info-label">가입코드</span><button type="button" class="code-badge" data-v47-copy-code="${esc(code)}" aria-label="${esc(name)} 가입코드 복사">${esc(code)}</button></div><a class="action-btn" href="${href}" target="_blank" rel="nofollow sponsored noopener noreferrer">바로가기</a></div></article>`).join('\n');
