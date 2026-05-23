@@ -1,0 +1,46 @@
+{
+  "version": "V59",
+  "name": "Vendor Logo Unification & Asset Cleanup",
+  "logoRule": "black circular SVG, white typography, red accent",
+  "vendors": [
+    {
+      "slug": "queenbee",
+      "name": "여왕벌",
+      "svg": "/assets/vendor-logos/v59/queenbee-card.svg"
+    },
+    {
+      "slug": "sk-holdings",
+      "name": "SK 홀딩스",
+      "svg": "/assets/vendor-logos/v59/sk-holdings-card.svg"
+    },
+    {
+      "slug": "anybet",
+      "name": "ANYBET",
+      "svg": "/assets/vendor-logos/v59/anybet-card.svg"
+    },
+    {
+      "slug": "udt",
+      "name": "UDT BET",
+      "svg": "/assets/vendor-logos/v59/udt-card.svg"
+    },
+    {
+      "slug": "ddangkong",
+      "name": "땅콩 BET",
+      "svg": "/assets/vendor-logos/v59/ddangkong-card.svg"
+    }
+  ],
+  "removedAssets": [],
+  "alreadyAbsentAssets": [
+    "assets/provider-media/queenbee-logo-clean-v22.png",
+    "assets/provider-media/queenbee-logo-transparent-v14.png",
+    "assets/provider-media/queenbee-logo-v13.png",
+    "assets/provider-media/queenbee-logo.svg",
+    "assets/provider-media/sk-holdings-logo.png",
+    "assets/provider-media/anybet-logo.png",
+    "assets/provider-media/udt-logo-transparent-v14.png",
+    "assets/provider-media/udt-logo.webp",
+    "assets/provider-media/ddangkong-logo-v19.png"
+  ],
+  "keptCandidates": [],
+  "generatedAt": "2026-05-23T02:23:12.574Z"
+}

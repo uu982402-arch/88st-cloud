@@ -1,6 +1,6 @@
 {
   "version": "static-growth-conversion-v51",
-  "generatedAt": "2026-05-22T07:34:58.810Z",
+  "generatedAt": "2026-05-23T02:23:13.786Z",
   "images": [
     {
       "path": "/assets/img/88st-cloud-logo-horizontal.png",
@@ -51,10 +51,6 @@
       "bytes": 417802
     },
     {
-      "path": "/assets/provider-media/udt-logo-transparent-v14.png",
-      "bytes": 370855
-    },
-    {
       "path": "/assets/img/88st-cloud-logo-mark.png",
       "bytes": 236596
     },
@@ -99,24 +95,8 @@
       "bytes": 84641
     },
     {
-      "path": "/assets/provider-media/queenbee-logo-clean-v22.png",
-      "bytes": 77897
-    },
-    {
-      "path": "/assets/provider-media/queenbee-logo-transparent-v14.png",
-      "bytes": 77739
-    },
-    {
-      "path": "/assets/provider-media/queenbee-logo-v13.png",
-      "bytes": 77549
-    },
-    {
       "path": "/assets/provider-media/ddangkong-event-01.jpeg",
       "bytes": 55033
-    },
-    {
-      "path": "/assets/provider-media/udt-logo.webp",
-      "bytes": 54300
     },
     {
       "path": "/img/popup/event-popup.jpg",
@@ -149,10 +129,6 @@
     {
       "path": "/assets/img/moonsafe-lunar-bg-v22.webp",
       "bytes": 28268
-    },
-    {
-      "path": "/assets/provider-media/sk-holdings-logo.png",
-      "bytes": 14345
     },
     {
       "path": "/assets/img/v24/card-compare-v24.webp",
@@ -207,10 +183,6 @@
       "bytes": 11955
     },
     {
-      "path": "/assets/provider-media/anybet-logo.png",
-      "bytes": 9286
-    },
-    {
       "path": "/img/logo-mark-v23.png",
       "bytes": 8935
     },
@@ -227,16 +199,8 @@
       "bytes": 6865
     },
     {
-      "path": "/assets/provider-media/ddangkong-logo-v19.png",
-      "bytes": 6632
-    },
-    {
       "path": "/favicon-32x32.png",
       "bytes": 2621
-    },
-    {
-      "path": "/assets/provider-media/queenbee-logo.svg",
-      "bytes": 2511
     },
     {
       "path": "/assets/thumbs/hub-telegram.svg",
@@ -281,6 +245,26 @@
     {
       "path": "/assets/thumbs/result-overview.svg",
       "bytes": 1672
+    },
+    {
+      "path": "/assets/vendor-logos/v59/sk-holdings-card.svg",
+      "bytes": 1519
+    },
+    {
+      "path": "/assets/vendor-logos/v59/ddangkong-card.svg",
+      "bytes": 1515
+    },
+    {
+      "path": "/assets/vendor-logos/v59/queenbee-card.svg",
+      "bytes": 1514
+    },
+    {
+      "path": "/assets/vendor-logos/v59/udt-card.svg",
+      "bytes": 1509
+    },
+    {
+      "path": "/assets/vendor-logos/v59/anybet-card.svg",
+      "bytes": 1508
     },
     {
       "path": "/favicon.ico",
