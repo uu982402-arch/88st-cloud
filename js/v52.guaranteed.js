@@ -1,6 +1,0 @@
-document.addEventListener('click',async(e)=>{
- const copy=e.target.closest('[data-v52-copy-code]');
- if(copy){const code=copy.getAttribute('data-v52-copy-code')||copy.textContent.trim();try{await navigator.clipboard.writeText(code)}catch(_){const t=document.createElement('textarea');t.value=code;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove()}document.querySelectorAll('.v52-copy-toast').forEach(x=>x.remove());const toast=document.createElement('div');toast.className='v52-copy-toast';toast.textContent='가입코드가 복사되었습니다';document.body.appendChild(toast);setTimeout(()=>toast.remove(),1600);window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'guaranteed_code_copy',provider:copy.getAttribute('data-v52-copy-provider')||''});}
- const domain=e.target.closest('[data-v52-domain-click]');if(domain){window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'guaranteed_domain_click',provider:domain.getAttribute('data-v52-domain-click')||''});}
- const detail=e.target.closest('[data-v52-detail-click]');if(detail){window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'guaranteed_detail_click',provider:detail.getAttribute('data-v52-detail-click')||''});}
-});
