@@ -37,6 +37,7 @@
     "quality:v62": "node scripts/generate-v62-main-hard-reset.mjs",
     "quality:v63": "node scripts/generate-v63-sitewide-hard-reset.mjs",
     "quality:v64": "node scripts/generate-v64-mobile-tools-dark-fix.mjs",
-    "quality:v65": "node scripts/generate-v65-global-premium-fix.mjs"
+    "quality:v65": "node scripts/generate-v65-global-premium-fix.mjs",
+    "quality:v66": "node scripts/generate-v66-obsidian-renewal.mjs"
   }
 }
