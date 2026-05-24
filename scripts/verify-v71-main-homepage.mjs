@@ -42,6 +42,12 @@ if (!css.includes('@media (min-width: 1024px)')) fail('desktop breakpoint missin
 if (!css.includes('backdrop-filter: blur(var(--v71-blur))')) fail('glass blur rule missing');
 if (!css.includes('grid-template-columns: repeat(5')) fail('PC five-column grid missing');
 if (!css.includes('.v71-value-line')) fail('compact hero value line CSS missing');
+
+if (!css.includes('body.v71-main-home::before')) fail('noise texture layer missing');
+if (!css.includes('rgba(15,23,42,.68)')) fail('liquid glass deep panel missing');
+if (!css.includes('v71-glow-border::after')) fail('soft spotlight layer missing');
+if (!css.includes('translateY(-4px)')) fail('magnetic hover lift missing');
+if (!css.includes('rgba(16,185,129,.10)')) fail('subtle emerald hover glow missing');
 if (!pkg.scripts.build.includes('generate-v71-main-homepage.mjs')) fail('build chain missing V71 generator');
 if (!pkg.scripts.verify.includes('verify-v71-main-homepage.mjs')) fail('verify script not pointing to V71 verifier');
 
