@@ -31,15 +31,17 @@ const pkg = JSON.parse(readFileSync('package.json', 'utf8'));
 
 if (!html.includes('assets/css/v71.main-home.css')) fail('index missing V71 CSS');
 if (!html.includes('assets/js/v71.main-home.js')) fail('index missing V71 JS');
-if (!html.includes('88ST.Cloud는 광고 랜딩이 아니라')) fail('hero platform copy missing');
+if (!html.includes('보증업체, 최신 가이드, 분석 도구, 공식 상담을 한 화면에서 확인합니다.')) fail('compact platform copy missing');
+if (html.includes('<h1>')) fail('oversized title h1 should not exist on main');
 if (!html.includes('@TRS999_bot')) fail('telegram CTA missing');
-if (count(html, 'class="v71-blog-card') !== 10) fail('blog card count is not 10');
+if (count(html, 'class="v71-blog-card') !== 15) fail('blog card count is not 15');
 if (count(html, 'class="v71-tool-card') !== 5) fail('tool card count is not 5');
 if (count(html, 'class="v71-partner-card') !== 10) fail('partner card count should be 10 because mobile and desktop render separate copies');
 if (html.includes('v70-header') || html.includes('v70-2-header') || html.includes('v70-mobile-nav') || html.includes('v70-2-mobile-nav')) fail('old v70 header/nav leaked into index');
 if (!css.includes('@media (min-width: 1024px)')) fail('desktop breakpoint missing');
 if (!css.includes('backdrop-filter: blur(var(--v71-blur))')) fail('glass blur rule missing');
 if (!css.includes('grid-template-columns: repeat(5')) fail('PC five-column grid missing');
+if (!css.includes('.v71-value-line')) fail('compact hero value line CSS missing');
 if (!pkg.scripts.build.includes('generate-v71-main-homepage.mjs')) fail('build chain missing V71 generator');
 if (!pkg.scripts.verify.includes('verify-v71-main-homepage.mjs')) fail('verify script not pointing to V71 verifier');
 

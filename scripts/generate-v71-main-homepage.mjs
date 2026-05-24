@@ -1,7 +1,7 @@
 import { writeFileSync, mkdirSync, readFileSync } from 'node:fs';
 import { dirname } from 'node:path';
 
-const VERSION = 'static-v71-main-homepage-20260524';
+const VERSION = 'static-v71-main-homepage-20260524-hotfix2';
 
 function write(path, content) {
   mkdirSync(dirname(path), { recursive: true });
@@ -102,12 +102,14 @@ img { display: block; max-width: 100%; }
 .v71-menu-btn { width: 44px; height: 44px; border-radius: 14px; border: 1px solid var(--v71-line); background: rgba(255,255,255,.06); color: var(--v71-text); display: grid; place-items: center; cursor: pointer; }
 .v71-menu-btn span { width: 18px; height: 2px; border-radius: 99px; background: currentColor; box-shadow: 0 -6px 0 currentColor, 0 6px 0 currentColor; }
 
-.v71-main { padding: 20px 0 52px; }
-.v71-hero { padding: 10px 0 16px; }
-.v71-hero-card { border-radius: var(--v71-radius-lg); padding: 22px 18px; min-height: 174px; display: flex; flex-direction: column; justify-content: flex-end; gap: 14px; background: radial-gradient(circle at 18% 0%, rgba(16,185,129,.2), transparent 20rem), radial-gradient(circle at 100% 30%, rgba(37,99,235,.22), transparent 18rem), linear-gradient(180deg, rgba(255,255,255,.105), rgba(255,255,255,.052)); }
-.v71-kicker { width: fit-content; min-height: 32px; display: inline-flex; align-items: center; padding: 0 11px; border-radius: 999px; border: 1px solid rgba(16,185,129,.34); background: rgba(16,185,129,.095); color: #a7f3d0; font-size: 11px; font-weight: 950; letter-spacing: .08em; }
-.v71-hero h1 { margin: 0; max-width: 780px; font-size: clamp(28px, 9vw, 76px); line-height: .98; letter-spacing: -.07em; }
-.v71-hero p { margin: 0; max-width: 740px; color: var(--v71-text-soft); font-size: 14px; line-height: 1.68; word-break: keep-all; }
+.v71-main { padding: 12px 0 52px; }
+.v71-hero { padding: 8px 0 8px; }
+.v71-hero-card { border-radius: var(--v71-radius-lg); padding: 16px; min-height: 0; display: grid; grid-template-columns: 1fr; gap: 14px; align-items: center; background: radial-gradient(circle at 12% 0%, rgba(16,185,129,.18), transparent 18rem), radial-gradient(circle at 100% 40%, rgba(37,99,235,.18), transparent 18rem), linear-gradient(180deg, rgba(255,255,255,.095), rgba(255,255,255,.048)); }
+.v71-kicker { width: fit-content; min-height: 30px; display: inline-flex; align-items: center; padding: 0 10px; border-radius: 999px; border: 1px solid rgba(16,185,129,.34); background: rgba(16,185,129,.095); color: #a7f3d0; font-size: 10px; font-weight: 950; letter-spacing: .08em; }
+.v71-hero-copy { display: grid; gap: 10px; }
+.v71-value-line { margin: 0; max-width: 760px; color: var(--v71-text); font-size: clamp(17px, 4.8vw, 28px); line-height: 1.24; letter-spacing: -.045em; font-weight: 950; word-break: keep-all; }
+.v71-value-pills { display: flex; flex-wrap: wrap; gap: 7px; }
+.v71-value-pills span { min-height: 30px; display: inline-flex; align-items: center; padding: 0 10px; border-radius: 999px; color: var(--v71-text-soft); background: rgba(255,255,255,.064); border: 1px solid rgba(255,255,255,.09); font-size: 11px; font-weight: 850; }
 .v71-hero-actions { display: grid; gap: 10px; grid-template-columns: 1fr 1fr; }
 .v71-btn { min-height: 52px; border-radius: var(--v71-radius); display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 0 14px; font-weight: 950; font-size: 14px; transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease, background .25s ease; white-space: nowrap; border: 1px solid var(--v71-line); }
 .v71-btn:hover { transform: translateY(-2px); }
@@ -173,10 +175,9 @@ img { display: block; max-width: 100%; }
   .v71-page { padding-bottom: 0; }
   .v71-menu-btn { display: none; }
   .v71-desktop-nav { display: flex; }
-  .v71-main { padding: 34px 0 76px; }
-  .v71-hero-card { min-height: 238px; padding: 34px; }
-  .v71-hero p { font-size: 16px; }
-  .v71-hero-actions { max-width: 410px; }
+  .v71-main { padding: 26px 0 76px; }
+  .v71-hero-card { padding: 20px; grid-template-columns: minmax(0, 1fr) 390px; }
+  .v71-hero-actions { max-width: 390px; justify-self: end; width: 100%; }
   .v71-mobile-partners { display: none; }
   .v71-mobile-nav, .v71-fab { display: none !important; }
   .v71-footer { padding-bottom: 50px; }
@@ -186,7 +187,7 @@ img { display: block; max-width: 100%; }
   .v71-topbar-inner { min-height: 74px; }
   .v71-main-hub { grid-template-columns: minmax(0, 1.55fr) minmax(340px, .72fr); align-items: start; gap: 18px; }
   .v71-blog-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
-  .v71-blog-card { min-height: 154px; padding: 14px; }
+  .v71-blog-card { min-height: 136px; padding: 14px; }
   .v71-blog-card strong { font-size: 14px; }
   .v71-desktop-partner-panel { display: grid; gap: 12px; position: sticky; top: 92px; }
   .v71-partner-tile-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 12px; }
@@ -235,14 +236,19 @@ const js = `(function () {
 const blogs = [
   { href: '/blog/first-deposit-check-route/', cat: 'BONUS', title: '첫충 뜻과 확인 순서', desc: '신규 이벤트 조건을 가입 전 빠르게 점검하는 기준입니다.' },
   { href: '/blog/rolling-terms-reading/', cat: 'ROLLING', title: '롤링 조건 읽는 법', desc: '실수령과 출금 제한을 함께 보는 기본 루틴입니다.' },
-  { href: '/blog/slot-rtp-volatility.html', cat: 'SLOT', title: '슬롯 RTP와 변동성', desc: '게임 선택 전 확인해야 할 숫자를 쉽게 정리했습니다.' },
+  { href: '/blog/game-guides/rtp-volatility-simple-meaning.html', cat: 'SLOT', title: '슬롯 RTP와 변동성', desc: '게임 선택 전 확인해야 할 숫자를 쉽게 정리했습니다.' },
   { href: '/blog/safe-toto-site-selection/', cat: 'SPORTS', title: '스포츠 배당 보는 법', desc: '배당, 마진, 리스크를 한 번에 비교하는 방법입니다.' },
   { href: '/blog/toto-muktu-danger-signals/', cat: 'RISK', title: '먹튀 구분 핵심 신호', desc: '가입 전 피해야 할 패턴과 증거 확인 순서입니다.' },
   { href: '/blog/guaranteed-before-click-checks/', cat: 'CHECK', title: '보증업체 선택 기준', desc: '광고 문구보다 먼저 확인해야 할 운영 기준입니다.' },
   { href: '/blog/domain-ip-first-check-order/', cat: 'DOMAIN', title: '도메인·IP 조회 루틴', desc: '주소 변경과 유사 운영 흔적을 점검하는 순서입니다.' },
   { href: '/blog/max-withdraw-meaning/', cat: 'PAYOUT', title: '최대출금 조건 이해', desc: '보너스와 출금 제한이 같이 걸리는 지점을 확인합니다.' },
   { href: '/blog/major-site-criteria-15/', cat: 'MAJOR', title: '메이저 사이트 기준', desc: '오래 운영되는 사이트의 공통 체크포인트입니다.' },
-  { href: '/blog/evidence-checklist-before-report/', cat: 'EVIDENCE', title: '증거 캡처 체크리스트', desc: '상담 전 준비하면 처리 속도가 빨라지는 자료입니다.' }
+  { href: '/blog/evidence-checklist-before-report/', cat: 'EVIDENCE', title: '증거 캡처 체크리스트', desc: '상담 전 준비하면 처리 속도가 빨라지는 자료입니다.' },
+  { href: '/blog/bonus-withdraw-check-routine/', cat: 'WITHDRAW', title: '보너스 출금 확인 루틴', desc: '보너스 수령 후 출금 가능 조건을 순서대로 확인합니다.' },
+  { href: '/blog/google-muktu-search-guide/', cat: 'SEARCH', title: '구글 먹튀 검색 요령', desc: '검색어 조합과 후기 필터링 기준을 함께 정리했습니다.' },
+  { href: '/blog/major-playground-warning-signs/', cat: 'WARNING', title: '메이저 사칭 경고 신호', desc: '비슷한 이름과 복제 페이지를 구분하는 체크포인트입니다.' },
+  { href: '/blog/online-casino/evolution-baccarat-before-check.html', cat: 'CASINO', title: '에볼루션 바카라 전 확인', desc: '테이블 규칙과 이벤트 적용 범위를 먼저 확인합니다.' },
+  { href: '/blog/game-guides/terms-rolling-toxic-clause.html', cat: 'TERMS', title: '위험한 롤링 약관 패턴', desc: '조건 문구 안에 숨어 있는 제한 조항을 빠르게 찾습니다.' }
 ];
 
 const tools = [
@@ -300,11 +306,17 @@ const html = `<!doctype html>
     </header>
 
     <main class="v71-main">
-      <section class="v71-hero v71-shell" aria-label="플랫폼 소개">
+      <section class="v71-hero v71-shell" aria-label="플랫폼 빠른 시작">
         <div class="v71-hero-card v71-glass v71-glow-border">
-          <span class="v71-kicker">MOBILE FIRST · GLASS DASHBOARD</span>
-          <h1>안전한 보증업체·분석 도구·자동 상담을 한곳에.</h1>
-          <p>88ST.Cloud는 광고 랜딩이 아니라 보증업체 큐레이션, 조건 계산, 최신 가이드, 공식 상담 연결을 한 화면에서 확인하는 정보 플랫폼입니다.</p>
+          <div class="v71-hero-copy">
+            <span class="v71-kicker">88ST.CLOUD PLATFORM</span>
+            <p class="v71-value-line">보증업체, 최신 가이드, 분석 도구, 공식 상담을 한 화면에서 확인합니다.</p>
+            <div class="v71-value-pills" aria-label="핵심 기능">
+              <span>보증업체 큐레이션</span>
+              <span>실사용 계산 도구</span>
+              <span>텔레그램 상담 연결</span>
+            </div>
+          </div>
           <div class="v71-hero-actions">
             <a class="v71-btn v71-btn-primary" href="/guaranteed/">보증업체 보기</a>
             <a class="v71-btn v71-btn-ghost" href="/consult/">자동 상담 시작</a>
@@ -325,7 +337,7 @@ const html = `<!doctype html>
       <section class="v71-section v71-shell v71-main-hub" aria-label="블로그와 보증업체 허브">
         <div>
           <div class="v71-section-head">
-            <div><h2>최신 정보 가이드</h2><p>검색 유입과 체류시간을 만드는 핵심 콘텐츠 10건입니다.</p></div>
+            <div><h2>최신 정보 가이드</h2><p>검색 유입과 체류시간을 만드는 핵심 콘텐츠 15건입니다.</p></div>
             <a class="v71-more" href="/blog/">블로그 더보기</a>
           </div>
           <div class="v71-blog-grid">
@@ -355,7 +367,7 @@ const html = `<!doctype html>
       <section class="v71-section v71-shell" aria-label="플랫폼 신뢰 지표">
         <div class="v71-metrics">
           <div class="v71-metric v71-glass"><strong>5</strong><span>프리미엄 파트너</span></div>
-          <div class="v71-metric v71-glass"><strong>10</strong><span>상단 추천 가이드</span></div>
+          <div class="v71-metric v71-glass"><strong>15</strong><span>상단 추천 가이드</span></div>
           <div class="v71-metric v71-glass"><strong>5</strong><span>핵심 분석 도구</span></div>
           <div class="v71-metric v71-glass"><strong>24H</strong><span>텔레그램 상담 연결</span></div>
         </div>
@@ -393,7 +405,7 @@ const html = `<!doctype html>
 </html>
 `;
 
-const report = `# V71 Main Homepage Redesign Report\n\n## Scope\n- 메인 페이지 /index.html 전면 재설계\n- PC/모바일 분기형 레이아웃 적용\n- 기존 하위 페이지, Worker, 라우팅, 블로그/도구 본문 삭제 없음\n\n## Design Guide\n- Background: #0B0F19 / #050816\n- Primary: #10B981\n- Secondary: #2563EB\n- Radius: 12px base, 22px large glass cards\n- Blur: 22px backdrop-filter\n- Shadows: 0 12px 28px rgba(0,0,0,.22), 0 30px 90px rgba(0,0,0,.42)\n\n## Layout\n- Mobile: Hero -> Partner carousel -> Blog cards -> Tool grid -> Metrics -> Telegram CTA\n- PC: Hero -> Left blog grid 5x2 + right partner logo tiles -> Tools 5-wide -> CTA banner\n\n## Tailwind Class Mapping\n- Glass card: bg-white/[0.07] backdrop-blur-[22px] border border-white/10 shadow-sm rounded-xl\n- Primary CTA: h-[52px] rounded-xl bg-gradient-to-r from-emerald-400 via-emerald-500 to-blue-400\n- Mobile shell: px-5 max-w-[430px]\n- PC hub: lg:grid lg:grid-cols-[1.55fr_.72fr] lg:gap-5\n- Blog grid: grid grid-cols-2 lg:grid-cols-5 gap-3\n- Partner carousel: overflow-x-auto snap-x grid grid-flow-col auto-cols-[74%]\n\n## Verification Targets\n- index.html contains v71 stylesheet/script only for main redesign\n- v70 duplicate headers/navs are not present in index.html\n- partner cards: 5\n- blog cards: 10\n- tool cards: 5\n`;
+const report = `# V71 Main Homepage Redesign Report\n\n## Scope\n- 메인 페이지 /index.html 전면 재설계\n- PC/모바일 분기형 레이아웃 적용\n- 기존 하위 페이지, Worker, 라우팅, 블로그/도구 본문 삭제 없음\n\n## Design Guide\n- Background: #0B0F19 / #050816\n- Primary: #10B981\n- Secondary: #2563EB\n- Radius: 12px base, 22px large glass cards\n- Blur: 22px backdrop-filter\n- Shadows: 0 12px 28px rgba(0,0,0,.22), 0 30px 90px rgba(0,0,0,.42)\n\n## Layout\n- Mobile: Compact quick-start band -> Partner carousel -> 15 Blog cards -> Tool grid -> Metrics -> Telegram CTA\n- PC: Compact quick-start band -> Left blog grid 5x3 + right partner logo tiles -> Tools 5-wide -> CTA banner\n\n## Tailwind Class Mapping\n- Glass card: bg-white/[0.07] backdrop-blur-[22px] border border-white/10 shadow-sm rounded-xl\n- Primary CTA: h-[52px] rounded-xl bg-gradient-to-r from-emerald-400 via-emerald-500 to-blue-400\n- Mobile shell: px-5 max-w-[430px]\n- PC hub: lg:grid lg:grid-cols-[1.55fr_.72fr] lg:gap-5\n- Blog grid: grid grid-cols-2 lg:grid-cols-5 gap-3, 15 cards for 5x3 desktop rows\n- Partner carousel: overflow-x-auto snap-x grid grid-flow-col auto-cols-[74%]\n\n## Verification Targets\n- index.html contains v71 stylesheet/script only for main redesign\n- v70 duplicate headers/navs are not present in index.html\n- partner cards: 5\n- blog cards: 10\n- tool cards: 5\n`;
 
 write('assets/css/v71.main-home.css', css);
 write('assets/js/v71.main-home.js', js);
