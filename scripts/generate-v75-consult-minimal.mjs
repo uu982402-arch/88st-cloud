@@ -1,4 +1,11 @@
-<!doctype html>
+import fs from 'node:fs';
+import path from 'node:path';
+
+const root = process.cwd();
+const consultDir = path.join(root, 'consult');
+fs.mkdirSync(consultDir, { recursive: true });
+
+const html = `<!doctype html>
 <html lang="ko">
 <head>
   <meta charset="utf-8">
@@ -49,3 +56,53 @@
   <script src="/assets/js/v75.consult-minimal.js?v=static-v75-consult-minimal-20260524" defer data-v75-consult="true"></script>
 </body>
 </html>
+`;
+
+fs.writeFileSync(path.join(consultDir, 'index.html'), html, 'utf8');
+
+const report = `# V75 Consult Minimal Remodeling Report
+
+## Scope
+- Target page: /consult/
+- Goal: remove funnel/checklist style guidance and focus the page on one official Telegram consultation CTA.
+
+## Applied
+- Rebuilt consult/index.html with V75 single-card minimal layout.
+- Removed legacy 3-step flow text from generated /consult/ page.
+- Removed sticky CTA, floating consultation button, mobile bottom navigation, funnel cards, checklist panel from /consult/ page output.
+- Added centered glassmorphism official consultation card.
+- Added @TRS999_bot emphasis.
+- Added one CTA button: 텔레그램 상담 시작하기.
+- Added JavaScript auto-copy behavior for @TRS999_bot before opening Telegram.
+- Added V75 verification marker: data-v75-consult="active".
+
+## Preserved
+- Existing routing.
+- Existing subdirectories under consult/ for vendor-specific pages.
+- Existing blog/tools/guaranteed/main files and scripts.
+- No deletion of legacy assets.
+`;
+fs.writeFileSync(path.join(root, 'V75_CONSULT_MINIMAL_REPORT.md'), report, 'utf8');
+
+function stabilizePackageScripts(){
+  const pkgPath = path.join(root, 'package.json');
+  if(!fs.existsSync(pkgPath)) return;
+  const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf8'));
+  pkg.scripts ||= {};
+  const generateCmd = 'node scripts/generate-v75-consult-minimal.mjs';
+  const genBuild = 'node scripts/gen-build-ver.mjs';
+  let build = pkg.scripts.build || generateCmd;
+  if(!build.includes(generateCmd)){
+    if(build.includes(genBuild)) build = build.replace(genBuild, `${generateCmd} && ${genBuild}`);
+    else build = `${build} && ${generateCmd}`;
+  }
+  pkg.scripts.build = build;
+  pkg.scripts.verify = 'node scripts/verify-v75-consult-minimal.mjs';
+  pkg.scripts['quality:v75'] = generateCmd;
+  pkg.scripts['verify:v75'] = 'node scripts/verify-v75-consult-minimal.mjs';
+  fs.writeFileSync(pkgPath, JSON.stringify(pkg, null, 2) + '\n');
+}
+
+stabilizePackageScripts();
+
+console.log('[V75] consult minimal remodeling generated: /consult/index.html');
