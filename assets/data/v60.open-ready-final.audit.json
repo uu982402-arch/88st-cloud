@@ -1,9 +1,9 @@
 {
   "version": "static-growth-conversion-v60",
-  "generatedAt": "2026-05-24T14:50:31.240Z",
+  "generatedAt": "2026-05-24T15:24:34.358Z",
   "summary": {
     "html": 624,
-    "files": 1018,
+    "files": 1025,
     "badHref": 0,
     "missingAsset": 0,
     "deadInternal": 0,
@@ -100,6 +100,7 @@
       "assets/css/v68.mobile-title-hotfix.css",
       "assets/css/v70-2.full-expansion.css",
       "assets/css/v71.main-home.css",
+      "assets/css/v72.blog-hub.css",
       "assets/css/vvip-hub.v85.css",
       "assets/css/vvip-luxe.v75.css",
       "assets/css/x.9d7841e705c5.css",
@@ -123,8 +124,7 @@
       "assets/js/build.loader.js",
       "assets/js/community.tools.v3.20260331.js",
       "assets/js/guaranteed.cards.v1.20260504.js",
-      "assets/js/hub.promo.v1.20260418.js",
-      "assets/js/hub.promo.v1.20260420b.js"
+      "assets/js/hub.promo.v1.20260418.js"
     ]
   },
   "details": {
