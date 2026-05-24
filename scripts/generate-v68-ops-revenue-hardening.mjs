@@ -291,9 +291,16 @@ if (exists(pkgPath)) {
     if (pkg.scripts.build.includes('node scripts/gen-build-ver.mjs')) pkg.scripts.build = pkg.scripts.build.replace('node scripts/gen-build-ver.mjs', `${v68} && node scripts/gen-build-ver.mjs`);
     else pkg.scripts.build = `${pkg.scripts.build} && ${v68}`;
   }
-  pkg.scripts.verify = 'node scripts/verify-v68-ops-revenue.mjs';
+  const hotfix = 'node scripts/generate-v68-mobile-title-hotfix.mjs';
+  if (pkg.scripts.build && !pkg.scripts.build.includes('generate-v68-mobile-title-hotfix.mjs')) {
+    if (pkg.scripts.build.includes('node scripts/gen-build-ver.mjs')) pkg.scripts.build = pkg.scripts.build.replace('node scripts/gen-build-ver.mjs', `${hotfix} && node scripts/gen-build-ver.mjs`);
+    else pkg.scripts.build = `${pkg.scripts.build} && ${hotfix}`;
+  }
+  pkg.scripts.verify = 'node scripts/verify-v68-mobile-title-hotfix.mjs';
   pkg.scripts['quality:v68'] = v68;
   pkg.scripts['verify:v68'] = 'node scripts/verify-v68-ops-revenue.mjs';
+  pkg.scripts['quality:v68-hotfix'] = hotfix;
+  pkg.scripts['verify:v68-hotfix'] = 'node scripts/verify-v68-mobile-title-hotfix.mjs';
   write(pkgPath, JSON.stringify(pkg, null, 2) + '\n');
 }
 
