@@ -1,6 +1,6 @@
 {
   "version": "static-growth-conversion-v51",
-  "generatedAt": "2026-05-24T08:56:34.256Z",
+  "generatedAt": "2026-05-24T14:50:31.710Z",
   "images": [
     {
       "path": "/assets/img/88st-cloud-logo-horizontal.png",
@@ -201,6 +201,26 @@
     {
       "path": "/favicon-32x32.png",
       "bytes": 2621
+    },
+    {
+      "path": "/assets/img/partners/v71-sk-holdings.svg",
+      "bytes": 1919
+    },
+    {
+      "path": "/assets/img/partners/v71-queenbee.svg",
+      "bytes": 1915
+    },
+    {
+      "path": "/assets/img/partners/v71-anybet.svg",
+      "bytes": 1910
+    },
+    {
+      "path": "/assets/img/partners/v71-ddangkong-bet.svg",
+      "bytes": 1909
+    },
+    {
+      "path": "/assets/img/partners/v71-udt-bet.svg",
+      "bytes": 1909
     },
     {
       "path": "/assets/thumbs/hub-telegram.svg",

@@ -1,9 +1,9 @@
 {
   "version": "static-growth-conversion-v60",
-  "generatedAt": "2026-05-24T08:56:33.802Z",
+  "generatedAt": "2026-05-24T14:50:31.240Z",
   "summary": {
     "html": 624,
-    "files": 1007,
+    "files": 1018,
     "badHref": 0,
     "missingAsset": 0,
     "deadInternal": 0,
@@ -99,7 +99,7 @@
       "assets/css/v66.obsidian-renewal.css",
       "assets/css/v68.mobile-title-hotfix.css",
       "assets/css/v70-2.full-expansion.css",
-      "assets/css/v70-3.conversion-polish.css",
+      "assets/css/v71.main-home.css",
       "assets/css/vvip-hub.v85.css",
       "assets/css/vvip-luxe.v75.css",
       "assets/css/x.9d7841e705c5.css",

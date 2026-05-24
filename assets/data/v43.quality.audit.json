@@ -1,11 +1,11 @@
 {
   "version": "static-growth-conversion-v51",
-  "generatedAt": "2026-05-24T08:56:34.256Z",
+  "generatedAt": "2026-05-24T14:50:31.710Z",
   "counts": {
     "html": 624,
     "blog": 453,
-    "images": 68,
-    "imageBytes": 9143690
+    "images": 73,
+    "imageBytes": 9153252
   },
   "seo": {
     "duplicateTitleGroups": 0,
