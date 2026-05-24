@@ -849,56 +849,16 @@ if (!fs.existsSync(path.join(ROOT,'assets/data/v63.sitewide-hard-reset.audit.jso
 
 
 
-// V66 obsidian renewal supersedes legacy visual-layer assertions while preserving build, syntax, JSON, asset, sitemap, and safety checks.
-try {
-  const v66CorePages = ['index.html','tools/index.html','guaranteed/index.html','blog/index.html','consult/index.html'];
-  const v66Ready = fs.existsSync(path.join(ROOT,'assets/css/v66.obsidian-dashboard.css')) &&
-    fs.existsSync(path.join(ROOT,'assets/js/v66.obsidian-dashboard.js')) &&
-    fs.existsSync(path.join(ROOT,'scripts/generate-v66-obsidian-renewal.mjs')) &&
-    fs.existsSync(path.join(ROOT,'V66_SITEMAP_RENEWAL_REPORT.md')) &&
-    v66CorePages.every(page => fs.existsSync(path.join(ROOT,page)) && /v66-obsidian-renewal|v66\.obsidian-dashboard\.css|data-v66-obsidian/.test(read(path.join(ROOT,page))));
-  if (v66Ready) {
-    const legacyVisual = /^(guaranteed |V4[8-9] |V5[0-9] |V6[0-5] |home provider|tools label|consult header|duplicate title groups|missing V|V52\/V57|V53\/V57|V55\/V57|V57\/V58|V61\/V62|V62 |V63 |V64 |V65 )|guaranteed missing|guaranteed code|V48 |V49 |V50 |V52 |V53 |V54 |V55|V56|V57|V58|V59|V60|V61|V62|V63|V64|V65|body class missing|CSS link missing|JS link missing|card count|provider card|tool card|layout missing|copy code|shortcut|detail button|domain click|image-first|grid missing|logo frame|chat bubble|old guide bottom label|old vendor short label|main dashboard class|main CSS|main JS|home leaks|home regression|guaranteed layout/;
-    for (let i = errors.length - 1; i >= 0; i--) {
-      if (legacyVisual.test(errors[i])) errors.splice(i,1);
-    }
-    const v66Css = read(path.join(ROOT,'assets/css/v66.obsidian-dashboard.css'));
-    const v66Js = read(path.join(ROOT,'assets/js/v66.obsidian-dashboard.js'));
-    for (const token of ['--v66-bg','#05070b','backdrop-filter','v66-bottom-nav','v66-chat-fab','min-height:44px','v66-provider-grid']) {
-      if (!v66Css.includes(token)) fail(errors, 'V66 CSS token missing ' + token);
-    }
-    for (const token of ['makeHeader','makeBottom','makeFab','data-v66-copy-code','image-error']) {
-      if (!v66Js.includes(token)) fail(errors, 'V66 JS token missing ' + token);
-    }
-    const g66 = read(path.join(ROOT,'guaranteed/index.html'));
-    if ((g66.match(/class="v66-provider"/g)||[]).length !== 5) fail(errors, 'V66 guaranteed provider count failed');
-    if ((g66.match(/data-v66-copy-code=/g)||[]).length !== 5) fail(errors, 'V66 guaranteed copy code count failed');
-    if (!/즉시이동 CTA/.test(g66)) fail(errors, 'V66 guaranteed CTA text missing');
-    const rep = read(path.join(ROOT,'V66_SITEMAP_RENEWAL_REPORT.md'));
-    if (!/누락: 0/.test(rep) || !/리뉴얼 적용 HTML: 624/.test(rep)) fail(errors, 'V66 sitemap report summary mismatch');
-  }
-} catch (e) { fail(errors, 'V66 verification failed: ' + e.message); }
 
 
 
 
 
 
-// V66 final compatibility filter: V66 replaces old V52-V65 visual/card assertions after all legacy checks have run.
-try {
-  const v66CorePages = ['index.html','tools/index.html','guaranteed/index.html','blog/index.html','consult/index.html'];
-  const v66ReadyFinal = fs.existsSync(path.join(ROOT,'assets/css/v66.obsidian-dashboard.css')) &&
-    fs.existsSync(path.join(ROOT,'assets/js/v66.obsidian-dashboard.js')) &&
-    fs.existsSync(path.join(ROOT,'scripts/generate-v66-obsidian-renewal.mjs')) &&
-    fs.existsSync(path.join(ROOT,'V66_SITEMAP_RENEWAL_REPORT.md')) &&
-    v66CorePages.every(page => fs.existsSync(path.join(ROOT,page)) && /v66-obsidian-renewal|v66\.obsidian-dashboard\.css|data-v66-obsidian/.test(read(path.join(ROOT,page))));
-  if (v66ReadyFinal) {
-    const supersededLegacyVisual = /^(V52|V53|V54|V55|V56|V57|V58|V59|V60|V61|V62|V63|V64|V65|guaranteed |home |tools |consult )|body class missing|CSS missing|JS missing|card count|copy code|domain click|detail click|provider card|tool card|grid missing|layout missing|chat bubble|main dashboard|main CSS|main JS|old guide|old vendor/i;
-    for (let i = errors.length - 1; i >= 0; i--) {
-      if (supersededLegacyVisual.test(errors[i])) errors.splice(i, 1);
-    }
-  }
-} catch (e) { fail(errors, 'V66 final compatibility filter failed: ' + e.message); }
+
+
+
+
 
 
 // V52 open ready checks
@@ -970,23 +930,6 @@ try {
   if (!fs.existsSync(audit)) fail(errors, 'V53 audit JSON missing');
 }
 // END V53 main open ready checks
-
-
-// V66 final post-check compatibility filter: run after every legacy visual check.
-try {
-  const v66CorePagesPost = ['index.html','tools/index.html','guaranteed/index.html','blog/index.html','consult/index.html'];
-  const v66ReadyPost = fs.existsSync(path.join(ROOT,'assets/css/v66.obsidian-dashboard.css')) &&
-    fs.existsSync(path.join(ROOT,'assets/js/v66.obsidian-dashboard.js')) &&
-    fs.existsSync(path.join(ROOT,'scripts/generate-v66-obsidian-renewal.mjs')) &&
-    fs.existsSync(path.join(ROOT,'V66_SITEMAP_RENEWAL_REPORT.md')) &&
-    v66CorePagesPost.every(page => fs.existsSync(path.join(ROOT,page)) && /v66-obsidian-renewal|v66\.obsidian-dashboard\.css|data-v66-obsidian/.test(read(path.join(ROOT,page))));
-  if (v66ReadyPost) {
-    const supersededLegacyVisualPost = /^(V52|V53|V54|V55|V56|V57|V58|V59|V60|V61|V62|V63|V64|V65|guaranteed |home |tools |consult )|body class missing|CSS missing|JS missing|card count|copy code|domain click|detail click|provider card|tool card|grid missing|layout missing|chat bubble|main dashboard|main CSS|main JS|old guide|old vendor/i;
-    for (let i = errors.length - 1; i >= 0; i--) {
-      if (supersededLegacyVisualPost.test(errors[i])) errors.splice(i, 1);
-    }
-  }
-} catch (e) { fail(errors, 'V66 final post-check compatibility filter failed: ' + e.message); }
 
 const result = {
   ok: errors.length === 0,
