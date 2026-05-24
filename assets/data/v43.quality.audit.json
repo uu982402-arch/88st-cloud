@@ -1,6 +1,6 @@
 {
   "version": "static-growth-conversion-v51",
-  "generatedAt": "2026-05-24T01:31:02.833Z",
+  "generatedAt": "2026-05-24T02:27:10.174Z",
   "counts": {
     "html": 624,
     "blog": 453,
@@ -14,7 +14,7 @@
     "missingCanonical": 0,
     "metaKeywords": 0,
     "blogConversionCta": 0,
-    "thinPages": 4
+    "thinPages": 3
   },
   "quality": {
     "blogDetailsWithGuard": 0,
@@ -35,7 +35,6 @@
     "thinPages": [
       "/blog/page/7.html",
       "/blog/page/8.html",
-      "/consult/",
       "/guaranteed/"
     ]
   },
