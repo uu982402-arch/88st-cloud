@@ -22,7 +22,8 @@ for (const page of requiredPages) {
   }
 }
 const home = read('index.html');
-for (const token of ['V68 OPS','빠른 점검','보증업체 TOP 카드']) if (!home.includes(token)) failures.push(`home missing: ${token}`);
+for (const token of ['PREMIUM SAFETY DASHBOARD','빠른 확인','보증업체 TOP 카드']) if (!home.includes(token)) failures.push(`home missing: ${token}`);
+for (const token of ['운영점검','배포점검','V68 OPS','.Cloud V68']) if (home.includes(token)) failures.push(`home must not expose ops/version text: ${token}`);
 const guaranteed = read('guaranteed/index.html');
 for (const token of ['SK 홀딩스','여왕벌','ANY BET','UDT BET','땅콩 BET','코드복사']) if (!guaranteed.includes(token)) failures.push(`guaranteed missing: ${token}`);
 const tools = read('tools/index.html');
@@ -30,7 +31,7 @@ for (const token of ['공식주소 확인','가입코드 확인','보너스 실�
 const consult = read('consult/index.html');
 for (const token of ['텔레그램 상담','업체명','가입코드','문의 유형']) if (!consult.includes(token)) failures.push(`consult missing: ${token}`);
 const ops = read('ops/index.html');
-for (const token of ['V68 OPS','브라우저 점검 실행','v68-check-grid','data-v68-ops-root']) if (!ops.includes(token)) failures.push(`ops missing: ${token}`);
+for (const token of ['V68 OPS','브라우저 점검 실행','v68-check-grid','data-v68-ops-root','운영점검','배포점검']) if (!ops.includes(token)) failures.push(`ops missing: ${token}`);
 const vendors = JSON.parse(read('assets/config/v68-ad-cards.json'));
 if (!Array.isArray(vendors.items) || vendors.items.length !== 5) failures.push('v68 ad json must contain exactly 5 items');
 if (!vendors.items.every(v => typeof v.weight === 'number' && v.enabled === true)) failures.push('v68 ad json missing weight/enabled fields');
@@ -55,6 +56,15 @@ for (const file of htmlFiles) {
   if (!html.includes('v68.ops-revenue-hardening.css') || !html.includes('v68.ops-revenue-hardening.js')) missingV68 += 1;
 }
 if (missingV68 > 0) failures.push(`${missingV68} html files missing V68 css/js`);
+let publicOpsLeak = 0;
+for (const file of htmlFiles) {
+  const rel = path.relative(ROOT, file).replaceAll(path.sep, '/');
+  if (rel.startsWith('ops/')) continue;
+  const html = fs.readFileSync(file, 'utf8');
+  if (/운영점검|배포점검|\.Cloud V68|88ST\.Cloud V68|V68 OPS|빠른 점검|현재 버전 안내/.test(html)) publicOpsLeak += 1;
+}
+if (publicOpsLeak > 0) failures.push(`${publicOpsLeak} public html files expose ops/version text`);
+
 if (failures.length) {
   console.error('[V68 VERIFY] failed');
   for (const failure of failures) console.error(' - ' + failure);

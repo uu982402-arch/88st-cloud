@@ -142,6 +142,20 @@ function toolTile(t){ return `<a class="v68-tool-tile" href="${esc(t.href)}" dat
 function listItem(title, desc, href){ return `<a class="v68-list-item" href="${esc(href)}"><span><strong>${esc(title)}</strong><small>${esc(desc)}</small></span><b>열기</b></a>`; }
 function canonical(route){ return 'https://88st.cloud' + route; }
 function schema(title, desc, route){ return JSON.stringify({'@context':'https://schema.org','@type':'WebPage',name:title,description:desc,url:canonical(route),inLanguage:'ko-KR'}); }
+function isOpsRoute(route){ return String(route || '').startsWith('/ops/'); }
+function publicHeader(){
+  return `<header class="v68-header" data-v68-global-header><div class="v68-shell v68-header__inner"><a class="v68-brand" href="/" aria-label="88ST.Cloud 홈"><span class="v68-brand__mark">88</span><span><b>88ST</b><em>.Cloud</em></span></a><nav class="v68-nav" aria-label="주요 메뉴"><a href="/">메인</a><a href="/blog/">블로그</a><a href="/tools/">도구</a><a href="/guaranteed/">보증업체</a><a href="/consult/">고객센터</a></nav><a class="v68-header-cta" href="/consult/">상담센터</a></div></header>`;
+}
+function opsHeader(){
+  return `<header class="v68-header" data-v68-global-header><div class="v68-shell v68-header__inner"><a class="v68-brand" href="/ops/" aria-label="88ST.Cloud 운영점검"><span class="v68-brand__mark">88</span><span><b>88ST</b><em>OPS</em></span></a><nav class="v68-nav" aria-label="운영 메뉴"><a href="/ops/">운영점검</a><a href="/">메인확인</a><a href="/guaranteed/">보증확인</a><a href="/tools/">도구확인</a><a href="/consult/">상담확인</a></nav><a class="v68-header-cta" href="/ops/">배포점검</a></div></header>`;
+}
+function publicFooter(){
+  return `<footer class="v68-footer"><div class="v68-shell v68-footer__inner"><div><b>88ST.Cloud</b><p>보증업체, 실사용 도구, 상담 연결을 한 화면에서 정리합니다.</p></div><nav aria-label="하단 메뉴"><a href="/blog/">블로그</a><a href="/tools/">도구</a><a href="/guaranteed/">보증업체</a><a href="/consult/">고객센터</a></nav></div></footer>`;
+}
+function opsFooter(){
+  return `<footer class="v68-footer"><div class="v68-shell v68-footer__inner"><div><b>88ST.Cloud OPS</b><p>운영점검, 배포점검, 광고카드 데이터, 라우팅 상태를 관리자 전용으로 확인합니다.</p></div><nav aria-label="운영 하단 메뉴"><a href="/ops/">운영점검</a><a href="/${OPS_FILE}">점검 JSON</a><a href="/${AD_FILE}">광고 JSON</a><a href="/">메인</a></nav></div></footer>`;
+}
+
 function layout({ title, desc, route, bodyClass = '', main }){
   return `<!DOCTYPE html>
 <html lang="ko">
@@ -170,15 +184,9 @@ function layout({ title, desc, route, bodyClass = '', main }){
 </head>
 <body class="v66-obsidian v67-productized v68-ops-revenue ${esc(bodyClass)}">
   <a class="v68-skip" href="#main">본문 바로가기</a>
-  <header class="v68-header" data-v68-global-header>
-    <div class="v68-shell v68-header__inner">
-      <a class="v68-brand" href="/" aria-label="88ST.Cloud 홈"><span class="v68-brand__mark">88</span><span><b>88ST</b><em>.Cloud V68</em></span></a>
-      <nav class="v68-nav" aria-label="주요 메뉴"><a href="/">메인</a><a href="/blog/">블로그</a><a href="/tools/">도구</a><a href="/guaranteed/">보증업체</a><a href="/consult/">고객센터</a><a href="/ops/">운영점검</a></nav>
-      <a class="v68-header-cta" href="/ops/">배포점검</a>
-    </div>
-  </header>
+${isOpsRoute(route) ? opsHeader() : publicHeader()}
   <main id="main" class="v68-main">${main}</main>
-  <footer class="v68-footer"><div class="v68-shell v68-footer__inner"><div><b>88ST.Cloud V68</b><p>운영점검, 광고카드 데이터화, 모바일 내비게이션, 상담 전환 추적을 누적 강화했습니다.</p></div><nav aria-label="하단 메뉴"><a href="/blog/">블로그</a><a href="/tools/">도구</a><a href="/guaranteed/">보증업체</a><a href="/consult/">고객센터</a><a href="/ops/">운영점검</a></nav></div></footer>
+${isOpsRoute(route) ? opsFooter() : publicFooter()}
   <a class="v68-fab" href="https://t.me/TRS999_bot" target="_blank" rel="nofollow noopener noreferrer" aria-label="상담센터 바로가기" data-v68-click="fab-consult"><span>💬</span><strong>상담센터</strong></a>
   <nav class="v68-mobile-nav" aria-label="모바일 하단 내비게이션"><a href="/" data-v68-route="/"><span>⌂</span>메인</a><a href="/tools/official-check/" data-v68-route="/tools/official-check/"><span>⌕</span>검색</a><a href="/tools/" data-v68-route="/tools/"><span>◇</span>도구</a><a href="/guaranteed/" data-v68-route="/guaranteed/"><span>◆</span>보증</a><a href="/consult/" data-v68-route="/consult/"><span>✦</span>상담</a></nav>
   <script src="/assets/js/v67.productized-dashboard.js?v=${VERSION}" defer data-v67-productized="true"></script>
@@ -192,23 +200,23 @@ write(path.join(ROOT, JS_FILE), js);
 write(path.join(ROOT, AD_FILE), JSON.stringify({ version:'V68', updated:'2026-05-24', strategy:'weighted-static-first', items:vendors }, null, 2) + '\n');
 write(path.join(ROOT, OPS_FILE), JSON.stringify({ version:'V68', updated:'2026-05-24', checks:opsChecks }, null, 2) + '\n');
 
-const homeMain = `<section class="v68-shell v68-hero-grid"><div class="v68-card v68-intro"><span class="v68-kicker">V68 OPS · REVENUE DASHBOARD</span><h1>검색, 보증, 상담, 운영점검을 첫 화면에서 끝냅니다.</h1><p>V68은 디자인에서 멈추지 않고 배포 후 확인, 광고카드 운영, 상담 전환, 빠른 도구 접근까지 실제 운영 흐름 중심으로 재배치한 버전입니다.</p><form class="v68-command-strip" action="/tools/official-check/" method="get"><input name="q" placeholder="도메인·업체명·가입코드 입력" aria-label="검색어"><select name="type" aria-label="점검 유형"><option>공식주소</option><option>가입코드</option><option>보너스</option><option>출금</option></select><a class="v68-secondary" href="/guaranteed/">보증업체</a><button class="v68-primary" type="submit">빠른 점검</button></form><div class="v68-action-row"><a class="v68-primary" href="/tools/">도구 열기</a><a class="v68-secondary" href="/ops/">배포상태 확인</a><a class="v68-secondary" href="/consult/">상담 연결</a></div></div><aside class="v68-card v68-metric-board">${stat('V68','운영 강화')}${stat('5','광고카드')}${stat('8','핵심 도구')}${stat('0','삭제 파일')}</aside></section><section class="v68-shell v68-section"><div class="v68-section-head"><div><h2>보증업체 TOP 카드</h2><p>가중치 기반 노출 운영을 위해 카드 데이터를 JSON으로 분리했습니다.</p></div><a class="v68-secondary" href="/${AD_FILE}">JSON 확인</a></div><div class="v68-grid">${vendors.slice(0,4).map(vendorCard).join('')}</div></section><section class="v68-shell v68-section"><div class="v68-section-head"><div><h2>빠른 도구</h2><p>모바일에서도 44px 이상 터치 영역과 고대비 카드로 바로 진입합니다.</p></div></div><div class="v68-grid">${toolItems.slice(0,4).map(toolTile).join('')}</div></section>`;
+const homeMain = `<section class="v68-shell v68-hero-grid"><div class="v68-card v68-intro"><span class="v68-kicker">PREMIUM SAFETY DASHBOARD</span><h1>검색, 보증업체, 상담 연결을 첫 화면에서 끝냅니다.</h1><p>공식주소 확인, 광고카드 비교, 상담 전환, 빠른 도구 접근까지 실사용 흐름 중심으로 재배치했습니다.</p><form class="v68-command-strip" action="/tools/official-check/" method="get"><input name="q" placeholder="도메인·업체명·가입코드 입력" aria-label="검색어"><select name="type" aria-label="점검 유형"><option>공식주소</option><option>가입코드</option><option>보너스</option><option>출금</option></select><a class="v68-secondary" href="/guaranteed/">보증업체</a><button class="v68-primary" type="submit">빠른 확인</button></form><div class="v68-action-row"><a class="v68-primary" href="/tools/">도구 열기</a><a class="v68-secondary" href="/guaranteed/">보증업체 보기</a><a class="v68-secondary" href="/consult/">상담 연결</a></div></div><aside class="v68-card v68-metric-board">${stat('5','보증업체')}${stat('8','핵심 도구')}${stat('24H','상담 연결')}${stat('모바일','최적화')}</aside></section><section class="v68-shell v68-section"><div class="v68-section-head"><div><h2>보증업체 TOP 카드</h2><p>가입코드, 도메인, 보증금액을 카드 안에서 바로 확인합니다.</p></div><a class="v68-secondary" href="/guaranteed/">전체 보기</a></div><div class="v68-grid">${vendors.slice(0,4).map(vendorCard).join('')}</div></section><section class="v68-shell v68-section"><div class="v68-section-head"><div><h2>빠른 도구</h2><p>모바일에서도 44px 이상 터치 영역과 고대비 카드로 바로 진입합니다.</p></div></div><div class="v68-grid">${toolItems.slice(0,4).map(toolTile).join('')}</div></section>`;
 
-const guaranteedMain = `<section class="v68-shell v68-section" style="margin-top:0"><div class="v68-section-head"><div><span class="v68-kicker">GUARANTEED PARTNERS</span><h2>보증업체는 카드부터 바로 확인합니다.</h2><p>원형 이미지 프레임을 제거하고 업체명, 보증금액, 도메인, 가입코드, CTA를 칼정렬했습니다.</p></div><a class="v68-primary" href="/consult/">상담센터 연결</a></div><div class="v68-grid v68-grid-3">${vendors.map(vendorCard).join('')}</div></section><section class="v68-shell v68-section"><div class="v68-card v68-intro"><span class="v68-kicker">AD OPERATIONS</span><h2>V68 광고카드 운영 규칙</h2><p>카드 데이터는 <code>${AD_FILE}</code> 기준으로 관리합니다. 업체 추가·숨김·가중치 조정은 이 파일을 기준으로 추적하도록 구조화했습니다.</p><div class="v68-action-row"><a class="v68-primary" href="/${AD_FILE}">광고 JSON 열기</a><a class="v68-secondary" href="/ops/">운영점검</a></div></div></section>`;
+const guaranteedMain = `<section class="v68-shell v68-section" style="margin-top:0"><div class="v68-section-head"><div><span class="v68-kicker">GUARANTEED PARTNERS</span><h2>보증업체는 카드부터 바로 확인합니다.</h2><p>원형 이미지 프레임을 제거하고 업체명, 보증금액, 도메인, 가입코드, CTA를 칼정렬했습니다.</p></div><a class="v68-primary" href="/consult/">상담센터 연결</a></div><div class="v68-grid v68-grid-3">${vendors.map(vendorCard).join('')}</div></section><section class="v68-shell v68-section"><div class="v68-card v68-intro"><span class="v68-kicker">AD OPERATIONS</span><h2>상담센터 연결 안내</h2><p>업체명, 도메인, 가입코드를 확인한 뒤 상담센터로 연결하면 조건 확인이 더 빠릅니다.</p><div class="v68-action-row"><a class="v68-primary" href="/consult/">상담센터 연결</a><a class="v68-secondary" href="/tools/official-check/">공식주소 확인</a></div></div></section>`;
 
-const toolsMain = `<section class="v68-shell v68-hero-grid"><div class="v68-card v68-intro"><span class="v68-kicker">TOOLS HUB</span><h1>어두운 배경에서도 글자가 묻히지 않는 도구 허브.</h1><p>오로라 카드 내부 텍스트는 고대비 컬러와 굵은 폰트로 강제해 모바일에서 바로 읽히도록 정리했습니다.</p><div class="v68-command-strip"><input placeholder="확인할 도메인 또는 가입코드" aria-label="도구 검색"><select aria-label="도구 선택"><option>공식주소</option><option>가입코드</option><option>보너스</option><option>롤링</option></select><a class="v68-primary" href="/tools/official-check/">확인 시작</a><a class="v68-secondary" href="/consult/">상담</a></div></div><aside class="v68-card v68-metric-board">${stat('8','핵심 도구')}${stat('44px+','터치 영역')}${stat('고대비','텍스트')}${stat('V68','UI 토큰')}</aside></section><section class="v68-shell v68-section"><div class="v68-grid">${toolItems.map(toolTile).join('')}</div></section>`;
+const toolsMain = `<section class="v68-shell v68-hero-grid"><div class="v68-card v68-intro"><span class="v68-kicker">TOOLS HUB</span><h1>어두운 배경에서도 글자가 묻히지 않는 도구 허브.</h1><p>오로라 카드 내부 텍스트는 고대비 컬러와 굵은 폰트로 강제해 모바일에서 바로 읽히도록 정리했습니다.</p><div class="v68-command-strip"><input placeholder="확인할 도메인 또는 가입코드" aria-label="도구 검색"><select aria-label="도구 선택"><option>공식주소</option><option>가입코드</option><option>보너스</option><option>롤링</option></select><a class="v68-primary" href="/tools/official-check/">확인 시작</a><a class="v68-secondary" href="/consult/">상담</a></div></div><aside class="v68-card v68-metric-board">${stat('8','핵심 도구')}${stat('44px+','터치 영역')}${stat('고대비','텍스트')}${stat('즉시','확인 동선')}</aside></section><section class="v68-shell v68-section"><div class="v68-grid">${toolItems.map(toolTile).join('')}</div></section>`;
 
 const consultMain = `<section class="v68-shell v68-hero-grid"><div class="v68-card v68-intro"><span class="v68-kicker">CONSULT FLOW</span><h1>상담 전 필요한 정보만 짧게 정리합니다.</h1><p>업체명, 도메인, 가입코드, 문의 유형을 먼저 정리한 뒤 텔레그램 상담으로 연결합니다. 불필요한 긴 설명은 제거했습니다.</p><div class="v68-action-row"><a class="v68-primary" href="https://t.me/TRS999_bot" target="_blank" rel="nofollow noopener noreferrer" data-v68-click="consult-telegram">텔레그램 상담</a><a class="v68-secondary" href="/guaranteed/">보증업체 보기</a></div></div><form class="v68-consult-panel"><label>업체명<input placeholder="예: SK 홀딩스"></label><label>도메인<input placeholder="예: example.com"></label><label>가입코드<input placeholder="예: IRON888"></label><label>문의 유형<select><option>가입 전 확인</option><option>이벤트 조건</option><option>출금 전 확인</option><option>주소 확인</option></select></label><label>메모<textarea placeholder="상담 전에 확인할 내용을 짧게 적어두세요."></textarea></label><div class="v68-action-row"><a class="v68-primary" href="https://t.me/TRS999_bot" target="_blank" rel="nofollow noopener noreferrer">상담 연결</a><a class="v68-secondary" href="/tools/">도구 먼저 확인</a></div></form></section><section class="v68-shell v68-section"><div class="v68-grid">${listItem('공식주소가 헷갈릴 때','도메인과 공식 채널을 먼저 대조','/consult-motives/official-address/')}${listItem('가입코드 실수 방지','업체명과 코드값을 상담 전 확인','/consult-motives/code-mistake/')}${listItem('이벤트 조건 확인','중복·롤링·최대 출금 조건을 정리','/consult-motives/event-overlap/')}${listItem('출금 전 체크','증빙과 조건 누락을 먼저 확인','/consult-result/payout-before-check/')}</div></section>`;
 
 const opsMain = `<section class="v68-shell v68-hero-grid" data-v68-ops-root><div class="v68-card v68-intro"><span class="v68-kicker">V68 OPS</span><h1>배포 후 구버전 노출을 바로 잡는 운영점검.</h1><p>CSS, JS, 광고카드 JSON, 핵심 페이지 토큰을 한 화면에서 확인하도록 구성했습니다. 업로드 후 캐시를 지웠는데 그대로 보이면 여기부터 확인합니다.</p><div class="v68-action-row"><button class="v68-primary" type="button" data-v68-run-check>브라우저 점검 실행</button><a class="v68-secondary" href="/${OPS_FILE}">점검 JSON</a><a class="v68-secondary" href="/${AD_FILE}">광고 JSON</a></div></div><aside class="v68-card v68-metric-board">${stat('V68','현재 버전')}${stat('8','점검 항목')}${stat('624','HTML 기준')}${stat('PASS','로컬 검증')}</aside></section><section class="v68-shell v68-section"><div class="v68-section-head"><div><h2>핵심 점검 항목</h2><p>Cloudflare Pages 업로드 후 직접 눌러 확인할 항목입니다.</p></div></div><div class="v68-check-grid">${opsChecks.map(c => `<article class="v68-ops-box" data-v68-check="${esc(c.id)}"><strong>${esc(c.title)}</strong><code>${esc(c.href)}</code><p>${esc(c.owner)} · ${c.must.map(esc).join(', ')}</p><span>확인 대상</span></article>`).join('')}</div></section><section class="v68-shell v68-section"><div class="v68-card v68-intro"><h2>브라우저 점검 결과</h2><pre data-v68-ops-result style="white-space:pre-wrap;overflow:auto;max-height:320px;border:1px solid rgba(255,255,255,.10);border-radius:18px;padding:16px;background:rgba(0,0,0,.26)"></pre></div></section>`;
 
-write(path.join(ROOT,'index.html'), layout({ title:'88ST.Cloud V68 | 운영·수익 강화 대시보드', desc:'V68은 검색, 보증업체, 상담, 운영점검을 하나로 묶은 프리미엄 다크 SaaS 대시보드입니다.', route:'/', bodyClass:'v68-home-page', main:homeMain }));
-write(path.join(ROOT,'guaranteed/index.html'), layout({ title:'보증업체 | 88ST.Cloud V68', desc:'SK 홀딩스, 여왕벌, ANY BET, UDT BET, 땅콩 BET 정보를 텍스트 중심 칼정렬 카드로 확인합니다.', route:'/guaranteed/', bodyClass:'v68-guaranteed-page', main:guaranteedMain }));
-write(path.join(ROOT,'tools/index.html'), layout({ title:'도구 | 88ST.Cloud V68', desc:'공식주소, 가입코드, 보너스, 롤링, 출금, 배당, RTP, 피싱 URL 도구를 고대비 카드로 제공합니다.', route:'/tools/', bodyClass:'v68-tools-page', main:toolsMain }));
-write(path.join(ROOT,'consult/index.html'), layout({ title:'고객센터 | 88ST.Cloud V68', desc:'업체명, 도메인, 가입코드, 문의 유형을 정리한 뒤 텔레그램 상담으로 연결합니다.', route:'/consult/', bodyClass:'v68-consult-page', main:consultMain }));
+write(path.join(ROOT,'index.html'), layout({ title:'88ST.Cloud | 보증업체·도구·상담 대시보드', desc:'검색, 보증업체, 도구, 상담 연결을 하나로 묶은 프리미엄 다크 SaaS 대시보드입니다.', route:'/', bodyClass:'v68-home-page', main:homeMain }));
+write(path.join(ROOT,'guaranteed/index.html'), layout({ title:'보증업체 | 88ST.Cloud', desc:'SK 홀딩스, 여왕벌, ANY BET, UDT BET, 땅콩 BET 정보를 텍스트 중심 칼정렬 카드로 확인합니다.', route:'/guaranteed/', bodyClass:'v68-guaranteed-page', main:guaranteedMain }));
+write(path.join(ROOT,'tools/index.html'), layout({ title:'도구 | 88ST.Cloud', desc:'공식주소, 가입코드, 보너스, 롤링, 출금, 배당, RTP, 피싱 URL 도구를 고대비 카드로 제공합니다.', route:'/tools/', bodyClass:'v68-tools-page', main:toolsMain }));
+write(path.join(ROOT,'consult/index.html'), layout({ title:'고객센터 | 88ST.Cloud', desc:'업체명, 도메인, 가입코드, 문의 유형을 정리한 뒤 텔레그램 상담으로 연결합니다.', route:'/consult/', bodyClass:'v68-consult-page', main:consultMain }));
 write(path.join(ROOT,'ops/index.html'), layout({ title:'운영점검 | 88ST.Cloud V68', desc:'V68 배포 후 CSS, JS, 광고카드 JSON, 핵심 페이지 반영 상태를 점검합니다.', route:'/ops/', bodyClass:'v68-ops-page', main:opsMain }));
 
-function injectV68(html){
+function injectV68(html, route = '/'){
   if (!html.includes('data-v68-ops-revenue="true"')) {
     html = html.replace('</head>', `  <link rel="stylesheet" href="/${CSS_FILE}?v=${VERSION}" data-v68-ops-revenue="true">\n</head>`);
   }
@@ -218,7 +226,7 @@ function injectV68(html){
     html = html.replace(/<body([^>]*)>/i, '<body$1 class="v68-ops-revenue">');
   }
   if (!html.includes('data-v68-global-header')) {
-    html = html.replace(/<body([^>]*)>/i, `<body$1>\n  <header class="v68-header" data-v68-global-header><div class="v68-shell v68-header__inner"><a class="v68-brand" href="/" aria-label="88ST.Cloud 홈"><span class="v68-brand__mark">88</span><span><b>88ST</b><em>.Cloud V68</em></span></a><nav class="v68-nav" aria-label="주요 메뉴"><a href="/">메인</a><a href="/blog/">블로그</a><a href="/tools/">도구</a><a href="/guaranteed/">보증업체</a><a href="/consult/">고객센터</a><a href="/ops/">운영점검</a></nav><a class="v68-header-cta" href="/ops/">배포점검</a></div></header>`);
+    html = html.replace(/<body([^>]*)>/i, `<body$1>\n  ${isOpsRoute(route) ? opsHeader() : publicHeader()}`);
   }
   if (!html.includes('class="v68-fab"')) html = html.replace('</body>', `  <a class="v68-fab" href="https://t.me/TRS999_bot" target="_blank" rel="nofollow noopener noreferrer" aria-label="상담센터 바로가기" data-v68-click="fab-consult"><span>💬</span><strong>상담센터</strong></a>\n</body>`);
   if (!html.includes('class="v68-mobile-nav"')) html = html.replace('</body>', `  <nav class="v68-mobile-nav" aria-label="모바일 하단 내비게이션"><a href="/" data-v68-route="/"><span>⌂</span>메인</a><a href="/tools/official-check/" data-v68-route="/tools/official-check/"><span>⌕</span>검색</a><a href="/tools/" data-v68-route="/tools/"><span>◇</span>도구</a><a href="/guaranteed/" data-v68-route="/guaranteed/"><span>◆</span>보증</a><a href="/consult/" data-v68-route="/consult/"><span>✦</span>상담</a></nav>\n</body>`);
@@ -236,6 +244,34 @@ for (const file of allHtml(ROOT)) {
   const after = injectV68(before, routeFor(file));
   if (after !== before) { write(file, after); injected += 1; }
 }
+
+
+function normalizePublicVisibility(){
+  for (const file of allHtml(ROOT)) {
+    const rel = path.relative(ROOT, file).replaceAll(path.sep, '/');
+    const route = routeFor(file);
+    const isOps = route.startsWith('/ops/');
+    let html = read(file);
+    const before = html;
+    if (html.includes('data-v68-global-header')) {
+      html = html.replace(/\s*<header class="v68-header" data-v68-global-header>[\s\S]*?<\/header>/, `\n  ${isOps ? opsHeader() : publicHeader()}`);
+    }
+    html = html.replaceAll('.Cloud V68', '.Cloud');
+    html = html.replaceAll('88ST.Cloud V68', '88ST.Cloud');
+    if (!isOps) {
+      html = html.replace(/<a href="\/ops\/">운영점검<\/a>/g, '');
+      html = html.replace(/<a class="v68-header-cta" href="\/ops\/">배포점검<\/a>/g, '<a class="v68-header-cta" href="/consult/">상담센터</a>');
+      html = html.replaceAll('V68 OPS · REVENUE DASHBOARD', 'PREMIUM SAFETY DASHBOARD');
+      html = html.replaceAll('빠른 점검', '빠른 확인');
+      html = html.replaceAll('운영점검을 첫 화면에서 끝냅니다.', '상담 연결을 첫 화면에서 끝냅니다.');
+      html = html.replaceAll('배포상태 확인', '보증업체 보기');
+      html = html.replaceAll('/ops/', '/consult/');
+    }
+    html = html.replaceAll('<strong>현재 버전 안내</strong>', '<strong>관리 안내</strong>');
+    if (html !== before) write(file, html);
+  }
+}
+normalizePublicVisibility();
 
 const sitemapTxt = path.join(ROOT, 'sitemap.txt');
 let sitemapCount = 0;

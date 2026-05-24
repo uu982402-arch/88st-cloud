@@ -1,12 +1,12 @@
 {
   "version": "static-growth-conversion-v60",
-  "generatedAt": "2026-05-24T02:36:07.491Z",
+  "generatedAt": "2026-05-24T02:53:55.462Z",
   "summary": {
     "html": 624,
-    "files": 977,
+    "files": 978,
     "badHref": 0,
     "missingAsset": 0,
-    "deadInternal": 4,
+    "deadInternal": 3,
     "blankRelMissing": 1,
     "whiteFallback": 0,
     "sitemapMissing": 0,
@@ -133,8 +133,7 @@
     "deadInternal": [
       "consult/index.html -> /consult-motives/official-address/",
       "consult/index.html -> /consult-motives/code-mistake/",
-      "consult/index.html -> /consult-motives/event-overlap/",
-      "consult/index.html -> /consult-result/payout-before-check/"
+      "consult/index.html -> /consult-motives/event-overlap/"
     ],
     "blankRelMissing": [
       "tools/code-check/index.html"
