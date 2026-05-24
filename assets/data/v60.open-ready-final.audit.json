@@ -1,12 +1,12 @@
 {
   "version": "static-growth-conversion-v60",
-  "generatedAt": "2026-05-24T03:47:59.502Z",
+  "generatedAt": "2026-05-24T08:56:33.802Z",
   "summary": {
     "html": 624,
-    "files": 984,
+    "files": 1007,
     "badHref": 0,
     "missingAsset": 0,
-    "deadInternal": 4,
+    "deadInternal": 0,
     "blankRelMissing": 1,
     "whiteFallback": 0,
     "sitemapMissing": 0,
@@ -98,6 +98,8 @@
       "assets/css/v65.global-premium-fix.css",
       "assets/css/v66.obsidian-renewal.css",
       "assets/css/v68.mobile-title-hotfix.css",
+      "assets/css/v70-2.full-expansion.css",
+      "assets/css/v70-3.conversion-polish.css",
       "assets/css/vvip-hub.v85.css",
       "assets/css/vvip-luxe.v75.css",
       "assets/css/x.9d7841e705c5.css",
@@ -122,20 +124,13 @@
       "assets/js/community.tools.v3.20260331.js",
       "assets/js/guaranteed.cards.v1.20260504.js",
       "assets/js/hub.promo.v1.20260418.js",
-      "assets/js/hub.promo.v1.20260420b.js",
-      "assets/js/hub.promo.v1.20260502.js",
-      "assets/js/j.searchtyping.v83.20260219.js"
+      "assets/js/hub.promo.v1.20260420b.js"
     ]
   },
   "details": {
     "badHref": [],
     "missingAsset": [],
-    "deadInternal": [
-      "consult/index.html -> /consult-motives/official-address/",
-      "consult/index.html -> /consult-motives/code-mistake/",
-      "consult/index.html -> /consult-motives/event-overlap/",
-      "consult/index.html -> /consult-result/payout-before-check/"
-    ],
+    "deadInternal": [],
     "blankRelMissing": [
       "tools/code-check/index.html"
     ],
