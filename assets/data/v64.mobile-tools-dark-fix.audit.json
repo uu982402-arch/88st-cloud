@@ -1,0 +1,12 @@
+{
+  "version": "static-growth-conversion-v64",
+  "generatedAt": "2026-05-23T22:24:00.092Z",
+  "htmlScanned": 624,
+  "htmlUpdated": 624,
+  "fixes": [
+    "mobile bottom nav labels: guide->blog, vendor->guaranteed",
+    "tools bright pastel card override to dark readable cards",
+    "provider card image fit to section area",
+    "compact title guard kept"
+  ]
+}
