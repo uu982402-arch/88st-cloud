@@ -1,9 +1,9 @@
 {
   "version": "static-growth-conversion-v60",
-  "generatedAt": "2026-05-23T22:23:58.834Z",
+  "generatedAt": "2026-05-24T01:31:01.750Z",
   "summary": {
     "html": 624,
-    "files": 946,
+    "files": 952,
     "badHref": 0,
     "missingAsset": 0,
     "deadInternal": 0,
@@ -90,6 +90,7 @@
       "assets/css/v63.sitewide-hard-reset.css",
       "assets/css/v64.mobile-tools-dark-fix.css",
       "assets/css/v65.global-premium-fix.css",
+      "assets/css/v66.obsidian-dashboard.css",
       "assets/css/vvip-hub.v85.css",
       "assets/css/vvip-luxe.v75.css",
       "assets/data/asset.inventory.v43.json",
@@ -123,8 +124,7 @@
       "assets/data/v51.user-facing-tools.json",
       "assets/data/v52.open-ready.audit.json",
       "assets/data/v53.main.audit.json",
-      "assets/data/v54.vendor-landing.audit.json",
-      "assets/data/v55.luminous.audit.json"
+      "assets/data/v54.vendor-landing.audit.json"
     ]
   },
   "details": {
