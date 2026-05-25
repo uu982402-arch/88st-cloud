@@ -1,24 +1,24 @@
 {
   "version": "static-growth-conversion-v51",
-  "generatedAt": "2026-05-25T00:00:29.110Z",
+  "generatedAt": "2026-05-25T14:37:53.377Z",
   "counts": {
-    "html": 624,
-    "blog": 453,
+    "html": 674,
+    "blog": 503,
     "images": 98,
     "imageBytes": 11244016
   },
   "seo": {
     "duplicateTitleGroups": 0,
-    "duplicateDescriptionGroups": 7,
+    "duplicateDescriptionGroups": 2,
     "missingSchema": 0,
     "missingCanonical": 0,
     "metaKeywords": 0,
     "blogConversionCta": 0,
-    "thinPages": 4
+    "thinPages": 5
   },
   "quality": {
     "blogDetailsWithGuard": 0,
-    "averageBlogWords": 881
+    "averageBlogWords": 879
   },
   "samples": {
     "duplicateTitles": [],
@@ -30,29 +30,10 @@
       {
         "description": "현재 블로그 목록 구조에서 사용하지 않는 보존 페이지입니다.",
         "count": 2
-      },
-      {
-        "description": "RUST는 88st.cloud에서 제공하는 2026 토토사이트추천, 스포츠입플, 카지노입플, 미니게임입플사이트, 보증업체 큐레이션, 롤링·EV 계산 도구, 공식 상담 연결을 통합한 정보 플랫폼입니다. (first-charge-rolling)",
-        "count": 2
-      },
-      {
-        "description": "RUST는 88st.cloud에서 제공하는 2026 토토사이트추천, 스포츠입플, 카지노입플, 미니게임입플사이트, 보증업체 큐레이션, 롤링·EV 계산 도구, 공식 상담 연결을 통합한 정보 플랫폼입니다. (kbo-rain-cancel)",
-        "count": 2
-      },
-      {
-        "description": "RUST는 88st.cloud에서 제공하는 2026 토토사이트추천, 스포츠입플, 카지노입플, 미니게임입플사이트, 보증업체 큐레이션, 롤링·EV 계산 도구, 공식 상담 연결을 통합한 정보 플랫폼입니다. (volleyball-set-handicap)",
-        "count": 2
-      },
-      {
-        "description": "RUST는 88st.cloud에서 제공하는 2026 토토사이트추천, 스포츠입플, 카지노입플, 미니게임입플사이트, 보증업체 큐레이션, 롤링·EV 계산 도구, 공식 상담 연결을 통합한 정보 플랫폼입니다. (sk-holdings-iron888)",
-        "count": 2
-      },
-      {
-        "description": "RUST는 88st.cloud에서 제공하는 2026 토토사이트추천, 스포츠입플, 카지노입플, 미니게임입플사이트, 보증업체 큐레이션, 롤링·EV 계산 도구, 공식 상담 연결을 통합한 정보 플랫폼입니다. (over-under)",
-        "count": 2
       }
     ],
     "thinPages": [
+      "/admin/",
       "/blog/page/7.html",
       "/blog/page/8.html",
       "/consult/",
@@ -79,6 +60,7 @@
     "https://88st.cloud/blog/online-slot/pgsoft-mobile-portrait-slot-math.html",
     "https://88st.cloud/blog/online-slot/slot-rng-api-packet-check.html",
     "https://88st.cloud/blog/online-slot/v47-pg-soft-rtp-observed-variance.html",
+    "https://88st.cloud/blog/slot-rtp-volatility-event-reading/",
     "https://88st.cloud/blog/sports-toto/2026-world-cup-before-check.html",
     "https://88st.cloud/blog/sports-toto/kbo-fall-baseball-check.html",
     "https://88st.cloud/blog/sports-toto/kbo-pitcher-bullpen-odds-model.html",
@@ -88,6 +70,7 @@
     "https://88st.cloud/blog/sports-toto/v47-nba-handicap-quarter-volatility.html",
     "https://88st.cloud/blog/online-slot/v48-slot-max-win-cap-expected-value.html",
     "https://88st.cloud/blog/sports-toto/v48-kbo-five-innings-rain-settlement.html",
+    "https://88st.cloud/blog/official-address-risk-routine/",
     "https://88st.cloud/blog/online-slot/v48-slot-hit-frequency-vs-rtp.html",
     "https://88st.cloud/blog/online-casino/baccarat-check.html",
     "https://88st.cloud/blog/online-casino/basic-guide.html",
@@ -107,8 +90,6 @@
     "https://88st.cloud/blog/online-casino/v48-blackjack-s17-h17-rule-edge.html",
     "https://88st.cloud/blog/online-casino/v48-roulette-single-double-zero-edge.html",
     "https://88st.cloud/blog/online-slot/buy-feature-before-check.html",
-    "https://88st.cloud/blog/online-slot/pg-soft-mobile-slot-feature.html",
-    "https://88st.cloud/blog/online-slot/playngo-grid-slot-feature-check.html",
-    "https://88st.cloud/blog/online-slot/pragmatic-rtp-range-bonus-buy.html"
+    "https://88st.cloud/blog/online-slot/pg-soft-mobile-slot-feature.html"
   ]
 }

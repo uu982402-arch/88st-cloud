@@ -1,11 +1,16 @@
 {
   "version": "V48",
-  "generatedAt": "2026-05-25T00:00:24.380Z",
-  "count": 32,
+  "generatedAt": "2026-05-25T14:37:44.610Z",
+  "count": 34,
   "candidates": [
     {
       "file": "blog/anybet-seoa-event-guide.html",
       "title": "ANY BET SEOA 원화·테더 이벤트 안내",
+      "reason": "legacy vendor/contact slug or title"
+    },
+    {
+      "file": "blog/join-code-copy-before-telegram-consult/index.html",
+      "title": "가입코드 복사 후 상담에서 확인할 질문",
       "reason": "legacy vendor/contact slug or title"
     },
     {
@@ -141,6 +146,11 @@
     {
       "file": "blog/sk-holdings-vip-return-event.html",
       "title": "SK 홀딩스 VIP·복귀 회원 이벤트 조건 체크노트",
+      "reason": "legacy vendor/contact slug or title"
+    },
+    {
+      "file": "blog/telegram-consult-question-list/index.html",
+      "title": "상담 전 준비할 질문 리스트",
       "reason": "legacy vendor/contact slug or title"
     },
     {

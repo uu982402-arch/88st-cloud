@@ -1,14 +1,15 @@
 {
   "version": "v55-luminous-sitewide-design",
-  "cacheVersion": "static-growth-conversion-v55-20260525000025",
-  "updatedHtml": 624,
-  "totalHtml": 624,
-  "indexableHtml": 586,
+  "cacheVersion": "static-growth-conversion-v55-20260525143747",
+  "updatedHtml": 674,
+  "totalHtml": 674,
+  "indexableHtml": 634,
   "css": "assets/css/v55.luminous-sitewide.css",
   "js": "assets/js/v55.luminous-sitewide.js",
   "mode": "sitewide visual renewal only; existing routes, posts, tools and vendor functions preserved",
   "sampleUpdated": [
     "admin/index.html",
+    "blog/2026-toto-site-recommendation-safe-checklist/index.html",
     "blog/address-change-center/index.html",
     "blog/address-change-risk-patterns/index.html",
     "blog/address-change-warning-signs/index.html",
@@ -19,6 +20,7 @@
     "blog/affiliate/settlement-guide.html",
     "blog/anybet-seoa-event-guide.html",
     "blog/asn-ip-cluster-check/index.html",
+    "blog/auto-copy-code-domain-match/index.html",
     "blog/bet365-virtual/basic-guide.html",
     "blog/bet365-virtual/index.html",
     "blog/bet365-virtual/result-cycle-check.html",
@@ -29,9 +31,7 @@
     "blog/bet365-virtual/v47-bet365-virtual-round-id-check.html",
     "blog/bet365-virtual/v47-virtual-football-highlight-settlement.html",
     "blog/bet365-virtual/v47-virtual-game-bonus-abuse-clause.html",
-    "blog/bet365-virtual/v47-virtual-game-consecutive-round-bankroll.html",
-    "blog/bet365-virtual/v47-virtual-game-dispute-record-standard.html",
-    "blog/bet365-virtual/v47-virtual-game-event-scope-check.html"
+    "blog/bet365-virtual/v47-virtual-game-consecutive-round-bankroll.html"
   ],
-  "generatedAt": "2026-05-25T00:00:26.073Z"
+  "generatedAt": "2026-05-25T14:37:47.770Z"
 }
