@@ -1,0 +1,153 @@
+{
+  "version": "static-v87-live-deploy-check-20260525",
+  "marker": "V87_LIVE_DEPLOY_CHECK_ACTIVE",
+  "generatedAt": "2026-05-25T18:31:30.881Z",
+  "baseUrl": "https://88st.cloud",
+  "htmlCount": 674,
+  "seoPostTargets": 50,
+  "keyUrls": [
+    {
+      "label": "메인",
+      "url": "/",
+      "file": "index.html",
+      "mustContain": [
+        "V81_2_MAIN_TITLE_CLEAN_ACTIVE",
+        "V81_1_MAIN_MOTION_FIX_ACTIVE"
+      ],
+      "mustNotContain": [
+        "RUST MOTION HUB",
+        "88ST.CLOUD PLATFORM",
+        "보증업체 보기</a>",
+        "자동 상담 시작</a>"
+      ]
+    },
+    {
+      "label": "블로그",
+      "url": "/blog/",
+      "file": "blog/index.html",
+      "mustContain": [
+        "V72_1_BLOG_LOCK_ACTIVE",
+        "V85_3_LIVE_LOCK_ACTIVE"
+      ],
+      "mustNotContain": [
+        "신규 유입 확장 콘텐츠",
+        "토토·입플·보증업체·도구 연결 50개"
+      ]
+    },
+    {
+      "label": "도구",
+      "url": "/tools/",
+      "file": "tools/index.html",
+      "mustContain": [
+        "V73_TOOLS_DASHBOARD_ACTIVE"
+      ],
+      "mustNotContain": [
+        "TOOLS HUB",
+        "# 어두운 배경에서도 글자가 묻히지 않는 도구 허브"
+      ]
+    },
+    {
+      "label": "보증업체",
+      "url": "/guaranteed/",
+      "file": "guaranteed/index.html",
+      "mustContain": [
+        "V74_1_GUARANTEED_CARD_LAYOUT_ACTIVE"
+      ],
+      "mustNotContain": [
+        "GUARANTEED CURATION",
+        "# 보증업체를 광고가 아니라 확인 카드로 정리했습니다."
+      ]
+    },
+    {
+      "label": "상담",
+      "url": "/consult/",
+      "file": "consult/index.html",
+      "mustContain": [
+        "data-v75-consult=\"active\""
+      ],
+      "mustNotContain": [
+        "CONSULT FLOW",
+        "상담 전 필요한 정보만 짧게 정리합니다",
+        "업체 선택",
+        "코드 확인",
+        "텔레그램 이동"
+      ]
+    },
+    {
+      "label": "스포츠 체크",
+      "url": "/sports-check/",
+      "file": "sports-check/index.html",
+      "mustContain": [
+        "V79_RUST_LONGFORM_HUBS_ACTIVE"
+      ],
+      "mustNotContain": [
+        "오늘 확인해야 할 것",
+        "상담 전 먼저 확인할 것",
+        "함께 확인할 글"
+      ]
+    },
+    {
+      "label": "검색 가이드",
+      "url": "/search-guides/",
+      "file": "search-guides/index.html",
+      "mustContain": [
+        "V79_RUST_LONGFORM_HUBS_ACTIVE"
+      ],
+      "mustNotContain": [
+        "오늘 확인해야 할 것",
+        "상담 전 먼저 확인할 것",
+        "함께 확인할 글"
+      ]
+    },
+    {
+      "label": "운영센터",
+      "url": "/ops/",
+      "file": "ops/index.html",
+      "mustContain": [
+        "V80_OPS_CONTROL_CENTER_ACTIVE",
+        "noindex,nofollow,noarchive"
+      ],
+      "mustNotContain": []
+    },
+    {
+      "label": "구 관리자",
+      "url": "/admin/",
+      "file": "admin/index.html",
+      "mustContain": [
+        "noindex,nofollow,noarchive"
+      ],
+      "mustNotContain": []
+    },
+    {
+      "label": "사이트맵",
+      "url": "/sitemap.xml",
+      "file": "sitemap.xml",
+      "mustContain": [
+        "https://88st.cloud/"
+      ],
+      "mustNotContain": []
+    },
+    {
+      "label": "robots",
+      "url": "/robots.txt",
+      "file": "robots.txt",
+      "mustContain": [
+        "Sitemap: https://88st.cloud/sitemap.xml"
+      ],
+      "mustNotContain": []
+    }
+  ],
+  "forbiddenGlobal": [
+    "RUST MOTION HUB",
+    "신규 유입 확장 콘텐츠",
+    "토토·입플·보증업체·도구 연결 50개",
+    "페이지 하단의 내부 링크",
+    "관련 글과 다음 확인 루트",
+    "CONSULT FLOW"
+  ],
+  "liveCheckNotes": [
+    "Cloudflare 캐시 제거 후 /ops/에서 현재 도메인 점검 버튼을 누르세요.",
+    "sitemap.xml과 robots.txt가 200으로 열리는지 확인하세요.",
+    "금지 문구가 하나라도 검출되면 해당 배포는 최신 구조가 아닙니다."
+  ]
+}

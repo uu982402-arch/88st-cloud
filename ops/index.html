@@ -16,9 +16,12 @@
   <link rel="preload" as="image" href="/assets/img/rust/rust-crest-192.png">
   <link rel="stylesheet" href="/assets/css/v80.ops-control-center.css?v=static-v80-ops-control-center-20260525">
   <meta name="v82-1-structure-ga4" content="V82_1_STRUCTURE_GA4_ACTIVE">
-<style data-v84-critical="true">html{background:#06090f;color-scheme:dark}body{min-width:320px;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}img{max-width:100%;height:auto}iframe,video{max-width:100%}@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}}</style>
-<meta name="v83-schema-structured-data" content="V83_SCHEMA_STRUCTURED_DATA_ACTIVE"><script type="application/ld+json" data-rust-schema="v83">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://88st.cloud/#organization","name":"RUST by 88ST","alternateName":["RUST","러스트","88ST.Cloud"],"url":"https://88st.cloud/","logo":"https://88st.cloud/assets/img/rust/rust-crest-192.png","image":"https://88st.cloud/assets/img/rust/rust-og.jpg","sameAs":["https://88st.cloud/"]},{"@type":"WebSite","@id":"https://88st.cloud/#website","url":"https://88st.cloud/","name":"RUST","alternateName":"88ST.Cloud","inLanguage":"ko-KR","publisher":{"@id":"https://88st.cloud/#organization"},"potentialAction":{"@type":"SearchAction","target":"https://88st.cloud/blog/?q={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"BreadcrumbList","@id":"https://88st.cloud/ops/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"홈","item":"https://88st.cloud/"},{"@type":"ListItem","position":2,"name":"운영센터","item":"https://88st.cloud/ops/"}]},{"@type":"WebPage","@id":"https://88st.cloud/ops/#webpage","url":"https://88st.cloud/ops/","name":"RUST OPS | 통합 관리자 센터","description":"RUST 통합 관리자 센터. 보증업체, 블로그, 도구, 상담 주소, SEO 키워드를 한 화면에서 점검하고 제어합니다.","isPartOf":{"@id":"https://88st.cloud/#website"},"inLanguage":"ko-KR","dateModified":"2026-05-25","publisher":{"@id":"https://88st.cloud/#organization"}}]}</script>  <meta name="v82-3-indexing-measurement" content="V82_3_INDEXING_MEASUREMENT_ACTIVE">
+<meta name="v83-schema-structured-data" content="V83_SCHEMA_STRUCTURED_DATA_ACTIVE"><script type="application/ld+json" data-rust-schema="v83">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://88st.cloud/#organization","name":"RUST by 88ST","alternateName":["RUST","러스트","88ST.Cloud"],"url":"https://88st.cloud/","logo":"https://88st.cloud/assets/img/rust/rust-crest-192.png","image":"https://88st.cloud/assets/img/rust/rust-og.jpg","sameAs":["https://88st.cloud/"]},{"@type":"WebSite","@id":"https://88st.cloud/#website","url":"https://88st.cloud/","name":"RUST","alternateName":"88ST.Cloud","inLanguage":"ko-KR","publisher":{"@id":"https://88st.cloud/#organization"},"potentialAction":{"@type":"SearchAction","target":"https://88st.cloud/blog/?q={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"BreadcrumbList","@id":"https://88st.cloud/ops/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"홈","item":"https://88st.cloud/"},{"@type":"ListItem","position":2,"name":"운영센터","item":"https://88st.cloud/ops/"}]},{"@type":"WebPage","@id":"https://88st.cloud/ops/#webpage","url":"https://88st.cloud/ops/","name":"RUST OPS | 통합 관리자 센터","description":"RUST 통합 관리자 센터. 보증업체, 블로그, 도구, 상담 주소, SEO 키워드를 한 화면에서 점검하고 제어합니다.","isPartOf":{"@id":"https://88st.cloud/#website"},"inLanguage":"ko-KR","dateModified":"2026-05-25","publisher":{"@id":"https://88st.cloud/#organization"}}]}</script>  <style data-v84-critical="true">html{background:#06090f;color-scheme:dark}body{min-width:320px;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}img{max-width:100%;height:auto}iframe,video{max-width:100%}@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}}</style>
+  <meta name="v82-3-indexing-measurement" content="V82_3_INDEXING_MEASUREMENT_ACTIVE">
   <link rel="stylesheet" href="/assets/css/v82-3-indexing-ops.css?v=static-v82-3-indexing-measurement-20260525" data-v82-3-indexing="true">
+  <meta name="v86-structure-lock" content="V86_STRUCTURE_LOCK_HARDENING_ACTIVE" data-v86-structure-lock="true">
+  <link rel="stylesheet" href="/assets/css/v87-live-deploy-check.css?v=static-v87-live-deploy-check-20260525" data-v87-live-deploy="true">
+  <meta name="v87-live-deploy-check" content="V87_LIVE_DEPLOY_CHECK_ACTIVE" data-v87-live-deploy="true">
 </head>
 <body class="v80-ops-center">
   <div class="v80-ops-app" id="V80_OPS_CONTROL_CENTER_ACTIVE">
@@ -34,6 +37,7 @@
         <a href="#consult">상담</a>
         <a href="#seo">SEO</a>
         <a href="#indexing">색인·측정</a>
+        <a href="#live-check">라이브검증</a>
         <a href="#deploy">배포검증</a>
       </nav>
       <div class="v80-side-foot">
@@ -54,6 +58,31 @@
         <article class="v80-metric"><b data-metric="bot">@TRS999_bot</b><span>공식 상담 주소</span></article>
         <article class="v80-metric"><b data-metric="keywords">10</b><span>SEO 키워드</span></article>
       </section>
+
+      
+      <!-- V87 LIVE DEPLOY CHECK START -->
+      <section class="v87-live-panel" id="live-check" data-v87-live-deploy="V87_LIVE_DEPLOY_CHECK_ACTIVE" aria-label="라이브 배포 검증 자동화">
+        <div class="v87-live-head">
+          <div>
+            <span class="v87-live-kicker">V87 LIVE DEPLOY CHECK</span>
+            <h2>라이브 배포 검증 자동화</h2>
+            <p>업로드 직후 핵심 URL, 금지 문구, noindex, sitemap, robots, GA4/구조 잠금 마커를 한 번에 점검합니다.</p>
+          </div>
+          <div class="v87-live-actions">
+            <button type="button" class="v87-live-btn is-primary" data-v87-run-live-check>현재 도메인 점검</button>
+            <button type="button" class="v87-live-btn" data-v87-copy-urls>URL 목록 복사</button>
+          </div>
+        </div>
+        <div class="v87-live-metrics">
+          <div><small>핵심 URL</small><strong>11</strong><span>페이지/시스템 경로</span></div>
+          <div><small>금지 문구</small><strong>6</strong><span>재등장 즉시 실패</span></div>
+          <div><small>신규 SEO 글</small><strong>50</strong><span>shell lock 유지</span></div>
+          <div><small>검증 모드</small><strong>LOCAL + LIVE</strong><span>빌드/브라우저 점검</span></div>
+        </div>
+        <div class="v87-live-grid" data-v87-live-list></div>
+        <pre class="v87-live-log" data-v87-live-log>대기 중입니다. 버튼을 누르면 라이브 HTML을 fetch 하여 상태를 표시합니다.</pre>
+      </section>
+      <!-- V87 LIVE DEPLOY CHECK END -->
 
       <section class="v80-layout" id="vendors">
         <article class="v80-panel">
@@ -215,5 +244,6 @@
   <script>window.RUST_OPS_DEFAULTS={"vendors": [{"id": "sk-holdings", "name": "SK 홀딩스", "code": "IRON888", "status": "상담 확인", "landing": "/guaranteed/sk-holdings/", "target": "#", "image": "/assets/img/guaranteed/cards/sk-holdings.webp", "active": true}, {"id": "queenbee", "name": "여왕벌", "code": "SEOA", "status": "상담 확인", "landing": "/guaranteed/queenbee/", "target": "#", "image": "/assets/img/guaranteed/cards/queenbee.webp", "active": true}, {"id": "anybet", "name": "ANY BET", "code": "SEOA", "status": "상담 확인", "landing": "/guaranteed/anybet/", "target": "#", "image": "/assets/img/guaranteed/cards/anybet.webp", "active": true}, {"id": "udt-bet", "name": "UDT BET", "code": "SEOA", "status": "상담 확인", "landing": "/guaranteed/udt-bet/", "target": "#", "image": "/assets/img/guaranteed/cards/udt-bet.webp", "active": true}, {"id": "ddangkong-bet", "name": "땅콩 BET", "code": "DDK888", "status": "상담 확인", "landing": "/guaranteed/ddangkong-bet/", "target": "#", "image": "/assets/img/guaranteed/cards/ddangkong-bet.webp", "active": true}], "tools": [{"id": "address", "name": "주소 확인", "href": "/search-guides/", "active": true, "usage": 94}, {"id": "code", "name": "가입코드 확인", "href": "/guaranteed/", "active": true, "usage": 91}, {"id": "bonus", "name": "보너스 실수령", "href": "/tool-bonus/", "active": true, "usage": 87}, {"id": "rolling", "name": "롤링 조건", "href": "/tool-rolling/", "active": true, "usage": 84}, {"id": "margin", "name": "배당 마진", "href": "/tool-margin/", "active": true, "usage": 82}, {"id": "ev", "name": "기대값 계산", "href": "/tool-ev/", "active": true, "usage": 78}, {"id": "sports", "name": "스포츠 분석", "href": "/sports-check/", "active": true, "usage": 76}, {"id": "event", "name": "이벤트 조건", "href": "/bonus-checklist/", "active": true, "usage": 72}], "consultBot": "@TRS999_bot", "seoKeywords": ["토토", "온라인스포츠토토사이트추천", "토토사이트추천", "입플사이트추천", "스포츠입플", "카지노입플", "미니게임입플사이트", "카지노입플사이트추천", "2026토토사이트추천", "안전한토토사이트추천"], "popularPosts": ["2026 토토사이트추천 기준 정리", "스포츠입플 조건 비교 체크리스트", "카지노입플 보너스 실수령 계산법", "미니게임입플사이트 가입코드 확인법", "먹튀 없는 보증업체 선택 기준", "배당 마진 계산과 기대값 해석", "롤링 조건을 읽는 실전 기준", "온라인스포츠토토사이트추천 검증 순서"]};</script>
   <script src="/assets/js/v80.ops-control-center.js?v=static-v80-ops-control-center-20260525" defer></script>
   <script defer src="/assets/js/v82-3-indexing-ops.js?v=static-v82-3-indexing-measurement-20260525" data-v82-3-indexing="true"></script>
+  <script src="/assets/js/v87-live-deploy-check.js?v=static-v87-live-deploy-check-20260525" defer data-v87-live-deploy="true"></script>
 </body>
 </html>
