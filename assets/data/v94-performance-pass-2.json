@@ -1,24 +1,24 @@
 {
   "version": "V94_PERFORMANCE_PASS_2_ACTIVE",
-  "generatedAt": "2026-05-25T19:47:26.310Z",
+  "generatedAt": "2026-05-25T20:56:22.573Z",
   "summary": {
-    "htmlFiles": 674,
-    "changedHtml": 674,
-    "duplicateStylesheetTagsRemoved": 1,
+    "htmlFiles": 675,
+    "changedHtml": 565,
+    "duplicateStylesheetTagsRemoved": 0,
     "duplicateScriptTagsRemoved": 0,
     "loadingAdded": 0,
     "decodingAdded": 0,
     "fetchPriorityAdded": 12,
-    "widthHeightAdded": 122,
+    "widthHeightAdded": 100,
     "deferAdded": 0,
-    "resourceHintsAdded": 1348,
-    "criticalAdded": 674,
-    "markerAdded": 674
+    "resourceHintsAdded": 1130,
+    "criticalAdded": 565,
+    "markerAdded": 565
   },
   "assetAudit": {
     "counts": {
-      "images": 78,
-      "css": 113,
+      "images": 82,
+      "css": 114,
       "js": 90
     },
     "largeImagesOver300KB": [
@@ -533,6 +533,17 @@
         "directReferenceDetected": true
       },
       {
+        "path": "assets/img/guaranteed/cards/zakum.png",
+        "bytes": 105192,
+        "kb": 103,
+        "dimensions": {
+          "width": 960,
+          "height": 540,
+          "type": "png"
+        },
+        "directReferenceDetected": true
+      },
+      {
         "path": "assets/img/rust/rust-crest-256.png",
         "bytes": 94777,
         "kb": 93,
@@ -595,6 +606,28 @@
           "height": 630,
           "width": 1200,
           "type": "jpeg"
+        },
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/img/guaranteed/cards/zakum.webp",
+        "bytes": 43342,
+        "kb": 42,
+        "dimensions": {
+          "width": 960,
+          "height": 540,
+          "type": "webp"
+        },
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/img/partners/v71-zakum.webp",
+        "bytes": 43342,
+        "kb": 42,
+        "dimensions": {
+          "width": 960,
+          "height": 540,
+          "type": "webp"
         },
         "directReferenceDetected": true
       },
@@ -751,45 +784,12 @@
           "type": "webp"
         },
         "directReferenceDetected": true
-      },
-      {
-        "path": "assets/img/guaranteed/cards/sk-holdings.webp",
-        "bytes": 16220,
-        "kb": 16,
-        "dimensions": {
-          "width": 960,
-          "height": 540,
-          "type": "webp"
-        },
-        "directReferenceDetected": true
-      },
-      {
-        "path": "assets/img/partners/v71-ddangkong-bet.webp",
-        "bytes": 16206,
-        "kb": 16,
-        "dimensions": {
-          "width": 960,
-          "height": 540,
-          "type": "webp"
-        },
-        "directReferenceDetected": true
-      },
-      {
-        "path": "assets/img/partners/v71-sk-holdings.webp",
-        "bytes": 14908,
-        "kb": 15,
-        "dimensions": {
-          "width": 960,
-          "height": 540,
-          "type": "webp"
-        },
-        "directReferenceDetected": true
       }
     ],
     "largestCss": [
       {
         "path": "assets/css/growth-conversion.v36.css",
-        "bytes": 63571,
+        "bytes": 63577,
         "kb": 62,
         "directReferenceDetected": true
       },

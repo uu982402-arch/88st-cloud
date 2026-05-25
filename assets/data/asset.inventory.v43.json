@@ -1,6 +1,6 @@
 {
   "version": "static-growth-conversion-v51",
-  "generatedAt": "2026-05-25T14:37:53.377Z",
+  "generatedAt": "2026-05-25T20:56:07.832Z",
   "images": [
     {
       "path": "/assets/img/rust/rust-crest-transparent.png",
@@ -83,6 +83,10 @@
       "bytes": 165118
     },
     {
+      "path": "/assets/img/guaranteed/cards/zakum.png",
+      "bytes": 105192
+    },
+    {
       "path": "/assets/img/rust/rust-crest-256.png",
       "bytes": 94777
     },
@@ -137,6 +141,14 @@
     {
       "path": "/img/popup/event-popup.jpg",
       "bytes": 44504
+    },
+    {
+      "path": "/assets/img/guaranteed/cards/zakum.webp",
+      "bytes": 43342
+    },
+    {
+      "path": "/assets/img/partners/v71-zakum.webp",
+      "bytes": 43342
     },
     {
       "path": "/assets/img/guaranteed/cards/udt-bet.webp",
@@ -389,6 +401,10 @@
     {
       "path": "/assets/vendor-logos/v59/anybet-card.svg",
       "bytes": 1508
+    },
+    {
+      "path": "/assets/img/guaranteed/cards/zakum.svg",
+      "bytes": 1037
     },
     {
       "path": "/favicon.ico",

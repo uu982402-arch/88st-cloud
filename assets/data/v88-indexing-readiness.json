@@ -1,12 +1,12 @@
 {
   "version": "static-v88-indexing-readiness-20260526",
   "marker": "V88_INDEXING_READINESS_ACTIVE",
-  "generatedAt": "2026-05-25T19:00:44.234Z",
+  "generatedAt": "2026-05-25T20:56:20.149Z",
   "domain": "https://88st.cloud",
   "sitemap": {
     "url": "https://88st.cloud/sitemap.xml",
     "txt": "https://88st.cloud/sitemap.txt",
-    "count": 636,
+    "count": 637,
     "lastmod": "2026-05-25",
     "excludedPrefixes": [
       "/admin/",
@@ -15,7 +15,7 @@
     ]
   },
   "canonical": {
-    "fixedCount": 636,
+    "fixedCount": 637,
     "fixedFiles": [
       "blog/2026-toto-site-recommendation-safe-checklist/index.html",
       "blog/address-change-center/index.html",

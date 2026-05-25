@@ -1,8 +1,8 @@
 {
   "version": "v56-high-end-unified-design-system",
-  "cacheVersion": "static-growth-conversion-v56-20260525143747",
-  "totalHtml": 674,
-  "updatedHtml": 674,
+  "cacheVersion": "static-growth-conversion-v56-20260525205604",
+  "totalHtml": 675,
+  "updatedHtml": 675,
   "css": "assets/css/v56.high-end-system.css",
   "js": "assets/js/v56.design-system.js",
   "globalRules": [
@@ -45,5 +45,5 @@
     "blog/bet365-virtual/v47-virtual-game-rng-vs-sports-odds.html",
     "blog/bet365-virtual/v47-virtual-game-technical-checklist.html"
   ],
-  "generatedAt": "2026-05-25T14:37:48.520Z"
+  "generatedAt": "2026-05-25T20:56:05.038Z"
 }

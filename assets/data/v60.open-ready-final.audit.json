@@ -1,9 +1,9 @@
 {
   "version": "static-growth-conversion-v60",
-  "generatedAt": "2026-05-25T14:37:52.636Z",
+  "generatedAt": "2026-05-25T20:56:07.370Z",
   "summary": {
-    "html": 674,
-    "files": 1170,
+    "html": 675,
+    "files": 1233,
     "badHref": 0,
     "missingAsset": 512,
     "deadInternal": 0,
@@ -111,6 +111,11 @@
       "assets/css/v77.rust-logo-assets.css",
       "assets/css/v81-1.main-motion-fix.css",
       "assets/css/v81-2.main-title-clean.css",
+      "assets/css/v85-2-blog-post-polish.css",
+      "assets/css/v85-4-blog-post-shell-lock.css",
+      "assets/css/v90-blog-quality-pass.css",
+      "assets/css/v91-hub-content-depth.css",
+      "assets/css/v96-zakum-ad.css",
       "assets/css/vvip-hub.v85.css",
       "assets/css/vvip-luxe.v75.css",
       "assets/css/x.9d7841e705c5.css",
@@ -119,12 +124,7 @@
       "assets/data/ctr.refresh.v1.20260323.json",
       "assets/data/generated.routes.v1.20260330.json",
       "assets/data/indexing.audit.v1.20260323.json",
-      "assets/data/last-stable.v36.json",
-      "assets/data/ops.dashboard.v1.20260323.json",
-      "assets/data/provider.event-history.v1.20260505.json",
-      "assets/data/search.keywords.v5.20260505.json",
-      "assets/data/telegram.consult.bot.v32.json",
-      "assets/data/traffic.upgrade.v1.20260323.json"
+      "assets/data/last-stable.v36.json"
     ]
   },
   "details": {

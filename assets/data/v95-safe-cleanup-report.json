@@ -1,12 +1,12 @@
 {
   "version": "V95_SAFE_CLEANUP_ACTIVE",
-  "generatedAt": "2026-05-25T20:03:46.512Z",
+  "generatedAt": "2026-05-25T20:56:29.234Z",
   "policy": "safe cleanup only: delete allowlisted generated reports with zero runtime references; keep all CSS/JS/image legacy candidates unless proven safe",
   "summary": {
-    "changedHtml": 674,
+    "changedHtml": 565,
     "deletedFiles": 0,
     "savedBytes": 0,
-    "unusedCandidates": 2,
+    "unusedCandidates": 0,
     "referencedLargeAssets": 13,
     "rootLegacyFiles": 4
   },
@@ -15,6 +15,7 @@
     {
       "path": "assets/data/v84-performance-audit.json",
       "refs": [
+        "assets/data/v95-safe-cleanup-report.json",
         "scripts/generate-v84-performance-optimization.mjs",
         "scripts/generate-v95-safe-cleanup.mjs"
       ],
@@ -23,6 +24,7 @@
     {
       "path": "assets/data/v94-performance-pass-2.json",
       "refs": [
+        "assets/data/v95-safe-cleanup-report.json",
         "scripts/generate-v94-performance-pass-2.mjs",
         "scripts/generate-v95-safe-cleanup.mjs"
       ],
@@ -31,26 +33,14 @@
     {
       "path": "assets/data/v93-tools-usability-pass.json",
       "refs": [
+        "assets/data/v95-safe-cleanup-report.json",
         "scripts/generate-v93-tools-usability-pass.mjs",
         "scripts/generate-v95-safe-cleanup.mjs"
       ],
       "reason": "reference detected"
     }
   ],
-  "unusedCandidates": [
-    {
-      "path": "assets/data/search.keywords.v5.20260505.json",
-      "bytes": 3392,
-      "refs": [],
-      "refCount": 0
-    },
-    {
-      "path": "assets/data/telegram.consult.bot.v32.json",
-      "bytes": 404,
-      "refs": [],
-      "refCount": 0
-    }
-  ],
+  "unusedCandidates": [],
   "referencedLargeAssets": [
     {
       "path": "assets/img/rust/rust-crest-transparent.png",
@@ -59,10 +49,11 @@
         "assets/data/asset.inventory.v43.json",
         "assets/data/v84-performance-audit.json",
         "assets/data/v94-performance-pass-2.json",
+        "assets/data/v95-safe-cleanup-report.json",
         "scripts/verify-v77-rust-logo-assets.mjs",
         "scripts/verify-v95-safe-cleanup.mjs"
       ],
-      "refCount": 5
+      "refCount": 6
     },
     {
       "path": "assets/img/88st-cloud-logo-horizontal.png",
@@ -70,9 +61,10 @@
       "refs": [
         "assets/data/asset.inventory.v43.json",
         "assets/data/v84-performance-audit.json",
-        "assets/data/v94-performance-pass-2.json"
+        "assets/data/v94-performance-pass-2.json",
+        "assets/data/v95-safe-cleanup-report.json"
       ],
-      "refCount": 3
+      "refCount": 4
     },
     {
       "path": "assets/img/88st-cloud-logo-symbol.png",
@@ -80,9 +72,10 @@
       "refs": [
         "assets/data/asset.inventory.v43.json",
         "assets/data/v84-performance-audit.json",
-        "assets/data/v94-performance-pass-2.json"
+        "assets/data/v94-performance-pass-2.json",
+        "assets/data/v95-safe-cleanup-report.json"
       ],
-      "refCount": 3
+      "refCount": 4
     },
     {
       "path": "assets/img/queenbee-seoa-premium-gold-black.jpg",
@@ -91,9 +84,10 @@
         "assets/config/seo.meta.json",
         "assets/data/asset.inventory.v43.json",
         "assets/data/v84-performance-audit.json",
-        "assets/data/v94-performance-pass-2.json"
+        "assets/data/v94-performance-pass-2.json",
+        "assets/data/v95-safe-cleanup-report.json"
       ],
-      "refCount": 4
+      "refCount": 5
     },
     {
       "path": "assets/img/sk-holdings-iron888-red.jpg",
@@ -102,9 +96,10 @@
         "assets/config/seo.meta.json",
         "assets/data/asset.inventory.v43.json",
         "assets/data/v84-performance-audit.json",
-        "assets/data/v94-performance-pass-2.json"
+        "assets/data/v94-performance-pass-2.json",
+        "assets/data/v95-safe-cleanup-report.json"
       ],
-      "refCount": 4
+      "refCount": 5
     },
     {
       "path": "assets/img/sk-holdings-iron888-green.jpg",
@@ -113,9 +108,10 @@
         "assets/config/seo.meta.json",
         "assets/data/asset.inventory.v43.json",
         "assets/data/v84-performance-audit.json",
-        "assets/data/v94-performance-pass-2.json"
+        "assets/data/v94-performance-pass-2.json",
+        "assets/data/v95-safe-cleanup-report.json"
       ],
-      "refCount": 4
+      "refCount": 5
     },
     {
       "path": "assets/img/queenbee-seoa-premium-blue.jpg",
@@ -124,9 +120,10 @@
         "assets/config/seo.meta.json",
         "assets/data/asset.inventory.v43.json",
         "assets/data/v84-performance-audit.json",
-        "assets/data/v94-performance-pass-2.json"
+        "assets/data/v94-performance-pass-2.json",
+        "assets/data/v95-safe-cleanup-report.json"
       ],
-      "refCount": 4
+      "refCount": 5
     },
     {
       "path": "assets/img/queenbee-seoa-premium-purple.jpg",
@@ -135,9 +132,10 @@
         "assets/config/seo.meta.json",
         "assets/data/asset.inventory.v43.json",
         "assets/data/v84-performance-audit.json",
-        "assets/data/v94-performance-pass-2.json"
+        "assets/data/v94-performance-pass-2.json",
+        "assets/data/v95-safe-cleanup-report.json"
       ],
-      "refCount": 4
+      "refCount": 5
     },
     {
       "path": "assets/img/queenbee-seoa-premium-gold.jpg",
@@ -146,9 +144,10 @@
         "assets/config/seo.meta.json",
         "assets/data/asset.inventory.v43.json",
         "assets/data/v84-performance-audit.json",
-        "assets/data/v94-performance-pass-2.json"
+        "assets/data/v94-performance-pass-2.json",
+        "assets/data/v95-safe-cleanup-report.json"
       ],
-      "refCount": 4
+      "refCount": 5
     },
     {
       "path": "assets/img/sk-holdings-iron888-blue.jpg",
@@ -157,9 +156,10 @@
         "assets/config/seo.meta.json",
         "assets/data/asset.inventory.v43.json",
         "assets/data/v84-performance-audit.json",
-        "assets/data/v94-performance-pass-2.json"
+        "assets/data/v94-performance-pass-2.json",
+        "assets/data/v95-safe-cleanup-report.json"
       ],
-      "refCount": 4
+      "refCount": 5
     },
     {
       "path": "assets/img/queenbee-seoa-premium-red.jpg",
@@ -168,9 +168,10 @@
         "assets/config/seo.meta.json",
         "assets/data/asset.inventory.v43.json",
         "assets/data/v84-performance-audit.json",
-        "assets/data/v94-performance-pass-2.json"
+        "assets/data/v94-performance-pass-2.json",
+        "assets/data/v95-safe-cleanup-report.json"
       ],
-      "refCount": 4
+      "refCount": 5
     },
     {
       "path": "assets/img/sk-holdings-iron888-purple.jpg",
@@ -179,9 +180,10 @@
         "assets/config/seo.meta.json",
         "assets/data/asset.inventory.v43.json",
         "assets/data/v84-performance-audit.json",
-        "assets/data/v94-performance-pass-2.json"
+        "assets/data/v94-performance-pass-2.json",
+        "assets/data/v95-safe-cleanup-report.json"
       ],
-      "refCount": 4
+      "refCount": 5
     },
     {
       "path": "assets/img/queenbee-seoa-casino.jpg",
@@ -189,9 +191,10 @@
       "refs": [
         "assets/data/asset.inventory.v43.json",
         "assets/data/v84-performance-audit.json",
-        "assets/data/v94-performance-pass-2.json"
+        "assets/data/v94-performance-pass-2.json",
+        "assets/data/v95-safe-cleanup-report.json"
       ],
-      "refCount": 3
+      "refCount": 4
     }
   ],
   "rootLegacyFiles": [

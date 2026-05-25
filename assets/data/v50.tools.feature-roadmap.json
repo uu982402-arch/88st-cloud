@@ -1,7 +1,7 @@
 {
   "version": "static-growth-conversion-v51-20260522",
   "count": 500,
-  "generatedAt": "2026-05-25T14:37:46.146Z",
+  "generatedAt": "2026-05-25T20:56:03.722Z",
   "policy": "중복 내용 및 중복 기능 제외. 실제 구현 전 기존 도구와 URL 충돌 여부를 우선 검사합니다.",
   "items": [
     {
