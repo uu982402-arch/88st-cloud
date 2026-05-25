@@ -1,15 +1,15 @@
 {
   "version": "static-growth-conversion-v51",
-  "generatedAt": "2026-05-24T15:24:34.835Z",
+  "generatedAt": "2026-05-25T00:00:29.110Z",
   "counts": {
     "html": 624,
     "blog": 453,
-    "images": 73,
-    "imageBytes": 9153252
+    "images": 98,
+    "imageBytes": 11244016
   },
   "seo": {
     "duplicateTitleGroups": 0,
-    "duplicateDescriptionGroups": 2,
+    "duplicateDescriptionGroups": 7,
     "missingSchema": 0,
     "missingCanonical": 0,
     "metaKeywords": 0,
@@ -29,6 +29,26 @@
       },
       {
         "description": "현재 블로그 목록 구조에서 사용하지 않는 보존 페이지입니다.",
+        "count": 2
+      },
+      {
+        "description": "RUST는 88st.cloud에서 제공하는 2026 토토사이트추천, 스포츠입플, 카지노입플, 미니게임입플사이트, 보증업체 큐레이션, 롤링·EV 계산 도구, 공식 상담 연결을 통합한 정보 플랫폼입니다. (first-charge-rolling)",
+        "count": 2
+      },
+      {
+        "description": "RUST는 88st.cloud에서 제공하는 2026 토토사이트추천, 스포츠입플, 카지노입플, 미니게임입플사이트, 보증업체 큐레이션, 롤링·EV 계산 도구, 공식 상담 연결을 통합한 정보 플랫폼입니다. (kbo-rain-cancel)",
+        "count": 2
+      },
+      {
+        "description": "RUST는 88st.cloud에서 제공하는 2026 토토사이트추천, 스포츠입플, 카지노입플, 미니게임입플사이트, 보증업체 큐레이션, 롤링·EV 계산 도구, 공식 상담 연결을 통합한 정보 플랫폼입니다. (volleyball-set-handicap)",
+        "count": 2
+      },
+      {
+        "description": "RUST는 88st.cloud에서 제공하는 2026 토토사이트추천, 스포츠입플, 카지노입플, 미니게임입플사이트, 보증업체 큐레이션, 롤링·EV 계산 도구, 공식 상담 연결을 통합한 정보 플랫폼입니다. (sk-holdings-iron888)",
+        "count": 2
+      },
+      {
+        "description": "RUST는 88st.cloud에서 제공하는 2026 토토사이트추천, 스포츠입플, 카지노입플, 미니게임입플사이트, 보증업체 큐레이션, 롤링·EV 계산 도구, 공식 상담 연결을 통합한 정보 플랫폼입니다. (over-under)",
         "count": 2
       }
     ],

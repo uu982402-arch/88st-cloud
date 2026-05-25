@@ -1,7 +1,11 @@
 {
   "version": "static-growth-conversion-v51",
-  "generatedAt": "2026-05-24T15:24:34.835Z",
+  "generatedAt": "2026-05-25T00:00:29.110Z",
   "images": [
+    {
+      "path": "/assets/img/rust/rust-crest-transparent.png",
+      "bytes": 1056407
+    },
     {
       "path": "/assets/img/88st-cloud-logo-horizontal.png",
       "bytes": 972410
@@ -51,11 +55,15 @@
       "bytes": 417802
     },
     {
-      "path": "/assets/img/88st-cloud-logo-mark.png",
-      "bytes": 236596
+      "path": "/assets/img/rust/rust-crest-512.png",
+      "bytes": 303014
     },
     {
       "path": "/icon-512.png",
+      "bytes": 303014
+    },
+    {
+      "path": "/assets/img/88st-cloud-logo-mark.png",
       "bytes": 236596
     },
     {
@@ -73,6 +81,10 @@
     {
       "path": "/assets/img/anybet-seoa-event.jpg",
       "bytes": 165118
+    },
+    {
+      "path": "/assets/img/rust/rust-crest-256.png",
+      "bytes": 94777
     },
     {
       "path": "/img/88st-cloud-logo.png",
@@ -95,40 +107,104 @@
       "bytes": 84641
     },
     {
+      "path": "/assets/img/guaranteed/cards/udt-bet.jpg",
+      "bytes": 59133
+    },
+    {
+      "path": "/assets/img/rust/rust-crest-192.png",
+      "bytes": 58093
+    },
+    {
+      "path": "/icon-192.png",
+      "bytes": 58093
+    },
+    {
       "path": "/assets/provider-media/ddangkong-event-01.jpeg",
       "bytes": 55033
+    },
+    {
+      "path": "/apple-touch-icon.png",
+      "bytes": 52046
+    },
+    {
+      "path": "/assets/img/rust/rust-crest-180.png",
+      "bytes": 52046
+    },
+    {
+      "path": "/assets/img/rust/rust-og.jpg",
+      "bytes": 51225
     },
     {
       "path": "/img/popup/event-popup.jpg",
       "bytes": 44504
     },
     {
-      "path": "/icon-192.png",
-      "bytes": 43877
+      "path": "/assets/img/guaranteed/cards/udt-bet.webp",
+      "bytes": 42198
     },
     {
-      "path": "/apple-touch-icon-180.png",
-      "bytes": 39585
+      "path": "/assets/img/guaranteed/cards/ddangkong-bet.jpg",
+      "bytes": 39542
+    },
+    {
+      "path": "/assets/img/partners/v71-udt-bet.webp",
+      "bytes": 38120
+    },
+    {
+      "path": "/assets/img/guaranteed/cards/anybet.jpg",
+      "bytes": 37574
     },
     {
       "path": "/assets/img/sk-holdings-iron888-events.jpg",
       "bytes": 36802
     },
     {
+      "path": "/assets/img/guaranteed/cards/sk-holdings.jpg",
+      "bytes": 36432
+    },
+    {
       "path": "/assets/img/v24/moonsafe-hero-v24.webp",
       "bytes": 35646
     },
     {
-      "path": "/apple-touch-icon-v19.png",
-      "bytes": 34800
+      "path": "/assets/img/guaranteed/cards/queenbee.jpg",
+      "bytes": 32077
     },
     {
-      "path": "/apple-touch-icon.png",
-      "bytes": 34800
+      "path": "/assets/img/rust/rust-crest-128.png",
+      "bytes": 28756
     },
     {
       "path": "/assets/img/moonsafe-lunar-bg-v22.webp",
       "bytes": 28268
+    },
+    {
+      "path": "/assets/img/guaranteed/cards/anybet.webp",
+      "bytes": 18180
+    },
+    {
+      "path": "/assets/img/guaranteed/cards/ddangkong-bet.webp",
+      "bytes": 17896
+    },
+    {
+      "path": "/assets/img/rust/rust-crest-96.png",
+      "bytes": 17476
+    },
+    {
+      "path": "/assets/img/partners/v71-anybet.webp",
+      "bytes": 16392
+    },
+    {
+      "path": "/assets/img/guaranteed/cards/sk-holdings.webp",
+      "bytes": 16220
+    },
+    {
+      "path": "/assets/img/partners/v71-ddangkong-bet.webp",
+      "bytes": 16206
+    },
+    {
+      "path": "/assets/img/partners/v71-sk-holdings.webp",
+      "bytes": 14908
     },
     {
       "path": "/assets/img/v24/card-compare-v24.webp",
@@ -167,10 +243,6 @@
       "bytes": 13332
     },
     {
-      "path": "/apple-touch-icon-v24.png",
-      "bytes": 13271
-    },
-    {
       "path": "/assets/img/v24/card-blog-v24.webp",
       "bytes": 13042
     },
@@ -179,12 +251,20 @@
       "bytes": 13042
     },
     {
-      "path": "/apple-touch-icon-v23.png",
-      "bytes": 11955
+      "path": "/assets/img/guaranteed/cards/queenbee.webp",
+      "bytes": 12500
+    },
+    {
+      "path": "/assets/img/partners/v71-queenbee.webp",
+      "bytes": 11296
     },
     {
       "path": "/img/logo-mark-v23.png",
       "bytes": 8935
+    },
+    {
+      "path": "/assets/img/rust/rust-crest-64.png",
+      "bytes": 8554
     },
     {
       "path": "/img/logo-mark-v24.png",
@@ -199,8 +279,12 @@
       "bytes": 6865
     },
     {
-      "path": "/favicon-32x32.png",
-      "bytes": 2621
+      "path": "/assets/img/rust/rust-crest-48.png",
+      "bytes": 5176
+    },
+    {
+      "path": "/assets/img/rust/rust-crest-32.png",
+      "bytes": 2594
     },
     {
       "path": "/assets/img/partners/v71-sk-holdings.svg",
@@ -221,6 +305,26 @@
     {
       "path": "/assets/img/partners/v71-udt-bet.svg",
       "bytes": 1909
+    },
+    {
+      "path": "/assets/img/guaranteed/cards/sk-holdings.svg",
+      "bytes": 1860
+    },
+    {
+      "path": "/assets/img/guaranteed/cards/ddangkong-bet.svg",
+      "bytes": 1858
+    },
+    {
+      "path": "/assets/img/guaranteed/cards/queenbee.svg",
+      "bytes": 1852
+    },
+    {
+      "path": "/assets/img/guaranteed/cards/anybet.svg",
+      "bytes": 1846
+    },
+    {
+      "path": "/assets/img/guaranteed/cards/udt-bet.svg",
+      "bytes": 1846
     },
     {
       "path": "/assets/thumbs/hub-telegram.svg",
@@ -288,11 +392,7 @@
     },
     {
       "path": "/favicon.ico",
-      "bytes": 915
-    },
-    {
-      "path": "/favicon-16x16.png",
-      "bytes": 893
+      "bytes": 870
     }
   ]
 }
