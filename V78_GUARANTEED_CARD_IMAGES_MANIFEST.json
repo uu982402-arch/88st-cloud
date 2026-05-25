@@ -1,0 +1,45 @@
+{
+  "version": "static-v78-guaranteed-card-images-20260524",
+  "generatedAt": "2026-05-25T00:00:35.508Z",
+  "touchedHtml": 7,
+  "vendors": [
+    {
+      "label": "SK 홀딩스",
+      "image": "/assets/img/guaranteed/cards/sk-holdings.webp",
+      "mainPreview": "/assets/img/partners/v71-sk-holdings.webp"
+    },
+    {
+      "label": "여왕벌",
+      "image": "/assets/img/guaranteed/cards/queenbee.webp",
+      "mainPreview": "/assets/img/partners/v71-queenbee.webp"
+    },
+    {
+      "label": "ANY BET",
+      "image": "/assets/img/guaranteed/cards/anybet.webp",
+      "mainPreview": "/assets/img/partners/v71-anybet.webp"
+    },
+    {
+      "label": "UDT BET",
+      "image": "/assets/img/guaranteed/cards/udt-bet.webp",
+      "mainPreview": "/assets/img/partners/v71-udt-bet.webp"
+    },
+    {
+      "label": "땅콩 BET",
+      "image": "/assets/img/guaranteed/cards/ddangkong-bet.webp",
+      "mainPreview": "/assets/img/partners/v71-ddangkong-bet.webp"
+    }
+  ],
+  "changedReferences": {
+    "/assets/img/guaranteed/cards/sk-holdings.svg": "/assets/img/guaranteed/cards/sk-holdings.webp",
+    "/assets/img/guaranteed/cards/queenbee.svg": "/assets/img/guaranteed/cards/queenbee.webp",
+    "/assets/img/guaranteed/cards/anybet.svg": "/assets/img/guaranteed/cards/anybet.webp",
+    "/assets/img/guaranteed/cards/udt-bet.svg": "/assets/img/guaranteed/cards/udt-bet.webp",
+    "/assets/img/guaranteed/cards/ddangkong-bet.svg": "/assets/img/guaranteed/cards/ddangkong-bet.webp",
+    "/assets/img/partners/v71-sk-holdings.svg": "/assets/img/partners/v71-sk-holdings.webp",
+    "/assets/img/partners/v71-queenbee.svg": "/assets/img/partners/v71-queenbee.webp",
+    "/assets/img/partners/v71-anybet.svg": "/assets/img/partners/v71-anybet.webp",
+    "/assets/img/partners/v71-udt-bet.svg": "/assets/img/partners/v71-udt-bet.webp",
+    "/assets/img/partners/v71-ddangkong-bet.svg": "/assets/img/partners/v71-ddangkong-bet.webp"
+  },
+  "note": "V78 applies the delivered advertising card images to guaranteed cards, vendor detail hero images, and main page partner preview cards without deleting existing routes."
+}
