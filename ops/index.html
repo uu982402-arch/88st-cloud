@@ -23,7 +23,7 @@
   <link rel="stylesheet" href="/assets/css/v87-live-deploy-check.css?v=static-v87-live-deploy-check-20260525" data-v87-live-deploy="true">
   <meta name="v87-live-deploy-check" content="V87_LIVE_DEPLOY_CHECK_ACTIVE" data-v87-live-deploy="true">
   <meta name="v88-indexing-readiness" content="V88_INDEXING_READINESS_ACTIVE" data-v88-indexing="true">
-  <link rel="stylesheet" href="/assets/css/v88-indexing-readiness.css?v=static-v88-indexing-readiness-20260526" data-v88-indexing="true">
+  <link rel="stylesheet" href="/assets/css/v88-indexing-readiness.css?v=static-v88-indexing-readiness-20260526" data-v88-indexing="true">  <link rel="stylesheet" href="/assets/css/v89-ga4-event-depth.css?v=static-v89-ga4-event-depth-20260526" data-v89-ga4-depth="true">
 </head>
 <body class="v80-ops-center">
   <div class="v80-ops-app" id="V80_OPS_CONTROL_CENTER_ACTIVE">
@@ -41,6 +41,7 @@
         <a href="#indexing">색인·측정</a>
         <a href="#live-check">라이브검증</a>
         <a href="#indexing-readiness">색인준비</a>
+        <a href="#ga4-depth">GA4심화</a>
         <a href="#deploy">배포검증</a>
       </nav>
       <div class="v80-side-foot">
@@ -250,6 +251,30 @@
       </section>
       <!-- V82-3 INDEXING MEASUREMENT END -->
 
+      
+      <!-- V89 GA4 EVENT DEPTH START -->
+      <section class="v89-ga-panel" id="ga4-depth" data-v89-ga4-depth="V89_GA4_EVENT_DEPTH_ACTIVE" aria-label="GA4 이벤트 심화 점검">
+        <div class="v89-ga-head">
+          <div>
+            <span class="v89-ga-kicker">V89 GA4 EVENT DEPTH</span>
+            <h2>GA4 이벤트 심화 점검</h2>
+            <p>상담, 보증업체, 도구, 블로그, sports-check, search-guides, 모바일 하단바, 상세글 완독 이벤트를 한곳에서 확인합니다.</p>
+          </div>
+          <div class="v89-ga-actions">
+            <button type="button" class="v89-ga-btn is-primary" data-v89-copy-events>이벤트명 복사</button>
+            <a class="v89-ga-btn" href="/assets/data/v89-ga4-event-depth.json" target="_blank" rel="noopener">데이터 열기</a>
+          </div>
+        </div>
+        <div class="v89-ga-grid">
+        <div><small>측정 ID</small><strong>G-KWT87FBY6S</strong><span>전역 GA4 기준</span></div>
+        <div><small>심화 이벤트</small><strong>16</strong><span>전환/완독/탐색</span></div>
+        <div><small>제외 경로</small><strong>/ops · /admin</strong><span>관리 페이지 noindex</span></div>
+        <div><small>검증</small><strong>V89</strong><span>스크립트/마커 검사</span></div></div>
+        <div class="v89-ga-list" data-v89-ga-list></div>
+        <pre class="v89-ga-log" data-v89-ga-log>V89 GA4 이벤트 목록을 불러오는 중입니다.</pre>
+      </section>
+      <!-- V89 GA4 EVENT DEPTH END -->
+
       <section class="v80-layout" id="deploy" style="margin-top:14px">
         <article class="v80-panel">
           <div class="v80-panel-head"><div><h2>배포 검증 센터</h2><p>빌드 산출물에 핵심 마커가 남아 있는지 확인하는 V80 전용 검증 항목입니다.</p></div></div>
@@ -273,5 +298,6 @@
   <script defer src="/assets/js/v82-3-indexing-ops.js?v=static-v82-3-indexing-measurement-20260525" data-v82-3-indexing="true"></script>
   <script src="/assets/js/v87-live-deploy-check.js?v=static-v87-live-deploy-check-20260525" defer data-v87-live-deploy="true"></script>
   <script src="/assets/js/v88-indexing-readiness.js?v=static-v88-indexing-readiness-20260526" defer data-v88-indexing="true"></script>
+  <script src="/assets/js/v89-ga4-depth-ops.js?v=static-v89-ga4-event-depth-20260526" defer data-v89-ga4-depth="true"></script>
 </body>
 </html>
