@@ -39,7 +39,9 @@ const mainRefs = [
 ];
 const failures = [];
 for (const rel of requiredAssets) {
-  if (!fs.existsSync(path.join(root, rel))) failures.push(`missing asset: ${rel}`);
+  const p = path.join(root, rel);
+  if (!fs.existsSync(p)) failures.push(`missing asset: ${rel}`);
+  else if (rel.endsWith('.webp') && fs.statSync(p).size < 1024) failures.push(`image asset too small or broken: ${rel}`);
 }
 for (const rel of requiredPages) {
   const file = path.join(root, rel);
@@ -68,4 +70,4 @@ if (failures.length) {
   for (const f of failures) console.error(' - ' + f);
   process.exit(1);
 }
-console.log('[V78 verify] ok: guaranteed card images and main partner previews are webp-linked.');
+console.log('[V78-1 verify] ok: guaranteed card images exist, are webp-linked, and are protected against missing-asset build failure.');
