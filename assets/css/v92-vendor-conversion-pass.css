@@ -1,0 +1,30 @@
+/* V92 vendor conversion pass: touch/asset/event polish only. Layout structure is intentionally preserved. */
+:root{--v92-rust:#ff7a1a;--v92-copper:#d8893a;--v92-line:rgba(255,255,255,.12);--v92-glow:rgba(255,122,26,.24)}
+.v92-vendor-conversion-active .v74-1-image-link,
+.v92-vendor-conversion-active .v54-visual-card{position:relative;isolation:isolate;background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.025)),rgba(6,9,15,.78)}
+.v92-vendor-conversion-active .v74-1-image-link img,
+.v92-vendor-conversion-active .v54-visual-card img{display:block;width:100%;height:100%;object-fit:cover;image-rendering:auto;backface-visibility:hidden;transform:translateZ(0)}
+.v92-vendor-conversion-active .v74-1-btn,
+.v92-vendor-conversion-active .v54-btn,
+.v92-vendor-conversion-active .v54-fact,
+.v92-vendor-conversion-active [data-v92-copy],
+.v92-vendor-conversion-active [data-v92-go],
+.v92-vendor-conversion-active [data-v92-detail]{min-height:52px;touch-action:manipulation;-webkit-tap-highlight-color:rgba(255,122,26,.18)}
+.v92-vendor-conversion-active .v74-1-btn:focus-visible,
+.v92-vendor-conversion-active .v54-btn:focus-visible,
+.v92-vendor-conversion-active .v54-fact:focus-visible,
+.v92-vendor-conversion-active [data-v92-copy]:focus-visible,
+.v92-vendor-conversion-active [data-v92-go]:focus-visible,
+.v92-vendor-conversion-active [data-v92-detail]:focus-visible{outline:2px solid rgba(255,122,26,.72);outline-offset:3px;box-shadow:0 0 0 6px rgba(255,122,26,.12),0 18px 48px var(--v92-glow)}
+.v92-vendor-conversion-active .v74-1-vendor-card:hover,
+.v92-vendor-conversion-active .v74-1-vendor-card:focus-within,
+.v92-vendor-conversion-active .v54-hero-card:hover,
+.v92-vendor-conversion-active .v54-fact-strip:hover{border-color:rgba(255,122,26,.26)}
+.v92-vendor-conversion-active .v74-1-btn--go,
+.v92-vendor-conversion-active .v54-btn-primary{background:linear-gradient(135deg,#f6c96b 0%,#ff7a1a 48%,#d8893a 100%);box-shadow:0 14px 42px rgba(255,122,26,.18)}
+.v92-vendor-conversion-active .v74-1-btn--go:hover,
+.v92-vendor-conversion-active .v54-btn-primary:hover{filter:brightness(1.06) saturate(1.08);box-shadow:0 18px 54px rgba(255,122,26,.28)}
+.v92-vendor-conversion-active img[data-v92-card-image],
+.v92-vendor-conversion-active img[data-v92-detail-image]{background:#fff}
+.v92-vendor-conversion-active .v92-copy-toast{position:fixed;left:50%;bottom:calc(92px + env(safe-area-inset-bottom));z-index:9999;transform:translateX(-50%) translateY(16px);opacity:0;pointer-events:none;max-width:calc(100% - 32px);padding:12px 15px;border-radius:16px;border:1px solid rgba(255,122,26,.28);background:rgba(6,9,15,.92);color:#fff;font-size:13px;font-weight:900;box-shadow:0 18px 60px rgba(0,0,0,.48),0 0 36px rgba(255,122,26,.16);backdrop-filter:blur(18px);transition:opacity .24s ease,transform .24s ease}.v92-copy-toast.is-show{opacity:1;transform:translateX(-50%) translateY(0)}
+@media(max-width:720px){.v92-vendor-conversion-active .v74-1-actions{gap:8px}.v92-vendor-conversion-active .v74-1-btn{min-height:50px;font-size:12px}.v92-vendor-conversion-active .v74-1-info-grid div{min-height:44px}.v92-vendor-conversion-active .v92-copy-toast{bottom:calc(106px + env(safe-area-inset-bottom));font-size:12px}}
