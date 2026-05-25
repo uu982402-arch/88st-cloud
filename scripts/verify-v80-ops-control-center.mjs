@@ -1,0 +1,17 @@
+import { readFileSync, existsSync, statSync } from 'node:fs';
+const fail = (msg) => { console.error('[V80 verify failed]', msg); process.exit(1); };
+const checkFile = (p) => { if (!existsSync(p)) fail(`missing file: ${p}`); if (statSync(p).size < 20) fail(`empty file: ${p}`); };
+['ops/index.html','admin/index.html','assets/css/v80.ops-control-center.css','assets/js/v80.ops-control-center.js','assets/config/v80-ops-control-defaults.json'].forEach(checkFile);
+const ops = readFileSync('ops/index.html','utf8');
+const admin = readFileSync('admin/index.html','utf8');
+const css = readFileSync('assets/css/v80.ops-control-center.css','utf8');
+const js = readFileSync('assets/js/v80.ops-control-center.js','utf8');
+['V80_OPS_CONTROL_CENTER_ACTIVE','보증업체 실시간 관리','블로그 관리','도구 ON/OFF 제어','상담 센터 제어','SEO/메타 키워드 관리','배포 검증 센터'].forEach(token => { if(!ops.includes(token)) fail(`ops token missing: ${token}`); });
+['SK 홀딩스','여왕벌','ANY BET','UDT BET','땅콩 BET','@TRS999_bot'].forEach(token => { if(!ops.includes(token)) fail(`vendor/global token missing: ${token}`); });
+if(!admin.includes('location.replace') || !admin.includes('/ops/')) fail('/admin redirect missing');
+if(!admin.includes('noindex')) fail('/admin noindex missing');
+if(!css.includes('v80-sidebar') || !css.includes('--rust-orange')) fail('V80 CSS design tokens missing');
+if(!js.includes('localStorage') || !js.includes('RUST_OPS_STATE')) fail('V80 JS control state missing');
+const legacyAdmin = readFileSync('admin/app.js','utf8') + readFileSync('admin/style.css','utf8');
+if(legacyAdmin.includes('fetch(') || legacyAdmin.includes('deleteUser') || legacyAdmin.includes('api')) fail('legacy admin logic still active');
+console.log('[V80] verify passed: ops control center, admin redirect, CSS/JS/control tokens OK');
