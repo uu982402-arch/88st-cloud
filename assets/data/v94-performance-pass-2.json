@@ -1,0 +1,4965 @@
+{
+  "version": "V94_PERFORMANCE_PASS_2_ACTIVE",
+  "generatedAt": "2026-05-25T19:47:26.310Z",
+  "summary": {
+    "htmlFiles": 674,
+    "changedHtml": 674,
+    "duplicateStylesheetTagsRemoved": 1,
+    "duplicateScriptTagsRemoved": 0,
+    "loadingAdded": 0,
+    "decodingAdded": 0,
+    "fetchPriorityAdded": 12,
+    "widthHeightAdded": 122,
+    "deferAdded": 0,
+    "resourceHintsAdded": 1348,
+    "criticalAdded": 674,
+    "markerAdded": 674
+  },
+  "assetAudit": {
+    "counts": {
+      "images": 78,
+      "css": 113,
+      "js": 90
+    },
+    "largeImagesOver300KB": [
+      {
+        "path": "assets/img/rust/rust-crest-transparent.png",
+        "bytes": 1056407,
+        "kb": 1032,
+        "dimensions": {
+          "width": 1235,
+          "height": 1235,
+          "type": "png"
+        },
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/img/88st-cloud-logo-horizontal.png",
+        "bytes": 972410,
+        "kb": 950,
+        "dimensions": {
+          "width": 2277,
+          "height": 595,
+          "type": "png"
+        },
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/img/88st-cloud-logo-symbol.png",
+        "bytes": 798141,
+        "kb": 779,
+        "dimensions": {
+          "width": 826,
+          "height": 996,
+          "type": "png"
+        },
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/img/queenbee-seoa-premium-gold-black.jpg",
+        "bytes": 546896,
+        "kb": 534,
+        "dimensions": {
+          "height": 1402,
+          "width": 1122,
+          "type": "jpeg"
+        },
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/img/sk-holdings-iron888-red.jpg",
+        "bytes": 546637,
+        "kb": 534,
+        "dimensions": {
+          "height": 1536,
+          "width": 1024,
+          "type": "jpeg"
+        },
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/img/sk-holdings-iron888-green.jpg",
+        "bytes": 540437,
+        "kb": 528,
+        "dimensions": {
+          "height": 1536,
+          "width": 1024,
+          "type": "jpeg"
+        },
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/img/queenbee-seoa-premium-blue.jpg",
+        "bytes": 509590,
+        "kb": 498,
+        "dimensions": {
+          "height": 1440,
+          "width": 1092,
+          "type": "jpeg"
+        },
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/img/queenbee-seoa-premium-purple.jpg",
+        "bytes": 505029,
+        "kb": 493,
+        "dimensions": {
+          "height": 1440,
+          "width": 1092,
+          "type": "jpeg"
+        },
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/img/queenbee-seoa-premium-gold.jpg",
+        "bytes": 503055,
+        "kb": 491,
+        "dimensions": {
+          "height": 1536,
+          "width": 1024,
+          "type": "jpeg"
+        },
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/img/sk-holdings-iron888-blue.jpg",
+        "bytes": 494581,
+        "kb": 483,
+        "dimensions": {
+          "height": 1402,
+          "width": 1122,
+          "type": "jpeg"
+        },
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/img/queenbee-seoa-premium-red.jpg",
+        "bytes": 488007,
+        "kb": 477,
+        "dimensions": {
+          "height": 1536,
+          "width": 1024,
+          "type": "jpeg"
+        },
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/img/sk-holdings-iron888-purple.jpg",
+        "bytes": 471255,
+        "kb": 460,
+        "dimensions": {
+          "height": 1254,
+          "width": 1254,
+          "type": "jpeg"
+        },
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/img/queenbee-seoa-casino.jpg",
+        "bytes": 417802,
+        "kb": 408,
+        "dimensions": {
+          "height": 1536,
+          "width": 1024,
+          "type": "jpeg"
+        },
+        "directReferenceDetected": true
+      }
+    ],
+    "pngJpgOver180KB": [
+      {
+        "path": "assets/img/rust/rust-crest-transparent.png",
+        "bytes": 1056407,
+        "kb": 1032,
+        "dimensions": {
+          "width": 1235,
+          "height": 1235,
+          "type": "png"
+        },
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/img/88st-cloud-logo-horizontal.png",
+        "bytes": 972410,
+        "kb": 950,
+        "dimensions": {
+          "width": 2277,
+          "height": 595,
+          "type": "png"
+        },
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/img/88st-cloud-logo-symbol.png",
+        "bytes": 798141,
+        "kb": 779,
+        "dimensions": {
+          "width": 826,
+          "height": 996,
+          "type": "png"
+        },
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/img/queenbee-seoa-premium-gold-black.jpg",
+        "bytes": 546896,
+        "kb": 534,
+        "dimensions": {
+          "height": 1402,
+          "width": 1122,
+          "type": "jpeg"
+        },
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/img/sk-holdings-iron888-red.jpg",
+        "bytes": 546637,
+        "kb": 534,
+        "dimensions": {
+          "height": 1536,
+          "width": 1024,
+          "type": "jpeg"
+        },
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/img/sk-holdings-iron888-green.jpg",
+        "bytes": 540437,
+        "kb": 528,
+        "dimensions": {
+          "height": 1536,
+          "width": 1024,
+          "type": "jpeg"
+        },
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/img/queenbee-seoa-premium-blue.jpg",
+        "bytes": 509590,
+        "kb": 498,
+        "dimensions": {
+          "height": 1440,
+          "width": 1092,
+          "type": "jpeg"
+        },
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/img/queenbee-seoa-premium-purple.jpg",
+        "bytes": 505029,
+        "kb": 493,
+        "dimensions": {
+          "height": 1440,
+          "width": 1092,
+          "type": "jpeg"
+        },
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/img/queenbee-seoa-premium-gold.jpg",
+        "bytes": 503055,
+        "kb": 491,
+        "dimensions": {
+          "height": 1536,
+          "width": 1024,
+          "type": "jpeg"
+        },
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/img/sk-holdings-iron888-blue.jpg",
+        "bytes": 494581,
+        "kb": 483,
+        "dimensions": {
+          "height": 1402,
+          "width": 1122,
+          "type": "jpeg"
+        },
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/img/queenbee-seoa-premium-red.jpg",
+        "bytes": 488007,
+        "kb": 477,
+        "dimensions": {
+          "height": 1536,
+          "width": 1024,
+          "type": "jpeg"
+        },
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/img/sk-holdings-iron888-purple.jpg",
+        "bytes": 471255,
+        "kb": 460,
+        "dimensions": {
+          "height": 1254,
+          "width": 1254,
+          "type": "jpeg"
+        },
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/img/queenbee-seoa-casino.jpg",
+        "bytes": 417802,
+        "kb": 408,
+        "dimensions": {
+          "height": 1536,
+          "width": 1024,
+          "type": "jpeg"
+        },
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/img/rust/rust-crest-512.png",
+        "bytes": 303014,
+        "kb": 296,
+        "dimensions": {
+          "width": 512,
+          "height": 512,
+          "type": "png"
+        },
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/img/88st-cloud-logo-mark.png",
+        "bytes": 236596,
+        "kb": 231,
+        "dimensions": {
+          "width": 512,
+          "height": 512,
+          "type": "png"
+        },
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/img/udt-seoa-event.jpg",
+        "bytes": 234369,
+        "kb": 229,
+        "dimensions": {
+          "height": 1280,
+          "width": 1024,
+          "type": "jpeg"
+        },
+        "directReferenceDetected": true
+      }
+    ],
+    "largestImages": [
+      {
+        "path": "assets/img/rust/rust-crest-transparent.png",
+        "bytes": 1056407,
+        "kb": 1032,
+        "dimensions": {
+          "width": 1235,
+          "height": 1235,
+          "type": "png"
+        },
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/img/88st-cloud-logo-horizontal.png",
+        "bytes": 972410,
+        "kb": 950,
+        "dimensions": {
+          "width": 2277,
+          "height": 595,
+          "type": "png"
+        },
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/img/88st-cloud-logo-symbol.png",
+        "bytes": 798141,
+        "kb": 779,
+        "dimensions": {
+          "width": 826,
+          "height": 996,
+          "type": "png"
+        },
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/img/queenbee-seoa-premium-gold-black.jpg",
+        "bytes": 546896,
+        "kb": 534,
+        "dimensions": {
+          "height": 1402,
+          "width": 1122,
+          "type": "jpeg"
+        },
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/img/sk-holdings-iron888-red.jpg",
+        "bytes": 546637,
+        "kb": 534,
+        "dimensions": {
+          "height": 1536,
+          "width": 1024,
+          "type": "jpeg"
+        },
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/img/sk-holdings-iron888-green.jpg",
+        "bytes": 540437,
+        "kb": 528,
+        "dimensions": {
+          "height": 1536,
+          "width": 1024,
+          "type": "jpeg"
+        },
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/img/queenbee-seoa-premium-blue.jpg",
+        "bytes": 509590,
+        "kb": 498,
+        "dimensions": {
+          "height": 1440,
+          "width": 1092,
+          "type": "jpeg"
+        },
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/img/queenbee-seoa-premium-purple.jpg",
+        "bytes": 505029,
+        "kb": 493,
+        "dimensions": {
+          "height": 1440,
+          "width": 1092,
+          "type": "jpeg"
+        },
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/img/queenbee-seoa-premium-gold.jpg",
+        "bytes": 503055,
+        "kb": 491,
+        "dimensions": {
+          "height": 1536,
+          "width": 1024,
+          "type": "jpeg"
+        },
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/img/sk-holdings-iron888-blue.jpg",
+        "bytes": 494581,
+        "kb": 483,
+        "dimensions": {
+          "height": 1402,
+          "width": 1122,
+          "type": "jpeg"
+        },
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/img/queenbee-seoa-premium-red.jpg",
+        "bytes": 488007,
+        "kb": 477,
+        "dimensions": {
+          "height": 1536,
+          "width": 1024,
+          "type": "jpeg"
+        },
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/img/sk-holdings-iron888-purple.jpg",
+        "bytes": 471255,
+        "kb": 460,
+        "dimensions": {
+          "height": 1254,
+          "width": 1254,
+          "type": "jpeg"
+        },
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/img/queenbee-seoa-casino.jpg",
+        "bytes": 417802,
+        "kb": 408,
+        "dimensions": {
+          "height": 1536,
+          "width": 1024,
+          "type": "jpeg"
+        },
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/img/rust/rust-crest-512.png",
+        "bytes": 303014,
+        "kb": 296,
+        "dimensions": {
+          "width": 512,
+          "height": 512,
+          "type": "png"
+        },
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/img/88st-cloud-logo-mark.png",
+        "bytes": 236596,
+        "kb": 231,
+        "dimensions": {
+          "width": 512,
+          "height": 512,
+          "type": "png"
+        },
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/img/udt-seoa-event.jpg",
+        "bytes": 234369,
+        "kb": 229,
+        "dimensions": {
+          "height": 1280,
+          "width": 1024,
+          "type": "jpeg"
+        },
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/img/anybet-seoa-event.jpg",
+        "bytes": 165118,
+        "kb": 161,
+        "dimensions": {
+          "height": 1280,
+          "width": 853,
+          "type": "jpeg"
+        },
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/img/rust/rust-crest-256.png",
+        "bytes": 94777,
+        "kb": 93,
+        "dimensions": {
+          "width": 256,
+          "height": 256,
+          "type": "png"
+        },
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/img/guaranteed/cards/udt-bet.jpg",
+        "bytes": 59133,
+        "kb": 58,
+        "dimensions": {
+          "height": 540,
+          "width": 960,
+          "type": "jpeg"
+        },
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/img/rust/rust-crest-192.png",
+        "bytes": 58093,
+        "kb": 57,
+        "dimensions": {
+          "width": 192,
+          "height": 192,
+          "type": "png"
+        },
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/provider-media/ddangkong-event-01.jpeg",
+        "bytes": 55033,
+        "kb": 54,
+        "dimensions": {
+          "height": 675,
+          "width": 1200,
+          "type": "jpeg"
+        },
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/img/rust/rust-crest-180.png",
+        "bytes": 52046,
+        "kb": 51,
+        "dimensions": {
+          "width": 180,
+          "height": 180,
+          "type": "png"
+        },
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/img/rust/rust-og.jpg",
+        "bytes": 51225,
+        "kb": 50,
+        "dimensions": {
+          "height": 630,
+          "width": 1200,
+          "type": "jpeg"
+        },
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/img/guaranteed/cards/udt-bet.webp",
+        "bytes": 42198,
+        "kb": 41,
+        "dimensions": {
+          "width": 960,
+          "height": 540,
+          "type": "webp"
+        },
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/img/guaranteed/cards/ddangkong-bet.jpg",
+        "bytes": 39542,
+        "kb": 39,
+        "dimensions": {
+          "height": 540,
+          "width": 960,
+          "type": "jpeg"
+        },
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/img/partners/v71-udt-bet.webp",
+        "bytes": 38120,
+        "kb": 37,
+        "dimensions": {
+          "width": 960,
+          "height": 540,
+          "type": "webp"
+        },
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/img/guaranteed/cards/anybet.jpg",
+        "bytes": 37574,
+        "kb": 37,
+        "dimensions": {
+          "height": 540,
+          "width": 960,
+          "type": "jpeg"
+        },
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/img/sk-holdings-iron888-events.jpg",
+        "bytes": 36802,
+        "kb": 36,
+        "dimensions": {
+          "height": 675,
+          "width": 1200,
+          "type": "jpeg"
+        },
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/img/guaranteed/cards/sk-holdings.jpg",
+        "bytes": 36432,
+        "kb": 36,
+        "dimensions": {
+          "height": 540,
+          "width": 960,
+          "type": "jpeg"
+        },
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/img/v24/moonsafe-hero-v24.webp",
+        "bytes": 35646,
+        "kb": 35,
+        "dimensions": {
+          "width": 1800,
+          "height": 1000,
+          "type": "webp"
+        },
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/img/guaranteed/cards/queenbee.jpg",
+        "bytes": 32077,
+        "kb": 31,
+        "dimensions": {
+          "height": 540,
+          "width": 960,
+          "type": "jpeg"
+        },
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/img/rust/rust-crest-128.png",
+        "bytes": 28756,
+        "kb": 28,
+        "dimensions": {
+          "width": 128,
+          "height": 128,
+          "type": "png"
+        },
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/img/moonsafe-lunar-bg-v22.webp",
+        "bytes": 28268,
+        "kb": 28,
+        "dimensions": {
+          "width": 1800,
+          "height": 760,
+          "type": "webp"
+        },
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/img/guaranteed/cards/anybet.webp",
+        "bytes": 18180,
+        "kb": 18,
+        "dimensions": {
+          "width": 960,
+          "height": 540,
+          "type": "webp"
+        },
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/img/guaranteed/cards/ddangkong-bet.webp",
+        "bytes": 17896,
+        "kb": 17,
+        "dimensions": {
+          "width": 960,
+          "height": 540,
+          "type": "webp"
+        },
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/img/rust/rust-crest-96.png",
+        "bytes": 17476,
+        "kb": 17,
+        "dimensions": {
+          "width": 96,
+          "height": 96,
+          "type": "png"
+        },
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/img/partners/v71-anybet.webp",
+        "bytes": 16392,
+        "kb": 16,
+        "dimensions": {
+          "width": 960,
+          "height": 540,
+          "type": "webp"
+        },
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/img/guaranteed/cards/sk-holdings.webp",
+        "bytes": 16220,
+        "kb": 16,
+        "dimensions": {
+          "width": 960,
+          "height": 540,
+          "type": "webp"
+        },
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/img/partners/v71-ddangkong-bet.webp",
+        "bytes": 16206,
+        "kb": 16,
+        "dimensions": {
+          "width": 960,
+          "height": 540,
+          "type": "webp"
+        },
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/img/partners/v71-sk-holdings.webp",
+        "bytes": 14908,
+        "kb": 15,
+        "dimensions": {
+          "width": 960,
+          "height": 540,
+          "type": "webp"
+        },
+        "directReferenceDetected": true
+      }
+    ],
+    "largestCss": [
+      {
+        "path": "assets/css/growth-conversion.v36.css",
+        "bytes": 63571,
+        "kb": 62,
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/css/app.core.v1.20260401.css",
+        "bytes": 52155,
+        "kb": 51,
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/css/x.9d7841e705c5.css",
+        "bytes": 43559,
+        "kb": 43,
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/css/mobile.enhance.v1.20260317.css",
+        "bytes": 29953,
+        "kb": 29,
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/css/community.refresh.v4.20260331.css",
+        "bytes": 29334,
+        "kb": 29,
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/css/v56.high-end-system.css",
+        "bytes": 27592,
+        "kb": 27,
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/css/v63.sitewide-hard-reset.css",
+        "bytes": 24357,
+        "kb": 24,
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/css/app.tools.v1.20260401.css",
+        "bytes": 21728,
+        "kb": 21,
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/css/moonsafe.dashboard.v23.css",
+        "bytes": 20078,
+        "kb": 20,
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/css/moonsafe.complete.v24.css",
+        "bytes": 19659,
+        "kb": 19,
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/css/v57.mobile-bento.css",
+        "bytes": 19047,
+        "kb": 19,
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/css/blog.rebuild.v2.20260318.css",
+        "bytes": 18522,
+        "kb": 18,
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/css/v71.main-home.css",
+        "bytes": 16736,
+        "kb": 16,
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/css/v55.luminous-sitewide.css",
+        "bytes": 16687,
+        "kb": 16,
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/css/safety.center.v2.20260330.css",
+        "bytes": 16635,
+        "kb": 16,
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/css/app.sports.v1.20260420f.css",
+        "bytes": 16189,
+        "kb": 16,
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/css/luxury.refresh.v3.20260330.css",
+        "bytes": 15612,
+        "kb": 15,
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/css/v67.productized-dashboard.css",
+        "bytes": 14855,
+        "kb": 15,
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/css/v58.app-dashboard.css",
+        "bytes": 14358,
+        "kb": 14,
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/css/v65.global-premium-fix.css",
+        "bytes": 14236,
+        "kb": 14,
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/css/v66.obsidian-dashboard.css",
+        "bytes": 14065,
+        "kb": 14,
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/css/guaranteed.gateway.v19.20260505.css",
+        "bytes": 13178,
+        "kb": 13,
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/css/guaranteed.gateway.v18.20260505.css",
+        "bytes": 12922,
+        "kb": 13,
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/css/pro.blog.v1.20260504.css",
+        "bytes": 12753,
+        "kb": 12,
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/css/v68.ops-revenue-hardening.css",
+        "bytes": 12620,
+        "kb": 12,
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/css/v69.platform-redesign.css",
+        "bytes": 12194,
+        "kb": 12,
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/css/v73.tools-dashboard.css",
+        "bytes": 12007,
+        "kb": 12,
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/css/moonsafe.mobile.final.v28.css",
+        "bytes": 11985,
+        "kb": 12,
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/css/v66.obsidian-renewal.css",
+        "bytes": 11733,
+        "kb": 11,
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/css/v52.open-ready.css",
+        "bytes": 11704,
+        "kb": 11,
+        "directReferenceDetected": true
+      }
+    ],
+    "largestJs": [
+      {
+        "path": "assets/js/app.tools.v1.20260401.js",
+        "bytes": 134042,
+        "kb": 131,
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/js/app.core.v1.20260401.js",
+        "bytes": 54313,
+        "kb": 53,
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/js/community.tools.v3.20260331.js",
+        "bytes": 29850,
+        "kb": 29,
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/js/safety.center.v4.20260330.js",
+        "bytes": 28549,
+        "kb": 28,
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/js/app.sports.v1.20260420d.js",
+        "bytes": 26128,
+        "kb": 26,
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/js/content.upgrade.v1.20260419.js",
+        "bytes": 25085,
+        "kb": 24,
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/js/mobile.enhance.v1.20260317.js",
+        "bytes": 16639,
+        "kb": 16,
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/js/conversion.boost.v4.20260505.js",
+        "bytes": 12445,
+        "kb": 12,
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/js/auto.consult.v1.20260505.js",
+        "bytes": 11674,
+        "kb": 11,
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/js/v73.tools-dashboard.js",
+        "bytes": 9648,
+        "kb": 9,
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/js/engines.v1.20260404.js",
+        "bytes": 9269,
+        "kb": 9,
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/js/growth-conversion.v36.js",
+        "bytes": 9073,
+        "kb": 9,
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/js/v89.ga4-event-depth.js",
+        "bytes": 8096,
+        "kb": 8,
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/js/hub.promo.v1.20260502.js",
+        "bytes": 7559,
+        "kb": 7,
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/js/v51.tools.js",
+        "bytes": 7240,
+        "kb": 7,
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/js/hub.promo.v1.20260420b.js",
+        "bytes": 7013,
+        "kb": 7,
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/js/ops.qa.v1.20260419.js",
+        "bytes": 6705,
+        "kb": 7,
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/js/v80.ops-control-center.js",
+        "bytes": 6471,
+        "kb": 6,
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/js/v52.tools.js",
+        "bytes": 6453,
+        "kb": 6,
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/js/hub.promo.compact.v6.20260505.js",
+        "bytes": 6368,
+        "kb": 6,
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/js/hub.promo.v1.20260418.js",
+        "bytes": 6195,
+        "kb": 6,
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/js/open.final.v1.20260317.js",
+        "bytes": 6027,
+        "kb": 6,
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/js/v93-tools-usability-pass.js",
+        "bytes": 5931,
+        "kb": 6,
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/js/v87-live-deploy-check.js",
+        "bytes": 5096,
+        "kb": 5,
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/js/customer.os.v2.20260505.js",
+        "bytes": 4757,
+        "kb": 5,
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/js/v72-1.blog-lock.js",
+        "bytes": 4718,
+        "kb": 5,
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/js/v72.blog-hub.js",
+        "bytes": 4612,
+        "kb": 5,
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/js/v60.open-ready-final.js",
+        "bytes": 4331,
+        "kb": 4,
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/js/v82.ga4-events.js",
+        "bytes": 4312,
+        "kb": 4,
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/js/v81-1.main-motion-fix.js",
+        "bytes": 4263,
+        "kb": 4,
+        "directReferenceDetected": true
+      }
+    ],
+    "unusedAssetCandidates": []
+  },
+  "htmlLoadingAudit": {
+    "pagesWithManyCssRefs": [
+      {
+        "page": "blog/address-change-center/index.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/address-change-risk-patterns/index.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/address-change-warning-signs/index.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/affiliate/baccarat-affiliate-basic.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/affiliate/basic-structure.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/affiliate/code-management.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/affiliate/index.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/affiliate/settlement-guide.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/anybet-seoa-event-guide.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/asn-ip-cluster-check/index.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/bet365-virtual/basic-guide.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/bet365-virtual/index.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/bet365-virtual/result-cycle-check.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/bet365-virtual/v47-bet365-virtual-basketball-cycle-odds.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/bet365-virtual/v47-bet365-virtual-football-vs-real-football.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/bet365-virtual/v47-bet365-virtual-game-result-seed.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/bet365-virtual/v47-bet365-virtual-racing-probability-display.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/bet365-virtual/v47-bet365-virtual-round-id-check.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/bet365-virtual/v47-virtual-football-highlight-settlement.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/bet365-virtual/v47-virtual-game-bonus-abuse-clause.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/bet365-virtual/v47-virtual-game-consecutive-round-bankroll.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/bet365-virtual/v47-virtual-game-dispute-record-standard.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/bet365-virtual/v47-virtual-game-event-scope-check.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/bet365-virtual/v47-virtual-game-low-odds-volatility.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/bet365-virtual/v47-virtual-game-provider-identity-check.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/bet365-virtual/v47-virtual-game-rng-vs-sports-odds.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/bet365-virtual/v47-virtual-game-technical-checklist.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/bet365-virtual/v47-virtual-game-turnover-disadvantage.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/bet365-virtual/v48-virtual-football-highlight-precomputed-result.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/bet365-virtual/v48-virtual-game-round-id-history-audit.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/bet365-virtual/v48-virtual-game-turnover-contribution-rate.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/bet365-virtual/v48-virtual-horse-racing-round-odds-cycle.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/bet365-virtual/virtual-basketball.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/bet365-virtual/virtual-football.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/bet365-virtual/virtual-game-vs-real-sports.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/bet365-virtual/virtual-racing.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/bonus-withdraw-check-routine/index.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/change-timeline-reading-guide/index.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/chat-capture-key-points/index.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/code-notice-center/index.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/code-push-warning-signs/index.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/community-cross-check-order/index.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/community-review-filtering/index.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/copied-review-patterns/index.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/customer-service-warning/index.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/deposit-proof-capture-guide/index.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/domain-age-isnt-enough/index.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/domain-check-first-items/index.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/domain-ip-check-basics/index.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/domain-ip-first-check-order/index.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/domain-search-combo-keywords/index.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/evidence-checklist-before-report/index.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/first-deposit-check-route/index.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/bonus-ev-turnover-limit.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/cloudflare-proxy-public-signal-check.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/customer-center-question-template.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/dns-certificate-timeline-analysis.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/game-event-condition-first.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/index.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/mobile-game-before-start.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/official-address-before-game.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/phishing-url-script-tampering.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/provider-logo-api-consistency.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/responsible-play-checklist.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/rtp-volatility-simple-meaning.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/security-recording-evidence-protocol.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/terms-rolling-toxic-clause.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/v47-bonus-forfeiture-clause-pattern.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/v47-cloudflare-public-security-signal-limit.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/v47-deposit-before-domain-ip-ssl-routine.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/v47-domain-age-operation-stability.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/v47-event-banner-terms-mismatch-order.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/v47-fake-customer-center-channel-check.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/v47-final-technical-site-checklist.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/v47-frequent-domain-change-technical-reason.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/v47-html-source-renewal-signal-check.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/v47-javascript-redirect-phishing-structure.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/v47-max-withdrawal-cap-calculation.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/v47-multi-account-risk-clause.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/v47-official-vs-impersonation-dns-check.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/v47-personal-data-page-security-checklist.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/v47-phishing-url-homograph-pattern.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/v47-ssl-certificate-issuer-domain-trust.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/v47-turnover-insufficient-condition-standard.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/v47-vpn-access-restriction-clause.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/v47-whois-domain-creation-date-risk.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/v47-withdraw-delay-terms-reading.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/v48-bonus-forfeit-clause-taxonomy.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/v48-cloudflare-public-signal-check.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/v48-deposit-before-domain-ip-ssl-checklist.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/v48-dns-record-change-address-structure.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/v48-js-redirect-meta-refresh-audit.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/v48-phishing-url-homoglyph-hyphen-pattern.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/v48-ssl-san-domain-match-check.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/v48-whois-rdap-domain-history-fields.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/whois-domain-age-risk-score.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/google-muktu-search-guide/index.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/guaranteed-address-code-order/index.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/guaranteed-before-click-checks/index.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/insufficient-evidence-cases/index.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      }
+    ],
+    "pagesWithManyJsRefs": [
+      {
+        "page": "blog/address-change-center/index.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/address-change-risk-patterns/index.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/address-change-warning-signs/index.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/affiliate/baccarat-affiliate-basic.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/affiliate/basic-structure.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/affiliate/code-management.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/affiliate/index.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/affiliate/settlement-guide.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/anybet-seoa-event-guide.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/asn-ip-cluster-check/index.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/bet365-virtual/basic-guide.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/bet365-virtual/index.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/bet365-virtual/result-cycle-check.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/bet365-virtual/v47-bet365-virtual-basketball-cycle-odds.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/bet365-virtual/v47-bet365-virtual-football-vs-real-football.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/bet365-virtual/v47-bet365-virtual-game-result-seed.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/bet365-virtual/v47-bet365-virtual-racing-probability-display.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/bet365-virtual/v47-bet365-virtual-round-id-check.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/bet365-virtual/v47-virtual-football-highlight-settlement.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/bet365-virtual/v47-virtual-game-bonus-abuse-clause.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/bet365-virtual/v47-virtual-game-consecutive-round-bankroll.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/bet365-virtual/v47-virtual-game-dispute-record-standard.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/bet365-virtual/v47-virtual-game-event-scope-check.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/bet365-virtual/v47-virtual-game-low-odds-volatility.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/bet365-virtual/v47-virtual-game-provider-identity-check.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/bet365-virtual/v47-virtual-game-rng-vs-sports-odds.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/bet365-virtual/v47-virtual-game-technical-checklist.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/bet365-virtual/v47-virtual-game-turnover-disadvantage.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/bet365-virtual/v48-virtual-football-highlight-precomputed-result.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/bet365-virtual/v48-virtual-game-round-id-history-audit.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/bet365-virtual/v48-virtual-game-turnover-contribution-rate.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/bet365-virtual/v48-virtual-horse-racing-round-odds-cycle.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/bet365-virtual/virtual-basketball.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/bet365-virtual/virtual-football.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/bet365-virtual/virtual-game-vs-real-sports.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/bet365-virtual/virtual-racing.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/bonus-withdraw-check-routine/index.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/change-timeline-reading-guide/index.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/chat-capture-key-points/index.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/code-notice-center/index.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/code-push-warning-signs/index.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/community-cross-check-order/index.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/community-review-filtering/index.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/copied-review-patterns/index.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/customer-service-warning/index.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/deposit-proof-capture-guide/index.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/domain-age-isnt-enough/index.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/domain-check-first-items/index.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/domain-ip-check-basics/index.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/domain-ip-first-check-order/index.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/domain-search-combo-keywords/index.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/evidence-checklist-before-report/index.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/first-deposit-check-route/index.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/bonus-ev-turnover-limit.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/cloudflare-proxy-public-signal-check.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/customer-center-question-template.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/dns-certificate-timeline-analysis.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/game-event-condition-first.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/index.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/mobile-game-before-start.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/official-address-before-game.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/phishing-url-script-tampering.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/provider-logo-api-consistency.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/responsible-play-checklist.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/rtp-volatility-simple-meaning.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/security-recording-evidence-protocol.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/terms-rolling-toxic-clause.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/v47-bonus-forfeiture-clause-pattern.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/v47-cloudflare-public-security-signal-limit.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/v47-deposit-before-domain-ip-ssl-routine.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/v47-domain-age-operation-stability.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/v47-event-banner-terms-mismatch-order.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/v47-fake-customer-center-channel-check.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/v47-final-technical-site-checklist.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/v47-frequent-domain-change-technical-reason.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/v47-html-source-renewal-signal-check.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/v47-javascript-redirect-phishing-structure.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/v47-max-withdrawal-cap-calculation.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/v47-multi-account-risk-clause.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/v47-official-vs-impersonation-dns-check.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/v47-personal-data-page-security-checklist.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/v47-phishing-url-homograph-pattern.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/v47-ssl-certificate-issuer-domain-trust.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/v47-turnover-insufficient-condition-standard.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/v47-vpn-access-restriction-clause.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/v47-whois-domain-creation-date-risk.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/v47-withdraw-delay-terms-reading.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/v48-bonus-forfeit-clause-taxonomy.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/v48-cloudflare-public-signal-check.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/v48-deposit-before-domain-ip-ssl-checklist.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/v48-dns-record-change-address-structure.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/v48-js-redirect-meta-refresh-audit.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/v48-phishing-url-homoglyph-hyphen-pattern.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/v48-ssl-san-domain-match-check.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/v48-whois-rdap-domain-history-fields.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/game-guides/whois-domain-age-risk-score.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/google-muktu-search-guide/index.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/guaranteed-address-code-order/index.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/guaranteed-before-click-checks/index.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      },
+      {
+        "page": "blog/insufficient-evidence-cases/index.html",
+        "cssRefs": 21,
+        "uniqueCssRefs": 21,
+        "jsRefs": 19,
+        "uniqueJsRefs": 19,
+        "v84CriticalCount": 1,
+        "v94CriticalCount": 1,
+        "criticalOverInsertionRisk": false
+      }
+    ],
+    "pagesWithCriticalOverInsertionRisk": []
+  },
+  "changedPages": [
+    {
+      "page": "admin/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/2026-toto-site-recommendation-safe-checklist/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/address-change-center/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/address-change-risk-patterns/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/address-change-warning-signs/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/affiliate/baccarat-affiliate-basic.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/affiliate/basic-structure.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/affiliate/code-management.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/affiliate/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/affiliate/settlement-guide.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/anybet-seoa-event-guide.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/asn-ip-cluster-check/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/auto-copy-code-domain-match/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/bet365-virtual/basic-guide.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/bet365-virtual/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/bet365-virtual/result-cycle-check.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/bet365-virtual/v47-bet365-virtual-basketball-cycle-odds.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/bet365-virtual/v47-bet365-virtual-football-vs-real-football.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/bet365-virtual/v47-bet365-virtual-game-result-seed.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/bet365-virtual/v47-bet365-virtual-racing-probability-display.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/bet365-virtual/v47-bet365-virtual-round-id-check.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/bet365-virtual/v47-virtual-football-highlight-settlement.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/bet365-virtual/v47-virtual-game-bonus-abuse-clause.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/bet365-virtual/v47-virtual-game-consecutive-round-bankroll.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/bet365-virtual/v47-virtual-game-dispute-record-standard.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/bet365-virtual/v47-virtual-game-event-scope-check.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/bet365-virtual/v47-virtual-game-low-odds-volatility.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/bet365-virtual/v47-virtual-game-provider-identity-check.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/bet365-virtual/v47-virtual-game-rng-vs-sports-odds.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/bet365-virtual/v47-virtual-game-technical-checklist.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/bet365-virtual/v47-virtual-game-turnover-disadvantage.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/bet365-virtual/v48-virtual-football-highlight-precomputed-result.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/bet365-virtual/v48-virtual-game-round-id-history-audit.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/bet365-virtual/v48-virtual-game-turnover-contribution-rate.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/bet365-virtual/v48-virtual-horse-racing-round-odds-cycle.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/bet365-virtual/virtual-basketball.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/bet365-virtual/virtual-football.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/bet365-virtual/virtual-game-vs-real-sports.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/bet365-virtual/virtual-racing.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/bonus-real-receive-first-recharge-recurring/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/bonus-withdraw-check-routine/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/casino-ibple-real-receive-guide/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/casino-ibple-site-recommendation-real-receive/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/casino-ibple-vs-slot-event-condition/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/casino-rolling-bonus-abuse-clause-check/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/change-timeline-reading-guide/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/chat-capture-key-points/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/code-notice-center/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/code-push-warning-signs/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/community-cross-check-order/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/community-review-filtering/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/copied-review-patterns/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/customer-service-warning/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/deposit-proof-capture-guide/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/domain-age-isnt-enough/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/domain-check-first-items/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/domain-ip-check-basics/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/domain-ip-first-check-order/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/domain-search-combo-keywords/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/ev-calculation-bonus-comparison/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/ev-calculation-example-for-event-bonus/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/evidence-checklist-before-report/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/first-deposit-check-route/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/first-recharge-real-receive-calculation/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/ga4-gsc-content-feedback-loop-rust/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/game-guides/bonus-ev-turnover-limit.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/game-guides/cloudflare-proxy-public-signal-check.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/game-guides/customer-center-question-template.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/game-guides/dns-certificate-timeline-analysis.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/game-guides/game-event-condition-first.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/game-guides/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/game-guides/mobile-game-before-start.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/game-guides/official-address-before-game.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/game-guides/phishing-url-script-tampering.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/game-guides/provider-logo-api-consistency.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/game-guides/responsible-play-checklist.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/game-guides/rtp-volatility-simple-meaning.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/game-guides/security-recording-evidence-protocol.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/game-guides/terms-rolling-toxic-clause.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/game-guides/v47-bonus-forfeiture-clause-pattern.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/game-guides/v47-cloudflare-public-security-signal-limit.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/game-guides/v47-deposit-before-domain-ip-ssl-routine.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/game-guides/v47-domain-age-operation-stability.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/game-guides/v47-event-banner-terms-mismatch-order.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/game-guides/v47-fake-customer-center-channel-check.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/game-guides/v47-final-technical-site-checklist.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/game-guides/v47-frequent-domain-change-technical-reason.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/game-guides/v47-html-source-renewal-signal-check.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/game-guides/v47-javascript-redirect-phishing-structure.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/game-guides/v47-max-withdrawal-cap-calculation.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/game-guides/v47-multi-account-risk-clause.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/game-guides/v47-official-vs-impersonation-dns-check.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/game-guides/v47-personal-data-page-security-checklist.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/game-guides/v47-phishing-url-homograph-pattern.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/game-guides/v47-ssl-certificate-issuer-domain-trust.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/game-guides/v47-turnover-insufficient-condition-standard.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/game-guides/v47-vpn-access-restriction-clause.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/game-guides/v47-whois-domain-creation-date-risk.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/game-guides/v47-withdraw-delay-terms-reading.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/game-guides/v48-bonus-forfeit-clause-taxonomy.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/game-guides/v48-cloudflare-public-signal-check.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/game-guides/v48-deposit-before-domain-ip-ssl-checklist.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/game-guides/v48-dns-record-change-address-structure.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/game-guides/v48-js-redirect-meta-refresh-audit.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/game-guides/v48-phishing-url-homoglyph-hyphen-pattern.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/game-guides/v48-ssl-san-domain-match-check.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/game-guides/v48-whois-rdap-domain-history-fields.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/game-guides/whois-domain-age-risk-score.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/google-muktu-search-guide/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/guaranteed-address-code-order/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/guaranteed-before-click-checks/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/guaranteed-detail-page-seven-signals/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/guaranteed-vendor-bonus-three-line-rule/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/guaranteed-vendor-selection-standard-2026/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/ibple-site-recommendation-longtail-map/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/insufficient-evidence-cases/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/join-check-routine-3min/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/join-code-copy-before-telegram-consult/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/long-run-operation-signs/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "duplicateScriptTagsRemoved": 0,
+      "duplicateScriptSrcs": [],
+      "loadingAdded": 0,
+      "decodingAdded": 0,
+      "fetchPriorityAdded": 0,
+      "widthHeightAdded": 0,
+      "deferAdded": 0,
+      "resourceHintsAdded": 2,
+      "criticalAdded": true,
+      "markerAdded": true
+    }
+  ],
+  "deletionPolicy": "No files were deleted in V94. Candidates are audit-only until direct references and generator dependencies are verified."
+}
