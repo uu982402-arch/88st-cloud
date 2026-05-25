@@ -1,2 +1,13 @@
-{ "name": "88ST.Cloud", "short_name": "88ST", "icons": [ { "src": "/img/logo-mark-v24.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }, { "src": "/img/logo-mark-v23.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }, { "src": "/img/logo-v22.png", "sizes": "720x188", "type": "image/png" }, { "src": "/img/logo-mark-v19.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" } ], "theme_color": "#06080c", "background_color": "#03050a", "display": "standalone"
+{
+  "name": "RUST by 88ST",
+  "short_name": "RUST",
+  "description": "RUST by 88ST premium guide platform",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#06090F",
+  "theme_color": "#0B0F19",
+  "icons": [
+    {"src":"/icon-192.png","sizes":"192x192","type":"image/png","purpose":"any maskable"},
+    {"src":"/icon-512.png","sizes":"512x512","type":"image/png","purpose":"any maskable"}
+  ]
 }
