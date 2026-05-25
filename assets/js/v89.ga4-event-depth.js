@@ -113,7 +113,7 @@
 
     if (explicit) return { name: explicit, params: { link_url: href, link_text: text, item_id: tool || code || '' } };
 
-    if (/t\.me|telegram|TRS999|텔레그램/i.test(href + ' ' + text)) {
+    if (/t\.me|telegram|TRS999|공식 채널/i.test(href + ' ' + text)) {
       return { name: 'telegram_open', params: { link_url: href, link_text: text } };
     }
 
