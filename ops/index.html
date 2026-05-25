@@ -22,6 +22,8 @@
   <meta name="v86-structure-lock" content="V86_STRUCTURE_LOCK_HARDENING_ACTIVE" data-v86-structure-lock="true">
   <link rel="stylesheet" href="/assets/css/v87-live-deploy-check.css?v=static-v87-live-deploy-check-20260525" data-v87-live-deploy="true">
   <meta name="v87-live-deploy-check" content="V87_LIVE_DEPLOY_CHECK_ACTIVE" data-v87-live-deploy="true">
+  <meta name="v88-indexing-readiness" content="V88_INDEXING_READINESS_ACTIVE" data-v88-indexing="true">
+  <link rel="stylesheet" href="/assets/css/v88-indexing-readiness.css?v=static-v88-indexing-readiness-20260526" data-v88-indexing="true">
 </head>
 <body class="v80-ops-center">
   <div class="v80-ops-app" id="V80_OPS_CONTROL_CENTER_ACTIVE">
@@ -38,6 +40,7 @@
         <a href="#seo">SEO</a>
         <a href="#indexing">색인·측정</a>
         <a href="#live-check">라이브검증</a>
+        <a href="#indexing-readiness">색인준비</a>
         <a href="#deploy">배포검증</a>
       </nav>
       <div class="v80-side-foot">
@@ -83,6 +86,30 @@
         <pre class="v87-live-log" data-v87-live-log>대기 중입니다. 버튼을 누르면 라이브 HTML을 fetch 하여 상태를 표시합니다.</pre>
       </section>
       <!-- V87 LIVE DEPLOY CHECK END -->
+
+      <!-- V88 INDEXING READINESS START -->
+      <section class="v88-index-panel" id="indexing-readiness" data-v88-indexing="V88_INDEXING_READINESS_ACTIVE" aria-label="색인 안정화 준비 센터">
+        <div class="v88-index-head">
+          <div>
+            <span class="v88-index-kicker">V88 INDEXING READINESS</span>
+            <h2>색인 안정화 준비 센터</h2>
+            <p>sitemap, canonical, noindex, 신규 SEO 글 50개, sports-check/search-guides 상세 URL을 업로드 직후 바로 확인합니다.</p>
+          </div>
+          <div class="v88-index-actions">
+            <button type="button" class="v88-index-btn is-primary" data-v88-copy-indexing>색인 URL 복사</button>
+            <button type="button" class="v88-index-btn" data-v88-copy-new-posts>신규 글 50개 복사</button>
+          </div>
+        </div>
+        <div class="v88-index-metrics">
+          <div><small>사이트맵 URL</small><strong>636</strong><span>noindex 제외 후 정렬</span></div>
+          <div><small>신규 SEO 글</small><strong>50</strong><span>색인 요청 우선</span></div>
+          <div><small>스포츠 체크</small><strong>12</strong><span>상세 URL</span></div>
+          <div><small>검색 가이드</small><strong>35</strong><span>상세 URL</span></div>
+        </div>
+        <div class="v88-index-grid" data-v88-indexing-list></div>
+        <pre class="v88-index-log" data-v88-indexing-log>Search Console URL 검사에 넣을 우선 URL을 복사할 수 있습니다.</pre>
+      </section>
+      <!-- V88 INDEXING READINESS END -->
 
       <section class="v80-layout" id="vendors">
         <article class="v80-panel">
@@ -245,5 +272,6 @@
   <script src="/assets/js/v80.ops-control-center.js?v=static-v80-ops-control-center-20260525" defer></script>
   <script defer src="/assets/js/v82-3-indexing-ops.js?v=static-v82-3-indexing-measurement-20260525" data-v82-3-indexing="true"></script>
   <script src="/assets/js/v87-live-deploy-check.js?v=static-v87-live-deploy-check-20260525" defer data-v87-live-deploy="true"></script>
+  <script src="/assets/js/v88-indexing-readiness.js?v=static-v88-indexing-readiness-20260526" defer data-v88-indexing="true"></script>
 </body>
 </html>
