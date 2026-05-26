@@ -1,0 +1,117 @@
+/* V102.4 HOME PREMIUM MOBILE SWIPE LOCK
+   목표:
+   1) 메인 최상단 별도 보증 이미지 블록은 HTML/CSS 양쪽에서 차단
+   2) 기존 프리미엄 보증업체 섹션만 사용
+   3) PC/태블릿 넓은 화면: 세로형 2열 x 3줄
+   4) 모바일: 같은 섹션 안에서 가로 스와이프 방식 복구
+   5) /guaranteed/: 가로형 3열 x 2줄 유지 */
+:root{--v102-4-gap:clamp(8px,1.8vw,15px);--v102-4-card-bg:linear-gradient(180deg,rgba(255,255,255,.97),rgba(238,242,247,.94));}
+html[data-v102-4-home-premium-mobile-swipe="active"],html[data-v102-4-home-premium-mobile-swipe="active"] body{width:100%;max-width:100%;overflow-x:hidden!important}
+body[data-v102-4-home-premium-mobile-swipe="true"] :where(main,section,.v71-shell,.v74-shell,.v71-main,.v74-1-main){min-width:0!important;max-width:100%!important}
+
+/* 최상단 중복 보증 이미지 블록은 다시 보이지 않게 고정 */
+body[data-v102-4-home-premium-mobile-swipe="true"] section.v71-mobile-partners,
+body[data-v102-4-home-premium-mobile-swipe="true"] .v71-mobile-partners{display:none!important;height:0!important;min-height:0!important;margin:0!important;padding:0!important;overflow:hidden!important;visibility:hidden!important;pointer-events:none!important}
+
+/* 메인: 프리미엄 보증업체 섹션 하나만 세로형 카드로 관리 */
+body[data-v102-4-home-premium-mobile-swipe="true"] .v71-desktop-partner-panel{min-width:0!important;max-width:100%!important;overflow:hidden!important}
+body[data-v102-4-home-premium-mobile-swipe="true"] .v71-desktop-partner-panel .v71-section-head p{font-size:12.5px!important;line-height:1.46!important}
+body[data-v102-4-home-premium-mobile-swipe="true"] .v71-desktop-partner-panel .v71-partner-tile-grid{
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  grid-auto-flow:row!important;
+  gap:var(--v102-4-gap)!important;
+  width:min(760px,100%)!important;
+  max-width:760px!important;
+  margin-inline:auto!important;
+  padding:0!important;
+  overflow:visible!important;
+  scroll-snap-type:none!important;
+}
+body[data-v102-4-home-premium-mobile-swipe="true"] .v71-desktop-partner-panel .v71-partner-card,
+body[data-v102-4-home-premium-mobile-swipe="true"] .v71-desktop-partner-panel .v71-partner-card:first-child{
+  grid-column:auto!important;
+  display:grid!important;
+  place-items:center!important;
+  width:100%!important;
+  min-width:0!important;
+  max-width:100%!important;
+  aspect-ratio:3/4!important;
+  height:auto!important;
+  min-height:0!important;
+  overflow:hidden!important;
+  border-radius:clamp(14px,2.4vw,22px)!important;
+  background:var(--v102-4-card-bg)!important;
+  border:1px solid rgba(255,255,255,.22)!important;
+  box-shadow:0 16px 40px rgba(0,0,0,.24),inset 0 1px 0 rgba(255,255,255,.55)!important;
+  transform:none!important;
+  flex:none!important;
+}
+body[data-v102-4-home-premium-mobile-swipe="true"] .v71-desktop-partner-panel .v71-partner-card img{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  max-width:100%!important;
+  max-height:100%!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  padding:clamp(6px,1.15vw,12px)!important;
+  transform:none!important;
+  filter:none!important;
+  background:transparent!important;
+}
+
+/* 모바일: 같은 프리미엄 섹션 안에서 스와이프 방식 복구 */
+@media (max-width:720px){
+  body[data-v102-4-home-premium-mobile-swipe="true"] .v71-desktop-partner-panel{display:grid!important;gap:10px!important;position:static!important;top:auto!important;margin-top:16px!important;overflow:visible!important}
+  body[data-v102-4-home-premium-mobile-swipe="true"] .v71-desktop-partner-panel .v71-section-head{margin-bottom:8px!important}
+  body[data-v102-4-home-premium-mobile-swipe="true"] .v71-desktop-partner-panel .v71-section-head p{font-size:12px!important;color:#a8b3c7!important}
+  body[data-v102-4-home-premium-mobile-swipe="true"] .v71-desktop-partner-panel .v71-partner-tile-grid{
+    display:flex!important;
+    grid-template-columns:none!important;
+    grid-auto-flow:unset!important;
+    gap:10px!important;
+    width:100%!important;
+    max-width:100%!important;
+    overflow-x:auto!important;
+    overflow-y:hidden!important;
+    scroll-snap-type:x proximity!important;
+    -webkit-overflow-scrolling:touch!important;
+    overscroll-behavior-x:contain!important;
+    padding:0 max(12px,env(safe-area-inset-right,0px)) 8px max(12px,env(safe-area-inset-left,0px))!important;
+    margin-inline:0!important;
+    scrollbar-width:none!important;
+  }
+  body[data-v102-4-home-premium-mobile-swipe="true"] .v71-desktop-partner-panel .v71-partner-tile-grid::-webkit-scrollbar{display:none!important}
+  body[data-v102-4-home-premium-mobile-swipe="true"] .v71-desktop-partner-panel .v71-partner-card,
+  body[data-v102-4-home-premium-mobile-swipe="true"] .v71-desktop-partner-panel .v71-partner-card:first-child{
+    flex:0 0 clamp(156px,43vw,210px)!important;
+    width:clamp(156px,43vw,210px)!important;
+    max-width:210px!important;
+    aspect-ratio:3/4!important;
+    scroll-snap-align:start!important;
+  }
+}
+
+/* /guaranteed/ 허브: 가로형 3개씩 x 2줄 유지 */
+body[data-v102-4-home-premium-mobile-swipe="true"] .v74-shell.v74-1-grid{
+  display:grid!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  grid-auto-flow:row!important;
+  gap:clamp(8px,1.6vw,14px)!important;
+  width:min(1120px,calc(100% - 28px))!important;
+  max-width:1120px!important;
+  margin:clamp(12px,2.4vw,22px) auto!important;
+  padding:0!important;
+}
+body[data-v102-4-home-premium-mobile-swipe="true"] .v74-1-vendor-card{min-width:0!important;width:100%!important;overflow:hidden!important}
+body[data-v102-4-home-premium-mobile-swipe="true"] .v74-1-image-link{display:grid!important;place-items:center!important;width:100%!important;aspect-ratio:16/9!important;min-height:0!important;height:auto!important;overflow:hidden!important;background:linear-gradient(180deg,#fff,#edf2f7)!important}
+body[data-v102-4-home-premium-mobile-swipe="true"] .v74-1-image-link img{display:block!important;width:100%!important;height:100%!important;max-width:100%!important;max-height:100%!important;object-fit:contain!important;object-position:center!important;padding:clamp(3px,.8vw,8px)!important;transform:none!important;filter:none!important;background:transparent!important}
+@media(max-width:720px){
+  body[data-v102-4-home-premium-mobile-swipe="true"] .v74-shell.v74-1-grid{width:calc(100% - 16px)!important;gap:6px!important}
+  body[data-v102-4-home-premium-mobile-swipe="true"] .v74-1-card-body{padding:6px!important}
+  body[data-v102-4-home-premium-mobile-swipe="true"] .v74-1-info-grid{display:none!important}
+  body[data-v102-4-home-premium-mobile-swipe="true"] .v74-1-actions{grid-template-columns:1fr!important;gap:4px!important}
+  body[data-v102-4-home-premium-mobile-swipe="true"] .v74-1-btn--detail{display:none!important}
+  body[data-v102-4-home-premium-mobile-swipe="true"] .v74-1-btn{min-height:34px!important;font-size:10px!important;border-radius:10px!important;padding-inline:4px!important}
+}
