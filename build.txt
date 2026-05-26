@@ -1,7 +1,7 @@
-build=2026-05-25T20:56:14.212Z
-version=static-growth-conversion-v65-20260525205614
-cache=20260525205614
+build=2026-05-26T00:00:00.000Z
+version=static-v96-4-live-qa-cache-safe-20260526
+cache=20260526-v96-4
 html=675
-sitemap=635
+sitemap=637
 worker=safe-mode
 consultBot=@TRS999_bot
