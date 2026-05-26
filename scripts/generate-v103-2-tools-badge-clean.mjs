@@ -1,0 +1,15 @@
+import fs from 'node:fs';
+import path from 'node:path';
+const ROOT = process.cwd();
+const toolsPath = path.join(ROOT, 'tools/index.html');
+const cssPath = path.join(ROOT, 'assets/css/v103-2-tools-badge-clean.css');
+if (!fs.existsSync(cssPath)) throw new Error('missing assets/css/v103-2-tools-badge-clean.css');
+let html = fs.readFileSync(toolsPath, 'utf8');
+if (!html.includes('data-v103-2-tools-badge-clean="active"')) html = html.replace('<html ', '<html data-v103-2-tools-badge-clean="active" ');
+const link = '  <meta name="v103-2-tools-badge-clean" content="V103_2_TOOLS_BADGE_CLEAN_ACTIVE">\n  <link rel="stylesheet" href="/assets/css/v103-2-tools-badge-clean.css?v=v103-2-tools-badge-clean-20260526" data-v103-2-tools-badge-clean="true">\n';
+if (!html.includes('/assets/css/v103-2-tools-badge-clean.css')) html = html.replace('</head>', link + '</head>');
+if (!html.includes('data-v103-2-tools-badge-clean="true"')) html = html.replace('<body ', '<body data-v103-2-tools-badge-clean="true" ');
+fs.writeFileSync(toolsPath, html);
+fs.writeFileSync(path.join(ROOT, 'build.txt'), '88ST.Cloud build V103.2 TOOLS BADGE CLEAN PATCH\n2026-05-26T16:25:00.000Z\n');
+fs.writeFileSync(path.join(ROOT, 'assets/js/build.ver.js'), "window.__RUST_BUILD_VERSION__ = 'V103.2-TOOLS-BADGE-CLEAN-PATCH-20260526';\nwindow.__RUST_BUILD_LABEL__ = 'V103.2 TOOLS BADGE CLEAN PATCH';\n");
+console.log('[V103.2] tools card pseudo badge cleaned');
