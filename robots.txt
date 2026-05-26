@@ -4,3 +4,7 @@ Disallow: /ops/
 Disallow: /api/
 Disallow: /analysis/
 Sitemap: https://88st.cloud/sitemap.xml
+Disallow: /faq/
+Disallow: /consult-motives/
+Disallow: /consult-result/
+Disallow: /provider-updates/
