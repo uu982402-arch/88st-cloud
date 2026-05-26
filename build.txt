@@ -1,6 +1,6 @@
 build=2026-05-26T00:00:00.000Z
-version=static-v96-4-live-qa-cache-safe-20260526
-cache=20260526-v96-4
+version=static-v96-5-guaranteed-conversion-20260526
+cache=20260526-v96-5
 html=675
 sitemap=637
 worker=safe-mode
