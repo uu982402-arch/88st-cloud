@@ -1,0 +1,31 @@
+/* V103.3 TOOLS NEW RIBBON HARD CLEAN PATCH
+   실제 화면에 남은 신규 도구 카드 상단 NEW 리본/배지 pseudo 요소를 원천 차단한다.
+   기존 카드 구조, 도구 기능, 하단 meta/rank 라인은 유지한다. */
+html[data-v103-3-tools-new-ribbon-clean="active"],
+html[data-v103-3-tools-new-ribbon-clean="active"] body{width:100%;max-width:100%;overflow-x:hidden}
+body[data-v103-3-tools-new-ribbon-clean="true"] .v103-unified-tool-card,
+body[data-v103-3-tools-new-ribbon-clean="true"] .v73-tool-card[data-v103-open]{position:relative!important;overflow:hidden!important}
+body[data-v103-3-tools-new-ribbon-clean="true"] .v103-unified-tool-card::before,
+body[data-v103-3-tools-new-ribbon-clean="true"] .v103-unified-tool-card::after,
+body[data-v103-3-tools-new-ribbon-clean="true"] .v73-tool-card[data-v103-open]::before,
+body[data-v103-3-tools-new-ribbon-clean="true"] .v73-tool-card[data-v103-open]::after{
+  content:none!important;
+  display:none!important;
+  visibility:hidden!important;
+  opacity:0!important;
+  width:0!important;
+  height:0!important;
+  min-width:0!important;
+  min-height:0!important;
+  padding:0!important;
+  margin:0!important;
+  border:0!important;
+  border-radius:0!important;
+  background:none!important;
+  box-shadow:none!important;
+  pointer-events:none!important;
+}
+body[data-v103-3-tools-new-ribbon-clean="true"] .v103-unified-tool-card :where(.new,.NEW,.badge,.ribbon,[data-badge],[data-new],.v103-badge,.v103-new,.v103-ribbon,.v73-badge,.v73-ribbon){display:none!important}
+body[data-v103-3-tools-new-ribbon-clean="true"] .v103-unified-tool-card .v73-tool-meta{margin-top:auto!important;position:relative!important;z-index:1!important}
+body[data-v103-3-tools-new-ribbon-clean="true"] .v103-unified-tool-card .v73-tool-rank{background:transparent!important;border:0!important;color:#b7f9e6!important;padding:0!important;box-shadow:none!important}
+body[data-v103-3-tools-new-ribbon-clean="true"] .v103-unified-tool-card .v73-tool-open{position:relative!important;z-index:1!important}
