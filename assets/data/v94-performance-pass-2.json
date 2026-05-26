@@ -1,6 +1,6 @@
 {
   "version": "V94_PERFORMANCE_PASS_2_ACTIVE",
-  "generatedAt": "2026-05-25T20:56:22.573Z",
+  "generatedAt": "2026-05-26T04:21:57.940Z",
   "summary": {
     "htmlFiles": 675,
     "changedHtml": 565,
@@ -18,8 +18,8 @@
   "assetAudit": {
     "counts": {
       "images": 82,
-      "css": 114,
-      "js": 90
+      "css": 118,
+      "js": 93
     },
     "largeImagesOver300KB": [
       {
@@ -522,6 +522,17 @@
         "directReferenceDetected": true
       },
       {
+        "path": "assets/img/guaranteed/cards/zakum.png",
+        "bytes": 178802,
+        "kb": 175,
+        "dimensions": {
+          "width": 960,
+          "height": 540,
+          "type": "png"
+        },
+        "directReferenceDetected": true
+      },
+      {
         "path": "assets/img/anybet-seoa-event.jpg",
         "bytes": 165118,
         "kb": 161,
@@ -529,17 +540,6 @@
           "height": 1280,
           "width": 853,
           "type": "jpeg"
-        },
-        "directReferenceDetected": true
-      },
-      {
-        "path": "assets/img/guaranteed/cards/zakum.png",
-        "bytes": 105192,
-        "kb": 103,
-        "dimensions": {
-          "width": 960,
-          "height": 540,
-          "type": "png"
         },
         "directReferenceDetected": true
       },
@@ -606,28 +606,6 @@
           "height": 630,
           "width": 1200,
           "type": "jpeg"
-        },
-        "directReferenceDetected": true
-      },
-      {
-        "path": "assets/img/guaranteed/cards/zakum.webp",
-        "bytes": 43342,
-        "kb": 42,
-        "dimensions": {
-          "width": 960,
-          "height": 540,
-          "type": "webp"
-        },
-        "directReferenceDetected": true
-      },
-      {
-        "path": "assets/img/partners/v71-zakum.webp",
-        "bytes": 43342,
-        "kb": 42,
-        "dimensions": {
-          "width": 960,
-          "height": 540,
-          "type": "webp"
         },
         "directReferenceDetected": true
       },
@@ -742,6 +720,28 @@
         "directReferenceDetected": true
       },
       {
+        "path": "assets/img/guaranteed/cards/zakum.webp",
+        "bytes": 26998,
+        "kb": 26,
+        "dimensions": {
+          "width": 960,
+          "height": 540,
+          "type": "webp"
+        },
+        "directReferenceDetected": true
+      },
+      {
+        "path": "assets/img/partners/v71-zakum.webp",
+        "bytes": 26998,
+        "kb": 26,
+        "dimensions": {
+          "width": 960,
+          "height": 540,
+          "type": "webp"
+        },
+        "directReferenceDetected": true
+      },
+      {
         "path": "assets/img/guaranteed/cards/anybet.webp",
         "bytes": 18180,
         "kb": 18,
@@ -789,7 +789,7 @@
     "largestCss": [
       {
         "path": "assets/css/growth-conversion.v36.css",
-        "bytes": 63577,
+        "bytes": 63589,
         "kb": 62,
         "directReferenceDetected": true
       },

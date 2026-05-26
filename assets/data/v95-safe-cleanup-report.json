@@ -1,6 +1,6 @@
 {
   "version": "V95_SAFE_CLEANUP_ACTIVE",
-  "generatedAt": "2026-05-25T20:56:29.234Z",
+  "generatedAt": "2026-05-26T04:22:09.844Z",
   "policy": "safe cleanup only: delete allowlisted generated reports with zero runtime references; keep all CSS/JS/image legacy candidates unless proven safe",
   "summary": {
     "changedHtml": 565,

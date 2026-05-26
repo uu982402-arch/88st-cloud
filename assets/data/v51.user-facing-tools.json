@@ -1,6 +1,6 @@
 {
   "version": "static-growth-conversion-v51-20260522",
-  "generatedAt": "2026-05-25T20:56:03.935Z",
+  "generatedAt": "2026-05-26T04:21:13.563Z",
   "policy": "V51은 방문자가 바로 계산·확인할 수 있는 도구만 /tools/ 전면에 노출합니다. 운영자 QA·빌드·GA4·시각회귀 도구는 내부 후보로 분리합니다.",
   "implementedTools": [
     {

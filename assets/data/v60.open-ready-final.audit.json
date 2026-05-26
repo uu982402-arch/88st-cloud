@@ -1,9 +1,9 @@
 {
   "version": "static-growth-conversion-v60",
-  "generatedAt": "2026-05-25T20:56:07.370Z",
+  "generatedAt": "2026-05-26T04:21:19.681Z",
   "summary": {
     "html": 675,
-    "files": 1233,
+    "files": 1251,
     "badHref": 0,
     "missingAsset": 512,
     "deadInternal": 0,
@@ -115,16 +115,16 @@
       "assets/css/v85-4-blog-post-shell-lock.css",
       "assets/css/v90-blog-quality-pass.css",
       "assets/css/v91-hub-content-depth.css",
+      "assets/css/v96-1-guaranteed-card-scale.css",
+      "assets/css/v96-2-guaranteed-landing-fix.css",
+      "assets/css/v96-3-mobile-safe-layout.css",
+      "assets/css/v96-4-live-qa-cache-safe.css",
       "assets/css/v96-zakum-ad.css",
       "assets/css/vvip-hub.v85.css",
       "assets/css/vvip-luxe.v75.css",
       "assets/css/x.9d7841e705c5.css",
       "assets/data/content.roadmap.v1.20260504.json",
-      "assets/data/conversion.cta.v36.json",
-      "assets/data/ctr.refresh.v1.20260323.json",
-      "assets/data/generated.routes.v1.20260330.json",
-      "assets/data/indexing.audit.v1.20260323.json",
-      "assets/data/last-stable.v36.json"
+      "assets/data/conversion.cta.v36.json"
     ]
   },
   "details": {
