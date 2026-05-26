@@ -1,0 +1,22 @@
+
+.resource-panel{padding:18px;border:1px solid rgba(148,163,184,.18);border-radius:20px;background:rgba(8,15,28,.58);box-shadow:0 16px 36px rgba(2,6,23,.24);margin:18px 0}
+.resource-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.resource-box{padding:14px;border-radius:16px;background:rgba(10,18,32,.72);border:1px solid rgba(148,163,184,.14)}
+.resource-box p,.resource-box li{margin:.35rem 0;color:var(--muted)}
+.resource-table-wrap{overflow:auto;border-radius:16px}
+.resource-table{width:100%;border-collapse:collapse;min-width:660px;background:rgba(10,18,32,.86)}
+.resource-table th,.resource-table td{padding:12px 14px;border-bottom:1px solid rgba(148,163,184,.14);text-align:left;vertical-align:top}
+.resource-table th{font-size:.86rem;color:#dbeafe;background:rgba(15,23,42,.92)}
+.resource-table td a{color:#93c5fd;text-decoration:none}
+.resource-table td a:hover{text-decoration:underline}
+.sheet-toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.resource-textarea{width:100%;min-height:210px;padding:14px 16px;border-radius:16px;border:1px solid rgba(148,163,184,.18);background:rgba(4,10,20,.88);color:#e5eef9;line-height:1.6;resize:vertical;font:inherit}
+.route-steps{display:grid;gap:12px;padding-left:0;list-style:none;margin:0}
+.route-steps li{display:grid;grid-template-columns:72px 1fr;gap:12px;align-items:start;padding:12px 14px;border-radius:14px;background:rgba(10,18,32,.72);border:1px solid rgba(148,163,184,.14)}
+.route-steps li a{color:#e5eef9;text-decoration:none}
+.route-steps li a:hover{text-decoration:underline}
+.route-steps b{display:inline-flex;justify-content:center;align-items:center;min-height:34px;border-radius:999px;background:rgba(37,99,235,.18);color:#bfdbfe;font-size:.82rem}
+.resource-toast{position:fixed;left:50%;bottom:100px;transform:translateX(-50%);padding:10px 14px;border-radius:999px;background:#0f172a;color:#e2e8f0;border:1px solid rgba(148,163,184,.18);box-shadow:0 12px 30px rgba(2,6,23,.24);font-size:.86rem;z-index:80;opacity:0;transition:opacity .2s ease,transform .2s ease;pointer-events:none}
+.resource-toast.is-show{opacity:1;transform:translateX(-50%) translateY(-4px)}
+@media (max-width: 860px){.resource-grid{grid-template-columns:1fr}.resource-table{min-width:560px}.route-steps li{grid-template-columns:60px 1fr}}
+@media (max-width: 540px){.resource-panel{padding:14px;border-radius:16px}.sheet-toolbar{display:grid;grid-template-columns:1fr}.resource-table th,.resource-table td{padding:10px 12px}.resource-textarea{min-height:180px}}

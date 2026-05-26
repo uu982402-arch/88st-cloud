@@ -1,0 +1,65 @@
+:root {
+  --v85-2-bg: #06090f;
+  --v85-2-rust: #ff7a1a;
+  --v85-2-copper: #d97706;
+  --v85-2-line: rgba(255, 122, 26, 0.22);
+  --v85-2-text: #fff7ed;
+}
+
+.v85-2-seo-post {
+  background: #06090f;
+  color: #f8fafc;
+}
+
+.v85-2-seo-post .rust-header {
+  z-index: 80;
+}
+
+.v85-2-seo-post .v82-longform-hero {
+  margin-top: 14px;
+  padding: clamp(18px, 3vw, 24px);
+  border-color: rgba(255, 122, 26, 0.2);
+  background:
+    radial-gradient(circle at 20% 0%, rgba(255, 122, 26, 0.13), transparent 28rem),
+    linear-gradient(180deg, rgba(255,255,255,.082), rgba(255,255,255,.038));
+}
+
+.v85-2-seo-post .v82-longform-hero h1 {
+  font-size: clamp(26px, 4.4vw, 42px);
+  letter-spacing: -0.055em;
+}
+
+.v85-2-seo-post .v82-longform-body {
+  margin-bottom: calc(92px + env(safe-area-inset-bottom));
+}
+
+.v85-2-seo-post .v82-link-panel,
+.v85-2-seo-post .v82-longform-cta {
+  display: none !important;
+}
+
+.v85-2-seo-post .v82-note {
+  border-color: rgba(255, 122, 26, 0.2);
+  background:
+    radial-gradient(circle at 16% 0%, rgba(255,122,26,.08), transparent 22rem),
+    rgba(255,255,255,.055);
+}
+
+@media (max-width: 760px) {
+  .v85-2-seo-post .v82-longform-hero {
+    width: calc(100% - 24px);
+    margin-top: 10px;
+    border-radius: 22px;
+  }
+
+  .v85-2-seo-post .v82-longform-hero h1 {
+    font-size: 25px;
+    line-height: 1.18;
+  }
+
+  .v85-2-seo-post .v82-longform-body {
+    width: calc(100% - 24px);
+    font-size: 15px;
+    line-height: 1.82;
+  }
+}
