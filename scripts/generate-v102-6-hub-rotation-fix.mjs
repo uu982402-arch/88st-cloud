@@ -1,0 +1,17 @@
+import fs from 'node:fs';
+import path from 'node:path';
+const ROOT=process.cwd();
+const indexPath=path.join(ROOT,'index.html');
+const css='/assets/css/v102-6-hub-rotation-fix.css?v=v102-6-hub-rotation-fix-20260526';
+const js='/assets/js/v102-6-hub-rotation-fix.js?v=v102-6-hub-rotation-fix-20260526';
+if(!fs.existsSync(path.join(ROOT,'assets/css/v102-6-hub-rotation-fix.css'))) throw new Error('missing v102.6 css');
+if(!fs.existsSync(path.join(ROOT,'assets/js/v102-6-hub-rotation-fix.js'))) throw new Error('missing v102.6 js');
+let html=fs.readFileSync(indexPath,'utf8');
+if(!html.includes('data-v102-6-hub-rotation="active"')) html=html.replace(/<html([^>]*)>/, '<html$1 data-v102-6-hub-rotation="active">');
+if(!html.includes('data-v102-6-hub-rotation="true"')) html=html.replace(/<body([^>]*)>/, '<body$1 data-v102-6-hub-rotation="true">');
+if(!html.includes('/assets/css/v102-6-hub-rotation-fix.css')) html=html.replace('</head>', `  <meta name="v102-6-hub-rotation-fix" content="V102_6_HUB_ROTATION_FIX_ACTIVE">\n  <link rel="stylesheet" href="${css}" data-v102-6-hub-rotation="true">\n</head>`);
+if(!html.includes('/assets/js/v102-6-hub-rotation-fix.js')) html=html.replace(/<script src="\/assets\/js\/v81-1\.main-motion-fix\.js[^>]*><\/script>/, (m)=>`${m}\n<script src="${js}" defer data-v102-6-hub-rotation="true"></script>`);
+fs.writeFileSync(indexPath,html);
+fs.writeFileSync(path.join(ROOT,'build.txt'),'88ST.Cloud build V102.6 HUB ROTATION FIX\n2026-05-26T11:10:00.000Z\n');
+fs.writeFileSync(path.join(ROOT,'assets/js/build.ver.js'),"window.__RUST_BUILD_VERSION__ = 'V102.6-HUB-ROTATION-FIX-20260526';\nwindow.__RUST_BUILD_LABEL__ = 'V102.6 HUB ROTATION FIX';\n");
+console.log('[V102.6] hub rotation fix applied');
