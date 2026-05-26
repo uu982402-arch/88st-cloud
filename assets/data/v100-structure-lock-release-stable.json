@@ -1,0 +1,115 @@
+{
+  "version": "V100-STRUCTURE-LOCK-RELEASE-STABLE-20260526",
+  "date": "2026-05-26",
+  "fixedRoutes": [
+    {
+      "file": "index.html",
+      "url": "/",
+      "exists": true
+    },
+    {
+      "file": "blog/index.html",
+      "url": "/blog/",
+      "exists": true
+    },
+    {
+      "file": "tools/index.html",
+      "url": "/tools/",
+      "exists": true
+    },
+    {
+      "file": "guaranteed/index.html",
+      "url": "/guaranteed/",
+      "exists": true
+    },
+    {
+      "file": "consult/index.html",
+      "url": "/consult/",
+      "exists": true
+    },
+    {
+      "file": "sports-check/index.html",
+      "url": "/sports-check/",
+      "exists": true
+    },
+    {
+      "file": "search-guides/index.html",
+      "url": "/search-guides/",
+      "exists": true
+    },
+    {
+      "file": "ops/index.html",
+      "url": "/ops/",
+      "noindex": true,
+      "exists": true
+    },
+    {
+      "file": "admin/index.html",
+      "url": "/admin/",
+      "noindex": true,
+      "redirect": "/ops/",
+      "exists": true
+    }
+  ],
+  "vendors": [
+    {
+      "slug": "sk-holdings",
+      "name": "SK 홀딩스",
+      "code": "IRON888",
+      "detail": "/guaranteed/sk-holdings/",
+      "file": "guaranteed/sk-holdings/index.html",
+      "exists": true
+    },
+    {
+      "slug": "zakum",
+      "name": "자쿰",
+      "code": "zk888",
+      "detail": "/guaranteed/zakum/",
+      "file": "guaranteed/zakum/index.html",
+      "exists": true
+    },
+    {
+      "slug": "udt",
+      "name": "UDT BET",
+      "code": "SEOA",
+      "detail": "/guaranteed/udt/",
+      "file": "guaranteed/udt/index.html",
+      "exists": true
+    },
+    {
+      "slug": "queenbee",
+      "name": "여왕벌",
+      "code": "SEOA",
+      "detail": "/guaranteed/queenbee/",
+      "file": "guaranteed/queenbee/index.html",
+      "exists": true
+    },
+    {
+      "slug": "ddangkong",
+      "name": "땅콩 BET",
+      "code": "DDK888",
+      "detail": "/guaranteed/ddangkong/",
+      "file": "guaranteed/ddangkong/index.html",
+      "exists": true
+    },
+    {
+      "slug": "anybet",
+      "name": "ANY BET",
+      "code": "SEOA",
+      "detail": "/guaranteed/anybet/",
+      "file": "guaranteed/anybet/index.html",
+      "exists": true
+    }
+  ],
+  "requiredMarkers": [
+    "v96-3-mobile-safe-layout",
+    "v96-4-live-qa-cache-safe",
+    "v96-5-guaranteed-conversion",
+    "v97-content-seo-clean",
+    "v98-performance-image",
+    "v99-blog-index-seo-quality",
+    "v100-structure-lock-release"
+  ],
+  "uploadMode": "PATCH ZIP preferred, FULL ZIP retained as recovery baseline",
+  "deletionPolicy": "deletedFiles=0"
+}

@@ -1,0 +1,116 @@
+{
+  "version": "V100-STRUCTURE-LOCK-RELEASE-STABLE-20260526",
+  "date": "2026-05-26",
+  "htmlUpdated": 0,
+  "coreRoutes": [
+    {
+      "file": "index.html",
+      "url": "/",
+      "exists": true,
+      "noindex": false
+    },
+    {
+      "file": "blog/index.html",
+      "url": "/blog/",
+      "exists": true,
+      "noindex": false
+    },
+    {
+      "file": "tools/index.html",
+      "url": "/tools/",
+      "exists": true,
+      "noindex": false
+    },
+    {
+      "file": "guaranteed/index.html",
+      "url": "/guaranteed/",
+      "exists": true,
+      "noindex": false
+    },
+    {
+      "file": "consult/index.html",
+      "url": "/consult/",
+      "exists": true,
+      "noindex": false
+    },
+    {
+      "file": "sports-check/index.html",
+      "url": "/sports-check/",
+      "exists": true,
+      "noindex": false
+    },
+    {
+      "file": "search-guides/index.html",
+      "url": "/search-guides/",
+      "exists": true,
+      "noindex": false
+    },
+    {
+      "file": "ops/index.html",
+      "url": "/ops/",
+      "exists": true,
+      "noindex": true
+    },
+    {
+      "file": "admin/index.html",
+      "url": "/admin/",
+      "exists": true,
+      "noindex": true
+    }
+  ],
+  "vendors": [
+    {
+      "slug": "sk-holdings",
+      "name": "SK 홀딩스",
+      "code": "IRON888",
+      "detailExists": true,
+      "hubLinks": 3
+    },
+    {
+      "slug": "zakum",
+      "name": "자쿰",
+      "code": "zk888",
+      "detailExists": true,
+      "hubLinks": 3
+    },
+    {
+      "slug": "udt",
+      "name": "UDT BET",
+      "code": "SEOA",
+      "detailExists": true,
+      "hubLinks": 3
+    },
+    {
+      "slug": "queenbee",
+      "name": "여왕벌",
+      "code": "SEOA",
+      "detailExists": true,
+      "hubLinks": 3
+    },
+    {
+      "slug": "ddangkong",
+      "name": "땅콩 BET",
+      "code": "DDK888",
+      "detailExists": true,
+      "hubLinks": 3
+    },
+    {
+      "slug": "anybet",
+      "name": "ANY BET",
+      "code": "SEOA",
+      "detailExists": true,
+      "hubLinks": 3
+    }
+  ],
+  "cacheFiles": [
+    "assets/css/v100-structure-lock-release-stable.css",
+    "assets/js/v100-structure-lock-release-stable.js"
+  ],
+  "sitemapUrls": 671,
+  "forbiddenHits": [],
+  "notes": [
+    "V99 FULL 기준 누적 구조 잠금 패치",
+    "라우팅/보증업체/모바일 safe layout/캐시/SEO 마커 검증 체인 통합",
+    "삭제 파일 없음"
+  ]
+}
