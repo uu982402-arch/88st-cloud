@@ -1,0 +1,33 @@
+{
+  "version": "V105",
+  "name": "SEO KEYWORD REFRESH / INDEX QUALITY PATCH",
+  "generatedAt": "2026-05-27T03:57:53.758252Z",
+  "blogHtmlCount": 504,
+  "blogDetailCount": 503,
+  "duplicateTitleCount": 0,
+  "duplicateDescriptionCount": 0,
+  "shortDescriptionCount": 0,
+  "blogNoindexCount": 0,
+  "canonicalMissingCount": 0,
+  "h1MissingCount": 0,
+  "removedRoutesLocked": [
+    "faq",
+    "consult-motives",
+    "consult-result",
+    "provider-updates"
+  ],
+  "hubMetaUpdated": [
+    "index.html",
+    "blog/index.html",
+    "tools/index.html",
+    "guaranteed/index.html",
+    "sports-check/index.html",
+    "search-guides/index.html",
+    "consult/index.html"
+  ],
+  "notes": [
+    "신규 글 대량 생성 없음",
+    "기존 목록형 블로그 구조 유지",
+    "sitemap/robots 제거 확정 경로 검사 유지"
+  ]
+}
