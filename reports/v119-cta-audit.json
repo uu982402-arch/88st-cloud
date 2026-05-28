@@ -1,0 +1,71 @@
+{
+  "version": "V119",
+  "hubCardCount": 6,
+  "hubConsultButtonsRemoved": true,
+  "hubCheckStandardRemoved": true,
+  "variantsCleaned": true,
+  "remainingHubDetailCtas": 6,
+  "remainingHubOutboundCtas": 6,
+  "details": [
+    {
+      "slug": "sk-holdings",
+      "exists": true,
+      "image": "assets/img/guaranteed/cards/sk-holdings.webp",
+      "imageExists": true,
+      "hasHeroImage": true,
+      "bottomConsultSectionRemoved": true,
+      "heroConsultCtaRemoved": true,
+      "v119CssLinked": true
+    },
+    {
+      "slug": "zakum",
+      "exists": true,
+      "image": "assets/img/guaranteed/cards/zakum.webp",
+      "imageExists": true,
+      "hasHeroImage": true,
+      "bottomConsultSectionRemoved": true,
+      "heroConsultCtaRemoved": true,
+      "v119CssLinked": true
+    },
+    {
+      "slug": "udt",
+      "exists": true,
+      "image": "assets/img/guaranteed/cards/udt-bet.webp",
+      "imageExists": true,
+      "hasHeroImage": true,
+      "bottomConsultSectionRemoved": true,
+      "heroConsultCtaRemoved": true,
+      "v119CssLinked": true
+    },
+    {
+      "slug": "queenbee",
+      "exists": true,
+      "image": "assets/img/guaranteed/cards/queenbee.webp",
+      "imageExists": true,
+      "hasHeroImage": true,
+      "bottomConsultSectionRemoved": true,
+      "heroConsultCtaRemoved": true,
+      "v119CssLinked": true
+    },
+    {
+      "slug": "ddangkong",
+      "exists": true,
+      "image": "assets/img/guaranteed/cards/ddangkong-bet.webp",
+      "imageExists": true,
+      "hasHeroImage": true,
+      "bottomConsultSectionRemoved": true,
+      "heroConsultCtaRemoved": true,
+      "v119CssLinked": true
+    },
+    {
+      "slug": "anybet",
+      "exists": true,
+      "image": "assets/img/guaranteed/cards/anybet.webp",
+      "imageExists": true,
+      "hasHeroImage": true,
+      "bottomConsultSectionRemoved": true,
+      "heroConsultCtaRemoved": true,
+      "v119CssLinked": true
+    }
+  ]
+}

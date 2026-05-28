@@ -1,0 +1,81 @@
+{
+  "version": "V119",
+  "routes": [
+    {
+      "rel": "index.html",
+      "exists": true,
+      "bytes": 167110
+    },
+    {
+      "rel": "blog/index.html",
+      "exists": true,
+      "bytes": 256352
+    },
+    {
+      "rel": "tools/index.html",
+      "exists": true,
+      "bytes": 33671
+    },
+    {
+      "rel": "guaranteed/index.html",
+      "exists": true,
+      "bytes": 31084
+    },
+    {
+      "rel": "consult/index.html",
+      "exists": true,
+      "bytes": 15411
+    },
+    {
+      "rel": "sports-check/index.html",
+      "exists": true,
+      "bytes": 21501
+    },
+    {
+      "rel": "search-guides/index.html",
+      "exists": true,
+      "bytes": 32840
+    },
+    {
+      "rel": "ops/index.html",
+      "exists": true,
+      "bytes": 36178
+    },
+    {
+      "rel": "guaranteed/sk-holdings/index.html",
+      "exists": true,
+      "bytes": 20454
+    },
+    {
+      "rel": "guaranteed/zakum/index.html",
+      "exists": true,
+      "bytes": 20805
+    },
+    {
+      "rel": "guaranteed/udt/index.html",
+      "exists": true,
+      "bytes": 19958
+    },
+    {
+      "rel": "guaranteed/queenbee/index.html",
+      "exists": true,
+      "bytes": 20223
+    },
+    {
+      "rel": "guaranteed/ddangkong/index.html",
+      "exists": true,
+      "bytes": 20115
+    },
+    {
+      "rel": "guaranteed/anybet/index.html",
+      "exists": true,
+      "bytes": 19990
+    }
+  ],
+  "removedRoutes": [
+    "faq",
+    "consult-motives",
+    "consult-result",
+    "provider-updates"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "version": "V119",
+  "assets": [
+    {
+      "slug": "sk-holdings",
+      "image": "assets/img/guaranteed/cards/sk-holdings.webp",
+      "exists": true,
+      "bytes": 16220
+    },
+    {
+      "slug": "zakum",
+      "image": "assets/img/guaranteed/cards/zakum.webp",
+      "exists": true,
+      "bytes": 26998
+    },
+    {
+      "slug": "udt",
+      "image": "assets/img/guaranteed/cards/udt-bet.webp",
+      "exists": true,
+      "bytes": 42198
+    },
+    {
+      "slug": "queenbee",
+      "image": "assets/img/guaranteed/cards/queenbee.webp",
+      "exists": true,
+      "bytes": 12500
+    },
+    {
+      "slug": "ddangkong",
+      "image": "assets/img/guaranteed/cards/ddangkong-bet.webp",
+      "exists": true,
+      "bytes": 17896
+    },
+    {
+      "slug": "anybet",
+      "image": "assets/img/guaranteed/cards/anybet.webp",
+      "exists": true,
+      "bytes": 18180
+    }
+  ]
+}
