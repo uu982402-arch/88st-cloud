@@ -1,0 +1,1 @@
+Live /guaranteed/ pre-check showed old phrases on the deployed site, so V120 package keeps V119 cleanup locked and adds detail image scale caps.

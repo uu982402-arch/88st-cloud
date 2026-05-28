@@ -1,0 +1,16 @@
+{
+  "version": "V120",
+  "home": {
+    "quick_search": true,
+    "sports_cta": "/sports-check/",
+    "guaranteed_cta": "/guaranteed/",
+    "premium_vendor_image_section_count_expected": 1
+  },
+  "detail_image": {
+    "max_width_px": 520,
+    "desktop_max_height_px": 292,
+    "mobile_max_height_px": 214,
+    "object_fit": "contain"
+  },
+  "deleted_files": 0
+}
