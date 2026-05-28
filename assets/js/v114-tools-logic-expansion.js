@@ -61,7 +61,10 @@
       panel.setAttribute('data-v114-logic-panel','true');
       box.appendChild(panel);
     }
-    panel.innerHTML = buildPanel(data);
+    var nextHtml = buildPanel(data);
+    if (panel.getAttribute('data-v114-html') === nextHtml) return;
+    panel.setAttribute('data-v114-html', nextHtml);
+    panel.innerHTML = nextHtml;
   }
   function analyzeV73(form){
     var title = titleFor(form);
@@ -225,6 +228,8 @@
     var form = e.target && e.target.closest && e.target.closest('[data-v73-form],[data-v103-form]');
     if (form) setTimeout(function(){ run(form); }, 30);
   }, true);
-  var observer = new MutationObserver(function(){ runAll(); });
-  observer.observe(document.body, { childList:true, subtree:true });
+  /* V114.1 hotfix:
+     기존 MutationObserver가 panel.innerHTML 갱신을 다시 감지해 runAll()을 반복 호출하면서
+     모바일/크롬에서 페이지가 멈추는 현상을 만들 수 있어 제거한다.
+     모달 열기, 입력 변경, 초기화 이벤트에서만 계산 근거를 갱신한다. */
 })();
