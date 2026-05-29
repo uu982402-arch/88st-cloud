@@ -1,0 +1,3 @@
+# V132 remove candidates / cleanup notes
+No source file deletion was performed.
+Removed/disabled from generated HTML: legacy v71 header/nav/FAB, v65 chat bubbles, v70 sticky CTA/FAB, old related blocks, tool consult CTA residue.
