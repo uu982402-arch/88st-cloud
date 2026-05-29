@@ -91,7 +91,7 @@ const pkg = exists('package.json') ? JSON.parse(read('package.json')) : {};
 assert(pkg.scripts?.verify === 'node scripts/verify-v130-final-release-lock.mjs', 'package verify is not V130');
 assert(pkg.scripts?.['quality:v130'], 'missing quality:v130 script');
 assert(pkg.scripts?.['verify:v130'], 'missing verify:v130 script');
-assert(pkg.scripts?.build?.includes('generate-v130-final-release-lock.mjs'), 'build chain missing V130 generator');
+assert((pkg.scripts?.build || '').includes('build-v130-1-cloudflare-pages-safe.mjs') || (pkg.scripts?.build || '').includes('generate-v130-final-release-lock.mjs') || (pkg.scripts?.['build:legacy-full-chain'] || '').includes('generate-v130-final-release-lock.mjs'), 'build chain missing V130 generator or V130.1 safe build');
 
 if (warn.length) {
   console.log('[V130 WARN]');

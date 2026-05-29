@@ -1,0 +1,5 @@
+V126 removal candidates only - no files deleted.
+- assets/js/v120-main-conversion-polish.js: still kept for compatibility; V125/V126 hide the removed first-fold block if regenerated.
+- duplicated legacy nav systems remain structurally present; do not delete until live mobile nav is visually confirmed across devices.
+- floating v71-fab was removed from index.html only; related CSS/classes may remain in old assets and should be treated as cleanup candidates later.
+- no bottom related-link sections should be regenerated.

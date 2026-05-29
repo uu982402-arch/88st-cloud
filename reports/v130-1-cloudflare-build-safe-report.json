@@ -1,0 +1,15 @@
+{
+  "ok": true,
+  "version": "V130.1_UPLOAD_BUILD_HOTFIX",
+  "mode": "cloudflare-pages-static-safe-build",
+  "note": "Static files are already materialized. Build validates final release locks instead of regenerating all legacy stages.",
+  "requiredFiles": 13,
+  "requiredRoutes": 13,
+  "bannedRoutesAbsent": [
+    "faq",
+    "consult-motives",
+    "consult-result",
+    "provider-updates"
+  ],
+  "generatedAt": "2026-05-29T06:07:37.808Z"
+}

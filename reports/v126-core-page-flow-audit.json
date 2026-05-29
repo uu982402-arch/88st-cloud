@@ -1,0 +1,37 @@
+{
+  "version": "V126_CORE_PAGE_FLOW_CONTENT_DENSITY_POLISH",
+  "base": "V125 FULL",
+  "changedAt": "2026-05-29T05:19:08.655Z",
+  "liveObservation": {
+    "homepage": "Live homepage still showed V120 RUST QUICK CHECK and old bottom consult copy before V125/V126 deployment.",
+    "bottomIssues": [
+      "low-value metric strip near bottom",
+      "long consultation copy",
+      "redundant floating Telegram FAB"
+    ]
+  },
+  "changed": {
+    "removedMetrics": false,
+    "removedFloatingBotFab": false,
+    "compactedConsultBotBanner": true,
+    "tightenedMainSectionCopy": true,
+    "preservedBottomNavConsultLink": true,
+    "didNotAddBottomRelatedSections": true
+  },
+  "preserved": [
+    "blog rotator",
+    "home guaranteed panel",
+    "sports/search hub rotation",
+    "V115 home tool modal triggers",
+    "V121 no-bottom-related lock",
+    "V125 quick-check removal guard"
+  ],
+  "forbiddenRegeneration": [
+    "RUST QUICK CHECK",
+    "v36-related-links",
+    "v70-2-related",
+    "조건 상담 후 이용",
+    "확인 기준",
+    "상담 전 문의 템플릿"
+  ]
+}
