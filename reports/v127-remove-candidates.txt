@@ -1,0 +1,5 @@
+V127 removal candidates only - no files deleted.
+- Legacy CSS bundles before V96.3 still contain overlapping mobile rules; keep until live visual QA confirms no dependency.
+- Old floating FAB styles remain in legacy CSS, but V126/V127 hide or offset them safely.
+- Long-tail HTML files now receive V127 CSS directly; no removed route files were regenerated.
+- Do not add bottom related-link/connection sections by default.

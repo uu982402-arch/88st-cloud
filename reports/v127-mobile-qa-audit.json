@@ -1,0 +1,59 @@
+{
+  "version": "V127 MOBILE QA / SAFE AREA LOCK PATCH",
+  "base": "V126 FULL",
+  "generated_at": "2026-05-29T05:28:33.769Z",
+  "html_files_scanned": 639,
+  "html_files_changed": 0,
+  "viewport_fixed": 0,
+  "css_linked": 0,
+  "html_marked": 0,
+  "body_marked": 0,
+  "key_pages": [
+    {
+      "file": "index.html",
+      "exists": true
+    },
+    {
+      "file": "tools/index.html",
+      "exists": true
+    },
+    {
+      "file": "guaranteed/index.html",
+      "exists": true
+    },
+    {
+      "file": "blog/index.html",
+      "exists": true
+    },
+    {
+      "file": "sports-check/index.html",
+      "exists": true
+    },
+    {
+      "file": "search-guides/index.html",
+      "exists": true
+    },
+    {
+      "file": "consult/index.html",
+      "exists": true
+    },
+    {
+      "file": "ops/index.html",
+      "exists": true
+    }
+  ],
+  "checks": {
+    "no_bottom_related_sections_added": true,
+    "v125_quick_check_guard_preserved": true,
+    "v126_consult_copy_preserved": true,
+    "tools_modal_preserved": true,
+    "guaranteed_vendor_count_expected": 6,
+    "tools_count_expected": 12
+  },
+  "mobile_targets": [
+    "Android Chrome",
+    "Samsung Internet",
+    "iPhone Safari",
+    "iPhone Chrome"
+  ]
+}
