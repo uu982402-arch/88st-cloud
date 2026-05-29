@@ -1,0 +1,4 @@
+V124 remove candidates report
+- No files were deleted in this patch.
+- Bottom related/consult sections remain locked by V121/V124 checks.
+- Keep reviewing legacy generator scripts before deleting any unused CSS/JS.

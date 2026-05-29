@@ -1,0 +1,86 @@
+{
+  "version": "V124",
+  "name": "GUARANTEED DETAIL CONVERSION COPY PATCH",
+  "generatedAt": "2026-05-29T04:59:02.434Z",
+  "detailPages": [
+    {
+      "slug": "sk-holdings",
+      "url": "/guaranteed/sk-holdings/",
+      "domain": "snk-99.com",
+      "code": "IRON888",
+      "heroCopy": "shortened",
+      "imageMaxHeight": {
+        "desktop": "292px",
+        "tablet": "258px",
+        "mobile": "204px"
+      }
+    },
+    {
+      "slug": "zakum",
+      "url": "/guaranteed/zakum/",
+      "domain": "zk-777.com",
+      "code": "zk888",
+      "heroCopy": "shortened",
+      "imageMaxHeight": {
+        "desktop": "292px",
+        "tablet": "258px",
+        "mobile": "204px"
+      }
+    },
+    {
+      "slug": "udt",
+      "url": "/guaranteed/udt/",
+      "domain": "udt-01.com",
+      "code": "SEOA",
+      "heroCopy": "shortened",
+      "imageMaxHeight": {
+        "desktop": "292px",
+        "tablet": "258px",
+        "mobile": "204px"
+      }
+    },
+    {
+      "slug": "queenbee",
+      "url": "/guaranteed/queenbee/",
+      "domain": "qb-700.com",
+      "code": "SEOA",
+      "heroCopy": "shortened",
+      "imageMaxHeight": {
+        "desktop": "292px",
+        "tablet": "258px",
+        "mobile": "204px"
+      }
+    },
+    {
+      "slug": "ddangkong",
+      "url": "/guaranteed/ddangkong/",
+      "domain": "ddk-2024.com",
+      "code": "DDK888",
+      "heroCopy": "shortened",
+      "imageMaxHeight": {
+        "desktop": "292px",
+        "tablet": "258px",
+        "mobile": "204px"
+      }
+    },
+    {
+      "slug": "anybet",
+      "url": "/guaranteed/anybet/",
+      "domain": "any-777.com",
+      "code": "SEOA",
+      "heroCopy": "shortened",
+      "imageMaxHeight": {
+        "desktop": "292px",
+        "tablet": "258px",
+        "mobile": "204px"
+      }
+    }
+  ],
+  "lockedRules": [
+    "no bottom related sections",
+    "no bottom consult blocks",
+    "two CTA flow on guaranteed cards",
+    "detail image object-fit contain",
+    "no route deletion"
+  ]
+}
