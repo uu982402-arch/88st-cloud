@@ -1,0 +1,27 @@
+{
+  "version": "V125_MAIN_CLEAN_FIRST_FOLD",
+  "source": "V124 FULL",
+  "changedAt": "2026-05-29T05:09:54.410Z",
+  "removedV120DuplicateFold": false,
+  "beforeLength": 123198,
+  "afterLength": 123266,
+  "removedSectionTokens": [
+    "RUST QUICK CHECK",
+    "data-v120-fold=\"true\"",
+    "data-v120-search-form=\"true\"",
+    "v120-action-sports",
+    "v120-action-guaranteed"
+  ],
+  "consultCopy": {
+    "h2": "애매한 조건은 공식 상담봇에서 깔끔하게 정리하세요.",
+    "body": "가입코드, 공식주소, 이벤트 조건, 롤링 계산처럼 놓치기 쉬운 부분만 @TRS999_bot에서 짧고 명확하게 확인할 수 있습니다.",
+    "cta": "공식 상담봇 연결"
+  },
+  "preserved": [
+    "blog rotator",
+    "home guaranteed partner panel",
+    "sports/search hub rotation",
+    "tools modal triggers",
+    "bottom nav"
+  ]
+}

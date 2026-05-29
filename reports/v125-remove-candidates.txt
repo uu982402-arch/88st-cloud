@@ -1,0 +1,4 @@
+V125 removal candidates only - no files deleted.
+- assets/js/v120-main-conversion-polish.js: now unused on index after quick-check form removal, but kept because V120 detail image CSS/legacy verification assets remain.
+- assets/css/v120-main-conversion-polish.css: kept because it still controls main compact layout and guaranteed detail image caps.
+- No bottom related-link sections should be regenerated.
