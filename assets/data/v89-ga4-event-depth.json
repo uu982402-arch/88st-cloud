@@ -1,0 +1,89 @@
+{
+  "marker": "V89_GA4_EVENT_DEPTH_ACTIVE",
+  "version": "static-v89-ga4-event-depth-20260526",
+  "measurementId": "G-KWT87FBY6S",
+  "events": [
+    {
+      "name": "consult_click",
+      "group": "core",
+      "description": "상담 링크/버튼 클릭"
+    },
+    {
+      "name": "telegram_open",
+      "group": "conversion",
+      "description": "실제 Telegram/t.me 링크 열기"
+    },
+    {
+      "name": "vendor_copy_code",
+      "group": "vendor",
+      "description": "가입코드 복사"
+    },
+    {
+      "name": "vendor_outbound_click",
+      "group": "vendor",
+      "description": "보증업체 외부 바로가기"
+    },
+    {
+      "name": "vendor_detail_click",
+      "group": "vendor",
+      "description": "보증업체 상세보기"
+    },
+    {
+      "name": "tool_open",
+      "group": "tool",
+      "description": "도구 카드/상세 열기"
+    },
+    {
+      "name": "tool_result_copy",
+      "group": "tool",
+      "description": "도구 결과 복사"
+    },
+    {
+      "name": "blog_card_click",
+      "group": "content",
+      "description": "블로그 카드 클릭"
+    },
+    {
+      "name": "sports_check_click",
+      "group": "content",
+      "description": "sports-check 카드 클릭"
+    },
+    {
+      "name": "search_guide_click",
+      "group": "content",
+      "description": "search-guides 카드 클릭"
+    },
+    {
+      "name": "carousel_card_click",
+      "group": "content",
+      "description": "자동순환 카드 클릭"
+    },
+    {
+      "name": "search_keyword_click",
+      "group": "content",
+      "description": "검색 입력/검색 제출"
+    },
+    {
+      "name": "mobile_bottom_nav_click",
+      "group": "navigation",
+      "description": "모바일 하단바 클릭"
+    },
+    {
+      "name": "blog_scroll_50",
+      "group": "engagement",
+      "description": "본문 50% 스크롤"
+    },
+    {
+      "name": "blog_scroll_90",
+      "group": "engagement",
+      "description": "본문 90% 스크롤"
+    },
+    {
+      "name": "post_read_complete",
+      "group": "engagement",
+      "description": "상세글 완독 기준"
+    }
+  ],
+  "publicScript": "/assets/js/v89.ga4-event-depth.js",
+  "opsPanel": "/ops/#ga4-depth"
+}

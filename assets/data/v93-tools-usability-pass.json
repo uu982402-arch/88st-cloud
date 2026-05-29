@@ -1,0 +1,18 @@
+{
+  "version": "V93_TOOLS_USABILITY_PASS_ACTIVE",
+  "scope": "tools usability only",
+  "changes": [
+    "modal input UX hardening",
+    "range value chips",
+    "result glow on input",
+    "copy/share/reset event tracking",
+    "touch area 52px guard",
+    "hide duplicate legacy v73 bottom nav"
+  ],
+  "preserved": [
+    "tools/index.html layout",
+    "8 tool cards",
+    "existing routes",
+    "existing v73 calculator logic"
+  ]
+}

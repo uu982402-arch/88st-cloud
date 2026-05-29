@@ -1,0 +1,9 @@
+{
+  "version": "V96_1_GUARANTEED_CARD_SCALE_ACTIVE",
+  "generatedAt": "2026-05-26T04:22:10.110Z",
+  "changes": [
+    "guaranteed card footprint reduced",
+    "zakum image recropped larger",
+    "v96 generator output locked by v96-1 final override"
+  ]
+}

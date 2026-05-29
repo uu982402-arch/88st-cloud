@@ -1,0 +1,2331 @@
+{
+  "version": "V84_PERFORMANCE_OPTIMIZATION_ACTIVE",
+  "generatedAt": "2026-05-26T04:21:36.423Z",
+  "summary": {
+    "htmlFiles": 675,
+    "changedHtml": 673,
+    "duplicateStylesheetTagsRemoved": 0,
+    "imagesLoadingAdded": 672,
+    "imagesDecodingAdded": 70,
+    "imagesFetchPriorityAdded": 672,
+    "scriptDeferAdded": 0,
+    "preconnectsAdded": 1130,
+    "criticalStyleAdded": 565,
+    "markerAdded": 565
+  },
+  "assetAudit": {
+    "imageCount": 82,
+    "cssCount": 118,
+    "jsCount": 93,
+    "largeImagesOver250KB": [
+      {
+        "path": "assets/img/rust/rust-crest-transparent.png",
+        "bytes": 1056407
+      },
+      {
+        "path": "assets/img/88st-cloud-logo-horizontal.png",
+        "bytes": 972410
+      },
+      {
+        "path": "assets/img/88st-cloud-logo-symbol.png",
+        "bytes": 798141
+      },
+      {
+        "path": "assets/img/queenbee-seoa-premium-gold-black.jpg",
+        "bytes": 546896
+      },
+      {
+        "path": "assets/img/sk-holdings-iron888-red.jpg",
+        "bytes": 546637
+      },
+      {
+        "path": "assets/img/sk-holdings-iron888-green.jpg",
+        "bytes": 540437
+      },
+      {
+        "path": "assets/img/queenbee-seoa-premium-blue.jpg",
+        "bytes": 509590
+      },
+      {
+        "path": "assets/img/queenbee-seoa-premium-purple.jpg",
+        "bytes": 505029
+      },
+      {
+        "path": "assets/img/queenbee-seoa-premium-gold.jpg",
+        "bytes": 503055
+      },
+      {
+        "path": "assets/img/sk-holdings-iron888-blue.jpg",
+        "bytes": 494581
+      },
+      {
+        "path": "assets/img/queenbee-seoa-premium-red.jpg",
+        "bytes": 488007
+      },
+      {
+        "path": "assets/img/sk-holdings-iron888-purple.jpg",
+        "bytes": 471255
+      },
+      {
+        "path": "assets/img/queenbee-seoa-casino.jpg",
+        "bytes": 417802
+      },
+      {
+        "path": "assets/img/rust/rust-crest-512.png",
+        "bytes": 303014
+      }
+    ],
+    "largestImages": [
+      {
+        "path": "assets/img/rust/rust-crest-transparent.png",
+        "bytes": 1056407
+      },
+      {
+        "path": "assets/img/88st-cloud-logo-horizontal.png",
+        "bytes": 972410
+      },
+      {
+        "path": "assets/img/88st-cloud-logo-symbol.png",
+        "bytes": 798141
+      },
+      {
+        "path": "assets/img/queenbee-seoa-premium-gold-black.jpg",
+        "bytes": 546896
+      },
+      {
+        "path": "assets/img/sk-holdings-iron888-red.jpg",
+        "bytes": 546637
+      },
+      {
+        "path": "assets/img/sk-holdings-iron888-green.jpg",
+        "bytes": 540437
+      },
+      {
+        "path": "assets/img/queenbee-seoa-premium-blue.jpg",
+        "bytes": 509590
+      },
+      {
+        "path": "assets/img/queenbee-seoa-premium-purple.jpg",
+        "bytes": 505029
+      },
+      {
+        "path": "assets/img/queenbee-seoa-premium-gold.jpg",
+        "bytes": 503055
+      },
+      {
+        "path": "assets/img/sk-holdings-iron888-blue.jpg",
+        "bytes": 494581
+      },
+      {
+        "path": "assets/img/queenbee-seoa-premium-red.jpg",
+        "bytes": 488007
+      },
+      {
+        "path": "assets/img/sk-holdings-iron888-purple.jpg",
+        "bytes": 471255
+      },
+      {
+        "path": "assets/img/queenbee-seoa-casino.jpg",
+        "bytes": 417802
+      },
+      {
+        "path": "assets/img/rust/rust-crest-512.png",
+        "bytes": 303014
+      },
+      {
+        "path": "assets/img/88st-cloud-logo-mark.png",
+        "bytes": 236596
+      },
+      {
+        "path": "assets/img/udt-seoa-event.jpg",
+        "bytes": 234369
+      },
+      {
+        "path": "assets/img/guaranteed/cards/zakum.png",
+        "bytes": 178802
+      },
+      {
+        "path": "assets/img/anybet-seoa-event.jpg",
+        "bytes": 165118
+      },
+      {
+        "path": "assets/img/rust/rust-crest-256.png",
+        "bytes": 94777
+      },
+      {
+        "path": "assets/img/guaranteed/cards/udt-bet.jpg",
+        "bytes": 59133
+      },
+      {
+        "path": "assets/img/rust/rust-crest-192.png",
+        "bytes": 58093
+      },
+      {
+        "path": "assets/provider-media/ddangkong-event-01.jpeg",
+        "bytes": 55033
+      },
+      {
+        "path": "assets/img/rust/rust-crest-180.png",
+        "bytes": 52046
+      },
+      {
+        "path": "assets/img/rust/rust-og.jpg",
+        "bytes": 51225
+      },
+      {
+        "path": "assets/img/guaranteed/cards/udt-bet.webp",
+        "bytes": 42198
+      }
+    ],
+    "largestCss": [
+      {
+        "path": "assets/css/growth-conversion.v36.css",
+        "bytes": 63589
+      },
+      {
+        "path": "assets/css/app.core.v1.20260401.css",
+        "bytes": 52155
+      },
+      {
+        "path": "assets/css/x.9d7841e705c5.css",
+        "bytes": 43559
+      },
+      {
+        "path": "assets/css/mobile.enhance.v1.20260317.css",
+        "bytes": 29953
+      },
+      {
+        "path": "assets/css/community.refresh.v4.20260331.css",
+        "bytes": 29334
+      },
+      {
+        "path": "assets/css/v56.high-end-system.css",
+        "bytes": 27592
+      },
+      {
+        "path": "assets/css/v63.sitewide-hard-reset.css",
+        "bytes": 24357
+      },
+      {
+        "path": "assets/css/app.tools.v1.20260401.css",
+        "bytes": 21728
+      },
+      {
+        "path": "assets/css/moonsafe.dashboard.v23.css",
+        "bytes": 20078
+      },
+      {
+        "path": "assets/css/moonsafe.complete.v24.css",
+        "bytes": 19659
+      },
+      {
+        "path": "assets/css/v57.mobile-bento.css",
+        "bytes": 19047
+      },
+      {
+        "path": "assets/css/blog.rebuild.v2.20260318.css",
+        "bytes": 18522
+      },
+      {
+        "path": "assets/css/v71.main-home.css",
+        "bytes": 16736
+      },
+      {
+        "path": "assets/css/v55.luminous-sitewide.css",
+        "bytes": 16687
+      },
+      {
+        "path": "assets/css/safety.center.v2.20260330.css",
+        "bytes": 16635
+      },
+      {
+        "path": "assets/css/app.sports.v1.20260420f.css",
+        "bytes": 16189
+      },
+      {
+        "path": "assets/css/luxury.refresh.v3.20260330.css",
+        "bytes": 15612
+      },
+      {
+        "path": "assets/css/v67.productized-dashboard.css",
+        "bytes": 14855
+      },
+      {
+        "path": "assets/css/v58.app-dashboard.css",
+        "bytes": 14358
+      },
+      {
+        "path": "assets/css/v65.global-premium-fix.css",
+        "bytes": 14236
+      }
+    ],
+    "largestJs": [
+      {
+        "path": "assets/js/app.tools.v1.20260401.js",
+        "bytes": 134042
+      },
+      {
+        "path": "assets/js/app.core.v1.20260401.js",
+        "bytes": 54313
+      },
+      {
+        "path": "assets/js/community.tools.v3.20260331.js",
+        "bytes": 29850
+      },
+      {
+        "path": "assets/js/safety.center.v4.20260330.js",
+        "bytes": 28549
+      },
+      {
+        "path": "assets/js/app.sports.v1.20260420d.js",
+        "bytes": 26128
+      },
+      {
+        "path": "assets/js/content.upgrade.v1.20260419.js",
+        "bytes": 25085
+      },
+      {
+        "path": "assets/js/mobile.enhance.v1.20260317.js",
+        "bytes": 16639
+      },
+      {
+        "path": "assets/js/conversion.boost.v4.20260505.js",
+        "bytes": 12445
+      },
+      {
+        "path": "assets/js/auto.consult.v1.20260505.js",
+        "bytes": 11674
+      },
+      {
+        "path": "assets/js/v73.tools-dashboard.js",
+        "bytes": 9648
+      },
+      {
+        "path": "assets/js/engines.v1.20260404.js",
+        "bytes": 9269
+      },
+      {
+        "path": "assets/js/growth-conversion.v36.js",
+        "bytes": 9073
+      },
+      {
+        "path": "assets/js/v89.ga4-event-depth.js",
+        "bytes": 8096
+      },
+      {
+        "path": "assets/js/hub.promo.v1.20260502.js",
+        "bytes": 7559
+      },
+      {
+        "path": "assets/js/v51.tools.js",
+        "bytes": 7240
+      },
+      {
+        "path": "assets/js/hub.promo.v1.20260420b.js",
+        "bytes": 7013
+      },
+      {
+        "path": "assets/js/ops.qa.v1.20260419.js",
+        "bytes": 6705
+      },
+      {
+        "path": "assets/js/v80.ops-control-center.js",
+        "bytes": 6471
+      },
+      {
+        "path": "assets/js/v52.tools.js",
+        "bytes": 6453
+      },
+      {
+        "path": "assets/js/hub.promo.compact.v6.20260505.js",
+        "bytes": 6368
+      }
+    ]
+  },
+  "cssReferenceAudit": {
+    "globalRefs": [
+      {
+        "href": "/assets/css/v82.structure-guard.css?v=static-v82-1-structure-ga4-20260525",
+        "pages": 671
+      },
+      {
+        "href": "/assets/css/v77.rust-logo-assets.css?v=static-v77-rust-logo-assets-20260524",
+        "pages": 624
+      },
+      {
+        "href": "/assets/css/v76.rust-brand-system.css?v=static-v76-rust-brand-system-20260524",
+        "pages": 622
+      },
+      {
+        "href": "/assets/css/v55.luminous-sitewide.css?v=static-growth-conversion-v56-20260526042114",
+        "pages": 599
+      },
+      {
+        "href": "/assets/css/v56.high-end-system.css?v=static-growth-conversion-v56-20260526042114",
+        "pages": 599
+      },
+      {
+        "href": "/assets/css/v57.mobile-bento.css?v=static-growth-conversion-v57",
+        "pages": 599
+      },
+      {
+        "href": "/assets/css/v58.app-dashboard.css?v=static-growth-conversion-v58",
+        "pages": 599
+      },
+      {
+        "href": "/assets/css/v59.vendor-logo-system.css?v=static-growth-conversion-v59",
+        "pages": 599
+      },
+      {
+        "href": "/assets/css/v60.open-ready-final.css?v=static-growth-conversion-v60",
+        "pages": 599
+      },
+      {
+        "href": "/assets/css/v65.global-premium-fix.css?v=static-growth-conversion-v65",
+        "pages": 599
+      },
+      {
+        "href": "/assets/css/v66.obsidian-dashboard.css?v=static-v66-obsidian-20260524",
+        "pages": 599
+      },
+      {
+        "href": "/assets/css/v67.productized-dashboard.css?v=static-v67-productized-20260524",
+        "pages": 599
+      },
+      {
+        "href": "/assets/css/v68.mobile-title-hotfix.css?v=static-v68-mobile-title-hotfix-20260524",
+        "pages": 599
+      },
+      {
+        "href": "/assets/css/v68.ops-revenue-hardening.css?v=static-v68-ops-revenue-20260524",
+        "pages": 599
+      },
+      {
+        "href": "/assets/css/v70-3.conversion-polish.css?v=static-v70-3-conversion-polish-20260524",
+        "pages": 599
+      },
+      {
+        "href": "/assets/css/v70.stability-platform.css?v=static-v70-stability-expansion-20260524",
+        "pages": 599
+      },
+      {
+        "href": "/assets/css/growth-conversion.v36.css?v=static-growth-conversion-v56-20260526042114",
+        "pages": 598
+      },
+      {
+        "href": "/assets/css/v70-2.full-expansion.css?v=static-v70-2-full-expansion-20260524",
+        "pages": 576
+      },
+      {
+        "href": "/assets/css/app.core.v1.20260401.css",
+        "pages": 558
+      },
+      {
+        "href": "/assets/css/mobile.fix.v1.20260420.css",
+        "pages": 546
+      },
+      {
+        "href": "/assets/css/pro.blog.v1.20260504.css",
+        "pages": 546
+      },
+      {
+        "href": "/assets/css/v96-3-mobile-safe-layout.css?v=static-v96-3-mobile-safe-layout-20260526-v96-4-cache-safe",
+        "pages": 111
+      },
+      {
+        "href": "/assets/css/v96-4-live-qa-cache-safe.css?v=static-v96-4-live-qa-cache-safe-20260526",
+        "pages": 111
+      },
+      {
+        "href": "/assets/css/v63.sitewide-hard-reset.css?v=static-growth-conversion-v63",
+        "pages": 110
+      },
+      {
+        "href": "/assets/css/v64.mobile-tools-dark-fix.css?v=static-growth-conversion-v64",
+        "pages": 110
+      },
+      {
+        "href": "/assets/css/v69.platform-redesign.css?v=static-v69-platform-redesign-20260524",
+        "pages": 110
+      },
+      {
+        "href": "/assets/css/consult.motive.v7.20260505.css",
+        "pages": 109
+      },
+      {
+        "href": "/assets/css/conversion.boost.v4.20260505.css",
+        "pages": 109
+      },
+      {
+        "href": "/assets/css/customer.ops.v3.20260505.css",
+        "pages": 109
+      },
+      {
+        "href": "/assets/css/customer.os.v2.20260505.css",
+        "pages": 109
+      },
+      {
+        "href": "/assets/css/icon.image.normalize.v17.20260505.css",
+        "pages": 109
+      },
+      {
+        "href": "/assets/css/live.polish.v21.20260505.css",
+        "pages": 109
+      },
+      {
+        "href": "/assets/css/lunar.lux.v20.20260505.css",
+        "pages": 109
+      },
+      {
+        "href": "/assets/css/moonsafe.complete.v24.css",
+        "pages": 109
+      },
+      {
+        "href": "/assets/css/moonsafe.mobile.compact.v30.css",
+        "pages": 109
+      },
+      {
+        "href": "/assets/css/moonsafe.mobile.final.v28.css",
+        "pages": 109
+      },
+      {
+        "href": "/assets/css/moonsafe.real.final.v27.css",
+        "pages": 109
+      },
+      {
+        "href": "/assets/css/moonsafe.realglass.v25.css",
+        "pages": 109
+      },
+      {
+        "href": "/assets/css/moonsafe.v22.20260514.css",
+        "pages": 109
+      },
+      {
+        "href": "/assets/css/provider.conversion.v16.20260505.css",
+        "pages": 109
+      },
+      {
+        "href": "/assets/css/search.entry.v5.20260505.css",
+        "pages": 109
+      },
+      {
+        "href": "/assets/css/seo-intelligence.v31.css?v=static-seo-intelligence-v31-20260514",
+        "pages": 109
+      },
+      {
+        "href": "/assets/css/site.dark.v19.20260505.css",
+        "pages": 109
+      },
+      {
+        "href": "/assets/css/auto.consult.v1.20260505.css",
+        "pages": 107
+      },
+      {
+        "href": "/assets/css/v79.rust-longform-hubs.css",
+        "pages": 49
+      },
+      {
+        "href": "/assets/css/v91-hub-content-depth.css?v=static-v91-hub-content-depth-20260526",
+        "pages": 47
+      },
+      {
+        "href": "/assets/css/v82.seo-content.css?v=static-v82-2-seo-content-20260525",
+        "pages": 22
+      },
+      {
+        "href": "/assets/css/v90-blog-quality-pass.css?v=static-v90-blog-quality-pass-20260525",
+        "pages": 20
+      },
+      {
+        "href": "/assets/css/app.tools.v1.20260401.css",
+        "pages": 12
+      },
+      {
+        "href": "/assets/css/v92-vendor-conversion-pass.css?v=static-v92-vendor-conversion-pass-20260526",
+        "pages": 8
+      },
+      {
+        "href": "/assets/css/v78.guaranteed-card-images.css?v=static-v78-1-guaranteed-card-images-asset-restore-20260525",
+        "pages": 7
+      },
+      {
+        "href": "/assets/css/content.upgrade.v1.20260419.css",
+        "pages": 6
+      },
+      {
+        "href": "/assets/css/v54.vendor-landing.css?v=static-growth-conversion-v56-20260526042114",
+        "pages": 5
+      },
+      {
+        "href": "/assets/css/hub.promo.compact.v6.20260505.css",
+        "pages": 2
+      },
+      {
+        "href": "/assets/css/queenbee.seo.v1.20260504.css",
+        "pages": 2
+      },
+      {
+        "href": "/assets/css/v71.main-home.css?v=static-v71-main-effects-refinement-20260524",
+        "pages": 1
+      },
+      {
+        "href": "/assets/css/v71.main-home.css?v=static-v71-main-homepage-20260524-hotfix2",
+        "pages": 1
+      },
+      {
+        "href": "/assets/css/v72-1.blog-lock.css?v=static-v72-1-blog-lock-20260524",
+        "pages": 1
+      },
+      {
+        "href": "/assets/css/v73.tools-dashboard.css?v=static-v73-tools-dashboard-20260524",
+        "pages": 1
+      },
+      {
+        "href": "/assets/css/v74-1.guaranteed-card-layout.css?v=20260524",
+        "pages": 1
+      },
+      {
+        "href": "/assets/css/v74.guaranteed-cro.css?v=20260524",
+        "pages": 1
+      },
+      {
+        "href": "/assets/css/v75.consult-minimal.css?v=static-v75-consult-minimal-20260524",
+        "pages": 1
+      },
+      {
+        "href": "/assets/css/v80.ops-control-center.css?v=static-v80-ops-control-center-20260525",
+        "pages": 1
+      },
+      {
+        "href": "/assets/css/v81-1.main-motion-fix.css?v=static-v81-1-main-motion-fix-20260525",
+        "pages": 1
+      },
+      {
+        "href": "/assets/css/v81-2.main-title-clean.css?v=static-v81-2-main-title-clean-20260525",
+        "pages": 1
+      },
+      {
+        "href": "/assets/css/v82-3-indexing-ops.css?v=static-v82-3-indexing-measurement-20260525",
+        "pages": 1
+      },
+      {
+        "href": "/assets/css/v96-2-guaranteed-landing-fix.css?v=static-v96-2-guaranteed-landing-fix-20260526",
+        "pages": 1
+      }
+    ],
+    "pagesWithManyStylesheets": [
+      {
+        "page": "blog/address-change-center/index.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/address-change-risk-patterns/index.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/address-change-warning-signs/index.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/affiliate/baccarat-affiliate-basic.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/affiliate/basic-structure.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/affiliate/code-management.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/affiliate/index.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/affiliate/settlement-guide.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/anybet-seoa-event-guide.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/asn-ip-cluster-check/index.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/bet365-virtual/basic-guide.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/bet365-virtual/index.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/bet365-virtual/result-cycle-check.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/bet365-virtual/v47-bet365-virtual-basketball-cycle-odds.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/bet365-virtual/v47-bet365-virtual-football-vs-real-football.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/bet365-virtual/v47-bet365-virtual-game-result-seed.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/bet365-virtual/v47-bet365-virtual-racing-probability-display.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/bet365-virtual/v47-bet365-virtual-round-id-check.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/bet365-virtual/v47-virtual-football-highlight-settlement.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/bet365-virtual/v47-virtual-game-bonus-abuse-clause.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/bet365-virtual/v47-virtual-game-consecutive-round-bankroll.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/bet365-virtual/v47-virtual-game-dispute-record-standard.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/bet365-virtual/v47-virtual-game-event-scope-check.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/bet365-virtual/v47-virtual-game-low-odds-volatility.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/bet365-virtual/v47-virtual-game-provider-identity-check.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/bet365-virtual/v47-virtual-game-rng-vs-sports-odds.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/bet365-virtual/v47-virtual-game-technical-checklist.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/bet365-virtual/v47-virtual-game-turnover-disadvantage.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/bet365-virtual/v48-virtual-football-highlight-precomputed-result.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/bet365-virtual/v48-virtual-game-round-id-history-audit.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/bet365-virtual/v48-virtual-game-turnover-contribution-rate.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/bet365-virtual/v48-virtual-horse-racing-round-odds-cycle.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/bet365-virtual/virtual-basketball.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/bet365-virtual/virtual-football.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/bet365-virtual/virtual-game-vs-real-sports.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/bet365-virtual/virtual-racing.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/bonus-real-receive-first-recharge-recurring/index.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/bonus-withdraw-check-routine/index.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/casino-ibple-site-recommendation-real-receive/index.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/casino-ibple-vs-slot-event-condition/index.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/casino-rolling-bonus-abuse-clause-check/index.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/change-timeline-reading-guide/index.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/chat-capture-key-points/index.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/code-notice-center/index.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/code-push-warning-signs/index.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/community-cross-check-order/index.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/community-review-filtering/index.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/copied-review-patterns/index.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/customer-service-warning/index.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/deposit-proof-capture-guide/index.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/domain-age-isnt-enough/index.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/domain-check-first-items/index.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/domain-ip-check-basics/index.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/domain-ip-first-check-order/index.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/domain-search-combo-keywords/index.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/ev-calculation-example-for-event-bonus/index.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/evidence-checklist-before-report/index.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/first-deposit-check-route/index.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/ga4-gsc-content-feedback-loop-rust/index.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/game-guides/bonus-ev-turnover-limit.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/game-guides/cloudflare-proxy-public-signal-check.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/game-guides/customer-center-question-template.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/game-guides/dns-certificate-timeline-analysis.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/game-guides/game-event-condition-first.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/game-guides/index.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/game-guides/mobile-game-before-start.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/game-guides/official-address-before-game.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/game-guides/phishing-url-script-tampering.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/game-guides/provider-logo-api-consistency.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/game-guides/responsible-play-checklist.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/game-guides/rtp-volatility-simple-meaning.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/game-guides/security-recording-evidence-protocol.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/game-guides/terms-rolling-toxic-clause.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/game-guides/v47-bonus-forfeiture-clause-pattern.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/game-guides/v47-cloudflare-public-security-signal-limit.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/game-guides/v47-deposit-before-domain-ip-ssl-routine.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/game-guides/v47-domain-age-operation-stability.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/game-guides/v47-event-banner-terms-mismatch-order.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/game-guides/v47-fake-customer-center-channel-check.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      },
+      {
+        "page": "blog/game-guides/v47-final-technical-site-checklist.html",
+        "stylesheetCount": 21,
+        "uniqueStylesheetCount": 21
+      }
+    ]
+  },
+  "cleanupCandidates": [
+    {
+      "path": "assets/css/app.sports.v1.20260420f.css",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/css/blog.rebuild.v2.20260318.css",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/css/community.refresh.v4.20260331.css",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/css/cta.buttonfix.v1.20260331.css",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/css/editorial.blog.v1.20260419.css",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/css/editorial.refine.v1.20260419.css",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/css/guaranteed.cards.v1.20260504.css",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/css/guaranteed.gateway.v12.20260505.css",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/css/guaranteed.gateway.v14.20260505.css",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/css/guaranteed.gateway.v15.20260505.css",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/css/guaranteed.gateway.v16.20260505.css",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/css/guaranteed.gateway.v18.20260505.css",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/css/guaranteed.gateway.v19.20260505.css",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/css/hdr.shell.v1.20260221.css",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/css/home.blog.uiux.v10.20260505.css",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/css/home.blog.uiux.v9.20260505.css",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/css/home.provider.clean.v1.20260418.css",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/css/home.provider.clean.v1.20260418b.css",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/css/hub.promo.v1.20260418.css",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/css/hub.promo.v1.20260418m.css",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/css/hub.promo.v1.20260420b.css",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/css/hub.promo.v1.20260502.css",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/css/luxury.refresh.v3.20260330.css",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/css/mobile.enhance.v1.20260317.css",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/css/mobile.rebuild.v1.20260420.css",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/css/moonsafe.dashboard.v23.css",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/css/open.final.v1.20260317.css",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/css/patch.v100.premiumdash.20260222.css",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/css/pro-suite.v3.css",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/css/resource.tools.v1.20260324.css",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/css/safety.center.v2.20260330.css",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/css/site.audit.v1.20260420.css",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/css/site.colorfix.v2.20260331.css",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/css/theme.tokens.v1.20260226.css",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/css/typography.premium.v2.css",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/css/v52.open-ready.css",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/css/v53.main-open-ready.css",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/css/v61.main-dashboard-rebuild.css",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/css/v62.main-hard-reset.css",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/css/v66.obsidian-renewal.css",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/css/v72.blog-hub.css",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/css/v85-2-blog-post-polish.css",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/css/v85-4-blog-post-shell-lock.css",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/css/v87-live-deploy-check.css",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/css/v88-indexing-readiness.css",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/css/v89-ga4-event-depth.css",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/css/v93-tools-usability-pass.css",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/css/v96-1-guaranteed-card-scale.css",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/css/v96-zakum-ad.css",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/css/vvip-hub.v85.css",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/css/vvip-luxe.v75.css",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/css/x.9d7841e705c5.css",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/js/app.sports.v1.20260420d.js",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/js/build.loader.js",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/js/community.tools.v3.20260331.js",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/js/guaranteed.cards.v1.20260504.js",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/js/hub.promo.v1.20260418.js",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/js/hub.promo.v1.20260420b.js",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/js/hub.promo.v1.20260502.js",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/js/j.searchtyping.v83.20260219.js",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/js/luxury.refresh.v3.20260330.js",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/js/mobile.rebuild.v1.20260420.js",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/js/open.final.v1.20260317.js",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/js/ops.qa.v1.20260419.js",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/js/ops.sitecfg.v154.js",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/js/ops.sitemap.v1.20260226.js",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/js/pro-suite.v3.js",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/js/provider.quick-actions.v1.20260504.js",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/js/safety.center.v4.20260330.js",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/js/seo.apply.v1.js",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/js/share.session.v1.20260226.js",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/js/site.audit.v1.20260420.js",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/js/site.runtime.v1.20260226.js",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/js/ui.fix.v1.20260226.js",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/js/v51.tools.js",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/js/v52.guaranteed.js",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/js/v52.tools.js",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/js/v53.main.js",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/js/v61.main-dashboard-rebuild.js",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/js/v62.main-hard-reset.js",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/js/v66.obsidian-renewal.js",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/js/v72.blog-hub.js",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/js/v87-live-deploy-check.js",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/js/v88-indexing-readiness.js",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/js/v89-ga4-depth-ops.js",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/js/v93-tools-usability-pass.js",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    },
+    {
+      "path": "assets/js/vvip-global.v75.js",
+      "reason": "no direct HTML reference detected; verify generator dependency before deletion"
+    }
+  ],
+  "changedPages": [
+    {
+      "page": "admin/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 0,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 0,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/2026-toto-site-recommendation-safe-checklist/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 1,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/address-change-center/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/address-change-risk-patterns/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/address-change-warning-signs/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/affiliate/baccarat-affiliate-basic.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/affiliate/basic-structure.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/affiliate/code-management.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/affiliate/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/affiliate/settlement-guide.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/anybet-seoa-event-guide.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/asn-ip-cluster-check/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/auto-copy-code-domain-match/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 1,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/bet365-virtual/basic-guide.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/bet365-virtual/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/bet365-virtual/result-cycle-check.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/bet365-virtual/v47-bet365-virtual-basketball-cycle-odds.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/bet365-virtual/v47-bet365-virtual-football-vs-real-football.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/bet365-virtual/v47-bet365-virtual-game-result-seed.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/bet365-virtual/v47-bet365-virtual-racing-probability-display.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/bet365-virtual/v47-bet365-virtual-round-id-check.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/bet365-virtual/v47-virtual-football-highlight-settlement.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/bet365-virtual/v47-virtual-game-bonus-abuse-clause.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/bet365-virtual/v47-virtual-game-consecutive-round-bankroll.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/bet365-virtual/v47-virtual-game-dispute-record-standard.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/bet365-virtual/v47-virtual-game-event-scope-check.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/bet365-virtual/v47-virtual-game-low-odds-volatility.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/bet365-virtual/v47-virtual-game-provider-identity-check.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/bet365-virtual/v47-virtual-game-rng-vs-sports-odds.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/bet365-virtual/v47-virtual-game-technical-checklist.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/bet365-virtual/v47-virtual-game-turnover-disadvantage.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/bet365-virtual/v48-virtual-football-highlight-precomputed-result.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/bet365-virtual/v48-virtual-game-round-id-history-audit.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/bet365-virtual/v48-virtual-game-turnover-contribution-rate.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/bet365-virtual/v48-virtual-horse-racing-round-odds-cycle.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/bet365-virtual/virtual-basketball.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/bet365-virtual/virtual-football.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/bet365-virtual/virtual-game-vs-real-sports.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/bet365-virtual/virtual-racing.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/bonus-real-receive-first-recharge-recurring/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/bonus-withdraw-check-routine/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/casino-ibple-real-receive-guide/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 1,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/casino-ibple-site-recommendation-real-receive/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/casino-ibple-vs-slot-event-condition/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/casino-rolling-bonus-abuse-clause-check/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/change-timeline-reading-guide/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/chat-capture-key-points/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/code-notice-center/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/code-push-warning-signs/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/community-cross-check-order/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/community-review-filtering/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/copied-review-patterns/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/customer-service-warning/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/deposit-proof-capture-guide/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/domain-age-isnt-enough/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/domain-check-first-items/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/domain-ip-check-basics/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/domain-ip-first-check-order/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/domain-search-combo-keywords/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/ev-calculation-bonus-comparison/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 1,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/ev-calculation-example-for-event-bonus/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/evidence-checklist-before-report/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/first-deposit-check-route/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/first-recharge-real-receive-calculation/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 1,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/ga4-gsc-content-feedback-loop-rust/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/game-guides/bonus-ev-turnover-limit.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/game-guides/cloudflare-proxy-public-signal-check.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/game-guides/customer-center-question-template.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/game-guides/dns-certificate-timeline-analysis.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/game-guides/game-event-condition-first.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/game-guides/index.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/game-guides/mobile-game-before-start.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/game-guides/official-address-before-game.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/game-guides/phishing-url-script-tampering.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/game-guides/provider-logo-api-consistency.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/game-guides/responsible-play-checklist.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/game-guides/rtp-volatility-simple-meaning.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/game-guides/security-recording-evidence-protocol.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/game-guides/terms-rolling-toxic-clause.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    },
+    {
+      "page": "blog/game-guides/v47-bonus-forfeiture-clause-pattern.html",
+      "duplicateStylesheetTagsRemoved": 0,
+      "duplicateStylesheetHrefs": [],
+      "imagesLoadingAdded": 1,
+      "imagesDecodingAdded": 0,
+      "imagesFetchPriorityAdded": 1,
+      "scriptDeferAdded": 0,
+      "preconnectsAdded": 2,
+      "criticalStyleAdded": true,
+      "markerAdded": true
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "version": "V96.4-LIVE-QA-CACHE-SAFE-20260526",
+  "generatedAt": "2026-05-26T04:22:12.614Z",
+  "scope": "V96.4 LIVE QA / CACHE SAFE PATCH",
+  "principles": [
+    "기존 구조/라우팅/기능 유지",
+    "삭제 없이 캐시·라이브 점검 보강",
+    "HTML은 no-cache, fingerprint query asset은 long cache",
+    "모바일 Chrome/Samsung Internet/iPhone Safari 폭 안정성 유지"
+  ],
+  "criticalPaths": [
+    "/",
+    "/blog/",
+    "/tools/",
+    "/guaranteed/",
+    "/guaranteed/sk-holdings/",
+    "/guaranteed/udt/",
+    "/guaranteed/queenbee/",
+    "/guaranteed/ddangkong/",
+    "/guaranteed/anybet/",
+    "/guaranteed/zakum/",
+    "/consult/",
+    "/sports-check/",
+    "/search-guides/",
+    "/ops/"
+  ],
+  "vendorImages": [
+    "/assets/img/guaranteed/cards/sk-holdings.webp",
+    "/assets/img/guaranteed/cards/zakum.webp",
+    "/assets/img/guaranteed/cards/udt-bet.webp",
+    "/assets/img/guaranteed/cards/queenbee.webp",
+    "/assets/img/guaranteed/cards/ddangkong-bet.webp",
+    "/assets/img/guaranteed/cards/anybet.webp"
+  ],
+  "assets": [
+    "/assets/css/v96-4-live-qa-cache-safe.css?v=static-v96-4-live-qa-cache-safe-20260526",
+    "/assets/js/v96-4-live-qa-cache-safe.js?v=static-v96-4-live-qa-cache-safe-20260526",
+    "/assets/css/v96-3-mobile-safe-layout.css?v=static-v96-3-mobile-safe-layout-20260526-v96-4-cache-safe",
+    "/assets/js/v96-3-mobile-safe-layout.js?v=static-v96-3-mobile-safe-layout-20260526-v96-4-cache-safe"
+  ]
+}

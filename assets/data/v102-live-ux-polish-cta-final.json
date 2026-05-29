@@ -1,0 +1,40 @@
+{
+  "version": "V102_LIVE_UX_POLISH_CTA_FINAL",
+  "date": "2026-05-26",
+  "base": "V101_REMOVED_ROUTE_LOCK_BUILD_HYGIENE",
+  "scope": [
+    "guaranteed CTA touch polish",
+    "mobile bottom nav/FAB micro adjustment",
+    "blog hub first-view readability",
+    "home first-view balance",
+    "GA4 click marker coverage",
+    "Cloudflare Pages live QA checklist"
+  ],
+  "core_routes": [
+    "index.html",
+    "blog/index.html",
+    "tools/index.html",
+    "guaranteed/index.html",
+    "consult/index.html",
+    "sports-check/index.html",
+    "search-guides/index.html",
+    "ops/index.html",
+    "admin/index.html"
+  ],
+  "removed_routes": [
+    "faq",
+    "consult-motives",
+    "consult-result",
+    "provider-updates"
+  ],
+  "live_qa_urls": [
+    "/",
+    "/blog/",
+    "/tools/",
+    "/guaranteed/",
+    "/guaranteed/zakum/",
+    "/consult/",
+    "/ops/"
+  ],
+  "verify_script": "node scripts/verify-v102-live-ux-polish-cta-final.mjs"
+}

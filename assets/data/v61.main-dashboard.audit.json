@@ -1,0 +1,9 @@
+{
+  "version": "v61",
+  "purpose": "main dashboard rebuild with compact title and larger provider visuals",
+  "providers": 5,
+  "tools": 12,
+  "guides": 4,
+  "titlePolicy": "compact",
+  "generatedAt": "2026-05-26T04:21:19.779Z"
+}

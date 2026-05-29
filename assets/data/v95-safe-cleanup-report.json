@@ -1,0 +1,224 @@
+{
+  "version": "V95_SAFE_CLEANUP_ACTIVE",
+  "generatedAt": "2026-05-26T04:22:09.844Z",
+  "policy": "safe cleanup only: delete allowlisted generated reports with zero runtime references; keep all CSS/JS/image legacy candidates unless proven safe",
+  "summary": {
+    "changedHtml": 565,
+    "deletedFiles": 0,
+    "savedBytes": 0,
+    "unusedCandidates": 0,
+    "referencedLargeAssets": 13,
+    "rootLegacyFiles": 4
+  },
+  "deleted": [],
+  "retainedAllowlist": [
+    {
+      "path": "assets/data/v84-performance-audit.json",
+      "refs": [
+        "assets/data/v95-safe-cleanup-report.json",
+        "scripts/generate-v84-performance-optimization.mjs",
+        "scripts/generate-v95-safe-cleanup.mjs"
+      ],
+      "reason": "reference detected"
+    },
+    {
+      "path": "assets/data/v94-performance-pass-2.json",
+      "refs": [
+        "assets/data/v95-safe-cleanup-report.json",
+        "scripts/generate-v94-performance-pass-2.mjs",
+        "scripts/generate-v95-safe-cleanup.mjs"
+      ],
+      "reason": "reference detected"
+    },
+    {
+      "path": "assets/data/v93-tools-usability-pass.json",
+      "refs": [
+        "assets/data/v95-safe-cleanup-report.json",
+        "scripts/generate-v93-tools-usability-pass.mjs",
+        "scripts/generate-v95-safe-cleanup.mjs"
+      ],
+      "reason": "reference detected"
+    }
+  ],
+  "unusedCandidates": [],
+  "referencedLargeAssets": [
+    {
+      "path": "assets/img/rust/rust-crest-transparent.png",
+      "bytes": 1056407,
+      "refs": [
+        "assets/data/asset.inventory.v43.json",
+        "assets/data/v84-performance-audit.json",
+        "assets/data/v94-performance-pass-2.json",
+        "assets/data/v95-safe-cleanup-report.json",
+        "scripts/verify-v77-rust-logo-assets.mjs",
+        "scripts/verify-v95-safe-cleanup.mjs"
+      ],
+      "refCount": 6
+    },
+    {
+      "path": "assets/img/88st-cloud-logo-horizontal.png",
+      "bytes": 972410,
+      "refs": [
+        "assets/data/asset.inventory.v43.json",
+        "assets/data/v84-performance-audit.json",
+        "assets/data/v94-performance-pass-2.json",
+        "assets/data/v95-safe-cleanup-report.json"
+      ],
+      "refCount": 4
+    },
+    {
+      "path": "assets/img/88st-cloud-logo-symbol.png",
+      "bytes": 798141,
+      "refs": [
+        "assets/data/asset.inventory.v43.json",
+        "assets/data/v84-performance-audit.json",
+        "assets/data/v94-performance-pass-2.json",
+        "assets/data/v95-safe-cleanup-report.json"
+      ],
+      "refCount": 4
+    },
+    {
+      "path": "assets/img/queenbee-seoa-premium-gold-black.jpg",
+      "bytes": 546896,
+      "refs": [
+        "assets/config/seo.meta.json",
+        "assets/data/asset.inventory.v43.json",
+        "assets/data/v84-performance-audit.json",
+        "assets/data/v94-performance-pass-2.json",
+        "assets/data/v95-safe-cleanup-report.json"
+      ],
+      "refCount": 5
+    },
+    {
+      "path": "assets/img/sk-holdings-iron888-red.jpg",
+      "bytes": 546637,
+      "refs": [
+        "assets/config/seo.meta.json",
+        "assets/data/asset.inventory.v43.json",
+        "assets/data/v84-performance-audit.json",
+        "assets/data/v94-performance-pass-2.json",
+        "assets/data/v95-safe-cleanup-report.json"
+      ],
+      "refCount": 5
+    },
+    {
+      "path": "assets/img/sk-holdings-iron888-green.jpg",
+      "bytes": 540437,
+      "refs": [
+        "assets/config/seo.meta.json",
+        "assets/data/asset.inventory.v43.json",
+        "assets/data/v84-performance-audit.json",
+        "assets/data/v94-performance-pass-2.json",
+        "assets/data/v95-safe-cleanup-report.json"
+      ],
+      "refCount": 5
+    },
+    {
+      "path": "assets/img/queenbee-seoa-premium-blue.jpg",
+      "bytes": 509590,
+      "refs": [
+        "assets/config/seo.meta.json",
+        "assets/data/asset.inventory.v43.json",
+        "assets/data/v84-performance-audit.json",
+        "assets/data/v94-performance-pass-2.json",
+        "assets/data/v95-safe-cleanup-report.json"
+      ],
+      "refCount": 5
+    },
+    {
+      "path": "assets/img/queenbee-seoa-premium-purple.jpg",
+      "bytes": 505029,
+      "refs": [
+        "assets/config/seo.meta.json",
+        "assets/data/asset.inventory.v43.json",
+        "assets/data/v84-performance-audit.json",
+        "assets/data/v94-performance-pass-2.json",
+        "assets/data/v95-safe-cleanup-report.json"
+      ],
+      "refCount": 5
+    },
+    {
+      "path": "assets/img/queenbee-seoa-premium-gold.jpg",
+      "bytes": 503055,
+      "refs": [
+        "assets/config/seo.meta.json",
+        "assets/data/asset.inventory.v43.json",
+        "assets/data/v84-performance-audit.json",
+        "assets/data/v94-performance-pass-2.json",
+        "assets/data/v95-safe-cleanup-report.json"
+      ],
+      "refCount": 5
+    },
+    {
+      "path": "assets/img/sk-holdings-iron888-blue.jpg",
+      "bytes": 494581,
+      "refs": [
+        "assets/config/seo.meta.json",
+        "assets/data/asset.inventory.v43.json",
+        "assets/data/v84-performance-audit.json",
+        "assets/data/v94-performance-pass-2.json",
+        "assets/data/v95-safe-cleanup-report.json"
+      ],
+      "refCount": 5
+    },
+    {
+      "path": "assets/img/queenbee-seoa-premium-red.jpg",
+      "bytes": 488007,
+      "refs": [
+        "assets/config/seo.meta.json",
+        "assets/data/asset.inventory.v43.json",
+        "assets/data/v84-performance-audit.json",
+        "assets/data/v94-performance-pass-2.json",
+        "assets/data/v95-safe-cleanup-report.json"
+      ],
+      "refCount": 5
+    },
+    {
+      "path": "assets/img/sk-holdings-iron888-purple.jpg",
+      "bytes": 471255,
+      "refs": [
+        "assets/config/seo.meta.json",
+        "assets/data/asset.inventory.v43.json",
+        "assets/data/v84-performance-audit.json",
+        "assets/data/v94-performance-pass-2.json",
+        "assets/data/v95-safe-cleanup-report.json"
+      ],
+      "refCount": 5
+    },
+    {
+      "path": "assets/img/queenbee-seoa-casino.jpg",
+      "bytes": 417802,
+      "refs": [
+        "assets/data/asset.inventory.v43.json",
+        "assets/data/v84-performance-audit.json",
+        "assets/data/v94-performance-pass-2.json",
+        "assets/data/v95-safe-cleanup-report.json"
+      ],
+      "refCount": 4
+    }
+  ],
+  "rootLegacyFiles": [
+    {
+      "path": "apple-touch-icon.png",
+      "bytes": 52046
+    },
+    {
+      "path": "favicon.ico",
+      "bytes": 870
+    },
+    {
+      "path": "icon-192.png",
+      "bytes": 58093
+    },
+    {
+      "path": "icon-512.png",
+      "bytes": 303014
+    }
+  ],
+  "deleteRules": [
+    "Do not delete CSS/JS generated by previous versions while build chain still runs them.",
+    "Do not delete vendor/blog/search/sports images unless every HTML/CSS/JS and generator reference is zero.",
+    "PATCH uploads cannot physically delete repository files; V95 generator removes safe files from deploy output during build.",
+    "Full cleanup should use FULL ZIP only after live deploy check passes."
+  ]
+}
