@@ -233,8 +233,6 @@
     "quality:v130-2": "node scripts/generate-v130-2-upload-recovery.mjs",
     "verify:v130-2": "node scripts/verify-v130-2-upload-recovery.mjs",
     "quality:v131": "node scripts/generate-v131-live-visual-deploy-polish.mjs",
-    "verify:v131": "node scripts/verify-v131-live-visual-deploy-polish.mjs",
-    "quality:v131.1": "node scripts/generate-v131-live-visual-deploy-polish.mjs && node scripts/generate-v131-1-upload-lock-backfill.mjs",
-    "verify:v131.1": "node scripts/verify-v131-live-visual-deploy-polish.mjs"
+    "verify:v131": "node scripts/verify-v131-live-visual-deploy-polish.mjs"
   }
 }
