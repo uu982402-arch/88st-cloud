@@ -1,0 +1,91 @@
+{
+  "version": "v67",
+  "updated": "2026-05-24",
+  "items": [
+    {
+      "id": "sk-holdings",
+      "name": "SK 홀딩스",
+      "guarantee": "1억",
+      "domain": "sk-holdings.com",
+      "code": "IRON888",
+      "tone": "신규 입금 플러스와 VIP 혜택 중심",
+      "badges": [
+        "신규 플러스",
+        "VIP",
+        "빠른 상담"
+      ],
+      "accent": "#67e8f9",
+      "enabled": true,
+      "order": 1,
+      "url": "/guaranteed/sk-holdings/"
+    },
+    {
+      "id": "queenbee",
+      "name": "여왕벌",
+      "guarantee": "1억",
+      "domain": "qb-700.com",
+      "code": "SEOA",
+      "tone": "신규·테더·미니게임 이벤트 중심",
+      "badges": [
+        "USDT",
+        "미니게임",
+        "신규 혜택"
+      ],
+      "accent": "#f8d477",
+      "enabled": true,
+      "order": 2,
+      "url": "/guaranteed/queenbee/"
+    },
+    {
+      "id": "anybet",
+      "name": "ANY BET",
+      "guarantee": "1억",
+      "domain": "any-bet.com",
+      "code": "SEOA",
+      "tone": "원화·테더 페이백 중심",
+      "badges": [
+        "원화",
+        "USDT",
+        "페이백"
+      ],
+      "accent": "#a78bfa",
+      "enabled": true,
+      "order": 3,
+      "url": "/guaranteed/anybet/"
+    },
+    {
+      "id": "udt",
+      "name": "UDT BET",
+      "guarantee": "1억",
+      "domain": "udt-bet.com",
+      "code": "SEOA",
+      "tone": "미니게임·파워볼 운영형",
+      "badges": [
+        "파워볼",
+        "미니게임",
+        "상담 빠름"
+      ],
+      "accent": "#86efac",
+      "enabled": true,
+      "order": 4,
+      "url": "/guaranteed/udt/"
+    },
+    {
+      "id": "ddangkong",
+      "name": "땅콩 BET",
+      "guarantee": "1억",
+      "domain": "ddangkong.com",
+      "code": "DDK888",
+      "tone": "카지노·슬롯 콤프 중심",
+      "badges": [
+        "카지노",
+        "슬롯",
+        "콤프"
+      ],
+      "accent": "#fb7185",
+      "enabled": true,
+      "order": 5,
+      "url": "/guaranteed/ddangkong/"
+    }
+  ]
+}
