@@ -1,0 +1,120 @@
+{
+  "version": "V129",
+  "generated_at": "2026-05-29T05:42:09.279Z",
+  "html_files": 639,
+  "changed_html": 0,
+  "checked": [
+    {
+      "file": "blog/index.html",
+      "route": "/blog/",
+      "title": "RUST 블로그 | 주소·가입코드·조건 확인 가이드",
+      "description_length": 60,
+      "canonical": "https://88st.cloud/blog/",
+      "schema": "WebPage"
+    },
+    {
+      "file": "consult/index.html",
+      "route": "/consult/",
+      "title": "RUST 상담 연결 | 공식 상담봇 안내",
+      "description_length": 50,
+      "canonical": "https://88st.cloud/consult/",
+      "schema": "WebPage"
+    },
+    {
+      "file": "guaranteed/anybet/index.html",
+      "route": "/guaranteed/anybet/",
+      "title": "ANY BET 보증업체 혜택 확인 | 88ST.Cloud",
+      "description_length": 63,
+      "canonical": "https://88st.cloud/guaranteed/anybet/",
+      "schema": "WebPage"
+    },
+    {
+      "file": "guaranteed/ddangkong/index.html",
+      "route": "/guaranteed/ddangkong/",
+      "title": "땅콩 BET 보증업체 혜택 확인 | 88ST.Cloud",
+      "description_length": 64,
+      "canonical": "https://88st.cloud/guaranteed/ddangkong/",
+      "schema": "WebPage"
+    },
+    {
+      "file": "guaranteed/index.html",
+      "route": "/guaranteed/",
+      "title": "RUST 보증업체 | 공식주소·가입코드 확인",
+      "description_length": 57,
+      "canonical": "https://88st.cloud/guaranteed/",
+      "schema": "WebPage"
+    },
+    {
+      "file": "guaranteed/queenbee/index.html",
+      "route": "/guaranteed/queenbee/",
+      "title": "여왕벌 보증업체 혜택 확인 | 88ST.Cloud",
+      "description_length": 59,
+      "canonical": "https://88st.cloud/guaranteed/queenbee/",
+      "schema": "WebPage"
+    },
+    {
+      "file": "guaranteed/sk-holdings/index.html",
+      "route": "/guaranteed/sk-holdings/",
+      "title": "SK 홀딩스 보증업체 혜택 확인 | 88ST.Cloud",
+      "description_length": 65,
+      "canonical": "https://88st.cloud/guaranteed/sk-holdings/",
+      "schema": "WebPage"
+    },
+    {
+      "file": "guaranteed/udt/index.html",
+      "route": "/guaranteed/udt/",
+      "title": "UDT BET 보증업체 혜택 확인 | 88ST.Cloud",
+      "description_length": 63,
+      "canonical": "https://88st.cloud/guaranteed/udt/",
+      "schema": "WebPage"
+    },
+    {
+      "file": "guaranteed/zakum/index.html",
+      "route": "/guaranteed/zakum/",
+      "title": "자쿰 보증업체 혜택 확인 | 88ST.Cloud",
+      "description_length": 59,
+      "canonical": "https://88st.cloud/guaranteed/zakum/",
+      "schema": "WebPage"
+    },
+    {
+      "file": "index.html",
+      "route": "/",
+      "title": "RUST by 88ST | 보증업체·도구·검색가이드 실사용 허브",
+      "description_length": 66,
+      "canonical": "https://88st.cloud/",
+      "schema": "WebSite"
+    },
+    {
+      "file": "ops/index.html",
+      "route": "/ops/",
+      "title": "RUST OPS | 배포·SEO·모바일 점검 센터",
+      "description_length": 60,
+      "canonical": "https://88st.cloud/ops/",
+      "schema": "WebPage"
+    },
+    {
+      "file": "search-guides/index.html",
+      "route": "/search-guides/",
+      "title": "RUST 검색가이드 | 도메인·코드·조건 확인",
+      "description_length": 50,
+      "canonical": "https://88st.cloud/search-guides/",
+      "schema": "WebPage"
+    },
+    {
+      "file": "sports-check/index.html",
+      "route": "/sports-check/",
+      "title": "RUST 스포츠 체크 | 배당·라인·변수 확인",
+      "description_length": 56,
+      "canonical": "https://88st.cloud/sports-check/",
+      "schema": "WebPage"
+    },
+    {
+      "file": "tools/index.html",
+      "route": "/tools/",
+      "title": "RUST 도구 | 보너스·롤링·배당 계산 도구",
+      "description_length": 66,
+      "canonical": "https://88st.cloud/tools/",
+      "schema": "WebPage"
+    }
+  ]
+}

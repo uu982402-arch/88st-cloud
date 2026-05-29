@@ -1,0 +1,5 @@
+V129 REMOVE CANDIDATES / NOTES
+- 실제 삭제 파일 없음.
+- 메인 하단 상담봇 긴 문구는 압축 스트립으로 교체.
+- 하단 관련/추천 섹션 재생성 금지 유지.
+- RUST QUICK CHECK 재생성 금지 유지.
