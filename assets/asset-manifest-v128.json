@@ -1,0 +1,184 @@
+{
+  "generated_at": "2026-05-29T05:34:19.470Z",
+  "referenced_images": [
+    {
+      "src": "/assets/img/rust/rust-crest-64.png",
+      "count": 629,
+      "size_bytes": 8554
+    },
+    {
+      "src": "/assets/img/rust/rust-crest-32.png",
+      "count": 6,
+      "size_bytes": 2594
+    },
+    {
+      "src": "/assets/img/guaranteed/cards/anybet.webp",
+      "count": 3,
+      "size_bytes": 18180
+    },
+    {
+      "src": "/assets/img/guaranteed/cards/ddangkong-bet.webp",
+      "count": 3,
+      "size_bytes": 17896
+    },
+    {
+      "src": "/assets/img/guaranteed/cards/sk-holdings.webp",
+      "count": 3,
+      "size_bytes": 16220
+    },
+    {
+      "src": "/assets/img/guaranteed/cards/zakum.webp",
+      "count": 3,
+      "size_bytes": 26998
+    },
+    {
+      "src": "/assets/img/guaranteed/cards/udt-bet.webp",
+      "count": 3,
+      "size_bytes": 42198
+    },
+    {
+      "src": "/assets/img/guaranteed/cards/queenbee.webp",
+      "count": 3,
+      "size_bytes": 12500
+    },
+    {
+      "src": "/assets/vendor-logos/v59/anybet-card.svg",
+      "count": 2,
+      "size_bytes": 1508
+    },
+    {
+      "src": "/assets/vendor-logos/v59/queenbee-card.svg",
+      "count": 2,
+      "size_bytes": 1514
+    },
+    {
+      "src": "/assets/vendor-logos/v59/sk-holdings-card.svg",
+      "count": 2,
+      "size_bytes": 1519
+    },
+    {
+      "src": "/assets/vendor-logos/v59/udt-card.svg",
+      "count": 2,
+      "size_bytes": 1509
+    },
+    {
+      "src": "/assets/thumbs/result-bonus.svg",
+      "count": 2,
+      "size_bytes": 1694
+    },
+    {
+      "src": "/assets/thumbs/result-domain.svg",
+      "count": 2,
+      "size_bytes": 1745
+    },
+    {
+      "src": "/assets/thumbs/result-notice.svg",
+      "count": 2,
+      "size_bytes": 1686
+    },
+    {
+      "src": "/assets/thumbs/result-rolling.svg",
+      "count": 2,
+      "size_bytes": 1706
+    },
+    {
+      "src": "/assets/thumbs/result-sports.svg",
+      "count": 2,
+      "size_bytes": 1720
+    },
+    {
+      "src": "/assets/provider-media/ddangkong-event-01.jpeg",
+      "count": 1,
+      "size_bytes": 55033
+    },
+    {
+      "src": "/assets/img/rust/rust-crest-192.png",
+      "count": 1,
+      "size_bytes": 58093
+    },
+    {
+      "src": "/assets/vendor-logos/v59/ddangkong-card.svg",
+      "count": 1,
+      "size_bytes": 1515
+    },
+    {
+      "src": "/assets/thumbs/result-overview.svg",
+      "count": 1,
+      "size_bytes": 1672
+    }
+  ],
+  "unused_large_image_candidates": [
+    {
+      "path": "assets/img/rust/rust-crest-transparent.png",
+      "size_bytes": 1056407
+    },
+    {
+      "path": "assets/img/88st-cloud-logo-horizontal.png",
+      "size_bytes": 972410
+    },
+    {
+      "path": "assets/img/88st-cloud-logo-symbol.png",
+      "size_bytes": 798141
+    },
+    {
+      "path": "assets/img/queenbee-seoa-premium-gold-black.jpg",
+      "size_bytes": 546896
+    },
+    {
+      "path": "assets/img/sk-holdings-iron888-red.jpg",
+      "size_bytes": 546637
+    },
+    {
+      "path": "assets/img/sk-holdings-iron888-green.jpg",
+      "size_bytes": 540437
+    },
+    {
+      "path": "assets/img/queenbee-seoa-premium-blue.jpg",
+      "size_bytes": 509590
+    },
+    {
+      "path": "assets/img/queenbee-seoa-premium-purple.jpg",
+      "size_bytes": 505029
+    },
+    {
+      "path": "assets/img/queenbee-seoa-premium-gold.jpg",
+      "size_bytes": 503055
+    },
+    {
+      "path": "assets/img/sk-holdings-iron888-blue.jpg",
+      "size_bytes": 494581
+    },
+    {
+      "path": "assets/img/queenbee-seoa-premium-red.jpg",
+      "size_bytes": 488007
+    },
+    {
+      "path": "assets/img/sk-holdings-iron888-purple.jpg",
+      "size_bytes": 471255
+    },
+    {
+      "path": "assets/img/queenbee-seoa-casino.jpg",
+      "size_bytes": 417802
+    },
+    {
+      "path": "assets/img/rust/rust-crest-512.png",
+      "size_bytes": 303014
+    },
+    {
+      "path": "assets/img/88st-cloud-logo-mark.png",
+      "size_bytes": 236596
+    },
+    {
+      "path": "assets/img/udt-seoa-event.jpg",
+      "size_bytes": 234369
+    },
+    {
+      "path": "assets/img/guaranteed/cards/zakum.png",
+      "size_bytes": 178802
+    },
+    {
+      "path": "assets/img/anybet-seoa-event.jpg",
+      "size_bytes": 165118
+    }
+  ]
+}

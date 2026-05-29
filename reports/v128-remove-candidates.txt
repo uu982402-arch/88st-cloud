@@ -1,0 +1,22 @@
+V128 removal candidates only - no files deleted.
+Large image assets currently not referenced by HTML should be reviewed before deletion:
+- assets/img/rust/rust-crest-transparent.png (1056407 bytes)
+- assets/img/88st-cloud-logo-horizontal.png (972410 bytes)
+- assets/img/88st-cloud-logo-symbol.png (798141 bytes)
+- assets/img/queenbee-seoa-premium-gold-black.jpg (546896 bytes)
+- assets/img/sk-holdings-iron888-red.jpg (546637 bytes)
+- assets/img/sk-holdings-iron888-green.jpg (540437 bytes)
+- assets/img/queenbee-seoa-premium-blue.jpg (509590 bytes)
+- assets/img/queenbee-seoa-premium-purple.jpg (505029 bytes)
+- assets/img/queenbee-seoa-premium-gold.jpg (503055 bytes)
+- assets/img/sk-holdings-iron888-blue.jpg (494581 bytes)
+- assets/img/queenbee-seoa-premium-red.jpg (488007 bytes)
+- assets/img/sk-holdings-iron888-purple.jpg (471255 bytes)
+- assets/img/queenbee-seoa-casino.jpg (417802 bytes)
+- assets/img/rust/rust-crest-512.png (303014 bytes)
+- assets/img/88st-cloud-logo-mark.png (236596 bytes)
+- assets/img/udt-seoa-event.jpg (234369 bytes)
+- assets/img/guaranteed/cards/zakum.png (178802 bytes)
+- assets/img/anybet-seoa-event.jpg (165118 bytes)
+
+Do not delete until live visual QA confirms no CSS/OG/social usage.
