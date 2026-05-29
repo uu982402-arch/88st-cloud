@@ -1,0 +1,7 @@
+{
+  "ok": true,
+  "version": "V130.2_UPLOAD_BUILD_RECOVERY",
+  "mode": "cloudflare-pages-build-time-recovery",
+  "note": "Build first materializes missing final-lock files/markers for partial GitHub uploads, then verifies deploy-ready static output.",
+  "generatedAt": "2026-05-29T06:17:18.487Z"
+}
