@@ -1,0 +1,204 @@
+{
+  "version": "V123",
+  "name": "OPS DASHBOARD / DEPLOY CHECK CENTER PATCH",
+  "base": "V122 FULL",
+  "generated_at": "2026-05-29",
+  "summary": {
+    "core_urls": 11,
+    "vendors": 6,
+    "tools": 12,
+    "removed_routes_locked": 4
+  },
+  "coreUrls": [
+    {
+      "label": "메인",
+      "url": "/",
+      "path": "index.html",
+      "status": "ok",
+      "note": "파일 존재"
+    },
+    {
+      "label": "블로그",
+      "url": "/blog/",
+      "path": "blog/index.html",
+      "status": "ok",
+      "note": "파일 존재"
+    },
+    {
+      "label": "도구",
+      "url": "/tools/",
+      "path": "tools/index.html",
+      "status": "ok",
+      "note": "파일 존재"
+    },
+    {
+      "label": "보증업체",
+      "url": "/guaranteed/",
+      "path": "guaranteed/index.html",
+      "status": "ok",
+      "note": "파일 존재"
+    },
+    {
+      "label": "상담",
+      "url": "/consult/",
+      "path": "consult/index.html",
+      "status": "ok",
+      "note": "파일 존재"
+    },
+    {
+      "label": "스포츠 체크",
+      "url": "/sports-check/",
+      "path": "sports-check/index.html",
+      "status": "ok",
+      "note": "파일 존재"
+    },
+    {
+      "label": "검색 가이드",
+      "url": "/search-guides/",
+      "path": "search-guides/index.html",
+      "status": "ok",
+      "note": "파일 존재"
+    },
+    {
+      "label": "운영센터",
+      "url": "/ops/",
+      "path": "ops/index.html",
+      "status": "ok",
+      "note": "파일 존재"
+    },
+    {
+      "label": "관리자 리다이렉트",
+      "url": "/admin/",
+      "path": "admin/index.html",
+      "status": "ok",
+      "note": "파일 존재"
+    },
+    {
+      "label": "sitemap.xml",
+      "url": "/sitemap.xml",
+      "path": "sitemap.xml",
+      "status": "ok",
+      "note": "파일 존재"
+    },
+    {
+      "label": "robots.txt",
+      "url": "/robots.txt",
+      "path": "robots.txt",
+      "status": "ok",
+      "note": "파일 존재"
+    }
+  ],
+  "vendors": [
+    {
+      "name": "SK 홀딩스",
+      "note": "/guaranteed/sk-holdings/ · 코드 IRON888"
+    },
+    {
+      "name": "자쿰",
+      "note": "/guaranteed/zakum/ · 코드 ZAKUM"
+    },
+    {
+      "name": "UDT BET",
+      "note": "/guaranteed/udt/ · 코드 SEOA"
+    },
+    {
+      "name": "여왕벌",
+      "note": "/guaranteed/queenbee/ · 코드 SEOA"
+    },
+    {
+      "name": "땅콩 BET",
+      "note": "/guaranteed/ddangkong/ · 코드 DDK888"
+    },
+    {
+      "name": "ANY BET",
+      "note": "/guaranteed/anybet/ · 코드 SEOA"
+    }
+  ],
+  "tools": [
+    {
+      "name": "주소 확인",
+      "note": "official · 모달/도구 유지"
+    },
+    {
+      "name": "가입코드 확인",
+      "note": "code · 모달/도구 유지"
+    },
+    {
+      "name": "보너스 실수령",
+      "note": "bonus · 모달/도구 유지"
+    },
+    {
+      "name": "롤링 조건",
+      "note": "rolling · 모달/도구 유지"
+    },
+    {
+      "name": "배당 마진",
+      "note": "margin · 모달/도구 유지"
+    },
+    {
+      "name": "기대값 계산",
+      "note": "ev · 모달/도구 유지"
+    },
+    {
+      "name": "스포츠 분석",
+      "note": "sports · 모달/도구 유지"
+    },
+    {
+      "name": "이벤트 조건",
+      "note": "event · 모달/도구 유지"
+    },
+    {
+      "name": "가입코드 매칭 체크 PRO",
+      "note": "match · 모달/도구 유지"
+    },
+    {
+      "name": "보너스 실수령 PRO",
+      "note": "bonuspro · 모달/도구 유지"
+    },
+    {
+      "name": "출금 조건 체크리스트",
+      "note": "withdraw · 모달/도구 유지"
+    },
+    {
+      "name": "도메인 변경 메모장",
+      "note": "domainmemo · 모달/도구 유지"
+    }
+  ],
+  "locks": [
+    {
+      "label": "삭제 확정 4개 경로",
+      "status": "ok",
+      "note": "재생성 없음"
+    },
+    {
+      "label": "V115 메인 도구 모달",
+      "status": "ok",
+      "note": "메인 도구 카드 모달 유지"
+    },
+    {
+      "label": "V121 하단 관련섹션 잠금",
+      "status": "ok",
+      "note": "no-bottom-related CSS 유지"
+    },
+    {
+      "label": "V122 도구 결과 UX",
+      "status": "ok",
+      "note": "결과 복사 UX 유지"
+    },
+    {
+      "label": "보증업체 6개 상세",
+      "status": "ok",
+      "note": "6개 랜딩 존재"
+    },
+    {
+      "label": "도구 12개 카드",
+      "status": "ok",
+      "note": "12개 도구 카드 유지"
+    }
+  ],
+  "reports": [
+    "reports/v123-route-audit.json",
+    "reports/v123-ops-dashboard-audit.json",
+    "reports/v123-remove-candidates.txt"
+  ]
+}

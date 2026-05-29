@@ -1,0 +1,100 @@
+{
+  "version": "V123",
+  "core_urls": [
+    {
+      "label": "메인",
+      "url": "/",
+      "path": "index.html",
+      "status": "ok",
+      "note": "파일 존재"
+    },
+    {
+      "label": "블로그",
+      "url": "/blog/",
+      "path": "blog/index.html",
+      "status": "ok",
+      "note": "파일 존재"
+    },
+    {
+      "label": "도구",
+      "url": "/tools/",
+      "path": "tools/index.html",
+      "status": "ok",
+      "note": "파일 존재"
+    },
+    {
+      "label": "보증업체",
+      "url": "/guaranteed/",
+      "path": "guaranteed/index.html",
+      "status": "ok",
+      "note": "파일 존재"
+    },
+    {
+      "label": "상담",
+      "url": "/consult/",
+      "path": "consult/index.html",
+      "status": "ok",
+      "note": "파일 존재"
+    },
+    {
+      "label": "스포츠 체크",
+      "url": "/sports-check/",
+      "path": "sports-check/index.html",
+      "status": "ok",
+      "note": "파일 존재"
+    },
+    {
+      "label": "검색 가이드",
+      "url": "/search-guides/",
+      "path": "search-guides/index.html",
+      "status": "ok",
+      "note": "파일 존재"
+    },
+    {
+      "label": "운영센터",
+      "url": "/ops/",
+      "path": "ops/index.html",
+      "status": "ok",
+      "note": "파일 존재"
+    },
+    {
+      "label": "관리자 리다이렉트",
+      "url": "/admin/",
+      "path": "admin/index.html",
+      "status": "ok",
+      "note": "파일 존재"
+    },
+    {
+      "label": "sitemap.xml",
+      "url": "/sitemap.xml",
+      "path": "sitemap.xml",
+      "status": "ok",
+      "note": "파일 존재"
+    },
+    {
+      "label": "robots.txt",
+      "url": "/robots.txt",
+      "path": "robots.txt",
+      "status": "ok",
+      "note": "파일 존재"
+    }
+  ],
+  "removed_routes": [
+    {
+      "route": "faq",
+      "exists": false
+    },
+    {
+      "route": "consult-motives",
+      "exists": false
+    },
+    {
+      "route": "consult-result",
+      "exists": false
+    },
+    {
+      "route": "provider-updates",
+      "exists": false
+    }
+  ]
+}

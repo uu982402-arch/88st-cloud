@@ -1,5 +1,5 @@
 <!doctype html>
-<html data-v121-clean-layout-lock="active" lang="ko" data-page="ops" data-v80="V80_OPS_CONTROL_CENTER_ACTIVE" data-v84-performance="active" data-v94-performance="active" data-v95-safe-cleanup="active" data-v98-performance-image="active" data-v102-live-ux="active" data-v106-live-qa="active" data-v110-sitewide-visual-qa="active" data-v111-build-chain-cleanup="active">
+<html data-v123-ops-deploy-check="active" data-v121-clean-layout-lock="active" lang="ko" data-page="ops" data-v80="V80_OPS_CONTROL_CENTER_ACTIVE" data-v84-performance="active" data-v94-performance="active" data-v95-safe-cleanup="active" data-v98-performance-image="active" data-v102-live-ux="active" data-v106-live-qa="active" data-v110-sitewide-visual-qa="active" data-v111-build-chain-cleanup="active">
 <head>
   <meta name="v102-live-ux-polish-cta-final" content="V102_LIVE_UX_POLISH_CTA_FINAL_ACTIVE" data-v102-live-ux="true">
   <meta name="v101-removed-route-lock" content="V101_REMOVED_ROUTE_LOCK_BUILD_HYGIENE_ACTIVE" data-v101-removed-route-lock="true">
@@ -11,7 +11,7 @@
   <link rel="dns-prefetch" href="//www.googletagmanager.com" data-v84-performance="dns-prefetch">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
-  <title>RUST OPS | 통합 관리자 센터</title>
+  <title>RUST OPS | V123 배포 점검 센터</title>
   <meta name="description" content="RUST 통합 관리자 센터. 보증업체, 블로그, 도구, 상담 주소, SEO 키워드를 한 화면에서 점검하고 제어합니다.">
   <meta name="robots" content="noindex,nofollow,noarchive">
   <link rel="canonical" href="https://88st.cloud/ops/">
@@ -53,8 +53,10 @@
   <script defer src="/assets/js/v111-build-chain-cleanup-asset-consolidation.js?v=v111-build-chain-cleanup-asset-consolidation-20260528" data-v111-build-chain-cleanup="true"></script>
   <meta name="v121-clean-layout-lock" content="V121_CLEAN_LAYOUT_LOCK_NO_BOTTOM_RELATED_SECTIONS_ACTIVE">
   <link rel="stylesheet" href="/assets/css/v121-clean-layout-lock.css?v=20260529" data-v121-clean-layout-lock="true">
+  <meta name="v123-ops-dashboard-deploy-check-center" content="V123_OPS_DASHBOARD_DEPLOY_CHECK_CENTER_ACTIVE">
+  <link rel="stylesheet" href="/assets/css/v123-ops-deploy-check-center.css?v=20260529" data-v123-ops-deploy-check="true">
 </head>
-<body data-v102-live-ux="active" class="v102-live-ux v121-clean-layout-lock" class="v102-live-ux v80-ops-center v96-3-mobile-safe-layout v96-4-live-qa-cache-safe v98-performance-image v100-structure-lock-release" data-v96-3-mobile-safe-layout="active" data-v96-4-live-qa-cache-safe="active" data-v98-performance-image="active" data-v100-structure-lock="active" data-v110-sitewide-visual-qa="true">
+<body data-v102-live-ux="active" class="v102-live-ux v121-clean-layout-lock v123-ops-deploy-check" class="v102-live-ux v80-ops-center v96-3-mobile-safe-layout v96-4-live-qa-cache-safe v98-performance-image v100-structure-lock-release" data-v96-3-mobile-safe-layout="active" data-v96-4-live-qa-cache-safe="active" data-v98-performance-image="active" data-v100-structure-lock="active" data-v110-sitewide-visual-qa="true">
   <div class="v80-ops-app" id="V80_OPS_CONTROL_CENTER_ACTIVE">
     <aside class="v80-sidebar" aria-label="RUST 관리자 사이드바">
       <a class="v80-brand" href="/ops/">
@@ -71,6 +73,7 @@
         <a href="#live-check">라이브검증</a>
         <a href="#indexing-readiness">색인준비</a>
         <a href="#ga4-depth">GA4심화</a>
+        <a href="#v123-deploy-center">V123점검</a>
         <a href="#deploy">배포검증</a>
       </nav>
       <div class="v80-side-foot">
@@ -82,17 +85,49 @@
     <main class="v80-main">
       <header class="v80-topbar" data-rust-brand-header="true">
         <div><h1>통합 관리자 센터</h1><p>보증업체 · 블로그 · 도구 · 상담 주소 · SEO 메타를 한 화면에서 통제합니다.</p></div>
-        <div class="v80-status"><i class="v80-dot"></i> V80 CONTROL ONLINE</div>
+        <div class="v80-status"><i class="v80-dot"></i> V123 DEPLOY CHECK ONLINE</div>
       </header>
 
       <section class="v80-grid v80-metrics" aria-label="관리자 요약 지표">
-        <article class="v80-metric"><b data-metric="vendors">5</b><span>노출 보증업체</span></article>
-        <article class="v80-metric"><b data-metric="tools">8</b><span>활성 도구</span></article>
+        <article class="v80-metric"><b data-metric="vendors">6</b><span>보증업체 상세</span></article>
+        <article class="v80-metric"><b data-metric="tools">12</b><span>활성 도구</span></article>
         <article class="v80-metric"><b data-metric="bot">@TRS999_bot</b><span>공식 상담 주소</span></article>
-        <article class="v80-metric"><b data-metric="keywords">10</b><span>SEO 키워드</span></article>
+        <article class="v80-metric"><b data-metric="keywords">V123</b><span>배포 점검</span></article>
       </section>
 
       
+
+      <!-- V123 OPS DASHBOARD / DEPLOY CHECK CENTER START -->
+      <section class="v123-ops-panel" id="v123-deploy-center" data-v123-ops-deploy-check="V123_OPS_DASHBOARD_DEPLOY_CHECK_CENTER_ACTIVE" aria-label="V123 배포 점검 센터">
+        <div class="v123-ops-head">
+          <div>
+            <span class="v123-kicker">V123 DEPLOY CHECK CENTER</span>
+            <h2>배포 직후 핵심 상태 점검</h2>
+            <p>메인, 도구, 보증업체, sports-check, search-guides, sitemap, noindex, 삭제 확정 경로를 한 화면에서 확인합니다. 하단 관련/연결 섹션은 추가하지 않습니다.</p>
+          </div>
+          <div class="v123-actions">
+            <button class="v123-btn is-primary" type="button" data-v123-run>현재 도메인 점검</button>
+            <button class="v123-btn" type="button" data-v123-copy="urls">URL 복사</button>
+            <button class="v123-btn" type="button" data-v123-copy="report">점검 데이터 복사</button>
+          </div>
+        </div>
+        <div class="v123-summary-grid">
+          <div class="v123-summary-card"><small>핵심 URL</small><strong>11</strong><span>업로드 후 우선 확인</span></div>
+          <div class="v123-summary-card"><small>보증업체</small><strong>6</strong><span>상세 랜딩 유지</span></div>
+          <div class="v123-summary-card"><small>도구</small><strong>12</strong><span>모달/결과 UX 유지</span></div>
+          <div class="v123-summary-card"><small>삭제 잠금</small><strong>4</strong><span>재생성 금지 경로</span></div>
+        </div>
+        <div class="v123-check-grid">
+          <article class="v123-card"><h3>핵심 URL / 파일 존재</h3><div class="v123-row-list" data-v123-route-list></div></article>
+          <article class="v123-card"><h3>버전 잠금 / 재생성 방지</h3><div class="v123-row-list" data-v123-lock-list></div></article>
+          <article class="v123-card"><h3>보증업체 6개</h3><div class="v123-mini-table" data-v123-vendor-list></div></article>
+          <article class="v123-card"><h3>도구 12개</h3><div class="v123-mini-table" data-v123-tool-list></div></article>
+        </div>
+        <pre class="v123-log" data-v123-live-log>대기 중입니다. 배포 후 버튼을 누르면 같은 도메인의 핵심 URL을 fetch 기준으로 확인합니다.</pre>
+        <script type="application/json" id="v123-deploy-data">{"version":"V123","name":"OPS DASHBOARD / DEPLOY CHECK CENTER PATCH","base":"V122 FULL","generated_at":"2026-05-29","summary":{"core_urls":11,"vendors":6,"tools":12,"removed_routes_locked":4},"coreUrls":[{"label":"메인","url":"/","path":"index.html","status":"ok","note":"파일 존재"},{"label":"블로그","url":"/blog/","path":"blog/index.html","status":"ok","note":"파일 존재"},{"label":"도구","url":"/tools/","path":"tools/index.html","status":"ok","note":"파일 존재"},{"label":"보증업체","url":"/guaranteed/","path":"guaranteed/index.html","status":"ok","note":"파일 존재"},{"label":"상담","url":"/consult/","path":"consult/index.html","status":"ok","note":"파일 존재"},{"label":"스포츠 체크","url":"/sports-check/","path":"sports-check/index.html","status":"ok","note":"파일 존재"},{"label":"검색 가이드","url":"/search-guides/","path":"search-guides/index.html","status":"ok","note":"파일 존재"},{"label":"운영센터","url":"/ops/","path":"ops/index.html","status":"ok","note":"파일 존재"},{"label":"관리자 리다이렉트","url":"/admin/","path":"admin/index.html","status":"ok","note":"파일 존재"},{"label":"sitemap.xml","url":"/sitemap.xml","path":"sitemap.xml","status":"ok","note":"파일 존재"},{"label":"robots.txt","url":"/robots.txt","path":"robots.txt","status":"ok","note":"파일 존재"}],"vendors":[{"name":"SK 홀딩스","note":"/guaranteed/sk-holdings/ · 코드 IRON888"},{"name":"자쿰","note":"/guaranteed/zakum/ · 코드 ZAKUM"},{"name":"UDT BET","note":"/guaranteed/udt/ · 코드 SEOA"},{"name":"여왕벌","note":"/guaranteed/queenbee/ · 코드 SEOA"},{"name":"땅콩 BET","note":"/guaranteed/ddangkong/ · 코드 DDK888"},{"name":"ANY BET","note":"/guaranteed/anybet/ · 코드 SEOA"}],"tools":[{"name":"주소 확인","note":"official · 모달/도구 유지"},{"name":"가입코드 확인","note":"code · 모달/도구 유지"},{"name":"보너스 실수령","note":"bonus · 모달/도구 유지"},{"name":"롤링 조건","note":"rolling · 모달/도구 유지"},{"name":"배당 마진","note":"margin · 모달/도구 유지"},{"name":"기대값 계산","note":"ev · 모달/도구 유지"},{"name":"스포츠 분석","note":"sports · 모달/도구 유지"},{"name":"이벤트 조건","note":"event · 모달/도구 유지"},{"name":"가입코드 매칭 체크 PRO","note":"match · 모달/도구 유지"},{"name":"보너스 실수령 PRO","note":"bonuspro · 모달/도구 유지"},{"name":"출금 조건 체크리스트","note":"withdraw · 모달/도구 유지"},{"name":"도메인 변경 메모장","note":"domainmemo · 모달/도구 유지"}],"locks":[{"label":"삭제 확정 4개 경로","status":"ok","note":"재생성 없음"},{"label":"V115 메인 도구 모달","status":"ok","note":"메인 도구 카드 모달 유지"},{"label":"V121 하단 관련섹션 잠금","status":"ok","note":"no-bottom-related CSS 유지"},{"label":"V122 도구 결과 UX","status":"ok","note":"결과 복사 UX 유지"},{"label":"보증업체 6개 상세","status":"ok","note":"6개 랜딩 존재"},{"label":"도구 12개 카드","status":"ok","note":"12개 도구 카드 유지"}],"reports":["reports/v123-route-audit.json","reports/v123-ops-dashboard-audit.json","reports/v123-remove-candidates.txt"]}</script>
+      </section>
+      <!-- V123 OPS DASHBOARD / DEPLOY CHECK CENTER END -->
+
       <!-- V87 LIVE DEPLOY CHECK START -->
       <section class="v87-live-panel" id="live-check" data-v87-live-deploy="V87_LIVE_DEPLOY_CHECK_ACTIVE" aria-label="라이브 배포 검증 자동화">
         <div class="v87-live-head">
@@ -322,7 +357,7 @@
       </section>
     </main>
   </div>
-  <script>window.RUST_OPS_DEFAULTS={"vendors": [{"id": "sk-holdings", "name": "SK 홀딩스", "code": "IRON888", "status": "상담 확인", "landing": "/guaranteed/sk-holdings/", "target": "#", "image": "/assets/img/guaranteed/cards/sk-holdings.webp", "active": true}, {"id": "queenbee", "name": "여왕벌", "code": "SEOA", "status": "상담 확인", "landing": "/guaranteed/queenbee/", "target": "#", "image": "/assets/img/guaranteed/cards/queenbee.webp", "active": true}, {"id": "anybet", "name": "ANY BET", "code": "SEOA", "status": "상담 확인", "landing": "/guaranteed/anybet/", "target": "#", "image": "/assets/img/guaranteed/cards/anybet.webp", "active": true}, {"id": "udt-bet", "name": "UDT BET", "code": "SEOA", "status": "상담 확인", "landing": "/guaranteed/udt-bet/", "target": "#", "image": "/assets/img/guaranteed/cards/udt-bet.webp", "active": true}, {"id": "ddangkong-bet", "name": "땅콩 BET", "code": "DDK888", "status": "상담 확인", "landing": "/guaranteed/ddangkong-bet/", "target": "#", "image": "/assets/img/guaranteed/cards/ddangkong-bet.webp", "active": true}], "tools": [{"id": "address", "name": "주소 확인", "href": "/search-guides/", "active": true, "usage": 94}, {"id": "code", "name": "가입코드 확인", "href": "/guaranteed/", "active": true, "usage": 91}, {"id": "bonus", "name": "보너스 실수령", "href": "/tool-bonus/", "active": true, "usage": 87}, {"id": "rolling", "name": "롤링 조건", "href": "/tool-rolling/", "active": true, "usage": 84}, {"id": "margin", "name": "배당 마진", "href": "/tool-margin/", "active": true, "usage": 82}, {"id": "ev", "name": "기대값 계산", "href": "/tool-ev/", "active": true, "usage": 78}, {"id": "sports", "name": "스포츠 분석", "href": "/sports-check/", "active": true, "usage": 76}, {"id": "event", "name": "이벤트 조건", "href": "/bonus-checklist/", "active": true, "usage": 72}], "consultBot": "@TRS999_bot", "seoKeywords": ["토토", "온라인스포츠토토사이트추천", "토토사이트추천", "입플사이트추천", "스포츠입플", "카지노입플", "미니게임입플사이트", "카지노입플사이트추천", "2026토토사이트추천", "안전한토토사이트추천"], "popularPosts": ["2026 토토사이트추천 기준 정리", "스포츠입플 조건 비교 체크리스트", "카지노입플 보너스 실수령 계산법", "미니게임입플사이트 가입코드 확인법", "먹튀 없는 보증업체 선택 기준", "배당 마진 계산과 기대값 해석", "롤링 조건을 읽는 실전 기준", "온라인스포츠토토사이트추천 검증 순서"]};</script>
+  <script>window.RUST_OPS_DEFAULTS={"vendors":[{"id":"sk-holdings","name":"SK 홀딩스","code":"IRON888","status":"노출 유지","landing":"/guaranteed/sk-holdings/","target":"#","image":"/assets/img/guaranteed/cards/sk-holdings.webp","active":true},{"id":"zakum","name":"자쿰","code":"ZAKUM","status":"노출 유지","landing":"/guaranteed/zakum/","target":"#","image":"/assets/img/guaranteed/cards/zakum.webp","active":true},{"id":"udt","name":"UDT BET","code":"SEOA","status":"노출 유지","landing":"/guaranteed/udt/","target":"#","image":"/assets/img/guaranteed/cards/udt-bet.webp","active":true},{"id":"queenbee","name":"여왕벌","code":"SEOA","status":"노출 유지","landing":"/guaranteed/queenbee/","target":"#","image":"/assets/img/guaranteed/cards/queenbee.webp","active":true},{"id":"ddangkong","name":"땅콩 BET","code":"DDK888","status":"노출 유지","landing":"/guaranteed/ddangkong/","target":"#","image":"/assets/img/guaranteed/cards/ddangkong-bet.webp","active":true},{"id":"anybet","name":"ANY BET","code":"SEOA","status":"노출 유지","landing":"/guaranteed/anybet/","target":"#","image":"/assets/img/guaranteed/cards/anybet.webp","active":true}],"tools":[{"id":"official","name":"주소 확인","href":"/tools/","active":true,"usage":98},{"id":"code","name":"가입코드 확인","href":"/tools/","active":true,"usage":96},{"id":"bonus","name":"보너스 실수령","href":"/tools/","active":true,"usage":94},{"id":"rolling","name":"롤링 조건","href":"/tools/","active":true,"usage":92},{"id":"margin","name":"배당 마진","href":"/tools/","active":true,"usage":90},{"id":"ev","name":"기대값 계산","href":"/tools/","active":true,"usage":88},{"id":"sports","name":"스포츠 분석","href":"/tools/","active":true,"usage":86},{"id":"event","name":"이벤트 조건","href":"/tools/","active":true,"usage":84},{"id":"match","name":"가입코드 매칭 체크 PRO","href":"/tools/","active":true,"usage":82},{"id":"bonuspro","name":"보너스 실수령 PRO","href":"/tools/","active":true,"usage":80},{"id":"withdraw","name":"출금 조건 체크리스트","href":"/tools/","active":true,"usage":78},{"id":"domainmemo","name":"도메인 변경 메모장","href":"/tools/","active":true,"usage":76}],"consultBot":"@TRS999_bot","seoKeywords":["토토","온라인스포츠토토사이트추천","토토사이트추천","입플사이트추천","스포츠입플","카지노입플","미니게임입플사이트","카지노입플사이트추천","2026토토사이트추천","안전한토토사이트추천"],"popularPosts":["2026 토토사이트추천 기준 정리","스포츠입플 조건 비교 체크리스트","카지노입플 보너스 실수령 계산법","미니게임입플사이트 가입코드 확인법","먹튀 없는 보증업체 선택 기준","배당 마진 계산과 기대값 해석","롤링 조건을 읽는 실전 기준","온라인스포츠토토사이트추천 검증 순서"]};</script>
   <script src="/assets/js/v80.ops-control-center.js?v=static-v80-ops-control-center-20260525" defer></script>
   <script defer src="/assets/js/v82-3-indexing-ops.js?v=static-v82-3-indexing-measurement-20260525" data-v82-3-indexing="true"></script>
   <script src="/assets/js/v87-live-deploy-check.js?v=static-v87-live-deploy-check-20260525" defer data-v87-live-deploy="true"></script>
@@ -336,5 +371,6 @@
   <script src="/assets/js/v100-structure-lock-release-stable.js?v=V100-STRUCTURE-LOCK-RELEASE-STABLE-20260526" defer data-v100-structure-lock="true"></script>
   <script defer src="/assets/js/v101-removed-route-lock-build-hygiene.js?v=v101-removed-route-lock-build-hygiene-20260526" data-v101-removed-route-lock="true"></script>
   <script defer src="/assets/js/v102-live-ux-polish-cta-final.js?v=v102-live-ux-polish-cta-final-20260526" data-v102-live-ux="true"></script>
+  <script src="/assets/js/v123-ops-deploy-check-center.js?v=20260529" defer data-v123-ops-deploy-check="true"></script>
 </body>
 </html>
