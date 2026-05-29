@@ -1,0 +1,47 @@
+:root{
+  --rust-logo-gold:#f7c96a;
+  --rust-logo-copper:#fb923c;
+  --rust-logo-ember:#f97316;
+}
+.rust-brand-mark{
+  width:54px!important;
+  height:54px!important;
+  border-radius:18px!important;
+  overflow:visible!important;
+  background:radial-gradient(circle at 50% 45%,rgba(251,191,36,.11),rgba(15,23,42,.12) 56%,transparent 72%)!important;
+  border:1px solid rgba(251,191,36,.18)!important;
+  box-shadow:0 0 0 1px rgba(255,255,255,.05) inset,0 0 30px rgba(249,115,22,.18),0 12px 32px rgba(0,0,0,.28)!important;
+}
+.rust-brand-mark::after{
+  inset:-42%!important;
+  opacity:.78!important;
+  background:radial-gradient(circle at 50% 35%,rgba(251,191,36,.22),rgba(249,115,22,.11) 38%,transparent 62%)!important;
+}
+.rust-brand-mark img{
+  width:54px!important;
+  height:54px!important;
+  object-fit:contain!important;
+  position:relative!important;
+  z-index:2!important;
+  transform:scale(1.28)!important;
+  filter:drop-shadow(0 0 12px rgba(251,191,36,.46)) drop-shadow(0 0 26px rgba(249,115,22,.22))!important;
+}
+.rust-brand-type strong{
+  color:#f8fafc!important;
+  text-shadow:0 0 14px rgba(251,191,36,.28),0 0 22px rgba(249,115,22,.18)!important;
+}
+.rust-brand-type span{color:rgba(251,191,36,.64)!important;}
+.rust-desktop-nav a.is-active,
+.rust-bottom-nav a.is-active{
+  box-shadow:inset 0 0 0 1px rgba(251,191,36,.26),0 0 26px rgba(249,115,22,.18)!important;
+}
+@media (max-width:760px){
+  .rust-brand-mark{width:44px!important;height:44px!important;border-radius:16px!important;}
+  .rust-brand-mark img{width:44px!important;height:44px!important;transform:scale(1.3)!important;}
+  .rust-brand{gap:10px!important;}
+}
+@media (max-width:360px){
+  .rust-brand-mark{width:40px!important;height:40px!important;}
+  .rust-brand-mark img{width:40px!important;height:40px!important;}
+  .rust-brand-type strong{font-size:17px!important;}
+}

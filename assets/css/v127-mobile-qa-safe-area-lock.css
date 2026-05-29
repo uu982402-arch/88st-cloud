@@ -1,0 +1,122 @@
+/* V127 MOBILE QA / SAFE AREA LOCK PATCH
+ * 목표: Android Chrome / Samsung Internet / iPhone Safari 기준 가로 밀림, 하단 겹침, 작은 터치 영역을 방지한다.
+ * 원칙: 라우팅/기능/광고카드 구조는 유지하고, 하단 관련/연결 섹션은 생성하지 않는다.
+ * viewport-fit=cover 메타와 safe-area CSS를 함께 잠근다.
+ */
+:root{
+  --v127-safe-left:max(12px,env(safe-area-inset-left,0px));
+  --v127-safe-right:max(12px,env(safe-area-inset-right,0px));
+  --v127-safe-bottom:env(safe-area-inset-bottom,0px);
+  --v127-touch:44px;
+  --v127-mobile-gutter:clamp(14px,4vw,20px);
+}
+html[data-v127-mobile-qa="active"],
+html[data-v127-mobile-qa="active"] body{
+  width:100%;
+  max-width:100%;
+  min-width:0!important;
+  overflow-x:hidden!important;
+  -webkit-text-size-adjust:100%;
+  text-size-adjust:100%;
+}
+body[data-v127-mobile-qa="true"]{
+  min-height:100svh;
+  overscroll-behavior-x:none;
+  touch-action:manipulation;
+}
+@supports (height:100dvh){body[data-v127-mobile-qa="true"]{min-height:100dvh}}
+html[data-v127-mobile-qa="active"] *,
+html[data-v127-mobile-qa="active"] *::before,
+html[data-v127-mobile-qa="active"] *::after{box-sizing:border-box;min-width:0}
+html[data-v127-mobile-qa="active"] img,
+html[data-v127-mobile-qa="active"] svg,
+html[data-v127-mobile-qa="active"] video,
+html[data-v127-mobile-qa="active"] canvas,
+html[data-v127-mobile-qa="active"] iframe{max-width:100%;height:auto}
+html[data-v127-mobile-qa="active"] main,
+html[data-v127-mobile-qa="active"] section,
+html[data-v127-mobile-qa="active"] article,
+html[data-v127-mobile-qa="active"] header,
+html[data-v127-mobile-qa="active"] footer,
+html[data-v127-mobile-qa="active"] [class*="shell"],
+html[data-v127-mobile-qa="active"] [class*="container"],
+html[data-v127-mobile-qa="active"] [class*="wrap"],
+html[data-v127-mobile-qa="active"] [class*="grid"],
+html[data-v127-mobile-qa="active"] [class*="card"],
+html[data-v127-mobile-qa="active"] [class*="panel"]{max-width:100%;min-width:0}
+html[data-v127-mobile-qa="active"] a[href],
+html[data-v127-mobile-qa="active"] button,
+html[data-v127-mobile-qa="active"] [role="button"],
+html[data-v127-mobile-qa="active"] input,
+html[data-v127-mobile-qa="active"] select,
+html[data-v127-mobile-qa="active"] textarea{touch-action:manipulation}
+html[data-v127-mobile-qa="active"] input,
+html[data-v127-mobile-qa="active"] select,
+html[data-v127-mobile-qa="active"] textarea{font-size:max(16px,1rem);max-width:100%}
+html[data-v127-mobile-qa="active"] pre,
+html[data-v127-mobile-qa="active"] code{white-space:pre-wrap;overflow-wrap:anywhere}
+html[data-v127-mobile-qa="active"] table{max-width:100%;border-collapse:collapse}
+@media(max-width:760px){
+  html[data-v127-mobile-qa="active"] body[data-v127-mobile-qa="true"]{padding-left:0;padding-right:0;padding-bottom:var(--v127-safe-bottom)}
+  html[data-v127-mobile-qa="active"] .v71-shell,
+  html[data-v127-mobile-qa="active"] .v72-shell,
+  html[data-v127-mobile-qa="active"] .v73-shell,
+  html[data-v127-mobile-qa="active"] .v74-shell,
+  html[data-v127-mobile-qa="active"] .v75-shell,
+  html[data-v127-mobile-qa="active"] .v80-shell,
+  html[data-v127-mobile-qa="active"] .v96-2-shell,
+  html[data-v127-mobile-qa="active"] .v123-ops-panel,
+  html[data-v127-mobile-qa="active"] .v127-ops-mobile-panel{
+    width:calc(100% - (var(--v127-mobile-gutter) * 2))!important;
+    max-width:calc(100% - (var(--v127-mobile-gutter) * 2))!important;
+    margin-left:auto!important;
+    margin-right:auto!important;
+  }
+  html[data-v127-mobile-qa="active"] [class*="grid"]{gap:min(16px,4vw)}
+  html[data-v127-mobile-qa="active"] a[href],
+  html[data-v127-mobile-qa="active"] button,
+  html[data-v127-mobile-qa="active"] [role="button"]{min-height:var(--v127-touch)}
+  html[data-v127-mobile-qa="active"] .v71-cta,
+  html[data-v127-mobile-qa="active"] .v71-tool-card,
+  html[data-v127-mobile-qa="active"] .v74-card-cta,
+  html[data-v127-mobile-qa="active"] .v96-2-cta,
+  html[data-v127-mobile-qa="active"] .v122-copy-all,
+  html[data-v127-mobile-qa="active"] .v126-consult-button{min-height:46px}
+  html[data-v127-mobile-qa="active"] table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  html[data-v127-mobile-qa="active"] .v122-result-enhancer,
+  html[data-v127-mobile-qa="active"] .v122-result-box{max-height:min(62svh,520px);overflow:auto;-webkit-overflow-scrolling:touch}
+  html[data-v127-mobile-qa="active"] .v96-2-hero-img,
+  html[data-v127-mobile-qa="active"] .v96-2-detail img,
+  html[data-v127-mobile-qa="active"] .v124-detail-image{max-height:204px!important;object-fit:contain!important}
+  html[data-v127-mobile-qa="active"] .v71-bottom-nav,
+  html[data-v127-mobile-qa="active"] .bottom-nav,
+  html[data-v127-mobile-qa="active"] .mobile-bottom-nav{padding-bottom:calc(8px + var(--v127-safe-bottom))!important}
+  html[data-v127-mobile-qa="active"] .v71-fab,
+  html[data-v127-mobile-qa="active"] .v74-fab,
+  html[data-v127-mobile-qa="active"] .floating-action,
+  html[data-v127-mobile-qa="active"] .rust-floating-action{bottom:calc(92px + var(--v127-safe-bottom))!important;right:max(14px,var(--v127-safe-right))!important}
+}
+@media(max-width:420px){
+  :root{--v127-mobile-gutter:13px}
+  html[data-v127-mobile-qa="active"] h1{font-size:clamp(28px,9vw,42px)}
+  html[data-v127-mobile-qa="active"] h2{font-size:clamp(20px,6vw,28px)}
+  html[data-v127-mobile-qa="active"] .v71-section-head p,
+  html[data-v127-mobile-qa="active"] .v72-section-head p,
+  html[data-v127-mobile-qa="active"] .v73-section-head p{font-size:14px;line-height:1.58}
+}
+@media(max-width:360px){
+  :root{--v127-mobile-gutter:11px}
+  html[data-v127-mobile-qa="active"] [class*="grid"]{grid-template-columns:1fr!important}
+}
+@media(prefers-reduced-motion:reduce){
+  html[data-v127-mobile-qa="active"] *,
+  html[data-v127-mobile-qa="active"] *::before,
+  html[data-v127-mobile-qa="active"] *::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}
+}
+.v127-ops-mobile-panel{margin:18px 0;padding:18px;border:1px solid rgba(148,163,184,.2);border-radius:24px;background:linear-gradient(135deg,rgba(15,23,42,.88),rgba(30,41,59,.72));box-shadow:0 18px 40px rgba(2,6,23,.22)}
+.v127-ops-kicker{display:inline-flex;margin-bottom:8px;padding:5px 9px;border-radius:999px;background:rgba(125,211,252,.10);border:1px solid rgba(125,211,252,.24);color:#bae6fd;font-size:11px;font-weight:900;letter-spacing:.08em}
+.v127-ops-mobile-panel h2{margin:0;color:#fff;font-size:clamp(20px,2.4vw,30px);letter-spacing:-.045em}
+.v127-ops-mobile-panel p{margin:8px 0 0;color:rgba(226,236,248,.8);line-height:1.6}
+.v127-ops-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:14px}
+.v127-ops-grid span{display:flex;align-items:center;justify-content:center;min-height:38px;border-radius:14px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.08);color:#e2e8f0;font-size:12px;font-weight:800}
+@media(max-width:760px){.v127-ops-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}

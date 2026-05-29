@@ -1,0 +1,8 @@
+/* V101_REMOVED_ROUTE_LOCK_BUILD_HYGIENE */
+:root{--v101-route-lock:1}
+.v96-5-conversion-rail,.v74-1-bridge[data-v101-remove="true"]{display:none!important}
+a[data-v101-route-repaired="true"]{text-decoration:inherit}
+.guaranteed-page[data-v101-guaranteed-clean="true"] .v96-5-conversion-rail{display:none!important}
+.guaranteed-page[data-v101-guaranteed-clean="true"] .v74-1-grid{margin-top:clamp(14px,3vw,24px)!important}
+body.v96-5-guaranteed-conversion .v74-1-vendor-card[data-v965-card="true"]::before,
+body.v96-5-guaranteed-conversion .v74-1-vendor-card[data-v965-card="true"]::after{content:none!important;display:none!important}

@@ -1,0 +1,79 @@
+/* V110 SITEWIDE VISUAL QA / FINAL POLISH PATCH
+   목적: V96~V109 누적 변경 이후 핵심 페이지의 대비/터치/모바일 폭/카드 톤을 최종 보정한다.
+   라우팅, 기능, 보증업체 6개 구조, 도구 12개 구조는 변경하지 않는다. */
+:root{
+  --v110-bg:#06090f;
+  --v110-panel:rgba(13,18,30,.92);
+  --v110-panel-strong:rgba(17,24,39,.96);
+  --v110-line:rgba(255,255,255,.15);
+  --v110-text:#f8fafc;
+  --v110-text-soft:#e5edf8;
+  --v110-muted:#b8c4d8;
+  --v110-muted-strong:#c9d4e5;
+  --v110-accent:#f6c96b;
+  --v110-copper:#ff8a2a;
+  --v110-safe-bottom:env(safe-area-inset-bottom,0px);
+}
+html[data-v110-sitewide-visual-qa="active"],
+html[data-v110-sitewide-visual-qa="active"] body{width:100%;max-width:100%;overflow-x:hidden;background:var(--v110-bg);color:var(--v110-text);}
+body[data-v110-sitewide-visual-qa="true"] :where(main,section,article,aside,header,footer,nav,.v71-shell,.v72-blog-main,.v73-shell,.v74-shell,.v74-1-main,.v75-shell,.v79-shell,.rust-shell,.page-shell,.site-main){min-width:0;max-width:100%;box-sizing:border-box;}
+body[data-v110-sitewide-visual-qa="true"] :where(img,svg,video,canvas){max-width:100%;height:auto;}
+body[data-v110-sitewide-visual-qa="true"] :where(h1,h2,h3,h4,strong,b){color:var(--v110-text)!important;letter-spacing:-.025em;}
+body[data-v110-sitewide-visual-qa="true"] :where(p,li,span,small,dd,dt,td,th){text-wrap:pretty;}
+body[data-v110-sitewide-visual-qa="true"] :where(p,li,.muted,.v71-section-head p,.v72-blog-card p,.v73-tool-card p,.v74-1-info-grid small,.v96-2-muted,.v109-muted){color:var(--v110-muted)!important;}
+body[data-v110-sitewide-visual-qa="true"] :where(a,button,[role="button"],input,select,textarea){touch-action:manipulation;-webkit-tap-highlight-color:rgba(246,201,107,.20);}
+body[data-v110-sitewide-visual-qa="true"] :where(a,button,[role="button"]):focus-visible{outline:2px solid rgba(246,201,107,.74);outline-offset:3px;border-radius:14px;}
+
+/* 공통 카드/패널 대비 보강 */
+body[data-v110-sitewide-visual-qa="true"] :where(.v71-glass,.v71-blog-card,.v71-tool-card,.v72-blog-card,.v73-tool-card,.v74-1-vendor-card,.v96-2-card,.v96-2-panel,.v109-card,.v109-panel,.v103-extra-tool,.v103-modal,.v108-result-panel){
+  border-color:var(--v110-line)!important;
+  background:linear-gradient(180deg,rgba(17,24,39,.94),rgba(7,11,19,.96))!important;
+  box-shadow:0 18px 50px rgba(0,0,0,.32),inset 0 1px 0 rgba(255,255,255,.06)!important;
+}
+body[data-v110-sitewide-visual-qa="true"] :where(.v71-blog-card strong,.v72-blog-card strong,.v73-tool-card strong,.v74-1-name-row h2,.v96-2-card h2,.v109-card h2){color:#ffffff!important;}
+body[data-v110-sitewide-visual-qa="true"] :where(.v71-blog-card span,.v72-blog-card p,.v73-tool-card p,.v74-1-info-grid b,.v74-1-info-grid code,.v96-2-card li,.v109-card li){color:var(--v110-text-soft)!important;}
+body[data-v110-sitewide-visual-qa="true"] :where(code,kbd,.v74-1-info-grid code){background:rgba(255,255,255,.09)!important;color:#fff7dc!important;border:1px solid rgba(246,201,107,.22)!important;}
+
+/* 메인: 프리미엄 보증업체와 자동순환 허브 보존 + 가독성 */
+body[data-v110-sitewide-visual-qa="true"] .v71-desktop-partner-panel .v71-section-head p{color:var(--v110-muted-strong)!important;}
+body[data-v110-sitewide-visual-qa="true"] .v71-partner-card img{object-fit:contain!important;object-position:center!important;}
+body[data-v110-sitewide-visual-qa="true"] .v81-1-hub-card{min-width:0!important;background:rgba(255,255,255,.045)!important;border:1px solid rgba(255,255,255,.10)!important;color:var(--v110-text)!important;}
+body[data-v110-sitewide-visual-qa="true"] .v81-1-hub-card span{color:var(--v110-muted)!important;}
+
+/* 블로그: V104 촘촘한 목록 유지, 저대비 텍스트만 개선 */
+body[data-v110-sitewide-visual-qa="true"] .v104-density-toggle button{min-height:36px;color:var(--v110-text)!important;border-color:rgba(255,255,255,.16)!important;}
+body[data-v110-sitewide-visual-qa="true"] .v104-density-toggle button[aria-pressed="true"]{background:linear-gradient(135deg,var(--v110-accent),var(--v110-copper))!important;color:#120d06!important;}
+body[data-v110-sitewide-visual-qa="true"] .v72-blog-card{overflow:hidden!important;}
+body[data-v110-sitewide-visual-qa="true"] .v72-blog-card p{line-height:1.45!important;}
+
+/* 도구: V103/V108 도구 결과 UX 유지 + NEW 리본 재등장 차단 */
+body[data-v110-sitewide-visual-qa="true"] .v103-unified-tool-card::before,
+body[data-v110-sitewide-visual-qa="true"] .v103-unified-tool-card::after,
+body[data-v110-sitewide-visual-qa="true"] .v73-tool-card[data-v103-open]::before,
+body[data-v110-sitewide-visual-qa="true"] .v73-tool-card[data-v103-open]::after{content:none!important;display:none!important;visibility:hidden!important;}
+body[data-v110-sitewide-visual-qa="true"] .v108-result-panel{max-height:min(62vh,560px);overflow:auto;}
+body[data-v110-sitewide-visual-qa="true"] .v108-result-panel :where(p,li,span){color:var(--v110-text-soft)!important;}
+
+/* 보증업체 허브와 상세: V107/V109 문구/대비 보존 */
+body[data-v110-sitewide-visual-qa="true"] .v74-1-image-link img,
+body[data-v110-sitewide-visual-qa="true"] .v109-hero img,
+body[data-v110-sitewide-visual-qa="true"] .v96-2-hero img{object-fit:contain!important;object-position:center!important;}
+body[data-v110-sitewide-visual-qa="true"] .v74-1-btn,
+body[data-v110-sitewide-visual-qa="true"] .v96-2-btn,
+body[data-v110-sitewide-visual-qa="true"] .v109-btn{min-height:44px;display:inline-flex;align-items:center;justify-content:center;font-weight:900;}
+body[data-v110-sitewide-visual-qa="true"] .v74-1-btn--go,
+body[data-v110-sitewide-visual-qa="true"] .v96-2-btn--primary,
+body[data-v110-sitewide-visual-qa="true"] .v109-btn--primary{background:linear-gradient(135deg,var(--v110-accent),#fff0b8 54%,var(--v110-copper))!important;color:#120d06!important;}
+
+/* 모바일 크롬/사파리 safe-area 최종 보정 */
+body[data-v110-sitewide-visual-qa="true"] .rust-bottom-nav,
+body[data-v110-sitewide-visual-qa="true"] .v71-mobile-nav{left:max(12px,env(safe-area-inset-left,0px))!important;right:max(12px,env(safe-area-inset-right,0px))!important;bottom:calc(12px + var(--v110-safe-bottom))!important;width:auto!important;max-width:none!important;min-width:0!important;}
+body[data-v110-sitewide-visual-qa="true"] :where(.rust-fab,.v71-fab,.v74-fab,.floating-action){right:max(16px,env(safe-area-inset-right,0px))!important;bottom:calc(98px + var(--v110-safe-bottom))!important;}
+@media(max-width:720px){
+  body[data-v110-sitewide-visual-qa="true"]{padding-bottom:calc(92px + var(--v110-safe-bottom));}
+  body[data-v110-sitewide-visual-qa="true"] :where(.v71-shell,.v72-blog-main,.v73-shell,.v74-shell,.v75-shell,.v79-shell){width:min(100% - 24px,1120px)!important;margin-inline:auto;}
+  body[data-v110-sitewide-visual-qa="true"] :where(.v74-1-btn,.v96-2-btn,.v109-btn,.v73-tool-card button,.v108-copy-button){min-height:46px;}
+}
+@media(max-width:370px){
+  body[data-v110-sitewide-visual-qa="true"] :where(.v72-blog-grid,.v73-tools-grid,.v74-shell.v74-1-grid){grid-template-columns:1fr!important;}
+}

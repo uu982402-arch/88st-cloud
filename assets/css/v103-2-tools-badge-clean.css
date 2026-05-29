@@ -1,0 +1,9 @@
+/* V103.2 TOOLS BADGE CLEAN PATCH
+   /tools/ 신규 도구 카드 위 NEW 배지성 pseudo 요소 제거. 기존 V73 카드 톤과 메타 라인은 유지한다. */
+html[data-v103-2-tools-badge-clean="active"],html[data-v103-2-tools-badge-clean="active"] body{width:100%;max-width:100%;overflow-x:hidden}
+body[data-v103-2-tools-badge-clean="true"] .v103-unified-tool-card::before,
+body[data-v103-2-tools-badge-clean="true"] .v103-unified-tool-card::after{content:none!important;display:none!important;width:0!important;height:0!important;padding:0!important;margin:0!important;box-shadow:none!important;background:none!important;border:0!important}
+body[data-v103-2-tools-badge-clean="true"] .v103-unified-tool-card{position:relative!important;overflow:hidden!important}
+body[data-v103-2-tools-badge-clean="true"] .v103-unified-tool-card .v73-tool-meta{margin-top:auto!important}
+body[data-v103-2-tools-badge-clean="true"] .v103-unified-tool-card .v73-tool-rank{background:rgba(255,255,255,.055)!important;border:1px solid rgba(255,255,255,.10)!important;color:#cbd5e1!important}
+@media(max-width:720px){body[data-v103-2-tools-badge-clean="true"] .v103-unified-tool-card::after{content:none!important;display:none!important}}

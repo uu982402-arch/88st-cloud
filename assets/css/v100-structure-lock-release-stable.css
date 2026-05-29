@@ -1,0 +1,14 @@
+/* V100 STRUCTURE LOCK / RELEASE STABLE PATCH */
+:root{--rust-v100-release:"V100-STRUCTURE-LOCK-RELEASE-STABLE-20260526";--rust-safe-bottom:env(safe-area-inset-bottom,0px)}
+html,body{width:100%;max-width:100%;overflow-x:clip;overscroll-behavior-x:none}
+@supports not (overflow:clip){html,body{overflow-x:hidden}}
+body{min-height:100dvh;touch-action:manipulation}
+main,.site-main,.main-shell,.page-shell,.content-wrap,.home-wrap,.rust-shell,.rust-page,.v72-blog-direct,.v73-tools-shell,.v74-guaranteed-shell,.v96-2-vendor-shell{width:100%;max-width:100%;min-width:0;box-sizing:border-box}
+img,svg,video,canvas,iframe{max-width:100%;height:auto}
+[data-rust-nav="bottom"],.mobile-bottom-nav,.bottom-nav,.rust-mobile-nav{left:max(12px,env(safe-area-inset-left,0px));right:max(12px,env(safe-area-inset-right,0px));bottom:calc(12px + env(safe-area-inset-bottom,0px));width:auto;max-width:none;box-sizing:border-box}
+.floating-action,.floating-cta,.rust-floating,.consult-floating{bottom:calc(96px + env(safe-area-inset-bottom,0px));right:max(16px,env(safe-area-inset-right,0px))}
+.vendor-strip,.guaranteed-slider,.v74-card-grid,.v96-5-vendor-strip{max-width:100%;min-width:0;overscroll-behavior-inline:contain}
+.v74-card,.guaranteed-card,.vendor-card,[data-vendor]{min-width:0;box-sizing:border-box}
+.v72-blog-grid,.blog-grid,.home-blog-grid{width:100%;max-width:100%;min-width:0;grid-template-columns:repeat(2,minmax(0,1fr))}
+@media(max-width:360px){.v72-blog-grid,.blog-grid,.home-blog-grid{grid-template-columns:1fr}}
+[data-v100-overflow-guard="true"]{overflow-x:hidden!important}

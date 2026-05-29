@@ -1,0 +1,19 @@
+/* V103.1 TOOLS SECTION UNIFY PATCH
+   신규 V103 도구 4개를 기존 V73 도구 카드 그리드 안으로 통합한다. */
+html[data-v103-1-tools-unified="active"],html[data-v103-1-tools-unified="active"] body{width:100%;max-width:100%;overflow-x:hidden}
+body[data-v103-1-tools-unified="true"] .v103-tool-wrap{display:contents!important;margin:0!important;padding:0!important;border:0!important;background:transparent!important;box-shadow:none!important}
+body[data-v103-1-tools-unified="true"] .v103-tool-head{display:none!important}
+body[data-v103-1-tools-unified="true"] .v103-tool-grid{display:contents!important}
+body[data-v103-1-tools-unified="true"] .v103-unified-tool-card{position:relative}
+body[data-v103-1-tools-unified="true"] .v103-unified-tool-card::after{content:none!important;display:none!important}
+body[data-v103-1-tools-unified="true"] .v103-unified-tool-card .v73-tool-open{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.10)}
+body[data-v103-1-tools-unified="true"] .v103-modal{align-items:center;background:rgba(2,6,12,.76);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+body[data-v103-1-tools-unified="true"] .v103-modal__panel{border-radius:24px;border:1px solid rgba(255,255,255,.12);background:linear-gradient(180deg,rgba(15,23,42,.96),rgba(8,12,21,.98));box-shadow:0 30px 100px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.08)}
+body[data-v103-1-tools-unified="true"] .v103-modal__head{padding:18px;border-bottom:1px solid rgba(255,255,255,.08);background:rgba(15,23,42,.86);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+body[data-v103-1-tools-unified="true"] .v103-modal__head small{color:var(--v73-emerald,#10b981);font-weight:950}
+body[data-v103-1-tools-unified="true"] .v103-modal__head h2{font-size:23px;letter-spacing:-.05em}
+body[data-v103-1-tools-unified="true"] .v103-close{width:44px;height:44px;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);color:var(--v73-text,#f8fafc)}
+body[data-v103-1-tools-unified="true"] .v103-field{border-radius:12px;border:1px solid rgba(255,255,255,.09);background:rgba(255,255,255,.045);padding:12px}
+body[data-v103-1-tools-unified="true"] .v103-result{border-radius:16px;border:1px solid rgba(16,185,129,.25);background:radial-gradient(circle at 12% 0,rgba(16,185,129,.13),transparent 34%),rgba(16,185,129,.055);box-shadow:0 18px 54px rgba(16,185,129,.08)}
+body[data-v103-1-tools-unified="true"] .v103-actions .is-primary{background:linear-gradient(135deg,var(--v73-emerald,#10b981),var(--v73-cyan,#22d3ee));color:#061017}
+@media(max-width:720px){body[data-v103-1-tools-unified="true"] .v103-unified-tool-card::after{content:none!important;display:none!important}body[data-v103-1-tools-unified="true"] .v103-modal{padding:10px;align-items:flex-end}body[data-v103-1-tools-unified="true"] .v103-modal__panel{max-height:90vh;border-radius:22px 22px 18px 18px}body[data-v103-1-tools-unified="true"] .v103-actions{position:sticky;bottom:0;background:rgba(8,12,21,.88);backdrop-filter:blur(16px);padding:10px 0 2px}}

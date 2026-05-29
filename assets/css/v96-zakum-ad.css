@@ -1,0 +1,16 @@
+/* V96 Zakum ad extension. Structure-preserving overrides only. */
+:root{--v96-zakum-gold:#f6c96b;--v96-zakum-copper:#ff7a1a;--v96-zakum-line:rgba(246,201,107,.18)}
+.v96-zakum-ad-active .v74-1-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;align-items:stretch}
+.v96-zakum-ad-active .v74-1-vendor-card[data-vendor="zakum"]{--vendor-accent:#f6c96b}
+.v96-zakum-ad-active .v74-1-vendor-card[data-vendor="zakum"] .v74-1-image-link{background:rgba(255,255,255,.92)}
+.v96-zakum-ad-active .v71-partner-card img[data-v92-card-image="zakum"],
+.v96-zakum-ad-active .v74-1-image-link img[data-v92-card-image="zakum"],
+.v96-zakum-ad-active img[data-v92-detail-image="zakum"]{background:#fff;object-fit:contain;padding:0}
+.v96-zakum-ad-active .v71-partner-tile-grid .v71-partner-card:first-child{grid-column:auto;min-height:118px}
+.v96-zakum-ad-active .v71-partner-tile-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.v96-zakum-detail .v54-hero-card{border-color:rgba(246,201,107,.24);box-shadow:0 30px 90px rgba(0,0,0,.46),0 0 80px rgba(246,201,107,.08)}
+.v96-zakum-detail .v54-visual-card{background:rgba(255,255,255,.92)}
+.v96-zakum-detail .v54-visual-card img{object-fit:contain;background:#fff}
+.v96-zakum-detail .v54-eyebrow{color:#ffe6a5}
+@media(max-width:860px){.v96-zakum-ad-active .v74-1-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}}
+@media(max-width:720px){.v96-zakum-ad-active .v74-1-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.v96-zakum-ad-active .v74-1-actions{grid-template-columns:1fr}.v96-zakum-ad-active .v74-1-image-link img[data-v92-card-image="zakum"]{padding:0}}

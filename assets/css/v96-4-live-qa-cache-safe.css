@@ -1,0 +1,115 @@
+/* V96.4 LIVE QA / CACHE SAFE PATCH
+ * 목적: V96.3 모바일 안정화 이후, 라이브/캐시/브라우저별 잔여 충돌을 잠근다.
+ * 원칙: 기존 라우팅·기능·카드 구조를 유지하고 삭제 없이 추가 보강만 수행한다.
+ */
+:root{
+  --v96-4-build:'V96.4-LIVE-QA-CACHE-SAFE-20260526';
+  --v96-4-page-max:100%;
+  --v96-4-safe-bottom:env(safe-area-inset-bottom,0px);
+  --v96-4-nav-bottom:calc(12px + var(--v96-4-safe-bottom));
+  --v96-4-fab-bottom:calc(98px + var(--v96-4-safe-bottom));
+}
+html.v96-4-cache-safe,
+html.v96-4-cache-safe body{
+  width:100%;
+  max-width:100%;
+  overflow-x:hidden!important;
+}
+body.v96-4-live-qa-cache-safe{
+  min-width:0!important;
+  overflow-x:hidden!important;
+  background:#06090f;
+  touch-action:manipulation;
+}
+body.v96-4-live-qa-cache-safe *,
+body.v96-4-live-qa-cache-safe *::before,
+body.v96-4-live-qa-cache-safe *::after{box-sizing:border-box}
+body.v96-4-live-qa-cache-safe img{max-width:100%;height:auto}
+
+/* 캐시 혼재로 구 CSS가 먼저 먹어도 최종 폭은 V96.4가 이긴다. */
+body.v96-4-live-qa-cache-safe :where(.v71-page,.v71-main,.v71-shell,.v72-shell,.v73-shell,.v74-shell,.v74-1-grid,.v75-shell,.v79-shell,.v80-shell,.v96-2-shell,.rust-header-inner,.rust-mobile-menu,main,section,article,header,footer){
+  max-width:100%!important;
+  min-width:0!important;
+}
+body.v96-4-live-qa-cache-safe :where(.v71-page,.v74-page,.v96-2-detail,main){
+  overflow-x:hidden;
+}
+@supports (overflow:clip){body.v96-4-live-qa-cache-safe :where(.v71-page,.v74-page,.v96-2-detail,main){overflow-x:clip}}
+
+/* Android Chrome / Samsung Internet 주소창 리사이즈 후 오른쪽 빈 면 방지 */
+html.v96-4-chrome-web body.v96-4-live-qa-cache-safe{contain:none}
+html.v96-4-chrome-web body.v96-4-live-qa-cache-safe :where([style*="100vw"]){max-width:100%!important}
+
+/* 광고/보증업체 슬라이더만 가로 이동 허용 */
+body.v96-4-live-qa-cache-safe :where(.v71-partner-carousel,.guaranteed-slider,.vendor-strip){
+  width:100%!important;
+  max-width:100%!important;
+  min-width:0!important;
+  overflow-x:auto!important;
+  overflow-y:hidden!important;
+  overscroll-behavior-x:contain;
+  -webkit-overflow-scrolling:touch;
+  scroll-snap-type:x proximity;
+}
+body.v96-4-live-qa-cache-safe :where(.v71-partner-card,.v74-1-vendor-card,.vendor-card,.guaranteed-card){
+  min-width:0!important;
+  max-width:100%!important;
+  scroll-snap-align:start;
+}
+body.v96-4-live-qa-cache-safe :where(.v71-partner-card img,.v74-1-image-link img,.v54-visual-card img,.v96-2-art img,.vendor-card img,.guaranteed-card img,.vendor-hero img){
+  object-fit:contain!important;
+  object-position:center!important;
+  transform:none!important;
+}
+
+/* 블로그/도구/허브 카드 폭 재계산 잠금 */
+body.v96-4-live-qa-cache-safe :where(.v71-blog-grid,.v72-blog-grid,.v73-tool-grid,.v74-vendor-grid,.v96-2-benefits,.v96-2-info-grid,.home-blog-grid,.blog-grid,.v79-grid){
+  width:100%!important;
+  max-width:100%!important;
+  min-width:0!important;
+}
+body.v96-4-live-qa-cache-safe :where(.v71-blog-card,.v72-blog-card,.v73-tool-card,.v74-vendor-card,.v74-1-vendor-card,.v96-2-info-card,.v79-card,.blog-card){
+  min-width:0!important;
+  max-width:100%!important;
+  overflow-wrap:anywhere;
+}
+body.v96-4-live-qa-cache-safe :where(table,pre,code){max-width:100%}
+body.v96-4-live-qa-cache-safe :where(pre,.table-wrap,.v96-2-table-wrap){overflow-x:auto;-webkit-overflow-scrolling:touch}
+
+/* 하단바/FAB는 뷰포트 기준 고정. content wrapper 폭에 끌려가지 않게 한다. */
+@media (max-width:760px){
+  body.v96-4-live-qa-cache-safe{padding-bottom:calc(106px + env(safe-area-inset-bottom,0px))!important}
+  body.v96-4-live-qa-cache-safe :where(.rust-bottom-nav,.v71-mobile-nav,.v74-mobile-nav,.v79-mobile-nav,.mobile-bottom-nav){
+    position:fixed!important;
+    left:max(12px,env(safe-area-inset-left,0px))!important;
+    right:max(12px,env(safe-area-inset-right,0px))!important;
+    bottom:var(--v96-4-nav-bottom)!important;
+    width:auto!important;
+    max-width:none!important;
+    margin:0!important;
+    transform:none!important;
+    z-index:220!important;
+  }
+  body.v96-4-live-qa-cache-safe :where(.v71-fab,.v74-fab,.floating-action,.rust-floating-action){
+    position:fixed!important;
+    right:max(16px,env(safe-area-inset-right,0px))!important;
+    bottom:var(--v96-4-fab-bottom)!important;
+    z-index:221!important;
+  }
+  body.v96-4-live-qa-cache-safe :where(.v71-shell,.v72-shell,.v73-shell,.v74-shell,.v75-shell,.v79-shell,.v80-shell,.v96-2-shell,.rust-header-inner,.rust-mobile-menu){
+    width:calc(100% - 28px)!important;
+    max-width:100%!important;
+    margin-left:auto!important;
+    margin-right:auto!important;
+  }
+}
+@media (max-width:360px){
+  body.v96-4-live-qa-cache-safe :where(.v71-blog-grid,.home-blog-grid,.blog-grid,.v74-vendor-grid,.v74-shell.v74-1-grid){grid-template-columns:1fr!important}
+}
+
+/* JS가 실제 overflow 후보를 감지하면 해당 요소만 안전 잠금 */
+body.v96-4-live-qa-cache-safe [data-v964-overflow-guard="true"]{
+  max-width:100%!important;
+  min-width:0!important;
+  overflow-x:hidden!important;
+}

@@ -1,0 +1,55 @@
+/* V103.4 TOOLS RIBBON CLEAN + GUARANTEED CARD COMPACT PATCH
+   /tools/: 신규 도구 카드 위 리본/배지성 표시를 실화면 기준으로 제거한다.
+   /guaranteed/: 광고카드 3열 x 2줄 구조를 유지하면서 카드 전체 크기를 한 단계 축소한다. */
+:root{--v103-4-compact-shell:980px;--v103-4-gap:clamp(7px,1.25vw,11px)}
+html[data-v103-4-tools-guaranteed-fix="active"],html[data-v103-4-tools-guaranteed-fix="active"] body{width:100%;max-width:100%;overflow-x:hidden}
+
+/* tools: 상단 리본/배지성 표시 하드 제거 */
+.v73-tool-card[data-v103-open]{position:relative!important;overflow:hidden!important}
+.v73-tool-card[data-v103-open]::before{pointer-events:none!important}
+.v73-tool-card[data-v103-open] .v73-tool-card__body,
+.v73-tool-card[data-v103-open] .v73-tool-icon,
+.v73-tool-card[data-v103-open] .v73-tool-meta,
+.v73-tool-card[data-v103-open] .v73-tool-rank,
+.v73-tool-card[data-v103-open] .v73-tool-open{position:relative!important;z-index:2!important}
+.v73-tool-card[data-v103-open] .v73-tool-card__body::before,
+.v73-tool-card[data-v103-open] .v73-tool-card__body::after,
+.v73-tool-card[data-v103-open] .v73-tool-icon::before,
+.v73-tool-card[data-v103-open] .v73-tool-icon::after,
+.v73-tool-card[data-v103-open] .v73-tool-meta::before,
+.v73-tool-card[data-v103-open] .v73-tool-meta::after,
+.v73-tool-card[data-v103-open] .v73-tool-rank::before,
+.v73-tool-card[data-v103-open] .v73-tool-rank::after,
+.v73-tool-card[data-v103-open] :is(.new,.badge,.ribbon,.v103-badge,.v103-new,.v103-ribbon,.v73-badge,.v73-ribbon,[data-badge],[data-new]){
+  content:none!important;display:none!important;visibility:hidden!important;opacity:0!important;width:0!important;height:0!important;min-width:0!important;min-height:0!important;padding:0!important;margin:0!important;border:0!important;background:none!important;box-shadow:none!important;pointer-events:none!important
+}
+.v73-tool-card[data-v103-open] .v73-tool-rank{position:static!important;display:inline-flex!important;align-items:center!important;width:auto!important;height:auto!important;min-height:0!important;padding:0!important;margin:0!important;border:0!important;background:transparent!important;box-shadow:none!important;color:#b7f9e6!important;font-size:11px!important;font-weight:900!important;letter-spacing:0!important;transform:none!important}
+.v73-tool-card[data-v103-open] .v73-tool-icon{inset:auto!important;margin:0!important;transform:none!important}
+.v73-tool-card[data-v103-open] .v73-tool-meta{margin-top:auto!important;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:8px!important}
+
+/* guaranteed: 광고카드 크기 축소. 3열 x 2줄은 유지 */
+body[data-v103-4-guaranteed-card-compact="true"] .v74-1-main{padding-top:clamp(10px,1.8vw,16px)!important;overflow-x:hidden!important}
+body[data-v103-4-guaranteed-card-compact="true"] .v74-shell.v74-1-grid{
+  width:min(var(--v103-4-compact-shell),calc(100% - 40px))!important;
+  max-width:var(--v103-4-compact-shell)!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:var(--v103-4-gap)!important;
+  margin:clamp(10px,1.8vw,18px) auto!important;
+  padding:0!important;
+}
+body[data-v103-4-guaranteed-card-compact="true"] .v74-1-vendor-card{border-radius:clamp(12px,1.6vw,17px)!important;min-width:0!important;box-shadow:0 12px 34px rgba(0,0,0,.24),inset 0 1px 0 rgba(255,255,255,.06)!important}
+body[data-v103-4-guaranteed-card-compact="true"] .v74-1-image-link{aspect-ratio:16/8!important;min-height:0!important;max-height:136px!important;margin:0!important;border-radius:0!important;display:grid!important;place-items:center!important;background:linear-gradient(180deg,#fff,#edf2f7)!important;overflow:hidden!important}
+body[data-v103-4-guaranteed-card-compact="true"] .v74-1-image-link img{width:100%!important;height:100%!important;object-fit:contain!important;object-position:center!important;padding:clamp(3px,.65vw,7px)!important;transform:none!important;filter:none!important;background:transparent!important}
+body[data-v103-4-guaranteed-card-compact="true"] .v74-1-card-body{padding:clamp(7px,1vw,10px)!important}
+body[data-v103-4-guaranteed-card-compact="true"] .v74-1-name-row{gap:6px!important;margin-bottom:6px!important}
+body[data-v103-4-guaranteed-card-compact="true"] .v74-1-name-row h2{font-size:clamp(12.5px,1.05vw,15px)!important;line-height:1.12!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important}
+body[data-v103-4-guaranteed-card-compact="true"] .v74-1-name-row span{font-size:8.5px!important;min-height:20px!important;padding:0 6px!important}
+body[data-v103-4-guaranteed-card-compact="true"] .v74-1-info-grid{gap:5px!important;margin-bottom:6px!important}
+body[data-v103-4-guaranteed-card-compact="true"] .v74-1-info-grid div{padding:6px 7px!important;border-radius:10px!important;min-height:0!important}
+body[data-v103-4-guaranteed-card-compact="true"] .v74-1-info-grid small{font-size:8.5px!important}
+body[data-v103-4-guaranteed-card-compact="true"] .v74-1-info-grid b,
+body[data-v103-4-guaranteed-card-compact="true"] .v74-1-info-grid code{font-size:10.5px!important;line-height:1.15!important}
+body[data-v103-4-guaranteed-card-compact="true"] .v74-1-actions{gap:5px!important;grid-template-columns:1fr 1fr!important}
+body[data-v103-4-guaranteed-card-compact="true"] .v74-1-btn{min-height:36px!important;padding:0 7px!important;border-radius:10px!important;font-size:10.5px!important;line-height:1.1!important}
+@media(max-width:980px){body[data-v103-4-guaranteed-card-compact="true"] .v74-shell.v74-1-grid{width:calc(100% - 28px)!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important}body[data-v103-4-guaranteed-card-compact="true"] .v74-1-image-link{max-height:none!important;aspect-ratio:16/8.5!important}}
+@media(max-width:520px){body[data-v103-4-guaranteed-card-compact="true"] .v74-shell.v74-1-grid{width:calc(100% - 20px)!important;gap:7px!important}body[data-v103-4-guaranteed-card-compact="true"] .v74-1-card-body{padding:7px!important}body[data-v103-4-guaranteed-card-compact="true"] .v74-1-name-row{display:block!important;text-align:center!important}body[data-v103-4-guaranteed-card-compact="true"] .v74-1-name-row span{display:none!important}body[data-v103-4-guaranteed-card-compact="true"] .v74-1-info-grid{display:none!important}body[data-v103-4-guaranteed-card-compact="true"] .v74-1-actions{grid-template-columns:1fr!important}.v74-1-btn--detail{display:none!important}}

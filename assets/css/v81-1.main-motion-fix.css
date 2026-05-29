@@ -1,0 +1,283 @@
+/* V81-1 MAIN MOTION FIX: preserve V71/V78 main layout, rotate full blog/hub pools inside existing slots */
+:root {
+  --rust-orange: #ff7a1a;
+  --rust-copper: #d97706;
+  --rust-amber: #f59e0b;
+  --rust-bg: #06090f;
+  --rust-line: rgba(255, 122, 26, .26);
+}
+
+.v81-1-motion-marker {
+  display: contents;
+}
+
+.v81-1-rotator-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 28px;
+  padding: 0 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,122,26,.18);
+  background: rgba(255,122,26,.07);
+  color: rgba(255,237,213,.86);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: -.01em;
+  white-space: nowrap;
+}
+
+.v81-1-rotator-status::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--rust-orange);
+  box-shadow: 0 0 16px rgba(255,122,26,.86);
+}
+
+.v81-1-blog-rotator {
+  position: relative;
+}
+
+.v81-1-blog-rotator.is-paused,
+.v81-1-hub-lane.is-paused {
+  --v811-paused: 1;
+}
+
+.v81-1-blog-card {
+  position: relative;
+  overflow: hidden;
+  min-height: 154px;
+  isolation: isolate;
+  transition: transform .28s ease, border-color .28s ease, box-shadow .28s ease, background .28s ease, opacity .22s ease;
+}
+
+.v81-1-blog-card::before,
+.v81-1-hub-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(255,122,26,.72), rgba(245,158,11,.18), rgba(255,255,255,.07));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: .28;
+  transition: opacity .28s ease;
+  z-index: 0;
+}
+
+.v81-1-blog-card::after,
+.v81-1-hub-card::after {
+  content: "";
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  right: -56px;
+  top: -56px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(255,122,26,.22), transparent 66%);
+  pointer-events: none;
+  opacity: .66;
+  z-index: 0;
+}
+
+.v81-1-blog-card > *,
+.v81-1-hub-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.v81-1-blog-card:hover,
+.v81-1-blog-card:focus-visible,
+.v81-1-hub-card:hover,
+.v81-1-hub-card:focus-visible {
+  transform: translateY(-4px);
+  border-color: rgba(255,122,26,.52) !important;
+  box-shadow: 0 26px 80px rgba(255,122,26,.15), 0 18px 70px rgba(0,0,0,.34);
+}
+
+.v81-1-blog-card:hover::before,
+.v81-1-blog-card:focus-visible::before,
+.v81-1-hub-card:hover::before,
+.v81-1-hub-card:focus-visible::before {
+  opacity: .9;
+}
+
+.v81-1-card-fade {
+  animation: v81-1-card-swap .32s ease both;
+}
+
+@keyframes v81-1-card-swap {
+  from { opacity: .38; transform: translateY(5px) scale(.988); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.v81-1-hub-section {
+  position: relative;
+}
+
+.v81-1-hub-shell {
+  display: grid;
+  gap: 16px;
+}
+
+.v81-1-hub-lane-wrap {
+  position: relative;
+  overflow: hidden;
+  border-radius: 22px;
+}
+
+.v81-1-hub-lane-wrap::before,
+.v81-1-hub-lane-wrap::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 34px;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.v81-1-hub-lane-wrap::before {
+  left: 0;
+  background: linear-gradient(90deg, rgba(6,9,15,.98), transparent);
+}
+
+.v81-1-hub-lane-wrap::after {
+  right: 0;
+  background: linear-gradient(270deg, rgba(6,9,15,.98), transparent);
+}
+
+.v81-1-hub-lane-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 0 0 10px;
+}
+
+.v81-1-hub-lane-head strong {
+  color: rgba(255,247,237,.96);
+  font-size: 14px;
+  letter-spacing: -.03em;
+}
+
+.v81-1-hub-lane-head span {
+  color: rgba(255,237,213,.56);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.v81-1-hub-lane {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.v81-1-hub-card {
+  min-height: 132px;
+  padding: 15px;
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,.09);
+  background: linear-gradient(180deg, rgba(255,255,255,.082), rgba(255,255,255,.035));
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  box-shadow: 0 18px 52px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.07);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+  transition: transform .28s ease, border-color .28s ease, box-shadow .28s ease, opacity .22s ease;
+}
+
+.v81-1-hub-card em {
+  width: fit-content;
+  min-height: 24px;
+  padding: 0 8px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid rgba(255,122,26,.2);
+  background: rgba(255,122,26,.08);
+  color: rgba(255,199,148,.95);
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 950;
+  letter-spacing: .04em;
+}
+
+.v81-1-hub-card strong {
+  color: rgba(255,255,255,.96);
+  font-size: 14px;
+  line-height: 1.32;
+  letter-spacing: -.035em;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.v81-1-hub-card span {
+  color: rgba(226,232,240,.68);
+  font-size: 12px;
+  line-height: 1.55;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@media (max-width: 760px) {
+  .v81-1-rotator-status {
+    margin-top: 8px;
+  }
+
+  .v81-1-blog-card {
+    min-height: 132px;
+  }
+
+  .v81-1-hub-lane-wrap {
+    margin-left: -20px;
+    margin-right: -20px;
+    padding: 0 20px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .v81-1-hub-lane-wrap::-webkit-scrollbar {
+    display: none;
+  }
+
+  .v81-1-hub-lane {
+    display: flex;
+    width: max-content;
+    gap: 12px;
+    padding: 1px 0 4px;
+  }
+
+  .v81-1-hub-card {
+    width: 74vw;
+    max-width: 290px;
+    min-width: 236px;
+    scroll-snap-align: start;
+  }
+
+  .v81-1-hub-lane-wrap::before,
+  .v81-1-hub-lane-wrap::after {
+    width: 22px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .v81-1-card-fade,
+  .v81-1-blog-card,
+  .v81-1-hub-card {
+    animation: none !important;
+    transition: none !important;
+  }
+}

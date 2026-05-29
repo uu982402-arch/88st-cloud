@@ -1,0 +1,117 @@
+/* V102 LIVE UX POLISH / CTA FINAL PATCH
+ * 목적: V101 구조를 유지하면서 모바일 터치감, CTA, 첫 화면 균형, GA4 클릭 마커, 라이브 QA 체크리스트만 보강한다.
+ */
+:root{
+  --v102-accent:#ff7a1a;
+  --v102-gold:#f6c96b;
+  --v102-panel:rgba(10,15,24,.82);
+  --v102-line:rgba(255,255,255,.14);
+  --v102-text:#f8fafc;
+  --v102-muted:#a8b3c7;
+  --v102-safe-bottom:env(safe-area-inset-bottom,0px);
+  --v102-tap-size:48px;
+}
+html[data-v102-live-ux="active"],body[data-v102-live-ux="active"]{max-width:100%;overflow-x:clip;scroll-padding-bottom:calc(112px + var(--v102-safe-bottom));}
+body.v102-live-ux :where(a,button,[role="button"],input,select,textarea){-webkit-tap-highlight-color:rgba(255,122,26,.18);touch-action:manipulation;}
+body.v102-live-ux :where(a,button,[role="button"]):focus-visible{outline:2px solid rgba(246,201,107,.72);outline-offset:3px;border-radius:14px;}
+body.v102-live-ux :where(.v71-shell,.v72-blog-main,.v74-shell,.v74-1-main,.v75-shell,.v73-shell,.v79-shell,.rust-shell,.page-shell,.site-main,main,section){min-width:0;max-width:100%;}
+body.v102-live-ux img{max-width:100%;height:auto;}
+
+/* 보증업체 카드 터치 영역 / CTA 최종 보강 */
+body.v102-live-ux .v74-1-grid{gap:clamp(12px,2.2vw,18px);align-items:stretch;}
+body.v102-live-ux .v74-1-vendor-card{min-width:0;overflow:hidden;will-change:transform;border-color:rgba(255,255,255,.13)!important;}
+body.v102-live-ux .v74-1-vendor-card:active{transform:translateY(1px) scale(.998);}
+body.v102-live-ux .v74-1-image-link{display:grid;place-items:center;min-height:clamp(128px,32vw,190px);border-radius:inherit;overflow:hidden;}
+body.v102-live-ux .v74-1-image-link img{object-fit:contain!important;object-position:center;max-width:96%;max-height:96%;margin:auto;}
+body.v102-live-ux .v74-1-card-body{min-width:0;}
+body.v102-live-ux .v74-1-name-row{gap:8px;align-items:center;}
+body.v102-live-ux .v74-1-name-row h2{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+body.v102-live-ux .v74-1-info-grid{gap:8px;}
+body.v102-live-ux .v74-1-info-grid code{min-height:34px;padding:5px 10px;border-radius:12px;}
+body.v102-live-ux .v74-1-actions{display:grid!important;grid-template-columns:1fr 1.08fr!important;gap:9px!important;}
+body.v102-live-ux :where(.v74-1-btn,.v96-2-btn,.v71-more,.v71-telegram,.v73-tool-card,.v71-tool-card){min-height:var(--v102-tap-size);}
+body.v102-live-ux .v74-1-btn{display:inline-flex!important;align-items:center;justify-content:center;text-align:center;padding:0 12px;border-radius:16px;font-weight:950;line-height:1.15;}
+body.v102-live-ux .v74-1-btn--detail{border:1px solid rgba(255,255,255,.16)!important;background:rgba(255,255,255,.07)!important;color:#f8fafc!important;}
+body.v102-live-ux .v74-1-btn--go{border:0!important;background:linear-gradient(135deg,var(--vendor-accent,var(--v102-gold)),#fff0b7 55%,var(--v102-accent))!important;color:#120d06!important;box-shadow:0 16px 42px rgba(255,122,26,.20);}
+body.v102-live-ux .v74-toast,body.v102-live-ux .v96-5-toast{bottom:calc(112px + var(--v102-safe-bottom))!important;}
+
+/* 메인 첫 화면 균형: 보증업체/블로그/도구가 한쪽으로 과하게 늘어나지 않도록 정리 */
+body.v102-live-ux .v71-main{display:flex;flex-direction:column;gap:clamp(14px,2.4vw,24px);}
+body.v102-live-ux .v71-section{margin-block:0!important;}
+body.v102-live-ux .v71-section-head{gap:10px;align-items:flex-end;}
+body.v102-live-ux .v71-section-head h2{letter-spacing:-.035em;}
+body.v102-live-ux .v71-section-head p{margin-top:4px;max-width:56ch;color:var(--v102-muted);line-height:1.45;}
+body.v102-live-ux .v71-partner-carousel{width:100%;max-width:100%;min-width:0;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;padding-inline:max(14px,env(safe-area-inset-left,0px));}
+body.v102-live-ux .v71-partner-card{flex:0 0 clamp(184px,44vw,246px);scroll-snap-align:start;min-width:0;}
+body.v102-live-ux .v71-partner-card img{object-fit:contain!important;}
+body.v102-live-ux .v71-main-hub{gap:clamp(14px,2.2vw,22px);}
+body.v102-live-ux .v71-blog-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:10px;min-width:0;}
+body.v102-live-ux .v71-blog-card{min-width:0;min-height:128px;padding:14px!important;}
+body.v102-live-ux .v71-blog-card strong{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;line-height:1.35;}
+body.v102-live-ux .v71-blog-card span{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;line-height:1.45;color:#c6d3e6;}
+body.v102-live-ux .v71-tools-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,168px),1fr));gap:10px;}
+body.v102-live-ux .v71-tool-card{min-width:0;}
+body.v102-live-ux .v71-metrics{grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;}
+
+/* 블로그 허브 첫 화면 가독성 */
+body.v102-live-ux .v72-blog-control{position:relative;z-index:1;padding:10px 0 8px;}
+body.v102-live-ux .v72-blog-status{gap:7px;}
+body.v102-live-ux .v72-blog-search{min-height:46px;border-radius:16px;padding-inline:14px;}
+body.v102-live-ux .v99-blog-tier{white-space:nowrap;}
+body.v102-live-ux .v72-blog-grid{align-items:stretch;gap:12px;}
+body.v102-live-ux .v72-blog-card{min-width:0;border-color:rgba(255,255,255,.12);}
+body.v102-live-ux .v72-blog-card__top{gap:6px;flex-wrap:wrap;}
+body.v102-live-ux .v72-blog-card strong{letter-spacing:-.025em;}
+body.v102-live-ux .v72-blog-card p{color:#b8c4d7;}
+
+/* 모바일 하단바 / FAB 최종 미세 조정 */
+body.v102-live-ux .rust-bottom-nav,
+body.v102-live-ux .v71-mobile-nav{
+  left:max(12px,env(safe-area-inset-left,0px))!important;
+  right:max(12px,env(safe-area-inset-right,0px))!important;
+  bottom:calc(12px + env(safe-area-inset-bottom,0px))!important;
+  width:auto!important;
+  max-width:none!important;
+  min-width:0!important;
+  padding:7px!important;
+  border-radius:22px!important;
+  box-shadow:0 18px 60px rgba(0,0,0,.46),0 0 0 1px rgba(255,255,255,.10) inset;
+}
+body.v102-live-ux .rust-bottom-nav a,
+body.v102-live-ux .v71-mobile-nav a{min-width:0;min-height:48px;border-radius:16px;display:flex;align-items:center;justify-content:center;gap:4px;}
+body.v102-live-ux :where(.v71-fab,.v74-fab,.rust-fab,.floating-action){right:max(16px,env(safe-area-inset-right,0px))!important;bottom:calc(98px + env(safe-area-inset-bottom,0px))!important;z-index:240;}
+body.v102-live-ux .v96-5-detail-quickbar{bottom:calc(86px + env(safe-area-inset-bottom,0px))!important;}
+
+@media(max-width:860px){
+  :root{--v102-tap-size:50px;}
+  body.v102-live-ux{padding-bottom:calc(86px + env(safe-area-inset-bottom,0px));}
+  body.v102-live-ux .v71-section-head{align-items:flex-start;}
+  body.v102-live-ux .v71-section-head p{font-size:12.5px;}
+  body.v102-live-ux .v74-1-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important;padding-inline:max(12px,env(safe-area-inset-left,0px)) max(12px,env(safe-area-inset-right,0px));}
+  body.v102-live-ux .v74-1-image-link{min-height:clamp(106px,30vw,142px);}
+  body.v102-live-ux .v74-1-card-body{padding:10px!important;}
+  body.v102-live-ux .v74-1-info-grid{grid-template-columns:1fr!important;}
+  body.v102-live-ux .v74-1-actions{grid-template-columns:1fr!important;gap:7px!important;}
+  body.v102-live-ux .v74-1-btn{min-height:46px;font-size:12px;}
+  body.v102-live-ux .v71-blog-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+  body.v102-live-ux .v71-blog-card{min-height:132px;}
+  body.v102-live-ux .v71-metrics{grid-template-columns:repeat(2,minmax(0,1fr));}
+  body.v102-live-ux .v72-blog-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px;}
+  body.v102-live-ux .v72-blog-card{min-height:178px;padding:13px;}
+  body.v102-live-ux .v72-blog-card p{-webkit-line-clamp:3;font-size:12.4px;}
+  body.v102-live-ux .v72-blog-card strong{font-size:13.8px;}
+}
+@media(max-width:390px){
+  body.v102-live-ux .v74-1-grid{gap:8px!important;}
+  body.v102-live-ux .v74-1-card-body{padding:9px!important;}
+  body.v102-live-ux .v74-1-name-row h2{font-size:14px;}
+  body.v102-live-ux .v71-blog-grid{grid-template-columns:1fr;}
+  body.v102-live-ux .v72-blog-grid{grid-template-columns:1fr!important;}
+  body.v102-live-ux .v72-blog-card{min-height:auto;}
+  body.v102-live-ux .rust-bottom-nav a,body.v102-live-ux .v71-mobile-nav a{font-size:11px;}
+}
+@media(hover:hover){
+  body.v102-live-ux .v74-1-vendor-card:hover{transform:translateY(-1px);}
+  body.v102-live-ux .v74-1-btn:hover,body.v102-live-ux .v71-more:hover,body.v102-live-ux .v71-telegram:hover{filter:brightness(1.06);}
+}
+@media(prefers-reduced-motion:reduce){body.v102-live-ux *{transition-duration:.01ms!important;animation-duration:.01ms!important;}}

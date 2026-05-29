@@ -1,0 +1,38 @@
+:root {
+  --rust-v82-safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+@media (min-width: 769px) {
+  .v79-mobile-nav,
+  .v76-mobile-nav,
+  .v74-mobile-nav,
+  .v73-mobile-nav,
+  .v72-mobile-nav,
+  .v71-mobile-nav,
+  .v68-mobile-nav,
+  .mobile-nav,
+  [data-rust-mobile-nav="true"] {
+    display: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  .v79-mobile-nav,
+  .v76-mobile-nav,
+  .v74-mobile-nav,
+  .v73-mobile-nav,
+  .v72-mobile-nav,
+  .v71-mobile-nav,
+  .v68-mobile-nav,
+  .mobile-nav,
+  [data-rust-mobile-nav="true"] {
+    max-width: calc(100vw - 20px) !important;
+    left: 10px !important;
+    right: 10px !important;
+    bottom: calc(10px + var(--rust-v82-safe-bottom)) !important;
+  }
+}

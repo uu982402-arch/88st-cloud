@@ -1,0 +1,14 @@
+/* V118 GUARANTEED IMAGE / CTA A-B POLISH PATCH */
+:root{--v118-border:rgba(15,23,42,.12);--v118-text:#0f172a;--v118-muted:#475569;--v118-blue:#1e3a8a}
+[data-v118-guaranteed-polish="true"] .v74-1-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;align-items:stretch}
+[data-v118-guaranteed-polish="true"] .v74-1-vendor-card{min-width:0;overflow:hidden;border-color:rgba(255,255,255,.14)}
+[data-v118-guaranteed-polish="true"] .v74-1-image-link{display:flex;align-items:center;justify-content:center;aspect-ratio:16/9;padding:10px;background:linear-gradient(135deg,rgba(255,255,255,.08),rgba(255,255,255,.02));overflow:hidden}
+[data-v118-guaranteed-polish="true"] .v74-1-image-link img{width:100%;height:100%;object-fit:contain!important;object-position:center;border-radius:18px;display:block}
+[data-v118-guaranteed-polish="true"] .v74-1-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}.v118-consult-btn{grid-column:1/-1;text-align:center}.v118-cta-secondary{background:rgba(255,255,255,.08)!important;border:1px solid rgba(255,255,255,.16)!important;color:inherit!important}.v118-ab-note{display:none!important}
+[data-v118-guaranteed-polish="true"] .v71-desktop-partner-panel .v71-partner-card img,[data-v118-home-guaranteed="true"] .v71-partner-card img{width:100%;height:auto;object-fit:contain!important;object-position:center}
+[data-v118-home-guaranteed="true"] .v71-partner-tile-grid{gap:12px}
+[data-v118-guaranteed-polish="true"] .v96-2-art img{object-fit:contain!important;object-position:center;background:rgba(255,255,255,.04)}
+[data-v118-guaranteed-polish="true"] .v96-2-actions{display:flex;flex-wrap:wrap;gap:10px}.v96-2-actions .v118-detail-consult{border-color:rgba(246,201,107,.34)}
+[data-v118-guaranteed-polish="true"] .v96-5-detail-quickbar a[data-ga4-event="consult_click"]{font-weight:900}
+@media (max-width:1100px){[data-v118-guaranteed-polish="true"] .v74-1-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){[data-v118-guaranteed-polish="true"] .v74-1-grid{grid-template-columns:1fr;gap:14px}[data-v118-guaranteed-polish="true"] .v74-1-actions{grid-template-columns:1fr}[data-v118-guaranteed-polish="true"] .v74-1-image-link{padding:8px;border-radius:18px}.v96-2-actions .v118-detail-consult{width:100%}}
