@@ -1,0 +1,6 @@
+# V130 REMOVE CANDIDATES
+
+- 삭제 실행 없음. 이번 버전은 최종 잠금/검증 패키지입니다.
+- 기존 제거 확정 4개 경로(faq, consult-motives, consult-result, provider-updates)는 계속 재생성 금지입니다.
+- 대형 이미지/미참조 자산은 V128 asset manifest 기준으로만 후보 검토하고, V130에서는 삭제하지 않았습니다.
+- 하단 관련 링크/추천 카드 계열은 재생성 방지 대상이며, 새 섹션 추가 금지 원칙을 유지합니다.
