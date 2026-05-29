@@ -1,0 +1,16 @@
+V121 CLEAN LAYOUT LOCK / NO-BOTTOM-RELATED-SECTIONS
+
+삭제 파일: 0개
+
+이번 버전은 파일을 삭제하지 않고 HTML 내부의 하단 연결형 UI 블록만 제거했습니다.
+
+제거 대상 UI:
+- v36-growth-hubs / TOPIC HUB 하단 허브
+- v36-related-links / RELATED 관련 확인
+- v36-conversion-cta / 상담 전환
+- v70-2-related / 도구 결과 하단 연결
+- pro-related / 관련 링크
+- quick-resource-grid / 같이 보면 좋은 링크
+- consult-motive-section / 불안 제거 상담 루트
+
+앞으로 내부 연결은 하단 박스가 아니라 기존 허브 카드, 본문 내 짧은 텍스트 링크, sitemap/canonical/meta 구조로만 처리합니다.
