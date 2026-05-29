@@ -1,0 +1,4 @@
+# V132.1 cleanup notes
+Removed generated duplicate headers/nav from HTML.
+Unified /tools/ modal shell while preserving v73 and v103 tool handlers.
+No route or source asset deletion.

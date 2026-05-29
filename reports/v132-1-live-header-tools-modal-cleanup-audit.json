@@ -1,0 +1,18 @@
+{
+  "ok": true,
+  "version": "V132_1_LIVE_HEADER_TOOLS_MODAL_CLEANUP",
+  "htmlScanned": 639,
+  "htmlTouched": 1,
+  "patched": [
+    "v73/v74 duplicate header removed",
+    "v73/v74 mobile nav removed",
+    "v74 footer nav removed",
+    "tools v73/v103 modal unified",
+    "header sticky overlay fix",
+    "home vendor card slight scale-down"
+  ],
+  "generatedAt": "2026-05-29T18:25:58.090Z",
+  "touchedSample": [
+    "tools/index.html"
+  ]
+}
