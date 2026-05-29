@@ -1,0 +1,21 @@
+{
+  "ok": true,
+  "version": "V131_LIVE_VISUAL_QA_MAIN_GUARANTEED_DEPLOY_SAFE_POLISH",
+  "htmlScanned": 639,
+  "htmlTouched": 0,
+  "main": {
+    "duplicateLegacyTopbarRemoved": true,
+    "duplicateLegacyMobileNavRemoved": true,
+    "compactConsultDock": true
+  },
+  "guaranteed": {
+    "vendors": 6,
+    "forbiddenCopyLocked": true
+  },
+  "deploy": {
+    "build": "node scripts/build-v131-cloudflare-pages-safe.mjs",
+    "verify": "node scripts/verify-v131-live-visual-deploy-polish.mjs",
+    "scriptAudit": "verify checks package referenced .mjs existence"
+  },
+  "generatedAt": "2026-05-29T07:02:43.307Z"
+}
