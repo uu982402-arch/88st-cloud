@@ -1,0 +1,13 @@
+{
+  "ok": true,
+  "version": "V135_8_MOBILE_HOME_LAYOUT_FIX",
+  "htmlScanned": 648,
+  "htmlTouched": 2,
+  "mobileFixes": [
+    "home hub rotation mobile overflow lock",
+    "home tools mobile one-column lock",
+    "bottom nav safe-area spacing",
+    "PC layout untouched by media query"
+  ],
+  "generatedAt": "2026-05-30T07:11:37.206Z"
+}

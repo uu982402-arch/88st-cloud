@@ -1,0 +1,12 @@
+{
+  "ok": true,
+  "version": "V135_8_MOBILE_HOME_LAYOUT_FIX",
+  "checks": [
+    "mobile css linked",
+    "home rotation overflow lock",
+    "tools grid mobile lock",
+    "bottom nav safe-area lock",
+    "tool modal footer guard preserved"
+  ],
+  "generatedAt": "2026-05-30T07:11:37.567Z"
+}
