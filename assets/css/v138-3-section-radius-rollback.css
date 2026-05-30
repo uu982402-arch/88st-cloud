@@ -1,0 +1,138 @@
+/* V138-3 SECTION RADIUS ROLLBACK / TEXT VISIBILITY FINAL
+   Purpose: revert the oversized rounded section-shell treatment introduced by V138 while keeping V138 dark route fixes, header visibility hotfix, cert href hotfix, and existing routes.
+   No new sections. No FAQ/related/trust/conversion blocks. */
+html[data-v138-3-section-radius-rollback="active"]{
+  --v1383-text:#f8fafc;
+  --v1383-soft:#cbd5e1;
+  --v1383-muted:#94a3b8;
+  --v1383-line:rgba(255,255,255,.10);
+  --v1383-card:rgba(15,23,42,.62);
+  overflow-x:hidden;
+}
+
+/* Main page rollback: section shells must not become huge rounded panels. */
+html[data-v138-3-section-radius-rollback="active"] body.v71-main-home :where(.v71-section,.v71-main-hub,.v81-1-hub-section,.v131-consult-dock){
+  border-radius:0!important;
+  border:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  clip-path:none!important;
+  overflow:visible!important;
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+}
+html[data-v138-3-section-radius-rollback="active"] body.v71-main-home :where(.v71-section-head){
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  overflow:visible!important;
+}
+html[data-v138-3-section-radius-rollback="active"] body.v71-main-home :where(.v71-section + .v71-section,.v71-section + .v131-consult-dock){
+  margin-top:clamp(18px,3vw,34px)!important;
+}
+
+/* Restore card radii close to the pre-V138 layout. Cards remain dark/glass, but not over-rounded. */
+html[data-v138-3-section-radius-rollback="active"] body.v71-main-home :where(.v71-hero-card){
+  border-radius:var(--v71-radius-lg,22px)!important;
+  overflow:hidden!important;
+}
+html[data-v138-3-section-radius-rollback="active"] body.v71-main-home :where(.v71-blog-card,.v71-tool-card,.v71-metric){
+  border-radius:var(--v71-radius,12px)!important;
+  overflow:hidden!important;
+}
+html[data-v138-3-section-radius-rollback="active"] body.v71-main-home :where(.v71-partner-card,.v71-partner-tile){
+  border-radius:20px!important;
+  overflow:hidden!important;
+}
+html[data-v138-3-section-radius-rollback="active"] body.v71-main-home :where(.v81-1-hub-card){
+  border-radius:18px!important;
+  overflow:visible!important;
+}
+html[data-v138-3-section-radius-rollback="active"] body.v71-main-home :where(.v71-glass){
+  background:linear-gradient(180deg,rgba(255,255,255,.092),rgba(255,255,255,.034)),rgba(15,23,42,.68)!important;
+  border-color:rgba(255,255,255,.105)!important;
+  color:var(--v1383-text)!important;
+}
+
+/* The hub lane wrapper is the intended rounded mask; section shell should stay flat. */
+html[data-v138-3-section-radius-rollback="active"] body.v71-main-home :where(.v81-1-hub-lane-wrap){
+  border-radius:22px!important;
+  overflow:hidden!important;
+}
+
+/* Sports/search rollback: hub stack is a layout stack, not a giant rounded card. */
+html[data-v138-3-section-radius-rollback="active"] body.v79-rust-longform-body :where(.v79-hub-stack){
+  border-radius:0!important;
+  border:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  clip-path:none!important;
+  overflow:visible!important;
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+}
+html[data-v138-3-section-radius-rollback="active"] body.v79-rust-longform-body :where(.v79-article){
+  border-radius:var(--rust-radius,26px)!important;
+  clip-path:none!important;
+  overflow:hidden!important;
+}
+html[data-v138-3-section-radius-rollback="active"] body.v79-rust-longform-body :where(.v79-card,.v79-tool,.v79-summary-box,.v79-mini-banner,.v116-result-card,.v116-result-item,.v117-intent-chip,.v117-quality-card,.v117-quality-grid article){
+  border-radius:var(--rust-radius,24px)!important;
+  overflow:hidden!important;
+  color:var(--v1383-text)!important;
+}
+html[data-v138-3-section-radius-rollback="active"] body.v79-rust-longform-body :where(.v79-rail,.v79-main,.v79-shell){
+  max-width:100%!important;
+  overflow:visible!important;
+}
+html[data-v138-3-section-radius-rollback="active"] body.v79-rust-longform-body :where(.v79-row-title,.v71-section-head){
+  overflow:visible!important;
+}
+
+/* Header text safety carried forward from V138-2. */
+html[data-v138-3-section-radius-rollback="active"] :where(.rust-desktop-nav,.rust-mobile-menu,.v79-nav) > a,
+html[data-v138-3-section-radius-rollback="active"] :where(.rust-desktop-nav,.rust-mobile-menu,.v79-nav) > a[href="/consult/"],
+html[data-v138-3-section-radius-rollback="active"] :where(.rust-desktop-nav,.rust-mobile-menu,.v79-nav) > a[href="/guaranteed/"]{
+  display:inline-flex!important;
+  visibility:visible!important;
+  opacity:1!important;
+  font-size:14px!important;
+  line-height:1.15!important;
+  text-indent:0!important;
+  white-space:nowrap!important;
+  color:#f8fafc!important;
+  max-width:none!important;
+  overflow:visible!important;
+}
+html[data-v138-3-section-radius-rollback="active"] :where(.rust-desktop-nav,.rust-mobile-menu,.v79-nav) > a[href="/guaranteed/"]::after{content:""!important;display:none!important;}
+html[data-v138-3-section-radius-rollback="active"] :where(.rust-global-header,.v79-header,.rust-header-inner,.v79-header-inner){overflow:visible!important;}
+
+/* Contrast guard after rollback. */
+html[data-v138-3-section-radius-rollback="active"] body.v71-main-home :where(.v71-section h1,.v71-section h2,.v71-section h3,.v71-section strong,.v71-section b,.v71-card-title,.v71-partner-title,.v81-1-hub-card strong,.v131-consult-dock strong),
+html[data-v138-3-section-radius-rollback="active"] body.v79-rust-longform-body :where(.v79-card strong,.v79-tool b,.v79-content h2,.v79-article-title,.v116-result-head h2,.v116-result-item strong,.v117-quality-card h2,.v117-quality-grid strong,.v117-intent-chip b,summary){
+  color:var(--v1383-text)!important;
+  opacity:1!important;
+}
+html[data-v138-3-section-radius-rollback="active"] body.v71-main-home :where(.v71-section p,.v71-section span,.v71-section small,.v71-section li,.v71-card-copy,.v71-partner-meta,.v81-1-hub-card p,.v81-1-hub-card span,.v131-consult-dock p),
+html[data-v138-3-section-radius-rollback="active"] body.v79-rust-longform-body :where(.v79-card p,.v79-tool span,.v79-row-title small,.v79-article-lead,.v79-content p,.v116-result-item p,.v117-quality-card p,.v117-quality-grid span){
+  color:var(--v1383-soft)!important;
+  opacity:1!important;
+}
+
+/* Tables and long text stay mobile-safe. */
+html[data-v138-3-section-radius-rollback="active"] body.v79-rust-longform-body :where(.v91-depth-content table,.v79-content table){
+  max-width:100%!important;
+  overflow-x:auto!important;
+  -webkit-overflow-scrolling:touch!important;
+}
+
+@media(max-width:860px){
+  html[data-v138-3-section-radius-rollback="active"] :where(.rust-mobile-menu,.v79-nav) > a{font-size:13px!important;min-width:0!important;}
+  html[data-v138-3-section-radius-rollback="active"] body.v71-main-home :where(.v71-section,.v71-main-hub,.v81-1-hub-section,.v131-consult-dock){border-radius:0!important;}
+  html[data-v138-3-section-radius-rollback="active"] body.v79-rust-longform-body :where(.v79-hub-stack){border-radius:0!important;}
+}
+@media(max-width:640px){
+  html[data-v138-3-section-radius-rollback="active"] body.v71-main-home :where(.v71-blog-card,.v71-tool-card){border-radius:12px!important;}
+  html[data-v138-3-section-radius-rollback="active"] body.v71-main-home :where(.v81-1-hub-card){border-radius:18px!important;}
+  html[data-v138-3-section-radius-rollback="active"] body.v79-rust-longform-body :where(.v79-card,.v79-tool,.v79-article){border-radius:20px!important;}
+}
