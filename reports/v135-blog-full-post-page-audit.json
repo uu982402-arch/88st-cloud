@@ -1,0 +1,4182 @@
+{
+  "ok": true,
+  "version": "V135_BLOG_FULL_POST_PAGE_AUDIT_TOP_MIDDLE_BOTTOM_CLEANUP",
+  "blogHtml": 521,
+  "changedFiles": 10,
+  "totalRemovedBlocks": 0,
+  "totalTextReplacements": 0,
+  "brokenBlogHrefs": [],
+  "missingFromSitemap": [],
+  "audit": [
+    {
+      "file": "blog/2026-toto-site-recommendation-safe-checklist/index.html",
+      "route": "/blog/2026-toto-site-recommendation-safe-checklist/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/address-change-center/index.html",
+      "route": "/blog/address-change-center/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/address-change-risk-patterns/index.html",
+      "route": "/blog/address-change-risk-patterns/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/address-change-warning-signs/index.html",
+      "route": "/blog/address-change-warning-signs/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/affiliate/baccarat-affiliate-basic.html",
+      "route": "/blog/affiliate/baccarat-affiliate-basic.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/affiliate/basic-structure.html",
+      "route": "/blog/affiliate/basic-structure.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/affiliate/code-management.html",
+      "route": "/blog/affiliate/code-management.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/affiliate/index.html",
+      "route": "/blog/affiliate/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/affiliate/settlement-guide.html",
+      "route": "/blog/affiliate/settlement-guide.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/anybet-seoa-event-guide.html",
+      "route": "/blog/anybet-seoa-event-guide.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/asn-ip-cluster-check/index.html",
+      "route": "/blog/asn-ip-cluster-check/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/auto-copy-code-domain-match/index.html",
+      "route": "/blog/auto-copy-code-domain-match/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/bet365-virtual/basic-guide.html",
+      "route": "/blog/bet365-virtual/basic-guide.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/bet365-virtual/index.html",
+      "route": "/blog/bet365-virtual/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/bet365-virtual/result-cycle-check.html",
+      "route": "/blog/bet365-virtual/result-cycle-check.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/bet365-virtual/v47-bet365-virtual-basketball-cycle-odds.html",
+      "route": "/blog/bet365-virtual/v47-bet365-virtual-basketball-cycle-odds.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/bet365-virtual/v47-bet365-virtual-football-vs-real-football.html",
+      "route": "/blog/bet365-virtual/v47-bet365-virtual-football-vs-real-football.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/bet365-virtual/v47-bet365-virtual-game-result-seed.html",
+      "route": "/blog/bet365-virtual/v47-bet365-virtual-game-result-seed.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/bet365-virtual/v47-bet365-virtual-racing-probability-display.html",
+      "route": "/blog/bet365-virtual/v47-bet365-virtual-racing-probability-display.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/bet365-virtual/v47-bet365-virtual-round-id-check.html",
+      "route": "/blog/bet365-virtual/v47-bet365-virtual-round-id-check.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/bet365-virtual/v47-virtual-football-highlight-settlement.html",
+      "route": "/blog/bet365-virtual/v47-virtual-football-highlight-settlement.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/bet365-virtual/v47-virtual-game-bonus-abuse-clause.html",
+      "route": "/blog/bet365-virtual/v47-virtual-game-bonus-abuse-clause.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/bet365-virtual/v47-virtual-game-consecutive-round-bankroll.html",
+      "route": "/blog/bet365-virtual/v47-virtual-game-consecutive-round-bankroll.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/bet365-virtual/v47-virtual-game-dispute-record-standard.html",
+      "route": "/blog/bet365-virtual/v47-virtual-game-dispute-record-standard.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/bet365-virtual/v47-virtual-game-event-scope-check.html",
+      "route": "/blog/bet365-virtual/v47-virtual-game-event-scope-check.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/bet365-virtual/v47-virtual-game-low-odds-volatility.html",
+      "route": "/blog/bet365-virtual/v47-virtual-game-low-odds-volatility.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/bet365-virtual/v47-virtual-game-provider-identity-check.html",
+      "route": "/blog/bet365-virtual/v47-virtual-game-provider-identity-check.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/bet365-virtual/v47-virtual-game-rng-vs-sports-odds.html",
+      "route": "/blog/bet365-virtual/v47-virtual-game-rng-vs-sports-odds.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/bet365-virtual/v47-virtual-game-technical-checklist.html",
+      "route": "/blog/bet365-virtual/v47-virtual-game-technical-checklist.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/bet365-virtual/v47-virtual-game-turnover-disadvantage.html",
+      "route": "/blog/bet365-virtual/v47-virtual-game-turnover-disadvantage.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/bet365-virtual/v48-virtual-football-highlight-precomputed-result.html",
+      "route": "/blog/bet365-virtual/v48-virtual-football-highlight-precomputed-result.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/bet365-virtual/v48-virtual-game-round-id-history-audit.html",
+      "route": "/blog/bet365-virtual/v48-virtual-game-round-id-history-audit.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/bet365-virtual/v48-virtual-game-turnover-contribution-rate.html",
+      "route": "/blog/bet365-virtual/v48-virtual-game-turnover-contribution-rate.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/bet365-virtual/v48-virtual-horse-racing-round-odds-cycle.html",
+      "route": "/blog/bet365-virtual/v48-virtual-horse-racing-round-odds-cycle.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/bet365-virtual/virtual-basketball.html",
+      "route": "/blog/bet365-virtual/virtual-basketball.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/bet365-virtual/virtual-football.html",
+      "route": "/blog/bet365-virtual/virtual-football.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/bet365-virtual/virtual-game-vs-real-sports.html",
+      "route": "/blog/bet365-virtual/virtual-game-vs-real-sports.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/bet365-virtual/virtual-racing.html",
+      "route": "/blog/bet365-virtual/virtual-racing.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/bonus-real-receive-first-recharge-recurring/index.html",
+      "route": "/blog/bonus-real-receive-first-recharge-recurring/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/bonus-rolling-real-receive-check-2026/index.html",
+      "route": "/blog/bonus-rolling-real-receive-check-2026/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/bonus-withdraw-check-routine/index.html",
+      "route": "/blog/bonus-withdraw-check-routine/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/casino-ibple-real-receive-guide/index.html",
+      "route": "/blog/casino-ibple-real-receive-guide/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/casino-ibple-site-recommendation-real-receive/index.html",
+      "route": "/blog/casino-ibple-site-recommendation-real-receive/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/casino-ibple-vs-slot-event-condition/index.html",
+      "route": "/blog/casino-ibple-vs-slot-event-condition/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/casino-rolling-bonus-abuse-clause-check/index.html",
+      "route": "/blog/casino-rolling-bonus-abuse-clause-check/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/change-timeline-reading-guide/index.html",
+      "route": "/blog/change-timeline-reading-guide/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/chat-capture-key-points/index.html",
+      "route": "/blog/chat-capture-key-points/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/code-notice-center/index.html",
+      "route": "/blog/code-notice-center/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/code-push-warning-signs/index.html",
+      "route": "/blog/code-push-warning-signs/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/community-cross-check-order/index.html",
+      "route": "/blog/community-cross-check-order/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/community-review-filtering/index.html",
+      "route": "/blog/community-review-filtering/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/copied-review-patterns/index.html",
+      "route": "/blog/copied-review-patterns/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/customer-service-warning/index.html",
+      "route": "/blog/customer-service-warning/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/deposit-proof-capture-guide/index.html",
+      "route": "/blog/deposit-proof-capture-guide/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/domain-age-isnt-enough/index.html",
+      "route": "/blog/domain-age-isnt-enough/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/domain-change-official-channel-checklist/index.html",
+      "route": "/blog/domain-change-official-channel-checklist/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/domain-check-first-items/index.html",
+      "route": "/blog/domain-check-first-items/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/domain-ip-check-basics/index.html",
+      "route": "/blog/domain-ip-check-basics/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/domain-ip-first-check-order/index.html",
+      "route": "/blog/domain-ip-first-check-order/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/domain-search-combo-keywords/index.html",
+      "route": "/blog/domain-search-combo-keywords/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/ev-calculation-bonus-comparison/index.html",
+      "route": "/blog/ev-calculation-bonus-comparison/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/ev-calculation-example-for-event-bonus/index.html",
+      "route": "/blog/ev-calculation-example-for-event-bonus/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/evidence-checklist-before-report/index.html",
+      "route": "/blog/evidence-checklist-before-report/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/first-deposit-check-route/index.html",
+      "route": "/blog/first-deposit-check-route/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/first-recharge-real-receive-calculation/index.html",
+      "route": "/blog/first-recharge-real-receive-calculation/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/ga4-gsc-content-feedback-loop-rust/index.html",
+      "route": "/blog/ga4-gsc-content-feedback-loop-rust/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/game-guides/bonus-ev-turnover-limit.html",
+      "route": "/blog/game-guides/bonus-ev-turnover-limit.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/game-guides/cloudflare-proxy-public-signal-check.html",
+      "route": "/blog/game-guides/cloudflare-proxy-public-signal-check.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/game-guides/customer-center-question-template.html",
+      "route": "/blog/game-guides/customer-center-question-template.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/game-guides/dns-certificate-timeline-analysis.html",
+      "route": "/blog/game-guides/dns-certificate-timeline-analysis.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/game-guides/game-event-condition-first.html",
+      "route": "/blog/game-guides/game-event-condition-first.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/game-guides/index.html",
+      "route": "/blog/game-guides/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/game-guides/mobile-game-before-start.html",
+      "route": "/blog/game-guides/mobile-game-before-start.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/game-guides/official-address-before-game.html",
+      "route": "/blog/game-guides/official-address-before-game.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/game-guides/phishing-url-script-tampering.html",
+      "route": "/blog/game-guides/phishing-url-script-tampering.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/game-guides/provider-logo-api-consistency.html",
+      "route": "/blog/game-guides/provider-logo-api-consistency.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/game-guides/responsible-play-checklist.html",
+      "route": "/blog/game-guides/responsible-play-checklist.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/game-guides/rtp-volatility-simple-meaning.html",
+      "route": "/blog/game-guides/rtp-volatility-simple-meaning.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/game-guides/security-recording-evidence-protocol.html",
+      "route": "/blog/game-guides/security-recording-evidence-protocol.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/game-guides/terms-rolling-toxic-clause.html",
+      "route": "/blog/game-guides/terms-rolling-toxic-clause.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/game-guides/v47-bonus-forfeiture-clause-pattern.html",
+      "route": "/blog/game-guides/v47-bonus-forfeiture-clause-pattern.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/game-guides/v47-cloudflare-public-security-signal-limit.html",
+      "route": "/blog/game-guides/v47-cloudflare-public-security-signal-limit.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/game-guides/v47-deposit-before-domain-ip-ssl-routine.html",
+      "route": "/blog/game-guides/v47-deposit-before-domain-ip-ssl-routine.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/game-guides/v47-domain-age-operation-stability.html",
+      "route": "/blog/game-guides/v47-domain-age-operation-stability.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/game-guides/v47-event-banner-terms-mismatch-order.html",
+      "route": "/blog/game-guides/v47-event-banner-terms-mismatch-order.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/game-guides/v47-fake-customer-center-channel-check.html",
+      "route": "/blog/game-guides/v47-fake-customer-center-channel-check.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/game-guides/v47-final-technical-site-checklist.html",
+      "route": "/blog/game-guides/v47-final-technical-site-checklist.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/game-guides/v47-frequent-domain-change-technical-reason.html",
+      "route": "/blog/game-guides/v47-frequent-domain-change-technical-reason.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/game-guides/v47-html-source-renewal-signal-check.html",
+      "route": "/blog/game-guides/v47-html-source-renewal-signal-check.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/game-guides/v47-javascript-redirect-phishing-structure.html",
+      "route": "/blog/game-guides/v47-javascript-redirect-phishing-structure.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/game-guides/v47-max-withdrawal-cap-calculation.html",
+      "route": "/blog/game-guides/v47-max-withdrawal-cap-calculation.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/game-guides/v47-multi-account-risk-clause.html",
+      "route": "/blog/game-guides/v47-multi-account-risk-clause.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/game-guides/v47-official-vs-impersonation-dns-check.html",
+      "route": "/blog/game-guides/v47-official-vs-impersonation-dns-check.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/game-guides/v47-personal-data-page-security-checklist.html",
+      "route": "/blog/game-guides/v47-personal-data-page-security-checklist.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/game-guides/v47-phishing-url-homograph-pattern.html",
+      "route": "/blog/game-guides/v47-phishing-url-homograph-pattern.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/game-guides/v47-ssl-certificate-issuer-domain-trust.html",
+      "route": "/blog/game-guides/v47-ssl-certificate-issuer-domain-trust.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/game-guides/v47-turnover-insufficient-condition-standard.html",
+      "route": "/blog/game-guides/v47-turnover-insufficient-condition-standard.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/game-guides/v47-vpn-access-restriction-clause.html",
+      "route": "/blog/game-guides/v47-vpn-access-restriction-clause.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/game-guides/v47-whois-domain-creation-date-risk.html",
+      "route": "/blog/game-guides/v47-whois-domain-creation-date-risk.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/game-guides/v47-withdraw-delay-terms-reading.html",
+      "route": "/blog/game-guides/v47-withdraw-delay-terms-reading.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/game-guides/v48-bonus-forfeit-clause-taxonomy.html",
+      "route": "/blog/game-guides/v48-bonus-forfeit-clause-taxonomy.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/game-guides/v48-cloudflare-public-signal-check.html",
+      "route": "/blog/game-guides/v48-cloudflare-public-signal-check.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/game-guides/v48-deposit-before-domain-ip-ssl-checklist.html",
+      "route": "/blog/game-guides/v48-deposit-before-domain-ip-ssl-checklist.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/game-guides/v48-dns-record-change-address-structure.html",
+      "route": "/blog/game-guides/v48-dns-record-change-address-structure.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/game-guides/v48-js-redirect-meta-refresh-audit.html",
+      "route": "/blog/game-guides/v48-js-redirect-meta-refresh-audit.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/game-guides/v48-phishing-url-homoglyph-hyphen-pattern.html",
+      "route": "/blog/game-guides/v48-phishing-url-homoglyph-hyphen-pattern.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/game-guides/v48-ssl-san-domain-match-check.html",
+      "route": "/blog/game-guides/v48-ssl-san-domain-match-check.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/game-guides/v48-whois-rdap-domain-history-fields.html",
+      "route": "/blog/game-guides/v48-whois-rdap-domain-history-fields.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/game-guides/whois-domain-age-risk-score.html",
+      "route": "/blog/game-guides/whois-domain-age-risk-score.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/google-muktu-search-guide/index.html",
+      "route": "/blog/google-muktu-search-guide/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/guaranteed-address-code-order/index.html",
+      "route": "/blog/guaranteed-address-code-order/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/guaranteed-before-click-checks/index.html",
+      "route": "/blog/guaranteed-before-click-checks/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/guaranteed-detail-page-seven-signals/index.html",
+      "route": "/blog/guaranteed-detail-page-seven-signals/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/guaranteed-vendor-bonus-three-line-rule/index.html",
+      "route": "/blog/guaranteed-vendor-bonus-three-line-rule/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/guaranteed-vendor-card-before-click-mobile/index.html",
+      "route": "/blog/guaranteed-vendor-card-before-click-mobile/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/guaranteed-vendor-selection-standard-2026/index.html",
+      "route": "/blog/guaranteed-vendor-selection-standard-2026/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/ibple-site-recommendation-longtail-map/index.html",
+      "route": "/blog/ibple-site-recommendation-longtail-map/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/index.html",
+      "route": "/blog/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/insufficient-evidence-cases/index.html",
+      "route": "/blog/insufficient-evidence-cases/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/join-check-routine-3min/index.html",
+      "route": "/blog/join-check-routine-3min/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/join-code-copy-before-telegram-consult/index.html",
+      "route": "/blog/join-code-copy-before-telegram-consult/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/long-run-operation-signs/index.html",
+      "route": "/blog/long-run-operation-signs/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/long-term-brand-trust-points/index.html",
+      "route": "/blog/long-term-brand-trust-points/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/major-playground-warning-signs/index.html",
+      "route": "/blog/major-playground-warning-signs/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/major-site-address-change-checklist/index.html",
+      "route": "/blog/major-site-address-change-checklist/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/major-site-check-before-join/index.html",
+      "route": "/blog/major-site-check-before-join/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/major-site-criteria-15/index.html",
+      "route": "/blog/major-site-criteria-15/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/major-site-domain-change-check/index.html",
+      "route": "/blog/major-site-domain-change-check/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/major-site-final-check-order/index.html",
+      "route": "/blog/major-site-final-check-order/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/max-withdraw-meaning/index.html",
+      "route": "/blog/max-withdraw-meaning/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/mini-game-speedkino-powerball-ladder-compare/index.html",
+      "route": "/blog/mini-game-speedkino-powerball-ladder-compare/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/minigame/basic-guide.html",
+      "route": "/blog/minigame/basic-guide.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/minigame/bet365-virtual-football-pricing.html",
+      "route": "/blog/minigame/bet365-virtual-football-pricing.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/minigame/bet365-virtual-racing-rng-check.html",
+      "route": "/blog/minigame/bet365-virtual-racing-rng-check.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/minigame/bubble-game.html",
+      "route": "/blog/minigame/bubble-game.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/minigame/donghaeng-powerball-difference.html",
+      "route": "/blog/minigame/donghaeng-powerball-difference.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/minigame/donghaeng-powerball-official-result.html",
+      "route": "/blog/minigame/donghaeng-powerball-official-result.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/minigame/donghaeng-speedkeno-round-check.html",
+      "route": "/blog/minigame/donghaeng-speedkeno-round-check.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/minigame/donghaeng-speedkeno-statistical-noise.html",
+      "route": "/blog/minigame/donghaeng-speedkeno-statistical-noise.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/minigame/entry-game-provider-check.html",
+      "route": "/blog/minigame/entry-game-provider-check.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/minigame/entry-game.html",
+      "route": "/blog/minigame/entry-game.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/minigame/entry-powerball-hash-verification.html",
+      "route": "/blog/minigame/entry-powerball-hash-verification.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/minigame/entry-powerball-round-check.html",
+      "route": "/blog/minigame/entry-powerball-round-check.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/minigame/index.html",
+      "route": "/blog/minigame/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/minigame/ladder-game-gambler-ruin.html",
+      "route": "/blog/minigame/ladder-game-gambler-ruin.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/minigame/ladder-game-structure-check.html",
+      "route": "/blog/minigame/ladder-game-structure-check.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/minigame/lotus-odd-even.html",
+      "route": "/blog/minigame/lotus-odd-even.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/minigame/minigame-event-rolling-condition.html",
+      "route": "/blog/minigame/minigame-event-rolling-condition.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/minigame/minigame-round-cutoff-settlement.html",
+      "route": "/blog/minigame/minigame-round-cutoff-settlement.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/minigame/powerball-martingale-bankroll-risk.html",
+      "route": "/blog/minigame/powerball-martingale-bankroll-risk.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/minigame/powerball-round-result-check.html",
+      "route": "/blog/minigame/powerball-round-result-check.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/minigame/v47-donghaeng-powerball-official-result-check.html",
+      "route": "/blog/minigame/v47-donghaeng-powerball-official-result-check.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/minigame/v47-donghaeng-powerball-round-error-correction.html",
+      "route": "/blog/minigame/v47-donghaeng-powerball-round-error-correction.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/minigame/v47-donghaeng-powerball-vs-private-powerball.html",
+      "route": "/blog/minigame/v47-donghaeng-powerball-vs-private-powerball.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/minigame/v47-donghaeng-speedkeno-number-combination-probability.html",
+      "route": "/blog/minigame/v47-donghaeng-speedkeno-number-combination-probability.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/minigame/v47-donghaeng-speedkeno-round-result-model.html",
+      "route": "/blog/minigame/v47-donghaeng-speedkeno-round-result-model.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/minigame/v47-donghaeng-speedkeno-streak-illusion.html",
+      "route": "/blog/minigame/v47-donghaeng-speedkeno-streak-illusion.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/minigame/v47-entry-game-provider-name-check.html",
+      "route": "/blog/minigame/v47-entry-game-provider-name-check.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/minigame/v47-entry-powerball-vs-general-powerball.html",
+      "route": "/blog/minigame/v47-entry-powerball-vs-general-powerball.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/minigame/v47-entry-round-result-capture-standard.html",
+      "route": "/blog/minigame/v47-entry-round-result-capture-standard.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/minigame/v47-ladder-game-probability-result-check.html",
+      "route": "/blog/minigame/v47-ladder-game-probability-result-check.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/minigame/v47-ladder-left-right-odd-even-probability.html",
+      "route": "/blog/minigame/v47-ladder-left-right-odd-even-probability.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/minigame/v47-ladder-round-result-evidence.html",
+      "route": "/blog/minigame/v47-ladder-round-result-evidence.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/minigame/v47-ladder-routine-pattern-illusion.html",
+      "route": "/blog/minigame/v47-ladder-routine-pattern-illusion.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/minigame/v47-minigame-api-provider-check.html",
+      "route": "/blog/minigame/v47-minigame-api-provider-check.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/minigame/v47-minigame-delayed-result-settlement.html",
+      "route": "/blog/minigame/v47-minigame-delayed-result-settlement.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/minigame/v47-minigame-event-turnover-terms.html",
+      "route": "/blog/minigame/v47-minigame-event-turnover-terms.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/minigame/v47-minigame-evidence-capture-standard.html",
+      "route": "/blog/minigame/v47-minigame-evidence-capture-standard.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/minigame/v47-minigame-max-win-cap-clause.html",
+      "route": "/blog/minigame/v47-minigame-max-win-cap-clause.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/minigame/v47-powerball-combination-margin-compounding.html",
+      "route": "/blog/minigame/v47-powerball-combination-margin-compounding.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/minigame/v47-powerball-martingale-bankruptcy-probability.html",
+      "route": "/blog/minigame/v47-powerball-martingale-bankruptcy-probability.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/minigame/v47-powerball-odd-even-under-over-probability.html",
+      "route": "/blog/minigame/v47-powerball-odd-even-under-over-probability.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/minigame/v47-powerball-result-hash-verification-concept.html",
+      "route": "/blog/minigame/v47-powerball-result-hash-verification-concept.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/minigame/v47-powerball-round-structure-result-check.html",
+      "route": "/blog/minigame/v47-powerball-round-structure-result-check.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/minigame/v47-powerball-routine-betting-failure-math.html",
+      "route": "/blog/minigame/v47-powerball-routine-betting-failure-math.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/minigame/v47-powerball-streak-illusion-independent-trial.html",
+      "route": "/blog/minigame/v47-powerball-streak-illusion-independent-trial.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/minigame/v48-ladder-game-probability-tree.html",
+      "route": "/blog/minigame/v48-ladder-game-probability-tree.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/minigame/v48-minigame-delayed-settlement-void-rules.html",
+      "route": "/blog/minigame/v48-minigame-delayed-settlement-void-rules.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/minigame/v48-minigame-pattern-fallacy-independent-trial.html",
+      "route": "/blog/minigame/v48-minigame-pattern-fallacy-independent-trial.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/minigame/v48-powerball-combination-state-space.html",
+      "route": "/blog/minigame/v48-powerball-combination-state-space.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/minigame/v48-powerball-even-odd-fair-odds-margin.html",
+      "route": "/blog/minigame/v48-powerball-even-odd-fair-odds-margin.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/minigame/v48-speedkeno-combination-probability-bias.html",
+      "route": "/blog/minigame/v48-speedkeno-combination-probability-bias.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/minigame-ibple-code-check-order/index.html",
+      "route": "/blog/minigame-ibple-code-check-order/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/minigame-ibple-site-risk-before-join/index.html",
+      "route": "/blog/minigame-ibple-site-risk-before-join/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/minigame-rolling-loss-limit-check/index.html",
+      "route": "/blog/minigame-rolling-loss-limit-check/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/muktu-common-patterns-20/index.html",
+      "route": "/blog/muktu-common-patterns-20/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/muktu-review-filter-ad-vs-real-signal/index.html",
+      "route": "/blog/muktu-review-filter-ad-vs-real-signal/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/muktu-site-identification-search-pattern/index.html",
+      "route": "/blog/muktu-site-identification-search-pattern/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/nameserver-a-record-reading/index.html",
+      "route": "/blog/nameserver-a-record-reading/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/nameserver-cluster-search-guide/index.html",
+      "route": "/blog/nameserver-cluster-search-guide/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/new-domain-first-deposit-checklist/index.html",
+      "route": "/blog/new-domain-first-deposit-checklist/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/night-support-response-check/index.html",
+      "route": "/blog/night-support-response-check/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/notice-channel-match-guide/index.html",
+      "route": "/blog/notice-channel-match-guide/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/notice-review-time-gap/index.html",
+      "route": "/blog/notice-review-time-gap/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/official-address-domain-history-check/index.html",
+      "route": "/blog/official-address-domain-history-check/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/official-address-mismatch-evidence/index.html",
+      "route": "/blog/official-address-mismatch-evidence/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/official-address-risk-routine/index.html",
+      "route": "/blog/official-address-risk-routine/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/official-channel-consistency-check/index.html",
+      "route": "/blog/official-channel-consistency-check/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-casino/baccarat-blackjack-roulette-difference.html",
+      "route": "/blog/online-casino/baccarat-blackjack-roulette-difference.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-casino/baccarat-check.html",
+      "route": "/blog/online-casino/baccarat-check.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-casino/baccarat-side-bet-risk-model.html",
+      "route": "/blog/online-casino/baccarat-side-bet-risk-model.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-casino/basic-guide.html",
+      "route": "/blog/online-casino/basic-guide.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-casino/blackjack-basic-rule-check.html",
+      "route": "/blog/online-casino/blackjack-basic-rule-check.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-casino/casino-official-address-game-check.html",
+      "route": "/blog/online-casino/casino-official-address-game-check.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-casino/casino-provider-identity-f12-check.html",
+      "route": "/blog/online-casino/casino-provider-identity-f12-check.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-casino/casino-turnover-sidebet-reading.html",
+      "route": "/blog/online-casino/casino-turnover-sidebet-reading.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-casino/ddangkong-ddk888-domain-code-guide.html",
+      "route": "/blog/online-casino/ddangkong-ddk888-domain-code-guide.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-casino/evolution-baccarat-before-check.html",
+      "route": "/blog/online-casino/evolution-baccarat-before-check.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-casino/evolution-baccarat-table-rule-math.html",
+      "route": "/blog/online-casino/evolution-baccarat-table-rule-math.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-casino/evolution-game-show-round-structure.html",
+      "route": "/blog/online-casino/evolution-game-show-round-structure.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-casino/evolution-live-studio-types.html",
+      "route": "/blog/online-casino/evolution-live-studio-types.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-casino/first-charge-event.html",
+      "route": "/blog/online-casino/first-charge-event.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-casino/index.html",
+      "route": "/blog/online-casino/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-casino/live-blackjack-rule-variants.html",
+      "route": "/blog/online-casino/live-blackjack-rule-variants.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-casino/live-casino-check.html",
+      "route": "/blog/online-casino/live-casino-check.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-casino/live-casino-session-risk-protocol.html",
+      "route": "/blog/online-casino/live-casino-session-risk-protocol.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-casino/live-casino-vs-online-slot.html",
+      "route": "/blog/online-casino/live-casino-vs-online-slot.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-casino/live-dealer-round-capture.html",
+      "route": "/blog/online-casino/live-dealer-round-capture.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-casino/live-dealer-video-api-integrity.html",
+      "route": "/blog/online-casino/live-dealer-video-api-integrity.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-casino/pragmatic-live-api-table-check.html",
+      "route": "/blog/online-casino/pragmatic-live-api-table-check.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-casino/pragmatic-live-casino-games.html",
+      "route": "/blog/online-casino/pragmatic-live-casino-games.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-casino/roulette-coupon-condition.html",
+      "route": "/blog/online-casino/roulette-coupon-condition.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-casino/roulette-zero-rule-house-edge.html",
+      "route": "/blog/online-casino/roulette-zero-rule-house-edge.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-casino/v47-baccarat-banker-commission-ev.html",
+      "route": "/blog/online-casino/v47-baccarat-banker-commission-ev.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-casino/v47-baccarat-tie-bet-math-trap.html",
+      "route": "/blog/online-casino/v47-baccarat-tie-bet-math-trap.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-casino/v47-blackjack-basic-strategy-house-edge.html",
+      "route": "/blog/online-casino/v47-blackjack-basic-strategy-house-edge.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-casino/v47-blackjack-insurance-negative-ev.html",
+      "route": "/blog/online-casino/v47-blackjack-insurance-negative-ev.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-casino/v47-casino-browser-devtools-check.html",
+      "route": "/blog/online-casino/v47-casino-browser-devtools-check.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-casino/v47-casino-domain-change-dns-routine.html",
+      "route": "/blog/online-casino/v47-casino-domain-change-dns-routine.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-casino/v47-casino-event-max-win-cap.html",
+      "route": "/blog/online-casino/v47-casino-event-max-win-cap.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-casino/v47-casino-official-address-phishing-url.html",
+      "route": "/blog/online-casino/v47-casino-official-address-phishing-url.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-casino/v47-casino-provider-logo-api-check.html",
+      "route": "/blog/online-casino/v47-casino-provider-logo-api-check.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-casino/v47-evolution-baccarat-round-id-verification.html",
+      "route": "/blog/online-casino/v47-evolution-baccarat-round-id-verification.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-casino/v47-evolution-lightning-baccarat-multiplier.html",
+      "route": "/blog/online-casino/v47-evolution-lightning-baccarat-multiplier.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-casino/v47-evolution-live-dealer-table-types.html",
+      "route": "/blog/online-casino/v47-evolution-live-dealer-table-types.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-casino/v47-evolution-roulette-house-edge.html",
+      "route": "/blog/online-casino/v47-evolution-roulette-house-edge.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-casino/v47-evolution-speed-baccarat-difference.html",
+      "route": "/blog/online-casino/v47-evolution-speed-baccarat-difference.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-casino/v47-live-casino-bonus-excluded-games.html",
+      "route": "/blog/online-casino/v47-live-casino-bonus-excluded-games.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-casino/v47-live-casino-delayed-settlement-clause.html",
+      "route": "/blog/online-casino/v47-live-casino-delayed-settlement-clause.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-casino/v47-live-casino-dispute-evidence-standard.html",
+      "route": "/blog/online-casino/v47-live-casino-dispute-evidence-standard.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-casino/v47-live-casino-result-capture-data.html",
+      "route": "/blog/online-casino/v47-live-casino-result-capture-data.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-casino/v47-live-casino-stream-delay-settlement.html",
+      "route": "/blog/online-casino/v47-live-casino-stream-delay-settlement.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-casino/v47-live-casino-table-limit-event-scope.html",
+      "route": "/blog/online-casino/v47-live-casino-table-limit-event-scope.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-casino/v47-pragmatic-live-casino-api-supply-chain.html",
+      "route": "/blog/online-casino/v47-pragmatic-live-casino-api-supply-chain.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-casino/v47-pragmatic-mega-wheel-weight-model.html",
+      "route": "/blog/online-casino/v47-pragmatic-mega-wheel-weight-model.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-casino/v47-pragmatic-vs-evolution-baccarat-comparison.html",
+      "route": "/blog/online-casino/v47-pragmatic-vs-evolution-baccarat-comparison.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-casino/v47-roulette-european-american-edge.html",
+      "route": "/blog/online-casino/v47-roulette-european-american-edge.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-casino/v47-roulette-martingale-ruin-probability.html",
+      "route": "/blog/online-casino/v47-roulette-martingale-ruin-probability.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-casino/v48-baccarat-commission-no-commission-edge.html",
+      "route": "/blog/online-casino/v48-baccarat-commission-no-commission-edge.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-casino/v48-baccarat-tie-payout-house-edge.html",
+      "route": "/blog/online-casino/v48-baccarat-tie-payout-house-edge.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-casino/v48-blackjack-insurance-negative-ev.html",
+      "route": "/blog/online-casino/v48-blackjack-insurance-negative-ev.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-casino/v48-blackjack-s17-h17-rule-edge.html",
+      "route": "/blog/online-casino/v48-blackjack-s17-h17-rule-edge.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-casino/v48-casino-max-cashout-forfeit-clause.html",
+      "route": "/blog/online-casino/v48-casino-max-cashout-forfeit-clause.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-casino/v48-casino-provider-resource-origin-check.html",
+      "route": "/blog/online-casino/v48-casino-provider-resource-origin-check.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-casino/v48-live-casino-stream-settlement-delay.html",
+      "route": "/blog/online-casino/v48-live-casino-stream-settlement-delay.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-casino/v48-live-dealer-round-id-evidence.html",
+      "route": "/blog/online-casino/v48-live-dealer-round-id-evidence.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-casino/v48-pragmatic-mega-wheel-segment-weight.html",
+      "route": "/blog/online-casino/v48-pragmatic-mega-wheel-segment-weight.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-casino/v48-roulette-single-double-zero-edge.html",
+      "route": "/blog/online-casino/v48-roulette-single-double-zero-edge.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/basic-guide.html",
+      "route": "/blog/online-slot/basic-guide.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/booongo-hold-and-win-check.html",
+      "route": "/blog/online-slot/booongo-hold-and-win-check.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/buy-feature-before-check.html",
+      "route": "/blog/online-slot/buy-feature-before-check.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/demo-and-real-slot-difference.html",
+      "route": "/blog/online-slot/demo-and-real-slot-difference.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/free-spin-event-condition.html",
+      "route": "/blog/online-slot/free-spin-event-condition.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/habanero-paytable-variance-guide.html",
+      "route": "/blog/online-slot/habanero-paytable-variance-guide.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/habanero-slot-mobile-check.html",
+      "route": "/blog/online-slot/habanero-slot-mobile-check.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/index.html",
+      "route": "/blog/online-slot/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/microgaming-progressive-jackpot-check.html",
+      "route": "/blog/online-slot/microgaming-progressive-jackpot-check.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/microgaming-progressive-jackpot-math.html",
+      "route": "/blog/online-slot/microgaming-progressive-jackpot-math.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/mobile-slot-session-limit.html",
+      "route": "/blog/online-slot/mobile-slot-session-limit.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/netent-classic-modern-rtp.html",
+      "route": "/blog/online-slot/netent-classic-modern-rtp.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/netent-classic-slot-check.html",
+      "route": "/blog/online-slot/netent-classic-slot-check.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/nolimit-city-guide.html",
+      "route": "/blog/online-slot/nolimit-city-guide.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/nolimit-city-high-volatility.html",
+      "route": "/blog/online-slot/nolimit-city-high-volatility.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/nolimit-city-xways-volatility-model.html",
+      "route": "/blog/online-slot/nolimit-city-xways-volatility-model.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/pg-soft-mobile-slot-feature.html",
+      "route": "/blog/online-slot/pg-soft-mobile-slot-feature.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/pgsoft-mobile-portrait-slot-math.html",
+      "route": "/blog/online-slot/pgsoft-mobile-portrait-slot-math.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/playngo-grid-slot-feature-check.html",
+      "route": "/blog/online-slot/playngo-grid-slot-feature-check.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/playngo-slot-before-check.html",
+      "route": "/blog/online-slot/playngo-slot-before-check.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/pragmatic-guide.html",
+      "route": "/blog/online-slot/pragmatic-guide.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/pragmatic-play-volatility-check.html",
+      "route": "/blog/online-slot/pragmatic-play-volatility-check.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/pragmatic-rtp-range-bonus-buy.html",
+      "route": "/blog/online-slot/pragmatic-rtp-range-bonus-buy.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/provider-official-game-list-check.html",
+      "route": "/blog/online-slot/provider-official-game-list-check.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/red-tiger-daily-jackpot-check.html",
+      "route": "/blog/online-slot/red-tiger-daily-jackpot-check.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/red-tiger-jackpot-drop-model.html",
+      "route": "/blog/online-slot/red-tiger-jackpot-drop-model.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/relax-gaming-megaways-check.html",
+      "route": "/blog/online-slot/relax-gaming-megaways-check.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/relax-gaming-megaways-variance.html",
+      "route": "/blog/online-slot/relax-gaming-megaways-variance.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/rtp-volatility.html",
+      "route": "/blog/online-slot/rtp-volatility.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/slot-free-spin-expected-value.html",
+      "route": "/blog/online-slot/slot-free-spin-expected-value.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/slot-low-mid-high-volatility.html",
+      "route": "/blog/online-slot/slot-low-mid-high-volatility.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/slot-rng-api-packet-check.html",
+      "route": "/blog/online-slot/slot-rng-api-packet-check.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/slot-rtp-provider-table.html",
+      "route": "/blog/online-slot/slot-rtp-provider-table.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/slot-volatility-bankroll-drawdown.html",
+      "route": "/blog/online-slot/slot-volatility-bankroll-drawdown.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/v47-booongo-hold-and-win-model.html",
+      "route": "/blog/online-slot/v47-booongo-hold-and-win-model.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/v47-habanero-asia-ui-bonus-model.html",
+      "route": "/blog/online-slot/v47-habanero-asia-ui-bonus-model.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/v47-habanero-ways-vs-payline.html",
+      "route": "/blog/online-slot/v47-habanero-ways-vs-payline.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/v47-microgaming-mega-moolah-jackpot.html",
+      "route": "/blog/online-slot/v47-microgaming-mega-moolah-jackpot.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/v47-microgaming-progressive-jackpot-pool.html",
+      "route": "/blog/online-slot/v47-microgaming-progressive-jackpot-pool.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/v47-netent-classic-low-variance.html",
+      "route": "/blog/online-slot/v47-netent-classic-low-variance.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/v47-netent-starburst-simple-model.html",
+      "route": "/blog/online-slot/v47-netent-starburst-simple-model.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/v47-nolimit-city-bonus-buy-max-exposure.html",
+      "route": "/blog/online-slot/v47-nolimit-city-bonus-buy-max-exposure.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/v47-nolimit-city-high-variance-structure.html",
+      "route": "/blog/online-slot/v47-nolimit-city-high-variance-structure.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/v47-nolimit-city-mental-risk-structure.html",
+      "route": "/blog/online-slot/v47-nolimit-city-mental-risk-structure.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/v47-nolimit-city-rtp-configuration-check.html",
+      "route": "/blog/online-slot/v47-nolimit-city-rtp-configuration-check.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/v47-nolimit-city-xnudge-xways-explained.html",
+      "route": "/blog/online-slot/v47-nolimit-city-xnudge-xways-explained.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/v47-pg-soft-mobile-session-structure.html",
+      "route": "/blog/online-slot/v47-pg-soft-mobile-session-structure.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/v47-pg-soft-portrait-ui-touch-ux.html",
+      "route": "/blog/online-slot/v47-pg-soft-portrait-ui-touch-ux.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/v47-pg-soft-rtp-observed-variance.html",
+      "route": "/blog/online-slot/v47-pg-soft-rtp-observed-variance.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/v47-pg-soft-scatter-bonus-payout.html",
+      "route": "/blog/online-slot/v47-pg-soft-scatter-bonus-payout.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/v47-playngo-book-series-bonus.html",
+      "route": "/blog/online-slot/v47-playngo-book-series-bonus.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/v47-playngo-grid-payline-comparison.html",
+      "route": "/blog/online-slot/v47-playngo-grid-payline-comparison.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/v47-playngo-reactoonz-cluster-model.html",
+      "route": "/blog/online-slot/v47-playngo-reactoonz-cluster-model.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/v47-pragmatic-big-bass-bonus-model.html",
+      "route": "/blog/online-slot/v47-pragmatic-big-bass-bonus-model.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/v47-pragmatic-bonus-buy-ev-trap.html",
+      "route": "/blog/online-slot/v47-pragmatic-bonus-buy-ev-trap.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/v47-pragmatic-gates-of-olympus-math.html",
+      "route": "/blog/online-slot/v47-pragmatic-gates-of-olympus-math.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/v47-pragmatic-slot-rtp-range-variance.html",
+      "route": "/blog/online-slot/v47-pragmatic-slot-rtp-range-variance.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/v47-pragmatic-sugar-rush-tumble-mechanic.html",
+      "route": "/blog/online-slot/v47-pragmatic-sugar-rush-tumble-mechanic.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/v47-red-tiger-buy-feature-condition.html",
+      "route": "/blog/online-slot/v47-red-tiger-buy-feature-condition.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/v47-red-tiger-daily-drop-jackpot.html",
+      "route": "/blog/online-slot/v47-red-tiger-daily-drop-jackpot.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/v47-relax-gaming-megaways-volatility.html",
+      "route": "/blog/online-slot/v47-relax-gaming-megaways-volatility.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/v47-relax-gaming-money-train-risk.html",
+      "route": "/blog/online-slot/v47-relax-gaming-money-train-risk.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/v47-slot-bonus-frequency-ev.html",
+      "route": "/blog/online-slot/v47-slot-bonus-frequency-ev.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/v47-slot-demo-real-rng-difference.html",
+      "route": "/blog/online-slot/v47-slot-demo-real-rng-difference.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/v47-slot-excluded-game-list-check.html",
+      "route": "/blog/online-slot/v47-slot-excluded-game-list-check.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/v47-slot-free-spin-event-terms.html",
+      "route": "/blog/online-slot/v47-slot-free-spin-event-terms.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/v47-slot-max-win-cap-ev-impact.html",
+      "route": "/blog/online-slot/v47-slot-max-win-cap-ev-impact.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/v47-slot-rtp-96-not-session-return.html",
+      "route": "/blog/online-slot/v47-slot-rtp-96-not-session-return.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/v47-slot-short-term-variance-long-term-rtp.html",
+      "route": "/blog/online-slot/v47-slot-short-term-variance-long-term-rtp.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/v48-microgaming-progressive-jackpot-pool.html",
+      "route": "/blog/online-slot/v48-microgaming-progressive-jackpot-pool.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/v48-nolimit-xnudge-xways-variance.html",
+      "route": "/blog/online-slot/v48-nolimit-xnudge-xways-variance.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/v48-pgsoft-portrait-mobile-session-ux.html",
+      "route": "/blog/online-slot/v48-pgsoft-portrait-mobile-session-ux.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/v48-playngo-cluster-vs-payline-model.html",
+      "route": "/blog/online-slot/v48-playngo-cluster-vs-payline-model.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/v48-pragmatic-rtp-version-range-check.html",
+      "route": "/blog/online-slot/v48-pragmatic-rtp-version-range-check.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/v48-pragmatic-tumble-multiplier-reset.html",
+      "route": "/blog/online-slot/v48-pragmatic-tumble-multiplier-reset.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/v48-relax-megaways-combinatorics-volatility.html",
+      "route": "/blog/online-slot/v48-relax-megaways-combinatorics-volatility.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/v48-slot-bonus-buy-cost-vs-average-return.html",
+      "route": "/blog/online-slot/v48-slot-bonus-buy-cost-vs-average-return.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/v48-slot-free-spin-zero-contribution-clause.html",
+      "route": "/blog/online-slot/v48-slot-free-spin-zero-contribution-clause.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/v48-slot-high-volatility-drawdown-model.html",
+      "route": "/blog/online-slot/v48-slot-high-volatility-drawdown-model.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/v48-slot-hit-frequency-vs-rtp.html",
+      "route": "/blog/online-slot/v48-slot-hit-frequency-vs-rtp.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-slot/v48-slot-max-win-cap-expected-value.html",
+      "route": "/blog/online-slot/v48-slot-max-win-cap-expected-value.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-sports-toto-search-differentiation/index.html",
+      "route": "/blog/online-sports-toto-search-differentiation/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/online-sports-toto-site-recommendation-check-route/index.html",
+      "route": "/blog/online-sports-toto-site-recommendation-check-route/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/page/2.html",
+      "route": "/blog/page/2.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/page/3.html",
+      "route": "/blog/page/3.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/page/4.html",
+      "route": "/blog/page/4.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/page/5.html",
+      "route": "/blog/page/5.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/page/6.html",
+      "route": "/blog/page/6.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/page/7.html",
+      "route": "/blog/page/7.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/page/8.html",
+      "route": "/blog/page/8.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/past-address-finding-order/index.html",
+      "route": "/blog/past-address-finding-order/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/payout-delay-evidence-check/index.html",
+      "route": "/blog/payout-delay-evidence-check/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/payout-delay-warning-signs/index.html",
+      "route": "/blog/payout-delay-warning-signs/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/payout-evidence-folder-guide/index.html",
+      "route": "/blog/payout-evidence-folder-guide/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/payout-risk/basic-checklist.html",
+      "route": "/blog/payout-risk/basic-checklist.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/payout-risk/evidence-capture.html",
+      "route": "/blog/payout-risk/evidence-capture.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/payout-risk/index.html",
+      "route": "/blog/payout-risk/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/payout-risk/rejected-withdraw.html",
+      "route": "/blog/payout-risk/rejected-withdraw.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/payout-risk/withdraw-delay.html",
+      "route": "/blog/payout-risk/withdraw-delay.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/powerball-ladder-ibple-condition-check/index.html",
+      "route": "/blog/powerball-ladder-ibple-condition-check/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/powerball-ladder-minigame-loss-limit/index.html",
+      "route": "/blog/powerball-ladder-minigame-loss-limit/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/promotion-heavy-new-site-risk/index.html",
+      "route": "/blog/promotion-heavy-new-site-risk/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/public-evidence-note-taking/index.html",
+      "route": "/blog/public-evidence-note-taking/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/queenbee-events.html",
+      "route": "/blog/queenbee-events.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/queenbee-first-charge-50.html",
+      "route": "/blog/queenbee-first-charge-50.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/queenbee-games.html",
+      "route": "/blog/queenbee-games.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/queenbee-mini-game-20.html",
+      "route": "/blog/queenbee-mini-game-20.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/queenbee-recharge-10.html",
+      "route": "/blog/queenbee-recharge-10.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/queenbee-seoa-benefits.html",
+      "route": "/blog/queenbee-seoa-benefits.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/queenbee-seoa-guide.html",
+      "route": "/blog/queenbee-seoa-guide.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/queenbee-seoa-hub.html",
+      "route": "/blog/queenbee-seoa-hub.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/queenbee-seoa-review.html",
+      "route": "/blog/queenbee-seoa-review.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/queenbee-telegram-trs999-bot.html",
+      "route": "/blog/queenbee-telegram-trs999-bot.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/queenbee-usdt-benefits.html",
+      "route": "/blog/queenbee-usdt-benefits.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/renewal-claim-red-flags/index.html",
+      "route": "/blog/renewal-claim-red-flags/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/renewal-merge-announcement-signals/index.html",
+      "route": "/blog/renewal-merge-announcement-signals/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/repeated-verification-delay/index.html",
+      "route": "/blog/repeated-verification-delay/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/report-message-order-guide/index.html",
+      "route": "/blog/report-message-order-guide/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/review-evidence-center/index.html",
+      "route": "/blog/review-evidence-center/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/rolling-calculator-before-use-example/index.html",
+      "route": "/blog/rolling-calculator-before-use-example/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/rolling-real-receive-calculation-example-2026/index.html",
+      "route": "/blog/rolling-real-receive-calculation-example-2026/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/rolling-terms-reading/index.html",
+      "route": "/blog/rolling-terms-reading/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/rust-blog-tools-guaranteed-user-route-2026/index.html",
+      "route": "/blog/rust-blog-tools-guaranteed-user-route-2026/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/rust-route-blog-tools-guaranteed/index.html",
+      "route": "/blog/rust-route-blog-tools-guaranteed/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/rust-tools-guaranteed-blog-workflow/index.html",
+      "route": "/blog/rust-tools-guaranteed-blog-workflow/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/safe-playground-vs-claim/index.html",
+      "route": "/blog/safe-playground-vs-claim/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/safe-toto-site-recommendation-longtail-guide/index.html",
+      "route": "/blog/safe-toto-site-recommendation-longtail-guide/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/safe-toto-site-selection/index.html",
+      "route": "/blog/safe-toto-site-selection/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/safe-toto-site-vendor-checklist/index.html",
+      "route": "/blog/safe-toto-site-vendor-checklist/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/same-group-signals/index.html",
+      "route": "/blog/same-group-signals/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/search-before-join-routine/index.html",
+      "route": "/blog/search-before-join-routine/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/search-guide-before-deposit-risk-check/index.html",
+      "route": "/blog/search-guide-before-deposit-risk-check/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/search-guide-risk-lowering-route/index.html",
+      "route": "/blog/search-guide-risk-lowering-route/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/search-keywords-20/index.html",
+      "route": "/blog/search-keywords-20/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sk-holdings-first-deposit-plus.html",
+      "route": "/blog/sk-holdings-first-deposit-plus.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sk-holdings-games.html",
+      "route": "/blog/sk-holdings-games.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sk-holdings-iron20-benefits.html",
+      "route": "/blog/sk-holdings-iron20-benefits.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sk-holdings-iron20-guide.html",
+      "route": "/blog/sk-holdings-iron20-guide.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sk-holdings-iron20-hub.html",
+      "route": "/blog/sk-holdings-iron20-hub.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sk-holdings-iron20-review.html",
+      "route": "/blog/sk-holdings-iron20-review.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sk-holdings-iron888-benefits.html",
+      "route": "/blog/sk-holdings-iron888-benefits.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sk-holdings-iron888-guide.html",
+      "route": "/blog/sk-holdings-iron888-guide.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sk-holdings-iron888-hub.html",
+      "route": "/blog/sk-holdings-iron888-hub.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sk-holdings-iron888-review.html",
+      "route": "/blog/sk-holdings-iron888-review.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sk-holdings-mini-game-event.html",
+      "route": "/blog/sk-holdings-mini-game-event.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sk-holdings-slot-event.html",
+      "route": "/blog/sk-holdings-slot-event.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sk-holdings-sports-event.html",
+      "route": "/blog/sk-holdings-sports-event.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sk-holdings-telegram-iron20.html",
+      "route": "/blog/sk-holdings-telegram-iron20.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sk-holdings-telegram-iron888.html",
+      "route": "/blog/sk-holdings-telegram-iron888.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sk-holdings-vip-return-event.html",
+      "route": "/blog/sk-holdings-vip-return-event.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/slot-rtp-bonus-condition-read-together/index.html",
+      "route": "/blog/slot-rtp-bonus-condition-read-together/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/slot-rtp-volatility-event-reading/index.html",
+      "route": "/blog/slot-rtp-volatility-event-reading/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/slot-rtp-volatility-loss-control-guide/index.html",
+      "route": "/blog/slot-rtp-volatility-loss-control-guide/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/split-bankroll-risk-rule/index.html",
+      "route": "/blog/split-bankroll-risk-rule/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-ibple-bonus-turnover-risk/index.html",
+      "route": "/blog/sports-ibple-bonus-turnover-risk/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-ibple-event-hidden-conditions/index.html",
+      "route": "/blog/sports-ibple-event-hidden-conditions/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-ibple-site-before-join/index.html",
+      "route": "/blog/sports-ibple-site-before-join/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-ibple-vs-casino-ibple-compare/index.html",
+      "route": "/blog/sports-ibple-vs-casino-ibple-compare/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-margin-low-site-formula/index.html",
+      "route": "/blog/sports-margin-low-site-formula/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-odds-margin-before-bonus/index.html",
+      "route": "/blog/sports-odds-margin-before-bonus/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-odds-margin-example-home-draw-away/index.html",
+      "route": "/blog/sports-odds-margin-example-home-draw-away/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-season/domestic-pro-sports-season-calendar-routine.html",
+      "route": "/blog/sports-season/domestic-pro-sports-season-calendar-routine.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-season/index.html",
+      "route": "/blog/sports-season/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-season/kbl-new-season-roster-foreign-player-check.html",
+      "route": "/blog/sports-season/kbl-new-season-roster-foreign-player-check.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-season/kbo-remaining-season-five-race-table.html",
+      "route": "/blog/sports-season/kbo-remaining-season-five-race-table.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-season/kbo-schedule-density-rest-day-check.html",
+      "route": "/blog/sports-season/kbo-schedule-density-rest-day-check.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-season/pro-baseball-final-stretch-overprediction-filter.html",
+      "route": "/blog/sports-season/pro-baseball-final-stretch-overprediction-filter.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-season/vleague-men-preseason-roster-check.html",
+      "route": "/blog/sports-season/vleague-men-preseason-roster-check.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-season/vleague-women-receive-foreign-player-check.html",
+      "route": "/blog/sports-season/vleague-women-receive-foreign-player-check.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-season/wkbl-season-flow-injury-rotation-check.html",
+      "route": "/blog/sports-season/wkbl-season-flow-injury-rotation-check.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/2026-world-cup-before-check.html",
+      "route": "/blog/sports-toto/2026-world-cup-before-check.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/baseball-kbo-check.html",
+      "route": "/blog/sports-toto/baseball-kbo-check.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/baseball-over-under.html",
+      "route": "/blog/sports-toto/baseball-over-under.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/baseball-rain-and-postponed-result.html",
+      "route": "/blog/sports-toto/baseball-rain-and-postponed-result.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/baseball-starting-pitcher.html",
+      "route": "/blog/sports-toto/baseball-starting-pitcher.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/basic-checklist.html",
+      "route": "/blog/sports-toto/basic-checklist.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/basic-terms-first-check.html",
+      "route": "/blog/sports-toto/basic-terms-first-check.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/basketball-handicap.html",
+      "route": "/blog/sports-toto/basketball-handicap.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/basketball-over-under.html",
+      "route": "/blog/sports-toto/basketball-over-under.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/basketball-pace.html",
+      "route": "/blog/sports-toto/basketball-pace.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/basketball-volleyball-season-check.html",
+      "route": "/blog/sports-toto/basketball-volleyball-season-check.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/closing-line-value-guide.html",
+      "route": "/blog/sports-toto/closing-line-value-guide.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/football-basic-check.html",
+      "route": "/blog/sports-toto/football-basic-check.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/football-dropping-odds-market-signal.html",
+      "route": "/blog/sports-toto/football-dropping-odds-market-signal.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/football-handicap.html",
+      "route": "/blog/sports-toto/football-handicap.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/football-over-under.html",
+      "route": "/blog/sports-toto/football-over-under.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/football-proto-overround-ev-model.html",
+      "route": "/blog/sports-toto/football-proto-overround-ev-model.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/handicap-asian-line-push-logic.html",
+      "route": "/blog/sports-toto/handicap-asian-line-push-logic.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/index.html",
+      "route": "/blog/sports-toto/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/kbo-fall-baseball-check.html",
+      "route": "/blog/sports-toto/kbo-fall-baseball-check.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/kbo-pitcher-bullpen-odds-model.html",
+      "route": "/blog/sports-toto/kbo-pitcher-bullpen-odds-model.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/kbo-postseason-market-volatility.html",
+      "route": "/blog/sports-toto/kbo-postseason-market-volatility.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/live-betting-delay-risk.html",
+      "route": "/blog/sports-toto/live-betting-delay-risk.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/nba-kbl-pace-possession-odds.html",
+      "route": "/blog/sports-toto/nba-kbl-pace-possession-odds.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/one-pick-event-condition.html",
+      "route": "/blog/sports-toto/one-pick-event-condition.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/over-under-total-market-pricing.html",
+      "route": "/blog/sports-toto/over-under-total-market-pricing.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/parlay-correlation-risk.html",
+      "route": "/blog/sports-toto/parlay-correlation-risk.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/proto-ev-kelly-bankroll.html",
+      "route": "/blog/sports-toto/proto-ev-kelly-bankroll.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/sports-event-rolling-checklist.html",
+      "route": "/blog/sports-toto/sports-event-rolling-checklist.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/v47-basketball-total-pace-metric.html",
+      "route": "/blog/sports-toto/v47-basketball-total-pace-metric.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/v47-football-1x2-overround-calculation.html",
+      "route": "/blog/sports-toto/v47-football-1x2-overround-calculation.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/v47-football-asian-handicap-line-difference.html",
+      "route": "/blog/sports-toto/v47-football-asian-handicap-line-difference.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/v47-football-cup-rotation-odds-volatility.html",
+      "route": "/blog/sports-toto/v47-football-cup-rotation-odds-volatility.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/v47-football-draw-odds-pricing-structure.html",
+      "route": "/blog/sports-toto/v47-football-draw-odds-pricing-structure.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/v47-football-dropping-odds-false-signal.html",
+      "route": "/blog/sports-toto/v47-football-dropping-odds-false-signal.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/v47-football-live-betting-delay-risk.html",
+      "route": "/blog/sports-toto/v47-football-live-betting-delay-risk.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/v47-football-proto-vs-bookmaker-odds.html",
+      "route": "/blog/sports-toto/v47-football-proto-vs-bookmaker-odds.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/v47-football-total-line-movement-probability.html",
+      "route": "/blog/sports-toto/v47-football-total-line-movement-probability.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/v47-kbl-early-season-pricing-error.html",
+      "route": "/blog/sports-toto/v47-kbl-early-season-pricing-error.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/v47-kbo-postseason-bullpen-odds.html",
+      "route": "/blog/sports-toto/v47-kbo-postseason-bullpen-odds.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/v47-kbo-rainout-suspended-settlement.html",
+      "route": "/blog/sports-toto/v47-kbo-rainout-suspended-settlement.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/v47-kbo-runline-1-5-handicap.html",
+      "route": "/blog/sports-toto/v47-kbo-runline-1-5-handicap.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/v47-kbo-starting-pitcher-void-rules.html",
+      "route": "/blog/sports-toto/v47-kbo-starting-pitcher-void-rules.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/v47-kbo-total-line-ballpark-factor.html",
+      "route": "/blog/sports-toto/v47-kbo-total-line-ballpark-factor.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/v47-nba-handicap-quarter-volatility.html",
+      "route": "/blog/sports-toto/v47-nba-handicap-quarter-volatility.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/v47-proto-match-vs-prop-market.html",
+      "route": "/blog/sports-toto/v47-proto-match-vs-prop-market.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/v47-sports-toto-hit-rate-vs-profit-rate.html",
+      "route": "/blog/sports-toto/v47-sports-toto-hit-rate-vs-profit-rate.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/v47-sports-toto-insurance-event-terms.html",
+      "route": "/blog/sports-toto/v47-sports-toto-insurance-event-terms.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/v47-sports-toto-market-margin-comparison.html",
+      "route": "/blog/sports-toto/v47-sports-toto-market-margin-comparison.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/v47-sports-toto-one-pick-insurance-ev.html",
+      "route": "/blog/sports-toto/v47-sports-toto-one-pick-insurance-ev.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/v47-sports-toto-opening-closing-line-compare.html",
+      "route": "/blog/sports-toto/v47-sports-toto-opening-closing-line-compare.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/v47-sports-toto-parlay-margin-compounding.html",
+      "route": "/blog/sports-toto/v47-sports-toto-parlay-margin-compounding.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/v47-sports-toto-payback-rate-ev-formula.html",
+      "route": "/blog/sports-toto/v47-sports-toto-payback-rate-ev-formula.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/v47-sports-toto-public-team-odds-bias.html",
+      "route": "/blog/sports-toto/v47-sports-toto-public-team-odds-bias.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/v47-sports-toto-turnover-real-ev.html",
+      "route": "/blog/sports-toto/v47-sports-toto-turnover-real-ev.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/v47-vleague-lineup-market-check.html",
+      "route": "/blog/sports-toto/v47-vleague-lineup-market-check.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/v47-volleyball-set-vs-match-handicap.html",
+      "route": "/blog/sports-toto/v47-volleyball-set-vs-match-handicap.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/v47-worldcup-2026-usa-market-checklist.html",
+      "route": "/blog/sports-toto/v47-worldcup-2026-usa-market-checklist.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/v47-worldcup-group-stage-odds-volatility.html",
+      "route": "/blog/sports-toto/v47-worldcup-group-stage-odds-volatility.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/v48-basketball-possession-total-model.html",
+      "route": "/blog/sports-toto/v48-basketball-possession-total-model.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/v48-football-closing-line-value-audit.html",
+      "route": "/blog/sports-toto/v48-football-closing-line-value-audit.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/v48-football-draw-no-bet-refund-model.html",
+      "route": "/blog/sports-toto/v48-football-draw-no-bet-refund-model.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/v48-football-quarter-asian-handicap-settlement.html",
+      "route": "/blog/sports-toto/v48-football-quarter-asian-handicap-settlement.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/v48-football-quarter-total-line-settlement.html",
+      "route": "/blog/sports-toto/v48-football-quarter-total-line-settlement.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/v48-kbo-bullpen-runline-price-model.html",
+      "route": "/blog/sports-toto/v48-kbo-bullpen-runline-price-model.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/v48-kbo-five-innings-rain-settlement.html",
+      "route": "/blog/sports-toto/v48-kbo-five-innings-rain-settlement.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/v48-sports-toto-parlay-margin-table.html",
+      "route": "/blog/sports-toto/v48-sports-toto-parlay-margin-table.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/v48-volleyball-deuce-total-handicap-risk.html",
+      "route": "/blog/sports-toto/v48-volleyball-deuce-total-handicap-risk.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/v48-worldcup-group-motivation-odds-risk.html",
+      "route": "/blog/sports-toto/v48-worldcup-group-motivation-odds-risk.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/volleyball-over-under.html",
+      "route": "/blog/sports-toto/volleyball-over-under.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/volleyball-set-handicap-market.html",
+      "route": "/blog/sports-toto/volleyball-set-handicap-market.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/volleyball-set-handicap.html",
+      "route": "/blog/sports-toto/volleyball-set-handicap.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/volleyball-team-form.html",
+      "route": "/blog/sports-toto/volleyball-team-form.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/worldcup-2026-group-stage-odds.html",
+      "route": "/blog/sports-toto/worldcup-2026-group-stage-odds.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto/worldcup-event-condition-note.html",
+      "route": "/blog/sports-toto/worldcup-event-condition-note.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/sports-toto-event-condition-small-print/index.html",
+      "route": "/blog/sports-toto-event-condition-small-print/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/telegram-consult-code-domain-template/index.html",
+      "route": "/blog/telegram-consult-code-domain-template/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/telegram-consult-question-list/index.html",
+      "route": "/blog/telegram-consult-question-list/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/telegram-domain-match/index.html",
+      "route": "/blog/telegram-domain-match/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/telegram-notice-cross-check/index.html",
+      "route": "/blog/telegram-notice-cross-check/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/telegram-official-center/index.html",
+      "route": "/blog/telegram-official-center/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/timeline-before-report/index.html",
+      "route": "/blog/timeline-before-report/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/toto-muktu-danger-signals/index.html",
+      "route": "/blog/toto-muktu-danger-signals/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/toto-muktu-red-flag-search/index.html",
+      "route": "/blog/toto-muktu-red-flag-search/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/toto-muktu-review-filter/index.html",
+      "route": "/blog/toto-muktu-review-filter/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/toto-site-code-official-domain-match/index.html",
+      "route": "/blog/toto-site-code-official-domain-match/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/toto-site-recommendation-detail-2026-ranking-signals/index.html",
+      "route": "/blog/toto-site-recommendation-detail-2026-ranking-signals/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/toto-site-recommendation-mobile-checklist/index.html",
+      "route": "/blog/toto-site-recommendation-mobile-checklist/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/udt-seoa-event-guide.html",
+      "route": "/blog/udt-seoa-event-guide.html",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/usdt-deposit-event-condition-reading/index.html",
+      "route": "/blog/usdt-deposit-event-condition-reading/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/vendor-card-image-trust-signal-guide/index.html",
+      "route": "/blog/vendor-card-image-trust-signal-guide/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/withdraw-review-gap-check/index.html",
+      "route": "/blog/withdraw-review-gap-check/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    },
+    {
+      "file": "blog/withdraw-rolling-center/index.html",
+      "route": "/blog/withdraw-rolling-center/",
+      "removedBlocks": 0,
+      "textReplacements": 0,
+      "hasCanonical": true,
+      "hasSchema": true
+    }
+  ],
+  "generatedAt": "2026-05-30T03:57:12.383Z",
+  "next": "V136 full blog visual/live sample QA if needed"
+}

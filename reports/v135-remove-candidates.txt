@@ -1,0 +1,6 @@
+V135 removed visible blog residue in HTML, not files.
+Files scanned: 521
+Removed legacy/FAQ/related blocks: 0
+Text replacements: 0
+Broken blog hrefs: 0
+No physical deletion.
