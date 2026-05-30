@@ -1,0 +1,83 @@
+/* V135.4 GLOBAL HEADER BRAND UNIFY
+   기준: 원형 RUST 로고 + 금색 RUST 텍스트 단일 락업. BY 88ST 제거. */
+.rust-global-header .rust-brand,
+.v79-header .v79-brand{
+  display:inline-flex!important;
+  align-items:center!important;
+  gap:10px!important;
+  min-height:44px!important;
+  text-decoration:none!important;
+}
+.rust-global-header .rust-brand-mark{
+  width:38px!important;
+  height:38px!important;
+  border-radius:999px!important;
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+  overflow:visible!important;
+  display:grid!important;
+  place-items:center!important;
+}
+.rust-global-header .rust-brand-mark::after{display:none!important;content:none!important;}
+.rust-global-header .rust-brand-mark img,
+.v79-header .v79-brand img{
+  width:34px!important;
+  height:34px!important;
+  max-width:34px!important;
+  max-height:34px!important;
+  object-fit:contain!important;
+  transform:none!important;
+  filter:drop-shadow(0 0 10px rgba(251,191,36,.34)) drop-shadow(0 0 18px rgba(249,115,22,.12))!important;
+}
+.rust-global-header .rust-brand-type{
+  display:inline-flex!important;
+  flex-direction:row!important;
+  align-items:center!important;
+  gap:0!important;
+  line-height:1!important;
+  letter-spacing:0!important;
+}
+.rust-global-header .rust-brand-type strong,
+.v79-header .v79-brand-name{
+  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif!important;
+  font-size:18px!important;
+  font-weight:950!important;
+  letter-spacing:.13em!important;
+  color:#f6b14a!important;
+  -webkit-text-fill-color:#f6b14a!important;
+  background:none!important;
+  -webkit-background-clip:initial!important;
+  background-clip:initial!important;
+  text-shadow:0 0 12px rgba(251,191,36,.18)!important;
+  text-transform:uppercase!important;
+}
+.rust-global-header .rust-brand-type span{
+  display:none!important;
+  visibility:hidden!important;
+  width:0!important;
+  height:0!important;
+  margin:0!important;
+  padding:0!important;
+  overflow:hidden!important;
+}
+.rust-global-header .rust-header-inner,
+.v79-header .v79-header-inner{
+  align-items:center!important;
+}
+@media (max-width:760px){
+  .rust-global-header .rust-brand-mark,
+  .v79-header .v79-brand img{width:32px!important;height:32px!important;max-width:32px!important;max-height:32px!important;}
+  .rust-global-header .rust-brand-mark img{width:32px!important;height:32px!important;max-width:32px!important;max-height:32px!important;}
+  .rust-global-header .rust-brand-type strong,
+  .v79-header .v79-brand-name{font-size:16px!important;letter-spacing:.12em!important;}
+}
+
+/* V135.4 detail landing lockup variant */
+.rust-global-header .rust-brand-lockup{display:inline-flex!important;align-items:center!important;gap:10px!important;min-height:44px!important;text-decoration:none!important;}
+.rust-global-header .rust-brand-lockup .rust-brand-mark{width:38px!important;height:38px!important;border:0!important;background:transparent!important;box-shadow:none!important;overflow:visible!important;}
+.rust-global-header .rust-brand-lockup .rust-brand-mark img{width:34px!important;height:34px!important;max-width:34px!important;max-height:34px!important;transform:none!important;filter:drop-shadow(0 0 10px rgba(251,191,36,.34)) drop-shadow(0 0 18px rgba(249,115,22,.12))!important;}
+.rust-global-header .rust-brand-text{display:inline-flex!important;align-items:center!important;line-height:1!important;}
+.rust-global-header .rust-brand-text b{font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif!important;font-size:18px!important;font-weight:950!important;letter-spacing:.13em!important;color:#f6b14a!important;text-shadow:0 0 12px rgba(251,191,36,.18)!important;}
+.rust-global-header .rust-brand-text small{display:none!important;visibility:hidden!important;width:0!important;height:0!important;overflow:hidden!important;margin:0!important;padding:0!important;}
+@media (max-width:760px){.rust-global-header .rust-brand-lockup .rust-brand-mark,.rust-global-header .rust-brand-lockup .rust-brand-mark img{width:32px!important;height:32px!important;max-width:32px!important;max-height:32px!important}.rust-global-header .rust-brand-text b{font-size:16px!important;letter-spacing:.12em!important;}}
