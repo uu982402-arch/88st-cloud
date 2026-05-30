@@ -1,0 +1,13 @@
+{
+  "ok": true,
+  "version": "V138_1_CERT_HREF_BUILD_HOTFIX",
+  "base": "V137.2 BLOG LIVE MATERIALIZE FULL + V138 PATCH",
+  "fix": "Cloudflare build failed because stale cert/index.html contained href=\"#\". V138-1 materializes a noindex cert bridge and fixes remaining href=\"#\" before verify.",
+  "changedFiles": [
+    "cert/index.html",
+    "package.json"
+  ],
+  "fixedHrefFiles": [],
+  "deletedFiles": [],
+  "generatedAt": "2026-05-30T16:06:41.472Z"
+}
