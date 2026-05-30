@@ -17,5 +17,5 @@
     "verify": "node scripts/verify-v131-live-visual-deploy-polish.mjs",
     "scriptAudit": "verify checks package referenced .mjs existence"
   },
-  "generatedAt": "2026-05-29T07:02:43.307Z"
+  "generatedAt": "2026-05-30T00:50:25.257Z"
 }

@@ -11,8 +11,8 @@
     "header sticky overlay fix",
     "home vendor card slight scale-down"
   ],
-  "generatedAt": "2026-05-29T18:25:58.090Z",
+  "generatedAt": "2026-05-30T00:50:40.570Z",
   "touchedSample": [
-    "tools/index.html"
+    "index.html"
   ]
 }
