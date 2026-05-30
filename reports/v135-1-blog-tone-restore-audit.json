@@ -1,0 +1,10 @@
+{
+  "ok": true,
+  "version": "V135_1_BLOG_DETAIL_TONE_RESTORE_HOTFIX",
+  "blogHtml": 521,
+  "linked": 9,
+  "reordered": 0,
+  "changedFiles": 10,
+  "reason": "V135 common CSS forced blog detail pages into a light theme. V135.1 restores dark/glass article tone and keeps V135 cleanup.",
+  "generatedAt": "2026-05-30T04:55:23.352Z"
+}

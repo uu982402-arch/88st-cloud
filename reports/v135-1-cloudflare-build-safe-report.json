@@ -1,0 +1,11 @@
+{
+  "ok": true,
+  "version": "V135_1_BLOG_DETAIL_TONE_RESTORE_HOTFIX",
+  "mode": "cloudflare-pages-safe-build",
+  "steps": [
+    "v135 baseline",
+    "v135.1 generate",
+    "v135.1 verify"
+  ],
+  "generatedAt": "2026-05-30T04:55:23.591Z"
+}
