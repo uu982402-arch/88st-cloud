@@ -1,0 +1,59 @@
+/* V135.5 BLOG HEADER / DARK TONE LOCK
+   목적: V135 블로그 전체 점검 때 들어간 흰색/회색 배경 토큰을 제거하고,
+   블로그 헤더/본문/카드를 다시 RUST 다크 글래스 톤으로 고정한다. */
+:root{--v1355-bg:#05070b;--v1355-bg2:#070b12;--v1355-panel:rgba(15,23,42,.78);--v1355-panel2:rgba(17,24,39,.86);--v1355-line:rgba(255,255,255,.10);--v1355-line2:rgba(251,191,36,.22);--v1355-text:#f8fafc;--v1355-muted:rgba(226,232,240,.78);--v1355-soft:rgba(148,163,184,.76);--v1355-gold:#f6b14a;--v1355-cyan:#22d3ee;}
+html[data-v135-5-blog-header-dark-lock="active"],
+html[data-v135-5-blog-header-dark-lock="active"] body{background:radial-gradient(circle at 14% 0%,rgba(34,211,238,.09),transparent 26%),radial-gradient(circle at 86% 12%,rgba(251,191,36,.08),transparent 30%),linear-gradient(180deg,#05070b 0%,#070b12 42%,#05070b 100%)!important;color:var(--v1355-text)!important;color-scheme:dark!important;}
+html[data-v135-5-blog-header-dark-lock="active"] .rust-global-header{position:sticky!important;top:0!important;z-index:9000!important;background:linear-gradient(180deg,rgba(5,7,11,.96),rgba(5,7,11,.86))!important;border-bottom:1px solid rgba(255,255,255,.08)!important;box-shadow:0 18px 70px rgba(0,0,0,.35)!important;backdrop-filter:blur(18px) saturate(140%)!important;-webkit-backdrop-filter:blur(18px) saturate(140%)!important;color:#f8fafc!important;}
+html[data-v135-5-blog-header-dark-lock="active"] .rust-global-header .rust-brand,
+html[data-v135-5-blog-header-dark-lock="active"] .v79-header .v79-brand{display:inline-flex!important;align-items:center!important;gap:10px!important;text-decoration:none!important;color:var(--v1355-gold)!important;}
+html[data-v135-5-blog-header-dark-lock="active"] .rust-global-header .rust-brand-mark,
+html[data-v135-5-blog-header-dark-lock="active"] .rust-global-header .rust-brand-lockup .rust-brand-mark{width:38px!important;height:38px!important;max-width:38px!important;max-height:38px!important;border:0!important;background:transparent!important;box-shadow:none!important;overflow:visible!important;}
+html[data-v135-5-blog-header-dark-lock="active"] .rust-global-header .rust-brand-mark img,
+html[data-v135-5-blog-header-dark-lock="active"] .v79-header .v79-brand img{width:34px!important;height:34px!important;max-width:34px!important;max-height:34px!important;object-fit:contain!important;filter:drop-shadow(0 0 10px rgba(251,191,36,.34))!important;transform:none!important;}
+html[data-v135-5-blog-header-dark-lock="active"] .rust-global-header .rust-brand-type strong,
+html[data-v135-5-blog-header-dark-lock="active"] .rust-global-header .rust-brand-text b,
+html[data-v135-5-blog-header-dark-lock="active"] .v79-header .v79-brand-name{font-size:18px!important;font-weight:950!important;letter-spacing:.13em!important;color:var(--v1355-gold)!important;-webkit-text-fill-color:var(--v1355-gold)!important;background:none!important;text-shadow:0 0 14px rgba(251,191,36,.18)!important;text-transform:uppercase!important;}
+html[data-v135-5-blog-header-dark-lock="active"] .rust-global-header .rust-brand-type span,
+html[data-v135-5-blog-header-dark-lock="active"] .rust-global-header .rust-brand-text small{display:none!important;visibility:hidden!important;width:0!important;height:0!important;margin:0!important;padding:0!important;overflow:hidden!important;}
+html[data-v135-5-blog-header-dark-lock="active"] .rust-desktop-nav a,
+html[data-v135-5-blog-header-dark-lock="active"] .rust-mobile-menu a{color:rgba(248,250,252,.82)!important;background:transparent!important;border-color:rgba(255,255,255,.08)!important;}
+html[data-v135-5-blog-header-dark-lock="active"] .rust-desktop-nav a:hover,
+html[data-v135-5-blog-header-dark-lock="active"] .rust-desktop-nav a[aria-current="page"]{color:#fff7ed!important;background:rgba(251,191,36,.10)!important;border-color:rgba(251,191,36,.25)!important;}
+html[data-v135-5-blog-header-dark-lock="active"] .v71-page,
+html[data-v135-5-blog-header-dark-lock="active"] .v72-blog-main,
+html[data-v135-5-blog-header-dark-lock="active"] .v82-longform-main,
+html[data-v135-5-blog-header-dark-lock="active"] .v133-season-main,
+html[data-v135-5-blog-header-dark-lock="active"] main{background:transparent!important;color:var(--v1355-text)!important;}
+html[data-v135-5-blog-header-dark-lock="active"] .v71-shell,
+html[data-v135-5-blog-header-dark-lock="active"] .v72-blog-direct,
+html[data-v135-5-blog-header-dark-lock="active"] .v82-longform-hero,
+html[data-v135-5-blog-header-dark-lock="active"] .v82-longform-body,
+html[data-v135-5-blog-header-dark-lock="active"] .v133-season-hero,
+html[data-v135-5-blog-header-dark-lock="active"] .v133-season-body,
+html[data-v135-5-blog-header-dark-lock="active"] .v133-season-block,
+html[data-v135-5-blog-header-dark-lock="active"] article,
+html[data-v135-5-blog-header-dark-lock="active"] .v122-result-card{background:linear-gradient(180deg,rgba(17,24,39,.86),rgba(15,23,42,.74))!important;border:1px solid var(--v1355-line)!important;color:var(--v1355-text)!important;box-shadow:0 20px 70px rgba(0,0,0,.28)!important;}
+html[data-v135-5-blog-header-dark-lock="active"] .v72-blog-card,
+html[data-v135-5-blog-header-dark-lock="active"] .v134-sports-season-card{background:linear-gradient(180deg,rgba(15,23,42,.88),rgba(2,6,23,.80))!important;border:1px solid rgba(255,255,255,.10)!important;color:var(--v1355-text)!important;}
+html[data-v135-5-blog-header-dark-lock="active"] h1,
+html[data-v135-5-blog-header-dark-lock="active"] h2,
+html[data-v135-5-blog-header-dark-lock="active"] h3,
+html[data-v135-5-blog-header-dark-lock="active"] strong{color:#f8fafc!important;}
+html[data-v135-5-blog-header-dark-lock="active"] p,
+html[data-v135-5-blog-header-dark-lock="active"] li,
+html[data-v135-5-blog-header-dark-lock="active"] dd,
+html[data-v135-5-blog-header-dark-lock="active"] .v82-longform-body,
+html[data-v135-5-blog-header-dark-lock="active"] .v133-season-body{color:rgba(226,232,240,.86)!important;}
+html[data-v135-5-blog-header-dark-lock="active"] .v135-note,
+html[data-v135-5-blog-header-dark-lock="active"] .v82-longform-note,
+html[data-v135-5-blog-header-dark-lock="active"] .v133-season-note{background:linear-gradient(180deg,rgba(251,191,36,.10),rgba(251,146,60,.045))!important;border:1px solid rgba(251,191,36,.22)!important;color:#fff7ed!important;}
+html[data-v135-5-blog-header-dark-lock="active"] input,
+html[data-v135-5-blog-header-dark-lock="active"] select,
+html[data-v135-5-blog-header-dark-lock="active"] textarea{background:rgba(15,23,42,.88)!important;color:#f8fafc!important;border-color:rgba(255,255,255,.13)!important;}
+/* V135가 만든 흰색/회색 배경 토큰 재노출 방지 */
+html[data-v135-5-blog-header-dark-lock="active"] [style*="background:#fff"],
+html[data-v135-5-blog-header-dark-lock="active"] [style*="background: #fff"],
+html[data-v135-5-blog-header-dark-lock="active"] [style*="background:#f8fafc"],
+html[data-v135-5-blog-header-dark-lock="active"] [style*="background: #f8fafc"]{background:linear-gradient(180deg,rgba(17,24,39,.86),rgba(15,23,42,.74))!important;color:var(--v1355-text)!important;}
+@media(max-width:760px){html[data-v135-5-blog-header-dark-lock="active"] .rust-global-header .rust-brand-mark,img{max-width:100%;}html[data-v135-5-blog-header-dark-lock="active"] .rust-global-header .rust-brand-type strong,html[data-v135-5-blog-header-dark-lock="active"] .rust-global-header .rust-brand-text b{font-size:16px!important;letter-spacing:.12em!important;}html[data-v135-5-blog-header-dark-lock="active"] .rust-global-header .rust-brand-mark,html[data-v135-5-blog-header-dark-lock="active"] .rust-global-header .rust-brand-mark img{width:32px!important;height:32px!important;max-width:32px!important;max-height:32px!important;}}
