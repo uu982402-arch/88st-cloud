@@ -1,0 +1,12 @@
+/* V135.6: tool modal/footer placement recovery */
+html[data-v135-6-tool-modal-footer-fix="active"] .v1321-tool-modal footer,
+html[data-v135-6-tool-modal-footer-fix="active"] .v1321-tool-modal .moon-footer,
+html[data-v135-6-tool-modal-footer-fix="active"] .v1321-tool-modal .rust-bottom-nav,
+html[data-v135-6-tool-modal-footer-fix="active"] .v1321-tool-modal .v56-footer-row{display:none!important;}
+html[data-v135-6-tool-modal-footer-fix="active"] .v1321-tool-modal{position:fixed!important;inset:0!important;z-index:9100!important;align-items:center;justify-content:center;padding:18px;background:rgba(2,6,23,.72)!important;backdrop-filter:blur(20px) saturate(130%)!important;-webkit-backdrop-filter:blur(20px) saturate(130%)!important;}
+html[data-v135-6-tool-modal-footer-fix="active"] .v1321-tool-panel{width:min(640px,calc(100% - 28px));max-height:min(84vh,720px);overflow:auto;border-radius:22px;border:1px solid rgba(255,255,255,.14)!important;background:linear-gradient(180deg,rgba(15,23,42,.96),rgba(2,6,23,.96))!important;color:#f8fafc!important;box-shadow:0 32px 110px rgba(0,0,0,.48)!important;}
+html[data-v135-6-tool-modal-footer-fix="active"] .v1321-tool-body{padding:16px 18px 18px;display:grid;gap:14px;background:transparent!important;}
+html[data-v135-6-tool-modal-footer-fix="active"] .v1321-tool-form{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;}
+html[data-v135-6-tool-modal-footer-fix="active"] .v1321-tool-result{border:1px solid rgba(251,191,36,.22)!important;background:linear-gradient(180deg,rgba(251,191,36,.10),rgba(255,255,255,.035))!important;border-radius:18px;padding:14px;}
+html[data-v135-6-tool-modal-footer-fix="active"] .v1321-tool-note{white-space:pre-wrap;word-break:break-word;margin:8px 0 0;color:rgba(226,232,240,.86)!important;font-family:inherit;font-size:13px;line-height:1.55;}
+@media(max-width:720px){html[data-v135-6-tool-modal-footer-fix="active"] .v1321-tool-modal{padding:0!important;align-items:flex-end!important;}html[data-v135-6-tool-modal-footer-fix="active"] .v1321-tool-panel{width:100%;max-height:86vh;border-radius:22px 22px 0 0;border-bottom:0;}html[data-v135-6-tool-modal-footer-fix="active"] .v1321-tool-form{grid-template-columns:1fr;}html[data-v135-6-tool-modal-footer-fix="active"] .v1321-tool-body{padding:14px 16px calc(18px + env(safe-area-inset-bottom));}}
