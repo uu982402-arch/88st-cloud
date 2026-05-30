@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "description": "Static build shim for Cloudflare Pages",
   "scripts": {
-    "build": "node scripts/build-v132-2-cloudflare-pages-safe.mjs",
+    "build": "node scripts/build-v133-cloudflare-pages-safe.mjs",
     "seo:static": "node scripts/generate-static-seo-og.mjs",
     "related:static": "node scripts/generate-related-posts.mjs",
     "seo:refresh": "node scripts/generate-brand-pages.mjs && node scripts/generate-static-seo-og.mjs && node scripts/generate-related-posts.mjs && node scripts/generate-sitemap.mjs && node scripts/generate-indexing-audit.mjs && node scripts/generate-ctr-report.mjs && node scripts/generate-traffic-roadmap.mjs",
@@ -15,7 +15,7 @@
     "brands:static": "node scripts/generate-brand-pages.mjs",
     "community:manifest": "node scripts/generate-community-manifest.mjs",
     "seo:intel": "node scripts/seo-intelligence-v36.mjs",
-    "verify": "node scripts/verify-v132-2-home-guaranteed-card-balance.mjs",
+    "verify": "node scripts/verify-v133-sports-season-content.mjs",
     "verify:wrangler": "RUN_WRANGLER_VERIFY=1 node scripts/verify-v36.mjs",
     "quality:v43": "node scripts/generate-v43-quality-data.mjs",
     "blog:directory": "node scripts/generate-v47-comprehensive-upgrade.mjs",
@@ -241,6 +241,8 @@
     "quality:v132.1": "node scripts/generate-v132-1-live-header-tools-modal-cleanup.mjs",
     "verify:v132.1": "node scripts/verify-v132-1-live-header-tools-modal-cleanup.mjs",
     "quality:v132.2": "node scripts/generate-v132-2-home-guaranteed-card-balance.mjs",
-    "verify:v132.2": "node scripts/verify-v132-2-home-guaranteed-card-balance.mjs"
+    "verify:v132.2": "node scripts/verify-v132-2-home-guaranteed-card-balance.mjs",
+    "quality:v133": "node scripts/generate-v133-sports-season-content.mjs",
+    "verify:v133": "node scripts/verify-v133-sports-season-content.mjs"
   }
 }

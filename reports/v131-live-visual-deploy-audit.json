@@ -1,7 +1,7 @@
 {
   "ok": true,
   "version": "V131_LIVE_VISUAL_QA_MAIN_GUARANTEED_DEPLOY_SAFE_POLISH",
-  "htmlScanned": 639,
+  "htmlScanned": 647,
   "htmlTouched": 0,
   "main": {
     "duplicateLegacyTopbarRemoved": true,
@@ -17,5 +17,5 @@
     "verify": "node scripts/verify-v131-live-visual-deploy-polish.mjs",
     "scriptAudit": "verify checks package referenced .mjs existence"
   },
-  "generatedAt": "2026-05-30T00:50:25.257Z"
+  "generatedAt": "2026-05-30T02:34:59.695Z"
 }

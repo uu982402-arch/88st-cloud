@@ -1,0 +1,16 @@
+
+/* V133 sports season blog design unification */
+[data-v133-sports-season="true"] .v133-season-article{max-width:980px;margin:0 auto;padding:42px 18px 72px;color:#111827;}
+[data-v133-sports-season="true"] .v133-season-hero{border:1px solid rgba(15,23,42,.1);background:linear-gradient(180deg,#fff,#f7f8fb);border-radius:24px;padding:30px;box-shadow:0 18px 42px rgba(15,23,42,.06);}
+[data-v133-sports-season="true"] .v133-season-meta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;color:#6b7280;font-size:13px;}
+[data-v133-sports-season="true"] .v133-season-meta span{border:1px solid rgba(15,23,42,.08);background:#fff;border-radius:999px;padding:6px 10px;}
+[data-v133-sports-season="true"] .v133-season-hero h1{margin:0;color:#0f172a;font-size:clamp(26px,4vw,42px);line-height:1.16;letter-spacing:-.045em;}
+[data-v133-sports-season="true"] .v133-season-lead{margin:16px 0 0;color:#4b5563;font-size:16px;line-height:1.75;max-width:760px;}
+[data-v133-sports-season="true"] .v133-season-body{margin-top:20px;display:grid;gap:14px;}
+[data-v133-sports-season="true"] .v133-season-block{border:1px solid rgba(15,23,42,.08);background:rgba(255,255,255,.92);border-radius:20px;padding:22px;box-shadow:0 12px 30px rgba(15,23,42,.045);}
+[data-v133-sports-season="true"] .v133-season-block h2{margin:0 0 10px;color:#111827;font-size:19px;line-height:1.35;letter-spacing:-.025em;}
+[data-v133-sports-season="true"] .v133-season-block p{margin:0;color:#374151;line-height:1.82;font-size:15px;}
+[data-v133-sports-season="true"] .v133-season-note{margin-top:16px;border:1px solid rgba(217,119,6,.18);background:#fffaf1;border-radius:18px;padding:16px 18px;color:#7c2d12;font-size:14px;line-height:1.7;}
+.v72-blog-card[data-v133-post="true"]{border-color:rgba(15,23,42,.12);background:linear-gradient(180deg,#fff,#f8fafc);}
+.v72-blog-card[data-v133-post="true"] .v72-blog-card__tag{background:#111827;color:#fff;border-color:#111827;}
+@media(max-width:720px){[data-v133-sports-season="true"] .v133-season-article{padding:24px 14px 58px}[data-v133-sports-season="true"] .v133-season-hero{padding:22px;border-radius:20px}[data-v133-sports-season="true"] .v133-season-block{padding:18px;border-radius:18px}[data-v133-sports-season="true"] .v133-season-meta{font-size:12px}}

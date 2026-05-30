@@ -1,0 +1,11 @@
+{
+  "ok": true,
+  "version": "V133_SPORTS_SEASON_CONTENT_DUPLICATE_SAFE",
+  "mode": "cloudflare-pages-safe-build",
+  "steps": [
+    "v132.2 baseline",
+    "v133 generate",
+    "v133 verify"
+  ],
+  "generatedAt": "2026-05-30T02:35:24.746Z"
+}

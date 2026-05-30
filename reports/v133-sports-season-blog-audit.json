@@ -1,0 +1,256 @@
+{
+  "ok": true,
+  "version": "V133_SPORTS_SEASON_CONTENT",
+  "newPosts": 8,
+  "audit": [
+    {
+      "title": "KBO 남은 시즌 5강 경쟁표를 볼 때 먼저 나눌 항목",
+      "slug": "kbo-remaining-season-five-race-table.html",
+      "closest": [
+        {
+          "file": "blog/sports-toto/v47-kbo-postseason-bullpen-odds.html",
+          "title": "KBO 포스트시즌 배당 변동과 불펜 변수 | RUST 블로그",
+          "score": 0.156
+        },
+        {
+          "file": "blog/bet365-virtual/v47-bet365-virtual-racing-probability-display.html",
+          "title": "bet365 가상경마 확률 모델과 표시 방식 | RUST 블로그",
+          "score": 0.143
+        },
+        {
+          "file": "blog/renewal-claim-red-flags/index.html",
+          "title": "리뉴얼 주장 사이트에서 먼저 볼 항목, 가짜 변경 공지 구별법 체크노트 | RUST 블로그",
+          "score": 0.143
+        },
+        {
+          "file": "blog/public-evidence-note-taking/index.html",
+          "title": "공개 근거를 기록할 때 남겨야 하는 항목, 정리 실수 줄이기 | RUST 블로그",
+          "score": 0.132
+        },
+        {
+          "file": "blog/sports-toto/worldcup-event-condition-note.html",
+          "title": "월드컵 이벤트 조건표에서 꼭 볼 항목 | RUST 블로그",
+          "score": 0.125
+        }
+      ]
+    },
+    {
+      "title": "KBO 막판 일정 밀도와 휴식일을 같이 보는 법",
+      "slug": "kbo-schedule-density-rest-day-check.html",
+      "closest": [
+        {
+          "file": "blog/slot-rtp-bonus-condition-read-together/index.html",
+          "title": "슬롯 RTP와 보너스 조건을 같이 읽는 법 | RUST 블로그",
+          "score": 0.25
+        },
+        {
+          "file": "blog/slot-rtp-volatility-event-reading/index.html",
+          "title": "슬롯 RTP와 변동성, 이벤트 혜택을 같이 보는 법 | RUST 블로그",
+          "score": 0.233
+        },
+        {
+          "file": "blog/slot-rtp-volatility-loss-control-guide/index.html",
+          "title": "슬롯 RTP·변동성·손실한도 같이 보는 법 | RUST 블로그",
+          "score": 0.207
+        },
+        {
+          "file": "blog/toto-site-code-official-domain-match/index.html",
+          "title": "토토사이트추천에서 가입코드와 공식 도메인이 맞는지 보는 법 | RUST 블로그",
+          "score": 0.206
+        },
+        {
+          "file": "blog/minigame-rolling-loss-limit-check/index.html",
+          "title": "미니게임 롤링과 손실한도 같이 보는 체크법 | RUST 블로그",
+          "score": 0.2
+        }
+      ]
+    },
+    {
+      "title": "프로야구 막판 전망글에서 과장 예측을 걸러내는 기준",
+      "slug": "pro-baseball-final-stretch-overprediction-filter.html",
+      "closest": [
+        {
+          "file": "blog/community-review-filtering/index.html",
+          "title": "커뮤니티 글에서 먼저 걸러야 할 패턴, 후기 글 필터링 체크 기준 | RUST 블로그",
+          "score": 0.216
+        },
+        {
+          "file": "blog/sports-toto/baseball-over-under.html",
+          "title": "야구 언오버 기준과 득점 흐름 흐름 읽는 법 | RUST 블로그",
+          "score": 0.194
+        },
+        {
+          "file": "blog/nameserver-cluster-search-guide/index.html",
+          "title": "네임서버와 클러스터 흔적을 검색과 함께 읽는 체크 기준 | RUST 블로그",
+          "score": 0.184
+        },
+        {
+          "file": "blog/toto-muktu-review-filter/index.html",
+          "title": "토토 먹튀 후기 글을 빠르게 거르는 기준, 광고성 후기 판별 | RUST 블로그",
+          "score": 0.176
+        },
+        {
+          "file": "blog/copied-review-patterns/index.html",
+          "title": "후기 글이 복붙인지 구별하는 체크 기준, 가짜 후기 판별법 | RUST 블로그",
+          "score": 0.171
+        }
+      ]
+    },
+    {
+      "title": "남자배구 V리그 시즌 전 로스터 변화를 확인하는 순서",
+      "slug": "vleague-men-preseason-roster-check.html",
+      "closest": [
+        {
+          "file": "blog/sports-toto/v47-vleague-lineup-market-check.html",
+          "title": "V리그 배구 시즌 초반 라인업 변수 체크 | RUST 블로그",
+          "score": 0.31
+        },
+        {
+          "file": "blog/payout-risk/rejected-withdraw.html",
+          "title": "출금 거절 사유를 자료부터 정리하는 순서 | RUST 블로그",
+          "score": 0.258
+        },
+        {
+          "file": "blog/report-message-order-guide/index.html",
+          "title": "먹튀 제보 메시지를 빠르게 정리하는 순서 | RUST 블로그",
+          "score": 0.219
+        },
+        {
+          "file": "blog/sports-odds-margin-before-bonus/index.html",
+          "title": "스포츠 보너스 보기 전 배당 마진 먼저 확인하는 이유 | RUST 블로그",
+          "score": 0.206
+        },
+        {
+          "file": "blog/notice-review-time-gap/index.html",
+          "title": "공지와 후기의 시간차를 검색으로 읽는 실전 순서 | RUST 블로그",
+          "score": 0.2
+        }
+      ]
+    },
+    {
+      "title": "여자배구 V리그 시즌 초반 리시브와 외국인 선수 변수를 보는 법",
+      "slug": "vleague-women-receive-foreign-player-check.html",
+      "closest": [
+        {
+          "file": "blog/sports-toto/v47-vleague-lineup-market-check.html",
+          "title": "V리그 배구 시즌 초반 라인업 변수 체크 | RUST 블로그",
+          "score": 0.444
+        },
+        {
+          "file": "blog/sports-toto/worldcup-2026-group-stage-odds.html",
+          "title": "2026 미국 월드컵 조별리그 배당 변수와 시차 리스크 | RUST 블로그",
+          "score": 0.222
+        },
+        {
+          "file": "blog/sports-toto/basketball-volleyball-season-check.html",
+          "title": "농구·배구 시즌 초반 경기 체크 기준 | RUST 블로그",
+          "score": 0.207
+        },
+        {
+          "file": "blog/sports-toto/v47-kbl-early-season-pricing-error.html",
+          "title": "KBL 농구 시즌 초반 배당 오류가 생기는 이유 | RUST 블로그",
+          "score": 0.2
+        },
+        {
+          "file": "blog/sports-toto/v48-worldcup-group-motivation-odds-risk.html",
+          "title": "월드컵 조별리그 동기부여와 배당 변동성 체크 | RUST 블로그",
+          "score": 0.171
+        }
+      ]
+    },
+    {
+      "title": "KBL 새 시즌 로스터와 외국선수 구성을 확인하는 기준",
+      "slug": "kbl-new-season-roster-foreign-player-check.html",
+      "closest": [
+        {
+          "file": "blog/sports-toto/kbo-fall-baseball-check.html",
+          "title": "KBO 가을야구 경기 전 확인해야 할 변수 | RUST 블로그",
+          "score": 0.258
+        },
+        {
+          "file": "blog/sports-toto/v47-kbl-early-season-pricing-error.html",
+          "title": "KBL 농구 시즌 초반 배당 오류가 생기는 이유 | RUST 블로그",
+          "score": 0.235
+        },
+        {
+          "file": "blog/sports-toto/v47-kbo-starting-pitcher-void-rules.html",
+          "title": "KBO 야구 선발투수 변경과 베팅 무효 기준 | RUST 블로그",
+          "score": 0.206
+        },
+        {
+          "file": "blog/online-slot/slot-rng-api-packet-check.html",
+          "title": "슬롯 RNG와 API 패킷 출처를 확인하는 기술 기준 | RUST 블로그",
+          "score": 0.189
+        },
+        {
+          "file": "blog/sports-toto/v47-kbo-postseason-bullpen-odds.html",
+          "title": "KBO 포스트시즌 배당 변동과 불펜 변수 | RUST 블로그",
+          "score": 0.182
+        }
+      ]
+    },
+    {
+      "title": "WKBL 시즌 흐름을 볼 때 부상 복귀와 로테이션을 확인하는 법",
+      "slug": "wkbl-season-flow-injury-rotation-check.html",
+      "closest": [
+        {
+          "file": "blog/repeated-verification-delay/index.html",
+          "title": "계정 확인을 반복하며 출금을 미루는 사이트를 판단하는 법 | RUST 블로그",
+          "score": 0.211
+        },
+        {
+          "file": "blog/sports-toto/v47-kbl-early-season-pricing-error.html",
+          "title": "KBL 농구 시즌 초반 배당 오류가 생기는 이유 | RUST 블로그",
+          "score": 0.189
+        },
+        {
+          "file": "blog/game-guides/v48-whois-rdap-domain-history-fields.html",
+          "title": "WHOIS와 RDAP 필드로 도메인 이력 읽는 법 | RUST 블로그",
+          "score": 0.179
+        },
+        {
+          "file": "blog/change-timeline-reading-guide/index.html",
+          "title": "변경 이력 타임라인을 읽는 체크 기준, 주소 변경 흐름 해석법 | RUST 블로그",
+          "score": 0.175
+        },
+        {
+          "file": "blog/game-guides/dns-certificate-timeline-analysis.html",
+          "title": "DNS와 TLS 인증서 타임라인으로 공식주소를 검증하는 법 | RUST 블로그",
+          "score": 0.171
+        }
+      ]
+    },
+    {
+      "title": "국내 프로스포츠 시즌 일정을 한 번에 정리하는 확인 루틴",
+      "slug": "domestic-pro-sports-season-calendar-routine.html",
+      "closest": [
+        {
+          "file": "blog/sports-odds-margin-before-bonus/index.html",
+          "title": "스포츠 보너스 보기 전 배당 마진 먼저 확인하는 이유 | RUST 블로그",
+          "score": 0.206
+        },
+        {
+          "file": "blog/repeated-verification-delay/index.html",
+          "title": "계정 확인을 반복하며 출금을 미루는 사이트를 판단하는 법 | RUST 블로그",
+          "score": 0.194
+        },
+        {
+          "file": "blog/sports-toto/sports-event-rolling-checklist.html",
+          "title": "스포츠 이벤트 롤링 조건 확인 체크리스트 | RUST 블로그",
+          "score": 0.194
+        },
+        {
+          "file": "blog/sk-holdings-sports-event.html",
+          "title": "SK 홀딩스 스포츠 전용 이벤트 확인 안내 | RUST 블로그",
+          "score": 0.188
+        },
+        {
+          "file": "blog/sports-toto/basic-checklist.html",
+          "title": "스포츠토토 이용 전 확인해야 할 기본 체크리스트 | RUST 블로그",
+          "score": 0.176
+        }
+      ]
+    }
+  ],
+  "generatedAt": "2026-05-30T02:35:19.739Z"
+}

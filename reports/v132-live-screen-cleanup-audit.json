@@ -1,11 +1,11 @@
 {
   "ok": true,
   "version": "V132_LIVE_SCREEN_CLEANUP_DUPLICATE_UI_REMOVAL",
-  "htmlScanned": 639,
+  "htmlScanned": 647,
   "htmlTouched": 0,
   "legacyBefore": {},
   "touchedSample": [],
   "vendors": 6,
   "deletedFiles": 0,
-  "generatedAt": "2026-05-30T00:50:32.390Z"
+  "generatedAt": "2026-05-30T02:35:07.398Z"
 }

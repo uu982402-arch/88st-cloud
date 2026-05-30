@@ -4,8 +4,8 @@
   "base": "V130.1 or partial GitHub upload recovery",
   "purpose": "Cloudflare Pages build-time recovery for partially uploaded V129/V130/V130.1 states.",
   "changedHtml": 0,
-  "htmlCount": 639,
+  "htmlCount": 647,
   "removedRecreatedRoutes": [],
-  "generatedAt": "2026-05-30T00:50:25.147Z",
+  "generatedAt": "2026-05-30T02:34:59.590Z",
   "changedSample": []
 }

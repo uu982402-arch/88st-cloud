@@ -1,8 +1,8 @@
 {
   "ok": true,
   "version": "V132_1_LIVE_HEADER_TOOLS_MODAL_CLEANUP",
-  "htmlScanned": 639,
-  "htmlTouched": 1,
+  "htmlScanned": 647,
+  "htmlTouched": 8,
   "patched": [
     "v73/v74 duplicate header removed",
     "v73/v74 mobile nav removed",
@@ -11,8 +11,15 @@
     "header sticky overlay fix",
     "home vendor card slight scale-down"
   ],
-  "generatedAt": "2026-05-30T00:50:40.570Z",
+  "generatedAt": "2026-05-30T02:35:16.370Z",
   "touchedSample": [
-    "index.html"
+    "blog/sports-season/domestic-pro-sports-season-calendar-routine.html",
+    "blog/sports-season/kbl-new-season-roster-foreign-player-check.html",
+    "blog/sports-season/kbo-remaining-season-five-race-table.html",
+    "blog/sports-season/kbo-schedule-density-rest-day-check.html",
+    "blog/sports-season/pro-baseball-final-stretch-overprediction-filter.html",
+    "blog/sports-season/vleague-men-preseason-roster-check.html",
+    "blog/sports-season/vleague-women-receive-foreign-player-check.html",
+    "blog/sports-season/wkbl-season-flow-injury-rotation-check.html"
   ]
 }
