@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="ko" data-v127-mobile-qa="active" data-v128-performance="active" data-v129-seo-schema="active" data-v130-release-lock="active" data-v131-live-visual="active" data-v132-live-cleanup="true" data-v132-1-cleanup="true" data-v133-sports-season="true" data-v134-blog-live-qa="true" data-v135-blog-full-audit="active" data-v135-1-blog-tone="active" data-v135-2-visual-recovery="active" data-v135-3-footer-placement="active" data-v135-4-global-header-brand="active" data-v135-5-blog-header-dark-lock="active" data-v135-6-tool-modal-footer-fix="active" data-v135-8-mobile-home-layout="active" data-v136-f1-vendor="active" data-v136-1-f1-polish="active" data-v137-blog-expansion="active" class="v130-final-release-lock">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
+<title>미니게임 연패 위로금에서 회차 제외 조건을 먼저 보는 이유 | RUST 블로그</title>
+<meta name="description" content="미니게임 연패 위로금 이벤트를 볼 때 연패 기준, 제외 회차, 최소 참여금액, 신청 시간을 먼저 확인해야 하는 이유를 정리했습니다.">
+<link rel="canonical" href="https://88st.cloud/blog/minigame/minigame-losing-streak-event-exclusion-condition-first.html">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta property="og:type" content="article"><meta property="og:site_name" content="RUST"><meta property="og:url" content="https://88st.cloud/blog/minigame/minigame-losing-streak-event-exclusion-condition-first.html"><meta property="og:title" content="미니게임 연패 위로금에서 회차 제외 조건을 먼저 보는 이유 | RUST 블로그"><meta property="og:description" content="미니게임 연패 위로금 이벤트를 볼 때 연패 기준, 제외 회차, 최소 참여금액, 신청 시간을 먼저 확인해야 하는 이유를 정리했습니다."><meta property="og:image" content="https://88st.cloud/assets/img/rust/rust-og.jpg">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="미니게임 연패 위로금에서 회차 제외 조건을 먼저 보는 이유 | RUST 블로그"><meta name="twitter:description" content="미니게임 연패 위로금 이벤트를 볼 때 연패 기준, 제외 회차, 최소 참여금액, 신청 시간을 먼저 확인해야 하는 이유를 정리했습니다."><meta name="twitter:image" content="https://88st.cloud/assets/img/rust/rust-og.jpg">
+<meta name="theme-color" content="#06090F"><link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="stylesheet" href="/assets/css/v76.rust-brand-system.css?v=static-v76-rust-brand-system-20260524" data-v76-rust="true">
+<link rel="stylesheet" href="/assets/css/v77.rust-logo-assets.css?v=static-v77-rust-logo-assets-20260524" data-v77-rust-logo="true">
+<link rel="stylesheet" href="/assets/css/v121-clean-layout-lock.css?v=20260529" data-v121-clean-layout-lock="true">
+<link rel="stylesheet" href="/assets/css/v127-mobile-qa-safe-area-lock.css?v=20260529" data-v127-mobile-qa="true">
+<link rel="stylesheet" href="/assets/css/v128-performance-asset-lightweight.css?v=20260529" data-v128-performance="true">
+<link rel="stylesheet" href="/assets/css/v129-seo-schema-consult-strip.css?v=20260529" data-v129-seo-schema="true">
+<link rel="stylesheet" href="/assets/css/v130-final-release-lock.css?v=20260529" data-v130-release-lock="true">
+<link rel="stylesheet" href="/assets/css/v131-live-visual-deploy-polish.css?v=20260529" data-v131-live-visual="true">
+<link rel="stylesheet" href="/assets/css/v132-live-screen-cleanup.css?v=20260529" data-v132-live-cleanup="true">
+<link rel="stylesheet" href="/assets/css/v132-1-live-header-tool-cleanup.css?v=20260529" data-v132-1-cleanup="true">
+<link rel="stylesheet" href="/assets/css/v133-sports-season-blog.css?v=20260529" data-v133-sports-season="true">
+<link rel="stylesheet" href="/assets/css/v134-blog-live-qa-season-index-polish.css?v=20260530" data-v134-blog-live-qa="true">
+<link rel="stylesheet" href="/assets/css/v135-1-blog-dark-tone-restore.css?v=20260530-1" data-v135-1-blog-tone="true">
+<link rel="stylesheet" href="/assets/css/v135-2-global-footer-tone-recovery.css?v=20260530-3" data-v135-2-tone-footer="true">
+<link rel="stylesheet" href="/assets/css/v135-3-footer-placement-hotfix.css?v=20260530-1" data-v135-3-footer-placement="true">
+<link rel="stylesheet" href="/assets/css/v135-4-global-header-brand-unify.css?v=20260530-1" data-v135-4-global-header-brand="true">
+<link rel="stylesheet" href="/assets/css/v135-5-blog-header-dark-lock.css?v=20260530-1" data-v135-5-blog-header-dark-lock="true">
+<link rel="stylesheet" href="/assets/css/v135-6-tool-modal-footer-fix.css?v=20260530-1" data-v135-6-tool-modal-footer-fix="true">
+<link rel="stylesheet" href="/assets/css/v135-8-mobile-home-layout-fix.css?v=20260530-1" data-v135-8-mobile-home-layout="true">
+<link rel="stylesheet" href="/assets/css/v136-f1-guaranteed-vendor.css?v=20260530-1" data-v136-f1-vendor="true">
+<link rel="stylesheet" href="/assets/css/v136-1-f1-card-detail-polish.css?v=20260530-2" data-v136-1-f1-detail-polish="true">
+<link rel="stylesheet" href="/assets/css/v137-blog-content-expansion.css?v=20260530-1" data-v137-blog-expansion="true">
+<script type="application/ld+json" data-v129-schema="true">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://88st.cloud/#organization",
+      "name": "RUST",
+      "url": "https://88st.cloud/",
+      "logo": "https://88st.cloud/assets/img/rust/rust-crest-192.png"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://88st.cloud/#website",
+      "url": "https://88st.cloud/",
+      "name": "RUST",
+      "inLanguage": "ko-KR",
+      "publisher": {
+        "@id": "https://88st.cloud/#organization"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://88st.cloud/blog/minigame/minigame-losing-streak-event-exclusion-condition-first.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "메인",
+          "item": "https://88st.cloud/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "블로그",
+          "item": "https://88st.cloud/blog/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "미니게임 연패 위로금에서 회차 제외 조건을 먼저 보는 이유",
+          "item": "https://88st.cloud/blog/minigame/minigame-losing-streak-event-exclusion-condition-first.html"
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "@id": "https://88st.cloud/blog/minigame/minigame-losing-streak-event-exclusion-condition-first.html#article",
+      "url": "https://88st.cloud/blog/minigame/minigame-losing-streak-event-exclusion-condition-first.html",
+      "headline": "미니게임 연패 위로금에서 회차 제외 조건을 먼저 보는 이유",
+      "name": "미니게임 연패 위로금에서 회차 제외 조건을 먼저 보는 이유",
+      "description": "미니게임 연패 위로금 이벤트를 볼 때 연패 기준, 제외 회차, 최소 참여금액, 신청 시간을 먼저 확인해야 하는 이유를 정리했습니다.",
+      "inLanguage": "ko-KR",
+      "datePublished": "2026-05-30",
+      "dateModified": "2026-05-30",
+      "author": {
+        "@type": "Organization",
+        "name": "RUST"
+      },
+      "publisher": {
+        "@id": "https://88st.cloud/#organization"
+      },
+      "isPartOf": {
+        "@id": "https://88st.cloud/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://88st.cloud/blog/minigame/minigame-losing-streak-event-exclusion-condition-first.html#breadcrumb"
+      },
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://88st.cloud/assets/img/rust/rust-og.jpg"
+      }
+    }
+  ]
+}</script>
+</head><body data-v137-blog-expansion="true" data-v136-1-f1-polish="true" data-v136-f1-vendor="true" data-v135-8-mobile-home-layout="true" data-v135-6-tool-modal-footer-fix="true" data-v135-5-blog-header-dark-lock="true" data-v135-4-global-header-brand="true" data-v135-3-footer-placement="true" data-v135-2-visual-recovery="true" data-v135-1-blog-tone="true" data-v134-blog-live-qa="true" data-v133-sports-season="true">
+<header class="rust-global-header" id="rust-global-header" data-rust-brand-header="true"><div class="rust-header-inner"><a class="rust-brand" href="/" aria-label="RUST 메인으로 이동"><span class="rust-brand-mark" aria-hidden="true"><img src="/assets/img/rust/rust-crest-64.png" alt="" width="34" height="34" decoding="async" loading="eager"></span><span class="rust-brand-type"><strong>RUST</strong></span></a><nav class="rust-desktop-nav" aria-label="RUST 주요 메뉴" data-rust-nav="desktop"><a href="/">메인</a><a href="/blog/">블로그</a><a href="/tools/">도구</a><a href="/guaranteed/">보증</a><a href="/consult/">상담</a></nav><button class="rust-menu-button" type="button" aria-label="메뉴 열기" aria-expanded="false" data-rust-menu-toggle><span></span><span></span></button></div><nav class="rust-mobile-menu" aria-label="RUST 모바일 메뉴" data-rust-nav="mobile-menu"><a href="/">메인</a><a href="/blog/">블로그</a><a href="/tools/">도구</a><a href="/guaranteed/">보증</a><a href="/consult/">상담</a></nav></header>
+<main class="v137-article"><article><section class="v137-hero"><div class="v137-meta"><span>미니게임</span><span>미니게임 조건</span><span>2026-05-30</span></div><h1>미니게임 연패 위로금에서 회차 제외 조건을 먼저 보는 이유</h1><p class="v137-lead">미니게임 연패 위로금 이벤트를 볼 때 연패 기준, 제외 회차, 최소 참여금액, 신청 시간을 먼저 확인해야 하는 이유를 정리했습니다.</p></section><section class="v137-body"><section class="v137-block"><h2>연패 횟수보다 제외 회차가 먼저다</h2><p>미니게임 연패 위로금은 연패 횟수만 보고 판단하기 쉽습니다. 하지만 실제 조건에서는 특정 회차, 특정 게임, 특정 금액 미만 참여가 제외될 수 있습니다. 그래서 몇 연패인지보다 어떤 회차가 인정되는지를 먼저 확인해야 합니다.</p></section><section class="v137-block"><h2>최소 참여금액을 놓치기 쉽다</h2><p>연패 조건을 충족해도 최소 참여금액을 넘지 못하면 이벤트 대상에서 제외될 수 있습니다. 특히 여러 게임을 섞어 이용한 경우에는 게임별 인정 금액이 다를 수 있으므로, 이벤트 조건표의 최소 참여 기준을 따로 봐야 합니다.</p></section><section class="v137-block"><h2>신청 시간과 지급 방식도 조건이다</h2><p>연패 위로금은 자동 지급이 아니라 신청이 필요한 경우가 많습니다. 신청 가능 시간, 당일 기준, 지급 방식이 정해져 있으면 조건을 맞췄더라도 늦게 신청하면 적용되지 않을 수 있습니다.</p></section><section class="v137-block"><h2>미니게임 이벤트는 기록을 남기는 편이 좋다</h2><p>연패 이벤트는 회차와 결과가 중요하므로 참여 시간, 게임명, 회차, 금액을 간단히 기록해두면 확인이 쉽습니다. 조건표를 볼 때도 연패 횟수, 제외 회차, 최소 금액, 신청 시간을 같은 순서로 확인하면 실수를 줄일 수 있습니다.</p></section><div class="v137-note">이 글은 특정 결과를 단정하지 않고 실제 이용 전 확인할 순서와 변수를 정리한 기준형 콘텐츠입니다. 최신 일정, 조건, 공지 내용은 변경될 수 있으므로 이용 전 현재 화면의 안내를 함께 확인하는 것이 좋습니다.</div></section></article></main>
+<nav class="rust-bottom-nav" aria-label="RUST 모바일 하단 메뉴" data-rust-nav="bottom"><a href="/"><span>⌂</span>메인</a><a href="/blog/"><span>▤</span>블로그</a><a href="/tools/"><span>◈</span>도구</a><a href="/guaranteed/"><span>◆</span>보증</a><a href="/consult/"><span>✦</span>상담</a></nav><script src="/assets/js/v76.rust-brand-system.js?v=static-v76-rust-brand-system-20260524" defer data-v76-rust="true"></script>
+<footer class="moon-footer" data-v135-2-footer="canonical"><div class="moon-container v56-footer-row"><div><span class="v56-footer-logo"><span class="v56-logo-main">88ST</span><span class="v56-logo-cloud">.Cloud</span></span><p>보증업체, 실사용 도구, 전문 가이드를 일관된 기준으로 정리합니다.</p></div><nav class="v56-footer-links" aria-label="하단 메뉴"><a href="/blog/">블로그</a><a href="/tools/">도구</a><a href="/guaranteed/">보증업체</a><a href="/consult/">고객센터</a></nav></div></footer>
+</body></html>
