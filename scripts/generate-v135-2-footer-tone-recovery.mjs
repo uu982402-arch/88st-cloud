@@ -25,8 +25,7 @@ function pageTypeFromRel(r){
   return '';
 }
 function insertFooter(html){
-  if(/<nav\b(?=[^>]*\brust-bottom-nav\b)/i.test(html)) return html.replace(/<nav\b(?=[^>]*\brust-bottom-nav\b)/i, footer+'\n<nav');
-  if(/<script\b/i.test(html)) return html.replace(/<script\b/i, footer+'\n<script');
+  // V135.3 safety: never insert footer before head scripts. Footer must live at document bottom.
   if(/<\/body>/i.test(html)) return html.replace(/<\/body>/i, footer+'\n</body>');
   return html+'\n'+footer;
 }
