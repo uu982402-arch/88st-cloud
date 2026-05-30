@@ -1,0 +1,21 @@
+{
+  "ok": true,
+  "version": "V134_BLOG_LIVE_QA_SPORTS_SEASON_INDEX_POLISH",
+  "checkedRoutes": [
+    "/blog/",
+    "/blog/sports-season/",
+    "/blog/sports-season/kbo-remaining-season-five-race-table.html",
+    "/blog/sports-season/kbo-schedule-density-rest-day-check.html",
+    "/blog/sports-season/pro-baseball-final-stretch-overprediction-filter.html",
+    "/blog/sports-season/vleague-men-preseason-roster-check.html",
+    "/blog/sports-season/vleague-women-receive-foreign-player-check.html",
+    "/blog/sports-season/kbl-new-season-roster-foreign-player-check.html",
+    "/blog/sports-season/wkbl-season-flow-injury-rotation-check.html",
+    "/blog/sports-season/domestic-pro-sports-season-calendar-routine.html"
+  ],
+  "notes": [
+    "live blog index links were reachable by click audit",
+    "local files and sitemap entries verified"
+  ],
+  "generatedAt": "2026-05-30T03:15:16.485Z"
+}

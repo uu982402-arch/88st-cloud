@@ -1,0 +1,11 @@
+{
+  "ok": true,
+  "version": "V134_BLOG_LIVE_QA_SPORTS_SEASON_INDEX_POLISH",
+  "mode": "cloudflare-pages-safe-build",
+  "steps": [
+    "v133 baseline",
+    "v134 generate",
+    "v134 verify"
+  ],
+  "generatedAt": "2026-05-30T03:15:16.636Z"
+}

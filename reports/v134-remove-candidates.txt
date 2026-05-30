@@ -1,0 +1,1 @@
+V134: no file deletion. next V135 will inspect all blog posts top/middle/bottom for visible residue and duplicated sections.
