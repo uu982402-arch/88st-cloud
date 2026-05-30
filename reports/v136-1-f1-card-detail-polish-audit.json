@@ -1,0 +1,21 @@
+{
+  "ok": true,
+  "version": "V136_1_F1_CARD_DETAIL_POLISH",
+  "changes": [
+    "F-1 home card image scaled slightly larger",
+    "Guaranteed detail bottom v113 sections wrapped/styled",
+    "Removed broken v96-2-neighbors wrapper",
+    "CTA marker applied to detail bottom CTAs"
+  ],
+  "vendors": [
+    "sk-holdings",
+    "zakum",
+    "udt",
+    "queenbee",
+    "ddangkong",
+    "anybet",
+    "f1"
+  ],
+  "htmlCssTouched": 1,
+  "generatedAt": "2026-05-30T14:15:09.121Z"
+}
