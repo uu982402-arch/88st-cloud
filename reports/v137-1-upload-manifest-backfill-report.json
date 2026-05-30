@@ -1,0 +1,10 @@
+{
+  "ok": true,
+  "version": "V137_1_UPLOAD_MANIFEST_BACKFILL",
+  "posts": 10,
+  "created": {
+    "manifest": false,
+    "upgradeReport": false
+  },
+  "generatedAt": "2026-05-30T15:12:11.858Z"
+}

@@ -7,6 +7,7 @@ function run(label, script){
 }
 run('V136.1 safe base','scripts/build-v136-1-cloudflare-pages-safe.mjs');
 run('V137 blog content expansion generate','scripts/generate-v137-blog-content-expansion.mjs');
+run('V137.1 upload manifest/report backfill','scripts/generate-v137-1-upload-manifest-backfill.mjs');
 run('V137 verify','scripts/verify-v137-blog-content-expansion.mjs');
 fs.mkdirSync('reports',{recursive:true});
 fs.writeFileSync('reports/v137-cloudflare-build-safe-report.json',JSON.stringify({ok:true,version:'V137_BLOG_CONTENT_EXPANSION_DUPLICATE_SAFE_10_POSTS',mode:'cloudflare-pages-safe-build',generatedAt:new Date().toISOString()},null,2));

@@ -269,6 +269,7 @@
     "quality:v136-1": "node scripts/generate-v136-1-f1-card-detail-polish.mjs",
     "verify:v136-1": "node scripts/verify-v136-1-f1-card-detail-polish.mjs",
     "quality:v137": "node scripts/generate-v137-blog-content-expansion.mjs",
-    "verify:v137": "node scripts/verify-v137-blog-content-expansion.mjs"
+    "verify:v137": "node scripts/verify-v137-blog-content-expansion.mjs",
+    "quality:v137-1": "node scripts/generate-v137-1-upload-manifest-backfill.mjs"
   }
 }
