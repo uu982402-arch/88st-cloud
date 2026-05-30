@@ -1,0 +1,56 @@
+{
+  "ok": true,
+  "version": "V138_MODERN_SECTION_RADIUS_SPORTS_SEARCH_DARK_TONE_FIX",
+  "base": "V137.2 BLOG LIVE MATERIALIZE FULL",
+  "liveMainChecked": "https://88st.cloud/ text/DOM checked before patch; sections observed: 실사용 가이드, 보증업체, 스포츠·검색 체크, 분석 도구, 공식 상담봇 strip, footer.",
+  "cssFile": "assets/css/v138-modern-section-radius-dark-fix.css",
+  "htmlInjected": 1,
+  "hrefSharpFixed": 0,
+  "changedFiles": [
+    "assets/css/v138-modern-section-radius-dark-fix.css",
+    "guaranteed/f1/index.html",
+    "package.json"
+  ],
+  "deletedFiles": [],
+  "removedRoutePolicy": [
+    "faq",
+    "consult-motives",
+    "consult-result",
+    "provider-updates"
+  ],
+  "removalCandidatesOnly": [
+    "assets/config/seo.meta.json legacy metadata references for removed route names",
+    "assets/data/auto.consult.v1.20260505.json legacy consult-motives URLs",
+    "assets/data/consult.motives.v7.20260505.json legacy consult-motives URLs",
+    "older v66-v68 generator scripts that still contain historical removed-route template strings"
+  ],
+  "pagePolish": {
+    "home": [
+      "hero/search area section radius",
+      "guaranteed cards area radius",
+      "blog card area radius",
+      "sports/search hub cards radius",
+      "tools card area radius",
+      "consult strip and footer spacing"
+    ],
+    "sportsCheck": [
+      "hub and 12 detail pages inherit late V138 CSS",
+      "V116 white card tokens overridden",
+      "table/card overflow locked for mobile"
+    ],
+    "searchGuides": [
+      "hub and 35 detail pages inherit late V138 CSS",
+      "V117 white card tokens overridden",
+      "table/card overflow locked for mobile"
+    ]
+  },
+  "forbiddenAdditions": [
+    "AI Q&A snippet",
+    "FAQ box",
+    "trust chip",
+    "related/recommendation sections",
+    "bottom connection card block",
+    "new CTA conversion box"
+  ],
+  "generatedAt": "2026-05-30T15:52:18.718Z"
+}
