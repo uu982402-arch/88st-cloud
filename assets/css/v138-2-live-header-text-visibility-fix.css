@@ -1,0 +1,101 @@
+/* V138-2 LIVE HEADER TEXT VISIBILITY FIX
+   Purpose: keep the V138 rounded/dark polish, but remove risky text-hiding tricks.
+   No new sections. No FAQ/related/trust/conversion blocks. */
+html[data-v138-2-live-visibility-fix="active"]{
+  --v1382-header-text:#f8fafc;
+  --v1382-header-muted:#dbe4f0;
+  --v1382-header-line:rgba(255,255,255,.13);
+  --v1382-focus:rgba(246,213,138,.28);
+}
+
+/* Header recovery: V138 used display:none and font-size:0 for nav labels.
+   This layer restores real text so PC/mobile browsers do not drop menu words. */
+html[data-v138-2-live-visibility-fix="active"] :where(.rust-global-header,.v79-header,.rust-header-inner,.v79-header-inner){
+  overflow:visible!important;
+}
+html[data-v138-2-live-visibility-fix="active"] :where(.rust-desktop-nav,.rust-mobile-menu,.v79-nav){
+  overflow:visible!important;
+  min-width:0!important;
+}
+html[data-v138-2-live-visibility-fix="active"] :where(.rust-desktop-nav,.rust-mobile-menu,.v79-nav) > a,
+html[data-v138-2-live-visibility-fix="active"] :where(.rust-desktop-nav,.rust-mobile-menu,.v79-nav) > a[href="/consult/"],
+html[data-v138-2-live-visibility-fix="active"] :where(.rust-desktop-nav,.rust-mobile-menu,.v79-nav) > a[href="/guaranteed/"]{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  visibility:visible!important;
+  opacity:1!important;
+  pointer-events:auto!important;
+  font-size:14px!important;
+  line-height:1.15!important;
+  min-width:max-content!important;
+  max-width:none!important;
+  text-indent:0!important;
+  white-space:nowrap!important;
+  color:var(--v1382-header-text)!important;
+  gap:6px!important;
+  overflow:visible!important;
+}
+html[data-v138-2-live-visibility-fix="active"] :where(.rust-desktop-nav,.rust-mobile-menu,.v79-nav) > a[href="/guaranteed/"]::after{
+  content:""!important;
+}
+html[data-v138-2-live-visibility-fix="active"] :where(.rust-desktop-nav,.rust-mobile-menu,.v79-nav) > a:hover,
+html[data-v138-2-live-visibility-fix="active"] :where(.rust-desktop-nav,.rust-mobile-menu,.v79-nav) > a.active,
+html[data-v138-2-live-visibility-fix="active"] :where(.rust-desktop-nav,.rust-mobile-menu,.v79-nav) > a.is-active,
+html[data-v138-2-live-visibility-fix="active"] :where(.rust-desktop-nav,.rust-mobile-menu,.v79-nav) > a[aria-current="page"]{
+  color:#fff7ed!important;
+  background:rgba(246,213,138,.10)!important;
+  border-color:var(--v1382-focus)!important;
+}
+
+/* Rounded section recovery: keep the modern radius but stop clipping real text/badges.
+   Image/media wrappers remain clipped separately, so the design still looks rounded. */
+html[data-v138-2-live-visibility-fix="active"] body.v71-main-home :where(.v71-section,.v71-main-hub,.v81-1-hub-section,.v131-consult-dock),
+html[data-v138-2-live-visibility-fix="active"] body.v79-rust-longform-body :where(.v79-hub-stack,.v79-article){
+  clip-path:none!important;
+  overflow:visible!important;
+  background-clip:padding-box!important;
+}
+html[data-v138-2-live-visibility-fix="active"] body.v71-main-home :where(.v71-blog-card,.v71-glass,.v71-tool-card,.v71-partner-card,.v71-partner-tile,.v81-1-hub-card,.v131-consult-dock a,.v131-consult-dock .v131-consult-card),
+html[data-v138-2-live-visibility-fix="active"] body.v79-rust-longform-body :where(.v79-card,.v79-tool,.v79-summary-box,.v79-mini-banner,.v91-depth-section,.v91-depth-callout,.v91-depth-faq,.v116-result-card,.v116-result-item,.v117-intent-chip,.v117-quality-card,.v117-quality-grid article){
+  overflow:visible!important;
+  background-clip:padding-box!important;
+}
+html[data-v138-2-live-visibility-fix="active"] body.v71-main-home :where(.v71-card-image,.v71-partner-image,.v71-partner-media,.v136-f1-media),
+html[data-v138-2-live-visibility-fix="active"] body.v79-rust-longform-body :where(.v79-card img,.v79-tool img,.v116-result-item img,.v117-quality-card img){
+  overflow:hidden!important;
+}
+
+/* Text contrast guard for places that became too close to the new glass surface. */
+html[data-v138-2-live-visibility-fix="active"] body.v71-main-home :where(.v71-section h1,.v71-section h2,.v71-section h3,.v71-section strong,.v71-section b,.v71-section .v71-card-title,.v71-section .v71-partner-title,.v81-1-hub-card strong,.v131-consult-dock strong){
+  color:#f8fafc!important;
+  opacity:1!important;
+}
+html[data-v138-2-live-visibility-fix="active"] body.v71-main-home :where(.v71-section p,.v71-section span,.v71-section small,.v71-section li,.v71-section .v71-card-copy,.v71-section .v71-partner-meta,.v81-1-hub-card p,.v131-consult-dock p),
+html[data-v138-2-live-visibility-fix="active"] body.v79-rust-longform-body :where(.v79-card p,.v79-tool span,.v79-row-title small,.v79-article-lead,.v79-content p,.v91-depth-content p,.v116-result-item p,.v117-quality-card p,.v117-quality-grid span){
+  color:#cbd5e1!important;
+  opacity:1!important;
+}
+html[data-v138-2-live-visibility-fix="active"] body :where(a,button,[role="button"]){
+  text-decoration-thickness:1px;
+  text-underline-offset:3px;
+}
+
+/* Mobile guard: no horizontal scroll and no nav label clipping. */
+@media(max-width:860px){
+  html[data-v138-2-live-visibility-fix="active"] :where(.rust-mobile-menu) > a,
+  html[data-v138-2-live-visibility-fix="active"] :where(.v79-nav) > a{
+    font-size:13px!important;
+    min-width:0!important;
+    width:auto!important;
+  }
+  html[data-v138-2-live-visibility-fix="active"] :where(.rust-header-inner,.v79-header-inner){
+    width:min(100% - 24px, var(--rust-max, 1180px))!important;
+  }
+}
+@media(max-width:640px){
+  html[data-v138-2-live-visibility-fix="active"] body.v71-main-home :where(.v71-section,.v71-main-hub,.v81-1-hub-section,.v131-consult-dock),
+  html[data-v138-2-live-visibility-fix="active"] body.v79-rust-longform-body :where(.v79-hub-stack,.v79-article){
+    border-radius:24px!important;
+  }
+}
