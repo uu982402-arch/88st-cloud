@@ -1,0 +1,8 @@
+/* V136 F-1 guaranteed vendor addition */
+.v136-f1-vendor-card{--vendor-accent:#ef4444!important}
+.v136-f1-vendor-card .v74-1-image-link,.v136-f1-home-card{background:linear-gradient(135deg,rgba(239,68,68,.10),rgba(246,201,107,.08));}
+.v136-f1-vendor-card img,.v136-f1-home-card img{object-fit:contain;background:#fff;}
+.v136-f1-detail-shell .v96-2-art{background:linear-gradient(135deg,rgba(239,68,68,.12),rgba(246,201,107,.10));}
+.v136-f1-detail-shell .v96-2-art img{object-fit:contain;background:#fff;border-radius:18px;}
+@media (min-width: 980px){.v74-1-grid.v119-guaranteed-card-grid,.v74-1-grid.v124-guaranteed-card-grid{grid-template-columns:repeat(3,minmax(0,1fr));}.v136-f1-vendor-card{min-height:100%;}}
+@media (max-width: 760px){.v136-f1-home-card img,.v136-f1-vendor-card img{max-height:148px;object-fit:contain}.v136-f1-detail-shell .v96-2-art img{max-height:214px}}
