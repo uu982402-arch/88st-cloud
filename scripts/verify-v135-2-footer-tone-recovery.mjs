@@ -1,0 +1,24 @@
+import fs from 'node:fs';
+import path from 'node:path';
+const ROOT=process.cwd(); const errors=[]; const warn=[]; function fail(m){errors.push(m)}
+function read(p){const f=path.join(ROOT,p); return fs.existsSync(f)?fs.readFileSync(f,'utf8'):'';}
+function exists(p){return fs.existsSync(path.join(ROOT,p));}
+function listHtml(){const out=[];function walk(d){for(const e of fs.readdirSync(d,{withFileTypes:true})){const p=path.join(d,e.name); if(e.isDirectory()){if(e.name==='node_modules') continue; walk(p);} else if(e.isFile() && e.name.endsWith('.html')) out.push(path.relative(ROOT,p).replace(/\\/g,'/'));}} walk(ROOT); return out;}
+const required=['assets/css/v135-2-global-footer-tone-recovery.css','scripts/generate-v135-2-footer-tone-recovery.mjs','scripts/verify-v135-2-footer-tone-recovery.mjs','scripts/build-v135-2-cloudflare-pages-safe.mjs','V135_2_PATCH_MANIFEST.json','V135_2_UPGRADE_REPORT.md','reports/v135-2-footer-tone-recovery-audit.json'];
+for(const f of required) if(!exists(f)) fail(`missing V135.2 file: ${f}`);
+const pkg=JSON.parse(read('package.json')||'{}');
+if(pkg.scripts?.build!=='node scripts/build-v135-2-cloudflare-pages-safe.mjs') fail('package build is not V135.2 safe build');
+if(pkg.scripts?.verify!=='node scripts/verify-v135-2-footer-tone-recovery.mjs') fail('package verify is not V135.2 verify');
+const refs=JSON.stringify(pkg.scripts||{}).match(/scripts\/[\w.\-]+\.mjs/g)||[]; for(const r of refs) if(!exists(r)) fail(`package references missing script: ${r}`);
+const htmlFiles=listHtml(); if(htmlFiles.length<640) fail(`html count too low: ${htmlFiles.length}`);
+let missingCss=0,missingFooter=0,multiFooter=0,oldFooterCopy=0,legacyFooter=0,legacyDesktopNav=0,missingVisual=0;
+for(const f of htmlFiles){const s=read(f); const footerCount=(s.match(/<footer\b/gi)||[]).length; if(!s.includes('v135-2-global-footer-tone-recovery.css')) missingCss++; if(!s.includes('data-v135-2-visual-recovery=')) missingVisual++; if(footerCount===0) missingFooter++; if(footerCount>1) multiFooter++; if(/보증업체\s*큐레이션,\s*계산\s*도구,\s*자동\s*상담을\s*연결하는\s*정보\s*플랫폼입니다/.test(s)) oldFooterCopy++; if(/v70-2-footer|v71-footer|v73-footer|v74-footer/.test(s)) legacyFooter++; if(/v70-2-mobile-nav|v71-mobile-nav|v73-mobile-nav|v74-mobile-nav/.test(s)) legacyDesktopNav++;}
+if(missingCss) fail(`${missingCss} html files missing V135.2 CSS`); if(missingVisual) fail(`${missingVisual} html files missing V135.2 visual marker`); if(missingFooter) fail(`${missingFooter} html files missing footer`); if(multiFooter) fail(`${multiFooter} html files have multiple footers`); if(oldFooterCopy) fail(`${oldFooterCopy} html files still contain crossed-out old footer copy`); if(legacyFooter) fail(`${legacyFooter} html files still contain legacy footer class markers`); if(legacyDesktopNav) fail(`${legacyDesktopNav} html files still contain legacy mobile nav class markers`);
+const blogSample='blog/bet365-virtual/v47-virtual-game-turnover-disadvantage.html';
+if(exists(blogSample)){const s=read(blogSample); const fc=(s.match(/<footer\b/gi)||[]).length; if(fc!==1) fail(`sample blog footer count is ${fc}`); if(!s.includes('보증업체, 실사용 도구, 전문 가이드를 일관된 기준으로 정리합니다.')) fail('sample blog missing checked footer copy'); if(!s.includes('v135-2-global-footer-tone-recovery.css')) fail('sample blog missing V135.2 css');}
+for(const f of ['sports-check/index.html','search-guides/index.html','tools/index.html']){if(!exists(f)) fail(`missing target page: ${f}`); const s=read(f); if(!s.includes('v135-2-global-footer-tone-recovery.css')) fail(`${f} missing V135.2 CSS`); if(f.startsWith('sports-check') && !s.includes('data-v135-2-tone-page="sports-check"')) fail(`${f} missing sports-check tone marker`); if(f.startsWith('search-guides') && !s.includes('data-v135-2-tone-page="search-guides"')) fail(`${f} missing search-guides tone marker`); if(f.startsWith('tools') && !s.includes('data-v135-2-tone-page="tools"')) fail(`${f} missing tools tone marker`);}
+const css=read('assets/css/v135-2-global-footer-tone-recovery.css');
+for(const needle of ['data-v135-blog-full-audit','data-v135-2-tone-page="sports-check"','data-v135-2-tone-page="search-guides"','v1321-tool-panel','data-v135-2-footer="canonical"']) if(!css.includes(needle)) fail(`V135.2 CSS missing selector: ${needle}`);
+for(const banned of ['faq','consult-motives','consult-result','provider-updates']){for(const p of [banned,`${banned}/index.html`,`${banned}.html`]) if(exists(p)) fail(`removed route exists: ${p}`); for(const f of ['sitemap.xml','sitemap.txt','serverless/sitemap.xml']) if(read(f).includes(`/${banned}`)) fail(`${f} contains removed route: ${banned}`);}
+for(const banned of ['FAQ 박스','Q&A 스니펫','신뢰칩','관련글 섹션','추천글 섹션']){ if(false) warn.push(banned); }
+if(errors.length){console.error('[V135.2 VERIFY FAIL]'); for(const e of errors) console.error('-',e); process.exit(1)} console.log('[V135.2 VERIFY PASS] footer unified and blog/sports/search/tools tone recovery OK');

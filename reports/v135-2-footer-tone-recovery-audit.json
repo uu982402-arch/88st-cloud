@@ -1,0 +1,18 @@
+{
+  "ok": true,
+  "version": "V135_2_GLOBAL_FOOTER_TONE_RECOVERY",
+  "htmlScanned": 648,
+  "htmlTouched": 648,
+  "cssAdded": 0,
+  "footersRemoved": 648,
+  "mobileNavRemoved": 0,
+  "toneMarked": 109,
+  "targets": [
+    "all footers",
+    "blog detail tone",
+    "sports-check pages",
+    "search-guides pages",
+    "tools modal"
+  ],
+  "generatedAt": "2026-05-30T05:15:54.510Z"
+}
