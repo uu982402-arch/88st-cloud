@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "description": "Static build shim for Cloudflare Pages",
   "scripts": {
-    "build": "node scripts/build-v139-10-cloudflare-pages-safe.mjs",
+    "build": "node scripts/build-v139-11-cloudflare-pages-safe.mjs",
     "seo:static": "node scripts/generate-static-seo-og.mjs",
     "related:static": "node scripts/generate-related-posts.mjs",
     "seo:refresh": "node scripts/generate-brand-pages.mjs && node scripts/generate-static-seo-og.mjs && node scripts/generate-related-posts.mjs && node scripts/generate-sitemap.mjs && node scripts/generate-indexing-audit.mjs && node scripts/generate-ctr-report.mjs && node scripts/generate-traffic-roadmap.mjs",
@@ -15,7 +15,7 @@
     "brands:static": "node scripts/generate-brand-pages.mjs",
     "community:manifest": "node scripts/generate-community-manifest.mjs",
     "seo:intel": "node scripts/seo-intelligence-v36.mjs",
-    "verify": "node scripts/verify-v139-10-retire-broken-v9-blog-route.mjs",
+    "verify": "node scripts/verify-v139-11-live-broken-blog-route-kill-lock.mjs",
     "verify:wrangler": "RUN_WRANGLER_VERIFY=1 node scripts/verify-v36.mjs",
     "quality:v43": "node scripts/generate-v43-quality-data.mjs",
     "blog:directory": "node scripts/generate-v47-comprehensive-upgrade.mjs",
@@ -306,6 +306,8 @@
     "quality:v139-8": "node scripts/generate-v139-8-static-route-worker-safe-hotfix.mjs",
     "verify:v139-8": "node scripts/verify-v139-8-static-route-worker-safe-hotfix.mjs",
     "quality:v139-9": "node scripts/generate-v139-9-worker-inline-route-final-hotfix.mjs",
-    "verify:v139-9": "node scripts/verify-v139-9-worker-inline-route-final-hotfix.mjs"
+    "verify:v139-9": "node scripts/verify-v139-9-worker-inline-route-final-hotfix.mjs",
+    "quality:v139-11": "node scripts/generate-v139-11-live-broken-blog-route-kill-lock.mjs",
+    "verify:v139-11": "node scripts/verify-v139-11-live-broken-blog-route-kill-lock.mjs"
   }
 }

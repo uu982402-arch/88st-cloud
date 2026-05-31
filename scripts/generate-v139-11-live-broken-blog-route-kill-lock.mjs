@@ -1,4 +1,44 @@
-const VERSION = "static-growth-conversion-v139-11-20260531";
+import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'node:fs';
+import { dirname } from 'node:path';
+
+const VERSION = 'V139_11_LIVE_BROKEN_BLOG_ROUTE_KILL_LOCK';
+const retiredRoutes = ['/blog/minigame-streak-exclusion-guide.html', '/blog/minigame-streak-exclusion-guide', '/blog/minigame-streak-exclusion-guide/', '/blog/minigame/minigame-losing-streak-event-exclusion-condition-guide.html', '/blog/minigame/minigame-losing-streak-event-exclusion-condition-guide', '/blog/minigame/minigame-losing-streak-event-exclusion-condition-guide/', '/blog/minigame/minigame-losing-streak-event-exclusion-condition-first.html', '/blog/minigame/minigame-losing-streak-event-exclusion-condition-first', '/blog/minigame/minigame-losing-streak-event-exclusion-condition-first/'];
+const stubFiles = ['blog/minigame-streak-exclusion-guide.html', 'blog/minigame-streak-exclusion-guide/index.html', 'blog/minigame/minigame-losing-streak-event-exclusion-condition-guide.html', 'blog/minigame/minigame-losing-streak-event-exclusion-condition-guide/index.html', 'blog/minigame/minigame-losing-streak-event-exclusion-condition-first.html', 'blog/minigame/minigame-losing-streak-event-exclusion-condition-first/index.html'];
+const sitemapNeedles = ['minigame-streak-exclusion-guide','minigame-losing-streak-event-exclusion-condition-guide','minigame-losing-streak-event-exclusion-condition-first'];
+const stubHtml = `<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>블로그 목록으로 이동 | 88ST.Cloud</title><meta name="robots" content="noindex,nofollow"><meta http-equiv="refresh" content="0;url=/blog/"><link rel="canonical" href="https://88st.cloud/blog/"><style>body{margin:0;background:#050914;color:#f8fafc;font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;display:grid;min-height:100vh;place-items:center}main{max-width:680px;padding:32px;text-align:center}a{color:#fde68a}</style></head><body><main><h1>블로그 목록으로 이동합니다</h1><p>정리된 블로그 목록에서 최신 글을 확인하세요.</p><p><a href="/blog/">블로그로 이동</a></p></main><script>location.replace('/blog/');<\/script></body></html>`;
+
+function read(file) { return readFileSync(file, 'utf8'); }
+function write(file, text) { mkdirSync(dirname(file), { recursive: true }); writeFileSync(file, text, 'utf8'); }
+
+for (const file of stubFiles) write(file, stubHtml);
+
+for (const file of ['sitemap.xml','serverless/sitemap.xml','sitemap.txt','serverless/sitemap.txt']) {
+  if (!existsSync(file)) continue;
+  let text = read(file);
+  if (file.endsWith('.xml')) {
+    for (const needle of sitemapNeedles) {
+      text = text.replace(new RegExp('\\s*<url>\\s*<loc>[^<]*' + needle.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '[^<]*<\\/loc>[\\s\\S]*?<\\/url>', 'g'), '');
+    }
+  } else {
+    text = text.split(/\r?\n/).filter(line => !sitemapNeedles.some(needle => line.includes(needle))).join('\n') + '\n';
+  }
+  write(file, text);
+}
+
+if (existsSync('blog/index.html')) {
+  let blog = read('blog/index.html');
+  for (const needle of sitemapNeedles) blog = blog.replaceAll(needle, 'retired-blog-route');
+  blog = blog.replaceAll('인기글 · 핵심글 · 최신글 76개','인기글 · 핵심글 · 최신글 75개');
+  blog = blog.replace(/<a\b[^>]*>[\s\S]*?미니게임 연패 위로금에서 회차 제외 조건을 먼저 보는 이유[\s\S]*?<\/a>/g, '');
+  write('blog/index.html', blog);
+}
+
+let redirects = existsSync('_redirects') ? read('_redirects') : '';
+const requiredRedirects = retiredRoutes.map(route => `${route} /blog/ 302`);
+const kept = redirects.split(/\r?\n/).filter(line => line && !retiredRoutes.some(route => line.startsWith(route + ' ')));
+write('_redirects', [...requiredRedirects, ...kept].join('\n') + '\n');
+
+write('_worker.js', String.raw`const VERSION = "static-growth-conversion-v139-11-20260531";
 const JSON_HEADERS = {
   "content-type": "application/json; charset=utf-8",
   "cache-control": "no-store"
@@ -108,3 +148,11 @@ export default {
   },
   async scheduled(event, env, ctx) { console.log("[" + VERSION + "] scheduled noop", event && event.cron); }
 };
+`);
+
+const report = { ok: true, version: VERSION, retiredRoutes, stubFiles, deletedFiles: [], generatedAt: new Date().toISOString() };
+mkdirSync('reports', { recursive: true });
+write('reports/v139-11-live-broken-blog-route-kill-lock-audit.json', JSON.stringify(report, null, 2) + '\n');
+write('V139_11_PATCH_MANIFEST.json', JSON.stringify(report, null, 2) + '\n');
+write('V139_11_UPGRADE_REPORT.md', `# V139-11 LIVE BROKEN BLOG ROUTE KILL LOCK\n\n- Broken V9 route family is retired from visible/indexable/routable surfaces.\n- No-extension route variant is included.\n- Static noindex fallback stubs are included.\n- Deleted files: 0.\n\nGenerated: ${report.generatedAt}\n`);
+console.log('[V139.11 GENERATE PASS]', JSON.stringify(report, null, 2));

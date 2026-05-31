@@ -1,0 +1,25 @@
+{
+  "ok": true,
+  "version": "V139_11_LIVE_BROKEN_BLOG_ROUTE_KILL_LOCK",
+  "retiredRoutes": [
+    "/blog/minigame-streak-exclusion-guide.html",
+    "/blog/minigame-streak-exclusion-guide",
+    "/blog/minigame-streak-exclusion-guide/",
+    "/blog/minigame/minigame-losing-streak-event-exclusion-condition-guide.html",
+    "/blog/minigame/minigame-losing-streak-event-exclusion-condition-guide",
+    "/blog/minigame/minigame-losing-streak-event-exclusion-condition-guide/",
+    "/blog/minigame/minigame-losing-streak-event-exclusion-condition-first.html",
+    "/blog/minigame/minigame-losing-streak-event-exclusion-condition-first",
+    "/blog/minigame/minigame-losing-streak-event-exclusion-condition-first/"
+  ],
+  "stubFiles": [
+    "blog/minigame-streak-exclusion-guide.html",
+    "blog/minigame-streak-exclusion-guide/index.html",
+    "blog/minigame/minigame-losing-streak-event-exclusion-condition-guide.html",
+    "blog/minigame/minigame-losing-streak-event-exclusion-condition-guide/index.html",
+    "blog/minigame/minigame-losing-streak-event-exclusion-condition-first.html",
+    "blog/minigame/minigame-losing-streak-event-exclusion-condition-first/index.html"
+  ],
+  "deletedFiles": [],
+  "generatedAt": "2026-05-31T14:22:26.553Z"
+}
