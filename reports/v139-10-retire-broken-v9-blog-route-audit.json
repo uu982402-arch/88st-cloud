@@ -1,0 +1,17 @@
+{
+  "ok": true,
+  "version": "V139_10_RETIRE_BROKEN_V9_BLOG_ROUTE",
+  "action": "retired V9 broken blog route from visible/indexable surfaces",
+  "blogCardRemoved": false,
+  "brokenPaths": [
+    "/blog/minigame-streak-exclusion-guide.html",
+    "/blog/minigame/minigame-losing-streak-event-exclusion-condition-guide.html",
+    "/blog/minigame/minigame-losing-streak-event-exclusion-condition-first.html",
+    "/blog/minigame/minigame-losing-streak-event-exclusion-condition-first/",
+    "/blog/minigame/minigame-losing-streak-event-exclusion-condition-first"
+  ],
+  "changedFiles": [
+    "package.json"
+  ],
+  "generatedAt": "2026-05-31T14:09:49.793Z"
+}

@@ -71,7 +71,9 @@
 /blog/kimchi-premium-check/ /blog/ 301
 /blog/upbit-binance-price-gap/ /blog/ 301
 /blog/rsi-beginner-guide/ /blog/ 301
-/blog/minigame/minigame-losing-streak-event-exclusion-condition-first.html /blog/minigame-streak-exclusion-guide.html 301
-/blog/minigame/minigame-losing-streak-event-exclusion-condition-first/ /blog/minigame-streak-exclusion-guide.html 301
-/blog/minigame/minigame-losing-streak-event-exclusion-condition-first /blog/minigame-streak-exclusion-guide.html 301
-/blog/minigame/minigame-losing-streak-event-exclusion-condition-guide.html /blog/minigame-streak-exclusion-guide.html 301
+# V139.10 retired broken V9 blog routes - keep users away from Cloudflare asset conflict
+/blog/minigame-streak-exclusion-guide.html /blog/ 302
+/blog/minigame/minigame-losing-streak-event-exclusion-condition-guide.html /blog/ 302
+/blog/minigame/minigame-losing-streak-event-exclusion-condition-first.html /blog/ 302
+/blog/minigame/minigame-losing-streak-event-exclusion-condition-first/ /blog/ 302
+/blog/minigame/minigame-losing-streak-event-exclusion-condition-first /blog/ 302
