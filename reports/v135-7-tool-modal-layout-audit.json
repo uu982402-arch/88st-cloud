@@ -2,8 +2,10 @@
   "ok": true,
   "version": "V135_7_TOOL_MODAL_LAYOUT_REBUILD",
   "changed": [
-    "package.json"
+    "index.html",
+    "package.json",
+    "tools/index.html"
   ],
   "issues": [],
-  "generatedAt": "2026-05-30T06:34:33.156Z"
+  "generatedAt": "2026-05-30T07:11:36.901Z"
 }
