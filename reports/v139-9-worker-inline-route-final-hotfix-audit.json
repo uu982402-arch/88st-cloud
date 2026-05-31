@@ -1,0 +1,16 @@
+{
+  "ok": true,
+  "version": "V139_9_WORKER_INLINE_ROUTE_FINAL_HOTFIX",
+  "changedFiles": [
+    "_worker.js",
+    "blog/minigame-streak-exclusion-guide.html",
+    "blog/index.html",
+    "_redirects",
+    "sitemap.xml",
+    "sitemap.txt",
+    "serverless/sitemap.xml",
+    "serverless/sitemap.txt",
+    "package.json"
+  ],
+  "strategy": "worker inline response before ASSETS.fetch for V9 conflict article"
+}
