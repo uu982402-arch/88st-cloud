@@ -1,0 +1,24 @@
+{
+  "ok": true,
+  "version": "V139_4_BLOG_DIRECT_HTML_403_FALLBACK",
+  "purpose": "Make the V9 minigame article directly serve on .html and remove redirect-to-folder risk that caused live 403.",
+  "directRoute": "/blog/minigame/minigame-losing-streak-event-exclusion-condition-first.html",
+  "cleanDuplicate": "/blog/minigame/minigame-losing-streak-event-exclusion-condition-first/",
+  "changedFiles": [
+    "_redirects",
+    "_worker.js",
+    "assets/config/seo.meta.json",
+    "assets/css/v139-4-blog-direct-html-fallback.css",
+    "blog/index.html",
+    "blog/minigame/minigame-losing-streak-event-exclusion-condition-first.html",
+    "blog/minigame/minigame-losing-streak-event-exclusion-condition-first/index.html",
+    "package.json",
+    "serverless/_redirects",
+    "serverless/sitemap.txt",
+    "serverless/sitemap.xml",
+    "sitemap.txt",
+    "sitemap.xml"
+  ],
+  "deletedFiles": [],
+  "generatedAt": "2026-05-31T13:25:53.026Z"
+}
