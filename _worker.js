@@ -95,10 +95,26 @@ async function handleApi(request, env) {
   return json({ ok: false, error: "not_found", version: VERSION }, 404, request);
 }
 
+
+const V139_3_BLOG_403_ROUTE_HOTFIX_REDIRECTS = new Map([
+  ["/blog/minigame/minigame-losing-streak-event-exclusion-condition-first.html", "/blog/minigame/minigame-losing-streak-event-exclusion-condition-first/"],
+  ["/blog/minigame/minigame-losing-streak-event-exclusion-condition-first", "/blog/minigame/minigame-losing-streak-event-exclusion-condition-first/"],
+  ["/blog/queenbee-telegram-seoa69.html", "/search-guides/queenbee-seoa-code.html"],
+  ["/blog/queenbee-telegram-seoa69", "/search-guides/queenbee-seoa-code.html"]
+]);
+
+function v1393RouteHotfixRedirect(pathname) {
+  const target = V139_3_BLOG_403_ROUTE_HOTFIX_REDIRECTS.get(pathname);
+  return target ? new Response(null, { status: 301, headers: { location: target, 'cache-control': 'no-store' } }) : null;
+}
+
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
     try {
+      const v1393Redirect = v1393RouteHotfixRedirect(url.pathname);
+      if (v1393Redirect) return v1393Redirect;
+
       if (url.pathname.startsWith("/api/")) {
         return await handleApi(request, env);
       }

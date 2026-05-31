@@ -1,0 +1,25 @@
+{
+  "ok": true,
+  "version": "V139_3_BLOG_403_ROUTE_HOTFIX",
+  "purpose": "Fix live 403 for V137/V139 blog detail and harden stale GitHub blog route handling.",
+  "problemRoute": "/blog/minigame/minigame-losing-streak-event-exclusion-condition-first.html",
+  "cleanRoute": "/blog/minigame/minigame-losing-streak-event-exclusion-condition-first/",
+  "staleRoute": "/blog/queenbee-telegram-seoa69.html",
+  "staleTarget": "/search-guides/queenbee-seoa-code.html",
+  "changedFiles": [
+    "_redirects",
+    "assets/config/seo.meta.json",
+    "blog/index.html",
+    "blog/minigame/minigame-losing-streak-event-exclusion-condition-first.html",
+    "blog/minigame/minigame-losing-streak-event-exclusion-condition-first/index.html",
+    "blog/queenbee-telegram-seoa69.html",
+    "package.json",
+    "serverless/_redirects",
+    "serverless/sitemap.txt",
+    "serverless/sitemap.xml",
+    "sitemap.txt",
+    "sitemap.xml"
+  ],
+  "deletedFiles": [],
+  "generatedAt": "2026-05-31T13:15:55.963Z"
+}
