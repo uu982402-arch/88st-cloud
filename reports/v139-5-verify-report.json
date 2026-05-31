@@ -1,0 +1,6 @@
+{
+  "ok": true,
+  "version": "V139_5_WORKER_DUPLICATE_SYMBOL_HOTFIX",
+  "workerSyntax": "node --check PASS",
+  "generatedAt": "2026-05-31T13:33:12.276Z"
+}

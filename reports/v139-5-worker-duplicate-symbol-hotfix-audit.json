@@ -1,0 +1,23 @@
+{
+  "ok": true,
+  "version": "V139_5_WORKER_DUPLICATE_SYMBOL_HOTFIX",
+  "purpose": "Remove duplicate top-level Worker route redirect declarations that pass node build but fail Cloudflare Pages Functions bundling.",
+  "beforeCounts": {
+    "v1393Const": 0,
+    "v1394Const": 0,
+    "v1393Fn": 0,
+    "v1394Fn": 0
+  },
+  "afterCounts": {
+    "v1395Const": 2,
+    "v1395Fn": 2,
+    "oldV1393": 0,
+    "oldV1394": 0
+  },
+  "changedFiles": [
+    "_worker.js",
+    "package.json"
+  ],
+  "deletedFiles": [],
+  "generatedAt": "2026-05-31T13:33:10.974Z"
+}

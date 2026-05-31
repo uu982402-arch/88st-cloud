@@ -96,22 +96,15 @@ async function handleApi(request, env) {
 }
 
 
-const V139_4_STALE_BLOG_ROUTE_REDIRECTS = new Map([  ["/blog/queenbee-telegram-seoa69.html", "/search-guides/queenbee-seoa-code.html"],
-  ["/blog/queenbee-telegram-seoa69", "/search-guides/queenbee-seoa-code.html"]
+
+const V139_5_SAFE_BLOG_ROUTE_REDIRECTS = new Map([
+  ["/blog/queenbee-telegram-seoa69.html", "/search-guides/queenbee-seoa-code.html"],
+  ["/blog/queenbee-telegram-seoa69", "/search-guides/queenbee-seoa-code.html"],
+  ["/blog/minigame/minigame-losing-streak-event-exclusion-condition-first", "/blog/minigame/minigame-losing-streak-event-exclusion-condition-first.html"]
 ]);
 
-function v1394StaleRouteRedirect(pathname) {
-  const target = V139_4_STALE_BLOG_ROUTE_REDIRECTS.get(pathname);
-  return target ? new Response(null, { status: 301, headers: { location: target, 'cache-control': 'no-store' } }) : null;
-}
-
-
-const V139_4_STALE_BLOG_ROUTE_REDIRECTS = new Map([  ["/blog/queenbee-telegram-seoa69.html", "/search-guides/queenbee-seoa-code.html"],
-  ["/blog/queenbee-telegram-seoa69", "/search-guides/queenbee-seoa-code.html"]
-]);
-
-function v1394StaleRouteRedirect(pathname) {
-  const target = V139_4_STALE_BLOG_ROUTE_REDIRECTS.get(pathname);
+function v1395SafeBlogRouteRedirect(pathname) {
+  const target = V139_5_SAFE_BLOG_ROUTE_REDIRECTS.get(pathname);
   return target ? new Response(null, { status: 301, headers: { location: target, 'cache-control': 'no-store' } }) : null;
 }
 
@@ -119,8 +112,10 @@ export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
     try {
-      const v1393Redirect = v1394StaleRouteRedirect(url.pathname);
-      if (v1393Redirect) return v1393Redirect;
+      const v1395Redirect = v1395SafeBlogRouteRedirect(url.pathname);
+      if (v1395Redirect) return v1395Redirect;
+
+
 
       if (url.pathname.startsWith("/api/")) {
         return await handleApi(request, env);
