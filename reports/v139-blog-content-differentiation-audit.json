@@ -1,0 +1,49 @@
+{
+  "ok": true,
+  "version": "V139_BLOG_CONTENT_DIFFERENTIATION_SEO_INTENT",
+  "base": "V138-6 BLOG FORMULA SEO META REFRESH FULL",
+  "scope": [
+    "formula/math article differentiation",
+    "legacy post wording polish",
+    "SEO meta keywords intent split",
+    "header label consistency 보증업체",
+    "h2 numbering cleanup"
+  ],
+  "counts": {
+    "blogHtmlScanned": 531,
+    "changedFiles": 11,
+    "formulaOrMathArticleBlocks": 462,
+    "categoryRewrittenH2": 439,
+    "v139DifferentiationNotes": 462,
+    "metaUpdated": 523,
+    "navLabelsFixedThisRun": 0,
+    "genericH2Remaining": 0,
+    "h2Number9Remaining": 0,
+    "shortGuaranteeNavRemaining": 0
+  },
+  "changedFiles": [
+    "V139_PATCH_MANIFEST.json",
+    "V139_UPGRADE_REPORT.md",
+    "assets/config/seo.meta.json",
+    "assets/css/v139-blog-content-differentiation.css",
+    "package.json",
+    "reports/v139-blog-content-differentiation-audit.json",
+    "reports/v139-cloudflare-build-safe-report.json",
+    "reports/v139-verify-report.json",
+    "scripts/build-v139-cloudflare-pages-safe.mjs",
+    "scripts/generate-v139-blog-content-differentiation-seo-intent.mjs",
+    "scripts/verify-v139-blog-content-differentiation-seo-intent.mjs"
+  ],
+  "deletedFiles": [],
+  "forbiddenNotAdded": [
+    "AI검색 Q&A",
+    "FAQ box",
+    "신뢰칩",
+    "선택 기준/확인 기준 라벨",
+    "관련글 섹션",
+    "추천글 섹션",
+    "하단 연결 섹션",
+    "새 전환 유도 박스"
+  ],
+  "generatedAt": "2026-05-31T10:10:09.030Z"
+}

@@ -1,17 +1,17 @@
 {
   "ok": true,
-  "version": "V138_3_SECTION_RADIUS_ROLLBACK_TEXT_SAFE_FINAL",
-  "base": "V137.2 BLOG LIVE MATERIALIZE FULL + V138 + V138-1 + V138-2",
+  "version": "V138_4_BLOG_RADIUS_ROLLBACK_TEXT_SAFE",
+  "base": "V137.2 BLOG LIVE MATERIALIZE FULL + V138-3",
   "liveObserved": {
-    "home": "Live text/DOM shows main section flow: 실사용 가이드, 보증업체, 스포츠·검색 체크, 분석 도구, 공식 상담봇, footer.",
-    "userScreenshotIssue": "Oversized rounded section shells made the sports/search and tools areas look clipped/heavy; some header/right-side labels could visually disappear at viewport edges."
+    "blog": "https://88st.cloud/blog/ text/DOM reachable; user reported blog list visual rollback was not applied after V138-3.",
+    "cause": "V138-3 only rolled back main/sports/search shells. V138 CSS still targeted .v72-blog-direct and .v72-blog-card globally, leaving the blog list with the oversized rounded-shell/card treatment."
   },
-  "rollback": [
-    "Rollback V138 oversized rounded section shells to transparent layout sections.",
-    "Keep actual cards dark/glass but restore pre-V138 card radius scale.",
-    "Keep V138 sports/search dark background fixes.",
-    "Keep V138-2 header text visibility fix.",
-    "Keep V138-1 cert href build hotfix."
+  "fix": [
+    "Add late V138-4 CSS only for /blog/ list page.",
+    "Revert .v72-blog-direct to transparent layout shell, not a large rounded card.",
+    "Keep blog cards dark/glass but restore compact V104 radius/density scale.",
+    "Restore V134 season cards to dark cards where older light surface rules exist.",
+    "Keep V138-1 cert href hotfix, V138-2 header visibility fix, and V138-3 main section rollback."
   ],
   "forbiddenAdditions": [
     "AI Q&A snippet",
@@ -26,13 +26,15 @@
     "V138_1_UPGRADE_REPORT.md",
     "V138_2_PATCH_MANIFEST.json",
     "V138_2_UPGRADE_REPORT.md",
+    "V138_3_PATCH_MANIFEST.json",
+    "V138_3_UPGRADE_REPORT.md",
     "V138_PATCH_MANIFEST.json",
     "V138_UPGRADE_REPORT.md",
     "assets/css/v138-2-live-header-text-visibility-fix.css",
     "assets/css/v138-3-section-radius-rollback.css",
+    "assets/css/v138-4-blog-radius-rollback.css",
     "assets/css/v138-modern-section-radius-dark-fix.css",
-    "cert/index.html",
-    "guaranteed/f1/index.html",
+    "blog/index.html",
     "package.json",
     "reports/v138-1-cert-href-hotfix-audit.json",
     "reports/v138-1-cloudflare-build-safe-report.json",
@@ -40,23 +42,28 @@
     "reports/v138-2-cloudflare-build-safe-report.json",
     "reports/v138-2-live-header-text-visibility-fix-audit.json",
     "reports/v138-2-verify-report.json",
+    "reports/v138-3-cloudflare-build-safe-report.json",
+    "reports/v138-3-section-radius-rollback-audit.json",
+    "reports/v138-3-verify-report.json",
     "reports/v138-cloudflare-build-safe-report.json",
     "reports/v138-modern-section-radius-dark-fix-audit.json",
     "reports/v138-verify-report.json",
     "scripts/build-v138-1-cloudflare-pages-safe.mjs",
     "scripts/build-v138-2-cloudflare-pages-safe.mjs",
     "scripts/build-v138-3-cloudflare-pages-safe.mjs",
+    "scripts/build-v138-4-cloudflare-pages-safe.mjs",
     "scripts/build-v138-cloudflare-pages-safe.mjs",
     "scripts/generate-v138-1-cert-href-hotfix.mjs",
     "scripts/generate-v138-2-live-header-text-visibility-fix.mjs",
     "scripts/generate-v138-3-section-radius-rollback.mjs",
+    "scripts/generate-v138-4-blog-radius-rollback.mjs",
     "scripts/generate-v138-modern-section-radius-dark-fix.mjs",
     "scripts/verify-v138-1-cert-href-hotfix.mjs",
     "scripts/verify-v138-2-live-header-text-visibility-fix.mjs",
     "scripts/verify-v138-3-section-radius-rollback.mjs",
+    "scripts/verify-v138-4-blog-radius-rollback.mjs",
     "scripts/verify-v138-modern-section-radius-dark-fix.mjs"
   ],
-  "headerTouched": [],
   "deletedFiles": [],
-  "generatedAt": "2026-05-31T10:06:50.400Z"
+  "generatedAt": "2026-05-31T10:06:51.211Z"
 }
