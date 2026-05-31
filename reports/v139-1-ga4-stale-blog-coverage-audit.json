@@ -1,0 +1,11 @@
+{
+  "ok": true,
+  "version": "V139_1_GA4_STALE_BLOG_COVERAGE_HOTFIX",
+  "reason": "Cloudflare repository can retain stale blog HTML when FULL ZIP is uploaded through GitHub web upload; this hotfix repairs GA4 coverage after V139 generation and before verify.",
+  "blogHtmlScanned": 531,
+  "repairedFiles": [],
+  "repairedCount": 0,
+  "alreadyOkCount": 531,
+  "deletedFiles": [],
+  "generatedAt": "2026-05-31T11:07:53.309Z"
+}

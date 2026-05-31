@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "version": "V139_BLOG_CONTENT_DIFFERENTIATION_SEO_INTENT",
+  "version": "V139_1_GA4_STALE_BLOG_COVERAGE_HOTFIX",
   "blogHtml": 531,
   "v139Css": 531,
   "diffNotes": 462,
@@ -9,5 +9,5 @@
   "metaOk": 531,
   "ga4Ok": 531,
   "navShort": 0,
-  "generatedAt": "2026-05-31T10:06:58.137Z"
+  "generatedAt": "2026-05-31T11:07:54.386Z"
 }

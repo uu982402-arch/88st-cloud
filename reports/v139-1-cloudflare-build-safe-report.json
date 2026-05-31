@@ -1,0 +1,7 @@
+{
+  "ok": true,
+  "version": "V139_1_GA4_STALE_BLOG_COVERAGE_HOTFIX",
+  "base": "V139 content differentiation + post-generate GA4 repair",
+  "mode": "cloudflare-pages-safe-build",
+  "generatedAt": "2026-05-31T11:07:53.707Z"
+}
