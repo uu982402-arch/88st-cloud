@@ -1,0 +1,20 @@
+{
+  "ok": true,
+  "version": "V139_8_STATIC_ROUTE_WORKER_SAFE_HOTFIX",
+  "newRoute": "/blog/minigame-streak-exclusion-guide.html",
+  "oldRoutes": [
+    "/blog/minigame/minigame-losing-streak-event-exclusion-condition-guide.html",
+    "/blog/minigame/minigame-losing-streak-event-exclusion-condition-first.html",
+    "/blog/minigame/minigame-losing-streak-event-exclusion-condition-first/"
+  ],
+  "changedFiles": [
+    "_worker.js",
+    "_redirects",
+    "blog/index.html",
+    "blog/minigame-streak-exclusion-guide.html",
+    "blog/minigame/minigame-losing-streak-event-exclusion-condition-guide.html",
+    "blog/minigame/minigame-losing-streak-event-exclusion-condition-first.html",
+    "blog/minigame/minigame-losing-streak-event-exclusion-condition-first/index.html"
+  ],
+  "strategy": "move V9 article to top-level static blog route and use tiny Worker redirects only; remove direct inline Worker HTML fallback."
+}

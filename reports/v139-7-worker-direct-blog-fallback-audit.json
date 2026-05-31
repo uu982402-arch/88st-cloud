@@ -2,9 +2,9 @@
   "ok": true,
   "version": "V139_7_WORKER_DIRECT_BLOG_FALLBACK",
   "directRoutes": [
-    "/blog/minigame/minigame-losing-streak-event-exclusion-condition-guide.html",
-    "/blog/minigame/minigame-losing-streak-event-exclusion-condition-first.html",
-    "/blog/minigame/minigame-losing-streak-event-exclusion-condition-first/",
+    "/blog/minigame-streak-exclusion-guide.html",
+    "/blog/minigame-streak-exclusion-guide.html",
+    "/blog/minigame-streak-exclusion-guide.html",
     "/blog/minigame/minigame-losing-streak-event-exclusion-condition-first"
   ],
   "embeddedHtmlBytes": 14652,
