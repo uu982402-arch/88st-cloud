@@ -1,0 +1,18 @@
+{
+  "ok": true,
+  "version": "V140_1_SECURITY_BLOG_CONVERSION_DETAIL_POLISH",
+  "base": "V140_SECURITY_BLOG_EXPANSION",
+  "changedPosts": [
+    "blog/fake-evolution-pragmatic-api-parsing-site-check.html",
+    "blog/mobile-addressbar-telegram-impersonation-scam.html",
+    "blog/usdt-trx-coin-deposit-withdrawal-scam-txid-guide.html"
+  ],
+  "cssFile": "assets/css/v140-1-security-blog-common-polish.css",
+  "contentPolish": [
+    "fake API article: table/chat/round sync fact-check and CTA bridge",
+    "mobile phishing article: Telegram search channel/user account distinction and domain center CTA bridge",
+    "coin article: TRC-20/ERC-20 fake TxID/additional-fee scam pattern and CTA bridge"
+  ],
+  "deletedFiles": [],
+  "generatedAt": "2026-05-31T14:40:40.128Z"
+}

@@ -1,0 +1,15 @@
+/* V140.1 security blog common polish: article-local only, no global redesign */
+html[data-v140-1-security-blog-polish="active"] .v82-longform-body{max-width:920px;margin-inline:auto;}
+.v140-security-note,.v140-fact-check,.v140-conversion-bridge,.v140-cta-space{box-sizing:border-box;}
+.v140-fact-check{position:relative;border:1px solid rgba(125,211,252,.28);background:linear-gradient(135deg,rgba(14,165,233,.12),rgba(15,23,42,.88));border-radius:18px;padding:16px 18px;margin:20px 0;color:#e0f2fe;box-shadow:0 18px 44px rgba(2,8,23,.22);overflow:hidden;}
+.v140-fact-check::before{content:"";position:absolute;inset:0 0 auto 0;height:1px;background:linear-gradient(90deg,transparent,rgba(186,230,253,.65),transparent);}
+.v140-fact-check strong{display:block;margin-bottom:6px;color:#fef3c7;font-size:.96rem;letter-spacing:-.01em;}
+.v140-fact-check p{margin:0;color:#dbeafe;line-height:1.75;}
+.v140-conversion-bridge{border:1px solid rgba(250,204,21,.30);background:linear-gradient(135deg,rgba(250,204,21,.10),rgba(8,13,23,.90));border-radius:18px;padding:16px 18px;margin:20px 0;color:#fff7d6;}
+.v140-conversion-bridge strong{color:#fde68a;}
+.v140-conversion-bridge p{margin:.45rem 0 0;color:#f8fafc;line-height:1.75;}
+.v140-warning-list li{line-height:1.65;word-break:keep-all;overflow-wrap:anywhere;}
+.v140-cta-space{box-shadow:0 22px 52px rgba(0,0,0,.28);}
+.v140-cta-space p{line-height:1.76;color:#f8fafc;}
+.v140-cta-actions a:focus-visible{outline:3px solid rgba(250,204,21,.55);outline-offset:3px;}
+@media(max-width:640px){.v140-fact-check,.v140-conversion-bridge{border-radius:16px;padding:14px 15px;margin:16px 0}.v140-fact-check p,.v140-conversion-bridge p{font-size:.95rem}.v140-cta-actions a{width:100%;min-height:46px}}
