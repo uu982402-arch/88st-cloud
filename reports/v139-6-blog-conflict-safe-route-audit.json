@@ -1,0 +1,11 @@
+{
+  "ok": true,
+  "version": "V139_6_BLOG_CONFLICT_SAFE_ROUTE_HOTFIX",
+  "oldRoutes": [
+    "/blog/minigame/minigame-losing-streak-event-exclusion-condition-first.html",
+    "/blog/minigame/minigame-losing-streak-event-exclusion-condition-first/",
+    "/blog/minigame/minigame-losing-streak-event-exclusion-condition-first"
+  ],
+  "newRoute": "/blog/minigame/minigame-losing-streak-event-exclusion-condition-guide.html",
+  "generatedAt": "2026-05-31T13:39:46.419Z"
+}

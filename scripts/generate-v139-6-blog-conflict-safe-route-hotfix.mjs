@@ -1,0 +1,53 @@
+import fs from 'node:fs';
+import path from 'node:path';
+const ROOT = process.cwd();
+const p = (...parts) => path.join(ROOT, ...parts);
+const OLD_HTML = '/blog/minigame/minigame-losing-streak-event-exclusion-condition-first.html';
+const OLD_CLEAN = '/blog/minigame/minigame-losing-streak-event-exclusion-condition-first/';
+const OLD_NO_SLASH = '/blog/minigame/minigame-losing-streak-event-exclusion-condition-first';
+const NEW_ROUTE = '/blog/minigame/minigame-losing-streak-event-exclusion-condition-guide.html';
+const read = fp => fs.existsSync(fp) ? fs.readFileSync(fp, 'utf8') : '';
+const write = (fp, txt) => { fs.mkdirSync(path.dirname(fp), {recursive:true}); fs.writeFileSync(fp, txt); };
+const oldFp = p(OLD_HTML.slice(1));
+const newFp = p(NEW_ROUTE.slice(1));
+if(!fs.existsSync(oldFp)) throw new Error('source V9 blog html missing: ' + OLD_HTML);
+let html = read(oldFp).replaceAll('https://88st.cloud' + OLD_HTML, 'https://88st.cloud' + NEW_ROUTE).replaceAll(OLD_HTML, NEW_ROUTE).replaceAll('https://88st.cloud' + OLD_CLEAN, 'https://88st.cloud' + NEW_ROUTE).replaceAll(OLD_CLEAN, NEW_ROUTE);
+html = html.replace(/<link rel="canonical" href="[^"]+">/, `<link rel="canonical" href="https://88st.cloud${NEW_ROUTE}">`);
+html = html.replace(/<meta property="og:url" content="[^"]+">/, `<meta property="og:url" content="https://88st.cloud${NEW_ROUTE}">`);
+if(!html.includes('data-v139-6-conflict-safe-route')) html = html.replace('<html ', '<html data-v139-6-conflict-safe-route="true" ');
+write(newFp, html);
+let idx = read(p('blog/index.html')).replaceAll(`href="${OLD_HTML}"`, `href="${NEW_ROUTE}"`).replaceAll(`href="${OLD_CLEAN}"`, `href="${NEW_ROUTE}"`);
+write(p('blog/index.html'), idx);
+for(const rel of ['sitemap.xml','serverless/sitemap.xml','sitemap.txt','serverless/sitemap.txt']){
+  const fp = p(rel); if(!fs.existsSync(fp)) continue;
+  let t = read(fp).replaceAll('https://88st.cloud' + OLD_HTML, 'https://88st.cloud' + NEW_ROUTE).replaceAll('https://88st.cloud' + OLD_CLEAN, 'https://88st.cloud' + NEW_ROUTE);
+  if(rel.endsWith('.txt')){
+    const seen = new Set();
+    t = t.split(/\r?\n/).filter(Boolean).filter(line => seen.has(line) ? false : (seen.add(line), true)).join('\n') + '\n';
+  }
+  write(fp, t);
+}
+let redirects = read(p('_redirects')).split(/\r?\n/).filter(line => !line.includes('minigame-losing-streak-event-exclusion-condition-first')).filter(Boolean);
+redirects.push(`${OLD_HTML} ${NEW_ROUTE} 301`, `${OLD_CLEAN} ${NEW_ROUTE} 301`, `${OLD_NO_SLASH} ${NEW_ROUTE} 301`);
+write(p('_redirects'), redirects.join('\n') + '\n');
+let worker = read(p('_worker.js'));
+worker = worker.replace(/\n\nconst V139_5_SAFE_BLOG_ROUTE_REDIRECTS[\s\S]*?function v1395SafeBlogRouteRedirect\(pathname\) \{[\s\S]*?\n\}\n/, '\n');
+worker = worker.replace(/\s*const v1395Redirect = v1395SafeBlogRouteRedirect\(url\.pathname\);\n\s*if \(v1395Redirect\) return v1395Redirect;\n/g, '');
+worker = worker.replace(/\n\nconst V139_6_SAFE_BLOG_ROUTE_REDIRECTS[\s\S]*?function v1396SafeBlogRouteRedirect\(pathname\) \{[\s\S]*?\n\}\n/, '\n');
+worker = worker.replace(/\s*const v1396Redirect = v1396SafeBlogRouteRedirect\(url\.pathname\);\n\s*if \(v1396Redirect\) return v1396Redirect;\n/g, '');
+const block = `\n\nconst V139_6_SAFE_BLOG_ROUTE_REDIRECTS = new Map([\n  ["/blog/queenbee-telegram-seoa69.html", "/search-guides/queenbee-seoa-code.html"],\n  ["/blog/queenbee-telegram-seoa69", "/search-guides/queenbee-seoa-code.html"],\n  ["${OLD_HTML}", "${NEW_ROUTE}"],\n  ["${OLD_CLEAN}", "${NEW_ROUTE}"],\n  ["${OLD_NO_SLASH}", "${NEW_ROUTE}"]\n]);\n\nfunction v1396SafeBlogRouteRedirect(pathname) {\n  const target = V139_6_SAFE_BLOG_ROUTE_REDIRECTS.get(pathname);\n  return target ? new Response(null, { status: 301, headers: { location: target, 'cache-control': 'no-store' } }) : null;\n}\n`;
+worker = worker.replace('\nexport default {', block + '\nexport default {');
+worker = worker.replace('    try {\n', '    try {\n      const v1396Redirect = v1396SafeBlogRouteRedirect(url.pathname);\n      if (v1396Redirect) return v1396Redirect;\n\n');
+write(p('_worker.js'), worker);
+const pkg = JSON.parse(read(p('package.json')) || '{}');
+pkg.scripts = pkg.scripts || {};
+pkg.scripts.build = 'node scripts/build-v139-6-cloudflare-pages-safe.mjs';
+pkg.scripts.verify = 'node scripts/verify-v139-6-blog-conflict-safe-route-hotfix.mjs';
+pkg.scripts['quality:v139-6'] = 'node scripts/generate-v139-6-blog-conflict-safe-route-hotfix.mjs';
+pkg.scripts['verify:v139-6'] = 'node scripts/verify-v139-6-blog-conflict-safe-route-hotfix.mjs';
+write(p('package.json'), JSON.stringify(pkg, null, 2) + '\n');
+fs.mkdirSync(p('reports'), {recursive:true});
+write(p('reports/v139-6-blog-conflict-safe-route-audit.json'), JSON.stringify({ok:true, version:'V139_6_BLOG_CONFLICT_SAFE_ROUTE_HOTFIX', oldRoutes:[OLD_HTML, OLD_CLEAN, OLD_NO_SLASH], newRoute:NEW_ROUTE, generatedAt:new Date().toISOString()}, null, 2));
+write(p('V139_6_PATCH_MANIFEST.json'), JSON.stringify({version:'V139_6_BLOG_CONFLICT_SAFE_ROUTE_HOTFIX', files:['blog/index.html', NEW_ROUTE.slice(1), '_worker.js', '_redirects', 'sitemap.xml', 'sitemap.txt', 'serverless/sitemap.xml', 'serverless/sitemap.txt', 'package.json', 'scripts/build-v139-6-cloudflare-pages-safe.mjs', 'scripts/generate-v139-6-blog-conflict-safe-route-hotfix.mjs', 'scripts/verify-v139-6-blog-conflict-safe-route-hotfix.mjs'], generatedAt:new Date().toISOString()}, null, 2));
+write(p('V139_6_UPGRADE_REPORT.md'), `# V139-6 Blog Conflict Safe Route Hotfix\n\n- Old V9 routes redirect to ${NEW_ROUTE}.\n- Avoids Cloudflare Pages internal error caused by file/directory basename conflict on the previous V9 route.\n- Keeps V139 blog SEO/content and GA4 coverage.\n`);
+console.log('[V139.6 GENERATE PASS]', JSON.stringify({ok:true, version:'V139_6_BLOG_CONFLICT_SAFE_ROUTE_HOTFIX', newRoute:NEW_ROUTE}, null, 2));
