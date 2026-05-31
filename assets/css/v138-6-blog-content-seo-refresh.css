@@ -1,0 +1,42 @@
+/* V138-6 BLOG FORMULA + SEO REFRESH
+   - blog article text upgrade only
+   - article text polish only
+   - keep V138-4 blog rollback and V138-5 GA4 coverage intact */
+html[data-v138-6-blog-seo-refresh="active"] .v138-6-blog-refresh{
+  margin:clamp(18px,2.2vw,28px) 0;
+  padding:clamp(16px,2vw,22px);
+  border:1px solid rgba(148,163,184,.18);
+  border-radius:16px;
+  background:linear-gradient(180deg,rgba(15,23,42,.68),rgba(15,23,42,.42));
+  color:#e5e7eb;
+  box-shadow:0 14px 34px rgba(0,0,0,.18);
+  overflow:visible;
+}
+html[data-v138-6-blog-seo-refresh="active"] .v138-6-blog-refresh h2{
+  margin:0 0 10px;
+  color:#f8fafc;
+  font-size:clamp(1.05rem,1.55vw,1.32rem);
+  line-height:1.35;
+  letter-spacing:-.02em;
+}
+html[data-v138-6-blog-seo-refresh="active"] .v138-6-blog-refresh p{
+  margin:8px 0 0;
+  color:rgba(226,232,240,.9);
+  line-height:1.8;
+  word-break:keep-all;
+  overflow-wrap:anywhere;
+}
+html[data-v138-6-blog-seo-refresh="active"] .v48-formula,
+html[data-v138-6-blog-seo-refresh="active"] .v138-6-formula-refresh{
+  max-width:100%;
+}
+@media (max-width:640px){
+  html[data-v138-6-blog-seo-refresh="active"] .v138-6-blog-refresh{
+    margin:16px 0;
+    padding:14px;
+    border-radius:14px;
+  }
+  html[data-v138-6-blog-seo-refresh="active"] .v138-6-blog-refresh p{
+    font-size:.94rem;
+  }
+}
