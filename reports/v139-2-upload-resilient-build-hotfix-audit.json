@@ -1,0 +1,16 @@
+{
+  "ok": true,
+  "version": "V139_2_UPLOAD_RESILIENT_BUILD_HOTFIX",
+  "reason": "Cloudflare/GitHub web upload can omit or leave stale root manifest files; V139-2 removes hard dependency on V139_PATCH_MANIFEST.json and validates the actual repository state after regenerating content and GA4 coverage.",
+  "buildPolicy": "run V139 generator if present, run V139-1 GA4 repair if present, then backfill V139-2 package/report/manifest and verify repository state without requiring older manifest files",
+  "htmlFiles": 660,
+  "blogHtml": 531,
+  "observedPriorArtifacts": {
+    "v139Manifest": true,
+    "v139Report": true,
+    "v1391Manifest": true,
+    "v1391Report": true
+  },
+  "deletedFiles": [],
+  "generatedAt": "2026-05-31T11:19:06.204Z"
+}

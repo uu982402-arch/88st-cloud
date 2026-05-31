@@ -1,0 +1,7 @@
+{
+  "ok": true,
+  "version": "V139_2_UPLOAD_RESILIENT_BUILD_HOTFIX",
+  "mode": "cloudflare-pages-safe-build",
+  "fixed": "removed V139_PATCH_MANIFEST.json hard dependency",
+  "generatedAt": "2026-05-31T11:19:06.640Z"
+}
