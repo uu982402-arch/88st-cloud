@@ -148,8 +148,7 @@ const deliveryFiles=[
   'reports/v138-modern-section-radius-dark-fix-audit.json','reports/v138-verify-report.json','reports/v138-cloudflare-build-safe-report.json',
   'reports/v138-1-cert-href-hotfix-audit.json','reports/v138-1-verify-report.json','reports/v138-1-cloudflare-build-safe-report.json',
   'reports/v138-2-live-header-text-visibility-fix-audit.json','reports/v138-2-verify-report.json','reports/v138-2-cloudflare-build-safe-report.json',
-  'reports/v138-3-section-radius-rollback-audit.json','reports/v138-3-verify-report.json','reports/v138-3-cloudflare-build-safe-report.json',
-  'reports/v138-4-blog-radius-rollback-audit.json','reports/v138-4-verify-report.json','reports/v138-4-cloudflare-build-safe-report.json'
+  'reports/v138-3-section-radius-rollback-audit.json','reports/v138-3-verify-report.json','reports/v138-3-cloudflare-build-safe-report.json'
 ];
 for(const file of deliveryFiles) if(fs.existsSync(p(file))) changed.add(file);
 
